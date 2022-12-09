@@ -42,7 +42,7 @@ class UserApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: list[MainGetApiKeysResp]
+        :return: list[ApiGetApiKeysResp]
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -63,7 +63,7 @@ class UserApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: list[MainGetApiKeysResp]
+        :return: list[ApiGetApiKeysResp]
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -111,7 +111,7 @@ class UserApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='list[MainGetApiKeysResp]',  # noqa: E501
+            response_type='list[ApiGetApiKeysResp]',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -226,7 +226,7 @@ class UserApi(object):
         :param async_req bool
         :param str expiry: Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
         :param str perms: Permissions -- currently unused
-        :return: MainGetApiKeysResp
+        :return: ApiGetApiKeysResp
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -249,7 +249,7 @@ class UserApi(object):
         :param async_req bool
         :param str expiry: Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
         :param str perms: Permissions -- currently unused
-        :return: MainGetApiKeysResp
+        :return: ApiGetApiKeysResp
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -301,7 +301,7 @@ class UserApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='MainGetApiKeysResp',  # noqa: E501
+            response_type='ApiGetApiKeysResp',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -399,7 +399,7 @@ class UserApi(object):
     def user_stats_get(self, **kwargs):  # noqa: E501
         """Get stats for the current user  # noqa: E501
 
-        This endpoint is used to geet stats for the current user.  # noqa: E501
+        This endpoint is used to get stats for the current user.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.user_stats_get(async_req=True)
@@ -420,7 +420,7 @@ class UserApi(object):
     def user_stats_get_with_http_info(self, **kwargs):  # noqa: E501
         """Get stats for the current user  # noqa: E501
 
-        This endpoint is used to geet stats for the current user.  # noqa: E501
+        This endpoint is used to get stats for the current user.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.user_stats_get_with_http_info(async_req=True)

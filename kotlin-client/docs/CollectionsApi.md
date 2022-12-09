@@ -75,7 +75,7 @@ This endpoint is used to delete an existing content from an existing collection.
 //import io.swagger.client.models.*;
 
 val apiInstance = CollectionsApi()
-val body : MaindeleteContentFromCollectionBody =  // MaindeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
+val body : ApideleteContentFromCollectionBody =  // ApideleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
 val coluuid : kotlin.String = coluuid_example // kotlin.String | Collection ID
 try {
     val result : kotlin.String = apiInstance.collectionsColuuidContentsDelete(body, coluuid)
@@ -93,7 +93,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MaindeleteContentFromCollectionBody**](MaindeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) |
+ **body** | [**ApideleteContentFromCollectionBody**](ApideleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) |
  **coluuid** | **kotlin.String**| Collection ID |
 
 ### Return type
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsColuuidGet"></a>
 # **collectionsColuuidGet**
-> kotlin.String collectionsColuuidGet(coluuid, dir)
+> kotlin.Array&lt;CollectionsCollectionListResponse&gt; collectionsColuuidGet(coluuid, dir)
 
 Get contents in a collection
 
@@ -174,7 +174,7 @@ val apiInstance = CollectionsApi()
 val coluuid : kotlin.String = coluuid_example // kotlin.String | coluuid
 val dir : kotlin.String = dir_example // kotlin.String | Directory
 try {
-    val result : kotlin.String = apiInstance.collectionsColuuidGet(coluuid, dir)
+    val result : kotlin.Array<CollectionsCollectionListResponse> = apiInstance.collectionsColuuidGet(coluuid, dir)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling CollectionsApi#collectionsColuuidGet")
@@ -194,7 +194,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**kotlin.String**
+[**kotlin.Array&lt;CollectionsCollectionListResponse&gt;**](CollectionsCollectionListResponse.md)
 
 ### Authorization
 
@@ -365,7 +365,7 @@ This endpoint is used to create a new collection. A collection is a representaio
 //import io.swagger.client.models.*;
 
 val apiInstance = CollectionsApi()
-val body : MaincreateCollectionBody =  // MaincreateCollectionBody | Collection name and description
+val body : ApicreateCollectionBody =  // ApicreateCollectionBody | Collection name and description
 try {
     val result : CollectionsCollection = apiInstance.collectionsPost(body)
     println(result)
@@ -382,7 +382,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MaincreateCollectionBody**](MaincreateCollectionBody.md)| Collection name and description |
+ **body** | [**ApicreateCollectionBody**](ApicreateCollectionBody.md)| Collection name and description |
 
 ### Return type
 

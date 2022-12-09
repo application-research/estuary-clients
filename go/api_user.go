@@ -29,15 +29,15 @@ type UserApiService service
 UserApiService Get API keys for a user
 This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-@return []MainGetApiKeysResp
+@return []ApiGetApiKeysResp
 */
-func (a *UserApiService) UserApiKeysGet(ctx context.Context) ([]MainGetApiKeysResp, *http.Response, error) {
+func (a *UserApiService) UserApiKeysGet(ctx context.Context) ([]ApiGetApiKeysResp, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue []MainGetApiKeysResp
+		localVarReturnValue []ApiGetApiKeysResp
 	)
 
 	// create path and map variables
@@ -107,7 +107,7 @@ func (a *UserApiService) UserApiKeysGet(ctx context.Context) ([]MainGetApiKeysRe
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v []MainGetApiKeysResp
+			var v []ApiGetApiKeysResp
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -276,7 +276,7 @@ This endpoint is used to create API keys for a user. In estuary, each user is gi
  * @param optional nil or *UserApiUserApiKeysPostOpts - Optional Parameters:
      * @param "Expiry" (optional.String) -  Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
      * @param "Perms" (optional.String) -  Permissions -- currently unused
-@return MainGetApiKeysResp
+@return ApiGetApiKeysResp
 */
 
 type UserApiUserApiKeysPostOpts struct {
@@ -284,13 +284,13 @@ type UserApiUserApiKeysPostOpts struct {
     Perms optional.String
 }
 
-func (a *UserApiService) UserApiKeysPost(ctx context.Context, localVarOptionals *UserApiUserApiKeysPostOpts) (MainGetApiKeysResp, *http.Response, error) {
+func (a *UserApiService) UserApiKeysPost(ctx context.Context, localVarOptionals *UserApiUserApiKeysPostOpts) (ApiGetApiKeysResp, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue MainGetApiKeysResp
+		localVarReturnValue ApiGetApiKeysResp
 	)
 
 	// create path and map variables
@@ -366,7 +366,7 @@ func (a *UserApiService) UserApiKeysPost(ctx context.Context, localVarOptionals 
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v MainGetApiKeysResp
+			var v ApiGetApiKeysResp
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -528,7 +528,7 @@ func (a *UserApiService) UserExportGet(ctx context.Context) (string, *http.Respo
 }
 /*
 UserApiService Get stats for the current user
-This endpoint is used to geet stats for the current user.
+This endpoint is used to get stats for the current user.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
 @return string
 */

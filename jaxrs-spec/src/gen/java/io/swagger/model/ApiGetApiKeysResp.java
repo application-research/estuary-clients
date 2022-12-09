@@ -1,0 +1,138 @@
+package io.swagger.model;
+
+import javax.validation.constraints.*;
+import javax.validation.Valid;
+
+
+import io.swagger.annotations.*;
+import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
+public class ApiGetApiKeysResp   {
+
+  private @Valid String expiry = null;
+
+  private @Valid String label = null;
+
+  private @Valid String token = null;
+
+  private @Valid String tokenHash = null;
+
+  /**
+   **/
+  public ApiGetApiKeysResp expiry(String expiry) {
+    this.expiry = expiry;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("expiry")
+
+  public String getExpiry() {
+    return expiry;
+  }
+  public void setExpiry(String expiry) {
+    this.expiry = expiry;
+  }
+
+  /**
+   **/
+  public ApiGetApiKeysResp label(String label) {
+    this.label = label;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("label")
+
+  public String getLabel() {
+    return label;
+  }
+  public void setLabel(String label) {
+    this.label = label;
+  }
+
+  /**
+   **/
+  public ApiGetApiKeysResp token(String token) {
+    this.token = token;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("token")
+
+  public String getToken() {
+    return token;
+  }
+  public void setToken(String token) {
+    this.token = token;
+  }
+
+  /**
+   **/
+  public ApiGetApiKeysResp tokenHash(String tokenHash) {
+    this.tokenHash = tokenHash;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("tokenHash")
+
+  public String getTokenHash() {
+    return tokenHash;
+  }
+  public void setTokenHash(String tokenHash) {
+    this.tokenHash = tokenHash;
+  }
+
+
+  @Override
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    ApiGetApiKeysResp apiGetApiKeysResp = (ApiGetApiKeysResp) o;
+    return Objects.equals(expiry, apiGetApiKeysResp.expiry) &&
+        Objects.equals(label, apiGetApiKeysResp.label) &&
+        Objects.equals(token, apiGetApiKeysResp.token) &&
+        Objects.equals(tokenHash, apiGetApiKeysResp.tokenHash);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(expiry, label, token, tokenHash);
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class ApiGetApiKeysResp {\n");
+    
+    sb.append("    expiry: ").append(toIndentedString(expiry)).append("\n");
+    sb.append("    label: ").append(toIndentedString(label)).append("\n");
+    sb.append("    token: ").append(toIndentedString(token)).append("\n");
+    sb.append("    tokenHash: ").append(toIndentedString(tokenHash)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+}

@@ -9,6 +9,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { UtilContentType } from './utilContentType';
 
 export interface UtilContentCreateBody { 
     coluuid?: string;
@@ -16,5 +17,5 @@ export interface UtilContentCreateBody {
     location?: string;
     name?: string;
     root?: string;
-    type?: number;
+    type?: UtilContentType;
 }

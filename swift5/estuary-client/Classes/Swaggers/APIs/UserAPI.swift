@@ -15,7 +15,7 @@ open class UserAPI {
 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func userApiKeysGet(completion: @escaping ((_ data: [MainGetApiKeysResp]?,_ error: Error?) -> Void)) {
+    open class func userApiKeysGet(completion: @escaping ((_ data: [ApiGetApiKeysResp]?,_ error: Error?) -> Void)) {
         userApiKeysGetWithRequestBuilder().execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -41,16 +41,16 @@ open class UserAPI {
   "token" : "token"
 } ]}]
 
-     - returns: RequestBuilder<[MainGetApiKeysResp]> 
+     - returns: RequestBuilder<[ApiGetApiKeysResp]> 
      */
-    open class func userApiKeysGetWithRequestBuilder() -> RequestBuilder<[MainGetApiKeysResp]> {
+    open class func userApiKeysGetWithRequestBuilder() -> RequestBuilder<[ApiGetApiKeysResp]> {
         let path = "/user/api-keys"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
         let url = URLComponents(string: URLString)
 
 
-        let requestBuilder: RequestBuilder<[MainGetApiKeysResp]>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<[ApiGetApiKeysResp]>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -100,7 +100,7 @@ open class UserAPI {
      - parameter perms: (query) Permissions -- currently unused (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func userApiKeysPost(expiry: String? = nil, perms: String? = nil, completion: @escaping ((_ data: MainGetApiKeysResp?,_ error: Error?) -> Void)) {
+    open class func userApiKeysPost(expiry: String? = nil, perms: String? = nil, completion: @escaping ((_ data: ApiGetApiKeysResp?,_ error: Error?) -> Void)) {
         userApiKeysPostWithRequestBuilder(expiry: expiry, perms: perms).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -123,9 +123,9 @@ open class UserAPI {
      - parameter expiry: (query) Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
      - parameter perms: (query) Permissions -- currently unused (optional)
 
-     - returns: RequestBuilder<MainGetApiKeysResp> 
+     - returns: RequestBuilder<ApiGetApiKeysResp> 
      */
-    open class func userApiKeysPostWithRequestBuilder(expiry: String? = nil, perms: String? = nil) -> RequestBuilder<MainGetApiKeysResp> {
+    open class func userApiKeysPostWithRequestBuilder(expiry: String? = nil, perms: String? = nil) -> RequestBuilder<ApiGetApiKeysResp> {
         let path = "/user/api-keys"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
@@ -136,7 +136,7 @@ open class UserAPI {
         ])
 
 
-        let requestBuilder: RequestBuilder<MainGetApiKeysResp>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<ApiGetApiKeysResp>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }

@@ -5,9 +5,10 @@
  */
 package io.swagger.api;
 
+import io.swagger.model.ApiCreateCollectionBody;
+import io.swagger.model.ApiDeleteContentFromCollectionBody;
 import io.swagger.model.CollectionsCollection;
-import io.swagger.model.MainCreateCollectionBody;
-import io.swagger.model.MainDeleteContentFromCollectionBody;
+import io.swagger.model.CollectionsCollectionListResponse;
 import io.swagger.model.UtilHttpError;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -35,7 +36,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-29T10:27:05.128Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-09T03:38:46.898Z[GMT]")
 @Validated
 public interface CollectionsApi {
 
@@ -65,7 +66,7 @@ public interface CollectionsApi {
         produces = { "application/json" }, 
         consumes = { "*/*" }, 
         method = RequestMethod.DELETE)
-    ResponseEntity<String> collectionsColuuidContentsDelete(@Parameter(in = ParameterIn.PATH, description = "Collection ID", required=true, schema=@Schema()) @PathVariable("coluuid") String coluuid, @Parameter(in = ParameterIn.DEFAULT, description = "Variable to use when filtering for files (must be either 'path' or 'content_id')", required=true, schema=@Schema()) @Valid @RequestBody MainDeleteContentFromCollectionBody body);
+    ResponseEntity<String> collectionsColuuidContentsDelete(@Parameter(in = ParameterIn.PATH, description = "Collection ID", required=true, schema=@Schema()) @PathVariable("coluuid") String coluuid, @Parameter(in = ParameterIn.DEFAULT, description = "Variable to use when filtering for files (must be either 'path' or 'content_id')", required=true, schema=@Schema()) @Valid @RequestBody ApiDeleteContentFromCollectionBody body);
 
 
     @Operation(summary = "Deletes a collection", description = "This endpoint is used to delete an existing collection.", security = {
@@ -85,7 +86,7 @@ public interface CollectionsApi {
     @Operation(summary = "Get contents in a collection", description = "This endpoint is used to get contents in a collection. If no colpath query param is passed", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "collections" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = CollectionsCollectionListResponse.class)))),
         
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
@@ -93,7 +94,7 @@ public interface CollectionsApi {
     @RequestMapping(value = "/collections/{coluuid}",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<String> collectionsColuuidGet(@Parameter(in = ParameterIn.PATH, description = "coluuid", required=true, schema=@Schema()) @PathVariable("coluuid") String coluuid, @Parameter(in = ParameterIn.QUERY, description = "Directory" ,schema=@Schema()) @Valid @RequestParam(value = "dir", required = false) String dir);
+    ResponseEntity<List<CollectionsCollectionListResponse>> collectionsColuuidGet(@Parameter(in = ParameterIn.PATH, description = "coluuid", required=true, schema=@Schema()) @PathVariable("coluuid") String coluuid, @Parameter(in = ParameterIn.QUERY, description = "Directory" ,schema=@Schema()) @Valid @RequestParam(value = "dir", required = false) String dir);
 
 
     @Operation(summary = "Add contents to a collection", description = "This endpoint adds already-pinned contents (that have ContentIDs) to a collection.", security = {
@@ -155,7 +156,7 @@ public interface CollectionsApi {
         produces = { "application/json" }, 
         consumes = { "*/*" }, 
         method = RequestMethod.POST)
-    ResponseEntity<CollectionsCollection> collectionsPost(@Parameter(in = ParameterIn.DEFAULT, description = "Collection name and description", required=true, schema=@Schema()) @Valid @RequestBody MainCreateCollectionBody body);
+    ResponseEntity<CollectionsCollection> collectionsPost(@Parameter(in = ParameterIn.DEFAULT, description = "Collection name and description", required=true, schema=@Schema()) @Valid @RequestBody ApiCreateCollectionBody body);
 
 }
 

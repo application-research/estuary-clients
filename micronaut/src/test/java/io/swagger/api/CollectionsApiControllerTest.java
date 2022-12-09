@@ -1,8 +1,9 @@
 package io.swagger.api;
 
+import io.swagger.model.ApiCreateCollectionBody;
+import io.swagger.model.ApiDeleteContentFromCollectionBody;
 import io.swagger.model.CollectionsCollection;
-import io.swagger.model.MainCreateCollectionBody;
-import io.swagger.model.MainDeleteContentFromCollectionBody;
+import io.swagger.model.CollectionsCollectionListResponse;
 import io.swagger.model.UtilHttpError;
 
 import io.micronaut.http.HttpResponse;
@@ -34,7 +35,7 @@ class CollectionsApiControllerTest {
 
     @Test
     void collectionsColuuidContentsDeleteTest() {
-        MainDeleteContentFromCollectionBody body = new MainDeleteContentFromCollectionBody();
+        ApiDeleteContentFromCollectionBody body = new ApiDeleteContentFromCollectionBody();
         String coluuid = "coluuid_example";
         try {
             api.collectionsColuuidContentsDelete(body, coluuid).blockingGet();
@@ -99,7 +100,7 @@ class CollectionsApiControllerTest {
 
     @Test
     void collectionsPostTest() {
-        MainCreateCollectionBody body = new MainCreateCollectionBody();
+        ApiCreateCollectionBody body = new ApiCreateCollectionBody();
         try {
             api.collectionsPost(body).blockingGet();
         } catch (UnsupportedOperationException e) {

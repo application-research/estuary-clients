@@ -11,7 +11,7 @@
  */
 package io.swagger.client.apis
 
-import io.swagger.client.models.MaingetApiKeysResp
+import io.swagger.client.models.ApigetApiKeysResp
 import io.swagger.client.models.UtilHttpError
 
 import estuary-client.infrastructure.*
@@ -21,21 +21,21 @@ class UserApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(baseP
     /**
      * Get API keys for a user
      * This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
-     * @return kotlin.Array<MaingetApiKeysResp>
+     * @return kotlin.Array<ApigetApiKeysResp>
      */
     @Suppress("UNCHECKED_CAST")
-    fun userApiKeysGet(): kotlin.Array<MaingetApiKeysResp> {
+    fun userApiKeysGet(): kotlin.Array<ApigetApiKeysResp> {
         
         val localVariableConfig = RequestConfig(
                 RequestMethod.GET,
                 "/user/api-keys"
         )
-        val response = request<kotlin.Array<MaingetApiKeysResp>>(
+        val response = request<kotlin.Array<ApigetApiKeysResp>>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as kotlin.Array<MaingetApiKeysResp>
+            ResponseType.Success -> (response as Success<*>).data as kotlin.Array<ApigetApiKeysResp>
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -72,21 +72,21 @@ class UserApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(baseP
      * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
      * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
      * @param perms Permissions -- currently unused (optional)
-     * @return MaingetApiKeysResp
+     * @return ApigetApiKeysResp
      */
     @Suppress("UNCHECKED_CAST")
-    fun userApiKeysPost(expiry: kotlin.String? = null, perms: kotlin.String? = null): MaingetApiKeysResp {
+    fun userApiKeysPost(expiry: kotlin.String? = null, perms: kotlin.String? = null): ApigetApiKeysResp {
         val localVariableQuery: MultiValueMap = mapOf("expiry" to listOf("$expiry"), "perms" to listOf("$perms"))
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
                 "/user/api-keys", query = localVariableQuery
         )
-        val response = request<MaingetApiKeysResp>(
+        val response = request<ApigetApiKeysResp>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as MaingetApiKeysResp
+            ResponseType.Success -> (response as Success<*>).data as ApigetApiKeysResp
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -119,7 +119,7 @@ class UserApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(baseP
     }
     /**
      * Get stats for the current user
-     * This endpoint is used to geet stats for the current user.
+     * This endpoint is used to get stats for the current user.
      * @return kotlin.String
      */
     @Suppress("UNCHECKED_CAST")

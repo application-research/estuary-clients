@@ -52,7 +52,7 @@ This endpoint is used to delete an existing content from an existing collection.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) | 
+  **body** | [**ApiDeleteContentFromCollectionBody**](ApiDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) | 
   **coluuid** | **string**| Collection ID | 
 
 ### Return type
@@ -99,7 +99,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CollectionsColuuidGet**
-> string CollectionsColuuidGet(ctx, coluuid, optional)
+> []CollectionsCollectionListResponse CollectionsColuuidGet(ctx, coluuid, optional)
 Get contents in a collection
 
 This endpoint is used to get contents in a collection. If no colpath query param is passed
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**[]CollectionsCollectionListResponse**](collections.CollectionListResponse.md)
 
 ### Authorization
 
@@ -237,7 +237,7 @@ This endpoint is used to create a new collection. A collection is a representaio
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**MainCreateCollectionBody**](MainCreateCollectionBody.md)| Collection name and description | 
+  **body** | [**ApiCreateCollectionBody**](ApiCreateCollectionBody.md)| Collection name and description | 
 
 ### Return type
 

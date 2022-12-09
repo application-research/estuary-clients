@@ -16,7 +16,7 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="body">The size of the deal in bytes, the replication factor, and the duration of the deal in blocks</param>
         /// <returns>string</returns>
-        string DealEstimatePost (MainEstimateDealBody body);
+        string DealEstimatePost (ApiEstimateDealBody body);
         /// <summary>
         /// Get Deal Info This endpoint returns the deal info for a deal
         /// </summary>
@@ -58,7 +58,7 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="body">Channel ID</param>
         /// <returns>string</returns>
-        string DealTransferStatusPost (MainChannelIDParam body);
+        string DealTransferStatusPost (ApiChannelIDParam body);
         /// <summary>
         /// Get storage failures for user This endpoint returns a list of storage failures for user
         /// </summary>
@@ -148,7 +148,7 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="body">The size of the deal in bytes, the replication factor, and the duration of the deal in blocks</param>
         /// <returns>string</returns>
-        public string DealEstimatePost (MainEstimateDealBody body)
+        public string DealEstimatePost (ApiEstimateDealBody body)
         {
             // verify the required parameter 'body' is set
             if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling DealEstimatePost");
@@ -393,7 +393,7 @@ path = path.Replace("{" + "propcid" + "}", ApiClient.ParameterToString(propcid))
         /// </summary>
         /// <param name="body">Channel ID</param>
         /// <returns>string</returns>
-        public string DealTransferStatusPost (MainChannelIDParam body)
+        public string DealTransferStatusPost (ApiChannelIDParam body)
         {
             // verify the required parameter 'body' is set
             if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling DealTransferStatusPost");

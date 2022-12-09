@@ -5,6 +5,7 @@
  */
 package io.swagger.api;
 
+import io.swagger.model.ApiPublicNodeInfo;
 import io.swagger.model.UtilHttpError;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -32,7 +33,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-29T10:27:05.128Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-09T03:38:46.898Z[GMT]")
 @Validated
 public interface PublicApi {
 
@@ -67,7 +68,7 @@ public interface PublicApi {
     @Operation(summary = "Get public node info", description = "This endpoint returns information about the node", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "public" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiPublicNodeInfo.class))),
         
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
@@ -75,7 +76,7 @@ public interface PublicApi {
     @RequestMapping(value = "/public/info",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<String> publicInfoGet();
+    ResponseEntity<ApiPublicNodeInfo> publicInfoGet();
 
 
     @Operation(summary = "Get deal metrics", description = "This endpoint is used to get deal metrics", security = {

@@ -114,7 +114,7 @@ object Paths {
      * @param body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) 
      * @param coluuid Collection ID 
      */
-    @Location("/collections/{coluuid}/contents") class collectionsColuuidContentsDelete(val body: MaindeleteContentFromCollectionBody, val coluuid: kotlin.String)
+    @Location("/collections/{coluuid}/contents") class collectionsColuuidContentsDelete(val body: ApideleteContentFromCollectionBody, val coluuid: kotlin.String)
 
     /**
      * Deletes a collection
@@ -160,7 +160,14 @@ object Paths {
      * This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.
      * @param body Collection name and description 
      */
-    @Location("/collections/") class collectionsPost(val body: MaincreateCollectionBody)
+    @Location("/collections/") class collectionsPost(val body: ApicreateCollectionBody)
+
+    /**
+     * Create an Estuary invite
+     * This endpoint is used to create an estuary invite.
+     * @param code Invite code to be created 
+     */
+    @Location("/admin/invites/{code}") class adminInvitesCodePost(val code: kotlin.String)
 
     /**
      * Get Estuary invites
@@ -169,20 +176,10 @@ object Paths {
     @Location("/admin/invites") class adminInvitesGet()
 
     /**
-     * Create an Estuary invite
-     * This endpoint is used to create an estuary invite.
-     * @param code Invite code to be created 
+     * Upload content via a car file
+     * This endpoint uploads content via a car file
      */
-    @Location("/admin/invites") class adminInvitesPost(val code: kotlin.String)
-
-    /**
-     * Add Car object
-     * This endpoint is used to add a car object to the network. The object can be a file or a directory.
-     * @param body Car 
-     * @param ignoreDupes Ignore Dupes (optional)
-     * @param filename Filename (optional)
-     */
-    @Location("/content/add-car") class contentAddCarPost(val body: kotlin.String, val ignoreDupes: kotlin.String, val filename: kotlin.String)
+    @Location("/content/add-car") class contentAddCarPost()
 
     /**
      * Add IPFS object
@@ -193,17 +190,10 @@ object Paths {
     @Location("/content/add-ipfs") class contentAddIpfsPost(val body: UtilContentAddIpfsBody, val ignoreDupes: kotlin.String)
 
     /**
-     * Add new content
-     * This endpoint is used to upload new content.
-     * @param &#x60;data&#x60;  
-     * @param filename  
-     * @param coluuid Collection UUID (optional)
-     * @param replication Replication value (optional)
-     * @param ignoreDupes Ignore Dupes true/false (optional)
-     * @param lazyProvide Lazy Provide true/false (optional)
-     * @param dir Directory (optional)
+     * Upload a file
+     * This endpoint uploads a file.
      */
-    @Location("/content/add") class contentAddPost(val &#x60;data&#x60;: kotlin.Array<kotlin.Byte>, val filename: kotlin.String, val coluuid: kotlin.String, val replication: kotlin.Int, val ignoreDupes: kotlin.String, val lazyProvide: kotlin.String, val dir: kotlin.String)
+    @Location("/content/add") class contentAddPost()
 
     /**
      * Get aggregated content stats
@@ -293,7 +283,7 @@ object Paths {
 
     /**
      * Get content statistics
-     * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+     * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
      * @param limit limit 
      * @param offset offset 
      */
@@ -311,7 +301,7 @@ object Paths {
      * This endpoint estimates the cost of a deal
      * @param body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks 
      */
-    @Location("/deal/estimate") class dealEstimatePost(val body: MainestimateDealBody)
+    @Location("/deal/estimate") class dealEstimatePost(val body: ApiestimateDealBody)
 
     /**
      * Get Deal Info
@@ -360,7 +350,7 @@ object Paths {
      * This endpoint returns the status of a transfer
      * @param body Channel ID 
      */
-    @Location("/deal/transfer/status") class dealTransferStatusPost(val body: MainChannelIDParam)
+    @Location("/deal/transfer/status") class dealTransferStatusPost(val body: ApiChannelIDParam)
 
     /**
      * Get storage failures for user
@@ -397,10 +387,53 @@ object Paths {
     @Location("/public/miners/storage/query/{miner}") class publicMinersStorageQueryMinerGet(val miner: kotlin.String)
 
     /**
+     * Fetch viewer details
+     * This endpoint fetches viewer details such as username, permissions, address, owned miners, user settings etc.
+     */
+    @Location("/viewer") class viewerGet()
+
+    /**
      * Get deal metrics
      * This endpoint is used to get deal metrics
      */
     @Location("/public/metrics/deals-on-chain") class publicMetricsDealsOnChainGet()
+
+    /**
+     * Get Claim Miner Message
+     * This endpoint lets a user get the message in order to claim a miner
+     * @param miner Miner claim message 
+     */
+    @Location("/miner/claim/{miner}") class minerClaimMinerGet(val miner: kotlin.String)
+
+    /**
+     * Claim Miner
+     * This endpoint lets a user claim a miner
+     * @param body Claim Miner Body 
+     */
+    @Location("/miner/claim") class minerClaimPost(val body: MinerClaimMinerBody)
+
+    /**
+     * Set Miner Info
+     * This endpoint lets a user set miner info.
+     * @param body Miner set info params 
+     * @param miner Miner to set info for 
+     */
+    @Location("/miner/set-info/{miner}") class minerSetInfoMinerPut(val body: MinerMinerSetInfoParams, val miner: kotlin.String)
+
+    /**
+     * Suspend Miner
+     * This endpoint lets a user suspend a miner.
+     * @param body Suspend Miner Body 
+     * @param miner Miner to suspend 
+     */
+    @Location("/miner/suspend/{miner}") class minerSuspendMinerPost(val body: MinerSuspendMinerBody, val miner: kotlin.String)
+
+    /**
+     * Unuspend Miner
+     * This endpoint lets a user unsuspend a miner.
+     * @param miner Miner to unsuspend 
+     */
+    @Location("/miner/unsuspend/{miner}") class minerUnsuspendMinerPut(val miner: kotlin.String)
 
     /**
      * Get all miners deals
@@ -584,7 +617,7 @@ object Paths {
 
     /**
      * Get stats for the current user
-     * This endpoint is used to geet stats for the current user.
+     * This endpoint is used to get stats for the current user.
      */
     @Location("/user/stats") class userStatsGet()
 

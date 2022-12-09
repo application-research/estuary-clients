@@ -1,5 +1,6 @@
 package io.swagger.model;
 
+import io.swagger.model.UtilContentType;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import javax.xml.bind.annotation.XmlElement;
@@ -31,7 +32,7 @@ public class UtilContentCreateBody   {
   private String root = null;
   
   @Schema(description = "")
-  private Integer type = null;
+  private UtilContentType type = null;
  /**
    * Get coluuid
    * @return coluuid
@@ -127,15 +128,15 @@ public class UtilContentCreateBody   {
    * @return type
   **/
   @JsonProperty("type")
-  public Integer getType() {
+  public UtilContentType getType() {
     return type;
   }
 
-  public void setType(Integer type) {
+  public void setType(UtilContentType type) {
     this.type = type;
   }
 
-  public UtilContentCreateBody type(Integer type) {
+  public UtilContentCreateBody type(UtilContentType type) {
     this.type = type;
     return this;
   }

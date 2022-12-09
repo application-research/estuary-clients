@@ -226,8 +226,8 @@
   </ul>
   <h4><a href="#Content">Content</a></h4>
   <ul>
+  <li><a href="#adminInvitesCodePost"><code><span class="http-method">post</span> /admin/invites/{code}</code></a></li>
   <li><a href="#adminInvitesGet"><code><span class="http-method">get</span> /admin/invites</code></a></li>
-  <li><a href="#adminInvitesPost"><code><span class="http-method">post</span> /admin/invites</code></a></li>
   <li><a href="#contentAddCarPost"><code><span class="http-method">post</span> /content/add-car</code></a></li>
   <li><a href="#contentAddIpfsPost"><code><span class="http-method">post</span> /content/add-ipfs</code></a></li>
   <li><a href="#contentAddPost"><code><span class="http-method">post</span> /content/add</code></a></li>
@@ -262,12 +262,21 @@
   <li><a href="#publicDealsFailuresGet"><code><span class="http-method">get</span> /public/deals/failures</code></a></li>
   <li><a href="#publicMinersStorageQueryMinerGet"><code><span class="http-method">get</span> /public/miners/storage/query/{miner}</code></a></li>
   </ul>
+  <h4><a href="#Default">Default</a></h4>
+  <ul>
+  <li><a href="#viewerGet"><code><span class="http-method">get</span> /viewer</code></a></li>
+  </ul>
   <h4><a href="#Metrics">Metrics</a></h4>
   <ul>
   <li><a href="#publicMetricsDealsOnChainGet"><code><span class="http-method">get</span> /public/metrics/deals-on-chain</code></a></li>
   </ul>
   <h4><a href="#Miner">Miner</a></h4>
   <ul>
+  <li><a href="#minerClaimMinerGet"><code><span class="http-method">get</span> /miner/claim/{miner}</code></a></li>
+  <li><a href="#minerClaimPost"><code><span class="http-method">post</span> /miner/claim</code></a></li>
+  <li><a href="#minerSetInfoMinerPut"><code><span class="http-method">put</span> /miner/set-info/{miner}</code></a></li>
+  <li><a href="#minerSuspendMinerPost"><code><span class="http-method">post</span> /miner/suspend/{miner}</code></a></li>
+  <li><a href="#minerUnsuspendMinerPut"><code><span class="http-method">put</span> /miner/unsuspend/{miner}</code></a></li>
   <li><a href="#publicMinersDealsMinerGet"><code><span class="http-method">get</span> /public/miners/deals/{miner}</code></a></li>
   <li><a href="#publicMinersStatsMinerGet"><code><span class="http-method">get</span> /public/miners/stats/{miner}</code></a></li>
   </ul>
@@ -893,7 +902,7 @@
 
     <h3 class="field-label">Request body</h3>
     <div class="field-items">
-      <div class="param">body <a href="#main.deleteContentFromCollectionBody">main.deleteContentFromCollectionBody</a> (required)</div>
+      <div class="param">body <a href="#api.deleteContentFromCollectionBody">api.deleteContentFromCollectionBody</a> (required)</div>
       
             <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) </div>
                 </div>  <!-- field-items -->
@@ -1006,15 +1015,37 @@
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
+      array[<a href="#collections.CollectionListResponse">collections.CollectionListResponse</a>]
       
-      String
     </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>""</code></pre>
+    <pre class="example"><code>[ {
+  "coluuid" : "coluuid",
+  "contId" : 0,
+  "size" : 6,
+  "name" : "name",
+  "dir" : "dir",
+  "type" : "directory",
+  "cid" : {
+    "cid" : { }
+  },
+  "updatedAt" : "updatedAt"
+}, {
+  "coluuid" : "coluuid",
+  "contId" : 0,
+  "size" : 6,
+  "name" : "name",
+  "dir" : "dir",
+  "type" : "directory",
+  "cid" : {
+    "cid" : { }
+  },
+  "updatedAt" : "updatedAt"
+} ]</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -1026,7 +1057,7 @@
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     OK
-        <a href="#String">String</a>
+        
     <h4 class="field-label">400</h4>
     Bad Request
         <a href="#util.HttpError">util.HttpError</a>
@@ -1230,7 +1261,7 @@
 
     <h3 class="field-label">Request body</h3>
     <div class="field-items">
-      <div class="param">body <a href="#main.createCollectionBody">main.createCollectionBody</a> (required)</div>
+      <div class="param">body <a href="#api.createCollectionBody">api.createCollectionBody</a> (required)</div>
       
             <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Collection name and description </div>
                 </div>  <!-- field-items -->
@@ -1280,55 +1311,11 @@
   </div> <!-- method -->
   <hr/>
   <h1><a name="Content">Content</a></h1>
-  <div class="method"><a name="adminInvitesGet"></a>
+  <div class="method"><a name="adminInvitesCodePost"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /admin/invites</code></pre></div>
-    <div class="method-summary">Get Estuary invites (<span class="nickname">adminInvitesGet</span>)</div>
-    <div class="method-notes">This endpoint is used to list all estuary invites.</div>
-
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      
-      String
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>""</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    OK
-        <a href="#String">String</a>
-    <h4 class="field-label">400</h4>
-    Bad Request
-        <a href="#util.HttpError">util.HttpError</a>
-    <h4 class="field-label">500</h4>
-    Internal Server Error
-        <a href="#util.HttpError">util.HttpError</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="adminInvitesPost"></a>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /admin/invites</code></pre></div>
-    <div class="method-summary">Create an Estuary invite (<span class="nickname">adminInvitesPost</span>)</div>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /admin/invites/{code}</code></pre></div>
+    <div class="method-summary">Create an Estuary invite (<span class="nickname">adminInvitesCodePost</span>)</div>
     <div class="method-notes">This endpoint is used to create an estuary invite.</div>
 
     <h3 class="field-label">Path parameters</h3>
@@ -1373,54 +1360,30 @@
         <a href="#util.HttpError">util.HttpError</a>
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="contentAddCarPost"></a>
+  <div class="method"><a name="adminInvitesGet"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /content/add-car</code></pre></div>
-    <div class="method-summary">Add Car object (<span class="nickname">contentAddCarPost</span>)</div>
-    <div class="method-notes">This endpoint is used to add a car object to the network. The object can be a file or a directory.</div>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /admin/invites</code></pre></div>
+    <div class="method-summary">Get Estuary invites (<span class="nickname">adminInvitesGet</span>)</div>
+    <div class="method-notes">This endpoint is used to list all estuary invites.</div>
 
 
-    <h3 class="field-label">Consumes</h3>
-    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
-    <ul>
-      <li><code>*/*</code></li>
-    </ul>
-
-    <h3 class="field-label">Request body</h3>
-    <div class="field-items">
-      <div class="param">body <a href="#string">string</a> (required)</div>
-      
-            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Car </div>
-                </div>  <!-- field-items -->
 
 
-    <h3 class="field-label">Query parameters</h3>
-    <div class="field-items">
-      <div class="param">ignore-dupes (optional)</div>
-      
-            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Ignore Dupes </div>      <div class="param">filename (optional)</div>
-      
-            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Filename </div>    </div>  <!-- field-items -->
+
 
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#util.ContentAddResponse">util.ContentAddResponse</a>
       
+      String
     </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "retrieval_url" : "retrieval_url",
-  "estuaryId" : 0,
-  "estuary_retrieval_url" : "estuary_retrieval_url",
-  "providers" : [ "providers", "providers" ],
-  "cid" : "cid"
-}</code></pre>
+    <pre class="example"><code>""</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -1432,7 +1395,51 @@
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     OK
-        <a href="#util.ContentAddResponse">util.ContentAddResponse</a>
+        <a href="#String">String</a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#util.HttpError">util.HttpError</a>
+    <h4 class="field-label">500</h4>
+    Internal Server Error
+        <a href="#util.HttpError">util.HttpError</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="contentAddCarPost"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /content/add-car</code></pre></div>
+    <div class="method-summary">Upload content via a car file (<span class="nickname">contentAddCarPost</span>)</div>
+    <div class="method-notes">This endpoint uploads content via a car file</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      String
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>""</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#String">String</a>
     <h4 class="field-label">400</h4>
     Bad Request
         <a href="#util.HttpError">util.HttpError</a>
@@ -1505,57 +1512,26 @@
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
     <pre class="post"><code class="huge"><span class="http-method">post</span> /content/add</code></pre></div>
-    <div class="method-summary">Add new content (<span class="nickname">contentAddPost</span>)</div>
-    <div class="method-notes">This endpoint is used to upload new content.</div>
-
-
-    <h3 class="field-label">Consumes</h3>
-    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
-    <ul>
-      <li><code>multipart/form-data</code></li>
-    </ul>
+    <div class="method-summary">Upload a file (<span class="nickname">contentAddPost</span>)</div>
+    <div class="method-notes">This endpoint uploads a file.</div>
 
 
 
-    <h3 class="field-label">Query parameters</h3>
-    <div class="field-items">
-      <div class="param">coluuid (optional)</div>
-      
-            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Collection UUID </div>      <div class="param">replication (optional)</div>
-      
-            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Replication value </div>      <div class="param">ignore-dupes (optional)</div>
-      
-            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Ignore Dupes true/false </div>      <div class="param">lazy-provide (optional)</div>
-      
-            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Lazy Provide true/false </div>      <div class="param">dir (optional)</div>
-      
-            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Directory </div>    </div>  <!-- field-items -->
 
-    <h3 class="field-label">Form parameters</h3>
-    <div class="field-items">
-      <div class="param">data (required)</div>
-      
-            <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash;  format: binary</div>      <div class="param">filename (required)</div>
-      
-            <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash;  </div>    </div>  <!-- field-items -->
+
+
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#util.ContentAddResponse">util.ContentAddResponse</a>
       
+      String
     </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "retrieval_url" : "retrieval_url",
-  "estuaryId" : 0,
-  "estuary_retrieval_url" : "estuary_retrieval_url",
-  "providers" : [ "providers", "providers" ],
-  "cid" : "cid"
-}</code></pre>
+    <pre class="example"><code>""</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -1567,7 +1543,7 @@
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     OK
-        <a href="#util.ContentAddResponse">util.ContentAddResponse</a>
+        <a href="#String">String</a>
     <h4 class="field-label">400</h4>
     Bad Request
         <a href="#util.HttpError">util.HttpError</a>
@@ -2182,7 +2158,7 @@
     <a class="up" href="#__Methods">Up</a>
     <pre class="get"><code class="huge"><span class="http-method">get</span> /content/stats</code></pre></div>
     <div class="method-summary">Get content statistics (<span class="nickname">contentStatsGet</span>)</div>
-    <div class="method-notes">This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten</div>
+    <div class="method-notes">This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content</div>
 
 
 
@@ -2294,7 +2270,7 @@
 
     <h3 class="field-label">Request body</h3>
     <div class="field-items">
-      <div class="param">body <a href="#main.estimateDealBody">main.estimateDealBody</a> (required)</div>
+      <div class="param">body <a href="#api.estimateDealBody">api.estimateDealBody</a> (required)</div>
       
             <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; The size of the deal in bytes, the replication factor, and the duration of the deal in blocks </div>
                 </div>  <!-- field-items -->
@@ -2640,7 +2616,7 @@
 
     <h3 class="field-label">Request body</h3>
     <div class="field-items">
-      <div class="param">body <a href="#main.ChannelIDParam">main.ChannelIDParam</a> (required)</div>
+      <div class="param">body <a href="#api.ChannelIDParam">api.ChannelIDParam</a> (required)</div>
       
             <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Channel ID </div>
                 </div>  <!-- field-items -->
@@ -2925,6 +2901,68 @@
         <a href="#util.HttpError">util.HttpError</a>
   </div> <!-- method -->
   <hr/>
+  <h1><a name="Default">Default</a></h1>
+  <div class="method"><a name="viewerGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /viewer</code></pre></div>
+    <div class="method-summary">Fetch viewer details (<span class="nickname">viewerGet</span>)</div>
+    <div class="method-notes">This endpoint fetches viewer details such as username, permissions, address, owned miners, user settings etc.</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#util.ViewerResponse">util.ViewerResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "settings" : {
+    "dealDuration" : 1,
+    "replication" : 2,
+    "dealMakingDisabled" : true,
+    "flags" : 5,
+    "verified" : true,
+    "fileStagingThreshold" : 5,
+    "uploadEndpoints" : [ "uploadEndpoints", "uploadEndpoints" ],
+    "contentAddingDisabled" : true
+  },
+  "address" : "address",
+  "auth_expiry" : "auth_expiry",
+  "perms" : 6,
+  "id" : 0,
+  "miners" : [ "miners", "miners" ],
+  "username" : "username"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#util.ViewerResponse">util.ViewerResponse</a>
+    <h4 class="field-label">401</h4>
+    Unauthorized
+        <a href="#util.HttpError">util.HttpError</a>
+    <h4 class="field-label">500</h4>
+    Internal Server Error
+        <a href="#util.HttpError">util.HttpError</a>
+  </div> <!-- method -->
+  <hr/>
   <h1><a name="Metrics">Metrics</a></h1>
   <div class="method"><a name="publicMetricsDealsOnChainGet"></a>
     <div class="method-path">
@@ -2971,6 +3009,283 @@
   </div> <!-- method -->
   <hr/>
   <h1><a name="Miner">Miner</a></h1>
+  <div class="method"><a name="minerClaimMinerGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /miner/claim/{miner}</code></pre></div>
+    <div class="method-summary">Get Claim Miner Message (<span class="nickname">minerClaimMinerGet</span>)</div>
+    <div class="method-notes">This endpoint lets a user get the message in order to claim a miner</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">miner (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Miner claim message </div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#api.claimMsgResponse">api.claimMsgResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "hexmsg" : "hexmsg"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#api.claimMsgResponse">api.claimMsgResponse</a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#util.HttpError">util.HttpError</a>
+    <h4 class="field-label">500</h4>
+    Internal Server Error
+        <a href="#util.HttpError">util.HttpError</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="minerClaimPost"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /miner/claim</code></pre></div>
+    <div class="method-summary">Claim Miner (<span class="nickname">minerClaimPost</span>)</div>
+    <div class="method-notes">This endpoint lets a user claim a miner</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>*/*</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#miner.ClaimMinerBody">miner.ClaimMinerBody</a> (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Claim Miner Body </div>
+                </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#api.claimResponse">api.claimResponse</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "success" : true
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#api.claimResponse">api.claimResponse</a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#util.HttpError">util.HttpError</a>
+    <h4 class="field-label">500</h4>
+    Internal Server Error
+        <a href="#util.HttpError">util.HttpError</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="minerSetInfoMinerPut"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /miner/set-info/{miner}</code></pre></div>
+    <div class="method-summary">Set Miner Info (<span class="nickname">minerSetInfoMinerPut</span>)</div>
+    <div class="method-notes">This endpoint lets a user set miner info.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">miner (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Miner to set info for </div>    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>*/*</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#miner.MinerSetInfoParams">miner.MinerSetInfoParams</a> (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Miner set info params </div>
+                </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#api.emptyResp">api.emptyResp</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{ }</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#api.emptyResp">api.emptyResp</a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#util.HttpError">util.HttpError</a>
+    <h4 class="field-label">500</h4>
+    Internal Server Error
+        <a href="#util.HttpError">util.HttpError</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="minerSuspendMinerPost"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /miner/suspend/{miner}</code></pre></div>
+    <div class="method-summary">Suspend Miner (<span class="nickname">minerSuspendMinerPost</span>)</div>
+    <div class="method-notes">This endpoint lets a user suspend a miner.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">miner (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Miner to suspend </div>    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>*/*</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#miner.SuspendMinerBody">miner.SuspendMinerBody</a> (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Suspend Miner Body </div>
+                </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#api.emptyResp">api.emptyResp</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{ }</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#api.emptyResp">api.emptyResp</a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#util.HttpError">util.HttpError</a>
+    <h4 class="field-label">500</h4>
+    Internal Server Error
+        <a href="#util.HttpError">util.HttpError</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="minerUnsuspendMinerPut"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /miner/unsuspend/{miner}</code></pre></div>
+    <div class="method-summary">Unuspend Miner (<span class="nickname">minerUnsuspendMinerPut</span>)</div>
+    <div class="method-notes">This endpoint lets a user unsuspend a miner.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">miner (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Miner to unsuspend </div>    </div>  <!-- field-items -->
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#api.emptyResp">api.emptyResp</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{ }</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#api.emptyResp">api.emptyResp</a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#util.HttpError">util.HttpError</a>
+    <h4 class="field-label">500</h4>
+    Internal Server Error
+        <a href="#util.HttpError">util.HttpError</a>
+  </div> <!-- method -->
+  <hr/>
   <div class="method"><a name="publicMinersDealsMinerGet"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
@@ -3331,7 +3646,7 @@
     "requestid" : "requestid",
     "delegates" : [ "delegates", "delegates" ],
     "info" : { },
-    "status" : "status"
+    "status" : "pinning"
   }, {
     "pin" : {
       "meta" : { },
@@ -3343,7 +3658,7 @@
     "requestid" : "requestid",
     "delegates" : [ "delegates", "delegates" ],
     "info" : { },
-    "status" : "status"
+    "status" : "pinning"
   } ]
 }</code></pre>
 
@@ -3397,7 +3712,7 @@
 
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">202</h4>
-    
+    Accepted
         <a href="#"></a>
     <h4 class="field-label">500</h4>
     Internal Server Error
@@ -3443,7 +3758,7 @@
   "requestid" : "requestid",
   "delegates" : [ "delegates", "delegates" ],
   "info" : { },
-  "status" : "status"
+  "status" : "pinning"
 }</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -3515,7 +3830,7 @@
   "requestid" : "requestid",
   "delegates" : [ "delegates", "delegates" ],
   "info" : { },
-  "status" : "status"
+  "status" : "pinning"
 }</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -3582,7 +3897,7 @@
   "requestid" : "requestid",
   "delegates" : [ "delegates", "delegates" ],
   "info" : { },
-  "status" : "status"
+  "status" : "pinning"
 }</code></pre>
 
     <h3 class="field-label">Produces</h3>
@@ -3707,15 +4022,17 @@
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
+      <a href="#api.publicNodeInfo">api.publicNodeInfo</a>
       
-      String
     </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>""</code></pre>
+    <pre class="example"><code>{
+  "primaryAddress" : { }
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -3727,7 +4044,7 @@
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     OK
-        <a href="#String">String</a>
+        <a href="#api.publicNodeInfo">api.publicNodeInfo</a>
     <h4 class="field-label">400</h4>
     Bad Request
         <a href="#util.HttpError">util.HttpError</a>
@@ -4118,7 +4435,7 @@
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      array[<a href="#main.getApiKeysResp">main.getApiKeysResp</a>]
+      array[<a href="#api.getApiKeysResp">api.getApiKeysResp</a>]
       
     </div>
 
@@ -4231,7 +4548,7 @@
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#main.getApiKeysResp">main.getApiKeysResp</a>
+      <a href="#api.getApiKeysResp">api.getApiKeysResp</a>
       
     </div>
 
@@ -4256,7 +4573,7 @@
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     OK
-        <a href="#main.getApiKeysResp">main.getApiKeysResp</a>
+        <a href="#api.getApiKeysResp">api.getApiKeysResp</a>
     <h4 class="field-label">400</h4>
     Bad Request
         <a href="#util.HttpError">util.HttpError</a>
@@ -4317,7 +4634,7 @@
     <a class="up" href="#__Methods">Up</a>
     <pre class="get"><code class="huge"><span class="http-method">get</span> /user/stats</code></pre></div>
     <div class="method-summary">Get stats for the current user (<span class="nickname">userStatsGet</span>)</div>
-    <div class="method-notes">This endpoint is used to geet stats for the current user.</div>
+    <div class="method-notes">This endpoint is used to get stats for the current user.</div>
 
 
 
@@ -4362,24 +4679,117 @@
 
   <h3>Table of Contents</h3>
   <ol>
+    <li><a href="#address.Address"><code>address.Address</code></a></li>
+    <li><a href="#api.ChannelIDParam"><code>api.ChannelIDParam</code></a></li>
+    <li><a href="#api.claimMsgResponse"><code>api.claimMsgResponse</code></a></li>
+    <li><a href="#api.claimResponse"><code>api.claimResponse</code></a></li>
+    <li><a href="#api.createCollectionBody"><code>api.createCollectionBody</code></a></li>
+    <li><a href="#api.deleteContentFromCollectionBody"><code>api.deleteContentFromCollectionBody</code></a></li>
+    <li><a href="#api.emptyResp"><code>api.emptyResp</code></a></li>
+    <li><a href="#api.estimateDealBody"><code>api.estimateDealBody</code></a></li>
+    <li><a href="#api.getApiKeysResp"><code>api.getApiKeysResp</code></a></li>
+    <li><a href="#api.publicNodeInfo"><code>api.publicNodeInfo</code></a></li>
     <li><a href="#autoretrieve_init_body"><code>autoretrieve_init_body</code></a></li>
+    <li><a href="#cid.Cid"><code>cid.Cid</code></a></li>
+    <li><a href="#collections.CidType"><code>collections.CidType</code></a></li>
     <li><a href="#collections.Collection"><code>collections.Collection</code></a></li>
-    <li><a href="#content_add_body"><code>content_add_body</code></a></li>
-    <li><a href="#main.ChannelIDParam"><code>main.ChannelIDParam</code></a></li>
-    <li><a href="#main.createCollectionBody"><code>main.createCollectionBody</code></a></li>
-    <li><a href="#main.deleteContentFromCollectionBody"><code>main.deleteContentFromCollectionBody</code></a></li>
-    <li><a href="#main.estimateDealBody"><code>main.estimateDealBody</code></a></li>
-    <li><a href="#main.getApiKeysResp"><code>main.getApiKeysResp</code></a></li>
+    <li><a href="#collections.CollectionListResponse"><code>collections.CollectionListResponse</code></a></li>
     <li><a href="#main.importDealBody"><code>main.importDealBody</code></a></li>
+    <li><a href="#miner.ClaimMinerBody"><code>miner.ClaimMinerBody</code></a></li>
+    <li><a href="#miner.MinerSetInfoParams"><code>miner.MinerSetInfoParams</code></a></li>
+    <li><a href="#miner.SuspendMinerBody"><code>miner.SuspendMinerBody</code></a></li>
     <li><a href="#types.IpfsListPinStatusResponse"><code>types.IpfsListPinStatusResponse</code></a></li>
     <li><a href="#types.IpfsPin"><code>types.IpfsPin</code></a></li>
     <li><a href="#types.IpfsPinStatusResponse"><code>types.IpfsPinStatusResponse</code></a></li>
+    <li><a href="#types.PinningStatus"><code>types.PinningStatus</code></a></li>
     <li><a href="#util.ContentAddIpfsBody"><code>util.ContentAddIpfsBody</code></a></li>
     <li><a href="#util.ContentAddResponse"><code>util.ContentAddResponse</code></a></li>
     <li><a href="#util.ContentCreateBody"><code>util.ContentCreateBody</code></a></li>
+    <li><a href="#util.ContentType"><code>util.ContentType</code></a></li>
+    <li><a href="#util.DbCID"><code>util.DbCID</code></a></li>
     <li><a href="#util.HttpError"><code>util.HttpError</code></a></li>
+    <li><a href="#util.UserSettings"><code>util.UserSettings</code></a></li>
+    <li><a href="#util.ViewerResponse"><code>util.ViewerResponse</code></a></li>
   </ol>
 
+  <div class="model">
+    <h3><a name="address.Address"><code>address.Address</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+          </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="api.ChannelIDParam"><code>api.ChannelIDParam</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">initiator (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">responder (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="api.claimMsgResponse"><code>api.claimMsgResponse</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">hexmsg (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="api.claimResponse"><code>api.claimResponse</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">success (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="api.createCollectionBody"><code>api.createCollectionBody</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">description (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="api.deleteContentFromCollectionBody"><code>api.deleteContentFromCollectionBody</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">by (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">value (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="api.emptyResp"><code>api.emptyResp</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+          </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="api.estimateDealBody"><code>api.estimateDealBody</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">durationBlks (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">replication (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">size (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">verified (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="api.getApiKeysResp"><code>api.getApiKeysResp</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">expiry (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">label (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">token (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">tokenHash (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="api.publicNodeInfo"><code>api.publicNodeInfo</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">primaryAddress (optional)</div><div class="param-desc"><span class="param-type"><a href="#address.Address">address.Address</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
   <div class="model">
     <h3><a name="autoretrieve_init_body"><code>autoretrieve_init_body</code></a> <a class="up" href="#__Models">Up</a></h3>
     
@@ -4387,6 +4797,18 @@
       <div class="param">addresses </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Autoretrieve&#x27;s comma-separated list of addresses </div>
 <div class="param">pubKey </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Autoretrieve&#x27;s public key </div>
     </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="cid.Cid"><code>cid.Cid</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+          </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="collections.CidType"><code>collections.CidType</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+          </div>  <!-- field-items -->
   </div>
   <div class="model">
     <h3><a name="collections.Collection"><code>collections.Collection</code></a> <a class="up" href="#__Models">Up</a></h3>
@@ -4401,56 +4823,17 @@
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="content_add_body"><code>content_add_body</code></a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="collections.CollectionListResponse"><code>collections.CollectionListResponse</code></a> <a class="up" href="#__Models">Up</a></h3>
     
     <div class="field-items">
-      <div class="param">data </div><div class="param-desc"><span class="param-type"><a href="#binary">byte[]</a></span> File to upload format: binary</div>
-<div class="param">filename (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Filename to use for upload </div>
-    </div>  <!-- field-items -->
-  </div>
-  <div class="model">
-    <h3><a name="main.ChannelIDParam"><code>main.ChannelIDParam</code></a> <a class="up" href="#__Models">Up</a></h3>
-    
-    <div class="field-items">
-      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
-<div class="param">initiator (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-<div class="param">responder (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-    </div>  <!-- field-items -->
-  </div>
-  <div class="model">
-    <h3><a name="main.createCollectionBody"><code>main.createCollectionBody</code></a> <a class="up" href="#__Models">Up</a></h3>
-    
-    <div class="field-items">
-      <div class="param">description (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+      <div class="param">cid (optional)</div><div class="param-desc"><span class="param-type"><a href="#util.DbCID">util.DbCID</a></span>  </div>
+<div class="param">coluuid (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">contId (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">dir (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-    </div>  <!-- field-items -->
-  </div>
-  <div class="model">
-    <h3><a name="main.deleteContentFromCollectionBody"><code>main.deleteContentFromCollectionBody</code></a> <a class="up" href="#__Models">Up</a></h3>
-    
-    <div class="field-items">
-      <div class="param">by (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-<div class="param">value (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-    </div>  <!-- field-items -->
-  </div>
-  <div class="model">
-    <h3><a name="main.estimateDealBody"><code>main.estimateDealBody</code></a> <a class="up" href="#__Models">Up</a></h3>
-    
-    <div class="field-items">
-      <div class="param">durationBlks (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
-<div class="param">replication (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
 <div class="param">size (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
-<div class="param">verified (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
-    </div>  <!-- field-items -->
-  </div>
-  <div class="model">
-    <h3><a name="main.getApiKeysResp"><code>main.getApiKeysResp</code></a> <a class="up" href="#__Models">Up</a></h3>
-    
-    <div class="field-items">
-      <div class="param">expiry (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-<div class="param">label (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-<div class="param">token (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-<div class="param">tokenHash (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#collections.CidType">collections.CidType</a></span>  </div>
+<div class="param">updatedAt (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -4461,6 +4844,29 @@
 <div class="param">dealIDs (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">array[Integer]</a></span>  </div>
 <div class="param">dir (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="miner.ClaimMinerBody"><code>miner.ClaimMinerBody</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">claim (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">miner (optional)</div><div class="param-desc"><span class="param-type"><a href="#address.Address">address.Address</a></span>  </div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="miner.MinerSetInfoParams"><code>miner.MinerSetInfoParams</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="miner.SuspendMinerBody"><code>miner.SuspendMinerBody</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">reason (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -4490,8 +4896,14 @@
 <div class="param">info (optional)</div><div class="param-desc"><span class="param-type"><a href="#object">Object</a></span>  </div>
 <div class="param">pin (optional)</div><div class="param-desc"><span class="param-type"><a href="#types.IpfsPin">types.IpfsPin</a></span>  </div>
 <div class="param">requestid (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-<div class="param">status (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">status (optional)</div><div class="param-desc"><span class="param-type"><a href="#types.PinningStatus">types.PinningStatus</a></span>  </div>
     </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="types.PinningStatus"><code>types.PinningStatus</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+          </div>  <!-- field-items -->
   </div>
   <div class="model">
     <h3><a name="util.ContentAddIpfsBody"><code>util.ContentAddIpfsBody</code></a> <a class="up" href="#__Models">Up</a></h3>
@@ -4524,7 +4936,20 @@
 <div class="param">location (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">root (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-<div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#util.ContentType">util.ContentType</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="util.ContentType"><code>util.ContentType</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+          </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="util.DbCID"><code>util.DbCID</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">cid (optional)</div><div class="param-desc"><span class="param-type"><a href="#cid.Cid">cid.Cid</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -4534,6 +4959,33 @@
       <div class="param">code (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
 <div class="param">details (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">reason (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="util.UserSettings"><code>util.UserSettings</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">contentAddingDisabled (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+<div class="param">dealDuration (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">dealMakingDisabled (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+<div class="param">fileStagingThreshold (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">flags (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">replication (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">uploadEndpoints (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
+<div class="param">verified (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="util.ViewerResponse"><code>util.ViewerResponse</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">address (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">auth_expiry (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">miners (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
+<div class="param">perms (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">settings (optional)</div><div class="param-desc"><span class="param-type"><a href="#util.UserSettings">util.UserSettings</a></span>  </div>
+<div class="param">username (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   </body>

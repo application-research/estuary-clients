@@ -1,8 +1,9 @@
 package io.swagger.api;
 
+import io.swagger.model.ApiCreateCollectionBody;
+import io.swagger.model.ApiDeleteContentFromCollectionBody;
 import io.swagger.model.CollectionsCollection;
-import io.swagger.model.MainCreateCollectionBody;
-import io.swagger.model.MainDeleteContentFromCollectionBody;
+import io.swagger.model.CollectionsCollectionListResponse;
 import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
@@ -63,7 +64,7 @@ public interface CollectionsApi  {
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public String collectionsColuuidContentsDelete(@Valid MainDeleteContentFromCollectionBody body, @PathParam("coluuid") String coluuid);
+    public String collectionsColuuidContentsDelete(@Valid ApiDeleteContentFromCollectionBody body, @PathParam("coluuid") String coluuid);
 
     /**
      * Deletes a collection
@@ -92,10 +93,10 @@ public interface CollectionsApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Get contents in a collection", tags={ "collections" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = CollectionsCollectionListResponse.class)))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public String collectionsColuuidGet(@PathParam("coluuid") String coluuid, @QueryParam("dir") String dir);
+    public List<CollectionsCollectionListResponse> collectionsColuuidGet(@PathParam("coluuid") String coluuid, @QueryParam("dir") String dir);
 
     /**
      * Add contents to a collection
@@ -163,5 +164,5 @@ public interface CollectionsApi  {
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public CollectionsCollection collectionsPost(@Valid MainCreateCollectionBody body);
+    public CollectionsCollection collectionsPost(@Valid ApiCreateCollectionBody body);
 }

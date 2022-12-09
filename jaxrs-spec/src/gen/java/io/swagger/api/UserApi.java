@@ -1,6 +1,6 @@
 package io.swagger.api;
 
-import io.swagger.model.MainGetApiKeysResp;
+import io.swagger.model.ApiGetApiKeysResp;
 import io.swagger.model.UtilHttpError;
 
 import javax.ws.rs.*;
@@ -22,7 +22,7 @@ import javax.validation.Valid;
 
 @Path("/user")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2022-11-29T10:27:02.215Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2022-12-09T03:38:45.112Z[GMT]")
 public class UserApi {
 
     @GET
@@ -31,7 +31,7 @@ public class UserApi {
     @Operation(summary = "Get API keys for a user", description = "This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "User" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = MainGetApiKeysResp.class)))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = ApiGetApiKeysResp.class)))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
@@ -61,7 +61,7 @@ public class UserApi {
     @Operation(summary = "Create API keys for a user", description = "This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "User" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = MainGetApiKeysResp.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiGetApiKeysResp.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
@@ -91,7 +91,7 @@ public class UserApi {
     @GET
     @Path("/stats")
     @Produces({ "application/json" })
-    @Operation(summary = "Get stats for the current user", description = "This endpoint is used to geet stats for the current user.", security = {
+    @Operation(summary = "Get stats for the current user", description = "This endpoint is used to get stats for the current user.", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "User" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),

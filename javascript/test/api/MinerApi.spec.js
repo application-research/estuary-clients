@@ -34,6 +34,106 @@
 
   describe('(package)', function() {
     describe('MinerApi', function() {
+      describe('minerClaimMinerGet', function() {
+        it('should call minerClaimMinerGet successfully', function(done) {
+          // TODO: uncomment, update parameter values for minerClaimMinerGet call and complete the assertions
+          /*
+
+          instance.minerClaimMinerGet(miner, function(error, data, response) {
+            if (error) {
+              done(error);
+              return;
+            }
+            // TODO: update response assertions
+            expect(data).to.be.a(EstuaryClient.ApiClaimMsgResponse);
+
+            done();
+          });
+          */
+          // TODO: uncomment and complete method invocation above, then delete this line and the next:
+          done();
+        });
+      });
+      describe('minerClaimPost', function() {
+        it('should call minerClaimPost successfully', function(done) {
+          // TODO: uncomment, update parameter values for minerClaimPost call and complete the assertions
+          /*
+
+          instance.minerClaimPost(body, function(error, data, response) {
+            if (error) {
+              done(error);
+              return;
+            }
+            // TODO: update response assertions
+            expect(data).to.be.a(EstuaryClient.ApiClaimResponse);
+
+            done();
+          });
+          */
+          // TODO: uncomment and complete method invocation above, then delete this line and the next:
+          done();
+        });
+      });
+      describe('minerSetInfoMinerPut', function() {
+        it('should call minerSetInfoMinerPut successfully', function(done) {
+          // TODO: uncomment, update parameter values for minerSetInfoMinerPut call and complete the assertions
+          /*
+
+          instance.minerSetInfoMinerPut(body, miner, function(error, data, response) {
+            if (error) {
+              done(error);
+              return;
+            }
+            // TODO: update response assertions
+            expect(data).to.be.a(EstuaryClient.ApiEmptyResp);
+
+            done();
+          });
+          */
+          // TODO: uncomment and complete method invocation above, then delete this line and the next:
+          done();
+        });
+      });
+      describe('minerSuspendMinerPost', function() {
+        it('should call minerSuspendMinerPost successfully', function(done) {
+          // TODO: uncomment, update parameter values for minerSuspendMinerPost call and complete the assertions
+          /*
+
+          instance.minerSuspendMinerPost(body, miner, function(error, data, response) {
+            if (error) {
+              done(error);
+              return;
+            }
+            // TODO: update response assertions
+            expect(data).to.be.a(EstuaryClient.ApiEmptyResp);
+
+            done();
+          });
+          */
+          // TODO: uncomment and complete method invocation above, then delete this line and the next:
+          done();
+        });
+      });
+      describe('minerUnsuspendMinerPut', function() {
+        it('should call minerUnsuspendMinerPut successfully', function(done) {
+          // TODO: uncomment, update parameter values for minerUnsuspendMinerPut call and complete the assertions
+          /*
+
+          instance.minerUnsuspendMinerPut(miner, function(error, data, response) {
+            if (error) {
+              done(error);
+              return;
+            }
+            // TODO: update response assertions
+            expect(data).to.be.a(EstuaryClient.ApiEmptyResp);
+
+            done();
+          });
+          */
+          // TODO: uncomment and complete method invocation above, then delete this line and the next:
+          done();
+        });
+      });
       describe('publicMinersDealsMinerGet', function() {
         it('should call publicMinersDealsMinerGet successfully', function(done) {
           // TODO: uncomment, update parameter values for publicMinersDealsMinerGet call and complete the assertions

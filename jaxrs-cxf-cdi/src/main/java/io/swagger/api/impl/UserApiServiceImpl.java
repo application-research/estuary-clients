@@ -5,7 +5,7 @@ import io.swagger.model.*;
 
 import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 
-import io.swagger.model.MainGetApiKeysResp;
+import io.swagger.model.ApiGetApiKeysResp;
 import io.swagger.model.UtilHttpError;
 
 import java.util.List;
@@ -17,7 +17,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-29T10:27:03.434Z[GMT]")public class UserApiServiceImpl implements UserApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-12-09T03:38:46.964Z[GMT]")public class UserApiServiceImpl implements UserApiService {
       @Override
       public Response userApiKeysGet(SecurityContext securityContext) {
       // do some magic!

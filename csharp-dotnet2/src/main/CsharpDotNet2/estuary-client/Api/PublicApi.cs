@@ -26,8 +26,8 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Get public node info This endpoint returns information about the node
         /// </summary>
-        /// <returns>string</returns>
-        string PublicInfoGet ();
+        /// <returns>ApiPublicNodeInfo</returns>
+        ApiPublicNodeInfo PublicInfoGet ();
         /// <summary>
         /// Get deal metrics This endpoint is used to get deal metrics
         /// </summary>
@@ -200,8 +200,8 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Get public node info This endpoint returns information about the node
         /// </summary>
-        /// <returns>string</returns>
-        public string PublicInfoGet ()
+        /// <returns>ApiPublicNodeInfo</returns>
+        public ApiPublicNodeInfo PublicInfoGet ()
         {
     
             var path = "/public/info";
@@ -225,7 +225,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PublicInfoGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
+            return (ApiPublicNodeInfo) ApiClient.Deserialize(response.Content, typeof(ApiPublicNodeInfo), response.Headers);
         }
     
         /// <summary>

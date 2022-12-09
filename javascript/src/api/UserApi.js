@@ -13,7 +13,7 @@
  *
  */
 import {ApiClient} from "../ApiClient";
-import {MainGetApiKeysResp} from '../model/MainGetApiKeysResp';
+import {ApiGetApiKeysResp} from '../model/ApiGetApiKeysResp';
 import {UtilHttpError} from '../model/UtilHttpError';
 
 /**
@@ -39,7 +39,7 @@ export class UserApi {
      * Callback function to receive the result of the userApiKeysGet operation.
      * @callback moduleapi/UserApi~userApiKeysGetCallback
      * @param {String} error Error message, if any.
-     * @param {Array.<module:model/MainGetApiKeysResp>{ data The data returned by the service call.
+     * @param {Array.<module:model/ApiGetApiKeysResp>{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -69,7 +69,7 @@ export class UserApi {
       let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = [MainGetApiKeysResp];
+      let returnType = [ApiGetApiKeysResp];
 
       return this.apiClient.callApi(
         '/user/api-keys', 'GET',
@@ -128,7 +128,7 @@ export class UserApi {
      * Callback function to receive the result of the userApiKeysPost operation.
      * @callback moduleapi/UserApi~userApiKeysPostCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/MainGetApiKeysResp{ data The data returned by the service call.
+     * @param {module:model/ApiGetApiKeysResp{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -161,7 +161,7 @@ export class UserApi {
       let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = MainGetApiKeysResp;
+      let returnType = ApiGetApiKeysResp;
 
       return this.apiClient.callApi(
         '/user/api-keys', 'POST',
@@ -221,7 +221,7 @@ export class UserApi {
 
     /**
      * Get stats for the current user
-     * This endpoint is used to geet stats for the current user.
+     * This endpoint is used to get stats for the current user.
      * @param {module:api/UserApi~userStatsGetCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */

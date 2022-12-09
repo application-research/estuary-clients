@@ -7,6 +7,7 @@ from typing import List, Dict  # noqa: F401
 
 from estuary-client.models.base_model_ import Model
 from estuary-client.models.types_ipfs_pin import TypesIpfsPin  # noqa: F401,E501
+from estuary-client.models.types_pinning_status import TypesPinningStatus  # noqa: F401,E501
 from estuary-client import util
 
 
@@ -15,7 +16,7 @@ class TypesIpfsPinStatusResponse(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, created: str=None, delegates: List[str]=None, info: object=None, pin: TypesIpfsPin=None, requestid: str=None, status: str=None):  # noqa: E501
+    def __init__(self, created: str=None, delegates: List[str]=None, info: object=None, pin: TypesIpfsPin=None, requestid: str=None, status: TypesPinningStatus=None):  # noqa: E501
         """TypesIpfsPinStatusResponse - a model defined in Swagger
 
         :param created: The created of this TypesIpfsPinStatusResponse.  # noqa: E501
@@ -29,7 +30,7 @@ class TypesIpfsPinStatusResponse(Model):
         :param requestid: The requestid of this TypesIpfsPinStatusResponse.  # noqa: E501
         :type requestid: str
         :param status: The status of this TypesIpfsPinStatusResponse.  # noqa: E501
-        :type status: str
+        :type status: TypesPinningStatus
         """
         self.swagger_types = {
             'created': str,
@@ -37,7 +38,7 @@ class TypesIpfsPinStatusResponse(Model):
             'info': object,
             'pin': TypesIpfsPin,
             'requestid': str,
-            'status': str
+            'status': TypesPinningStatus
         }
 
         self.attribute_map = {
@@ -172,22 +173,22 @@ class TypesIpfsPinStatusResponse(Model):
         self._requestid = requestid
 
     @property
-    def status(self) -> str:
+    def status(self) -> TypesPinningStatus:
         """Gets the status of this TypesIpfsPinStatusResponse.
 
 
         :return: The status of this TypesIpfsPinStatusResponse.
-        :rtype: str
+        :rtype: TypesPinningStatus
         """
         return self._status
 
     @status.setter
-    def status(self, status: str):
+    def status(self, status: TypesPinningStatus):
         """Sets the status of this TypesIpfsPinStatusResponse.
 
 
         :param status: The status of this TypesIpfsPinStatusResponse.
-        :type status: str
+        :type status: TypesPinningStatus
         """
 
         self._status = status

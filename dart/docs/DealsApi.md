@@ -39,7 +39,7 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new DealsApi();
-var body = new MainEstimateDealBody(); // MainEstimateDealBody | The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
+var body = new ApiEstimateDealBody(); // ApiEstimateDealBody | The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
 
 try {
     var result = api_instance.dealEstimatePost(body);
@@ -53,7 +53,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainEstimateDealBody**](MainEstimateDealBody.md)| The size of the deal in bytes, the replication factor, and the duration of the deal in blocks | 
+ **body** | [**ApiEstimateDealBody**](ApiEstimateDealBody.md)| The size of the deal in bytes, the replication factor, and the duration of the deal in blocks | 
 
 ### Return type
 
@@ -366,7 +366,7 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new DealsApi();
-var body = new MainChannelIDParam(); // MainChannelIDParam | Channel ID
+var body = new ApiChannelIDParam(); // ApiChannelIDParam | Channel ID
 
 try {
     var result = api_instance.dealTransferStatusPost(body);
@@ -380,7 +380,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainChannelIDParam**](MainChannelIDParam.md)| Channel ID | 
+ **body** | [**ApiChannelIDParam**](ApiChannelIDParam.md)| Channel ID | 
 
 ### Return type
 

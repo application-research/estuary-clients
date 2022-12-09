@@ -61,7 +61,7 @@ class TypesIpfsPinStatusResponse implements ModelInterface, ArrayAccess
 'info' => 'object',
 'pin' => '\Swagger\Client\Model\TypesIpfsPin',
 'requestid' => 'string',
-'status' => 'string'    ];
+'status' => '\Swagger\Client\Model\TypesPinningStatus'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -349,7 +349,7 @@ class TypesIpfsPinStatusResponse implements ModelInterface, ArrayAccess
     /**
      * Gets status
      *
-     * @return string
+     * @return \Swagger\Client\Model\TypesPinningStatus
      */
     public function getStatus()
     {
@@ -359,7 +359,7 @@ class TypesIpfsPinStatusResponse implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string $status status
+     * @param \Swagger\Client\Model\TypesPinningStatus $status status
      *
      * @return $this
      */

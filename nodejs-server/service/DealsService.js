@@ -5,7 +5,7 @@
  * Estimate the cost of a deal
  * This endpoint estimates the cost of a deal
  *
- * body Main.estimateDealBody The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
+ * body Api.estimateDealBody The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
  * returns String
  **/
 exports.dealEstimatePOST = function(body) {
@@ -145,7 +145,7 @@ exports.dealTransferIn_progressGET = function() {
  * Transfer Status
  * This endpoint returns the status of a transfer
  *
- * body Main.ChannelIDParam Channel ID
+ * body Api.ChannelIDParam Channel ID
  * returns String
  **/
 exports.dealTransferStatusPOST = function(body) {

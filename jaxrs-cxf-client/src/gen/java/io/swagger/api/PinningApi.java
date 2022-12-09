@@ -57,7 +57,7 @@ public interface PinningApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Delete a pinned object", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "202", description = ""),
+        @ApiResponse(responseCode = "202", description = "Accepted"),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public void pinningPinsPinidDelete(@PathParam("pinid") String pinid);
 

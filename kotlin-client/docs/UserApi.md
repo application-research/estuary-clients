@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="userApiKeysGet"></a>
 # **userApiKeysGet**
-> kotlin.Array&lt;MaingetApiKeysResp&gt; userApiKeysGet()
+> kotlin.Array&lt;ApigetApiKeysResp&gt; userApiKeysGet()
 
 Get API keys for a user
 
@@ -26,7 +26,7 @@ This endpoint is used to get API keys for a user. In estuary, each user can be g
 
 val apiInstance = UserApi()
 try {
-    val result : kotlin.Array<MaingetApiKeysResp> = apiInstance.userApiKeysGet()
+    val result : kotlin.Array<ApigetApiKeysResp> = apiInstance.userApiKeysGet()
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling UserApi#userApiKeysGet")
@@ -42,7 +42,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**kotlin.Array&lt;MaingetApiKeysResp&gt;**](MaingetApiKeysResp.md)
+[**kotlin.Array&lt;ApigetApiKeysResp&gt;**](ApigetApiKeysResp.md)
 
 ### Authorization
 
@@ -102,7 +102,7 @@ Name | Type | Description  | Notes
 
 <a name="userApiKeysPost"></a>
 # **userApiKeysPost**
-> MaingetApiKeysResp userApiKeysPost(expiry, perms)
+> ApigetApiKeysResp userApiKeysPost(expiry, perms)
 
 Create API keys for a user
 
@@ -118,7 +118,7 @@ val apiInstance = UserApi()
 val expiry : kotlin.String = expiry_example // kotlin.String | Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
 val perms : kotlin.String = perms_example // kotlin.String | Permissions -- currently unused
 try {
-    val result : MaingetApiKeysResp = apiInstance.userApiKeysPost(expiry, perms)
+    val result : ApigetApiKeysResp = apiInstance.userApiKeysPost(expiry, perms)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling UserApi#userApiKeysPost")
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MaingetApiKeysResp**](MaingetApiKeysResp.md)
+[**ApigetApiKeysResp**](ApigetApiKeysResp.md)
 
 ### Authorization
 
@@ -198,7 +198,7 @@ This endpoint does not need any parameter.
 
 Get stats for the current user
 
-This endpoint is used to geet stats for the current user.
+This endpoint is used to get stats for the current user.
 
 ### Example
 ```kotlin

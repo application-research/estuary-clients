@@ -15,6 +15,7 @@ export * from './apis/autoretrieve-api';
 export * from './apis/collections-api';
 export * from './apis/content-api';
 export * from './apis/deals-api';
+export * from './apis/default-api';
 export * from './apis/metrics-api';
 export * from './apis/miner-api';
 export * from './apis/net-api';

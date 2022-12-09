@@ -13,9 +13,10 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
+import io.swagger.model.ApiCreateCollectionBody;
+import io.swagger.model.ApiDeleteContentFromCollectionBody;
 import io.swagger.model.CollectionsCollection;
-import io.swagger.model.MainCreateCollectionBody;
-import io.swagger.model.MainDeleteContentFromCollectionBody;
+import io.swagger.model.CollectionsCollectionListResponse;
 import io.swagger.model.UtilHttpError;
 
 import java.util.Map;
@@ -35,7 +36,7 @@ import javax.validation.constraints.*;
 @Path("/collections")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-11-29T10:27:01.923Z[GMT]")public class CollectionsApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-12-09T03:38:43.852Z[GMT]")public class CollectionsApi  {
 
    private CollectionsApiService delegate;
 
@@ -76,7 +77,7 @@ import javax.validation.constraints.*;
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response collectionsColuuidContentsDelete(@Parameter(in = ParameterIn.DEFAULT, description = "Variable to use when filtering for files (must be either 'path' or 'content_id')" ,required=true) MainDeleteContentFromCollectionBody body
+    public Response collectionsColuuidContentsDelete(@Parameter(in = ParameterIn.DEFAULT, description = "Variable to use when filtering for files (must be either 'path' or 'content_id')" ,required=true) ApiDeleteContentFromCollectionBody body
 
 ,@Parameter(in = ParameterIn.PATH, description = "Collection ID",required=true) @PathParam("coluuid") String coluuid
 ,@Context SecurityContext securityContext)
@@ -107,7 +108,7 @@ import javax.validation.constraints.*;
     @Operation(summary = "Get contents in a collection", description = "This endpoint is used to get contents in a collection. If no colpath query param is passed", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "collections" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = CollectionsCollectionListResponse.class)))),
         
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
@@ -189,7 +190,7 @@ import javax.validation.constraints.*;
         @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response collectionsPost(@Parameter(in = ParameterIn.DEFAULT, description = "Collection name and description" ,required=true) MainCreateCollectionBody body
+    public Response collectionsPost(@Parameter(in = ParameterIn.DEFAULT, description = "Collection name and description" ,required=true) ApiCreateCollectionBody body
 
 ,@Context SecurityContext securityContext)
     throws NotFoundException {

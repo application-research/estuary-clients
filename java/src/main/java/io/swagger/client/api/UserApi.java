@@ -26,7 +26,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import io.swagger.client.model.MainGetApiKeysResp;
+import io.swagger.client.model.ApiGetApiKeysResp;
 import io.swagger.client.model.UtilHttpError;
 
 import java.lang.reflect.Type;
@@ -117,23 +117,23 @@ public class UserApi {
     /**
      * Get API keys for a user
      * This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
-     * @return List&lt;MainGetApiKeysResp&gt;
+     * @return List&lt;ApiGetApiKeysResp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public List<MainGetApiKeysResp> userApiKeysGet() throws ApiException {
-        ApiResponse<List<MainGetApiKeysResp>> resp = userApiKeysGetWithHttpInfo();
+    public List<ApiGetApiKeysResp> userApiKeysGet() throws ApiException {
+        ApiResponse<List<ApiGetApiKeysResp>> resp = userApiKeysGetWithHttpInfo();
         return resp.getData();
     }
 
     /**
      * Get API keys for a user
      * This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
-     * @return ApiResponse&lt;List&lt;MainGetApiKeysResp&gt;&gt;
+     * @return ApiResponse&lt;List&lt;ApiGetApiKeysResp&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<List<MainGetApiKeysResp>> userApiKeysGetWithHttpInfo() throws ApiException {
+    public ApiResponse<List<ApiGetApiKeysResp>> userApiKeysGetWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = userApiKeysGetValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<List<MainGetApiKeysResp>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<ApiGetApiKeysResp>>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -144,7 +144,7 @@ public class UserApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call userApiKeysGetAsync(final ApiCallback<List<MainGetApiKeysResp>> callback) throws ApiException {
+    public com.squareup.okhttp.Call userApiKeysGetAsync(final ApiCallback<List<ApiGetApiKeysResp>> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -166,7 +166,7 @@ public class UserApi {
         }
 
         com.squareup.okhttp.Call call = userApiKeysGetValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<List<MainGetApiKeysResp>>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<ApiGetApiKeysResp>>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -366,11 +366,11 @@ public class UserApi {
      * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
      * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
      * @param perms Permissions -- currently unused (optional)
-     * @return MainGetApiKeysResp
+     * @return ApiGetApiKeysResp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public MainGetApiKeysResp userApiKeysPost(String expiry, String perms) throws ApiException {
-        ApiResponse<MainGetApiKeysResp> resp = userApiKeysPostWithHttpInfo(expiry, perms);
+    public ApiGetApiKeysResp userApiKeysPost(String expiry, String perms) throws ApiException {
+        ApiResponse<ApiGetApiKeysResp> resp = userApiKeysPostWithHttpInfo(expiry, perms);
         return resp.getData();
     }
 
@@ -379,12 +379,12 @@ public class UserApi {
      * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
      * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
      * @param perms Permissions -- currently unused (optional)
-     * @return ApiResponse&lt;MainGetApiKeysResp&gt;
+     * @return ApiResponse&lt;ApiGetApiKeysResp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<MainGetApiKeysResp> userApiKeysPostWithHttpInfo(String expiry, String perms) throws ApiException {
+    public ApiResponse<ApiGetApiKeysResp> userApiKeysPostWithHttpInfo(String expiry, String perms) throws ApiException {
         com.squareup.okhttp.Call call = userApiKeysPostValidateBeforeCall(expiry, perms, null, null);
-        Type localVarReturnType = new TypeToken<MainGetApiKeysResp>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApiGetApiKeysResp>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -397,7 +397,7 @@ public class UserApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call userApiKeysPostAsync(String expiry, String perms, final ApiCallback<MainGetApiKeysResp> callback) throws ApiException {
+    public com.squareup.okhttp.Call userApiKeysPostAsync(String expiry, String perms, final ApiCallback<ApiGetApiKeysResp> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -419,7 +419,7 @@ public class UserApi {
         }
 
         com.squareup.okhttp.Call call = userApiKeysPostValidateBeforeCall(expiry, perms, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<MainGetApiKeysResp>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApiGetApiKeysResp>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -601,7 +601,7 @@ public class UserApi {
 
     /**
      * Get stats for the current user
-     * This endpoint is used to geet stats for the current user.
+     * This endpoint is used to get stats for the current user.
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -612,7 +612,7 @@ public class UserApi {
 
     /**
      * Get stats for the current user
-     * This endpoint is used to geet stats for the current user.
+     * This endpoint is used to get stats for the current user.
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -624,7 +624,7 @@ public class UserApi {
 
     /**
      * Get stats for the current user (asynchronously)
-     * This endpoint is used to geet stats for the current user.
+     * This endpoint is used to get stats for the current user.
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

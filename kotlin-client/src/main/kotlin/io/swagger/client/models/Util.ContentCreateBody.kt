@@ -11,6 +11,7 @@
  */
 package io.swagger.client.models
 
+import io.swagger.client.models.UtilContentType
 
 /**
  * 
@@ -28,6 +29,6 @@ data class UtilContentCreateBody (
     val location: kotlin.String? = null,
     val name: kotlin.String? = null,
     val root: kotlin.String? = null,
-    val type: kotlin.Int? = null
+    val type: UtilContentType? = null
 ) {
 }

@@ -1,9 +1,10 @@
 package io.swagger.api.impl;
 
 import io.swagger.api.*;
+import io.swagger.model.ApiCreateCollectionBody;
+import io.swagger.model.ApiDeleteContentFromCollectionBody;
 import io.swagger.model.CollectionsCollection;
-import io.swagger.model.MainCreateCollectionBody;
-import io.swagger.model.MainDeleteContentFromCollectionBody;
+import io.swagger.model.CollectionsCollectionListResponse;
 import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
@@ -43,7 +44,7 @@ public class CollectionsApiServiceImpl implements CollectionsApi {
      * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
      *
      */
-    public String collectionsColuuidContentsDelete(MainDeleteContentFromCollectionBody body, String coluuid) {
+    public String collectionsColuuidContentsDelete(ApiDeleteContentFromCollectionBody body, String coluuid) {
         // TODO: Implement...
         
         return null;
@@ -67,7 +68,7 @@ public class CollectionsApiServiceImpl implements CollectionsApi {
      * This endpoint is used to get contents in a collection. If no colpath query param is passed
      *
      */
-    public String collectionsColuuidGet(String coluuid, String dir) {
+    public List<CollectionsCollectionListResponse> collectionsColuuidGet(String coluuid, String dir) {
         // TODO: Implement...
         
         return null;
@@ -115,7 +116,7 @@ public class CollectionsApiServiceImpl implements CollectionsApi {
      * This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.
      *
      */
-    public CollectionsCollection collectionsPost(MainCreateCollectionBody body) {
+    public CollectionsCollection collectionsPost(ApiCreateCollectionBody body) {
         // TODO: Implement...
         
         return null;

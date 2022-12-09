@@ -54,6 +54,8 @@ type APIClient struct {
 
 	DealsApi *DealsApiService
 
+	DefaultApi *DefaultApiService
+
 	MetricsApi *MetricsApiService
 
 	MinerApi *MinerApiService
@@ -88,6 +90,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.CollectionsApi = (*CollectionsApiService)(&c.common)
 	c.ContentApi = (*ContentApiService)(&c.common)
 	c.DealsApi = (*DealsApiService)(&c.common)
+	c.DefaultApi = (*DefaultApiService)(&c.common)
 	c.MetricsApi = (*MetricsApiService)(&c.common)
 	c.MinerApi = (*MinerApiService)(&c.common)
 	c.NetApi = (*NetApiService)(&c.common)

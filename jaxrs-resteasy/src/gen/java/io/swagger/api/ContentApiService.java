@@ -2,12 +2,9 @@ package io.swagger.api;
 
 import io.swagger.api.*;
 import io.swagger.model.*;
-import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
-import java.io.File;
 import io.swagger.model.MainImportDealBody;
 import io.swagger.model.UtilContentAddIpfsBody;
-import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 
@@ -19,12 +16,12 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-29T10:27:03.154Z[GMT]")public interface ContentApiService {
-      Response contentAddCarPost(String body,String ignoreDupes,String filename,SecurityContext securityContext)
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-12-09T03:38:45.256Z[GMT]")public interface ContentApiService {
+      Response contentAddCarPost(SecurityContext securityContext)
       throws NotFoundException;
       Response contentAddIpfsPost(UtilContentAddIpfsBody body,String ignoreDupes,SecurityContext securityContext)
       throws NotFoundException;
-      Response contentAddPost(MultipartFormDataInput input,String coluuid,Integer replication,String ignoreDupes,String lazyProvide,String dir,SecurityContext securityContext)
+      Response contentAddPost(SecurityContext securityContext)
       throws NotFoundException;
       Response contentAggregatedContentGet(String content,SecurityContext securityContext)
       throws NotFoundException;

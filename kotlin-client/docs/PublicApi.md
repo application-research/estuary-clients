@@ -111,7 +111,7 @@ Name | Type | Description  | Notes
 
 <a name="publicInfoGet"></a>
 # **publicInfoGet**
-> kotlin.String publicInfoGet()
+> ApipublicNodeInfo publicInfoGet()
 
 Get public node info
 
@@ -125,7 +125,7 @@ This endpoint returns information about the node
 
 val apiInstance = PublicApi()
 try {
-    val result : kotlin.String = apiInstance.publicInfoGet()
+    val result : ApipublicNodeInfo = apiInstance.publicInfoGet()
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling PublicApi#publicInfoGet")
@@ -141,7 +141,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**kotlin.String**
+[**ApipublicNodeInfo**](ApipublicNodeInfo.md)
 
 ### Authorization
 

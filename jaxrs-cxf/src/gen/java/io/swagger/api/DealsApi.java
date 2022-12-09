@@ -1,7 +1,7 @@
 package io.swagger.api;
 
-import io.swagger.model.MainChannelIDParam;
-import io.swagger.model.MainEstimateDealBody;
+import io.swagger.model.ApiChannelIDParam;
+import io.swagger.model.ApiEstimateDealBody;
 import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
@@ -46,7 +46,7 @@ public interface DealsApi  {
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public String dealEstimatePost(@Valid MainEstimateDealBody body);
+    public String dealEstimatePost(@Valid ApiEstimateDealBody body);
 
     /**
      * Get Deal Info
@@ -159,7 +159,7 @@ public interface DealsApi  {
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public String dealTransferStatusPost(@Valid MainChannelIDParam body);
+    public String dealTransferStatusPost(@Valid ApiChannelIDParam body);
 
     /**
      * Get storage failures for user

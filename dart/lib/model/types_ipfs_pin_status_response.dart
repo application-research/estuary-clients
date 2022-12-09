@@ -12,7 +12,7 @@ class TypesIpfsPinStatusResponse {
 
   String requestid = null;
 
-  String status = null;
+  TypesPinningStatus status = null;
 
   TypesIpfsPinStatusResponse();
 
@@ -28,7 +28,7 @@ class TypesIpfsPinStatusResponse {
     info = new Object.fromJson(json['info']);
     pin = new TypesIpfsPin.fromJson(json['pin']);
     requestid = json['requestid'];
-    status = json['status'];
+    status = new TypesPinningStatus.fromJson(json['status']);
   }
 
   Map<String, dynamic> toJson() {

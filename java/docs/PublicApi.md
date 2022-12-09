@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 <a name="publicInfoGet"></a>
 # **publicInfoGet**
-> String publicInfoGet()
+> ApiPublicNodeInfo publicInfoGet()
 
 Get public node info
 
@@ -152,7 +152,7 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 PublicApi apiInstance = new PublicApi();
 try {
-    String result = apiInstance.publicInfoGet();
+    ApiPublicNodeInfo result = apiInstance.publicInfoGet();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PublicApi#publicInfoGet");
@@ -165,7 +165,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**String**
+[**ApiPublicNodeInfo**](ApiPublicNodeInfo.md)
 
 ### Authorization
 

@@ -2,12 +2,9 @@ package io.swagger.api.impl;
 
 import io.swagger.api.*;
 import io.swagger.model.*;
-import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
-import java.io.File;
 import io.swagger.model.MainImportDealBody;
 import io.swagger.model.UtilContentAddIpfsBody;
-import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 
@@ -18,8 +15,8 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-29T10:27:02.680Z[GMT]")public class ContentApiServiceImpl implements ContentApi {
-      public Response contentAddCarPost(String body,String ignoreDupes,String filename,SecurityContext securityContext) {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-12-09T03:38:45.054Z[GMT]")public class ContentApiServiceImpl implements ContentApi {
+      public Response contentAddCarPost(SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -27,7 +24,7 @@ import javax.ws.rs.core.SecurityContext;
       // do some magic!
       return Response.ok().build();
   }
-      public Response contentAddPost(MultipartFormDataInput input,String coluuid,Integer replication,String ignoreDupes,String lazyProvide,String dir,SecurityContext securityContext) {
+      public Response contentAddPost(SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }

@@ -1,6 +1,6 @@
 package io.swagger.api;
 
-import io.swagger.model.MainGetApiKeysResp;
+import io.swagger.model.ApiGetApiKeysResp;
 import io.swagger.model.UtilHttpError;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.Operation;
@@ -33,7 +33,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-29T10:27:05.128Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-09T03:38:46.898Z[GMT]")
 @RestController
 public class UserApiController implements UserApi {
 
@@ -49,18 +49,18 @@ public class UserApiController implements UserApi {
         this.request = request;
     }
 
-    public ResponseEntity<List<MainGetApiKeysResp>> userApiKeysGet() {
+    public ResponseEntity<List<ApiGetApiKeysResp>> userApiKeysGet() {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<List<MainGetApiKeysResp>>(objectMapper.readValue("[ {\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n}, {\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n} ]", List.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<List<ApiGetApiKeysResp>>(objectMapper.readValue("[ {\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n}, {\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n} ]", List.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<List<MainGetApiKeysResp>>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<List<ApiGetApiKeysResp>>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return new ResponseEntity<List<MainGetApiKeysResp>>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<List<ApiGetApiKeysResp>>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<String> userApiKeysKeyOrHashDelete(@Parameter(in = ParameterIn.PATH, description = "Key or Hash", required=true, schema=@Schema()) @PathVariable("key_or_hash") String keyOrHash) {
@@ -77,18 +77,18 @@ public class UserApiController implements UserApi {
         return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<MainGetApiKeysResp> userApiKeysPost(@Parameter(in = ParameterIn.QUERY, description = "Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h" ,schema=@Schema()) @Valid @RequestParam(value = "expiry", required = false) String expiry,@Parameter(in = ParameterIn.QUERY, description = "Permissions -- currently unused" ,schema=@Schema()) @Valid @RequestParam(value = "perms", required = false) String perms) {
+    public ResponseEntity<ApiGetApiKeysResp> userApiKeysPost(@Parameter(in = ParameterIn.QUERY, description = "Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h" ,schema=@Schema()) @Valid @RequestParam(value = "expiry", required = false) String expiry,@Parameter(in = ParameterIn.QUERY, description = "Permissions -- currently unused" ,schema=@Schema()) @Valid @RequestParam(value = "perms", required = false) String perms) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<MainGetApiKeysResp>(objectMapper.readValue("{\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n}", MainGetApiKeysResp.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<ApiGetApiKeysResp>(objectMapper.readValue("{\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n}", ApiGetApiKeysResp.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<MainGetApiKeysResp>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<ApiGetApiKeysResp>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return new ResponseEntity<MainGetApiKeysResp>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<ApiGetApiKeysResp>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<String> userExportGet() {

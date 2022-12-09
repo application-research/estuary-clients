@@ -10,7 +10,7 @@ class UserApi {
   /// Get API keys for a user
   ///
   /// This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
-  Future<List<MainGetApiKeysResp>> userApiKeysGet() async {
+  Future<List<ApiGetApiKeysResp>> userApiKeysGet() async {
     Object postBody = null;
 
     // verify required params are set
@@ -50,7 +50,7 @@ class UserApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-        (apiClient.deserialize(response.body, 'List<MainGetApiKeysResp>') as List).map((item) => item as MainGetApiKeysResp).toList();
+        (apiClient.deserialize(response.body, 'List<ApiGetApiKeysResp>') as List).map((item) => item as ApiGetApiKeysResp).toList();
     } else {
       return null;
     }
@@ -109,7 +109,7 @@ class UserApi {
   /// Create API keys for a user
   ///
   /// This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
-  Future<MainGetApiKeysResp> userApiKeysPost({ String expiry, String perms }) async {
+  Future<ApiGetApiKeysResp> userApiKeysPost({ String expiry, String perms }) async {
     Object postBody = null;
 
     // verify required params are set
@@ -155,7 +155,7 @@ class UserApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          apiClient.deserialize(response.body, 'MainGetApiKeysResp') as MainGetApiKeysResp ;
+          apiClient.deserialize(response.body, 'ApiGetApiKeysResp') as ApiGetApiKeysResp ;
     } else {
       return null;
     }
@@ -210,7 +210,7 @@ class UserApi {
   }
   /// Get stats for the current user
   ///
-  /// This endpoint is used to geet stats for the current user.
+  /// This endpoint is used to get stats for the current user.
   Future<String> userStatsGet() async {
     Object postBody = null;
 

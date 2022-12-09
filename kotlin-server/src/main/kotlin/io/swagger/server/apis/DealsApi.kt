@@ -33,8 +33,8 @@ import estuary-client.Paths
 import estuary-client.infrastructure.ApiPrincipal
 
 
-import io.swagger.server.models.MainChannelIDParam
-import io.swagger.server.models.MainestimateDealBody
+import io.swagger.server.models.ApiChannelIDParam
+import io.swagger.server.models.ApiestimateDealBody
 import io.swagger.server.models.UtilHttpError
 
 @KtorExperimentalLocationsAPI

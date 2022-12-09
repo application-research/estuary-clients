@@ -13,8 +13,8 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
-import io.swagger.model.MainChannelIDParam;
-import io.swagger.model.MainEstimateDealBody;
+import io.swagger.model.ApiChannelIDParam;
+import io.swagger.model.ApiEstimateDealBody;
 import io.swagger.model.UtilHttpError;
 
 import java.util.Map;
@@ -34,7 +34,7 @@ import javax.validation.constraints.*;
 @Path("/deal")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-11-29T10:27:01.923Z[GMT]")public class DealApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-12-09T03:38:43.852Z[GMT]")public class DealApi  {
 
    private DealApiService delegate;
 
@@ -58,7 +58,7 @@ import javax.validation.constraints.*;
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response dealEstimatePost(@Parameter(in = ParameterIn.DEFAULT, description = "The size of the deal in bytes, the replication factor, and the duration of the deal in blocks" ,required=true) MainEstimateDealBody body
+    public Response dealEstimatePost(@Parameter(in = ParameterIn.DEFAULT, description = "The size of the deal in bytes, the replication factor, and the duration of the deal in blocks" ,required=true) ApiEstimateDealBody body
 
 ,@Context SecurityContext securityContext)
     throws NotFoundException {
@@ -178,7 +178,7 @@ import javax.validation.constraints.*;
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response dealTransferStatusPost(@Parameter(in = ParameterIn.DEFAULT, description = "Channel ID" ,required=true) MainChannelIDParam body
+    public Response dealTransferStatusPost(@Parameter(in = ParameterIn.DEFAULT, description = "Channel ID" ,required=true) ApiChannelIDParam body
 
 ,@Context SecurityContext securityContext)
     throws NotFoundException {

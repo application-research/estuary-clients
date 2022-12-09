@@ -8,4 +8,4 @@ Name | Type | Description | Notes
 **info** | [**kotlin.Any**](.md) |  |  [optional]
 **pin** | [**TypesIpfsPin**](TypesIpfsPin.md) |  |  [optional]
 **requestid** | [**kotlin.String**](.md) |  |  [optional]
-**status** | [**kotlin.String**](.md) |  |  [optional]
+**status** | [**TypesPinningStatus**](TypesPinningStatus.md) |  |  [optional]

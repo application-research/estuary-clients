@@ -25,7 +25,7 @@ exports.collectionsColuuidCommitPOST = function(coluuid) {
  * Deletes a content from a collection
  * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
  *
- * body Main.deleteContentFromCollectionBody Variable to use when filtering for files (must be either 'path' or 'content_id')
+ * body Api.deleteContentFromCollectionBody Variable to use when filtering for files (must be either 'path' or 'content_id')
  * coluuid String Collection ID
  * returns String
  **/
@@ -68,12 +68,34 @@ exports.collectionsColuuidDELETE = function(coluuid) {
  *
  * coluuid String coluuid
  * dir String Directory (optional)
- * returns String
+ * returns List
  **/
 exports.collectionsColuuidGET = function(coluuid,dir) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = "";
+    examples['application/json'] = [ {
+  "coluuid" : "coluuid",
+  "contId" : 0,
+  "size" : 6,
+  "name" : "name",
+  "dir" : "dir",
+  "type" : "directory",
+  "cid" : {
+    "cid" : { }
+  },
+  "updatedAt" : "updatedAt"
+}, {
+  "coluuid" : "coluuid",
+  "contId" : 0,
+  "size" : 6,
+  "name" : "name",
+  "dir" : "dir",
+  "type" : "directory",
+  "cid" : {
+    "cid" : { }
+  },
+  "updatedAt" : "updatedAt"
+} ];
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -164,7 +186,7 @@ exports.collectionsGET = function() {
  * Create a new collection
  * This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.
  *
- * body Main.createCollectionBody Collection name and description
+ * body Api.createCollectionBody Collection name and description
  * returns collections.Collection
  **/
 exports.collectionsPOST = function(body) {

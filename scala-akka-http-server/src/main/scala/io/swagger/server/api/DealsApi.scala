@@ -5,8 +5,8 @@ import akka.http.scaladsl.server.Route
 import akka.http.scaladsl.unmarshalling.FromRequestUnmarshaller
 import akka.http.scaladsl.marshalling.ToEntityMarshaller
 import io.swagger.server.AkkaHttpHelper._
-import io.swagger.server.model.Main.ChannelIDParam
-import io.swagger.server.model.Main.estimateDealBody
+import io.swagger.server.model.Api.ChannelIDParam
+import io.swagger.server.model.Api.estimateDealBody
 import io.swagger.server.model.util.HttpError
 
 class DealsApi(
@@ -22,7 +22,7 @@ class DealsApi(
           
             formFields() { () =>
               
-                entity(as[Main.estimateDealBody]){ body =>
+                entity(as[Api.estimateDealBody]){ body =>
                   dealsService.dealEstimatePost(body = body)
                 }
              
@@ -127,7 +127,7 @@ class DealsApi(
           
             formFields() { () =>
               
-                entity(as[Main.ChannelIDParam]){ body =>
+                entity(as[Api.ChannelIDParam]){ body =>
                   dealsService.dealTransferStatusPost(body = body)
                 }
              
@@ -226,7 +226,7 @@ trait DealsApiService {
    * Code: 400, Message: Bad Request, DataType: util.HttpError
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
-  def dealEstimatePost(body: Main.estimateDealBody)
+  def dealEstimatePost(body: Api.estimateDealBody)
       (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
   def dealInfoDealidGet200(responseString: String): Route =
@@ -324,7 +324,7 @@ trait DealsApiService {
    * Code: 400, Message: Bad Request, DataType: util.HttpError
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
-  def dealTransferStatusPost(body: Main.ChannelIDParam)
+  def dealTransferStatusPost(body: Api.ChannelIDParam)
       (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
   def dealsFailuresGet200(responseString: String): Route =
@@ -400,11 +400,11 @@ trait DealsApiService {
 }
 
 trait DealsApiMarshaller {
+  implicit def fromRequestUnmarshallerApi.ChannelIDParam: FromRequestUnmarshaller[Api.ChannelIDParam]
+
   implicit def fromRequestUnmarshallerString: FromRequestUnmarshaller[String]
 
-  implicit def fromRequestUnmarshallerMain.ChannelIDParam: FromRequestUnmarshaller[Main.ChannelIDParam]
-
-  implicit def fromRequestUnmarshallerMain.estimateDealBody: FromRequestUnmarshaller[Main.estimateDealBody]
+  implicit def fromRequestUnmarshallerApi.estimateDealBody: FromRequestUnmarshaller[Api.estimateDealBody]
 
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]

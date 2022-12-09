@@ -89,7 +89,7 @@ $apiInstance = new Swagger\Client\Api\CollectionsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = new \Swagger\Client\Model\MainDeleteContentFromCollectionBody(); // \Swagger\Client\Model\MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
+$body = new \Swagger\Client\Model\ApiDeleteContentFromCollectionBody(); // \Swagger\Client\Model\ApiDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
 $coluuid = "coluuid_example"; // string | Collection ID
 
 try {
@@ -105,7 +105,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\MainDeleteContentFromCollectionBody**](../Model/MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) |
+ **body** | [**\Swagger\Client\Model\ApiDeleteContentFromCollectionBody**](../Model/ApiDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) |
  **coluuid** | **string**| Collection ID |
 
 ### Return type
@@ -178,7 +178,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **collectionsColuuidGet**
-> string collectionsColuuidGet($coluuid, $dir)
+> \Swagger\Client\Model\CollectionsCollectionListResponse[] collectionsColuuidGet($coluuid, $dir)
 
 Get contents in a collection
 
@@ -220,7 +220,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\CollectionsCollectionListResponse[]**](../Model/CollectionsCollectionListResponse.md)
 
 ### Authorization
 
@@ -421,7 +421,7 @@ $apiInstance = new Swagger\Client\Api\CollectionsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = new \Swagger\Client\Model\MainCreateCollectionBody(); // \Swagger\Client\Model\MainCreateCollectionBody | Collection name and description
+$body = new \Swagger\Client\Model\ApiCreateCollectionBody(); // \Swagger\Client\Model\ApiCreateCollectionBody | Collection name and description
 
 try {
     $result = $apiInstance->collectionsPost($body);
@@ -436,7 +436,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\MainCreateCollectionBody**](../Model/MainCreateCollectionBody.md)| Collection name and description |
+ **body** | [**\Swagger\Client\Model\ApiCreateCollectionBody**](../Model/ApiCreateCollectionBody.md)| Collection name and description |
 
 ### Return type
 

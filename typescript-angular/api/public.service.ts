@@ -17,6 +17,7 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
+import { ApiPublicNodeInfo } from '../model/apiPublicNodeInfo';
 import { UtilHttpError } from '../model/utilHttpError';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -153,9 +154,9 @@ export class PublicService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public publicInfoGet(observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public publicInfoGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public publicInfoGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public publicInfoGet(observe?: 'body', reportProgress?: boolean): Observable<ApiPublicNodeInfo>;
+    public publicInfoGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ApiPublicNodeInfo>>;
+    public publicInfoGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ApiPublicNodeInfo>>;
     public publicInfoGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -178,7 +179,7 @@ export class PublicService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<string>('get',`${this.basePath}/public/info`,
+        return this.httpClient.request<ApiPublicNodeInfo>('get',`${this.basePath}/public/info`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

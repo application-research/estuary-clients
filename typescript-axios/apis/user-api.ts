@@ -16,7 +16,7 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
-import { MainGetApiKeysResp } from '../models';
+import { ApiGetApiKeysResp } from '../models';
 import { UtilHttpError } from '../models';
 /**
  * UserApi - axios parameter creator
@@ -209,7 +209,7 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
             };
         },
         /**
-         * This endpoint is used to geet stats for the current user.
+         * This endpoint is used to get stats for the current user.
          * @summary Get stats for the current user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -265,7 +265,7 @@ export const UserApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async userApiKeysGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<MainGetApiKeysResp>>>> {
+        async userApiKeysGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<ApiGetApiKeysResp>>>> {
             const localVarAxiosArgs = await UserApiAxiosParamCreator(configuration).userApiKeysGet(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -294,7 +294,7 @@ export const UserApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async userApiKeysPost(expiry?: string, perms?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<MainGetApiKeysResp>>> {
+        async userApiKeysPost(expiry?: string, perms?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ApiGetApiKeysResp>>> {
             const localVarAxiosArgs = await UserApiAxiosParamCreator(configuration).userApiKeysPost(expiry, perms, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -315,7 +315,7 @@ export const UserApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         * This endpoint is used to geet stats for the current user.
+         * This endpoint is used to get stats for the current user.
          * @summary Get stats for the current user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -342,7 +342,7 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async userApiKeysGet(options?: AxiosRequestConfig): Promise<AxiosResponse<Array<MainGetApiKeysResp>>> {
+        async userApiKeysGet(options?: AxiosRequestConfig): Promise<AxiosResponse<Array<ApiGetApiKeysResp>>> {
             return UserApiFp(configuration).userApiKeysGet(options).then((request) => request(axios, basePath));
         },
         /**
@@ -363,7 +363,7 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async userApiKeysPost(expiry?: string, perms?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<MainGetApiKeysResp>> {
+        async userApiKeysPost(expiry?: string, perms?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<ApiGetApiKeysResp>> {
             return UserApiFp(configuration).userApiKeysPost(expiry, perms, options).then((request) => request(axios, basePath));
         },
         /**
@@ -376,7 +376,7 @@ export const UserApiFactory = function (configuration?: Configuration, basePath?
             return UserApiFp(configuration).userExportGet(options).then((request) => request(axios, basePath));
         },
         /**
-         * This endpoint is used to geet stats for the current user.
+         * This endpoint is used to get stats for the current user.
          * @summary Get stats for the current user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -401,7 +401,7 @@ export class UserApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserApi
      */
-    public async userApiKeysGet(options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<MainGetApiKeysResp>>> {
+    public async userApiKeysGet(options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<ApiGetApiKeysResp>>> {
         return UserApiFp(this.configuration).userApiKeysGet(options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -424,7 +424,7 @@ export class UserApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof UserApi
      */
-    public async userApiKeysPost(expiry?: string, perms?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<MainGetApiKeysResp>> {
+    public async userApiKeysPost(expiry?: string, perms?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<ApiGetApiKeysResp>> {
         return UserApiFp(this.configuration).userApiKeysPost(expiry, perms, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -438,7 +438,7 @@ export class UserApi extends BaseAPI {
         return UserApiFp(this.configuration).userExportGet(options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     * This endpoint is used to geet stats for the current user.
+     * This endpoint is used to get stats for the current user.
      * @summary Get stats for the current user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}

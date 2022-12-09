@@ -41,7 +41,7 @@ open class PinningAPI: APIBase {
     "requestid" : "requestid",
     "delegates" : [ "delegates", "delegates" ],
     "info" : { },
-    "status" : "status"
+    "status" : "pinning"
   }, {
     "pin" : {
       "meta" : { },
@@ -53,7 +53,7 @@ open class PinningAPI: APIBase {
     "requestid" : "requestid",
     "delegates" : [ "delegates", "delegates" ],
     "info" : { },
-    "status" : "status"
+    "status" : "pinning"
   } ]
 }}]
      - returns: RequestBuilder<TypesIpfsListPinStatusResponse> 
@@ -137,7 +137,7 @@ open class PinningAPI: APIBase {
   "requestid" : "requestid",
   "delegates" : [ "delegates", "delegates" ],
   "info" : { },
-  "status" : "status"
+  "status" : "pinning"
 }}]
      - parameter pinid: (path) cid 
      - returns: RequestBuilder<TypesIpfsPinStatusResponse> 
@@ -188,7 +188,7 @@ open class PinningAPI: APIBase {
   "requestid" : "requestid",
   "delegates" : [ "delegates", "delegates" ],
   "info" : { },
-  "status" : "status"
+  "status" : "pinning"
 }}]
      - parameter body: (body) New pin 
      - parameter pinid: (path) Pin ID to be replaced 
@@ -239,7 +239,7 @@ open class PinningAPI: APIBase {
   "requestid" : "requestid",
   "delegates" : [ "delegates", "delegates" ],
   "info" : { },
-  "status" : "status"
+  "status" : "pinning"
 }}]
      - parameter body: (body) Pin Body {cid:cid, name:name} 
      - returns: RequestBuilder<TypesIpfsPinStatusResponse> 

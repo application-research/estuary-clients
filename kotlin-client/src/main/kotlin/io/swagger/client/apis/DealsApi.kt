@@ -11,8 +11,8 @@
  */
 package io.swagger.client.apis
 
-import io.swagger.client.models.MainChannelIDParam
-import io.swagger.client.models.MainestimateDealBody
+import io.swagger.client.models.ApiChannelIDParam
+import io.swagger.client.models.ApiestimateDealBody
 import io.swagger.client.models.UtilHttpError
 
 import estuary-client.infrastructure.*
@@ -26,7 +26,7 @@ class DealsApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(base
      * @return kotlin.String
      */
     @Suppress("UNCHECKED_CAST")
-    fun dealEstimatePost(body: MainestimateDealBody): kotlin.String {
+    fun dealEstimatePost(body: ApiestimateDealBody): kotlin.String {
         val localVariableBody: kotlin.Any? = body
         
         val localVariableConfig = RequestConfig(
@@ -202,7 +202,7 @@ class DealsApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(base
      * @return kotlin.String
      */
     @Suppress("UNCHECKED_CAST")
-    fun dealTransferStatusPost(body: MainChannelIDParam): kotlin.String {
+    fun dealTransferStatusPost(body: ApiChannelIDParam): kotlin.String {
         val localVariableBody: kotlin.Any? = body
         
         val localVariableConfig = RequestConfig(

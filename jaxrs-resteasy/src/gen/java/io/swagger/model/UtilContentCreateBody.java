@@ -4,12 +4,13 @@ import java.util.Objects;
 import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.model.UtilContentType;
 import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-29T10:27:03.154Z[GMT]")public class UtilContentCreateBody   {
-  private String coluuid = null;  private String dir = null;  private String location = null;  private String name = null;  private String root = null;  private Integer type = null;
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-12-09T03:38:45.256Z[GMT]")public class UtilContentCreateBody   {
+  private String coluuid = null;  private String dir = null;  private String location = null;  private String name = null;  private String root = null;  private UtilContentType type = null;
 
   /**
    **/
@@ -76,10 +77,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
   
   @Schema(description = "")
   @JsonProperty("type")
-  public Integer getType() {
+  public UtilContentType getType() {
     return type;
   }
-  public void setType(Integer type) {
+  public void setType(UtilContentType type) {
     this.type = type;
   }
 

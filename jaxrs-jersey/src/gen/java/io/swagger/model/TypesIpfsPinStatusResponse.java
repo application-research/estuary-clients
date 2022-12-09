@@ -16,6 +16,7 @@ import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.model.TypesIpfsPin;
+import io.swagger.model.TypesPinningStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,7 @@ import javax.validation.Valid;
 /**
  * TypesIpfsPinStatusResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-29T10:27:02.850Z[GMT]")public class TypesIpfsPinStatusResponse   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-12-09T03:38:44.975Z[GMT]")public class TypesIpfsPinStatusResponse   {
   @JsonProperty("created")
   private String created = null;
 
@@ -42,7 +43,7 @@ import javax.validation.Valid;
   private String requestid = null;
 
   @JsonProperty("status")
-  private String status = null;
+  private TypesPinningStatus status = null;
 
   public TypesIpfsPinStatusResponse created(String created) {
     this.created = created;
@@ -148,7 +149,7 @@ import javax.validation.Valid;
     this.requestid = requestid;
   }
 
-  public TypesIpfsPinStatusResponse status(String status) {
+  public TypesIpfsPinStatusResponse status(TypesPinningStatus status) {
     this.status = status;
     return this;
   }
@@ -159,11 +160,12 @@ import javax.validation.Valid;
    **/
   @JsonProperty("status")
   @Schema(description = "")
-  public String getStatus() {
+  @Valid
+  public TypesPinningStatus getStatus() {
     return status;
   }
 
-  public void setStatus(String status) {
+  public void setStatus(TypesPinningStatus status) {
     this.status = status;
   }
 

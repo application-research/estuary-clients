@@ -24,6 +24,115 @@ namespace estuary-client.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// Get Claim Miner Message
+        /// </summary>
+        /// <remarks>
+        /// This endpoint lets a user get the message in order to claim a miner
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="miner">Miner claim message</param>
+        /// <returns>ApiClaimMsgResponse</returns>
+        ApiClaimMsgResponse MinerClaimMinerGet (string miner);
+
+        /// <summary>
+        /// Get Claim Miner Message
+        /// </summary>
+        /// <remarks>
+        /// This endpoint lets a user get the message in order to claim a miner
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="miner">Miner claim message</param>
+        /// <returns>ApiResponse of ApiClaimMsgResponse</returns>
+        ApiResponse<ApiClaimMsgResponse> MinerClaimMinerGetWithHttpInfo (string miner);
+        /// <summary>
+        /// Claim Miner
+        /// </summary>
+        /// <remarks>
+        /// This endpoint lets a user claim a miner
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Claim Miner Body</param>
+        /// <returns>ApiClaimResponse</returns>
+        ApiClaimResponse MinerClaimPost (MinerClaimMinerBody body);
+
+        /// <summary>
+        /// Claim Miner
+        /// </summary>
+        /// <remarks>
+        /// This endpoint lets a user claim a miner
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Claim Miner Body</param>
+        /// <returns>ApiResponse of ApiClaimResponse</returns>
+        ApiResponse<ApiClaimResponse> MinerClaimPostWithHttpInfo (MinerClaimMinerBody body);
+        /// <summary>
+        /// Set Miner Info
+        /// </summary>
+        /// <remarks>
+        /// This endpoint lets a user set miner info.
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Miner set info params</param>
+        /// <param name="miner">Miner to set info for</param>
+        /// <returns>ApiEmptyResp</returns>
+        ApiEmptyResp MinerSetInfoMinerPut (MinerMinerSetInfoParams body, string miner);
+
+        /// <summary>
+        /// Set Miner Info
+        /// </summary>
+        /// <remarks>
+        /// This endpoint lets a user set miner info.
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Miner set info params</param>
+        /// <param name="miner">Miner to set info for</param>
+        /// <returns>ApiResponse of ApiEmptyResp</returns>
+        ApiResponse<ApiEmptyResp> MinerSetInfoMinerPutWithHttpInfo (MinerMinerSetInfoParams body, string miner);
+        /// <summary>
+        /// Suspend Miner
+        /// </summary>
+        /// <remarks>
+        /// This endpoint lets a user suspend a miner.
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Suspend Miner Body</param>
+        /// <param name="miner">Miner to suspend</param>
+        /// <returns>ApiEmptyResp</returns>
+        ApiEmptyResp MinerSuspendMinerPost (MinerSuspendMinerBody body, string miner);
+
+        /// <summary>
+        /// Suspend Miner
+        /// </summary>
+        /// <remarks>
+        /// This endpoint lets a user suspend a miner.
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Suspend Miner Body</param>
+        /// <param name="miner">Miner to suspend</param>
+        /// <returns>ApiResponse of ApiEmptyResp</returns>
+        ApiResponse<ApiEmptyResp> MinerSuspendMinerPostWithHttpInfo (MinerSuspendMinerBody body, string miner);
+        /// <summary>
+        /// Unuspend Miner
+        /// </summary>
+        /// <remarks>
+        /// This endpoint lets a user unsuspend a miner.
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="miner">Miner to unsuspend</param>
+        /// <returns>ApiEmptyResp</returns>
+        ApiEmptyResp MinerUnsuspendMinerPut (string miner);
+
+        /// <summary>
+        /// Unuspend Miner
+        /// </summary>
+        /// <remarks>
+        /// This endpoint lets a user unsuspend a miner.
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="miner">Miner to unsuspend</param>
+        /// <returns>ApiResponse of ApiEmptyResp</returns>
+        ApiResponse<ApiEmptyResp> MinerUnsuspendMinerPutWithHttpInfo (string miner);
+        /// <summary>
         /// Get all miners deals
         /// </summary>
         /// <remarks>
@@ -69,6 +178,115 @@ namespace estuary-client.Api
         ApiResponse<string> PublicMinersStatsMinerGetWithHttpInfo (string miner);
         #endregion Synchronous Operations
         #region Asynchronous Operations
+        /// <summary>
+        /// Get Claim Miner Message
+        /// </summary>
+        /// <remarks>
+        /// This endpoint lets a user get the message in order to claim a miner
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="miner">Miner claim message</param>
+        /// <returns>Task of ApiClaimMsgResponse</returns>
+        System.Threading.Tasks.Task<ApiClaimMsgResponse> MinerClaimMinerGetAsync (string miner);
+
+        /// <summary>
+        /// Get Claim Miner Message
+        /// </summary>
+        /// <remarks>
+        /// This endpoint lets a user get the message in order to claim a miner
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="miner">Miner claim message</param>
+        /// <returns>Task of ApiResponse (ApiClaimMsgResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ApiClaimMsgResponse>> MinerClaimMinerGetAsyncWithHttpInfo (string miner);
+        /// <summary>
+        /// Claim Miner
+        /// </summary>
+        /// <remarks>
+        /// This endpoint lets a user claim a miner
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Claim Miner Body</param>
+        /// <returns>Task of ApiClaimResponse</returns>
+        System.Threading.Tasks.Task<ApiClaimResponse> MinerClaimPostAsync (MinerClaimMinerBody body);
+
+        /// <summary>
+        /// Claim Miner
+        /// </summary>
+        /// <remarks>
+        /// This endpoint lets a user claim a miner
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Claim Miner Body</param>
+        /// <returns>Task of ApiResponse (ApiClaimResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ApiClaimResponse>> MinerClaimPostAsyncWithHttpInfo (MinerClaimMinerBody body);
+        /// <summary>
+        /// Set Miner Info
+        /// </summary>
+        /// <remarks>
+        /// This endpoint lets a user set miner info.
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Miner set info params</param>
+        /// <param name="miner">Miner to set info for</param>
+        /// <returns>Task of ApiEmptyResp</returns>
+        System.Threading.Tasks.Task<ApiEmptyResp> MinerSetInfoMinerPutAsync (MinerMinerSetInfoParams body, string miner);
+
+        /// <summary>
+        /// Set Miner Info
+        /// </summary>
+        /// <remarks>
+        /// This endpoint lets a user set miner info.
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Miner set info params</param>
+        /// <param name="miner">Miner to set info for</param>
+        /// <returns>Task of ApiResponse (ApiEmptyResp)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ApiEmptyResp>> MinerSetInfoMinerPutAsyncWithHttpInfo (MinerMinerSetInfoParams body, string miner);
+        /// <summary>
+        /// Suspend Miner
+        /// </summary>
+        /// <remarks>
+        /// This endpoint lets a user suspend a miner.
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Suspend Miner Body</param>
+        /// <param name="miner">Miner to suspend</param>
+        /// <returns>Task of ApiEmptyResp</returns>
+        System.Threading.Tasks.Task<ApiEmptyResp> MinerSuspendMinerPostAsync (MinerSuspendMinerBody body, string miner);
+
+        /// <summary>
+        /// Suspend Miner
+        /// </summary>
+        /// <remarks>
+        /// This endpoint lets a user suspend a miner.
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Suspend Miner Body</param>
+        /// <param name="miner">Miner to suspend</param>
+        /// <returns>Task of ApiResponse (ApiEmptyResp)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ApiEmptyResp>> MinerSuspendMinerPostAsyncWithHttpInfo (MinerSuspendMinerBody body, string miner);
+        /// <summary>
+        /// Unuspend Miner
+        /// </summary>
+        /// <remarks>
+        /// This endpoint lets a user unsuspend a miner.
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="miner">Miner to unsuspend</param>
+        /// <returns>Task of ApiEmptyResp</returns>
+        System.Threading.Tasks.Task<ApiEmptyResp> MinerUnsuspendMinerPutAsync (string miner);
+
+        /// <summary>
+        /// Unuspend Miner
+        /// </summary>
+        /// <remarks>
+        /// This endpoint lets a user unsuspend a miner.
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="miner">Miner to unsuspend</param>
+        /// <returns>Task of ApiResponse (ApiEmptyResp)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ApiEmptyResp>> MinerUnsuspendMinerPutAsyncWithHttpInfo (string miner);
         /// <summary>
         /// Get all miners deals
         /// </summary>
@@ -222,6 +440,783 @@ namespace estuary-client.Api
         public void AddDefaultHeader(string key, string value)
         {
             this.Configuration.AddDefaultHeader(key, value);
+        }
+
+        /// <summary>
+        /// Get Claim Miner Message This endpoint lets a user get the message in order to claim a miner
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="miner">Miner claim message</param>
+        /// <returns>ApiClaimMsgResponse</returns>
+        public ApiClaimMsgResponse MinerClaimMinerGet (string miner)
+        {
+             ApiResponse<ApiClaimMsgResponse> localVarResponse = MinerClaimMinerGetWithHttpInfo(miner);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get Claim Miner Message This endpoint lets a user get the message in order to claim a miner
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="miner">Miner claim message</param>
+        /// <returns>ApiResponse of ApiClaimMsgResponse</returns>
+        public ApiResponse< ApiClaimMsgResponse > MinerClaimMinerGetWithHttpInfo (string miner)
+        {
+            // verify the required parameter 'miner' is set
+            if (miner == null)
+                throw new ApiException(400, "Missing required parameter 'miner' when calling MinerApi->MinerClaimMinerGet");
+
+            var localVarPath = "/miner/claim/{miner}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (miner != null) localVarPathParams.Add("miner", this.Configuration.ApiClient.ParameterToString(miner)); // path parameter
+            // authentication (bearerAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("MinerClaimMinerGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ApiClaimMsgResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (ApiClaimMsgResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiClaimMsgResponse)));
+        }
+
+        /// <summary>
+        /// Get Claim Miner Message This endpoint lets a user get the message in order to claim a miner
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="miner">Miner claim message</param>
+        /// <returns>Task of ApiClaimMsgResponse</returns>
+        public async System.Threading.Tasks.Task<ApiClaimMsgResponse> MinerClaimMinerGetAsync (string miner)
+        {
+             ApiResponse<ApiClaimMsgResponse> localVarResponse = await MinerClaimMinerGetAsyncWithHttpInfo(miner);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get Claim Miner Message This endpoint lets a user get the message in order to claim a miner
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="miner">Miner claim message</param>
+        /// <returns>Task of ApiResponse (ApiClaimMsgResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ApiClaimMsgResponse>> MinerClaimMinerGetAsyncWithHttpInfo (string miner)
+        {
+            // verify the required parameter 'miner' is set
+            if (miner == null)
+                throw new ApiException(400, "Missing required parameter 'miner' when calling MinerApi->MinerClaimMinerGet");
+
+            var localVarPath = "/miner/claim/{miner}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (miner != null) localVarPathParams.Add("miner", this.Configuration.ApiClient.ParameterToString(miner)); // path parameter
+            // authentication (bearerAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("MinerClaimMinerGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ApiClaimMsgResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (ApiClaimMsgResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiClaimMsgResponse)));
+        }
+
+        /// <summary>
+        /// Claim Miner This endpoint lets a user claim a miner
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Claim Miner Body</param>
+        /// <returns>ApiClaimResponse</returns>
+        public ApiClaimResponse MinerClaimPost (MinerClaimMinerBody body)
+        {
+             ApiResponse<ApiClaimResponse> localVarResponse = MinerClaimPostWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Claim Miner This endpoint lets a user claim a miner
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Claim Miner Body</param>
+        /// <returns>ApiResponse of ApiClaimResponse</returns>
+        public ApiResponse< ApiClaimResponse > MinerClaimPostWithHttpInfo (MinerClaimMinerBody body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling MinerApi->MinerClaimPost");
+
+            var localVarPath = "/miner/claim";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "*/*"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+            // authentication (bearerAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("MinerClaimPost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ApiClaimResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (ApiClaimResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiClaimResponse)));
+        }
+
+        /// <summary>
+        /// Claim Miner This endpoint lets a user claim a miner
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Claim Miner Body</param>
+        /// <returns>Task of ApiClaimResponse</returns>
+        public async System.Threading.Tasks.Task<ApiClaimResponse> MinerClaimPostAsync (MinerClaimMinerBody body)
+        {
+             ApiResponse<ApiClaimResponse> localVarResponse = await MinerClaimPostAsyncWithHttpInfo(body);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Claim Miner This endpoint lets a user claim a miner
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Claim Miner Body</param>
+        /// <returns>Task of ApiResponse (ApiClaimResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ApiClaimResponse>> MinerClaimPostAsyncWithHttpInfo (MinerClaimMinerBody body)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling MinerApi->MinerClaimPost");
+
+            var localVarPath = "/miner/claim";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "*/*"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+            // authentication (bearerAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("MinerClaimPost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ApiClaimResponse>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (ApiClaimResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiClaimResponse)));
+        }
+
+        /// <summary>
+        /// Set Miner Info This endpoint lets a user set miner info.
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Miner set info params</param>
+        /// <param name="miner">Miner to set info for</param>
+        /// <returns>ApiEmptyResp</returns>
+        public ApiEmptyResp MinerSetInfoMinerPut (MinerMinerSetInfoParams body, string miner)
+        {
+             ApiResponse<ApiEmptyResp> localVarResponse = MinerSetInfoMinerPutWithHttpInfo(body, miner);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Set Miner Info This endpoint lets a user set miner info.
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Miner set info params</param>
+        /// <param name="miner">Miner to set info for</param>
+        /// <returns>ApiResponse of ApiEmptyResp</returns>
+        public ApiResponse< ApiEmptyResp > MinerSetInfoMinerPutWithHttpInfo (MinerMinerSetInfoParams body, string miner)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling MinerApi->MinerSetInfoMinerPut");
+            // verify the required parameter 'miner' is set
+            if (miner == null)
+                throw new ApiException(400, "Missing required parameter 'miner' when calling MinerApi->MinerSetInfoMinerPut");
+
+            var localVarPath = "/miner/set-info/{miner}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "*/*"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (miner != null) localVarPathParams.Add("miner", this.Configuration.ApiClient.ParameterToString(miner)); // path parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+            // authentication (bearerAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("MinerSetInfoMinerPut", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ApiEmptyResp>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (ApiEmptyResp) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiEmptyResp)));
+        }
+
+        /// <summary>
+        /// Set Miner Info This endpoint lets a user set miner info.
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Miner set info params</param>
+        /// <param name="miner">Miner to set info for</param>
+        /// <returns>Task of ApiEmptyResp</returns>
+        public async System.Threading.Tasks.Task<ApiEmptyResp> MinerSetInfoMinerPutAsync (MinerMinerSetInfoParams body, string miner)
+        {
+             ApiResponse<ApiEmptyResp> localVarResponse = await MinerSetInfoMinerPutAsyncWithHttpInfo(body, miner);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Set Miner Info This endpoint lets a user set miner info.
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Miner set info params</param>
+        /// <param name="miner">Miner to set info for</param>
+        /// <returns>Task of ApiResponse (ApiEmptyResp)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ApiEmptyResp>> MinerSetInfoMinerPutAsyncWithHttpInfo (MinerMinerSetInfoParams body, string miner)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling MinerApi->MinerSetInfoMinerPut");
+            // verify the required parameter 'miner' is set
+            if (miner == null)
+                throw new ApiException(400, "Missing required parameter 'miner' when calling MinerApi->MinerSetInfoMinerPut");
+
+            var localVarPath = "/miner/set-info/{miner}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "*/*"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (miner != null) localVarPathParams.Add("miner", this.Configuration.ApiClient.ParameterToString(miner)); // path parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+            // authentication (bearerAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("MinerSetInfoMinerPut", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ApiEmptyResp>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (ApiEmptyResp) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiEmptyResp)));
+        }
+
+        /// <summary>
+        /// Suspend Miner This endpoint lets a user suspend a miner.
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Suspend Miner Body</param>
+        /// <param name="miner">Miner to suspend</param>
+        /// <returns>ApiEmptyResp</returns>
+        public ApiEmptyResp MinerSuspendMinerPost (MinerSuspendMinerBody body, string miner)
+        {
+             ApiResponse<ApiEmptyResp> localVarResponse = MinerSuspendMinerPostWithHttpInfo(body, miner);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Suspend Miner This endpoint lets a user suspend a miner.
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Suspend Miner Body</param>
+        /// <param name="miner">Miner to suspend</param>
+        /// <returns>ApiResponse of ApiEmptyResp</returns>
+        public ApiResponse< ApiEmptyResp > MinerSuspendMinerPostWithHttpInfo (MinerSuspendMinerBody body, string miner)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling MinerApi->MinerSuspendMinerPost");
+            // verify the required parameter 'miner' is set
+            if (miner == null)
+                throw new ApiException(400, "Missing required parameter 'miner' when calling MinerApi->MinerSuspendMinerPost");
+
+            var localVarPath = "/miner/suspend/{miner}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "*/*"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (miner != null) localVarPathParams.Add("miner", this.Configuration.ApiClient.ParameterToString(miner)); // path parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+            // authentication (bearerAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("MinerSuspendMinerPost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ApiEmptyResp>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (ApiEmptyResp) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiEmptyResp)));
+        }
+
+        /// <summary>
+        /// Suspend Miner This endpoint lets a user suspend a miner.
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Suspend Miner Body</param>
+        /// <param name="miner">Miner to suspend</param>
+        /// <returns>Task of ApiEmptyResp</returns>
+        public async System.Threading.Tasks.Task<ApiEmptyResp> MinerSuspendMinerPostAsync (MinerSuspendMinerBody body, string miner)
+        {
+             ApiResponse<ApiEmptyResp> localVarResponse = await MinerSuspendMinerPostAsyncWithHttpInfo(body, miner);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Suspend Miner This endpoint lets a user suspend a miner.
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Suspend Miner Body</param>
+        /// <param name="miner">Miner to suspend</param>
+        /// <returns>Task of ApiResponse (ApiEmptyResp)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ApiEmptyResp>> MinerSuspendMinerPostAsyncWithHttpInfo (MinerSuspendMinerBody body, string miner)
+        {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling MinerApi->MinerSuspendMinerPost");
+            // verify the required parameter 'miner' is set
+            if (miner == null)
+                throw new ApiException(400, "Missing required parameter 'miner' when calling MinerApi->MinerSuspendMinerPost");
+
+            var localVarPath = "/miner/suspend/{miner}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+                "*/*"
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (miner != null) localVarPathParams.Add("miner", this.Configuration.ApiClient.ParameterToString(miner)); // path parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
+            // authentication (bearerAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("MinerSuspendMinerPost", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ApiEmptyResp>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (ApiEmptyResp) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiEmptyResp)));
+        }
+
+        /// <summary>
+        /// Unuspend Miner This endpoint lets a user unsuspend a miner.
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="miner">Miner to unsuspend</param>
+        /// <returns>ApiEmptyResp</returns>
+        public ApiEmptyResp MinerUnsuspendMinerPut (string miner)
+        {
+             ApiResponse<ApiEmptyResp> localVarResponse = MinerUnsuspendMinerPutWithHttpInfo(miner);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Unuspend Miner This endpoint lets a user unsuspend a miner.
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="miner">Miner to unsuspend</param>
+        /// <returns>ApiResponse of ApiEmptyResp</returns>
+        public ApiResponse< ApiEmptyResp > MinerUnsuspendMinerPutWithHttpInfo (string miner)
+        {
+            // verify the required parameter 'miner' is set
+            if (miner == null)
+                throw new ApiException(400, "Missing required parameter 'miner' when calling MinerApi->MinerUnsuspendMinerPut");
+
+            var localVarPath = "/miner/unsuspend/{miner}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (miner != null) localVarPathParams.Add("miner", this.Configuration.ApiClient.ParameterToString(miner)); // path parameter
+            // authentication (bearerAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("MinerUnsuspendMinerPut", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ApiEmptyResp>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (ApiEmptyResp) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiEmptyResp)));
+        }
+
+        /// <summary>
+        /// Unuspend Miner This endpoint lets a user unsuspend a miner.
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="miner">Miner to unsuspend</param>
+        /// <returns>Task of ApiEmptyResp</returns>
+        public async System.Threading.Tasks.Task<ApiEmptyResp> MinerUnsuspendMinerPutAsync (string miner)
+        {
+             ApiResponse<ApiEmptyResp> localVarResponse = await MinerUnsuspendMinerPutAsyncWithHttpInfo(miner);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Unuspend Miner This endpoint lets a user unsuspend a miner.
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="miner">Miner to unsuspend</param>
+        /// <returns>Task of ApiResponse (ApiEmptyResp)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ApiEmptyResp>> MinerUnsuspendMinerPutAsyncWithHttpInfo (string miner)
+        {
+            // verify the required parameter 'miner' is set
+            if (miner == null)
+                throw new ApiException(400, "Missing required parameter 'miner' when calling MinerApi->MinerUnsuspendMinerPut");
+
+            var localVarPath = "/miner/unsuspend/{miner}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (miner != null) localVarPathParams.Add("miner", this.Configuration.ApiClient.ParameterToString(miner)); // path parameter
+            // authentication (bearerAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.PUT, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("MinerUnsuspendMinerPut", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ApiEmptyResp>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (ApiEmptyResp) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiEmptyResp)));
         }
 
         /// <summary>

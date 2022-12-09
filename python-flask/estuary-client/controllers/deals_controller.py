@@ -1,8 +1,8 @@
 import connexion
 import six
 
-from estuary-client.models.main_channel_id_param import MainChannelIDParam  # noqa: E501
-from estuary-client.models.main_estimate_deal_body import MainEstimateDealBody  # noqa: E501
+from estuary-client.models.api_channel_id_param import ApiChannelIDParam  # noqa: E501
+from estuary-client.models.api_estimate_deal_body import ApiEstimateDealBody  # noqa: E501
 from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
 from estuary-client import util
 
@@ -18,7 +18,7 @@ def deal_estimate_post(body):  # noqa: E501
     :rtype: str
     """
     if connexion.request.is_json:
-        body = MainEstimateDealBody.from_dict(connexion.request.get_json())  # noqa: E501
+        body = ApiEstimateDealBody.from_dict(connexion.request.get_json())  # noqa: E501
     return 'do some magic!'
 
 
@@ -111,7 +111,7 @@ def deal_transfer_status_post(body):  # noqa: E501
     :rtype: str
     """
     if connexion.request.is_json:
-        body = MainChannelIDParam.from_dict(connexion.request.get_json())  # noqa: E501
+        body = ApiChannelIDParam.from_dict(connexion.request.get_json())  # noqa: E501
     return 'do some magic!'
 
 

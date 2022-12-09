@@ -86,7 +86,7 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::CollectionsApi.new
-body = SwaggerClient::MainDeleteContentFromCollectionBody.new # MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
+body = SwaggerClient::ApiDeleteContentFromCollectionBody.new # ApiDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
 coluuid = 'coluuid_example' # String | Collection ID
 
 
@@ -103,7 +103,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) | 
+ **body** | [**ApiDeleteContentFromCollectionBody**](ApiDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) | 
  **coluuid** | **String**| Collection ID | 
 
 ### Return type
@@ -175,7 +175,7 @@ Name | Type | Description  | Notes
 
 
 # **collections_coluuid_get**
-> String collections_coluuid_get(coluuid, opts)
+> Array&lt;CollectionsCollectionListResponse&gt; collections_coluuid_get(coluuid, opts)
 
 Get contents in a collection
 
@@ -217,7 +217,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**String**
+[**Array&lt;CollectionsCollectionListResponse&gt;**](CollectionsCollectionListResponse.md)
 
 ### Authorization
 
@@ -413,7 +413,7 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::CollectionsApi.new
-body = SwaggerClient::MainCreateCollectionBody.new # MainCreateCollectionBody | Collection name and description
+body = SwaggerClient::ApiCreateCollectionBody.new # ApiCreateCollectionBody | Collection name and description
 
 
 begin
@@ -429,7 +429,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainCreateCollectionBody**](MainCreateCollectionBody.md)| Collection name and description | 
+ **body** | [**ApiCreateCollectionBody**](ApiCreateCollectionBody.md)| Collection name and description | 
 
 ### Return type
 

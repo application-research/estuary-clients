@@ -13,6 +13,12 @@ package io.swagger.client.api
 
 import java.text.SimpleDateFormat
 
+import io.swagger.client.model.ClaimMinerBody
+import io.swagger.client.model.MinerSetInfoParams
+import io.swagger.client.model.SuspendMinerBody
+import io.swagger.client.model.api.claimMsgResponse
+import io.swagger.client.model.api.claimResponse
+import io.swagger.client.model.api.emptyResp
 import io.swagger.client.model.util.HttpError
 import io.swagger.client.{ApiInvoker, ApiException}
 
@@ -79,6 +85,140 @@ class MinerApi(
   val helper = new MinerApiAsyncHelper(client, config)
 
   /**
+   * Get Claim Miner Message
+   * This endpoint lets a user get the message in order to claim a miner
+   *
+   * @param miner Miner claim message 
+   * @return api.claimMsgResponse
+   */
+  def minerClaimMinerGet(miner: String): Option[api.claimMsgResponse] = {
+    val await = Try(Await.result(minerClaimMinerGetAsync(miner), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Get Claim Miner Message asynchronously
+   * This endpoint lets a user get the message in order to claim a miner
+   *
+   * @param miner Miner claim message 
+   * @return Future(api.claimMsgResponse)
+   */
+  def minerClaimMinerGetAsync(miner: String): Future[api.claimMsgResponse] = {
+      helper.minerClaimMinerGet(miner)
+  }
+
+  /**
+   * Claim Miner
+   * This endpoint lets a user claim a miner
+   *
+   * @param body Claim Miner Body 
+   * @return api.claimResponse
+   */
+  def minerClaimPost(body: ClaimMinerBody): Option[api.claimResponse] = {
+    val await = Try(Await.result(minerClaimPostAsync(body), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Claim Miner asynchronously
+   * This endpoint lets a user claim a miner
+   *
+   * @param body Claim Miner Body 
+   * @return Future(api.claimResponse)
+   */
+  def minerClaimPostAsync(body: ClaimMinerBody): Future[api.claimResponse] = {
+      helper.minerClaimPost(body)
+  }
+
+  /**
+   * Set Miner Info
+   * This endpoint lets a user set miner info.
+   *
+   * @param body Miner set info params 
+   * @param miner Miner to set info for 
+   * @return api.emptyResp
+   */
+  def minerSetInfoMinerPut(body: MinerSetInfoParams, miner: String): Option[api.emptyResp] = {
+    val await = Try(Await.result(minerSetInfoMinerPutAsync(body, miner), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Set Miner Info asynchronously
+   * This endpoint lets a user set miner info.
+   *
+   * @param body Miner set info params 
+   * @param miner Miner to set info for 
+   * @return Future(api.emptyResp)
+   */
+  def minerSetInfoMinerPutAsync(body: MinerSetInfoParams, miner: String): Future[api.emptyResp] = {
+      helper.minerSetInfoMinerPut(body, miner)
+  }
+
+  /**
+   * Suspend Miner
+   * This endpoint lets a user suspend a miner.
+   *
+   * @param body Suspend Miner Body 
+   * @param miner Miner to suspend 
+   * @return api.emptyResp
+   */
+  def minerSuspendMinerPost(body: SuspendMinerBody, miner: String): Option[api.emptyResp] = {
+    val await = Try(Await.result(minerSuspendMinerPostAsync(body, miner), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Suspend Miner asynchronously
+   * This endpoint lets a user suspend a miner.
+   *
+   * @param body Suspend Miner Body 
+   * @param miner Miner to suspend 
+   * @return Future(api.emptyResp)
+   */
+  def minerSuspendMinerPostAsync(body: SuspendMinerBody, miner: String): Future[api.emptyResp] = {
+      helper.minerSuspendMinerPost(body, miner)
+  }
+
+  /**
+   * Unuspend Miner
+   * This endpoint lets a user unsuspend a miner.
+   *
+   * @param miner Miner to unsuspend 
+   * @return api.emptyResp
+   */
+  def minerUnsuspendMinerPut(miner: String): Option[api.emptyResp] = {
+    val await = Try(Await.result(minerUnsuspendMinerPutAsync(miner), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Unuspend Miner asynchronously
+   * This endpoint lets a user unsuspend a miner.
+   *
+   * @param miner Miner to unsuspend 
+   * @return Future(api.emptyResp)
+   */
+  def minerUnsuspendMinerPutAsync(miner: String): Future[api.emptyResp] = {
+      helper.minerUnsuspendMinerPut(miner)
+  }
+
+  /**
    * Get all miners deals
    * This endpoint returns all miners deals
    *
@@ -135,6 +275,98 @@ class MinerApi(
 }
 
 class MinerApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
+
+  def minerClaimMinerGet(miner: String)(implicit reader: ClientResponseReader[api.claimMsgResponse]): Future[api.claimMsgResponse] = {
+    // create path and map variables
+    val path = (addFmt("/miner/claim/{miner}")
+      replaceAll("\\{" + "miner" + "\\}", miner.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (miner == null) throw new Exception("Missing required parameter 'miner' when calling MinerApi->minerClaimMinerGet")
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def minerClaimPost(body: ClaimMinerBody)(implicit reader: ClientResponseReader[api.claimResponse], writer: RequestWriter[ClaimMinerBody]): Future[api.claimResponse] = {
+    // create path and map variables
+    val path = (addFmt("/miner/claim"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (body == null) throw new Exception("Missing required parameter 'body' when calling MinerApi->minerClaimPost")
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(body))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def minerSetInfoMinerPut(body: MinerSetInfoParams,
+    miner: String)(implicit reader: ClientResponseReader[api.emptyResp], writer: RequestWriter[MinerSetInfoParams]): Future[api.emptyResp] = {
+    // create path and map variables
+    val path = (addFmt("/miner/set-info/{miner}")
+      replaceAll("\\{" + "miner" + "\\}", miner.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (body == null) throw new Exception("Missing required parameter 'body' when calling MinerApi->minerSetInfoMinerPut")
+    if (miner == null) throw new Exception("Missing required parameter 'miner' when calling MinerApi->minerSetInfoMinerPut")
+
+
+    val resFuture = client.submit("PUT", path, queryParams.toMap, headerParams.toMap, writer.write(body))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def minerSuspendMinerPost(body: SuspendMinerBody,
+    miner: String)(implicit reader: ClientResponseReader[api.emptyResp], writer: RequestWriter[SuspendMinerBody]): Future[api.emptyResp] = {
+    // create path and map variables
+    val path = (addFmt("/miner/suspend/{miner}")
+      replaceAll("\\{" + "miner" + "\\}", miner.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (body == null) throw new Exception("Missing required parameter 'body' when calling MinerApi->minerSuspendMinerPost")
+    if (miner == null) throw new Exception("Missing required parameter 'miner' when calling MinerApi->minerSuspendMinerPost")
+
+
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(body))
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def minerUnsuspendMinerPut(miner: String)(implicit reader: ClientResponseReader[api.emptyResp]): Future[api.emptyResp] = {
+    // create path and map variables
+    val path = (addFmt("/miner/unsuspend/{miner}")
+      replaceAll("\\{" + "miner" + "\\}", miner.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (miner == null) throw new Exception("Missing required parameter 'miner' when calling MinerApi->minerUnsuspendMinerPut")
+
+
+    val resFuture = client.submit("PUT", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
 
   def publicMinersDealsMinerGet(miner: String,
     ignoreFailed: Option[String] = None

@@ -71,6 +71,56 @@ class MinerApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for minerClaimMinerGet
+     *
+     * Get Claim Miner Message.
+     *
+     */
+    public function testMinerClaimMinerGet()
+    {
+    }
+
+    /**
+     * Test case for minerClaimPost
+     *
+     * Claim Miner.
+     *
+     */
+    public function testMinerClaimPost()
+    {
+    }
+
+    /**
+     * Test case for minerSetInfoMinerPut
+     *
+     * Set Miner Info.
+     *
+     */
+    public function testMinerSetInfoMinerPut()
+    {
+    }
+
+    /**
+     * Test case for minerSuspendMinerPost
+     *
+     * Suspend Miner.
+     *
+     */
+    public function testMinerSuspendMinerPost()
+    {
+    }
+
+    /**
+     * Test case for minerUnsuspendMinerPut
+     *
+     * Unuspend Miner.
+     *
+     */
+    public function testMinerUnsuspendMinerPut()
+    {
+    }
+
+    /**
      * Test case for publicMinersDealsMinerGet
      *
      * Get all miners deals.

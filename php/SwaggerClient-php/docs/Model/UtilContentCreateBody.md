@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **location** | **string** |  | [optional] 
 **name** | **string** |  | [optional] 
 **root** | **string** |  | [optional] 
-**type** | **int** |  | [optional] 
+**type** | [**\Swagger\Client\Model\UtilContentType**](UtilContentType.md) |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

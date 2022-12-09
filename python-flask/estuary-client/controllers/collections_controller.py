@@ -1,9 +1,10 @@
 import connexion
 import six
 
+from estuary-client.models.api_create_collection_body import ApiCreateCollectionBody  # noqa: E501
+from estuary-client.models.api_delete_content_from_collection_body import ApiDeleteContentFromCollectionBody  # noqa: E501
 from estuary-client.models.collections_collection import CollectionsCollection  # noqa: E501
-from estuary-client.models.main_create_collection_body import MainCreateCollectionBody  # noqa: E501
-from estuary-client.models.main_delete_content_from_collection_body import MainDeleteContentFromCollectionBody  # noqa: E501
+from estuary-client.models.collections_collection_list_response import CollectionsCollectionListResponse  # noqa: E501
 from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
 from estuary-client import util
 
@@ -34,7 +35,7 @@ def collections_coluuid_contents_delete(body, coluuid):  # noqa: E501
     :rtype: str
     """
     if connexion.request.is_json:
-        body = MainDeleteContentFromCollectionBody.from_dict(connexion.request.get_json())  # noqa: E501
+        body = ApiDeleteContentFromCollectionBody.from_dict(connexion.request.get_json())  # noqa: E501
     return 'do some magic!'
 
 
@@ -61,7 +62,7 @@ def collections_coluuid_get(coluuid, dir=None):  # noqa: E501
     :param dir: Directory
     :type dir: str
 
-    :rtype: str
+    :rtype: List[CollectionsCollectionListResponse]
     """
     return 'do some magic!'
 
@@ -122,5 +123,5 @@ def collections_post(body):  # noqa: E501
     :rtype: CollectionsCollection
     """
     if connexion.request.is_json:
-        body = MainCreateCollectionBody.from_dict(connexion.request.get_json())  # noqa: E501
+        body = ApiCreateCollectionBody.from_dict(connexion.request.get_json())  # noqa: E501
     return 'do some magic!'

@@ -35,7 +35,7 @@ describe 'UserApi' do
   # Get API keys for a user
   # This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
   # @param [Hash] opts the optional parameters
-  # @return [Array<MainGetApiKeysResp>]
+  # @return [Array<ApiGetApiKeysResp>]
   describe 'user_api_keys_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -60,7 +60,7 @@ describe 'UserApi' do
   # @param [Hash] opts the optional parameters
   # @option opts [String] :expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
   # @option opts [String] :perms Permissions -- currently unused
-  # @return [MainGetApiKeysResp]
+  # @return [ApiGetApiKeysResp]
   describe 'user_api_keys_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -80,7 +80,7 @@ describe 'UserApi' do
 
   # unit tests for user_stats_get
   # Get stats for the current user
-  # This endpoint is used to geet stats for the current user.
+  # This endpoint is used to get stats for the current user.
   # @param [Hash] opts the optional parameters
   # @return [String]
   describe 'user_stats_get test' do

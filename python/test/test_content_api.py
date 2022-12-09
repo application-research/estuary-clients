@@ -28,6 +28,13 @@ class TestContentApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_admin_invites_code_post(self):
+        """Test case for admin_invites_code_post
+
+        Create an Estuary invite  # noqa: E501
+        """
+        pass
+
     def test_admin_invites_get(self):
         """Test case for admin_invites_get
 
@@ -35,17 +42,10 @@ class TestContentApi(unittest.TestCase):
         """
         pass
 
-    def test_admin_invites_post(self):
-        """Test case for admin_invites_post
-
-        Create an Estuary invite  # noqa: E501
-        """
-        pass
-
     def test_content_add_car_post(self):
         """Test case for content_add_car_post
 
-        Add Car object  # noqa: E501
+        Upload content via a car file  # noqa: E501
         """
         pass
 
@@ -59,7 +59,7 @@ class TestContentApi(unittest.TestCase):
     def test_content_add_post(self):
         """Test case for content_add_post
 
-        Add new content  # noqa: E501
+        Upload a file  # noqa: E501
         """
         pass
 

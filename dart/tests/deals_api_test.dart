@@ -11,7 +11,7 @@ void main() {
     //
     // This endpoint estimates the cost of a deal
     //
-    //Future<String> dealEstimatePost(MainEstimateDealBody body) async
+    //Future<String> dealEstimatePost(ApiEstimateDealBody body) async
     test('test dealEstimatePost', () async {
       // TODO
     });
@@ -74,7 +74,7 @@ void main() {
     //
     // This endpoint returns the status of a transfer
     //
-    //Future<String> dealTransferStatusPost(MainChannelIDParam body) async
+    //Future<String> dealTransferStatusPost(ApiChannelIDParam body) async
     test('test dealTransferStatusPost', () async {
       // TODO
     });

@@ -4,11 +4,11 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**adminInvitesCodePost**](ContentApi.md#adminInvitesCodePost) | **POST** /admin/invites/{code} | Create an Estuary invite
 [**adminInvitesGet**](ContentApi.md#adminInvitesGet) | **GET** /admin/invites | Get Estuary invites
-[**adminInvitesPost**](ContentApi.md#adminInvitesPost) | **POST** /admin/invites | Create an Estuary invite
-[**contentAddCarPost**](ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Add Car object
+[**contentAddCarPost**](ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Upload content via a car file
 [**contentAddIpfsPost**](ContentApi.md#contentAddIpfsPost) | **POST** /content/add-ipfs | Add IPFS object
-[**contentAddPost**](ContentApi.md#contentAddPost) | **POST** /content/add | Add new content
+[**contentAddPost**](ContentApi.md#contentAddPost) | **POST** /content/add | Upload a file
 [**contentAggregatedContentGet**](ContentApi.md#contentAggregatedContentGet) | **GET** /content/aggregated/{content} | Get aggregated content stats
 [**contentAllDealsGet**](ContentApi.md#contentAllDealsGet) | **GET** /content/all-deals | Get all deals for a user
 [**contentBwUsageContentGet**](ContentApi.md#contentBwUsageContentGet) | **GET** /content/bw-usage/{content} | Get content bandwidth
@@ -23,6 +23,56 @@ Method | HTTP request | Description
 [**contentStagingZonesGet**](ContentApi.md#contentStagingZonesGet) | **GET** /content/staging-zones | Get staging zone for user
 [**contentStatsGet**](ContentApi.md#contentStatsGet) | **GET** /content/stats | Get content statistics
 [**contentStatusIdGet**](ContentApi.md#contentStatusIdGet) | **GET** /content/status/{id} | Content Status
+
+<a name="adminInvitesCodePost"></a>
+# **adminInvitesCodePost**
+> &#x27;String&#x27; adminInvitesCodePost(code)
+
+Create an Estuary invite
+
+This endpoint is used to create an estuary invite.
+
+### Example
+```javascript
+import {EstuaryClient} from 'estuary-client';
+let defaultClient = EstuaryClient.ApiClient.instance;
+
+// Configure API key authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearerAuth.apiKeyPrefix = 'Token';
+
+let apiInstance = new EstuaryClient.ContentApi();
+let code = "code_example"; // String | Invite code to be created
+
+apiInstance.adminInvitesCodePost(code, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **code** | **String**| Invite code to be created | 
+
+### Return type
+
+**&#x27;String&#x27;**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="adminInvitesGet"></a>
 # **adminInvitesGet**
@@ -69,13 +119,13 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="adminInvitesPost"></a>
-# **adminInvitesPost**
-> &#x27;String&#x27; adminInvitesPost(code)
+<a name="contentAddCarPost"></a>
+# **contentAddCarPost**
+> &#x27;String&#x27; contentAddCarPost()
 
-Create an Estuary invite
+Upload content via a car file
 
-This endpoint is used to create an estuary invite.
+This endpoint uploads content via a car file
 
 ### Example
 ```javascript
@@ -89,9 +139,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 //bearerAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new EstuaryClient.ContentApi();
-let code = "code_example"; // String | Invite code to be created
-
-apiInstance.adminInvitesPost(code, (error, data, response) => {
+apiInstance.contentAddCarPost((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -101,10 +149,7 @@ apiInstance.adminInvitesPost(code, (error, data, response) => {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **String**| Invite code to be created | 
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -117,61 +162,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="contentAddCarPost"></a>
-# **contentAddCarPost**
-> UtilContentAddResponse contentAddCarPost(body, opts)
-
-Add Car object
-
-This endpoint is used to add a car object to the network. The object can be a file or a directory.
-
-### Example
-```javascript
-import {EstuaryClient} from 'estuary-client';
-let defaultClient = EstuaryClient.ApiClient.instance;
-
-// Configure API key authorization: bearerAuth
-let bearerAuth = defaultClient.authentications['bearerAuth'];
-bearerAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new EstuaryClient.ContentApi();
-let body = "body_example"; // String | Car
-let opts = { 
-  'ignoreDupes': "ignoreDupes_example", // String | Ignore Dupes
-  'filename': "filename_example" // String | Filename
-};
-apiInstance.contentAddCarPost(body, opts, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-});
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**String**](String.md)| Car | 
- **ignoreDupes** | **String**| Ignore Dupes | [optional] 
- **filename** | **String**| Filename | [optional] 
-
-### Return type
-
-[**UtilContentAddResponse**](UtilContentAddResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: */*
  - **Accept**: application/json
 
 <a name="contentAddIpfsPost"></a>
@@ -229,11 +219,11 @@ Name | Type | Description  | Notes
 
 <a name="contentAddPost"></a>
 # **contentAddPost**
-> UtilContentAddResponse contentAddPost(data, filename, opts)
+> &#x27;String&#x27; contentAddPost()
 
-Add new content
+Upload a file
 
-This endpoint is used to upload new content.
+This endpoint uploads a file.
 
 ### Example
 ```javascript
@@ -247,16 +237,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 //bearerAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new EstuaryClient.ContentApi();
-let data = "data_example"; // Blob | 
-let filename = "filename_example"; // String | 
-let opts = { 
-  'coluuid': "coluuid_example", // String | Collection UUID
-  'replication': 56, // Number | Replication value
-  'ignoreDupes': "ignoreDupes_example", // String | Ignore Dupes true/false
-  'lazyProvide': "lazyProvide_example", // String | Lazy Provide true/false
-  'dir': "dir_example" // String | Directory
-};
-apiInstance.contentAddPost(data, filename, opts, (error, data, response) => {
+apiInstance.contentAddPost((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -266,20 +247,11 @@ apiInstance.contentAddPost(data, filename, opts, (error, data, response) => {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **data** | **Blob**|  | 
- **filename** | **String**|  | 
- **coluuid** | **String**| Collection UUID | [optional] 
- **replication** | **Number**| Replication value | [optional] 
- **ignoreDupes** | **String**| Ignore Dupes true/false | [optional] 
- **lazyProvide** | **String**| Lazy Provide true/false | [optional] 
- **dir** | **String**| Directory | [optional] 
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**UtilContentAddResponse**](UtilContentAddResponse.md)
+**&#x27;String&#x27;**
 
 ### Authorization
 
@@ -287,7 +259,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="contentAggregatedContentGet"></a>
@@ -896,7 +868,7 @@ This endpoint does not need any parameter.
 
 Get content statistics
 
-This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
 
 ### Example
 ```javascript

@@ -1,8 +1,9 @@
 package io.swagger.api;
 
+import io.swagger.model.ApiCreateCollectionBody;
+import io.swagger.model.ApiDeleteContentFromCollectionBody;
 import io.swagger.model.CollectionsCollection;
-import io.swagger.model.MainCreateCollectionBody;
-import io.swagger.model.MainDeleteContentFromCollectionBody;
+import io.swagger.model.CollectionsCollectionListResponse;
 import io.swagger.model.UtilHttpError;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.Operation;
@@ -35,7 +36,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-29T10:27:05.128Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-09T03:38:46.898Z[GMT]")
 @RestController
 public class CollectionsApiController implements CollectionsApi {
 
@@ -65,7 +66,7 @@ public class CollectionsApiController implements CollectionsApi {
         return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<String> collectionsColuuidContentsDelete(@Parameter(in = ParameterIn.PATH, description = "Collection ID", required=true, schema=@Schema()) @PathVariable("coluuid") String coluuid,@Parameter(in = ParameterIn.DEFAULT, description = "Variable to use when filtering for files (must be either 'path' or 'content_id')", required=true, schema=@Schema()) @Valid @RequestBody MainDeleteContentFromCollectionBody body) {
+    public ResponseEntity<String> collectionsColuuidContentsDelete(@Parameter(in = ParameterIn.PATH, description = "Collection ID", required=true, schema=@Schema()) @PathVariable("coluuid") String coluuid,@Parameter(in = ParameterIn.DEFAULT, description = "Variable to use when filtering for files (must be either 'path' or 'content_id')", required=true, schema=@Schema()) @Valid @RequestBody ApiDeleteContentFromCollectionBody body) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
@@ -93,18 +94,18 @@ public class CollectionsApiController implements CollectionsApi {
         return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<String> collectionsColuuidGet(@Parameter(in = ParameterIn.PATH, description = "coluuid", required=true, schema=@Schema()) @PathVariable("coluuid") String coluuid,@Parameter(in = ParameterIn.QUERY, description = "Directory" ,schema=@Schema()) @Valid @RequestParam(value = "dir", required = false) String dir) {
+    public ResponseEntity<List<CollectionsCollectionListResponse>> collectionsColuuidGet(@Parameter(in = ParameterIn.PATH, description = "coluuid", required=true, schema=@Schema()) @PathVariable("coluuid") String coluuid,@Parameter(in = ParameterIn.QUERY, description = "Directory" ,schema=@Schema()) @Valid @RequestParam(value = "dir", required = false) String dir) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<String>(objectMapper.readValue("\"\"", String.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<List<CollectionsCollectionListResponse>>(objectMapper.readValue("[ {\n  \"coluuid\" : \"coluuid\",\n  \"contId\" : 0,\n  \"size\" : 6,\n  \"name\" : \"name\",\n  \"dir\" : \"dir\",\n  \"type\" : \"directory\",\n  \"cid\" : {\n    \"cid\" : { }\n  },\n  \"updatedAt\" : \"updatedAt\"\n}, {\n  \"coluuid\" : \"coluuid\",\n  \"contId\" : 0,\n  \"size\" : 6,\n  \"name\" : \"name\",\n  \"dir\" : \"dir\",\n  \"type\" : \"directory\",\n  \"cid\" : {\n    \"cid\" : { }\n  },\n  \"updatedAt\" : \"updatedAt\"\n} ]", List.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<List<CollectionsCollectionListResponse>>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<List<CollectionsCollectionListResponse>>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<String> collectionsColuuidPost(@Parameter(in = ParameterIn.PATH, description = "Collection UUID", required=true, schema=@Schema()) @PathVariable("coluuid") String coluuid,@Parameter(in = ParameterIn.DEFAULT, description = "Content IDs to add to collection", required=true, schema=@Schema()) @Valid @RequestBody List<Integer> body,@Parameter(in = ParameterIn.QUERY, description = "Directory" ,schema=@Schema()) @Valid @RequestParam(value = "dir", required = false) String dir) {
@@ -149,7 +150,7 @@ public class CollectionsApiController implements CollectionsApi {
         return new ResponseEntity<List<CollectionsCollection>>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<CollectionsCollection> collectionsPost(@Parameter(in = ParameterIn.DEFAULT, description = "Collection name and description", required=true, schema=@Schema()) @Valid @RequestBody MainCreateCollectionBody body) {
+    public ResponseEntity<CollectionsCollection> collectionsPost(@Parameter(in = ParameterIn.DEFAULT, description = "Collection name and description", required=true, schema=@Schema()) @Valid @RequestBody ApiCreateCollectionBody body) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {

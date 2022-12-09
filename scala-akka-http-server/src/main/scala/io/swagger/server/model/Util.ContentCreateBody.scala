@@ -15,6 +15,6 @@ case class Util.ContentCreateBody (
   location: Option[String],
   name: Option[String],
   root: Option[String],
-  `type`: Option[Int]
+  `type`: Option[util.ContentType]
 )
 

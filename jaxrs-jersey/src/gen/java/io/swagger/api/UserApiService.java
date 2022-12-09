@@ -5,7 +5,7 @@ import io.swagger.model.*;
 
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 
-import io.swagger.model.MainGetApiKeysResp;
+import io.swagger.model.ApiGetApiKeysResp;
 import io.swagger.model.UtilHttpError;
 
 import java.util.Map;
@@ -17,7 +17,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-29T10:27:02.850Z[GMT]")public abstract class UserApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-12-09T03:38:44.975Z[GMT]")public abstract class UserApiService {
     public abstract Response userApiKeysGet(SecurityContext securityContext) throws NotFoundException;
     public abstract Response userApiKeysKeyOrHashDelete(String keyOrHash,SecurityContext securityContext) throws NotFoundException;
     public abstract Response userApiKeysPost( String expiry, String perms,SecurityContext securityContext) throws NotFoundException;

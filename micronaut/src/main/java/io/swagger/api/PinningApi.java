@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-29T10:27:04.066Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-12-09T03:38:45.180Z[GMT]")
 @Controller
 public interface PinningApi {
 
@@ -44,7 +44,7 @@ public interface PinningApi {
 
 
     @Operation(summary = "Delete a pinned object", operationId = "pinningPinsPinidDelete", description = "This endpoint deletes a pinned object." , tags = {"pinning"})
-    @ApiResponse(responseCode = "202", description = "")
+    @ApiResponse(responseCode = "202", description = "Accepted")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
     @Delete(value = "/pinning/pins/{pinid}", produces = { "application/json" })
     default Single<HttpResponse<Void>> pinningPinsPinidDelete(@Parameter(description = "Pin ID") @PathVariable("pinid") String pinid

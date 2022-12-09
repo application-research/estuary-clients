@@ -24,7 +24,7 @@
 
 package io.swagger.api;
 
-import io.swagger.model.MainGetApiKeysResp;
+import io.swagger.model.ApiGetApiKeysResp;
 import io.swagger.model.UtilHttpError;
 import org.junit.Test;
 import org.junit.Before;
@@ -80,7 +80,7 @@ public class UserApiTest {
      */
     @Test
     public void userApiKeysGetTest() {
-        //List<MainGetApiKeysResp> response = api.userApiKeysGet();
+        //List<ApiGetApiKeysResp> response = api.userApiKeysGet();
         //assertNotNull(response);
         // TODO: test validations
         
@@ -115,7 +115,7 @@ public class UserApiTest {
     public void userApiKeysPostTest() {
         String expiry = null;
         String perms = null;
-        //MainGetApiKeysResp response = api.userApiKeysPost(expiry, perms);
+        //ApiGetApiKeysResp response = api.userApiKeysPost(expiry, perms);
         //assertNotNull(response);
         // TODO: test validations
         
@@ -140,7 +140,7 @@ public class UserApiTest {
     /**
      * Get stats for the current user
      *
-     * This endpoint is used to geet stats for the current user.
+     * This endpoint is used to get stats for the current user.
      *
      * @throws ApiException
      *          if the Api call fails

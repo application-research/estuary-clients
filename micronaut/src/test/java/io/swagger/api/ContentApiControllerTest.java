@@ -1,9 +1,7 @@
 package io.swagger.api;
 
-import java.io.File;
 import io.swagger.model.MainImportDealBody;
 import io.swagger.model.UtilContentAddIpfsBody;
-import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 
@@ -26,11 +24,8 @@ class ContentApiControllerTest {
 
     @Test
     void contentAddCarPostTest() {
-        String body = "body_example";
-        String ignoreDupes = "ignoreDupes_example";
-        String filename = "filename_example";
         try {
-            api.contentAddCarPost(body, ignoreDupes, filename).blockingGet();
+            api.contentAddCarPost().blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }
@@ -48,16 +43,9 @@ class ContentApiControllerTest {
     }
 
     @Test
-    void contentAddPostWithFormTest() {
-        File data = new File("data_example");
-        String filename = "filename_example";
-        String coluuid = "coluuid_example";
-        Integer replication = 56;
-        String ignoreDupes = "ignoreDupes_example";
-        String lazyProvide = "lazyProvide_example";
-        String dir = "dir_example";
+    void contentAddPostTest() {
         try {
-            api.contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir).blockingGet();
+            api.contentAddPost().blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }

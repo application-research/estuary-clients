@@ -84,8 +84,7 @@
               return;
             }
             // TODO: update response assertions
-            expect(data).to.be.a(&#x27;string&#x27;);
-            // expect(data).to.be(null);
+            expect(data).to.be.a(EstuaryClient.ApiPublicNodeInfo);
 
             done();
           });

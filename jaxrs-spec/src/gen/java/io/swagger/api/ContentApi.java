@@ -1,9 +1,7 @@
 package io.swagger.api;
 
-import java.io.File;
 import io.swagger.model.MainImportDealBody;
 import io.swagger.model.UtilContentAddIpfsBody;
-import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 
@@ -26,27 +24,20 @@ import javax.validation.Valid;
 
 @Path("/content")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2022-11-29T10:27:02.215Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2022-12-09T03:38:45.112Z[GMT]")
 public class ContentApi {
 
     @POST
     @Path("/add-car")
-    @Consumes({ "*/*" })
     @Produces({ "application/json" })
-    @Operation(summary = "Add Car object", description = "This endpoint is used to add a car object to the network. The object can be a file or a directory.", security = {
+    @Operation(summary = "Upload content via a car file", description = "This endpoint uploads content via a car file", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilContentAddResponse.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
     })
-    public Response contentAddCarPost(@Valid String body,  @QueryParam("ignore-dupes") 
-
- @Parameter(description = "Ignore Dupes")  String ignoreDupes
-,  @QueryParam("filename") 
-
- @Parameter(description = "Filename")  String filename
-) {
+    public Response contentAddCarPost() {
         return Response.ok().entity("magic!").build();
     }
     @POST
@@ -68,32 +59,15 @@ public class ContentApi {
     }
     @POST
     @Path("/add")
-    @Consumes({ "multipart/form-data" })
     @Produces({ "application/json" })
-    @Operation(summary = "Add new content", description = "This endpoint is used to upload new content.", security = {
+    @Operation(summary = "Upload a file", description = "This endpoint uploads a file.", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilContentAddResponse.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
     })
-    public Response contentAddPost( @FormParam(value = "data") InputStream dataInputStream,
-   @FormParam(value = "data") Attachment dataDetail,@FormParam(value = "filename")  String filename,  @QueryParam("coluuid") 
-
- @Parameter(description = "Collection UUID")  String coluuid
-,  @QueryParam("replication") 
-
- @Parameter(description = "Replication value")  Integer replication
-,  @QueryParam("ignore-dupes") 
-
- @Parameter(description = "Ignore Dupes true/false")  String ignoreDupes
-,  @QueryParam("lazy-provide") 
-
- @Parameter(description = "Lazy Provide true/false")  String lazyProvide
-,  @QueryParam("dir") 
-
- @Parameter(description = "Directory")  String dir
-) {
+    public Response contentAddPost() {
         return Response.ok().entity("magic!").build();
     }
     @GET
@@ -293,7 +267,7 @@ public class ContentApi {
     @GET
     @Path("/stats")
     @Produces({ "application/json" })
-    @Operation(summary = "Get content statistics", description = "This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten", security = {
+    @Operation(summary = "Get content statistics", description = "This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),

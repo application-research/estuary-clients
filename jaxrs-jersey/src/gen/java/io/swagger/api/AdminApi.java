@@ -36,7 +36,7 @@ import javax.validation.constraints.*;
 @Path("/admin")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-29T10:27:02.850Z[GMT]")public class AdminApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-12-09T03:38:44.975Z[GMT]")public class AdminApi  {
    private final AdminApiService delegate;
 
    public AdminApi(@Context ServletConfig servletContext) {
@@ -94,6 +94,23 @@ import javax.validation.constraints.*;
     throws NotFoundException {
         return delegate.adminAutoretrieveListGet(securityContext);
     }
+    @POST
+    @Path("/invites/{code}")
+    
+    @Produces({ "application/json" })
+    @Operation(summary = "Create an Estuary invite", description = "This endpoint is used to create an estuary invite.", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public Response adminInvitesCodePost(@Parameter(in = ParameterIn.PATH, description = "Invite code to be created",required=true) @PathParam("code") String code
+,@Context SecurityContext securityContext)
+    throws NotFoundException {
+        return delegate.adminInvitesCodePost(code,securityContext);
+    }
     @GET
     @Path("/invites")
     
@@ -109,23 +126,6 @@ import javax.validation.constraints.*;
     public Response adminInvitesGet(@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.adminInvitesGet(securityContext);
-    }
-    @POST
-    @Path("/invites")
-    
-    @Produces({ "application/json" })
-    @Operation(summary = "Create an Estuary invite", description = "This endpoint is used to create an estuary invite.", security = {
-        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
-        
-        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
-        
-        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response adminInvitesPost(@Parameter(in = ParameterIn.PATH, description = "Invite code to be created",required=true) @PathParam("code") String code
-,@Context SecurityContext securityContext)
-    throws NotFoundException {
-        return delegate.adminInvitesPost(code,securityContext);
     }
     @DELETE
     @Path("/peering/peers")

@@ -5,7 +5,7 @@
  */
 package io.swagger.api;
 
-import io.swagger.model.MainGetApiKeysResp;
+import io.swagger.model.ApiGetApiKeysResp;
 import io.swagger.model.UtilHttpError;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.micronaut.http.*;
@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-29T10:27:04.066Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-12-09T03:38:45.180Z[GMT]")
 @Controller
 public interface UserApi {
 
@@ -35,7 +35,7 @@ public interface UserApi {
     @ApiResponse(responseCode = "404", description = "Not Found")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
     @Get(value = "/user/api-keys", produces = { "application/json" })
-    default Single<HttpResponse<List<MainGetApiKeysResp>>> userApiKeysGet() {
+    default Single<HttpResponse<List<ApiGetApiKeysResp>>> userApiKeysGet() {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -61,7 +61,7 @@ public interface UserApi {
     @ApiResponse(responseCode = "404", description = "Not Found")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
     @Post(value = "/user/api-keys", produces = { "application/json" })
-    default Single<HttpResponse<MainGetApiKeysResp>> userApiKeysPost(@Nullable @Parameter(description = "Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h") @Valid @QueryValue(value = "expiry") String expiry
+    default Single<HttpResponse<ApiGetApiKeysResp>> userApiKeysPost(@Nullable @Parameter(description = "Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h") @Valid @QueryValue(value = "expiry") String expiry
 ,@Nullable @Parameter(description = "Permissions -- currently unused") @Valid @QueryValue(value = "perms") String perms
 ) {
         return Single.fromCallable(() -> {
@@ -82,7 +82,7 @@ public interface UserApi {
     }
 
 
-    @Operation(summary = "Get stats for the current user", operationId = "userStatsGet", description = "This endpoint is used to geet stats for the current user." , tags = {"User"})
+    @Operation(summary = "Get stats for the current user", operationId = "userStatsGet", description = "This endpoint is used to get stats for the current user." , tags = {"User"})
     @ApiResponse(responseCode = "200", description = "OK")
     @ApiResponse(responseCode = "400", description = "Bad Request")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")

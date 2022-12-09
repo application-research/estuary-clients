@@ -14,7 +14,7 @@ open class UserAPI: APIBase {
      Get API keys for a user
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func userApiKeysGet(completion: @escaping ((_ data: [MainGetApiKeysResp]?, _ error: ErrorResponse?) -> Void)) {
+    open class func userApiKeysGet(completion: @escaping ((_ data: [ApiGetApiKeysResp]?, _ error: ErrorResponse?) -> Void)) {
         userApiKeysGetWithRequestBuilder().execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -39,16 +39,16 @@ open class UserAPI: APIBase {
   "tokenHash" : "tokenHash",
   "token" : "token"
 } ]}]
-     - returns: RequestBuilder<[MainGetApiKeysResp]> 
+     - returns: RequestBuilder<[ApiGetApiKeysResp]> 
      */
-    open class func userApiKeysGetWithRequestBuilder() -> RequestBuilder<[MainGetApiKeysResp]> {
+    open class func userApiKeysGetWithRequestBuilder() -> RequestBuilder<[ApiGetApiKeysResp]> {
         let path = "/user/api-keys"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
 
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<[MainGetApiKeysResp]>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<[ApiGetApiKeysResp]>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -97,7 +97,7 @@ open class UserAPI: APIBase {
      - parameter perms: (query) Permissions -- currently unused (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func userApiKeysPost(expiry: String? = nil, perms: String? = nil, completion: @escaping ((_ data: MainGetApiKeysResp?, _ error: ErrorResponse?) -> Void)) {
+    open class func userApiKeysPost(expiry: String? = nil, perms: String? = nil, completion: @escaping ((_ data: ApiGetApiKeysResp?, _ error: ErrorResponse?) -> Void)) {
         userApiKeysPostWithRequestBuilder(expiry: expiry, perms: perms).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -119,9 +119,9 @@ open class UserAPI: APIBase {
 }}]
      - parameter expiry: (query) Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
      - parameter perms: (query) Permissions -- currently unused (optional)
-     - returns: RequestBuilder<MainGetApiKeysResp> 
+     - returns: RequestBuilder<ApiGetApiKeysResp> 
      */
-    open class func userApiKeysPostWithRequestBuilder(expiry: String? = nil, perms: String? = nil) -> RequestBuilder<MainGetApiKeysResp> {
+    open class func userApiKeysPostWithRequestBuilder(expiry: String? = nil, perms: String? = nil) -> RequestBuilder<ApiGetApiKeysResp> {
         let path = "/user/api-keys"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
@@ -131,7 +131,7 @@ open class UserAPI: APIBase {
                         "perms": perms
         ])
 
-        let requestBuilder: RequestBuilder<MainGetApiKeysResp>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<ApiGetApiKeysResp>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -183,7 +183,7 @@ open class UserAPI: APIBase {
     /**
      Get stats for the current user
      - GET /user/stats
-     - This endpoint is used to geet stats for the current user.
+     - This endpoint is used to get stats for the current user.
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth

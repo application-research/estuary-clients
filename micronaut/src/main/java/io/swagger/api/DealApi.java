@@ -5,8 +5,8 @@
  */
 package io.swagger.api;
 
-import io.swagger.model.MainChannelIDParam;
-import io.swagger.model.MainEstimateDealBody;
+import io.swagger.model.ApiChannelIDParam;
+import io.swagger.model.ApiEstimateDealBody;
 import io.swagger.model.UtilHttpError;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.micronaut.http.*;
@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-29T10:27:04.066Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-12-09T03:38:45.180Z[GMT]")
 @Controller
 public interface DealApi {
 
@@ -35,7 +35,7 @@ public interface DealApi {
     @ApiResponse(responseCode = "400", description = "Bad Request")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
     @Post(value = "/deal/estimate", produces = { "application/json" }, consumes = {"*/*"})
-    default Single<HttpResponse<String>> dealEstimatePost(@Parameter(description = "The size of the deal in bytes, the replication factor, and the duration of the deal in blocks") @Valid @Body MainEstimateDealBody body
+    default Single<HttpResponse<String>> dealEstimatePost(@Parameter(description = "The size of the deal in bytes, the replication factor, and the duration of the deal in blocks") @Valid @Body ApiEstimateDealBody body
 ) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
@@ -126,7 +126,7 @@ public interface DealApi {
     @ApiResponse(responseCode = "400", description = "Bad Request")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
     @Post(value = "/deal/transfer/status", produces = { "application/json" }, consumes = {"*/*"})
-    default Single<HttpResponse<String>> dealTransferStatusPost(@Parameter(description = "Channel ID") @Valid @Body MainChannelIDParam body
+    default Single<HttpResponse<String>> dealTransferStatusPost(@Parameter(description = "Channel ID") @Valid @Body ApiChannelIDParam body
 ) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();

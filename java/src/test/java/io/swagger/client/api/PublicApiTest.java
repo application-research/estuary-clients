@@ -12,6 +12,7 @@
 
 package io.swagger.client.api;
 
+import io.swagger.client.model.ApiPublicNodeInfo;
 import io.swagger.client.model.UtilHttpError;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -71,7 +72,7 @@ public class PublicApiTest {
      */
     @Test
     public void publicInfoGetTest() throws Exception {
-        String response = api.publicInfoGet();
+        ApiPublicNodeInfo response = api.publicInfoGet();
 
         // TODO: test validations
     }

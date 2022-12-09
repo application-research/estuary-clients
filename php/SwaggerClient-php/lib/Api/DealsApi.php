@@ -91,7 +91,7 @@ class DealsApi
      *
      * Estimate the cost of a deal
      *
-     * @param  \Swagger\Client\Model\MainEstimateDealBody $body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks (required)
+     * @param  \Swagger\Client\Model\ApiEstimateDealBody $body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -108,7 +108,7 @@ class DealsApi
      *
      * Estimate the cost of a deal
      *
-     * @param  \Swagger\Client\Model\MainEstimateDealBody $body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks (required)
+     * @param  \Swagger\Client\Model\ApiEstimateDealBody $body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -199,7 +199,7 @@ class DealsApi
      *
      * Estimate the cost of a deal
      *
-     * @param  \Swagger\Client\Model\MainEstimateDealBody $body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks (required)
+     * @param  \Swagger\Client\Model\ApiEstimateDealBody $body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -219,7 +219,7 @@ class DealsApi
      *
      * Estimate the cost of a deal
      *
-     * @param  \Swagger\Client\Model\MainEstimateDealBody $body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks (required)
+     * @param  \Swagger\Client\Model\ApiEstimateDealBody $body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -269,7 +269,7 @@ class DealsApi
     /**
      * Create request for operation 'dealEstimatePost'
      *
-     * @param  \Swagger\Client\Model\MainEstimateDealBody $body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks (required)
+     * @param  \Swagger\Client\Model\ApiEstimateDealBody $body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2067,7 +2067,7 @@ class DealsApi
      *
      * Transfer Status
      *
-     * @param  \Swagger\Client\Model\MainChannelIDParam $body Channel ID (required)
+     * @param  \Swagger\Client\Model\ApiChannelIDParam $body Channel ID (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2084,7 +2084,7 @@ class DealsApi
      *
      * Transfer Status
      *
-     * @param  \Swagger\Client\Model\MainChannelIDParam $body Channel ID (required)
+     * @param  \Swagger\Client\Model\ApiChannelIDParam $body Channel ID (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2175,7 +2175,7 @@ class DealsApi
      *
      * Transfer Status
      *
-     * @param  \Swagger\Client\Model\MainChannelIDParam $body Channel ID (required)
+     * @param  \Swagger\Client\Model\ApiChannelIDParam $body Channel ID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2195,7 +2195,7 @@ class DealsApi
      *
      * Transfer Status
      *
-     * @param  \Swagger\Client\Model\MainChannelIDParam $body Channel ID (required)
+     * @param  \Swagger\Client\Model\ApiChannelIDParam $body Channel ID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2245,7 +2245,7 @@ class DealsApi
     /**
      * Create request for operation 'dealTransferStatusPost'
      *
-     * @param  \Swagger\Client\Model\MainChannelIDParam $body Channel ID (required)
+     * @param  \Swagger\Client\Model\ApiChannelIDParam $body Channel ID (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

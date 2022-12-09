@@ -42,7 +42,7 @@ open class PinningAPI {
     "requestid" : "requestid",
     "delegates" : [ "delegates", "delegates" ],
     "info" : { },
-    "status" : "status"
+    "status" : "pinning"
   }, {
     "pin" : {
       "meta" : { },
@@ -54,7 +54,7 @@ open class PinningAPI {
     "requestid" : "requestid",
     "delegates" : [ "delegates", "delegates" ],
     "info" : { },
-    "status" : "status"
+    "status" : "pinning"
   } ]
 }}]
 
@@ -144,7 +144,7 @@ open class PinningAPI {
   "requestid" : "requestid",
   "delegates" : [ "delegates", "delegates" ],
   "info" : { },
-  "status" : "status"
+  "status" : "pinning"
 }}]
      - parameter pinid: (path) cid 
 
@@ -196,7 +196,7 @@ open class PinningAPI {
   "requestid" : "requestid",
   "delegates" : [ "delegates", "delegates" ],
   "info" : { },
-  "status" : "status"
+  "status" : "pinning"
 }}]
      - parameter body: (body) New pin 
      - parameter pinid: (path) Pin ID to be replaced 
@@ -248,7 +248,7 @@ open class PinningAPI {
   "requestid" : "requestid",
   "delegates" : [ "delegates", "delegates" ],
   "info" : { },
-  "status" : "status"
+  "status" : "pinning"
 }}]
      - parameter body: (body) Pin Body {cid:cid, name:name} 
 

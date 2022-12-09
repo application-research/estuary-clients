@@ -26,6 +26,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import io.swagger.client.model.ApiPublicNodeInfo;
 import io.swagger.client.model.UtilHttpError;
 
 import java.lang.reflect.Type;
@@ -362,23 +363,23 @@ public class PublicApi {
     /**
      * Get public node info
      * This endpoint returns information about the node
-     * @return String
+     * @return ApiPublicNodeInfo
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public String publicInfoGet() throws ApiException {
-        ApiResponse<String> resp = publicInfoGetWithHttpInfo();
+    public ApiPublicNodeInfo publicInfoGet() throws ApiException {
+        ApiResponse<ApiPublicNodeInfo> resp = publicInfoGetWithHttpInfo();
         return resp.getData();
     }
 
     /**
      * Get public node info
      * This endpoint returns information about the node
-     * @return ApiResponse&lt;String&gt;
+     * @return ApiResponse&lt;ApiPublicNodeInfo&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<String> publicInfoGetWithHttpInfo() throws ApiException {
+    public ApiResponse<ApiPublicNodeInfo> publicInfoGetWithHttpInfo() throws ApiException {
         com.squareup.okhttp.Call call = publicInfoGetValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApiPublicNodeInfo>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -389,7 +390,7 @@ public class PublicApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call publicInfoGetAsync(final ApiCallback<String> callback) throws ApiException {
+    public com.squareup.okhttp.Call publicInfoGetAsync(final ApiCallback<ApiPublicNodeInfo> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -411,7 +412,7 @@ public class PublicApi {
         }
 
         com.squareup.okhttp.Call call = publicInfoGetValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApiPublicNodeInfo>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

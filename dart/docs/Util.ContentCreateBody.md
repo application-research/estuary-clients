@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **location** | **String** |  | [optional] [default to null]
 **name** | **String** |  | [optional] [default to null]
 **root** | **String** |  | [optional] [default to null]
-**type** | **int** |  | [optional] [default to null]
+**type** | [**UtilContentType**](UtilContentType.md) |  | [optional] [default to null]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

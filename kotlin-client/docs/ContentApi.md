@@ -4,11 +4,11 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**adminInvitesCodePost**](ContentApi.md#adminInvitesCodePost) | **POST** /admin/invites/{code} | Create an Estuary invite
 [**adminInvitesGet**](ContentApi.md#adminInvitesGet) | **GET** /admin/invites | Get Estuary invites
-[**adminInvitesPost**](ContentApi.md#adminInvitesPost) | **POST** /admin/invites | Create an Estuary invite
-[**contentAddCarPost**](ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Add Car object
+[**contentAddCarPost**](ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Upload content via a car file
 [**contentAddIpfsPost**](ContentApi.md#contentAddIpfsPost) | **POST** /content/add-ipfs | Add IPFS object
-[**contentAddPost**](ContentApi.md#contentAddPost) | **POST** /content/add | Add new content
+[**contentAddPost**](ContentApi.md#contentAddPost) | **POST** /content/add | Upload a file
 [**contentAggregatedContentGet**](ContentApi.md#contentAggregatedContentGet) | **GET** /content/aggregated/{content} | Get aggregated content stats
 [**contentAllDealsGet**](ContentApi.md#contentAllDealsGet) | **GET** /content/all-deals | Get all deals for a user
 [**contentBwUsageContentGet**](ContentApi.md#contentBwUsageContentGet) | **GET** /content/bw-usage/{content} | Get content bandwidth
@@ -23,6 +23,53 @@ Method | HTTP request | Description
 [**contentStagingZonesGet**](ContentApi.md#contentStagingZonesGet) | **GET** /content/staging-zones | Get staging zone for user
 [**contentStatsGet**](ContentApi.md#contentStatsGet) | **GET** /content/stats | Get content statistics
 [**contentStatusIdGet**](ContentApi.md#contentStatusIdGet) | **GET** /content/status/{id} | Content Status
+
+<a name="adminInvitesCodePost"></a>
+# **adminInvitesCodePost**
+> kotlin.String adminInvitesCodePost(code)
+
+Create an Estuary invite
+
+This endpoint is used to create an estuary invite.
+
+### Example
+```kotlin
+// Import classes:
+//import estuary-client.infrastructure.*
+//import io.swagger.client.models.*;
+
+val apiInstance = ContentApi()
+val code : kotlin.String = code_example // kotlin.String | Invite code to be created
+try {
+    val result : kotlin.String = apiInstance.adminInvitesCodePost(code)
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling ContentApi#adminInvitesCodePost")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling ContentApi#adminInvitesCodePost")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **code** | **kotlin.String**| Invite code to be created |
+
+### Return type
+
+**kotlin.String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="adminInvitesGet"></a>
 # **adminInvitesGet**
@@ -67,13 +114,13 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="adminInvitesPost"></a>
-# **adminInvitesPost**
-> kotlin.String adminInvitesPost(code)
+<a name="contentAddCarPost"></a>
+# **contentAddCarPost**
+> kotlin.String contentAddCarPost()
 
-Create an Estuary invite
+Upload content via a car file
 
-This endpoint is used to create an estuary invite.
+This endpoint uploads content via a car file
 
 ### Example
 ```kotlin
@@ -82,24 +129,20 @@ This endpoint is used to create an estuary invite.
 //import io.swagger.client.models.*;
 
 val apiInstance = ContentApi()
-val code : kotlin.String = code_example // kotlin.String | Invite code to be created
 try {
-    val result : kotlin.String = apiInstance.adminInvitesPost(code)
+    val result : kotlin.String = apiInstance.contentAddCarPost()
     println(result)
 } catch (e: ClientException) {
-    println("4xx response calling ContentApi#adminInvitesPost")
+    println("4xx response calling ContentApi#contentAddCarPost")
     e.printStackTrace()
 } catch (e: ServerException) {
-    println("5xx response calling ContentApi#adminInvitesPost")
+    println("5xx response calling ContentApi#contentAddCarPost")
     e.printStackTrace()
 }
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **kotlin.String**| Invite code to be created |
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -112,57 +155,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="contentAddCarPost"></a>
-# **contentAddCarPost**
-> UtilContentAddResponse contentAddCarPost(body, ignoreDupes, filename)
-
-Add Car object
-
-This endpoint is used to add a car object to the network. The object can be a file or a directory.
-
-### Example
-```kotlin
-// Import classes:
-//import estuary-client.infrastructure.*
-//import io.swagger.client.models.*;
-
-val apiInstance = ContentApi()
-val body : kotlin.String =  // kotlin.String | Car
-val ignoreDupes : kotlin.String = ignoreDupes_example // kotlin.String | Ignore Dupes
-val filename : kotlin.String = filename_example // kotlin.String | Filename
-try {
-    val result : UtilContentAddResponse = apiInstance.contentAddCarPost(body, ignoreDupes, filename)
-    println(result)
-} catch (e: ClientException) {
-    println("4xx response calling ContentApi#contentAddCarPost")
-    e.printStackTrace()
-} catch (e: ServerException) {
-    println("5xx response calling ContentApi#contentAddCarPost")
-    e.printStackTrace()
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**kotlin.String**](kotlin.String.md)| Car |
- **ignoreDupes** | **kotlin.String**| Ignore Dupes | [optional]
- **filename** | **kotlin.String**| Filename | [optional]
-
-### Return type
-
-[**UtilContentAddResponse**](UtilContentAddResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: */*
  - **Accept**: application/json
 
 <a name="contentAddIpfsPost"></a>
@@ -216,11 +208,11 @@ Name | Type | Description  | Notes
 
 <a name="contentAddPost"></a>
 # **contentAddPost**
-> UtilContentAddResponse contentAddPost(`data`, filename, coluuid, replication, ignoreDupes, lazyProvide, dir)
+> kotlin.String contentAddPost()
 
-Add new content
+Upload a file
 
-This endpoint is used to upload new content.
+This endpoint uploads a file.
 
 ### Example
 ```kotlin
@@ -229,15 +221,8 @@ This endpoint is used to upload new content.
 //import io.swagger.client.models.*;
 
 val apiInstance = ContentApi()
-val `data` : kotlin.Array<kotlin.Byte> = `data`_example // kotlin.Array<kotlin.Byte> | 
-val filename : kotlin.String = filename_example // kotlin.String | 
-val coluuid : kotlin.String = coluuid_example // kotlin.String | Collection UUID
-val replication : kotlin.Int = 56 // kotlin.Int | Replication value
-val ignoreDupes : kotlin.String = ignoreDupes_example // kotlin.String | Ignore Dupes true/false
-val lazyProvide : kotlin.String = lazyProvide_example // kotlin.String | Lazy Provide true/false
-val dir : kotlin.String = dir_example // kotlin.String | Directory
 try {
-    val result : UtilContentAddResponse = apiInstance.contentAddPost(`data`, filename, coluuid, replication, ignoreDupes, lazyProvide, dir)
+    val result : kotlin.String = apiInstance.contentAddPost()
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling ContentApi#contentAddPost")
@@ -249,20 +234,11 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **&#x60;data&#x60;** | **kotlin.Array&lt;kotlin.Byte&gt;**|  |
- **filename** | **kotlin.String**|  |
- **coluuid** | **kotlin.String**| Collection UUID | [optional]
- **replication** | **kotlin.Int**| Replication value | [optional]
- **ignoreDupes** | **kotlin.String**| Ignore Dupes true/false | [optional]
- **lazyProvide** | **kotlin.String**| Lazy Provide true/false | [optional]
- **dir** | **kotlin.String**| Directory | [optional]
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**UtilContentAddResponse**](UtilContentAddResponse.md)
+**kotlin.String**
 
 ### Authorization
 
@@ -270,7 +246,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="contentAggregatedContentGet"></a>
@@ -843,7 +819,7 @@ This endpoint does not need any parameter.
 
 Get content statistics
 
-This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
 
 ### Example
 ```kotlin

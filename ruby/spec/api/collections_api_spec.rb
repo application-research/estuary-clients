@@ -74,7 +74,7 @@ describe 'CollectionsApi' do
   # @param coluuid coluuid
   # @param [Hash] opts the optional parameters
   # @option opts [String] :dir Directory
-  # @return [String]
+  # @return [Array<CollectionsCollectionListResponse>]
   describe 'collections_coluuid_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

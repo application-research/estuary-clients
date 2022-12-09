@@ -118,7 +118,7 @@ Name | Type | Description  | Notes
 
 <a name="publicInfoGet"></a>
 # **publicInfoGet**
-> &#x27;String&#x27; publicInfoGet()
+> ApiPublicNodeInfo publicInfoGet()
 
 Get public node info
 
@@ -150,7 +150,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**&#x27;String&#x27;**
+[**ApiPublicNodeInfo**](ApiPublicNodeInfo.md)
 
 ### Authorization
 

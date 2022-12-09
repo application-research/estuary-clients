@@ -137,7 +137,7 @@ class CollectionsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param MainDeleteContentFromCollectionBody body: Variable to use when filtering for files (must be either 'path' or 'content_id') (required)
+        :param ApiDeleteContentFromCollectionBody body: Variable to use when filtering for files (must be either 'path' or 'content_id') (required)
         :param str coluuid: Collection ID (required)
         :return: str
                  If the method is called asynchronously,
@@ -160,7 +160,7 @@ class CollectionsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param MainDeleteContentFromCollectionBody body: Variable to use when filtering for files (must be either 'path' or 'content_id') (required)
+        :param ApiDeleteContentFromCollectionBody body: Variable to use when filtering for files (must be either 'path' or 'content_id') (required)
         :param str coluuid: Collection ID (required)
         :return: str
                  If the method is called asynchronously,
@@ -341,7 +341,7 @@ class CollectionsApi(object):
         :param async_req bool
         :param str coluuid: coluuid (required)
         :param str dir: Directory
-        :return: str
+        :return: list[CollectionsCollectionListResponse]
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -364,7 +364,7 @@ class CollectionsApi(object):
         :param async_req bool
         :param str coluuid: coluuid (required)
         :param str dir: Directory
-        :return: str
+        :return: list[CollectionsCollectionListResponse]
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -420,7 +420,7 @@ class CollectionsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='str',  # noqa: E501
+            response_type='list[CollectionsCollectionListResponse]',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -747,7 +747,7 @@ class CollectionsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param MainCreateCollectionBody body: Collection name and description (required)
+        :param ApiCreateCollectionBody body: Collection name and description (required)
         :return: CollectionsCollection
                  If the method is called asynchronously,
                  returns the request thread.
@@ -769,7 +769,7 @@ class CollectionsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param MainCreateCollectionBody body: Collection name and description (required)
+        :param ApiCreateCollectionBody body: Collection name and description (required)
         :return: CollectionsCollection
                  If the method is called asynchronously,
                  returns the request thread.

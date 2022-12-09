@@ -72,8 +72,8 @@ namespace estuary-client.Api
         /// This endpoint returns information about the node
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>string</returns>
-        string PublicInfoGet ();
+        /// <returns>ApiPublicNodeInfo</returns>
+        ApiPublicNodeInfo PublicInfoGet ();
 
         /// <summary>
         /// Get public node info
@@ -82,8 +82,8 @@ namespace estuary-client.Api
         /// This endpoint returns information about the node
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> PublicInfoGetWithHttpInfo ();
+        /// <returns>ApiResponse of ApiPublicNodeInfo</returns>
+        ApiResponse<ApiPublicNodeInfo> PublicInfoGetWithHttpInfo ();
         /// <summary>
         /// Get deal metrics
         /// </summary>
@@ -295,8 +295,8 @@ namespace estuary-client.Api
         /// This endpoint returns information about the node
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> PublicInfoGetAsync ();
+        /// <returns>Task of ApiPublicNodeInfo</returns>
+        System.Threading.Tasks.Task<ApiPublicNodeInfo> PublicInfoGetAsync ();
 
         /// <summary>
         /// Get public node info
@@ -305,8 +305,8 @@ namespace estuary-client.Api
         /// This endpoint returns information about the node
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> PublicInfoGetAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (ApiPublicNodeInfo)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ApiPublicNodeInfo>> PublicInfoGetAsyncWithHttpInfo ();
         /// <summary>
         /// Get deal metrics
         /// </summary>
@@ -862,10 +862,10 @@ namespace estuary-client.Api
         /// Get public node info This endpoint returns information about the node
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>string</returns>
-        public string PublicInfoGet ()
+        /// <returns>ApiPublicNodeInfo</returns>
+        public ApiPublicNodeInfo PublicInfoGet ()
         {
-             ApiResponse<string> localVarResponse = PublicInfoGetWithHttpInfo();
+             ApiResponse<ApiPublicNodeInfo> localVarResponse = PublicInfoGetWithHttpInfo();
              return localVarResponse.Data;
         }
 
@@ -873,8 +873,8 @@ namespace estuary-client.Api
         /// Get public node info This endpoint returns information about the node
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > PublicInfoGetWithHttpInfo ()
+        /// <returns>ApiResponse of ApiPublicNodeInfo</returns>
+        public ApiResponse< ApiPublicNodeInfo > PublicInfoGetWithHttpInfo ()
         {
 
             var localVarPath = "/public/info";
@@ -917,19 +917,19 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<string>(localVarStatusCode,
+            return new ApiResponse<ApiPublicNodeInfo>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (ApiPublicNodeInfo) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiPublicNodeInfo)));
         }
 
         /// <summary>
         /// Get public node info This endpoint returns information about the node
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> PublicInfoGetAsync ()
+        /// <returns>Task of ApiPublicNodeInfo</returns>
+        public async System.Threading.Tasks.Task<ApiPublicNodeInfo> PublicInfoGetAsync ()
         {
-             ApiResponse<string> localVarResponse = await PublicInfoGetAsyncWithHttpInfo();
+             ApiResponse<ApiPublicNodeInfo> localVarResponse = await PublicInfoGetAsyncWithHttpInfo();
              return localVarResponse.Data;
 
         }
@@ -938,8 +938,8 @@ namespace estuary-client.Api
         /// Get public node info This endpoint returns information about the node
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> PublicInfoGetAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (ApiPublicNodeInfo)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ApiPublicNodeInfo>> PublicInfoGetAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/public/info";
@@ -982,9 +982,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<string>(localVarStatusCode,
+            return new ApiResponse<ApiPublicNodeInfo>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (ApiPublicNodeInfo) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiPublicNodeInfo)));
         }
 
         /// <summary>

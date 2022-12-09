@@ -18,7 +18,6 @@ import { Configuration } from '../configuration';
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 import { MainImportDealBody } from '../models';
 import { UtilContentAddIpfsBody } from '../models';
-import { UtilContentAddResponse } from '../models';
 import { UtilContentCreateBody } from '../models';
 import { UtilHttpError } from '../models';
 /**
@@ -27,6 +26,54 @@ import { UtilHttpError } from '../models';
  */
 export const ContentApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * This endpoint is used to create an estuary invite.
+         * @summary Create an Estuary invite
+         * @param {string} code Invite code to be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        adminInvitesCodePost: async (code: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'code' is not null or undefined
+            if (code === null || code === undefined) {
+                throw new RequiredError('code','Required parameter code was null or undefined when calling adminInvitesCodePost.');
+            }
+            const localVarPath = `/admin/invites/{code}`
+                .replace(`{${"code"}}`, encodeURIComponent(String(code)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? await configuration.apiKey("Authorization")
+                    : await configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * This endpoint is used to list all estuary invites.
          * @summary Get Estuary invites
@@ -70,67 +117,12 @@ export const ContentApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * This endpoint is used to create an estuary invite.
-         * @summary Create an Estuary invite
-         * @param {string} code Invite code to be created
+         * This endpoint uploads content via a car file
+         * @summary Upload content via a car file
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminInvitesPost: async (code: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'code' is not null or undefined
-            if (code === null || code === undefined) {
-                throw new RequiredError('code','Required parameter code was null or undefined when calling adminInvitesPost.');
-            }
-            const localVarPath = `/admin/invites`
-                .replace(`{${"code"}}`, encodeURIComponent(String(code)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearerAuth required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-                    ? await configuration.apiKey("Authorization")
-                    : await configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
-
-            const query = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.params) {
-                query.set(key, options.params[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * This endpoint is used to add a car object to the network. The object can be a file or a directory.
-         * @summary Add Car object
-         * @param {string} body Car
-         * @param {string} [ignoreDupes] Ignore Dupes
-         * @param {string} [filename] Filename
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        contentAddCarPost: async (body: string, ignoreDupes?: string, filename?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling contentAddCarPost.');
-            }
+        contentAddCarPost: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/content/add-car`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -150,16 +142,6 @@ export const ContentApiAxiosParamCreator = function (configuration?: Configurati
                 localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
             }
 
-            if (ignoreDupes !== undefined) {
-                localVarQueryParameter['ignore-dupes'] = ignoreDupes;
-            }
-
-            if (filename !== undefined) {
-                localVarQueryParameter['filename'] = filename;
-            }
-
-            localVarHeaderParameter['Content-Type'] = '*/*';
-
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
                 query.set(key, localVarQueryParameter[key]);
@@ -170,8 +152,6 @@ export const ContentApiAxiosParamCreator = function (configuration?: Configurati
             localVarUrlObj.search = (new URLSearchParams(query)).toString();
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            const needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
 
             return {
                 url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
@@ -235,27 +215,12 @@ export const ContentApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * This endpoint is used to upload new content.
-         * @summary Add new content
-         * @param {Blob} data 
-         * @param {string} filename 
-         * @param {string} [coluuid] Collection UUID
-         * @param {number} [replication] Replication value
-         * @param {string} [ignoreDupes] Ignore Dupes true/false
-         * @param {string} [lazyProvide] Lazy Provide true/false
-         * @param {string} [dir] Directory
+         * This endpoint uploads a file.
+         * @summary Upload a file
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddPostForm: async (data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'data' is not null or undefined
-            if (data === null || data === undefined) {
-                throw new RequiredError('data','Required parameter data was null or undefined when calling contentAddPostForm.');
-            }
-            // verify required parameter 'filename' is not null or undefined
-            if (filename === null || filename === undefined) {
-                throw new RequiredError('filename','Required parameter filename was null or undefined when calling contentAddPostForm.');
-            }
+        contentAddPost: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/content/add`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -266,7 +231,6 @@ export const ContentApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-            const localVarFormParams = new FormData();
 
             // authentication bearerAuth required
             if (configuration && configuration.apiKey) {
@@ -276,36 +240,6 @@ export const ContentApiAxiosParamCreator = function (configuration?: Configurati
                 localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
             }
 
-            if (coluuid !== undefined) {
-                localVarQueryParameter['coluuid'] = coluuid;
-            }
-
-            if (replication !== undefined) {
-                localVarQueryParameter['replication'] = replication;
-            }
-
-            if (ignoreDupes !== undefined) {
-                localVarQueryParameter['ignore-dupes'] = ignoreDupes;
-            }
-
-            if (lazyProvide !== undefined) {
-                localVarQueryParameter['lazy-provide'] = lazyProvide;
-            }
-
-            if (dir !== undefined) {
-                localVarQueryParameter['dir'] = dir;
-            }
-
-
-            if (data !== undefined) { 
-                localVarFormParams.append('data', data as any);
-            }
-
-            if (filename !== undefined) { 
-                localVarFormParams.append('filename', filename as any);
-            }
-
-            localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
                 query.set(key, localVarQueryParameter[key]);
@@ -316,7 +250,6 @@ export const ContentApiAxiosParamCreator = function (configuration?: Configurati
             localVarUrlObj.search = (new URLSearchParams(query)).toString();
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = localVarFormParams;
 
             return {
                 url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
@@ -924,7 +857,7 @@ export const ContentApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+         * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
          * @summary Get content statistics
          * @param {string} limit limit
          * @param {string} offset offset
@@ -1041,6 +974,20 @@ export const ContentApiAxiosParamCreator = function (configuration?: Configurati
 export const ContentApiFp = function(configuration?: Configuration) {
     return {
         /**
+         * This endpoint is used to create an estuary invite.
+         * @summary Create an Estuary invite
+         * @param {string} code Invite code to be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async adminInvitesCodePost(code: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
+            const localVarAxiosArgs = await ContentApiAxiosParamCreator(configuration).adminInvitesCodePost(code, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
          * This endpoint is used to list all estuary invites.
          * @summary Get Estuary invites
          * @param {*} [options] Override http request option.
@@ -1054,30 +1001,13 @@ export const ContentApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         * This endpoint is used to create an estuary invite.
-         * @summary Create an Estuary invite
-         * @param {string} code Invite code to be created
+         * This endpoint uploads content via a car file
+         * @summary Upload content via a car file
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async adminInvitesPost(code: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
-            const localVarAxiosArgs = await ContentApiAxiosParamCreator(configuration).adminInvitesPost(code, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * This endpoint is used to add a car object to the network. The object can be a file or a directory.
-         * @summary Add Car object
-         * @param {string} body Car
-         * @param {string} [ignoreDupes] Ignore Dupes
-         * @param {string} [filename] Filename
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<UtilContentAddResponse>>> {
-            const localVarAxiosArgs = await ContentApiAxiosParamCreator(configuration).contentAddCarPost(body, ignoreDupes, filename, options);
+        async contentAddCarPost(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
+            const localVarAxiosArgs = await ContentApiAxiosParamCreator(configuration).contentAddCarPost(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -1099,20 +1029,13 @@ export const ContentApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         * This endpoint is used to upload new content.
-         * @summary Add new content
-         * @param {Blob} data 
-         * @param {string} filename 
-         * @param {string} [coluuid] Collection UUID
-         * @param {number} [replication] Replication value
-         * @param {string} [ignoreDupes] Ignore Dupes true/false
-         * @param {string} [lazyProvide] Lazy Provide true/false
-         * @param {string} [dir] Directory
+         * This endpoint uploads a file.
+         * @summary Upload a file
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async contentAddPostForm(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<UtilContentAddResponse>>> {
-            const localVarAxiosArgs = await ContentApiAxiosParamCreator(configuration).contentAddPostForm(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, options);
+        async contentAddPost(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
+            const localVarAxiosArgs = await ContentApiAxiosParamCreator(configuration).contentAddPost(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -1289,7 +1212,7 @@ export const ContentApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+         * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
          * @summary Get content statistics
          * @param {string} limit limit
          * @param {string} offset offset
@@ -1327,6 +1250,16 @@ export const ContentApiFp = function(configuration?: Configuration) {
 export const ContentApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     return {
         /**
+         * This endpoint is used to create an estuary invite.
+         * @summary Create an Estuary invite
+         * @param {string} code Invite code to be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async adminInvitesCodePost(code: string, options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
+            return ContentApiFp(configuration).adminInvitesCodePost(code, options).then((request) => request(axios, basePath));
+        },
+        /**
          * This endpoint is used to list all estuary invites.
          * @summary Get Estuary invites
          * @param {*} [options] Override http request option.
@@ -1336,26 +1269,13 @@ export const ContentApiFactory = function (configuration?: Configuration, basePa
             return ContentApiFp(configuration).adminInvitesGet(options).then((request) => request(axios, basePath));
         },
         /**
-         * This endpoint is used to create an estuary invite.
-         * @summary Create an Estuary invite
-         * @param {string} code Invite code to be created
+         * This endpoint uploads content via a car file
+         * @summary Upload content via a car file
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async adminInvitesPost(code: string, options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
-            return ContentApiFp(configuration).adminInvitesPost(code, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * This endpoint is used to add a car object to the network. The object can be a file or a directory.
-         * @summary Add Car object
-         * @param {string} body Car
-         * @param {string} [ignoreDupes] Ignore Dupes
-         * @param {string} [filename] Filename
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<UtilContentAddResponse>> {
-            return ContentApiFp(configuration).contentAddCarPost(body, ignoreDupes, filename, options).then((request) => request(axios, basePath));
+        async contentAddCarPost(options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
+            return ContentApiFp(configuration).contentAddCarPost(options).then((request) => request(axios, basePath));
         },
         /**
          * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
@@ -1369,20 +1289,13 @@ export const ContentApiFactory = function (configuration?: Configuration, basePa
             return ContentApiFp(configuration).contentAddIpfsPost(body, ignoreDupes, options).then((request) => request(axios, basePath));
         },
         /**
-         * This endpoint is used to upload new content.
-         * @summary Add new content
-         * @param {Blob} data 
-         * @param {string} filename 
-         * @param {string} [coluuid] Collection UUID
-         * @param {number} [replication] Replication value
-         * @param {string} [ignoreDupes] Ignore Dupes true/false
-         * @param {string} [lazyProvide] Lazy Provide true/false
-         * @param {string} [dir] Directory
+         * This endpoint uploads a file.
+         * @summary Upload a file
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async contentAddPostForm(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<UtilContentAddResponse>> {
-            return ContentApiFp(configuration).contentAddPostForm(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, options).then((request) => request(axios, basePath));
+        async contentAddPost(options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
+            return ContentApiFp(configuration).contentAddPost(options).then((request) => request(axios, basePath));
         },
         /**
          * This endpoint returns aggregated content stats
@@ -1507,7 +1420,7 @@ export const ContentApiFactory = function (configuration?: Configuration, basePa
             return ContentApiFp(configuration).contentStagingZonesGet(options).then((request) => request(axios, basePath));
         },
         /**
-         * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+         * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
          * @summary Get content statistics
          * @param {string} limit limit
          * @param {string} offset offset
@@ -1538,6 +1451,17 @@ export const ContentApiFactory = function (configuration?: Configuration, basePa
  */
 export class ContentApi extends BaseAPI {
     /**
+     * This endpoint is used to create an estuary invite.
+     * @summary Create an Estuary invite
+     * @param {string} code Invite code to be created
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ContentApi
+     */
+    public async adminInvitesCodePost(code: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
+        return ContentApiFp(this.configuration).adminInvitesCodePost(code, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
      * This endpoint is used to list all estuary invites.
      * @summary Get Estuary invites
      * @param {*} [options] Override http request option.
@@ -1548,28 +1472,14 @@ export class ContentApi extends BaseAPI {
         return ContentApiFp(this.configuration).adminInvitesGet(options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     * This endpoint is used to create an estuary invite.
-     * @summary Create an Estuary invite
-     * @param {string} code Invite code to be created
+     * This endpoint uploads content via a car file
+     * @summary Upload content via a car file
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContentApi
      */
-    public async adminInvitesPost(code: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
-        return ContentApiFp(this.configuration).adminInvitesPost(code, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * This endpoint is used to add a car object to the network. The object can be a file or a directory.
-     * @summary Add Car object
-     * @param {string} body Car
-     * @param {string} [ignoreDupes] Ignore Dupes
-     * @param {string} [filename] Filename
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ContentApi
-     */
-    public async contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<UtilContentAddResponse>> {
-        return ContentApiFp(this.configuration).contentAddCarPost(body, ignoreDupes, filename, options).then((request) => request(this.axios, this.basePath));
+    public async contentAddCarPost(options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
+        return ContentApiFp(this.configuration).contentAddCarPost(options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
@@ -1584,21 +1494,14 @@ export class ContentApi extends BaseAPI {
         return ContentApiFp(this.configuration).contentAddIpfsPost(body, ignoreDupes, options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     * This endpoint is used to upload new content.
-     * @summary Add new content
-     * @param {Blob} data 
-     * @param {string} filename 
-     * @param {string} [coluuid] Collection UUID
-     * @param {number} [replication] Replication value
-     * @param {string} [ignoreDupes] Ignore Dupes true/false
-     * @param {string} [lazyProvide] Lazy Provide true/false
-     * @param {string} [dir] Directory
+     * This endpoint uploads a file.
+     * @summary Upload a file
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContentApi
      */
-    public async contentAddPostForm(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<UtilContentAddResponse>> {
-        return ContentApiFp(this.configuration).contentAddPostForm(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, options).then((request) => request(this.axios, this.basePath));
+    public async contentAddPost(options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
+        return ContentApiFp(this.configuration).contentAddPost(options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * This endpoint returns aggregated content stats
@@ -1735,7 +1638,7 @@ export class ContentApi extends BaseAPI {
         return ContentApiFp(this.configuration).contentStagingZonesGet(options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+     * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
      * @summary Get content statistics
      * @param {string} limit limit
      * @param {string} offset offset

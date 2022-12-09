@@ -61,7 +61,7 @@ fun Route.PinningApi() {
     "requestid" : "requestid",
     "delegates" : [ "delegates", "delegates" ],
     "info" : { },
-    "status" : "status"
+    "status" : "pinning"
   }, {
     "pin" : {
       "meta" : { },
@@ -73,7 +73,7 @@ fun Route.PinningApi() {
     "requestid" : "requestid",
     "delegates" : [ "delegates", "delegates" ],
     "info" : { },
-    "status" : "status"
+    "status" : "pinning"
   } ]
 }"""
             
@@ -108,7 +108,7 @@ fun Route.PinningApi() {
   "requestid" : "requestid",
   "delegates" : [ "delegates", "delegates" ],
   "info" : { },
-  "status" : "status"
+  "status" : "pinning"
 }"""
             
             when(exampleContentType) {
@@ -134,7 +134,7 @@ fun Route.PinningApi() {
   "requestid" : "requestid",
   "delegates" : [ "delegates", "delegates" ],
   "info" : { },
-  "status" : "status"
+  "status" : "pinning"
 }"""
             
             when(exampleContentType) {
@@ -160,7 +160,7 @@ fun Route.PinningApi() {
   "requestid" : "requestid",
   "delegates" : [ "delegates", "delegates" ],
   "info" : { },
-  "status" : "status"
+  "status" : "pinning"
 }"""
             
             when(exampleContentType) {

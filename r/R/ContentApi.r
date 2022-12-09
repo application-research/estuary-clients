@@ -17,19 +17,19 @@
 #' @section Methods:
 #' \describe{
 #'
+#' admin_invites_code_post Create an Estuary invite
+#'
+#'
 #' admin_invites_get Get Estuary invites
 #'
 #'
-#' admin_invites_post Create an Estuary invite
-#'
-#'
-#' content_add_car_post Add Car object
+#' content_add_car_post Upload content via a car file
 #'
 #'
 #' content_add_ipfs_post Add IPFS object
 #'
 #'
-#' content_add_post Add new content
+#' content_add_post Upload a file
 #'
 #'
 #' content_aggregated_content_get Get aggregated content stats
@@ -89,6 +89,34 @@ ContentApi <- R6::R6Class(
         self$apiClient <- ApiClient$new()
       }
     },
+    admin_invites_code_post = function(code, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- character()
+
+      urlPath <- "/admin/invites/{code}"
+      if (!missing(`code`)) {
+        urlPath <- gsub(paste0("\\{", "code", "\\}"), `code`, urlPath)
+      }
+
+      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "POST",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+      
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        returnObject <- Character$new()
+        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
+        Response$new(returnObject, resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        Response$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        Response$new("API server error", resp)
+      }
+
+    }
     admin_invites_get = function(...){
       args <- list(...)
       queryParams <- list()
@@ -113,52 +141,10 @@ ContentApi <- R6::R6Class(
       }
 
     }
-    admin_invites_post = function(code, ...){
+    content_add_car_post = function(...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
-
-      urlPath <- "/admin/invites"
-      if (!missing(`code`)) {
-        urlPath <- gsub(paste0("\\{", "code", "\\}"), `code`, urlPath)
-      }
-
-      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
-                                 method = "POST",
-                                 queryParams = queryParams,
-                                 headerParams = headerParams,
-                                 body = body,
-                                 ...)
-      
-      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- Character$new()
-        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
-        Response$new(returnObject, resp)
-      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
-        Response$new("API client error", resp)
-      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
-        Response$new("API server error", resp)
-      }
-
-    }
-    content_add_car_post = function(body, ignore_dupes, filename, ...){
-      args <- list(...)
-      queryParams <- list()
-      headerParams <- character()
-
-      if (!missing(`ignore_dupes`)) {
-        queryParams['ignore-dupes'] <- ignore_dupes
-      }
-
-      if (!missing(`filename`)) {
-        queryParams['filename'] <- filename
-      }
-
-      if (!missing(`body`)) {
-        body <- `body`$toJSONString()
-      } else {
-        body <- NULL
-      }
 
       urlPath <- "/content/add-car"
       resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -169,7 +155,7 @@ ContentApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- UtilContentAddResponse$new()
+        returnObject <- Character$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -213,35 +199,10 @@ ContentApi <- R6::R6Class(
       }
 
     }
-    content_add_post = function(data, filename, coluuid, replication, ignore_dupes, lazy_provide, dir, ...){
+    content_add_post = function(...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
-
-      if (!missing(`coluuid`)) {
-        queryParams['coluuid'] <- coluuid
-      }
-
-      if (!missing(`replication`)) {
-        queryParams['replication'] <- replication
-      }
-
-      if (!missing(`ignore_dupes`)) {
-        queryParams['ignore-dupes'] <- ignore_dupes
-      }
-
-      if (!missing(`lazy_provide`)) {
-        queryParams['lazy-provide'] <- lazy_provide
-      }
-
-      if (!missing(`dir`)) {
-        queryParams['dir'] <- dir
-      }
-
-      body <- list(
-          "data" = httr::upload_file(data),
-          "filename" = filename
-      )
 
       urlPath <- "/content/add"
       resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
@@ -252,7 +213,7 @@ ContentApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- UtilContentAddResponse$new()
+        returnObject <- Character$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {

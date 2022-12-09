@@ -1,6 +1,6 @@
 package io.swagger.api;
 
-import io.swagger.model.MainGetApiKeysResp;
+import io.swagger.model.ApiGetApiKeysResp;
 import io.swagger.model.UtilHttpError;
 
 import io.micronaut.http.HttpResponse;

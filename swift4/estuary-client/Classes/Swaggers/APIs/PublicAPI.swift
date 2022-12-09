@@ -97,7 +97,7 @@ open class PublicAPI {
 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func publicInfoGet(completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
+    open class func publicInfoGet(completion: @escaping ((_ data: ApiPublicNodeInfo?,_ error: Error?) -> Void)) {
         publicInfoGetWithRequestBuilder().execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -111,18 +111,20 @@ open class PublicAPI {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example=""}]
+     - examples: [{contentType=application/json, example={
+  "primaryAddress" : { }
+}}]
 
-     - returns: RequestBuilder<String> 
+     - returns: RequestBuilder<ApiPublicNodeInfo> 
      */
-    open class func publicInfoGetWithRequestBuilder() -> RequestBuilder<String> {
+    open class func publicInfoGetWithRequestBuilder() -> RequestBuilder<ApiPublicNodeInfo> {
         let path = "/public/info"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
 
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<ApiPublicNodeInfo>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }

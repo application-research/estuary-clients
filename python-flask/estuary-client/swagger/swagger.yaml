@@ -105,12 +105,13 @@ paths:
               schema:
                 $ref: '#/components/schemas/util.HttpError'
       x-openapi-router-controller: estuary-client.controllers.content_controller
+  /admin/invites/{code}:
     post:
       tags:
       - content
       summary: Create an Estuary invite
       description: This endpoint is used to create an estuary invite.
-      operationId: admin_invites_post
+      operationId: admin_invites_code_post
       parameters:
       - name: code
         in: path
@@ -461,7 +462,7 @@ paths:
         content:
           '*/*':
             schema:
-              $ref: '#/components/schemas/main.createCollectionBody'
+              $ref: '#/components/schemas/api.createCollectionBody'
         required: true
       responses:
         "200":
@@ -574,7 +575,9 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                type: array
+                items:
+                  $ref: '#/components/schemas/collections.CollectionListResponse'
                 x-content-type: application/json
         "400":
           description: Bad Request
@@ -742,7 +745,7 @@ paths:
         content:
           '*/*':
             schema:
-              $ref: '#/components/schemas/main.deleteContentFromCollectionBody'
+              $ref: '#/components/schemas/api.deleteContentFromCollectionBody'
         required: true
       responses:
         "200":
@@ -770,63 +773,17 @@ paths:
     post:
       tags:
       - content
-      summary: Add new content
-      description: This endpoint is used to upload new content.
+      summary: Upload a file
+      description: This endpoint uploads a file.
       operationId: content_add_post
-      parameters:
-      - name: coluuid
-        in: query
-        description: Collection UUID
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: string
-      - name: replication
-        in: query
-        description: Replication value
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: integer
-      - name: ignore_dupes
-        in: query
-        description: Ignore Dupes true/false
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: string
-      - name: lazy_provide
-        in: query
-        description: Lazy Provide true/false
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: string
-      - name: dir
-        in: query
-        description: Directory
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/content_add_body'
-        required: true
       responses:
         "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/util.ContentAddResponse'
+                type: string
+                x-content-type: application/json
         "400":
           description: Bad Request
           content:
@@ -844,41 +801,17 @@ paths:
     post:
       tags:
       - content
-      summary: Add Car object
-      description: This endpoint is used to add a car object to the network. The object
-        can be a file or a directory.
+      summary: Upload content via a car file
+      description: This endpoint uploads content via a car file
       operationId: content_add_car_post
-      parameters:
-      - name: ignore_dupes
-        in: query
-        description: Ignore Dupes
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: string
-      - name: filename
-        in: query
-        description: Filename
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: string
-      requestBody:
-        description: Car
-        content:
-          '*/*':
-            schema:
-              type: string
-        required: true
       responses:
         "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/util.ContentAddResponse'
+                type: string
+                x-content-type: application/json
         "400":
           description: Bad Request
           content:
@@ -891,7 +824,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/util.HttpError'
-      x-codegen-request-body-name: body
       x-openapi-router-controller: estuary-client.controllers.content_controller
   /content/add-ipfs:
     post:
@@ -1368,7 +1300,7 @@ paths:
       description: This endpoint is used to get content statistics. Every content
         stored in the network (estuary) is tracked by a unique ID which can be used
         to get information about the content. This endpoint will allow the consumer
-        to get the collected stats of a conten
+        to get the collected stats of a content
       operationId: content_stats_get
       parameters:
       - name: limit
@@ -1495,7 +1427,7 @@ paths:
         content:
           '*/*':
             schema:
-              $ref: '#/components/schemas/main.estimateDealBody'
+              $ref: '#/components/schemas/api.estimateDealBody'
         required: true
       responses:
         "200":
@@ -1752,7 +1684,7 @@ paths:
         content:
           '*/*':
             schema:
-              $ref: '#/components/schemas/main.ChannelIDParam'
+              $ref: '#/components/schemas/api.ChannelIDParam'
         required: true
       responses:
         "200":
@@ -1923,6 +1855,201 @@ paths:
               schema:
                 $ref: '#/components/schemas/util.HttpError'
       x-openapi-router-controller: estuary-client.controllers.public_controller
+  /miner/claim:
+    post:
+      tags:
+      - miner
+      summary: Claim Miner
+      description: This endpoint lets a user claim a miner
+      operationId: miner_claim_post
+      requestBody:
+        description: Claim Miner Body
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/miner.ClaimMinerBody'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/api.claimResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-codegen-request-body-name: req
+      x-openapi-router-controller: estuary-client.controllers.miner_controller
+  /miner/claim/{miner}:
+    get:
+      tags:
+      - miner
+      summary: Get Claim Miner Message
+      description: This endpoint lets a user get the message in order to claim a miner
+      operationId: miner_claim_miner_get
+      parameters:
+      - name: miner
+        in: path
+        description: Miner claim message
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/api.claimMsgResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.miner_controller
+  /miner/set-info/{miner}:
+    put:
+      tags:
+      - miner
+      summary: Set Miner Info
+      description: This endpoint lets a user set miner info.
+      operationId: miner_set_info_miner_put
+      parameters:
+      - name: miner
+        in: path
+        description: Miner to set info for
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: Miner set info params
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/miner.MinerSetInfoParams'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/api.emptyResp'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-codegen-request-body-name: params
+      x-openapi-router-controller: estuary-client.controllers.miner_controller
+  /miner/suspend/{miner}:
+    post:
+      tags:
+      - miner
+      summary: Suspend Miner
+      description: This endpoint lets a user suspend a miner.
+      operationId: miner_suspend_miner_post
+      parameters:
+      - name: miner
+        in: path
+        description: Miner to suspend
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: Suspend Miner Body
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/miner.SuspendMinerBody'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/api.emptyResp'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-codegen-request-body-name: req
+      x-openapi-router-controller: estuary-client.controllers.miner_controller
+  /miner/unsuspend/{miner}:
+    put:
+      tags:
+      - miner
+      summary: Unuspend Miner
+      description: This endpoint lets a user unsuspend a miner.
+      operationId: miner_unsuspend_miner_put
+      parameters:
+      - name: miner
+        in: path
+        description: Miner to unsuspend
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/api.emptyResp'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.miner_controller
   /net/addrs:
     get:
       tags:
@@ -2102,7 +2229,7 @@ paths:
           type: string
       responses:
         "202":
-          description: ""
+          description: Accepted
           content: {}
         "500":
           description: Internal Server Error
@@ -2189,8 +2316,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
-                x-content-type: application/json
+                $ref: '#/components/schemas/api.publicNodeInfo'
         "400":
           description: Bad Request
           content:
@@ -2516,7 +2642,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/main.getApiKeysResp'
+                  $ref: '#/components/schemas/api.getApiKeysResp'
                 x-content-type: application/json
         "400":
           description: Bad Request
@@ -2568,7 +2694,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/main.getApiKeysResp'
+                $ref: '#/components/schemas/api.getApiKeysResp'
         "400":
           description: Bad Request
           content:
@@ -2662,7 +2788,7 @@ paths:
       tags:
       - User
       summary: Get stats for the current user
-      description: This endpoint is used to geet stats for the current user.
+      description: This endpoint is used to get stats for the current user.
       operationId: user_stats_get
       responses:
         "200":
@@ -2685,8 +2811,119 @@ paths:
               schema:
                 $ref: '#/components/schemas/util.HttpError'
       x-openapi-router-controller: estuary-client.controllers.user_controller
+  /viewer:
+    get:
+      summary: Fetch viewer details
+      description: "This endpoint fetches viewer details such as username, permissions,\
+        \ address, owned miners, user settings etc."
+      operationId: viewer_get
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.ViewerResponse'
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-openapi-router-controller: estuary-client.controllers.default_controller
 components:
   schemas:
+    address.Address:
+      type: object
+    api.ChannelIDParam:
+      type: object
+      properties:
+        id:
+          type: integer
+        initiator:
+          type: string
+        responder:
+          type: string
+    api.claimMsgResponse:
+      type: object
+      properties:
+        hexmsg:
+          type: string
+      example:
+        hexmsg: hexmsg
+    api.claimResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+      example:
+        success: true
+    api.createCollectionBody:
+      type: object
+      properties:
+        description:
+          type: string
+        name:
+          type: string
+    api.deleteContentFromCollectionBody:
+      type: object
+      properties:
+        by:
+          type: string
+        value:
+          type: string
+    api.emptyResp:
+      type: object
+    api.estimateDealBody:
+      type: object
+      properties:
+        durationBlks:
+          type: integer
+        replication:
+          type: integer
+        size:
+          type: integer
+        verified:
+          type: boolean
+    api.getApiKeysResp:
+      type: object
+      properties:
+        expiry:
+          type: string
+        label:
+          type: string
+        token:
+          type: string
+        tokenHash:
+          type: string
+      example:
+        expiry: expiry
+        label: label
+        tokenHash: tokenHash
+        token: token
+    api.publicNodeInfo:
+      type: object
+      properties:
+        primaryAddress:
+          $ref: '#/components/schemas/address.Address'
+      example:
+        primaryAddress: {}
+    cid.Cid:
+      type: object
+    collections.CidType:
+      type: string
+      enum:
+      - directory
+      - file
+      x-enum-varnames:
+      - CidTypeDir
+      - CidTypeFile
     collections.Collection:
       type: object
       properties:
@@ -2709,56 +2946,35 @@ components:
         userId: 0
         uuid: uuid
         cid: cid
-    main.ChannelIDParam:
+    collections.CollectionListResponse:
       type: object
       properties:
-        id:
+        cid:
+          $ref: '#/components/schemas/util.DbCID'
+        coluuid:
+          type: string
+        contId:
           type: integer
-        initiator:
-          type: string
-        responder:
-          type: string
-    main.createCollectionBody:
-      type: object
-      properties:
-        description:
+        dir:
           type: string
         name:
           type: string
-    main.deleteContentFromCollectionBody:
-      type: object
-      properties:
-        by:
-          type: string
-        value:
-          type: string
-    main.estimateDealBody:
-      type: object
-      properties:
-        durationBlks:
-          type: integer
-        replication:
-          type: integer
         size:
           type: integer
-        verified:
-          type: boolean
-    main.getApiKeysResp:
-      type: object
-      properties:
-        expiry:
-          type: string
-        label:
-          type: string
-        token:
-          type: string
-        tokenHash:
+        type:
+          $ref: '#/components/schemas/collections.CidType'
+        updatedAt:
           type: string
       example:
-        expiry: expiry
-        label: label
-        tokenHash: tokenHash
-        token: token
+        coluuid: coluuid
+        contId: 0
+        size: 6
+        name: name
+        dir: dir
+        type: directory
+        cid:
+          cid: {}
+        updatedAt: updatedAt
     main.importDealBody:
       type: object
       properties:
@@ -2771,6 +2987,25 @@ components:
         dir:
           type: string
         name:
+          type: string
+    miner.ClaimMinerBody:
+      type: object
+      properties:
+        claim:
+          type: string
+        miner:
+          $ref: '#/components/schemas/address.Address'
+        name:
+          type: string
+    miner.MinerSetInfoParams:
+      type: object
+      properties:
+        name:
+          type: string
+    miner.SuspendMinerBody:
+      type: object
+      properties:
+        reason:
           type: string
     types.IpfsListPinStatusResponse:
       type: object
@@ -2797,7 +3032,7 @@ components:
           - delegates
           - delegates
           info: {}
-          status: status
+          status: pinning
         - pin:
             meta: {}
             name: name
@@ -2811,7 +3046,7 @@ components:
           - delegates
           - delegates
           info: {}
-          status: status
+          status: pinning
     types.IpfsPin:
       type: object
       properties:
@@ -2852,7 +3087,7 @@ components:
         requestid:
           type: string
         status:
-          type: string
+          $ref: '#/components/schemas/types.PinningStatus'
       example:
         pin:
           meta: {}
@@ -2867,7 +3102,19 @@ components:
         - delegates
         - delegates
         info: {}
-        status: status
+        status: pinning
+    types.PinningStatus:
+      type: string
+      enum:
+      - pinning
+      - pinned
+      - failed
+      - queued
+      x-enum-varnames:
+      - PinningStatusPinning
+      - PinningStatusPinned
+      - PinningStatusFailed
+      - PinningStatusQueued
     util.ContentAddIpfsBody:
       type: object
       properties:
@@ -2898,14 +3145,6 @@ components:
             type: string
         retrieval_url:
           type: string
-      example:
-        retrieval_url: retrieval_url
-        estuaryId: 0
-        estuary_retrieval_url: estuary_retrieval_url
-        providers:
-        - providers
-        - providers
-        cid: cid
     util.ContentCreateBody:
       type: object
       properties:
@@ -2920,7 +3159,24 @@ components:
         root:
           type: string
         type:
-          type: integer
+          $ref: '#/components/schemas/util.ContentType'
+    util.ContentType:
+      type: integer
+      enum:
+      - 0
+      - 1
+      - 2
+      x-enum-varnames:
+      - Unknown
+      - File
+      - Directory
+    util.DbCID:
+      type: object
+      properties:
+        cid:
+          $ref: '#/components/schemas/cid.Cid'
+      example:
+        cid: {}
     util.HttpError:
       type: object
       properties:
@@ -2930,6 +3186,77 @@ components:
           type: string
         reason:
           type: string
+    util.UserSettings:
+      type: object
+      properties:
+        contentAddingDisabled:
+          type: boolean
+        dealDuration:
+          type: integer
+        dealMakingDisabled:
+          type: boolean
+        fileStagingThreshold:
+          type: integer
+        flags:
+          type: integer
+        replication:
+          type: integer
+        uploadEndpoints:
+          type: array
+          items:
+            type: string
+        verified:
+          type: boolean
+      example:
+        dealDuration: 1
+        replication: 2
+        dealMakingDisabled: true
+        flags: 5
+        verified: true
+        fileStagingThreshold: 5
+        uploadEndpoints:
+        - uploadEndpoints
+        - uploadEndpoints
+        contentAddingDisabled: true
+    util.ViewerResponse:
+      type: object
+      properties:
+        address:
+          type: string
+        auth_expiry:
+          type: string
+        id:
+          type: integer
+        miners:
+          type: array
+          items:
+            type: string
+        perms:
+          type: integer
+        settings:
+          $ref: '#/components/schemas/util.UserSettings'
+        username:
+          type: string
+      example:
+        settings:
+          dealDuration: 1
+          replication: 2
+          dealMakingDisabled: true
+          flags: 5
+          verified: true
+          fileStagingThreshold: 5
+          uploadEndpoints:
+          - uploadEndpoints
+          - uploadEndpoints
+          contentAddingDisabled: true
+        address: address
+        auth_expiry: auth_expiry
+        perms: 6
+        id: 0
+        miners:
+        - miners
+        - miners
+        username: username
     autoretrieve_init_body:
       required:
       - addresses
@@ -2942,18 +3269,6 @@ components:
         pubKey:
           type: string
           description: Autoretrieve's public key
-    content_add_body:
-      required:
-      - data
-      type: object
-      properties:
-        data:
-          type: string
-          description: File to upload
-          format: binary
-        filename:
-          type: string
-          description: Filename to use for upload
   securitySchemes:
     bearerAuth:
       type: apiKey

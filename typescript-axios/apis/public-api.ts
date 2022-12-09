@@ -16,6 +16,7 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
+import { ApiPublicNodeInfo } from '../models';
 import { UtilHttpError } from '../models';
 /**
  * PublicApi - axios parameter creator
@@ -563,7 +564,7 @@ export const PublicApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async publicInfoGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
+        async publicInfoGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ApiPublicNodeInfo>>> {
             const localVarAxiosArgs = await PublicApiAxiosParamCreator(configuration).publicInfoGet(options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -713,7 +714,7 @@ export const PublicApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async publicInfoGet(options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
+        async publicInfoGet(options?: AxiosRequestConfig): Promise<AxiosResponse<ApiPublicNodeInfo>> {
             return PublicApiFp(configuration).publicInfoGet(options).then((request) => request(axios, basePath));
         },
         /**
@@ -831,7 +832,7 @@ export class PublicApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof PublicApi
      */
-    public async publicInfoGet(options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
+    public async publicInfoGet(options?: AxiosRequestConfig) : Promise<AxiosResponse<ApiPublicNodeInfo>> {
         return PublicApiFp(this.configuration).publicInfoGet(options).then((request) => request(this.axios, this.basePath));
     }
     /**

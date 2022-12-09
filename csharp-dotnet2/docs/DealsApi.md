@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 <a name="dealestimatepost"></a>
 # **DealEstimatePost**
-> string DealEstimatePost (MainEstimateDealBody body)
+> string DealEstimatePost (ApiEstimateDealBody body)
 
 Estimate the cost of a deal
 
@@ -47,7 +47,7 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new DealsApi();
-            var body = new MainEstimateDealBody(); // MainEstimateDealBody | The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
+            var body = new ApiEstimateDealBody(); // ApiEstimateDealBody | The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
 
             try
             {
@@ -68,7 +68,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainEstimateDealBody**](MainEstimateDealBody.md)| The size of the deal in bytes, the replication factor, and the duration of the deal in blocks | 
+ **body** | [**ApiEstimateDealBody**](ApiEstimateDealBody.md)| The size of the deal in bytes, the replication factor, and the duration of the deal in blocks | 
 
 ### Return type
 
@@ -487,7 +487,7 @@ This endpoint does not need any parameter.
 
 <a name="dealtransferstatuspost"></a>
 # **DealTransferStatusPost**
-> string DealTransferStatusPost (MainChannelIDParam body)
+> string DealTransferStatusPost (ApiChannelIDParam body)
 
 Transfer Status
 
@@ -514,7 +514,7 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new DealsApi();
-            var body = new MainChannelIDParam(); // MainChannelIDParam | Channel ID
+            var body = new ApiChannelIDParam(); // ApiChannelIDParam | Channel ID
 
             try
             {
@@ -535,7 +535,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainChannelIDParam**](MainChannelIDParam.md)| Channel ID | 
+ **body** | [**ApiChannelIDParam**](ApiChannelIDParam.md)| Channel ID | 
 
 ### Return type
 

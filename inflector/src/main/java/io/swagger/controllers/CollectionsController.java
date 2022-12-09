@@ -10,12 +10,13 @@ import java.util.List;
 
 import io.swagger.model.*;
 
+import io.swagger.model.ApiCreateCollectionBody;
+import io.swagger.model.ApiDeleteContentFromCollectionBody;
 import io.swagger.model.CollectionsCollection;
-import io.swagger.model.MainCreateCollectionBody;
-import io.swagger.model.MainDeleteContentFromCollectionBody;
+import io.swagger.model.CollectionsCollectionListResponse;
 import io.swagger.model.UtilHttpError;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-29T10:27:02.700Z[GMT]")public class CollectionsController  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-12-09T03:38:44.168Z[GMT]")public class CollectionsController  {
   /** 
    * Uncomment and implement as you see fit.  These operations will map
    * Directly to operation calls from the routing logic.  Because the inflector
@@ -30,7 +31,7 @@ import io.swagger.model.UtilHttpError;
   */
 
   /*
-    public ResponseContext collectionsColuuidContentsDELETE(RequestContext request , MainDeleteContentFromCollectionBody body 
+    public ResponseContext collectionsColuuidContentsDELETE(RequestContext request , ApiDeleteContentFromCollectionBody body 
 , String coluuid 
 ) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
@@ -77,7 +78,7 @@ import io.swagger.model.UtilHttpError;
   */
 
   /*
-    public ResponseContext collectionsPOST(RequestContext request , MainCreateCollectionBody body 
+    public ResponseContext collectionsPOST(RequestContext request , ApiCreateCollectionBody body 
 ) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }

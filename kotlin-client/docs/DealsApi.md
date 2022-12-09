@@ -33,7 +33,7 @@ This endpoint estimates the cost of a deal
 //import io.swagger.client.models.*;
 
 val apiInstance = DealsApi()
-val body : MainestimateDealBody =  // MainestimateDealBody | The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
+val body : ApiestimateDealBody =  // ApiestimateDealBody | The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
 try {
     val result : kotlin.String = apiInstance.dealEstimatePost(body)
     println(result)
@@ -50,7 +50,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainestimateDealBody**](MainestimateDealBody.md)| The size of the deal in bytes, the replication factor, and the duration of the deal in blocks |
+ **body** | [**ApiestimateDealBody**](ApiestimateDealBody.md)| The size of the deal in bytes, the replication factor, and the duration of the deal in blocks |
 
 ### Return type
 
@@ -360,7 +360,7 @@ This endpoint returns the status of a transfer
 //import io.swagger.client.models.*;
 
 val apiInstance = DealsApi()
-val body : MainChannelIDParam =  // MainChannelIDParam | Channel ID
+val body : ApiChannelIDParam =  // ApiChannelIDParam | Channel ID
 try {
     val result : kotlin.String = apiInstance.dealTransferStatusPost(body)
     println(result)
@@ -377,7 +377,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainChannelIDParam**](MainChannelIDParam.md)| Channel ID |
+ **body** | [**ApiChannelIDParam**](ApiChannelIDParam.md)| Channel ID |
 
 ### Return type
 

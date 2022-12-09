@@ -11,9 +11,10 @@
  */
 package io.swagger.client.apis
 
+import io.swagger.client.models.ApicreateCollectionBody
+import io.swagger.client.models.ApideleteContentFromCollectionBody
 import io.swagger.client.models.CollectionsCollection
-import io.swagger.client.models.MaincreateCollectionBody
-import io.swagger.client.models.MaindeleteContentFromCollectionBody
+import io.swagger.client.models.CollectionsCollectionListResponse
 import io.swagger.client.models.UtilHttpError
 
 import estuary-client.infrastructure.*
@@ -53,7 +54,7 @@ class CollectionsApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClien
      * @return kotlin.String
      */
     @Suppress("UNCHECKED_CAST")
-    fun collectionsColuuidContentsDelete(body: MaindeleteContentFromCollectionBody, coluuid: kotlin.String): kotlin.String {
+    fun collectionsColuuidContentsDelete(body: ApideleteContentFromCollectionBody, coluuid: kotlin.String): kotlin.String {
         val localVariableBody: kotlin.Any? = body
         
         val localVariableConfig = RequestConfig(
@@ -102,21 +103,21 @@ class CollectionsApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClien
      * This endpoint is used to get contents in a collection. If no colpath query param is passed
      * @param coluuid coluuid 
      * @param dir Directory (optional)
-     * @return kotlin.String
+     * @return kotlin.Array<CollectionsCollectionListResponse>
      */
     @Suppress("UNCHECKED_CAST")
-    fun collectionsColuuidGet(coluuid: kotlin.String, dir: kotlin.String? = null): kotlin.String {
+    fun collectionsColuuidGet(coluuid: kotlin.String, dir: kotlin.String? = null): kotlin.Array<CollectionsCollectionListResponse> {
         val localVariableQuery: MultiValueMap = mapOf("dir" to listOf("$dir"))
         val localVariableConfig = RequestConfig(
                 RequestMethod.GET,
                 "/collections/{coluuid}".replace("{" + "coluuid" + "}", "$coluuid"), query = localVariableQuery
         )
-        val response = request<kotlin.String>(
+        val response = request<kotlin.Array<CollectionsCollectionListResponse>>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as kotlin.String
+            ResponseType.Success -> (response as Success<*>).data as kotlin.Array<CollectionsCollectionListResponse>
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -209,7 +210,7 @@ class CollectionsApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClien
      * @return CollectionsCollection
      */
     @Suppress("UNCHECKED_CAST")
-    fun collectionsPost(body: MaincreateCollectionBody): CollectionsCollection {
+    fun collectionsPost(body: ApicreateCollectionBody): CollectionsCollection {
         val localVariableBody: kotlin.Any? = body
         
         val localVariableConfig = RequestConfig(

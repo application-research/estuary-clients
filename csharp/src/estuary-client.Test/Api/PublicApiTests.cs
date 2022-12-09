@@ -92,7 +92,7 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //var response = instance.PublicInfoGet();
-            //Assert.IsInstanceOf<string> (response, "response is string");
+            //Assert.IsInstanceOf<ApiPublicNodeInfo> (response, "response is ApiPublicNodeInfo");
         }
         /// <summary>
         /// Test PublicMetricsDealsOnChainGet

@@ -11,7 +11,7 @@ void main() {
     //
     // This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
     //
-    //Future<List<MainGetApiKeysResp>> userApiKeysGet() async
+    //Future<List<ApiGetApiKeysResp>> userApiKeysGet() async
     test('test userApiKeysGet', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
     //
-    //Future<MainGetApiKeysResp> userApiKeysPost({ String expiry, String perms }) async
+    //Future<ApiGetApiKeysResp> userApiKeysPost({ String expiry, String perms }) async
     test('test userApiKeysPost', () async {
       // TODO
     });
@@ -45,7 +45,7 @@ void main() {
 
     // Get stats for the current user
     //
-    // This endpoint is used to geet stats for the current user.
+    // This endpoint is used to get stats for the current user.
     //
     //Future<String> userStatsGet() async
     test('test userStatsGet', () async {

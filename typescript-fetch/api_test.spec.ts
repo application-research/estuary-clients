@@ -79,7 +79,7 @@ describe("CollectionsApi", () => {
     return expect(instance.collectionsColuuidCommitPost(coluuid, {})).resolves.toBe(null)
   })
   test("collectionsColuuidContentsDelete", () => {
-    const body: api.MainDeleteContentFromCollectionBody = undefined
+    const body: api.ApiDeleteContentFromCollectionBody = undefined
     const coluuid: string = "coluuid_example"
     return expect(instance.collectionsColuuidContentsDelete(body, coluuid, {})).resolves.toBe(null)
   })
@@ -108,7 +108,7 @@ describe("CollectionsApi", () => {
     return expect(instance.collectionsGet({})).resolves.toBe(null)
   })
   test("collectionsPost", () => {
-    const body: api.MainCreateCollectionBody = undefined
+    const body: api.ApiCreateCollectionBody = undefined
     return expect(instance.collectionsPost(body, {})).resolves.toBe(null)
   })
 })
@@ -119,18 +119,15 @@ describe("ContentApi", () => {
     instance = new api.ContentApi(config)
   });
 
+  test("adminInvitesCodePost", () => {
+    const code: string = "code_example"
+    return expect(instance.adminInvitesCodePost(code, {})).resolves.toBe(null)
+  })
   test("adminInvitesGet", () => {
     return expect(instance.adminInvitesGet({})).resolves.toBe(null)
   })
-  test("adminInvitesPost", () => {
-    const code: string = "code_example"
-    return expect(instance.adminInvitesPost(code, {})).resolves.toBe(null)
-  })
   test("contentAddCarPost", () => {
-    const body: string = undefined
-    const ignoreDupes: string = "ignoreDupes_example"
-    const filename: string = "filename_example"
-    return expect(instance.contentAddCarPost(body, ignoreDupes, filename, {})).resolves.toBe(null)
+    return expect(instance.contentAddCarPost({})).resolves.toBe(null)
   })
   test("contentAddIpfsPost", () => {
     const body: api.UtilContentAddIpfsBody = undefined
@@ -138,14 +135,7 @@ describe("ContentApi", () => {
     return expect(instance.contentAddIpfsPost(body, ignoreDupes, {})).resolves.toBe(null)
   })
   test("contentAddPost", () => {
-    const data: Blob = "data_example"
-    const filename: string = "filename_example"
-    const coluuid: string = "coluuid_example"
-    const replication: number = 56
-    const ignoreDupes: string = "ignoreDupes_example"
-    const lazyProvide: string = "lazyProvide_example"
-    const dir: string = "dir_example"
-    return expect(instance.contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, {})).resolves.toBe(null)
+    return expect(instance.contentAddPost({})).resolves.toBe(null)
   })
   test("contentAggregatedContentGet", () => {
     const content: string = "content_example"
@@ -215,7 +205,7 @@ describe("DealsApi", () => {
   });
 
   test("dealEstimatePost", () => {
-    const body: api.MainEstimateDealBody = undefined
+    const body: api.ApiEstimateDealBody = undefined
     return expect(instance.dealEstimatePost(body, {})).resolves.toBe(null)
   })
   test("dealInfoDealidGet", () => {
@@ -243,7 +233,7 @@ describe("DealsApi", () => {
     return expect(instance.dealTransferInProgressGet({})).resolves.toBe(null)
   })
   test("dealTransferStatusPost", () => {
-    const body: api.MainChannelIDParam = undefined
+    const body: api.ApiChannelIDParam = undefined
     return expect(instance.dealTransferStatusPost(body, {})).resolves.toBe(null)
   })
   test("dealsFailuresGet", () => {
@@ -267,6 +257,17 @@ describe("DealsApi", () => {
   })
 })
 
+describe("DefaultApi", () => {
+  let instance: api.DefaultApi
+  beforeEach(function() {
+    instance = new api.DefaultApi(config)
+  });
+
+  test("viewerGet", () => {
+    return expect(instance.viewerGet({})).resolves.toBe(null)
+  })
+})
+
 describe("MetricsApi", () => {
   let instance: api.MetricsApi
   beforeEach(function() {
@@ -284,6 +285,28 @@ describe("MinerApi", () => {
     instance = new api.MinerApi(config)
   });
 
+  test("minerClaimMinerGet", () => {
+    const miner: string = "miner_example"
+    return expect(instance.minerClaimMinerGet(miner, {})).resolves.toBe(null)
+  })
+  test("minerClaimPost", () => {
+    const body: api.MinerClaimMinerBody = undefined
+    return expect(instance.minerClaimPost(body, {})).resolves.toBe(null)
+  })
+  test("minerSetInfoMinerPut", () => {
+    const body: api.MinerMinerSetInfoParams = undefined
+    const miner: string = "miner_example"
+    return expect(instance.minerSetInfoMinerPut(body, miner, {})).resolves.toBe(null)
+  })
+  test("minerSuspendMinerPost", () => {
+    const body: api.MinerSuspendMinerBody = undefined
+    const miner: string = "miner_example"
+    return expect(instance.minerSuspendMinerPost(body, miner, {})).resolves.toBe(null)
+  })
+  test("minerUnsuspendMinerPut", () => {
+    const miner: string = "miner_example"
+    return expect(instance.minerUnsuspendMinerPut(miner, {})).resolves.toBe(null)
+  })
   test("publicMinersDealsMinerGet", () => {
     const miner: string = "miner_example"
     const ignoreFailed: string = "ignoreFailed_example"

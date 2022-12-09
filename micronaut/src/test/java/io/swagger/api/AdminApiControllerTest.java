@@ -40,19 +40,19 @@ class AdminApiControllerTest {
     }
 
     @Test
-    void adminInvitesGetTest() {
+    void adminInvitesCodePostTest() {
+        String code = "code_example";
         try {
-            api.adminInvitesGet().blockingGet();
+            api.adminInvitesCodePost(code).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }
     }
 
     @Test
-    void adminInvitesPostTest() {
-        String code = "code_example";
+    void adminInvitesGetTest() {
         try {
-            api.adminInvitesPost(code).blockingGet();
+            api.adminInvitesGet().blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }

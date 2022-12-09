@@ -4,11 +4,11 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**adminInvitesCodePost**](ContentApi.md#adminInvitesCodePost) | **POST** /admin/invites/{code} | Create an Estuary invite
 [**adminInvitesGet**](ContentApi.md#adminInvitesGet) | **GET** /admin/invites | Get Estuary invites
-[**adminInvitesPost**](ContentApi.md#adminInvitesPost) | **POST** /admin/invites | Create an Estuary invite
-[**contentAddCarPost**](ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Add Car object
+[**contentAddCarPost**](ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Upload content via a car file
 [**contentAddIpfsPost**](ContentApi.md#contentAddIpfsPost) | **POST** /content/add-ipfs | Add IPFS object
-[**contentAddPost**](ContentApi.md#contentAddPost) | **POST** /content/add | Add new content
+[**contentAddPost**](ContentApi.md#contentAddPost) | **POST** /content/add | Upload a file
 [**contentAggregatedContentGet**](ContentApi.md#contentAggregatedContentGet) | **GET** /content/aggregated/{content} | Get aggregated content stats
 [**contentAllDealsGet**](ContentApi.md#contentAllDealsGet) | **GET** /content/all-deals | Get all deals for a user
 [**contentBwUsageContentGet**](ContentApi.md#contentBwUsageContentGet) | **GET** /content/bw-usage/{content} | Get content bandwidth
@@ -23,6 +23,61 @@ Method | HTTP request | Description
 [**contentStagingZonesGet**](ContentApi.md#contentStagingZonesGet) | **GET** /content/staging-zones | Get staging zone for user
 [**contentStatsGet**](ContentApi.md#contentStatsGet) | **GET** /content/stats | Get content statistics
 [**contentStatusIdGet**](ContentApi.md#contentStatusIdGet) | **GET** /content/status/{id} | Content Status
+
+<a name="adminInvitesCodePost"></a>
+# **adminInvitesCodePost**
+> String adminInvitesCodePost(code)
+
+Create an Estuary invite
+
+This endpoint is used to create an estuary invite.
+
+### Example
+```java
+// Import classes:
+//import io.swagger.client.ApiClient;
+//import io.swagger.client.ApiException;
+//import io.swagger.client.Configuration;
+//import io.swagger.client.auth.*;
+//import io.swagger.client.api.ContentApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: bearerAuth
+ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearerAuth.setApiKeyPrefix("Token");
+
+ContentApi apiInstance = new ContentApi();
+String code = "code_example"; // String | Invite code to be created
+try {
+    String result = apiInstance.adminInvitesCodePost(code);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling ContentApi#adminInvitesCodePost");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **code** | **String**| Invite code to be created |
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="adminInvitesGet"></a>
 # **adminInvitesGet**
@@ -75,13 +130,13 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="adminInvitesPost"></a>
-# **adminInvitesPost**
-> String adminInvitesPost(code)
+<a name="contentAddCarPost"></a>
+# **contentAddCarPost**
+> String contentAddCarPost()
 
-Create an Estuary invite
+Upload content via a car file
 
-This endpoint is used to create an estuary invite.
+This endpoint uploads content via a car file
 
 ### Example
 ```java
@@ -101,21 +156,17 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 ContentApi apiInstance = new ContentApi();
-String code = "code_example"; // String | Invite code to be created
 try {
-    String result = apiInstance.adminInvitesPost(code);
+    String result = apiInstance.contentAddCarPost();
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling ContentApi#adminInvitesPost");
+    System.err.println("Exception when calling ContentApi#contentAddCarPost");
     e.printStackTrace();
 }
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **String**| Invite code to be created |
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -128,65 +179,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="contentAddCarPost"></a>
-# **contentAddCarPost**
-> UtilContentAddResponse contentAddCarPost(body, ignoreDupes, filename)
-
-Add Car object
-
-This endpoint is used to add a car object to the network. The object can be a file or a directory.
-
-### Example
-```java
-// Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.ContentApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure API key authorization: bearerAuth
-ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.setApiKeyPrefix("Token");
-
-ContentApi apiInstance = new ContentApi();
-String body = "body_example"; // String | Car
-String ignoreDupes = "ignoreDupes_example"; // String | Ignore Dupes
-String filename = "filename_example"; // String | Filename
-try {
-    UtilContentAddResponse result = apiInstance.contentAddCarPost(body, ignoreDupes, filename);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ContentApi#contentAddCarPost");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**String**](String.md)| Car |
- **ignoreDupes** | **String**| Ignore Dupes | [optional]
- **filename** | **String**| Filename | [optional]
-
-### Return type
-
-[**UtilContentAddResponse**](UtilContentAddResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: */*
  - **Accept**: application/json
 
 <a name="contentAddIpfsPost"></a>
@@ -248,11 +240,11 @@ Name | Type | Description  | Notes
 
 <a name="contentAddPost"></a>
 # **contentAddPost**
-> UtilContentAddResponse contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir)
+> String contentAddPost()
 
-Add new content
+Upload a file
 
-This endpoint is used to upload new content.
+This endpoint uploads a file.
 
 ### Example
 ```java
@@ -272,15 +264,8 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 ContentApi apiInstance = new ContentApi();
-File data = new File("data_example"); // File | 
-String filename = "filename_example"; // String | 
-String coluuid = "coluuid_example"; // String | Collection UUID
-Integer replication = 56; // Integer | Replication value
-String ignoreDupes = "ignoreDupes_example"; // String | Ignore Dupes true/false
-String lazyProvide = "lazyProvide_example"; // String | Lazy Provide true/false
-String dir = "dir_example"; // String | Directory
 try {
-    UtilContentAddResponse result = apiInstance.contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir);
+    String result = apiInstance.contentAddPost();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentAddPost");
@@ -289,20 +274,11 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **data** | **File**|  |
- **filename** | **String**|  |
- **coluuid** | **String**| Collection UUID | [optional]
- **replication** | **Integer**| Replication value | [optional]
- **ignoreDupes** | **String**| Ignore Dupes true/false | [optional]
- **lazyProvide** | **String**| Lazy Provide true/false | [optional]
- **dir** | **String**| Directory | [optional]
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**UtilContentAddResponse**](UtilContentAddResponse.md)
+**String**
 
 ### Authorization
 
@@ -310,7 +286,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 <a name="contentAggregatedContentGet"></a>
@@ -979,7 +955,7 @@ This endpoint does not need any parameter.
 
 Get content statistics
 
-This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
 
 ### Example
 ```java

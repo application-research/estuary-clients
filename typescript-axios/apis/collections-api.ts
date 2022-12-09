@@ -16,9 +16,10 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
+import { ApiCreateCollectionBody } from '../models';
+import { ApiDeleteContentFromCollectionBody } from '../models';
 import { CollectionsCollection } from '../models';
-import { MainCreateCollectionBody } from '../models';
-import { MainDeleteContentFromCollectionBody } from '../models';
+import { CollectionsCollectionListResponse } from '../models';
 import { UtilHttpError } from '../models';
 /**
  * CollectionsApi - axios parameter creator
@@ -77,12 +78,12 @@ export const CollectionsApiAxiosParamCreator = function (configuration?: Configu
         /**
          * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
          * @summary Deletes a content from a collection
-         * @param {MainDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
+         * @param {ApiDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
          * @param {string} coluuid Collection ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsColuuidContentsDelete: async (body: MainDeleteContentFromCollectionBody, coluuid: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        collectionsColuuidContentsDelete: async (body: ApiDeleteContentFromCollectionBody, coluuid: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling collectionsColuuidContentsDelete.');
@@ -408,11 +409,11 @@ export const CollectionsApiAxiosParamCreator = function (configuration?: Configu
         /**
          * This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.
          * @summary Create a new collection
-         * @param {MainCreateCollectionBody} body Collection name and description
+         * @param {ApiCreateCollectionBody} body Collection name and description
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsPost: async (body: MainCreateCollectionBody, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        collectionsPost: async (body: ApiCreateCollectionBody, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling collectionsPost.');
@@ -482,12 +483,12 @@ export const CollectionsApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
          * @summary Deletes a content from a collection
-         * @param {MainDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
+         * @param {ApiDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
          * @param {string} coluuid Collection ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
+        async collectionsColuuidContentsDelete(body: ApiDeleteContentFromCollectionBody, coluuid: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
             const localVarAxiosArgs = await CollectionsApiAxiosParamCreator(configuration).collectionsColuuidContentsDelete(body, coluuid, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -516,7 +517,7 @@ export const CollectionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async collectionsColuuidGet(coluuid: string, dir?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
+        async collectionsColuuidGet(coluuid: string, dir?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<Array<CollectionsCollectionListResponse>>>> {
             const localVarAxiosArgs = await CollectionsApiAxiosParamCreator(configuration).collectionsColuuidGet(coluuid, dir, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -571,11 +572,11 @@ export const CollectionsApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.
          * @summary Create a new collection
-         * @param {MainCreateCollectionBody} body Collection name and description
+         * @param {ApiCreateCollectionBody} body Collection name and description
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async collectionsPost(body: MainCreateCollectionBody, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<CollectionsCollection>>> {
+        async collectionsPost(body: ApiCreateCollectionBody, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<CollectionsCollection>>> {
             const localVarAxiosArgs = await CollectionsApiAxiosParamCreator(configuration).collectionsPost(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -604,12 +605,12 @@ export const CollectionsApiFactory = function (configuration?: Configuration, ba
         /**
          * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
          * @summary Deletes a content from a collection
-         * @param {MainDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
+         * @param {ApiDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
          * @param {string} coluuid Collection ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
+        async collectionsColuuidContentsDelete(body: ApiDeleteContentFromCollectionBody, coluuid: string, options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
             return CollectionsApiFp(configuration).collectionsColuuidContentsDelete(body, coluuid, options).then((request) => request(axios, basePath));
         },
         /**
@@ -630,7 +631,7 @@ export const CollectionsApiFactory = function (configuration?: Configuration, ba
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async collectionsColuuidGet(coluuid: string, dir?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
+        async collectionsColuuidGet(coluuid: string, dir?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<Array<CollectionsCollectionListResponse>>> {
             return CollectionsApiFp(configuration).collectionsColuuidGet(coluuid, dir, options).then((request) => request(axios, basePath));
         },
         /**
@@ -669,11 +670,11 @@ export const CollectionsApiFactory = function (configuration?: Configuration, ba
         /**
          * This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.
          * @summary Create a new collection
-         * @param {MainCreateCollectionBody} body Collection name and description
+         * @param {ApiCreateCollectionBody} body Collection name and description
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async collectionsPost(body: MainCreateCollectionBody, options?: AxiosRequestConfig): Promise<AxiosResponse<CollectionsCollection>> {
+        async collectionsPost(body: ApiCreateCollectionBody, options?: AxiosRequestConfig): Promise<AxiosResponse<CollectionsCollection>> {
             return CollectionsApiFp(configuration).collectionsPost(body, options).then((request) => request(axios, basePath));
         },
     };
@@ -700,13 +701,13 @@ export class CollectionsApi extends BaseAPI {
     /**
      * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
      * @summary Deletes a content from a collection
-     * @param {MainDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
+     * @param {ApiDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
      * @param {string} coluuid Collection ID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CollectionsApi
      */
-    public async collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
+    public async collectionsColuuidContentsDelete(body: ApiDeleteContentFromCollectionBody, coluuid: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
         return CollectionsApiFp(this.configuration).collectionsColuuidContentsDelete(body, coluuid, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -729,7 +730,7 @@ export class CollectionsApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof CollectionsApi
      */
-    public async collectionsColuuidGet(coluuid: string, dir?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
+    public async collectionsColuuidGet(coluuid: string, dir?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<Array<CollectionsCollectionListResponse>>> {
         return CollectionsApiFp(this.configuration).collectionsColuuidGet(coluuid, dir, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -771,12 +772,12 @@ export class CollectionsApi extends BaseAPI {
     /**
      * This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.
      * @summary Create a new collection
-     * @param {MainCreateCollectionBody} body Collection name and description
+     * @param {ApiCreateCollectionBody} body Collection name and description
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CollectionsApi
      */
-    public async collectionsPost(body: MainCreateCollectionBody, options?: AxiosRequestConfig) : Promise<AxiosResponse<CollectionsCollection>> {
+    public async collectionsPost(body: ApiCreateCollectionBody, options?: AxiosRequestConfig) : Promise<AxiosResponse<CollectionsCollection>> {
         return CollectionsApiFp(this.configuration).collectionsPost(body, options).then((request) => request(this.axios, this.basePath));
     }
 }

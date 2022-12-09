@@ -32,6 +32,7 @@ import io.swagger.server.apis.AutoretrieveApi
 import io.swagger.server.apis.CollectionsApi
 import io.swagger.server.apis.ContentApi
 import io.swagger.server.apis.DealsApi
+import io.swagger.server.apis.DefaultApi
 import io.swagger.server.apis.MetricsApi
 import io.swagger.server.apis.MinerApi
 import io.swagger.server.apis.NetApi
@@ -82,6 +83,7 @@ fun Application.main() {
         CollectionsApi()
         ContentApi()
         DealsApi()
+        DefaultApi()
         MetricsApi()
         MinerApi()
         NetApi()

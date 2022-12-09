@@ -131,7 +131,7 @@ module SwaggerClient
     # Get public node info
     # This endpoint returns information about the node
     # @param [Hash] opts the optional parameters
-    # @return [String]
+    # @return [ApiPublicNodeInfo]
     def public_info_get(opts = {})
       data, _status_code, _headers = public_info_get_with_http_info(opts)
       data
@@ -140,7 +140,7 @@ module SwaggerClient
     # Get public node info
     # This endpoint returns information about the node
     # @param [Hash] opts the optional parameters
-    # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
+    # @return [Array<(ApiPublicNodeInfo, Integer, Hash)>] ApiPublicNodeInfo data, response status code and response headers
     def public_info_get_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: PublicApi.public_info_get ...'
@@ -162,7 +162,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] || 'String' 
+      return_type = opts[:return_type] || 'ApiPublicNodeInfo' 
 
       auth_names = opts[:auth_names] || ['bearerAuth']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,

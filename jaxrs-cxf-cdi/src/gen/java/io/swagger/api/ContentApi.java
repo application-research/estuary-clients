@@ -1,9 +1,7 @@
 package io.swagger.api;
 
-import java.io.File;
 import io.swagger.model.MainImportDealBody;
 import io.swagger.model.UtilContentAddIpfsBody;
-import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 import io.swagger.api.ContentApiService;
@@ -37,7 +35,7 @@ import javax.validation.constraints.*;
 
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-29T10:27:03.434Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-12-09T03:38:46.964Z[GMT]")
 public class ContentApi  {
 
   @Context SecurityContext securityContext;
@@ -47,22 +45,16 @@ public class ContentApi  {
 
     @POST
     @Path("/add-car")
-    @Consumes({ "*/*" })
+    
     @Produces({ "application/json" })
-    @Operation(summary = "Add Car object", description = "This endpoint is used to add a car object to the network. The object can be a file or a directory.", security = {
+    @Operation(summary = "Upload content via a car file", description = "This endpoint uploads content via a car file", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilContentAddResponse.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response contentAddCarPost(
-@Parameter(description = "Car" ,required=true) String body
-,  
-@Parameter(description = "Ignore Dupes")  @QueryParam("ignore-dupes") String ignoreDupes
-,  
-@Parameter(description = "Filename")  @QueryParam("filename") String filename
-) {
-        return delegate.contentAddCarPost(body, ignoreDupes, filename, securityContext);
+    public Response contentAddCarPost() {
+        return delegate.contentAddCarPost(securityContext);
     }
 
     @POST
@@ -85,26 +77,16 @@ public class ContentApi  {
 
     @POST
     @Path("/add")
-    @Consumes({ "multipart/form-data" })
+    
     @Produces({ "application/json" })
-    @Operation(summary = "Add new content", description = "This endpoint is used to upload new content.", security = {
+    @Operation(summary = "Upload a file", description = "This endpoint uploads a file.", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilContentAddResponse.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response contentAddPost( @Multipart(value = "data") InputStream dataInputStream, @Multipart(value = "data" ) Attachment dataDetail, @Multipart(value = "filename")  String filename,  
-@Parameter(description = "Collection UUID")  @QueryParam("coluuid") String coluuid
-,  
-@Parameter(description = "Replication value")  @QueryParam("replication") Integer replication
-,  
-@Parameter(description = "Ignore Dupes true/false")  @QueryParam("ignore-dupes") String ignoreDupes
-,  
-@Parameter(description = "Lazy Provide true/false")  @QueryParam("lazy-provide") String lazyProvide
-,  
-@Parameter(description = "Directory")  @QueryParam("dir") String dir
-) {
-        return delegate.contentAddPost(dataInputStream, dataDetail, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, securityContext);
+    public Response contentAddPost() {
+        return delegate.contentAddPost(securityContext);
     }
 
     @GET
@@ -307,7 +289,7 @@ public class ContentApi  {
     @Path("/stats")
     
     @Produces({ "application/json" })
-    @Operation(summary = "Get content statistics", description = "This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten", security = {
+    @Operation(summary = "Get content statistics", description = "This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),

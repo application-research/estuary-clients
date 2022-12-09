@@ -17,6 +17,21 @@
 #' @section Methods:
 #' \describe{
 #'
+#' miner_claim_miner_get Get Claim Miner Message
+#'
+#'
+#' miner_claim_post Claim Miner
+#'
+#'
+#' miner_set_info_miner_put Set Miner Info
+#'
+#'
+#' miner_suspend_miner_post Suspend Miner
+#'
+#'
+#' miner_unsuspend_miner_put Unuspend Miner
+#'
+#'
 #' public_miners_deals_miner_get Get all miners deals
 #'
 #'
@@ -38,6 +53,160 @@ MinerApi <- R6::R6Class(
         self$apiClient <- ApiClient$new()
       }
     },
+    miner_claim_miner_get = function(miner, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- character()
+
+      urlPath <- "/miner/claim/{miner}"
+      if (!missing(`miner`)) {
+        urlPath <- gsub(paste0("\\{", "miner", "\\}"), `miner`, urlPath)
+      }
+
+      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+      
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        returnObject <- ApiClaimMsgResponse$new()
+        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
+        Response$new(returnObject, resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        Response$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        Response$new("API server error", resp)
+      }
+
+    }
+    miner_claim_post = function(body, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- character()
+
+      if (!missing(`body`)) {
+        body <- `body`$toJSONString()
+      } else {
+        body <- NULL
+      }
+
+      urlPath <- "/miner/claim"
+      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "POST",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+      
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        returnObject <- ApiClaimResponse$new()
+        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
+        Response$new(returnObject, resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        Response$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        Response$new("API server error", resp)
+      }
+
+    }
+    miner_set_info_miner_put = function(body, miner, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- character()
+
+      if (!missing(`body`)) {
+        body <- `body`$toJSONString()
+      } else {
+        body <- NULL
+      }
+
+      urlPath <- "/miner/set-info/{miner}"
+      if (!missing(`miner`)) {
+        urlPath <- gsub(paste0("\\{", "miner", "\\}"), `miner`, urlPath)
+      }
+
+      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "PUT",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+      
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        returnObject <- ApiEmptyResp$new()
+        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
+        Response$new(returnObject, resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        Response$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        Response$new("API server error", resp)
+      }
+
+    }
+    miner_suspend_miner_post = function(body, miner, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- character()
+
+      if (!missing(`body`)) {
+        body <- `body`$toJSONString()
+      } else {
+        body <- NULL
+      }
+
+      urlPath <- "/miner/suspend/{miner}"
+      if (!missing(`miner`)) {
+        urlPath <- gsub(paste0("\\{", "miner", "\\}"), `miner`, urlPath)
+      }
+
+      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "POST",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+      
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        returnObject <- ApiEmptyResp$new()
+        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
+        Response$new(returnObject, resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        Response$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        Response$new("API server error", resp)
+      }
+
+    }
+    miner_unsuspend_miner_put = function(miner, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- character()
+
+      urlPath <- "/miner/unsuspend/{miner}"
+      if (!missing(`miner`)) {
+        urlPath <- gsub(paste0("\\{", "miner", "\\}"), `miner`, urlPath)
+      }
+
+      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "PUT",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+      
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        returnObject <- ApiEmptyResp$new()
+        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
+        Response$new(returnObject, resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        Response$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        Response$new("API server error", resp)
+      }
+
+    }
     public_miners_deals_miner_get = function(miner, ignore_failed, ...){
       args <- list(...)
       queryParams <- list()

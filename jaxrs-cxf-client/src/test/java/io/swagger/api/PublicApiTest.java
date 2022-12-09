@@ -24,6 +24,7 @@
 
 package io.swagger.api;
 
+import io.swagger.model.ApiPublicNodeInfo;
 import io.swagger.model.UtilHttpError;
 import org.junit.Test;
 import org.junit.Before;
@@ -113,7 +114,7 @@ public class PublicApiTest {
      */
     @Test
     public void publicInfoGetTest() {
-        //String response = api.publicInfoGet();
+        //ApiPublicNodeInfo response = api.publicInfoGet();
         //assertNotNull(response);
         // TODO: test validations
         

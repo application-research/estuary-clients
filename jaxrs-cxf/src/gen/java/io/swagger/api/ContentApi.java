@@ -1,9 +1,7 @@
 package io.swagger.api;
 
-import java.io.File;
 import io.swagger.model.MainImportDealBody;
 import io.swagger.model.UtilContentAddIpfsBody;
-import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 
@@ -35,6 +33,22 @@ import javax.validation.Valid;
 public interface ContentApi  {
 
     /**
+     * Create an Estuary invite
+     *
+     * This endpoint is used to create an estuary invite.
+     *
+     */
+    @POST
+    @Path("/admin/invites/{code}")
+    @Produces({ "application/json" })
+    @Operation(summary = "Create an Estuary invite", tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public String adminInvitesCodePost(@PathParam("code") String code);
+
+    /**
      * Get Estuary invites
      *
      * This endpoint is used to list all estuary invites.
@@ -51,37 +65,20 @@ public interface ContentApi  {
     public String adminInvitesGet();
 
     /**
-     * Create an Estuary invite
+     * Upload content via a car file
      *
-     * This endpoint is used to create an estuary invite.
-     *
-     */
-    @POST
-    @Path("/admin/invites")
-    @Produces({ "application/json" })
-    @Operation(summary = "Create an Estuary invite", tags={ "content" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
-        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
-        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public String adminInvitesPost(@PathParam("code") String code);
-
-    /**
-     * Add Car object
-     *
-     * This endpoint is used to add a car object to the network. The object can be a file or a directory.
+     * This endpoint uploads content via a car file
      *
      */
     @POST
     @Path("/content/add-car")
-    @Consumes({ "*/*" })
     @Produces({ "application/json" })
-    @Operation(summary = "Add Car object", tags={ "content" })
+    @Operation(summary = "Upload content via a car file", tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilContentAddResponse.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public UtilContentAddResponse contentAddCarPost(@Valid String body, @QueryParam("ignore-dupes") String ignoreDupes, @QueryParam("filename") String filename);
+    public String contentAddCarPost();
 
     /**
      * Add IPFS object
@@ -101,21 +98,20 @@ public interface ContentApi  {
     public String contentAddIpfsPost(@Valid UtilContentAddIpfsBody body, @QueryParam("ignore-dupes") String ignoreDupes);
 
     /**
-     * Add new content
+     * Upload a file
      *
-     * This endpoint is used to upload new content.
+     * This endpoint uploads a file.
      *
      */
     @POST
     @Path("/content/add")
-    @Consumes({ "multipart/form-data" })
     @Produces({ "application/json" })
-    @Operation(summary = "Add new content", tags={ "content" })
+    @Operation(summary = "Upload a file", tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilContentAddResponse.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public UtilContentAddResponse contentAddPost( @Multipart(value = "data" ) Attachment dataDetail, @Multipart(value = "filename")  String filename, @QueryParam("coluuid") String coluuid, @QueryParam("replication") Integer replication, @QueryParam("ignore-dupes") String ignoreDupes, @QueryParam("lazy-provide") String lazyProvide, @QueryParam("dir") String dir);
+    public String contentAddPost();
 
     /**
      * Get aggregated content stats
@@ -314,7 +310,7 @@ public interface ContentApi  {
     /**
      * Get content statistics
      *
-     * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+     * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
      *
      */
     @GET

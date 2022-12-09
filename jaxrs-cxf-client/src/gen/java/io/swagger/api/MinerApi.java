@@ -1,5 +1,11 @@
 package io.swagger.api;
 
+import io.swagger.model.ApiClaimMsgResponse;
+import io.swagger.model.ApiClaimResponse;
+import io.swagger.model.ApiEmptyResp;
+import io.swagger.model.MinerClaimMinerBody;
+import io.swagger.model.MinerMinerSetInfoParams;
+import io.swagger.model.MinerSuspendMinerBody;
 import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
@@ -26,6 +32,89 @@ import io.swagger.v3.oas.annotations.media.Schema;
  */
 @Path("/")
 public interface MinerApi  {
+
+    /**
+     * Get Claim Miner Message
+     *
+     * This endpoint lets a user get the message in order to claim a miner
+     *
+     */
+    @GET
+    @Path("/miner/claim/{miner}")
+    @Produces({ "application/json" })
+    @Operation(summary = "Get Claim Miner Message", tags={  })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiClaimMsgResponse.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public ApiClaimMsgResponse minerClaimMinerGet(@PathParam("miner") String miner);
+
+    /**
+     * Claim Miner
+     *
+     * This endpoint lets a user claim a miner
+     *
+     */
+    @POST
+    @Path("/miner/claim")
+    @Consumes({ "*/*" })
+    @Produces({ "application/json" })
+    @Operation(summary = "Claim Miner", tags={  })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiClaimResponse.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public ApiClaimResponse minerClaimPost(MinerClaimMinerBody body);
+
+    /**
+     * Set Miner Info
+     *
+     * This endpoint lets a user set miner info.
+     *
+     */
+    @PUT
+    @Path("/miner/set-info/{miner}")
+    @Consumes({ "*/*" })
+    @Produces({ "application/json" })
+    @Operation(summary = "Set Miner Info", tags={  })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiEmptyResp.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public ApiEmptyResp minerSetInfoMinerPut(MinerMinerSetInfoParams body, @PathParam("miner") String miner);
+
+    /**
+     * Suspend Miner
+     *
+     * This endpoint lets a user suspend a miner.
+     *
+     */
+    @POST
+    @Path("/miner/suspend/{miner}")
+    @Consumes({ "*/*" })
+    @Produces({ "application/json" })
+    @Operation(summary = "Suspend Miner", tags={  })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiEmptyResp.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public ApiEmptyResp minerSuspendMinerPost(MinerSuspendMinerBody body, @PathParam("miner") String miner);
+
+    /**
+     * Unuspend Miner
+     *
+     * This endpoint lets a user unsuspend a miner.
+     *
+     */
+    @PUT
+    @Path("/miner/unsuspend/{miner}")
+    @Produces({ "application/json" })
+    @Operation(summary = "Unuspend Miner", tags={  })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiEmptyResp.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public ApiEmptyResp minerUnsuspendMinerPut(@PathParam("miner") String miner);
 
     /**
      * Get all miners deals

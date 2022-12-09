@@ -104,13 +104,13 @@ namespace estuary-client.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("PublicInfoGet")]
-        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 200, type: typeof(ApiPublicNodeInfo), description: "OK")]
         [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult PublicInfoGet()
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(string));
+            // return StatusCode(200, default(ApiPublicNodeInfo));
 
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(400, default(UtilHttpError));
@@ -118,11 +118,11 @@ namespace estuary-client.Controllers
             //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(500, default(UtilHttpError));
             string exampleJson = null;
-            exampleJson = "\"\"";
+            exampleJson = "{\n  \"primaryAddress\" : { }\n}";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<string>(exampleJson)
-                        : default(string);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<ApiPublicNodeInfo>(exampleJson)
+                        : default(ApiPublicNodeInfo);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
 

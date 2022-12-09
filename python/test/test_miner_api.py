@@ -28,6 +28,41 @@ class TestMinerApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_miner_claim_miner_get(self):
+        """Test case for miner_claim_miner_get
+
+        Get Claim Miner Message  # noqa: E501
+        """
+        pass
+
+    def test_miner_claim_post(self):
+        """Test case for miner_claim_post
+
+        Claim Miner  # noqa: E501
+        """
+        pass
+
+    def test_miner_set_info_miner_put(self):
+        """Test case for miner_set_info_miner_put
+
+        Set Miner Info  # noqa: E501
+        """
+        pass
+
+    def test_miner_suspend_miner_post(self):
+        """Test case for miner_suspend_miner_post
+
+        Suspend Miner  # noqa: E501
+        """
+        pass
+
+    def test_miner_unsuspend_miner_put(self):
+        """Test case for miner_unsuspend_miner_put
+
+        Unuspend Miner  # noqa: E501
+        """
+        pass
+
     def test_public_miners_deals_miner_get(self):
         """Test case for public_miners_deals_miner_get
 

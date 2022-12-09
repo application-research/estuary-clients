@@ -23,7 +23,7 @@ namespace IO.Swagger.Api
         /// <param name="body">Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)</param>
         /// <param name="coluuid">Collection ID</param>
         /// <returns>string</returns>
-        string CollectionsColuuidContentsDelete (MainDeleteContentFromCollectionBody body, string coluuid);
+        string CollectionsColuuidContentsDelete (ApiDeleteContentFromCollectionBody body, string coluuid);
         /// <summary>
         /// Deletes a collection This endpoint is used to delete an existing collection.
         /// </summary>
@@ -35,8 +35,8 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="coluuid">coluuid</param>
         /// <param name="dir">Directory</param>
-        /// <returns>string</returns>
-        string CollectionsColuuidGet (string coluuid, string dir);
+        /// <returns>List&lt;CollectionsCollectionListResponse&gt;</returns>
+        List<CollectionsCollectionListResponse> CollectionsColuuidGet (string coluuid, string dir);
         /// <summary>
         /// Add contents to a collection This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
         /// </summary>
@@ -63,7 +63,7 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="body">Collection name and description</param>
         /// <returns>CollectionsCollection</returns>
-        CollectionsCollection CollectionsPost (MainCreateCollectionBody body);
+        CollectionsCollection CollectionsPost (ApiCreateCollectionBody body);
     }
   
     /// <summary>
@@ -160,7 +160,7 @@ namespace IO.Swagger.Api
         /// <param name="body">Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)</param>
         /// <param name="coluuid">Collection ID</param>
         /// <returns>string</returns>
-        public string CollectionsColuuidContentsDelete (MainDeleteContentFromCollectionBody body, string coluuid)
+        public string CollectionsColuuidContentsDelete (ApiDeleteContentFromCollectionBody body, string coluuid)
         {
             // verify the required parameter 'body' is set
             if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling CollectionsColuuidContentsDelete");
@@ -233,8 +233,8 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="coluuid">coluuid</param>
         /// <param name="dir">Directory</param>
-        /// <returns>string</returns>
-        public string CollectionsColuuidGet (string coluuid, string dir)
+        /// <returns>List&lt;CollectionsCollectionListResponse&gt;</returns>
+        public List<CollectionsCollectionListResponse> CollectionsColuuidGet (string coluuid, string dir)
         {
             // verify the required parameter 'coluuid' is set
             if (coluuid == null) throw new ApiException(400, "Missing required parameter 'coluuid' when calling CollectionsColuuidGet");
@@ -262,7 +262,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling CollectionsColuuidGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
+            return (List<CollectionsCollectionListResponse>) ApiClient.Deserialize(response.Content, typeof(List<CollectionsCollectionListResponse>), response.Headers);
         }
     
         /// <summary>
@@ -385,7 +385,7 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="body">Collection name and description</param>
         /// <returns>CollectionsCollection</returns>
-        public CollectionsCollection CollectionsPost (MainCreateCollectionBody body)
+        public CollectionsCollection CollectionsPost (ApiCreateCollectionBody body)
         {
             // verify the required parameter 'body' is set
             if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling CollectionsPost");

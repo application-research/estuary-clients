@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="collectionscoluuidcontentsdelete"></a>
 # **CollectionsColuuidContentsDelete**
-> string CollectionsColuuidContentsDelete (MainDeleteContentFromCollectionBody body, string coluuid)
+> string CollectionsColuuidContentsDelete (ApiDeleteContentFromCollectionBody body, string coluuid)
 
 Deletes a content from a collection
 
@@ -106,7 +106,7 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new CollectionsApi();
-            var body = new MainDeleteContentFromCollectionBody(); // MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
+            var body = new ApiDeleteContentFromCollectionBody(); // ApiDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
             var coluuid = coluuid_example;  // string | Collection ID
 
             try
@@ -128,7 +128,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) | 
+ **body** | [**ApiDeleteContentFromCollectionBody**](ApiDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) | 
  **coluuid** | **string**| Collection ID | 
 
 ### Return type
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="collectionscoluuidget"></a>
 # **CollectionsColuuidGet**
-> string CollectionsColuuidGet (string coluuid, string dir = null)
+> List<CollectionsCollectionListResponse> CollectionsColuuidGet (string coluuid, string dir = null)
 
 Get contents in a collection
 
@@ -244,7 +244,7 @@ namespace Example
             try
             {
                 // Get contents in a collection
-                string result = apiInstance.CollectionsColuuidGet(coluuid, dir);
+                List&lt;CollectionsCollectionListResponse&gt; result = apiInstance.CollectionsColuuidGet(coluuid, dir);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**string**
+[**List<CollectionsCollectionListResponse>**](CollectionsCollectionListResponse.md)
 
 ### Authorization
 
@@ -478,7 +478,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="collectionspost"></a>
 # **CollectionsPost**
-> CollectionsCollection CollectionsPost (MainCreateCollectionBody body)
+> CollectionsCollection CollectionsPost (ApiCreateCollectionBody body)
 
 Create a new collection
 
@@ -504,7 +504,7 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new CollectionsApi();
-            var body = new MainCreateCollectionBody(); // MainCreateCollectionBody | Collection name and description
+            var body = new ApiCreateCollectionBody(); // ApiCreateCollectionBody | Collection name and description
 
             try
             {
@@ -525,7 +525,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainCreateCollectionBody**](MainCreateCollectionBody.md)| Collection name and description | 
+ **body** | [**ApiCreateCollectionBody**](ApiCreateCollectionBody.md)| Collection name and description | 
 
 ### Return type
 

@@ -31,6 +31,18 @@ describe 'ContentApi' do
     end
   end
 
+  # unit tests for admin_invites_code_post
+  # Create an Estuary invite
+  # This endpoint is used to create an estuary invite.
+  # @param code Invite code to be created
+  # @param [Hash] opts the optional parameters
+  # @return [String]
+  describe 'admin_invites_code_post test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for admin_invites_get
   # Get Estuary invites
   # This endpoint is used to list all estuary invites.
@@ -42,26 +54,11 @@ describe 'ContentApi' do
     end
   end
 
-  # unit tests for admin_invites_post
-  # Create an Estuary invite
-  # This endpoint is used to create an estuary invite.
-  # @param code Invite code to be created
+  # unit tests for content_add_car_post
+  # Upload content via a car file
+  # This endpoint uploads content via a car file
   # @param [Hash] opts the optional parameters
   # @return [String]
-  describe 'admin_invites_post test' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for content_add_car_post
-  # Add Car object
-  # This endpoint is used to add a car object to the network. The object can be a file or a directory.
-  # @param body Car
-  # @param [Hash] opts the optional parameters
-  # @option opts [String] :ignore_dupes Ignore Dupes
-  # @option opts [String] :filename Filename
-  # @return [UtilContentAddResponse]
   describe 'content_add_car_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -82,17 +79,10 @@ describe 'ContentApi' do
   end
 
   # unit tests for content_add_post
-  # Add new content
-  # This endpoint is used to upload new content.
-  # @param data 
-  # @param filename 
+  # Upload a file
+  # This endpoint uploads a file.
   # @param [Hash] opts the optional parameters
-  # @option opts [String] :coluuid Collection UUID
-  # @option opts [Integer] :replication Replication value
-  # @option opts [String] :ignore_dupes Ignore Dupes true/false
-  # @option opts [String] :lazy_provide Lazy Provide true/false
-  # @option opts [String] :dir Directory
-  # @return [UtilContentAddResponse]
+  # @return [String]
   describe 'content_add_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -247,7 +237,7 @@ describe 'ContentApi' do
 
   # unit tests for content_stats_get
   # Get content statistics
-  # This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+  # This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
   # @param limit limit
   # @param offset offset
   # @param [Hash] opts the optional parameters

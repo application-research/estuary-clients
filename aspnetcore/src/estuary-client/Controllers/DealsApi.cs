@@ -43,7 +43,7 @@ namespace estuary-client.Controllers
         [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
         [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
-        public virtual IActionResult DealEstimatePost([FromBody]MainEstimateDealBody body)
+        public virtual IActionResult DealEstimatePost([FromBody]ApiEstimateDealBody body)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(string));
@@ -288,7 +288,7 @@ namespace estuary-client.Controllers
         [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
         [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
-        public virtual IActionResult DealTransferStatusPost([FromBody]MainChannelIDParam body)
+        public virtual IActionResult DealTransferStatusPost([FromBody]ApiChannelIDParam body)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(string));

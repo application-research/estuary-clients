@@ -17,7 +17,7 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { MainGetApiKeysResp } from '../model/mainGetApiKeysResp';
+import { ApiGetApiKeysResp } from '../model/apiGetApiKeysResp';
 import { UtilHttpError } from '../model/utilHttpError';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -62,9 +62,9 @@ export class UserService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public userApiKeysGet(observe?: 'body', reportProgress?: boolean): Observable<Array<MainGetApiKeysResp>>;
-    public userApiKeysGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<MainGetApiKeysResp>>>;
-    public userApiKeysGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<MainGetApiKeysResp>>>;
+    public userApiKeysGet(observe?: 'body', reportProgress?: boolean): Observable<Array<ApiGetApiKeysResp>>;
+    public userApiKeysGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<ApiGetApiKeysResp>>>;
+    public userApiKeysGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<ApiGetApiKeysResp>>>;
     public userApiKeysGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -87,7 +87,7 @@ export class UserService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<Array<MainGetApiKeysResp>>('get',`${this.basePath}/user/api-keys`,
+        return this.httpClient.request<Array<ApiGetApiKeysResp>>('get',`${this.basePath}/user/api-keys`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -151,9 +151,9 @@ export class UserService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public userApiKeysPost(expiry?: string, perms?: string, observe?: 'body', reportProgress?: boolean): Observable<MainGetApiKeysResp>;
-    public userApiKeysPost(expiry?: string, perms?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<MainGetApiKeysResp>>;
-    public userApiKeysPost(expiry?: string, perms?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<MainGetApiKeysResp>>;
+    public userApiKeysPost(expiry?: string, perms?: string, observe?: 'body', reportProgress?: boolean): Observable<ApiGetApiKeysResp>;
+    public userApiKeysPost(expiry?: string, perms?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ApiGetApiKeysResp>>;
+    public userApiKeysPost(expiry?: string, perms?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ApiGetApiKeysResp>>;
     public userApiKeysPost(expiry?: string, perms?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
@@ -186,7 +186,7 @@ export class UserService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<MainGetApiKeysResp>('post',`${this.basePath}/user/api-keys`,
+        return this.httpClient.request<ApiGetApiKeysResp>('post',`${this.basePath}/user/api-keys`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -240,7 +240,7 @@ export class UserService {
 
     /**
      * Get stats for the current user
-     * This endpoint is used to geet stats for the current user.
+     * This endpoint is used to get stats for the current user.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */

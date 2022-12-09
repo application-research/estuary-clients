@@ -40,14 +40,14 @@ namespace estuary-client.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("UserApiKeysGet")]
-        [SwaggerResponse(statusCode: 200, type: typeof(List<MainGetApiKeysResp>), description: "OK")]
+        [SwaggerResponse(statusCode: 200, type: typeof(List<ApiGetApiKeysResp>), description: "OK")]
         [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
         [SwaggerResponse(statusCode: 404, type: typeof(UtilHttpError), description: "Not Found")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult UserApiKeysGet()
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(List<MainGetApiKeysResp>));
+            // return StatusCode(200, default(List<ApiGetApiKeysResp>));
 
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(400, default(UtilHttpError));
@@ -61,8 +61,8 @@ namespace estuary-client.Controllers
             exampleJson = "[ {\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n}, {\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n} ]";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<List<MainGetApiKeysResp>>(exampleJson)
-                        : default(List<MainGetApiKeysResp>);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<List<ApiGetApiKeysResp>>(exampleJson)
+                        : default(List<ApiGetApiKeysResp>);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
 
@@ -116,14 +116,14 @@ namespace estuary-client.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("UserApiKeysPost")]
-        [SwaggerResponse(statusCode: 200, type: typeof(MainGetApiKeysResp), description: "OK")]
+        [SwaggerResponse(statusCode: 200, type: typeof(ApiGetApiKeysResp), description: "OK")]
         [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
         [SwaggerResponse(statusCode: 404, type: typeof(UtilHttpError), description: "Not Found")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult UserApiKeysPost([FromQuery]string expiry, [FromQuery]string perms)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(MainGetApiKeysResp));
+            // return StatusCode(200, default(ApiGetApiKeysResp));
 
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(400, default(UtilHttpError));
@@ -137,8 +137,8 @@ namespace estuary-client.Controllers
             exampleJson = "{\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n}";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<MainGetApiKeysResp>(exampleJson)
-                        : default(MainGetApiKeysResp);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<ApiGetApiKeysResp>(exampleJson)
+                        : default(ApiGetApiKeysResp);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
 
@@ -179,7 +179,7 @@ namespace estuary-client.Controllers
         /// <summary>
         /// Get stats for the current user
         /// </summary>
-        /// <remarks>This endpoint is used to geet stats for the current user.</remarks>
+        /// <remarks>This endpoint is used to get stats for the current user.</remarks>
         /// <response code="200">OK</response>
         /// <response code="400">Bad Request</response>
         /// <response code="500">Internal Server Error</response>

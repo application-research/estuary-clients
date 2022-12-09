@@ -1,7 +1,7 @@
 package io.swagger.api;
 
-import io.swagger.model.MainChannelIDParam;
-import io.swagger.model.MainEstimateDealBody;
+import io.swagger.model.ApiChannelIDParam;
+import io.swagger.model.ApiEstimateDealBody;
 import io.swagger.model.UtilHttpError;
 
 import io.micronaut.http.HttpResponse;
@@ -23,7 +23,7 @@ class DealApiControllerTest {
 
     @Test
     void dealEstimatePostTest() {
-        MainEstimateDealBody body = new MainEstimateDealBody();
+        ApiEstimateDealBody body = new ApiEstimateDealBody();
         try {
             api.dealEstimatePost(body).blockingGet();
         } catch (UnsupportedOperationException e) {
@@ -93,7 +93,7 @@ class DealApiControllerTest {
 
     @Test
     void dealTransferStatusPostTest() {
-        MainChannelIDParam body = new MainChannelIDParam();
+        ApiChannelIDParam body = new ApiChannelIDParam();
         try {
             api.dealTransferStatusPost(body).blockingGet();
         } catch (UnsupportedOperationException e) {

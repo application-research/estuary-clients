@@ -5,10 +5,8 @@
  */
 package io.swagger.api;
 
-import java.io.File;
 import io.swagger.model.MainImportDealBody;
 import io.swagger.model.UtilContentAddIpfsBody;
-import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -28,20 +26,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-29T10:27:04.066Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-12-09T03:38:45.180Z[GMT]")
 @Controller
 public interface ContentApi {
 
 
-    @Operation(summary = "Add Car object", operationId = "contentAddCarPost", description = "This endpoint is used to add a car object to the network. The object can be a file or a directory." , tags = {"content"})
+    @Operation(summary = "Upload content via a car file", operationId = "contentAddCarPost", description = "This endpoint uploads content via a car file" , tags = {"content"})
     @ApiResponse(responseCode = "200", description = "OK")
     @ApiResponse(responseCode = "400", description = "Bad Request")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
-    @Post(value = "/content/add-car", produces = { "application/json" }, consumes = {"*/*"})
-    default Single<HttpResponse<UtilContentAddResponse>> contentAddCarPost(@Parameter(description = "Car") @Valid @Body String body
-,@Nullable @Parameter(description = "Ignore Dupes") @Valid @QueryValue(value = "ignore-dupes") String ignoreDupes
-,@Nullable @Parameter(description = "Filename") @Valid @QueryValue(value = "filename") String filename
-) {
+    @Post(value = "/content/add-car", produces = { "application/json" })
+    default Single<HttpResponse<String>> contentAddCarPost() {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -62,19 +57,12 @@ public interface ContentApi {
     }
 
 
-    @Operation(summary = "Add new content", operationId = "contentAddPost", description = "This endpoint is used to upload new content." , tags = {"content"})
+    @Operation(summary = "Upload a file", operationId = "contentAddPost", description = "This endpoint uploads a file." , tags = {"content"})
     @ApiResponse(responseCode = "200", description = "OK")
     @ApiResponse(responseCode = "400", description = "Bad Request")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
-    @Post(value = "/content/add", produces = { "application/json" }, consumes = {"multipart/form-data"})
-    default Single<HttpResponse<UtilContentAddResponse>> contentAddPost(@Parameter(description = "file detail") @Valid MultipartFile data
-,@Parameter(description = "") @QueryValue(value = "filename")  String filename
-,@Nullable @Parameter(description = "Collection UUID") @Valid @QueryValue(value = "coluuid") String coluuid
-,@Nullable @Parameter(description = "Replication value") @Valid @QueryValue(value = "replication") Integer replication
-,@Nullable @Parameter(description = "Ignore Dupes true/false") @Valid @QueryValue(value = "ignore-dupes") String ignoreDupes
-,@Nullable @Parameter(description = "Lazy Provide true/false") @Valid @QueryValue(value = "lazy-provide") String lazyProvide
-,@Nullable @Parameter(description = "Directory") @Valid @QueryValue(value = "dir") String dir
-) {
+    @Post(value = "/content/add", produces = { "application/json" })
+    default Single<HttpResponse<String>> contentAddPost() {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -239,7 +227,7 @@ public interface ContentApi {
     }
 
 
-    @Operation(summary = "Get content statistics", operationId = "contentStatsGet", description = "This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten" , tags = {"content"})
+    @Operation(summary = "Get content statistics", operationId = "contentStatsGet", description = "This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content" , tags = {"content"})
     @ApiResponse(responseCode = "200", description = "OK")
     @ApiResponse(responseCode = "400", description = "Bad Request")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")

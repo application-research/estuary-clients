@@ -13,6 +13,7 @@
  *
  */
 import {ApiClient} from '../ApiClient';
+import {UtilContentType} from './UtilContentType';
 
 /**
  * The UtilContentCreateBody model module.
@@ -49,7 +50,7 @@ export class UtilContentCreateBody {
       if (data.hasOwnProperty('root'))
         obj.root = ApiClient.convertToType(data['root'], 'String');
       if (data.hasOwnProperty('type'))
-        obj.type = ApiClient.convertToType(data['type'], 'Number');
+        obj.type = UtilContentType.constructFromObject(data['type']);
     }
     return obj;
   }
@@ -81,7 +82,7 @@ UtilContentCreateBody.prototype.name = undefined;
 UtilContentCreateBody.prototype.root = undefined;
 
 /**
- * @member {Number} type
+ * @member {module:model/UtilContentType} type
  */
 UtilContentCreateBody.prototype.type = undefined;
 

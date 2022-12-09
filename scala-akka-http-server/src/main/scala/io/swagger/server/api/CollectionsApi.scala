@@ -5,9 +5,10 @@ import akka.http.scaladsl.server.Route
 import akka.http.scaladsl.unmarshalling.FromRequestUnmarshaller
 import akka.http.scaladsl.marshalling.ToEntityMarshaller
 import io.swagger.server.AkkaHttpHelper._
-import io.swagger.server.model.Main.createCollectionBody
-import io.swagger.server.model.Main.deleteContentFromCollectionBody
+import io.swagger.server.model.Api.createCollectionBody
+import io.swagger.server.model.Api.deleteContentFromCollectionBody
 import io.swagger.server.model.collections.Collection
+import io.swagger.server.model.collections.CollectionListResponse
 import io.swagger.server.model.util.HttpError
 
 class CollectionsApi(
@@ -38,7 +39,7 @@ class CollectionsApi(
           
             formFields() { () =>
               
-                entity(as[Main.deleteContentFromCollectionBody]){ body =>
+                entity(as[Api.deleteContentFromCollectionBody]){ body =>
                   collectionsService.collectionsColuuidContentsDelete(body = body, coluuid = coluuid)
                 }
              
@@ -128,7 +129,7 @@ class CollectionsApi(
           
             formFields() { () =>
               
-                entity(as[Main.createCollectionBody]){ body =>
+                entity(as[Api.createCollectionBody]){ body =>
                   collectionsService.collectionsPost(body = body)
                 }
              
@@ -166,7 +167,7 @@ trait CollectionsApiService {
    * Code: 400, Message: Bad Request, DataType: util.HttpError
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
-  def collectionsColuuidContentsDelete(body: Main.deleteContentFromCollectionBody, coluuid: String)
+  def collectionsColuuidContentsDelete(body: Api.deleteContentFromCollectionBody, coluuid: String)
       (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
   def collectionsColuuidDelete200(responseString: String): Route =
@@ -183,19 +184,19 @@ trait CollectionsApiService {
   def collectionsColuuidDelete(coluuid: String)
       (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
-  def collectionsColuuidGet200(responseString: String): Route =
-    complete((200, responseString))
+  def collectionsColuuidGet200(responsecollections.CollectionListResponsearray: List[collections.CollectionListResponse])(implicit toEntityMarshallercollections.CollectionListResponsearray: ToEntityMarshaller[List[collections.CollectionListResponse]]): Route =
+    complete((200, responsecollections.CollectionListResponsearray))
   def collectionsColuuidGet400(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((400, responseutil.HttpError))
   def collectionsColuuidGet500(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((500, responseutil.HttpError))
   /**
-   * Code: 200, Message: OK, DataType: String
+   * Code: 200, Message: OK, DataType: List[collections.CollectionListResponse]
    * Code: 400, Message: Bad Request, DataType: util.HttpError
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
   def collectionsColuuidGet(coluuid: String, dir: Option[String])
-      (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
+      (implicit toEntityMarshallercollections.CollectionListResponsearray: ToEntityMarshaller[List[collections.CollectionListResponse]], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
   def collectionsColuuidPost200(responseString: String): Route =
     complete((200, responseString))
@@ -256,17 +257,17 @@ trait CollectionsApiService {
    * Code: 404, Message: Not Found, DataType: util.HttpError
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
-  def collectionsPost(body: Main.createCollectionBody)
+  def collectionsPost(body: Api.createCollectionBody)
       (implicit toEntityMarshallercollections.Collection: ToEntityMarshaller[collections.Collection], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
 }
 
 trait CollectionsApiMarshaller {
-  implicit def fromRequestUnmarshallerMain.deleteContentFromCollectionBody: FromRequestUnmarshaller[Main.deleteContentFromCollectionBody]
+  implicit def fromRequestUnmarshallerApi.deleteContentFromCollectionBody: FromRequestUnmarshaller[Api.deleteContentFromCollectionBody]
 
   implicit def fromRequestUnmarshallerList[Int]: FromRequestUnmarshaller[List[Int]]
 
-  implicit def fromRequestUnmarshallerMain.createCollectionBody: FromRequestUnmarshaller[Main.createCollectionBody]
+  implicit def fromRequestUnmarshallerApi.createCollectionBody: FromRequestUnmarshaller[Api.createCollectionBody]
 
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
@@ -280,6 +281,8 @@ trait CollectionsApiMarshaller {
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
+
+  implicit def toEntityMarshallercollections.CollectionListResponsearray: ToEntityMarshaller[List[collections.CollectionListResponse]]
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 

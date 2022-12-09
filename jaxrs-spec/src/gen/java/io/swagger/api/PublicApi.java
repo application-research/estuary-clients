@@ -1,5 +1,6 @@
 package io.swagger.api;
 
+import io.swagger.model.ApiPublicNodeInfo;
 import io.swagger.model.UtilHttpError;
 
 import javax.ws.rs.*;
@@ -21,7 +22,7 @@ import javax.validation.Valid;
 
 @Path("/public")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2022-11-29T10:27:02.215Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2022-12-09T03:38:45.112Z[GMT]")
 public class PublicApi {
 
     @GET
@@ -59,7 +60,7 @@ public class PublicApi {
     @Operation(summary = "Get public node info", description = "This endpoint returns information about the node", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "public" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiPublicNodeInfo.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
     })

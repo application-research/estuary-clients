@@ -13,7 +13,7 @@ package io.swagger.client.api
 
 import java.text.SimpleDateFormat
 
-import io.swagger.client.model.main.getApiKeysResp
+import io.swagger.client.model.api.getApiKeysResp
 import io.swagger.client.model.util.HttpError
 import io.swagger.client.{ApiInvoker, ApiException}
 
@@ -83,9 +83,9 @@ class UserApi(
    * Get API keys for a user
    * This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
    *
-   * @return List[main.getApiKeysResp]
+   * @return List[api.getApiKeysResp]
    */
-  def userApiKeysGet(): Option[List[main.getApiKeysResp]] = {
+  def userApiKeysGet(): Option[List[api.getApiKeysResp]] = {
     val await = Try(Await.result(userApiKeysGetAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -97,9 +97,9 @@ class UserApi(
    * Get API keys for a user asynchronously
    * This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
    *
-   * @return Future(List[main.getApiKeysResp])
+   * @return Future(List[api.getApiKeysResp])
    */
-  def userApiKeysGetAsync(): Future[List[main.getApiKeysResp]] = {
+  def userApiKeysGetAsync(): Future[List[api.getApiKeysResp]] = {
       helper.userApiKeysGet()
   }
 
@@ -135,9 +135,9 @@ class UserApi(
    *
    * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
    * @param perms Permissions -- currently unused (optional)
-   * @return main.getApiKeysResp
+   * @return api.getApiKeysResp
    */
-  def userApiKeysPost(expiry: Option[String] = None, perms: Option[String] = None): Option[main.getApiKeysResp] = {
+  def userApiKeysPost(expiry: Option[String] = None, perms: Option[String] = None): Option[api.getApiKeysResp] = {
     val await = Try(Await.result(userApiKeysPostAsync(expiry, perms), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -151,9 +151,9 @@ class UserApi(
    *
    * @param expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
    * @param perms Permissions -- currently unused (optional)
-   * @return Future(main.getApiKeysResp)
+   * @return Future(api.getApiKeysResp)
    */
-  def userApiKeysPostAsync(expiry: Option[String] = None, perms: Option[String] = None): Future[main.getApiKeysResp] = {
+  def userApiKeysPostAsync(expiry: Option[String] = None, perms: Option[String] = None): Future[api.getApiKeysResp] = {
       helper.userApiKeysPost(expiry, perms)
   }
 
@@ -183,7 +183,7 @@ class UserApi(
 
   /**
    * Get stats for the current user
-   * This endpoint is used to geet stats for the current user.
+   * This endpoint is used to get stats for the current user.
    *
    * @return String
    */
@@ -197,7 +197,7 @@ class UserApi(
 
   /**
    * Get stats for the current user asynchronously
-   * This endpoint is used to geet stats for the current user.
+   * This endpoint is used to get stats for the current user.
    *
    * @return Future(String)
    */
@@ -209,7 +209,7 @@ class UserApi(
 
 class UserApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
-  def userApiKeysGet()(implicit reader: ClientResponseReader[List[main.getApiKeysResp]]): Future[List[main.getApiKeysResp]] = {
+  def userApiKeysGet()(implicit reader: ClientResponseReader[List[api.getApiKeysResp]]): Future[List[api.getApiKeysResp]] = {
     // create path and map variables
     val path = (addFmt("/user/api-keys"))
 
@@ -244,7 +244,7 @@ class UserApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends
 
   def userApiKeysPost(expiry: Option[String] = None,
     perms: Option[String] = None
-    )(implicit reader: ClientResponseReader[main.getApiKeysResp]): Future[main.getApiKeysResp] = {
+    )(implicit reader: ClientResponseReader[api.getApiKeysResp]): Future[api.getApiKeysResp] = {
     // create path and map variables
     val path = (addFmt("/user/api-keys"))
 

@@ -15,11 +15,11 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-29T10:27:03.434Z[GMT]")public interface AdminApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-12-09T03:38:46.964Z[GMT]")public interface AdminApiService {
       public Response adminAutoretrieveInitPost(String addresses, String pubKey, SecurityContext securityContext);
       public Response adminAutoretrieveListGet(SecurityContext securityContext);
+      public Response adminInvitesCodePost(String code, SecurityContext securityContext);
       public Response adminInvitesGet(SecurityContext securityContext);
-      public Response adminInvitesPost(String code, SecurityContext securityContext);
       public Response adminPeeringPeersDelete(List<Boolean> body, SecurityContext securityContext);
       public Response adminPeeringPeersGet(SecurityContext securityContext);
       public Response adminPeeringPeersPost(SecurityContext securityContext);

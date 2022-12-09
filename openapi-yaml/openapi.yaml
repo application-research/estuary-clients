@@ -96,6 +96,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/util.HttpError'
+  /admin/invites/{code}:
     post:
       tags:
       - content
@@ -418,7 +419,7 @@ paths:
         content:
           '*/*':
             schema:
-              $ref: '#/components/schemas/main.createCollectionBody'
+              $ref: '#/components/schemas/api.createCollectionBody'
         required: true
       responses:
         "200":
@@ -526,7 +527,9 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                type: array
+                items:
+                  $ref: '#/components/schemas/collections.CollectionListResponse'
         "400":
           description: Bad Request
           content:
@@ -682,7 +685,7 @@ paths:
         content:
           '*/*':
             schema:
-              $ref: '#/components/schemas/main.deleteContentFromCollectionBody'
+              $ref: '#/components/schemas/api.deleteContentFromCollectionBody'
         required: true
       responses:
         "200":
@@ -708,62 +711,15 @@ paths:
     post:
       tags:
       - content
-      summary: Add new content
-      description: This endpoint is used to upload new content.
-      parameters:
-      - name: coluuid
-        in: query
-        description: Collection UUID
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: string
-      - name: replication
-        in: query
-        description: Replication value
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: integer
-      - name: ignore-dupes
-        in: query
-        description: Ignore Dupes true/false
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: string
-      - name: lazy-provide
-        in: query
-        description: Lazy Provide true/false
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: string
-      - name: dir
-        in: query
-        description: Directory
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: string
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/content_add_body'
-        required: true
+      summary: Upload a file
+      description: This endpoint uploads a file.
       responses:
         "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/util.ContentAddResponse'
+                type: string
         "400":
           description: Bad Request
           content:
@@ -780,40 +736,15 @@ paths:
     post:
       tags:
       - content
-      summary: Add Car object
-      description: This endpoint is used to add a car object to the network. The object
-        can be a file or a directory.
-      parameters:
-      - name: ignore-dupes
-        in: query
-        description: Ignore Dupes
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: string
-      - name: filename
-        in: query
-        description: Filename
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: string
-      requestBody:
-        description: Car
-        content:
-          '*/*':
-            schema:
-              type: string
-        required: true
+      summary: Upload content via a car file
+      description: This endpoint uploads content via a car file
       responses:
         "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/util.ContentAddResponse'
+                type: string
         "400":
           description: Bad Request
           content:
@@ -826,7 +757,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/util.HttpError'
-      x-codegen-request-body-name: body
   /content/add-ipfs:
     post:
       tags:
@@ -1266,7 +1196,7 @@ paths:
       description: This endpoint is used to get content statistics. Every content
         stored in the network (estuary) is tracked by a unique ID which can be used
         to get information about the content. This endpoint will allow the consumer
-        to get the collected stats of a conten
+        to get the collected stats of a content
       parameters:
       - name: limit
         in: query
@@ -1383,7 +1313,7 @@ paths:
         content:
           '*/*':
             schema:
-              $ref: '#/components/schemas/main.estimateDealBody'
+              $ref: '#/components/schemas/api.estimateDealBody'
         required: true
       responses:
         "200":
@@ -1619,7 +1549,7 @@ paths:
         content:
           '*/*':
             schema:
-              $ref: '#/components/schemas/main.ChannelIDParam'
+              $ref: '#/components/schemas/api.ChannelIDParam'
         required: true
       responses:
         "200":
@@ -1764,6 +1694,191 @@ paths:
             application/json:
               schema:
                 type: string
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+  /miner/claim:
+    post:
+      tags:
+      - miner
+      summary: Claim Miner
+      description: This endpoint lets a user claim a miner
+      requestBody:
+        description: Claim Miner Body
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/miner.ClaimMinerBody'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/api.claimResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-codegen-request-body-name: req
+  /miner/claim/{miner}:
+    get:
+      tags:
+      - miner
+      summary: Get Claim Miner Message
+      description: This endpoint lets a user get the message in order to claim a miner
+      parameters:
+      - name: miner
+        in: path
+        description: Miner claim message
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/api.claimMsgResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+  /miner/set-info/{miner}:
+    put:
+      tags:
+      - miner
+      summary: Set Miner Info
+      description: This endpoint lets a user set miner info.
+      parameters:
+      - name: miner
+        in: path
+        description: Miner to set info for
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: Miner set info params
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/miner.MinerSetInfoParams'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/api.emptyResp'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-codegen-request-body-name: params
+  /miner/suspend/{miner}:
+    post:
+      tags:
+      - miner
+      summary: Suspend Miner
+      description: This endpoint lets a user suspend a miner.
+      parameters:
+      - name: miner
+        in: path
+        description: Miner to suspend
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: Suspend Miner Body
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/miner.SuspendMinerBody'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/api.emptyResp'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-codegen-request-body-name: req
+  /miner/unsuspend/{miner}:
+    put:
+      tags:
+      - miner
+      summary: Unuspend Miner
+      description: This endpoint lets a user unsuspend a miner.
+      parameters:
+      - name: miner
+        in: path
+        description: Miner to unsuspend
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/api.emptyResp'
         "400":
           description: Bad Request
           content:
@@ -1943,7 +2058,7 @@ paths:
           type: string
       responses:
         "202":
-          description: ""
+          description: Accepted
           content: {}
         "500":
           description: Internal Server Error
@@ -2022,7 +2137,7 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                $ref: '#/components/schemas/api.publicNodeInfo'
         "400":
           description: Bad Request
           content:
@@ -2319,7 +2434,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/main.getApiKeysResp'
+                  $ref: '#/components/schemas/api.getApiKeysResp'
         "400":
           description: Bad Request
           content:
@@ -2368,7 +2483,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/main.getApiKeysResp'
+                $ref: '#/components/schemas/api.getApiKeysResp'
         "400":
           description: Bad Request
           content:
@@ -2455,7 +2570,7 @@ paths:
       tags:
       - User
       summary: Get stats for the current user
-      description: This endpoint is used to geet stats for the current user.
+      description: This endpoint is used to get stats for the current user.
       responses:
         "200":
           description: OK
@@ -2475,8 +2590,106 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/util.HttpError'
+  /viewer:
+    get:
+      summary: Fetch viewer details
+      description: "This endpoint fetches viewer details such as username, permissions,\
+        \ address, owned miners, user settings etc."
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.ViewerResponse'
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
 components:
   schemas:
+    address.Address:
+      type: object
+    api.ChannelIDParam:
+      type: object
+      properties:
+        id:
+          type: integer
+        initiator:
+          type: string
+        responder:
+          type: string
+    api.claimMsgResponse:
+      type: object
+      properties:
+        hexmsg:
+          type: string
+    api.claimResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+    api.createCollectionBody:
+      type: object
+      properties:
+        description:
+          type: string
+        name:
+          type: string
+    api.deleteContentFromCollectionBody:
+      type: object
+      properties:
+        by:
+          type: string
+        value:
+          type: string
+    api.emptyResp:
+      type: object
+    api.estimateDealBody:
+      type: object
+      properties:
+        durationBlks:
+          type: integer
+        replication:
+          type: integer
+        size:
+          type: integer
+        verified:
+          type: boolean
+    api.getApiKeysResp:
+      type: object
+      properties:
+        expiry:
+          type: string
+        label:
+          type: string
+        token:
+          type: string
+        tokenHash:
+          type: string
+    api.publicNodeInfo:
+      type: object
+      properties:
+        primaryAddress:
+          $ref: '#/components/schemas/address.Address'
+    cid.Cid:
+      type: object
+    collections.CidType:
+      type: string
+      enum:
+      - directory
+      - file
+      x-enum-varnames:
+      - CidTypeDir
+      - CidTypeFile
     collections.Collection:
       type: object
       properties:
@@ -2492,50 +2705,24 @@ components:
           type: integer
         uuid:
           type: string
-    main.ChannelIDParam:
+    collections.CollectionListResponse:
       type: object
       properties:
-        id:
+        cid:
+          $ref: '#/components/schemas/util.DbCID'
+        coluuid:
+          type: string
+        contId:
           type: integer
-        initiator:
-          type: string
-        responder:
-          type: string
-    main.createCollectionBody:
-      type: object
-      properties:
-        description:
+        dir:
           type: string
         name:
           type: string
-    main.deleteContentFromCollectionBody:
-      type: object
-      properties:
-        by:
-          type: string
-        value:
-          type: string
-    main.estimateDealBody:
-      type: object
-      properties:
-        durationBlks:
-          type: integer
-        replication:
-          type: integer
         size:
           type: integer
-        verified:
-          type: boolean
-    main.getApiKeysResp:
-      type: object
-      properties:
-        expiry:
-          type: string
-        label:
-          type: string
-        token:
-          type: string
-        tokenHash:
+        type:
+          $ref: '#/components/schemas/collections.CidType'
+        updatedAt:
           type: string
     main.importDealBody:
       type: object
@@ -2549,6 +2736,25 @@ components:
         dir:
           type: string
         name:
+          type: string
+    miner.ClaimMinerBody:
+      type: object
+      properties:
+        claim:
+          type: string
+        miner:
+          $ref: '#/components/schemas/address.Address'
+        name:
+          type: string
+    miner.MinerSetInfoParams:
+      type: object
+      properties:
+        name:
+          type: string
+    miner.SuspendMinerBody:
+      type: object
+      properties:
+        reason:
           type: string
     types.IpfsListPinStatusResponse:
       type: object
@@ -2590,7 +2796,19 @@ components:
         requestid:
           type: string
         status:
-          type: string
+          $ref: '#/components/schemas/types.PinningStatus'
+    types.PinningStatus:
+      type: string
+      enum:
+      - pinning
+      - pinned
+      - failed
+      - queued
+      x-enum-varnames:
+      - PinningStatusPinning
+      - PinningStatusPinned
+      - PinningStatusFailed
+      - PinningStatusQueued
     util.ContentAddIpfsBody:
       type: object
       properties:
@@ -2635,7 +2853,22 @@ components:
         root:
           type: string
         type:
-          type: integer
+          $ref: '#/components/schemas/util.ContentType'
+    util.ContentType:
+      type: integer
+      enum:
+      - 0
+      - 1
+      - 2
+      x-enum-varnames:
+      - Unknown
+      - File
+      - Directory
+    util.DbCID:
+      type: object
+      properties:
+        cid:
+          $ref: '#/components/schemas/cid.Cid'
     util.HttpError:
       type: object
       properties:
@@ -2644,6 +2877,46 @@ components:
         details:
           type: string
         reason:
+          type: string
+    util.UserSettings:
+      type: object
+      properties:
+        contentAddingDisabled:
+          type: boolean
+        dealDuration:
+          type: integer
+        dealMakingDisabled:
+          type: boolean
+        fileStagingThreshold:
+          type: integer
+        flags:
+          type: integer
+        replication:
+          type: integer
+        uploadEndpoints:
+          type: array
+          items:
+            type: string
+        verified:
+          type: boolean
+    util.ViewerResponse:
+      type: object
+      properties:
+        address:
+          type: string
+        auth_expiry:
+          type: string
+        id:
+          type: integer
+        miners:
+          type: array
+          items:
+            type: string
+        perms:
+          type: integer
+        settings:
+          $ref: '#/components/schemas/util.UserSettings'
+        username:
           type: string
     autoretrieve_init_body:
       required:
@@ -2657,18 +2930,6 @@ components:
         pubKey:
           type: string
           description: Autoretrieve's public key
-    content_add_body:
-      required:
-      - data
-      type: object
-      properties:
-        data:
-          type: string
-          description: File to upload
-          format: binary
-        filename:
-          type: string
-          description: Filename to use for upload
   securitySchemes:
     bearerAuth:
       type: apiKey

@@ -13,6 +13,7 @@ package io.swagger.client.api
 
 import java.text.SimpleDateFormat
 
+import io.swagger.client.model.api.publicNodeInfo
 import io.swagger.client.model.util.HttpError
 import io.swagger.client.{ApiInvoker, ApiException}
 
@@ -134,9 +135,9 @@ class PublicApi(
    * Get public node info
    * This endpoint returns information about the node
    *
-   * @return String
+   * @return api.publicNodeInfo
    */
-  def publicInfoGet(): Option[String] = {
+  def publicInfoGet(): Option[api.publicNodeInfo] = {
     val await = Try(Await.result(publicInfoGetAsync(), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -148,9 +149,9 @@ class PublicApi(
    * Get public node info asynchronously
    * This endpoint returns information about the node
    *
-   * @return Future(String)
+   * @return Future(api.publicNodeInfo)
    */
-  def publicInfoGetAsync(): Future[String] = {
+  def publicInfoGetAsync(): Future[api.publicNodeInfo] = {
       helper.publicInfoGet()
   }
 
@@ -394,7 +395,7 @@ class PublicApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exten
     }
   }
 
-  def publicInfoGet()(implicit reader: ClientResponseReader[String]): Future[String] = {
+  def publicInfoGet()(implicit reader: ClientResponseReader[api.publicNodeInfo]): Future[api.publicNodeInfo] = {
     // create path and map variables
     val path = (addFmt("/public/info"))
 

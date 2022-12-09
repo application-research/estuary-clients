@@ -42,7 +42,7 @@ class DealsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param MainEstimateDealBody body: The size of the deal in bytes, the replication factor, and the duration of the deal in blocks (required)
+        :param ApiEstimateDealBody body: The size of the deal in bytes, the replication factor, and the duration of the deal in blocks (required)
         :return: str
                  If the method is called asynchronously,
                  returns the request thread.
@@ -64,7 +64,7 @@ class DealsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param MainEstimateDealBody body: The size of the deal in bytes, the replication factor, and the duration of the deal in blocks (required)
+        :param ApiEstimateDealBody body: The size of the deal in bytes, the replication factor, and the duration of the deal in blocks (required)
         :return: str
                  If the method is called asynchronously,
                  returns the request thread.
@@ -711,7 +711,7 @@ class DealsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param MainChannelIDParam body: Channel ID (required)
+        :param ApiChannelIDParam body: Channel ID (required)
         :return: str
                  If the method is called asynchronously,
                  returns the request thread.
@@ -733,7 +733,7 @@ class DealsApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param MainChannelIDParam body: Channel ID (required)
+        :param ApiChannelIDParam body: Channel ID (required)
         :return: str
                  If the method is called asynchronously,
                  returns the request thread.

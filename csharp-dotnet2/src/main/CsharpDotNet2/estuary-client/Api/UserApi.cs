@@ -14,8 +14,8 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Get API keys for a user This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
         /// </summary>
-        /// <returns>List&lt;MainGetApiKeysResp&gt;</returns>
-        List<MainGetApiKeysResp> UserApiKeysGet ();
+        /// <returns>List&lt;ApiGetApiKeysResp&gt;</returns>
+        List<ApiGetApiKeysResp> UserApiKeysGet ();
         /// <summary>
         /// Revoke a User API Key. This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that&#x27;s assigned to the user. Revoked API keys are completely deleted and are not recoverable.
         /// </summary>
@@ -27,15 +27,15 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="expiry">Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h</param>
         /// <param name="perms">Permissions - - currently unused</param>
-        /// <returns>MainGetApiKeysResp</returns>
-        MainGetApiKeysResp UserApiKeysPost (string expiry, string perms);
+        /// <returns>ApiGetApiKeysResp</returns>
+        ApiGetApiKeysResp UserApiKeysPost (string expiry, string perms);
         /// <summary>
         /// Export user data This endpoint is used to get API keys for a user.
         /// </summary>
         /// <returns>string</returns>
         string UserExportGet ();
         /// <summary>
-        /// Get stats for the current user This endpoint is used to geet stats for the current user.
+        /// Get stats for the current user This endpoint is used to get stats for the current user.
         /// </summary>
         /// <returns>string</returns>
         string UserStatsGet ();
@@ -97,8 +97,8 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Get API keys for a user This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
         /// </summary>
-        /// <returns>List&lt;MainGetApiKeysResp&gt;</returns>
-        public List<MainGetApiKeysResp> UserApiKeysGet ()
+        /// <returns>List&lt;ApiGetApiKeysResp&gt;</returns>
+        public List<ApiGetApiKeysResp> UserApiKeysGet ()
         {
     
             var path = "/user/api-keys";
@@ -122,7 +122,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling UserApiKeysGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (List<MainGetApiKeysResp>) ApiClient.Deserialize(response.Content, typeof(List<MainGetApiKeysResp>), response.Headers);
+            return (List<ApiGetApiKeysResp>) ApiClient.Deserialize(response.Content, typeof(List<ApiGetApiKeysResp>), response.Headers);
         }
     
         /// <summary>
@@ -165,8 +165,8 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="expiry">Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h</param>
         /// <param name="perms">Permissions - - currently unused</param>
-        /// <returns>MainGetApiKeysResp</returns>
-        public MainGetApiKeysResp UserApiKeysPost (string expiry, string perms)
+        /// <returns>ApiGetApiKeysResp</returns>
+        public ApiGetApiKeysResp UserApiKeysPost (string expiry, string perms)
         {
     
             var path = "/user/api-keys";
@@ -192,7 +192,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling UserApiKeysPost: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (MainGetApiKeysResp) ApiClient.Deserialize(response.Content, typeof(MainGetApiKeysResp), response.Headers);
+            return (ApiGetApiKeysResp) ApiClient.Deserialize(response.Content, typeof(ApiGetApiKeysResp), response.Headers);
         }
     
         /// <summary>
@@ -227,7 +227,7 @@ namespace IO.Swagger.Api
         }
     
         /// <summary>
-        /// Get stats for the current user This endpoint is used to geet stats for the current user.
+        /// Get stats for the current user This endpoint is used to get stats for the current user.
         /// </summary>
         /// <returns>string</returns>
         public string UserStatsGet ()

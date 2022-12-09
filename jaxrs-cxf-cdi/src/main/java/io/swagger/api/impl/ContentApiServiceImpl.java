@@ -5,10 +5,8 @@ import io.swagger.model.*;
 
 import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 
-import java.io.File;
 import io.swagger.model.MainImportDealBody;
 import io.swagger.model.UtilContentAddIpfsBody;
-import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 
@@ -21,9 +19,9 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-29T10:27:03.434Z[GMT]")public class ContentApiServiceImpl implements ContentApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-12-09T03:38:46.964Z[GMT]")public class ContentApiServiceImpl implements ContentApiService {
       @Override
-      public Response contentAddCarPost(String body, String ignoreDupes, String filename, SecurityContext securityContext) {
+      public Response contentAddCarPost(SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
@@ -33,7 +31,7 @@ import javax.ws.rs.core.SecurityContext;
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response contentAddPost(InputStream dataInputStream, Attachment dataDetail, String filename, String coluuid, Integer replication, String ignoreDupes, String lazyProvide, String dir, SecurityContext securityContext) {
+      public Response contentAddPost(SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }

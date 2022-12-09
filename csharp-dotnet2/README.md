@@ -239,11 +239,11 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**CollectionsFsAddPost**](docs/CollectionsApi.md#collectionsfsaddpost) | **POST** /collections/fs/add | Add a file to a collection
 *CollectionsApi* | [**CollectionsGet**](docs/CollectionsApi.md#collectionsget) | **GET** /collections/ | List all collections
 *CollectionsApi* | [**CollectionsPost**](docs/CollectionsApi.md#collectionspost) | **POST** /collections/ | Create a new collection
+*ContentApi* | [**AdminInvitesCodePost**](docs/ContentApi.md#admininvitescodepost) | **POST** /admin/invites/{code} | Create an Estuary invite
 *ContentApi* | [**AdminInvitesGet**](docs/ContentApi.md#admininvitesget) | **GET** /admin/invites | Get Estuary invites
-*ContentApi* | [**AdminInvitesPost**](docs/ContentApi.md#admininvitespost) | **POST** /admin/invites | Create an Estuary invite
-*ContentApi* | [**ContentAddCarPost**](docs/ContentApi.md#contentaddcarpost) | **POST** /content/add-car | Add Car object
+*ContentApi* | [**ContentAddCarPost**](docs/ContentApi.md#contentaddcarpost) | **POST** /content/add-car | Upload content via a car file
 *ContentApi* | [**ContentAddIpfsPost**](docs/ContentApi.md#contentaddipfspost) | **POST** /content/add-ipfs | Add IPFS object
-*ContentApi* | [**ContentAddPost**](docs/ContentApi.md#contentaddpost) | **POST** /content/add | Add new content
+*ContentApi* | [**ContentAddPost**](docs/ContentApi.md#contentaddpost) | **POST** /content/add | Upload a file
 *ContentApi* | [**ContentAggregatedContentGet**](docs/ContentApi.md#contentaggregatedcontentget) | **GET** /content/aggregated/{content} | Get aggregated content stats
 *ContentApi* | [**ContentAllDealsGet**](docs/ContentApi.md#contentalldealsget) | **GET** /content/all-deals | Get all deals for a user
 *ContentApi* | [**ContentBwUsageContentGet**](docs/ContentApi.md#contentbwusagecontentget) | **GET** /content/bw-usage/{content} | Get content bandwidth
@@ -271,7 +271,13 @@ Class | Method | HTTP request | Description
 *DealsApi* | [**DealsStatusDealGet**](docs/DealsApi.md#dealsstatusdealget) | **GET** /deals/status/{deal} | Get Deal Status
 *DealsApi* | [**PublicDealsFailuresGet**](docs/DealsApi.md#publicdealsfailuresget) | **GET** /public/deals/failures | Get storage failures
 *DealsApi* | [**PublicMinersStorageQueryMinerGet**](docs/DealsApi.md#publicminersstoragequeryminerget) | **GET** /public/miners/storage/query/{miner} | Query Ask
+*DefaultApi* | [**ViewerGet**](docs/DefaultApi.md#viewerget) | **GET** /viewer | Fetch viewer details
 *MetricsApi* | [**PublicMetricsDealsOnChainGet**](docs/MetricsApi.md#publicmetricsdealsonchainget) | **GET** /public/metrics/deals-on-chain | Get deal metrics
+*MinerApi* | [**MinerClaimMinerGet**](docs/MinerApi.md#minerclaimminerget) | **GET** /miner/claim/{miner} | Get Claim Miner Message
+*MinerApi* | [**MinerClaimPost**](docs/MinerApi.md#minerclaimpost) | **POST** /miner/claim | Claim Miner
+*MinerApi* | [**MinerSetInfoMinerPut**](docs/MinerApi.md#minersetinfominerput) | **PUT** /miner/set-info/{miner} | Set Miner Info
+*MinerApi* | [**MinerSuspendMinerPost**](docs/MinerApi.md#minersuspendminerpost) | **POST** /miner/suspend/{miner} | Suspend Miner
+*MinerApi* | [**MinerUnsuspendMinerPut**](docs/MinerApi.md#minerunsuspendminerput) | **PUT** /miner/unsuspend/{miner} | Unuspend Miner
 *MinerApi* | [**PublicMinersDealsMinerGet**](docs/MinerApi.md#publicminersdealsminerget) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *MinerApi* | [**PublicMinersStatsMinerGet**](docs/MinerApi.md#publicminersstatsminerget) | **GET** /public/miners/stats/{miner} | Get miner stats
 *NetApi* | [**NetAddrsGet**](docs/NetApi.md#netaddrsget) | **GET** /net/addrs | Net Addrs
@@ -304,22 +310,37 @@ Class | Method | HTTP request | Description
 <a name="documentation-for-models"></a>
 ## Documentation for Models
 
+ - [estuary-client.Model.AddressAddress](docs/AddressAddress.md)
+ - [estuary-client.Model.ApiChannelIDParam](docs/ApiChannelIDParam.md)
+ - [estuary-client.Model.ApiClaimMsgResponse](docs/ApiClaimMsgResponse.md)
+ - [estuary-client.Model.ApiClaimResponse](docs/ApiClaimResponse.md)
+ - [estuary-client.Model.ApiCreateCollectionBody](docs/ApiCreateCollectionBody.md)
+ - [estuary-client.Model.ApiDeleteContentFromCollectionBody](docs/ApiDeleteContentFromCollectionBody.md)
+ - [estuary-client.Model.ApiEmptyResp](docs/ApiEmptyResp.md)
+ - [estuary-client.Model.ApiEstimateDealBody](docs/ApiEstimateDealBody.md)
+ - [estuary-client.Model.ApiGetApiKeysResp](docs/ApiGetApiKeysResp.md)
+ - [estuary-client.Model.ApiPublicNodeInfo](docs/ApiPublicNodeInfo.md)
  - [estuary-client.Model.AutoretrieveInitBody](docs/AutoretrieveInitBody.md)
+ - [estuary-client.Model.CidCid](docs/CidCid.md)
+ - [estuary-client.Model.CollectionsCidType](docs/CollectionsCidType.md)
  - [estuary-client.Model.CollectionsCollection](docs/CollectionsCollection.md)
- - [estuary-client.Model.ContentAddBody](docs/ContentAddBody.md)
- - [estuary-client.Model.MainChannelIDParam](docs/MainChannelIDParam.md)
- - [estuary-client.Model.MainCreateCollectionBody](docs/MainCreateCollectionBody.md)
- - [estuary-client.Model.MainDeleteContentFromCollectionBody](docs/MainDeleteContentFromCollectionBody.md)
- - [estuary-client.Model.MainEstimateDealBody](docs/MainEstimateDealBody.md)
- - [estuary-client.Model.MainGetApiKeysResp](docs/MainGetApiKeysResp.md)
+ - [estuary-client.Model.CollectionsCollectionListResponse](docs/CollectionsCollectionListResponse.md)
  - [estuary-client.Model.MainImportDealBody](docs/MainImportDealBody.md)
+ - [estuary-client.Model.MinerClaimMinerBody](docs/MinerClaimMinerBody.md)
+ - [estuary-client.Model.MinerMinerSetInfoParams](docs/MinerMinerSetInfoParams.md)
+ - [estuary-client.Model.MinerSuspendMinerBody](docs/MinerSuspendMinerBody.md)
  - [estuary-client.Model.TypesIpfsListPinStatusResponse](docs/TypesIpfsListPinStatusResponse.md)
  - [estuary-client.Model.TypesIpfsPin](docs/TypesIpfsPin.md)
  - [estuary-client.Model.TypesIpfsPinStatusResponse](docs/TypesIpfsPinStatusResponse.md)
+ - [estuary-client.Model.TypesPinningStatus](docs/TypesPinningStatus.md)
  - [estuary-client.Model.UtilContentAddIpfsBody](docs/UtilContentAddIpfsBody.md)
  - [estuary-client.Model.UtilContentAddResponse](docs/UtilContentAddResponse.md)
  - [estuary-client.Model.UtilContentCreateBody](docs/UtilContentCreateBody.md)
+ - [estuary-client.Model.UtilContentType](docs/UtilContentType.md)
+ - [estuary-client.Model.UtilDbCID](docs/UtilDbCID.md)
  - [estuary-client.Model.UtilHttpError](docs/UtilHttpError.md)
+ - [estuary-client.Model.UtilUserSettings](docs/UtilUserSettings.md)
+ - [estuary-client.Model.UtilViewerResponse](docs/UtilViewerResponse.md)
 
 <a name="documentation-for-authorization"></a>
 ## Documentation for Authorization

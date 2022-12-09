@@ -32,7 +32,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-29T10:27:05.128Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-09T03:38:46.898Z[GMT]")
 @RestController
 public class AdminApiController implements AdminApi {
 
@@ -76,7 +76,7 @@ public class AdminApiController implements AdminApi {
         return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<String> adminInvitesGet() {
+    public ResponseEntity<String> adminInvitesCodePost(@Parameter(in = ParameterIn.PATH, description = "Invite code to be created", required=true, schema=@Schema()) @PathVariable("code") String code) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
@@ -90,7 +90,7 @@ public class AdminApiController implements AdminApi {
         return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<String> adminInvitesPost(@Parameter(in = ParameterIn.PATH, description = "Invite code to be created", required=true, schema=@Schema()) @PathVariable("code") String code) {
+    public ResponseEntity<String> adminInvitesGet() {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {

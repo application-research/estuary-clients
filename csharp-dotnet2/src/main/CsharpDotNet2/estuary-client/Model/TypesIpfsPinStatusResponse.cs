@@ -52,7 +52,7 @@ namespace IO.Swagger.Model {
     /// </summary>
     [DataMember(Name="status", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "status")]
-    public string Status { get; set; }
+    public TypesPinningStatus Status { get; set; }
 
 
     /// <summary>

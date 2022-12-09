@@ -1,5 +1,6 @@
 package io.swagger.api;
 
+import io.swagger.model.ApiPublicNodeInfo;
 import io.swagger.model.UtilHttpError;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.Operation;
@@ -32,7 +33,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-29T10:27:05.128Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-09T03:38:46.898Z[GMT]")
 @RestController
 public class PublicApiController implements PublicApi {
 
@@ -76,18 +77,18 @@ public class PublicApiController implements PublicApi {
         return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<String> publicInfoGet() {
+    public ResponseEntity<ApiPublicNodeInfo> publicInfoGet() {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<String>(objectMapper.readValue("\"\"", String.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<ApiPublicNodeInfo>(objectMapper.readValue("{\n  \"primaryAddress\" : { }\n}", ApiPublicNodeInfo.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<ApiPublicNodeInfo>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<ApiPublicNodeInfo>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<String> publicMetricsDealsOnChainGet() {

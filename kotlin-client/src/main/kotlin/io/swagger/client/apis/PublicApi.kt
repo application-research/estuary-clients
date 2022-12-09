@@ -11,6 +11,7 @@
  */
 package io.swagger.client.apis
 
+import io.swagger.client.models.ApipublicNodeInfo
 import io.swagger.client.models.UtilHttpError
 
 import estuary-client.infrastructure.*
@@ -69,21 +70,21 @@ class PublicApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(bas
     /**
      * Get public node info
      * This endpoint returns information about the node
-     * @return kotlin.String
+     * @return ApipublicNodeInfo
      */
     @Suppress("UNCHECKED_CAST")
-    fun publicInfoGet(): kotlin.String {
+    fun publicInfoGet(): ApipublicNodeInfo {
         
         val localVariableConfig = RequestConfig(
                 RequestMethod.GET,
                 "/public/info"
         )
-        val response = request<kotlin.String>(
+        val response = request<ApipublicNodeInfo>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as kotlin.String
+            ResponseType.Success -> (response as Success<*>).data as ApipublicNodeInfo
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")

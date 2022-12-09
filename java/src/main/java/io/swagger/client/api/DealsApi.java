@@ -26,8 +26,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import io.swagger.client.model.MainChannelIDParam;
-import io.swagger.client.model.MainEstimateDealBody;
+import io.swagger.client.model.ApiChannelIDParam;
+import io.swagger.client.model.ApiEstimateDealBody;
 import io.swagger.client.model.UtilHttpError;
 
 import java.lang.reflect.Type;
@@ -63,7 +63,7 @@ public class DealsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call dealEstimatePostCall(MainEstimateDealBody body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call dealEstimatePostCall(ApiEstimateDealBody body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
         
         // create path and map variables
@@ -105,7 +105,7 @@ public class DealsApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call dealEstimatePostValidateBeforeCall(MainEstimateDealBody body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call dealEstimatePostValidateBeforeCall(ApiEstimateDealBody body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling dealEstimatePost(Async)");
@@ -127,7 +127,7 @@ public class DealsApi {
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public String dealEstimatePost(MainEstimateDealBody body) throws ApiException {
+    public String dealEstimatePost(ApiEstimateDealBody body) throws ApiException {
         ApiResponse<String> resp = dealEstimatePostWithHttpInfo(body);
         return resp.getData();
     }
@@ -139,7 +139,7 @@ public class DealsApi {
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<String> dealEstimatePostWithHttpInfo(MainEstimateDealBody body) throws ApiException {
+    public ApiResponse<String> dealEstimatePostWithHttpInfo(ApiEstimateDealBody body) throws ApiException {
         com.squareup.okhttp.Call call = dealEstimatePostValidateBeforeCall(body, null, null);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -153,7 +153,7 @@ public class DealsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call dealEstimatePostAsync(MainEstimateDealBody body, final ApiCallback<String> callback) throws ApiException {
+    public com.squareup.okhttp.Call dealEstimatePostAsync(ApiEstimateDealBody body, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -937,7 +937,7 @@ public class DealsApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call dealTransferStatusPostCall(MainChannelIDParam body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call dealTransferStatusPostCall(ApiChannelIDParam body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
         
         // create path and map variables
@@ -979,7 +979,7 @@ public class DealsApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call dealTransferStatusPostValidateBeforeCall(MainChannelIDParam body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call dealTransferStatusPostValidateBeforeCall(ApiChannelIDParam body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling dealTransferStatusPost(Async)");
@@ -1001,7 +1001,7 @@ public class DealsApi {
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public String dealTransferStatusPost(MainChannelIDParam body) throws ApiException {
+    public String dealTransferStatusPost(ApiChannelIDParam body) throws ApiException {
         ApiResponse<String> resp = dealTransferStatusPostWithHttpInfo(body);
         return resp.getData();
     }
@@ -1013,7 +1013,7 @@ public class DealsApi {
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<String> dealTransferStatusPostWithHttpInfo(MainChannelIDParam body) throws ApiException {
+    public ApiResponse<String> dealTransferStatusPostWithHttpInfo(ApiChannelIDParam body) throws ApiException {
         com.squareup.okhttp.Call call = dealTransferStatusPostValidateBeforeCall(body, null, null);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -1027,7 +1027,7 @@ public class DealsApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call dealTransferStatusPostAsync(MainChannelIDParam body, final ApiCallback<String> callback) throws ApiException {
+    public com.squareup.okhttp.Call dealTransferStatusPostAsync(ApiChannelIDParam body, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;

@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **location** | **str** |  | [optional] 
 **name** | **str** |  | [optional] 
 **root** | **str** |  | [optional] 
-**type** | **int** |  | [optional] 
+**type** | [**UtilContentType**](UtilContentType.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

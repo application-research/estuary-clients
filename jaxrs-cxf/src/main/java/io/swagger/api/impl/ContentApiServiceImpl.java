@@ -1,10 +1,8 @@
 package io.swagger.api.impl;
 
 import io.swagger.api.*;
-import java.io.File;
 import io.swagger.model.MainImportDealBody;
 import io.swagger.model.UtilContentAddIpfsBody;
-import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 
@@ -28,6 +26,18 @@ import org.apache.cxf.jaxrs.ext.multipart.*;
  */
 public class ContentApiServiceImpl implements ContentApi {
     /**
+     * Create an Estuary invite
+     *
+     * This endpoint is used to create an estuary invite.
+     *
+     */
+    public String adminInvitesCodePost(String code) {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
      * Get Estuary invites
      *
      * This endpoint is used to list all estuary invites.
@@ -40,24 +50,12 @@ public class ContentApiServiceImpl implements ContentApi {
     }
     
     /**
-     * Create an Estuary invite
+     * Upload content via a car file
      *
-     * This endpoint is used to create an estuary invite.
-     *
-     */
-    public String adminInvitesPost(String code) {
-        // TODO: Implement...
-        
-        return null;
-    }
-    
-    /**
-     * Add Car object
-     *
-     * This endpoint is used to add a car object to the network. The object can be a file or a directory.
+     * This endpoint uploads content via a car file
      *
      */
-    public UtilContentAddResponse contentAddCarPost(String body, String ignoreDupes, String filename) {
+    public String contentAddCarPost() {
         // TODO: Implement...
         
         return null;
@@ -76,12 +74,12 @@ public class ContentApiServiceImpl implements ContentApi {
     }
     
     /**
-     * Add new content
+     * Upload a file
      *
-     * This endpoint is used to upload new content.
+     * This endpoint uploads a file.
      *
      */
-    public UtilContentAddResponse contentAddPost( Attachment dataDetail, String filename, String coluuid, Integer replication, String ignoreDupes, String lazyProvide, String dir) {
+    public String contentAddPost() {
         // TODO: Implement...
         
         return null;
@@ -234,7 +232,7 @@ public class ContentApiServiceImpl implements ContentApi {
     /**
      * Get content statistics
      *
-     * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+     * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
      *
      */
     public String contentStatsGet(String limit, String offset) {

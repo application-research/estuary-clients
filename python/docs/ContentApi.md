@@ -4,11 +4,11 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**admin_invites_code_post**](ContentApi.md#admin_invites_code_post) | **POST** /admin/invites/{code} | Create an Estuary invite
 [**admin_invites_get**](ContentApi.md#admin_invites_get) | **GET** /admin/invites | Get Estuary invites
-[**admin_invites_post**](ContentApi.md#admin_invites_post) | **POST** /admin/invites | Create an Estuary invite
-[**content_add_car_post**](ContentApi.md#content_add_car_post) | **POST** /content/add-car | Add Car object
+[**content_add_car_post**](ContentApi.md#content_add_car_post) | **POST** /content/add-car | Upload content via a car file
 [**content_add_ipfs_post**](ContentApi.md#content_add_ipfs_post) | **POST** /content/add-ipfs | Add IPFS object
-[**content_add_post**](ContentApi.md#content_add_post) | **POST** /content/add | Add new content
+[**content_add_post**](ContentApi.md#content_add_post) | **POST** /content/add | Upload a file
 [**content_aggregated_content_get**](ContentApi.md#content_aggregated_content_get) | **GET** /content/aggregated/{content} | Get aggregated content stats
 [**content_all_deals_get**](ContentApi.md#content_all_deals_get) | **GET** /content/all-deals | Get all deals for a user
 [**content_bw_usage_content_get**](ContentApi.md#content_bw_usage_content_get) | **GET** /content/bw-usage/{content} | Get content bandwidth
@@ -23,6 +23,60 @@ Method | HTTP request | Description
 [**content_staging_zones_get**](ContentApi.md#content_staging_zones_get) | **GET** /content/staging-zones | Get staging zone for user
 [**content_stats_get**](ContentApi.md#content_stats_get) | **GET** /content/stats | Get content statistics
 [**content_status_id_get**](ContentApi.md#content_status_id_get) | **GET** /content/status/{id} | Content Status
+
+# **admin_invites_code_post**
+> str admin_invites_code_post(code)
+
+Create an Estuary invite
+
+This endpoint is used to create an estuary invite.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import estuary_client
+from estuary_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: bearerAuth
+configuration = estuary_client.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
+code = 'code_example' # str | Invite code to be created
+
+try:
+    # Create an Estuary invite
+    api_response = api_instance.admin_invites_code_post(code)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ContentApi->admin_invites_code_post: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **code** | **str**| Invite code to be created | 
+
+### Return type
+
+**str**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **admin_invites_get**
 > str admin_invites_get()
@@ -74,12 +128,12 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **admin_invites_post**
-> str admin_invites_post(code)
+# **content_add_car_post**
+> str content_add_car_post()
 
-Create an Estuary invite
+Upload content via a car file
 
-This endpoint is used to create an estuary invite.
+This endpoint uploads content via a car file
 
 ### Example
 ```python
@@ -97,21 +151,17 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
-code = 'code_example' # str | Invite code to be created
 
 try:
-    # Create an Estuary invite
-    api_response = api_instance.admin_invites_post(code)
+    # Upload content via a car file
+    api_response = api_instance.content_add_car_post()
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling ContentApi->admin_invites_post: %s\n" % e)
+    print("Exception when calling ContentApi->content_add_car_post: %s\n" % e)
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **str**| Invite code to be created | 
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -124,64 +174,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **content_add_car_post**
-> UtilContentAddResponse content_add_car_post(body, ignore_dupes=ignore_dupes, filename=filename)
-
-Add Car object
-
-This endpoint is used to add a car object to the network. The object can be a file or a directory.
-
-### Example
-```python
-from __future__ import print_function
-import time
-import estuary_client
-from estuary_client.rest import ApiException
-from pprint import pprint
-
-# Configure API key authorization: bearerAuth
-configuration = estuary_client.Configuration()
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
-
-# create an instance of the API class
-api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
-body = 'body_example' # str | Car
-ignore_dupes = 'ignore_dupes_example' # str | Ignore Dupes (optional)
-filename = 'filename_example' # str | Filename (optional)
-
-try:
-    # Add Car object
-    api_response = api_instance.content_add_car_post(body, ignore_dupes=ignore_dupes, filename=filename)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ContentApi->content_add_car_post: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**str**](str.md)| Car | 
- **ignore_dupes** | **str**| Ignore Dupes | [optional] 
- **filename** | **str**| Filename | [optional] 
-
-### Return type
-
-[**UtilContentAddResponse**](UtilContentAddResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -243,11 +235,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_add_post**
-> UtilContentAddResponse content_add_post(data, filename, coluuid=coluuid, replication=replication, ignore_dupes=ignore_dupes, lazy_provide=lazy_provide, dir=dir)
+> str content_add_post()
 
-Add new content
+Upload a file
 
-This endpoint is used to upload new content.
+This endpoint uploads a file.
 
 ### Example
 ```python
@@ -265,37 +257,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
-data = 'data_example' # str | 
-filename = 'filename_example' # str | 
-coluuid = 'coluuid_example' # str | Collection UUID (optional)
-replication = 56 # int | Replication value (optional)
-ignore_dupes = 'ignore_dupes_example' # str | Ignore Dupes true/false (optional)
-lazy_provide = 'lazy_provide_example' # str | Lazy Provide true/false (optional)
-dir = 'dir_example' # str | Directory (optional)
 
 try:
-    # Add new content
-    api_response = api_instance.content_add_post(data, filename, coluuid=coluuid, replication=replication, ignore_dupes=ignore_dupes, lazy_provide=lazy_provide, dir=dir)
+    # Upload a file
+    api_response = api_instance.content_add_post()
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_add_post: %s\n" % e)
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **data** | **str**|  | 
- **filename** | **str**|  | 
- **coluuid** | **str**| Collection UUID | [optional] 
- **replication** | **int**| Replication value | [optional] 
- **ignore_dupes** | **str**| Ignore Dupes true/false | [optional] 
- **lazy_provide** | **str**| Lazy Provide true/false | [optional] 
- **dir** | **str**| Directory | [optional] 
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**UtilContentAddResponse**](UtilContentAddResponse.md)
+**str**
 
 ### Authorization
 
@@ -303,7 +279,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -961,7 +937,7 @@ This endpoint does not need any parameter.
 
 Get content statistics
 
-This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
 
 ### Example
 ```python

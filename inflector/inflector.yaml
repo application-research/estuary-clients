@@ -4,22 +4,37 @@ swaggerUrl: ./src/main/resources/openapi3.yaml
 modelMappings:
   # to enable explicit mappings, use this syntax:
   DefinitionFromSwaggerSpecification: fully.qualified.path.to.Model
-  AutoretrieveInitBody : io.swagger.model.AutoretrieveInitBody
+  AddressAddress : io.swagger.model.AddressAddress
+ApiChannelIDParam : io.swagger.model.ApiChannelIDParam
+ApiClaimMsgResponse : io.swagger.model.ApiClaimMsgResponse
+ApiClaimResponse : io.swagger.model.ApiClaimResponse
+ApiCreateCollectionBody : io.swagger.model.ApiCreateCollectionBody
+ApiDeleteContentFromCollectionBody : io.swagger.model.ApiDeleteContentFromCollectionBody
+ApiEmptyResp : io.swagger.model.ApiEmptyResp
+ApiEstimateDealBody : io.swagger.model.ApiEstimateDealBody
+ApiGetApiKeysResp : io.swagger.model.ApiGetApiKeysResp
+ApiPublicNodeInfo : io.swagger.model.ApiPublicNodeInfo
+AutoretrieveInitBody : io.swagger.model.AutoretrieveInitBody
+CidCid : io.swagger.model.CidCid
+CollectionsCidType : io.swagger.model.CollectionsCidType
 CollectionsCollection : io.swagger.model.CollectionsCollection
-ContentAddBody : io.swagger.model.ContentAddBody
-MainChannelIDParam : io.swagger.model.MainChannelIDParam
-MainCreateCollectionBody : io.swagger.model.MainCreateCollectionBody
-MainDeleteContentFromCollectionBody : io.swagger.model.MainDeleteContentFromCollectionBody
-MainEstimateDealBody : io.swagger.model.MainEstimateDealBody
-MainGetApiKeysResp : io.swagger.model.MainGetApiKeysResp
+CollectionsCollectionListResponse : io.swagger.model.CollectionsCollectionListResponse
 MainImportDealBody : io.swagger.model.MainImportDealBody
+MinerClaimMinerBody : io.swagger.model.MinerClaimMinerBody
+MinerMinerSetInfoParams : io.swagger.model.MinerMinerSetInfoParams
+MinerSuspendMinerBody : io.swagger.model.MinerSuspendMinerBody
 TypesIpfsListPinStatusResponse : io.swagger.model.TypesIpfsListPinStatusResponse
 TypesIpfsPin : io.swagger.model.TypesIpfsPin
 TypesIpfsPinStatusResponse : io.swagger.model.TypesIpfsPinStatusResponse
+TypesPinningStatus : io.swagger.model.TypesPinningStatus
 UtilContentAddIpfsBody : io.swagger.model.UtilContentAddIpfsBody
 UtilContentAddResponse : io.swagger.model.UtilContentAddResponse
 UtilContentCreateBody : io.swagger.model.UtilContentCreateBody
+UtilContentType : io.swagger.model.UtilContentType
+UtilDbCID : io.swagger.model.UtilDbCID
 UtilHttpError : io.swagger.model.UtilHttpError
+UtilUserSettings : io.swagger.model.UtilUserSettings
+UtilViewerResponse : io.swagger.model.UtilViewerResponse
 
 entityProcessors:
   - json

@@ -12,7 +12,7 @@
 
 package io.swagger.client.api;
 
-import io.swagger.client.model.MainGetApiKeysResp;
+import io.swagger.client.model.ApiGetApiKeysResp;
 import io.swagger.client.model.UtilHttpError;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -42,7 +42,7 @@ public class UserApiTest {
      */
     @Test
     public void userApiKeysGetTest() throws Exception {
-        List<MainGetApiKeysResp> response = api.userApiKeysGet();
+        List<ApiGetApiKeysResp> response = api.userApiKeysGet();
 
         // TODO: test validations
     }
@@ -73,7 +73,7 @@ public class UserApiTest {
     public void userApiKeysPostTest() throws Exception {
         String expiry = null;
         String perms = null;
-        MainGetApiKeysResp response = api.userApiKeysPost(expiry, perms);
+        ApiGetApiKeysResp response = api.userApiKeysPost(expiry, perms);
 
         // TODO: test validations
     }
@@ -94,7 +94,7 @@ public class UserApiTest {
     /**
      * Get stats for the current user
      *
-     * This endpoint is used to geet stats for the current user.
+     * This endpoint is used to get stats for the current user.
      *
      * @throws Exception
      *          if the Api call fails

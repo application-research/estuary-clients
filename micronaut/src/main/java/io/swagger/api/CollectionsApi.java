@@ -5,9 +5,10 @@
  */
 package io.swagger.api;
 
+import io.swagger.model.ApiCreateCollectionBody;
+import io.swagger.model.ApiDeleteContentFromCollectionBody;
 import io.swagger.model.CollectionsCollection;
-import io.swagger.model.MainCreateCollectionBody;
-import io.swagger.model.MainDeleteContentFromCollectionBody;
+import io.swagger.model.CollectionsCollectionListResponse;
 import io.swagger.model.UtilHttpError;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.micronaut.http.*;
@@ -26,7 +27,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-29T10:27:04.066Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-12-09T03:38:45.180Z[GMT]")
 @Controller
 public interface CollectionsApi {
 
@@ -49,7 +50,7 @@ public interface CollectionsApi {
     @ApiResponse(responseCode = "400", description = "Bad Request")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
     @Delete(value = "/collections/{coluuid}/contents", produces = { "application/json" }, consumes = {"*/*"})
-    default Single<HttpResponse<String>> collectionsColuuidContentsDelete(@Parameter(description = "Variable to use when filtering for files (must be either 'path' or 'content_id')") @Valid @Body MainDeleteContentFromCollectionBody body
+    default Single<HttpResponse<String>> collectionsColuuidContentsDelete(@Parameter(description = "Variable to use when filtering for files (must be either 'path' or 'content_id')") @Valid @Body ApiDeleteContentFromCollectionBody body
 ,@Parameter(description = "Collection ID") @PathVariable("coluuid") String coluuid
 ) {
         return Single.fromCallable(() -> {
@@ -76,7 +77,7 @@ public interface CollectionsApi {
     @ApiResponse(responseCode = "400", description = "Bad Request")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
     @Get(value = "/collections/{coluuid}", produces = { "application/json" })
-    default Single<HttpResponse<String>> collectionsColuuidGet(@Parameter(description = "coluuid") @PathVariable("coluuid") String coluuid
+    default Single<HttpResponse<List<CollectionsCollectionListResponse>>> collectionsColuuidGet(@Parameter(description = "coluuid") @PathVariable("coluuid") String coluuid
 ,@Nullable @Parameter(description = "Directory") @Valid @QueryValue(value = "dir") String dir
 ) {
         return Single.fromCallable(() -> {
@@ -134,7 +135,7 @@ public interface CollectionsApi {
     @ApiResponse(responseCode = "404", description = "Not Found")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
     @Post(value = "/collections/", produces = { "application/json" }, consumes = {"*/*"})
-    default Single<HttpResponse<CollectionsCollection>> collectionsPost(@Parameter(description = "Collection name and description") @Valid @Body MainCreateCollectionBody body
+    default Single<HttpResponse<CollectionsCollection>> collectionsPost(@Parameter(description = "Collection name and description") @Valid @Body ApiCreateCollectionBody body
 ) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();

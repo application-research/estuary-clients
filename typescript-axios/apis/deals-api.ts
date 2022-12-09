@@ -16,8 +16,8 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
-import { MainChannelIDParam } from '../models';
-import { MainEstimateDealBody } from '../models';
+import { ApiChannelIDParam } from '../models';
+import { ApiEstimateDealBody } from '../models';
 import { UtilHttpError } from '../models';
 /**
  * DealsApi - axios parameter creator
@@ -28,11 +28,11 @@ export const DealsApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * This endpoint estimates the cost of a deal
          * @summary Estimate the cost of a deal
-         * @param {MainEstimateDealBody} body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
+         * @param {ApiEstimateDealBody} body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dealEstimatePost: async (body: MainEstimateDealBody, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        dealEstimatePost: async (body: ApiEstimateDealBody, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling dealEstimatePost.');
@@ -367,11 +367,11 @@ export const DealsApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * This endpoint returns the status of a transfer
          * @summary Transfer Status
-         * @param {MainChannelIDParam} body Channel ID
+         * @param {ApiChannelIDParam} body Channel ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dealTransferStatusPost: async (body: MainChannelIDParam, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        dealTransferStatusPost: async (body: ApiChannelIDParam, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling dealTransferStatusPost.');
@@ -664,11 +664,11 @@ export const DealsApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint estimates the cost of a deal
          * @summary Estimate the cost of a deal
-         * @param {MainEstimateDealBody} body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
+         * @param {ApiEstimateDealBody} body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async dealEstimatePost(body: MainEstimateDealBody, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
+        async dealEstimatePost(body: ApiEstimateDealBody, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
             const localVarAxiosArgs = await DealsApiAxiosParamCreator(configuration).dealEstimatePost(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -762,11 +762,11 @@ export const DealsApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint returns the status of a transfer
          * @summary Transfer Status
-         * @param {MainChannelIDParam} body Channel ID
+         * @param {ApiChannelIDParam} body Channel ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async dealTransferStatusPost(body: MainChannelIDParam, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
+        async dealTransferStatusPost(body: ApiChannelIDParam, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
             const localVarAxiosArgs = await DealsApiAxiosParamCreator(configuration).dealTransferStatusPost(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -854,11 +854,11 @@ export const DealsApiFactory = function (configuration?: Configuration, basePath
         /**
          * This endpoint estimates the cost of a deal
          * @summary Estimate the cost of a deal
-         * @param {MainEstimateDealBody} body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
+         * @param {ApiEstimateDealBody} body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async dealEstimatePost(body: MainEstimateDealBody, options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
+        async dealEstimatePost(body: ApiEstimateDealBody, options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
             return DealsApiFp(configuration).dealEstimatePost(body, options).then((request) => request(axios, basePath));
         },
         /**
@@ -924,11 +924,11 @@ export const DealsApiFactory = function (configuration?: Configuration, basePath
         /**
          * This endpoint returns the status of a transfer
          * @summary Transfer Status
-         * @param {MainChannelIDParam} body Channel ID
+         * @param {ApiChannelIDParam} body Channel ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async dealTransferStatusPost(body: MainChannelIDParam, options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
+        async dealTransferStatusPost(body: ApiChannelIDParam, options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
             return DealsApiFp(configuration).dealTransferStatusPost(body, options).then((request) => request(axios, basePath));
         },
         /**
@@ -993,12 +993,12 @@ export class DealsApi extends BaseAPI {
     /**
      * This endpoint estimates the cost of a deal
      * @summary Estimate the cost of a deal
-     * @param {MainEstimateDealBody} body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
+     * @param {ApiEstimateDealBody} body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DealsApi
      */
-    public async dealEstimatePost(body: MainEstimateDealBody, options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
+    public async dealEstimatePost(body: ApiEstimateDealBody, options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
         return DealsApiFp(this.configuration).dealEstimatePost(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -1070,12 +1070,12 @@ export class DealsApi extends BaseAPI {
     /**
      * This endpoint returns the status of a transfer
      * @summary Transfer Status
-     * @param {MainChannelIDParam} body Channel ID
+     * @param {ApiChannelIDParam} body Channel ID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DealsApi
      */
-    public async dealTransferStatusPost(body: MainChannelIDParam, options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
+    public async dealTransferStatusPost(body: ApiChannelIDParam, options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
         return DealsApiFp(this.configuration).dealTransferStatusPost(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**

@@ -54,11 +54,11 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**collectionsFsAddPost**](docs/CollectionsApi.md#collectionsfsaddpost) | **POST** /collections/fs/add | Add a file to a collection
 *CollectionsApi* | [**collectionsGet**](docs/CollectionsApi.md#collectionsget) | **GET** /collections/ | List all collections
 *CollectionsApi* | [**collectionsPost**](docs/CollectionsApi.md#collectionspost) | **POST** /collections/ | Create a new collection
+*ContentApi* | [**adminInvitesCodePost**](docs/ContentApi.md#admininvitescodepost) | **POST** /admin/invites/{code} | Create an Estuary invite
 *ContentApi* | [**adminInvitesGet**](docs/ContentApi.md#admininvitesget) | **GET** /admin/invites | Get Estuary invites
-*ContentApi* | [**adminInvitesPost**](docs/ContentApi.md#admininvitespost) | **POST** /admin/invites | Create an Estuary invite
-*ContentApi* | [**contentAddCarPost**](docs/ContentApi.md#contentaddcarpost) | **POST** /content/add-car | Add Car object
+*ContentApi* | [**contentAddCarPost**](docs/ContentApi.md#contentaddcarpost) | **POST** /content/add-car | Upload content via a car file
 *ContentApi* | [**contentAddIpfsPost**](docs/ContentApi.md#contentaddipfspost) | **POST** /content/add-ipfs | Add IPFS object
-*ContentApi* | [**contentAddPost**](docs/ContentApi.md#contentaddpost) | **POST** /content/add | Add new content
+*ContentApi* | [**contentAddPost**](docs/ContentApi.md#contentaddpost) | **POST** /content/add | Upload a file
 *ContentApi* | [**contentAggregatedContentGet**](docs/ContentApi.md#contentaggregatedcontentget) | **GET** /content/aggregated/{content} | Get aggregated content stats
 *ContentApi* | [**contentAllDealsGet**](docs/ContentApi.md#contentalldealsget) | **GET** /content/all-deals | Get all deals for a user
 *ContentApi* | [**contentBwUsageContentGet**](docs/ContentApi.md#contentbwusagecontentget) | **GET** /content/bw-usage/{content} | Get content bandwidth
@@ -86,7 +86,13 @@ Class | Method | HTTP request | Description
 *DealsApi* | [**dealsStatusDealGet**](docs/DealsApi.md#dealsstatusdealget) | **GET** /deals/status/{deal} | Get Deal Status
 *DealsApi* | [**publicDealsFailuresGet**](docs/DealsApi.md#publicdealsfailuresget) | **GET** /public/deals/failures | Get storage failures
 *DealsApi* | [**publicMinersStorageQueryMinerGet**](docs/DealsApi.md#publicminersstoragequeryminerget) | **GET** /public/miners/storage/query/{miner} | Query Ask
+*DefaultApi* | [**viewerGet**](docs/DefaultApi.md#viewerget) | **GET** /viewer | Fetch viewer details
 *MetricsApi* | [**publicMetricsDealsOnChainGet**](docs/MetricsApi.md#publicmetricsdealsonchainget) | **GET** /public/metrics/deals-on-chain | Get deal metrics
+*MinerApi* | [**minerClaimMinerGet**](docs/MinerApi.md#minerclaimminerget) | **GET** /miner/claim/{miner} | Get Claim Miner Message
+*MinerApi* | [**minerClaimPost**](docs/MinerApi.md#minerclaimpost) | **POST** /miner/claim | Claim Miner
+*MinerApi* | [**minerSetInfoMinerPut**](docs/MinerApi.md#minersetinfominerput) | **PUT** /miner/set-info/{miner} | Set Miner Info
+*MinerApi* | [**minerSuspendMinerPost**](docs/MinerApi.md#minersuspendminerpost) | **POST** /miner/suspend/{miner} | Suspend Miner
+*MinerApi* | [**minerUnsuspendMinerPut**](docs/MinerApi.md#minerunsuspendminerput) | **PUT** /miner/unsuspend/{miner} | Unuspend Miner
 *MinerApi* | [**publicMinersDealsMinerGet**](docs/MinerApi.md#publicminersdealsminerget) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *MinerApi* | [**publicMinersStatsMinerGet**](docs/MinerApi.md#publicminersstatsminerget) | **GET** /public/miners/stats/{miner} | Get miner stats
 *NetApi* | [**netAddrsGet**](docs/NetApi.md#netaddrsget) | **GET** /net/addrs | Net Addrs
@@ -119,22 +125,37 @@ Class | Method | HTTP request | Description
 <a name="documentation-for-models"></a>
 ## Documentation for Models
 
+ - [io.swagger.client.models.AddressAddress](docs/AddressAddress.md)
+ - [io.swagger.client.models.ApiChannelIDParam](docs/ApiChannelIDParam.md)
+ - [io.swagger.client.models.ApiclaimMsgResponse](docs/ApiclaimMsgResponse.md)
+ - [io.swagger.client.models.ApiclaimResponse](docs/ApiclaimResponse.md)
+ - [io.swagger.client.models.ApicreateCollectionBody](docs/ApicreateCollectionBody.md)
+ - [io.swagger.client.models.ApideleteContentFromCollectionBody](docs/ApideleteContentFromCollectionBody.md)
+ - [io.swagger.client.models.ApiemptyResp](docs/ApiemptyResp.md)
+ - [io.swagger.client.models.ApiestimateDealBody](docs/ApiestimateDealBody.md)
+ - [io.swagger.client.models.ApigetApiKeysResp](docs/ApigetApiKeysResp.md)
+ - [io.swagger.client.models.ApipublicNodeInfo](docs/ApipublicNodeInfo.md)
  - [io.swagger.client.models.AutoretrieveInitBody](docs/AutoretrieveInitBody.md)
+ - [io.swagger.client.models.CidCid](docs/CidCid.md)
+ - [io.swagger.client.models.CollectionsCidType](docs/CollectionsCidType.md)
  - [io.swagger.client.models.CollectionsCollection](docs/CollectionsCollection.md)
- - [io.swagger.client.models.ContentAddBody](docs/ContentAddBody.md)
- - [io.swagger.client.models.MainChannelIDParam](docs/MainChannelIDParam.md)
- - [io.swagger.client.models.MaincreateCollectionBody](docs/MaincreateCollectionBody.md)
- - [io.swagger.client.models.MaindeleteContentFromCollectionBody](docs/MaindeleteContentFromCollectionBody.md)
- - [io.swagger.client.models.MainestimateDealBody](docs/MainestimateDealBody.md)
- - [io.swagger.client.models.MaingetApiKeysResp](docs/MaingetApiKeysResp.md)
+ - [io.swagger.client.models.CollectionsCollectionListResponse](docs/CollectionsCollectionListResponse.md)
  - [io.swagger.client.models.MainimportDealBody](docs/MainimportDealBody.md)
+ - [io.swagger.client.models.MinerClaimMinerBody](docs/MinerClaimMinerBody.md)
+ - [io.swagger.client.models.MinerMinerSetInfoParams](docs/MinerMinerSetInfoParams.md)
+ - [io.swagger.client.models.MinerSuspendMinerBody](docs/MinerSuspendMinerBody.md)
  - [io.swagger.client.models.TypesIpfsListPinStatusResponse](docs/TypesIpfsListPinStatusResponse.md)
  - [io.swagger.client.models.TypesIpfsPin](docs/TypesIpfsPin.md)
  - [io.swagger.client.models.TypesIpfsPinStatusResponse](docs/TypesIpfsPinStatusResponse.md)
+ - [io.swagger.client.models.TypesPinningStatus](docs/TypesPinningStatus.md)
  - [io.swagger.client.models.UtilContentAddIpfsBody](docs/UtilContentAddIpfsBody.md)
  - [io.swagger.client.models.UtilContentAddResponse](docs/UtilContentAddResponse.md)
  - [io.swagger.client.models.UtilContentCreateBody](docs/UtilContentCreateBody.md)
+ - [io.swagger.client.models.UtilContentType](docs/UtilContentType.md)
+ - [io.swagger.client.models.UtilDbCID](docs/UtilDbCID.md)
  - [io.swagger.client.models.UtilHttpError](docs/UtilHttpError.md)
+ - [io.swagger.client.models.UtilUserSettings](docs/UtilUserSettings.md)
+ - [io.swagger.client.models.UtilViewerResponse](docs/UtilViewerResponse.md)
 
 <a name="documentation-for-authorization"></a>
 ## Documentation for Authorization

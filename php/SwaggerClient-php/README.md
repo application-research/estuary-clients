@@ -237,11 +237,11 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**collectionsFsAddPost**](docs/Api/CollectionsApi.md#collectionsfsaddpost) | **POST** /collections/fs/add | Add a file to a collection
 *CollectionsApi* | [**collectionsGet**](docs/Api/CollectionsApi.md#collectionsget) | **GET** /collections/ | List all collections
 *CollectionsApi* | [**collectionsPost**](docs/Api/CollectionsApi.md#collectionspost) | **POST** /collections/ | Create a new collection
+*ContentApi* | [**adminInvitesCodePost**](docs/Api/ContentApi.md#admininvitescodepost) | **POST** /admin/invites/{code} | Create an Estuary invite
 *ContentApi* | [**adminInvitesGet**](docs/Api/ContentApi.md#admininvitesget) | **GET** /admin/invites | Get Estuary invites
-*ContentApi* | [**adminInvitesPost**](docs/Api/ContentApi.md#admininvitespost) | **POST** /admin/invites | Create an Estuary invite
-*ContentApi* | [**contentAddCarPost**](docs/Api/ContentApi.md#contentaddcarpost) | **POST** /content/add-car | Add Car object
+*ContentApi* | [**contentAddCarPost**](docs/Api/ContentApi.md#contentaddcarpost) | **POST** /content/add-car | Upload content via a car file
 *ContentApi* | [**contentAddIpfsPost**](docs/Api/ContentApi.md#contentaddipfspost) | **POST** /content/add-ipfs | Add IPFS object
-*ContentApi* | [**contentAddPost**](docs/Api/ContentApi.md#contentaddpost) | **POST** /content/add | Add new content
+*ContentApi* | [**contentAddPost**](docs/Api/ContentApi.md#contentaddpost) | **POST** /content/add | Upload a file
 *ContentApi* | [**contentAggregatedContentGet**](docs/Api/ContentApi.md#contentaggregatedcontentget) | **GET** /content/aggregated/{content} | Get aggregated content stats
 *ContentApi* | [**contentAllDealsGet**](docs/Api/ContentApi.md#contentalldealsget) | **GET** /content/all-deals | Get all deals for a user
 *ContentApi* | [**contentBwUsageContentGet**](docs/Api/ContentApi.md#contentbwusagecontentget) | **GET** /content/bw-usage/{content} | Get content bandwidth
@@ -269,7 +269,13 @@ Class | Method | HTTP request | Description
 *DealsApi* | [**dealsStatusDealGet**](docs/Api/DealsApi.md#dealsstatusdealget) | **GET** /deals/status/{deal} | Get Deal Status
 *DealsApi* | [**publicDealsFailuresGet**](docs/Api/DealsApi.md#publicdealsfailuresget) | **GET** /public/deals/failures | Get storage failures
 *DealsApi* | [**publicMinersStorageQueryMinerGet**](docs/Api/DealsApi.md#publicminersstoragequeryminerget) | **GET** /public/miners/storage/query/{miner} | Query Ask
+*DefaultApi* | [**viewerGet**](docs/Api/DefaultApi.md#viewerget) | **GET** /viewer | Fetch viewer details
 *MetricsApi* | [**publicMetricsDealsOnChainGet**](docs/Api/MetricsApi.md#publicmetricsdealsonchainget) | **GET** /public/metrics/deals-on-chain | Get deal metrics
+*MinerApi* | [**minerClaimMinerGet**](docs/Api/MinerApi.md#minerclaimminerget) | **GET** /miner/claim/{miner} | Get Claim Miner Message
+*MinerApi* | [**minerClaimPost**](docs/Api/MinerApi.md#minerclaimpost) | **POST** /miner/claim | Claim Miner
+*MinerApi* | [**minerSetInfoMinerPut**](docs/Api/MinerApi.md#minersetinfominerput) | **PUT** /miner/set-info/{miner} | Set Miner Info
+*MinerApi* | [**minerSuspendMinerPost**](docs/Api/MinerApi.md#minersuspendminerpost) | **POST** /miner/suspend/{miner} | Suspend Miner
+*MinerApi* | [**minerUnsuspendMinerPut**](docs/Api/MinerApi.md#minerunsuspendminerput) | **PUT** /miner/unsuspend/{miner} | Unuspend Miner
 *MinerApi* | [**publicMinersDealsMinerGet**](docs/Api/MinerApi.md#publicminersdealsminerget) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *MinerApi* | [**publicMinersStatsMinerGet**](docs/Api/MinerApi.md#publicminersstatsminerget) | **GET** /public/miners/stats/{miner} | Get miner stats
 *NetApi* | [**netAddrsGet**](docs/Api/NetApi.md#netaddrsget) | **GET** /net/addrs | Net Addrs
@@ -301,22 +307,37 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [AddressAddress](docs/Model/AddressAddress.md)
+ - [ApiChannelIDParam](docs/Model/ApiChannelIDParam.md)
+ - [ApiClaimMsgResponse](docs/Model/ApiClaimMsgResponse.md)
+ - [ApiClaimResponse](docs/Model/ApiClaimResponse.md)
+ - [ApiCreateCollectionBody](docs/Model/ApiCreateCollectionBody.md)
+ - [ApiDeleteContentFromCollectionBody](docs/Model/ApiDeleteContentFromCollectionBody.md)
+ - [ApiEmptyResp](docs/Model/ApiEmptyResp.md)
+ - [ApiEstimateDealBody](docs/Model/ApiEstimateDealBody.md)
+ - [ApiGetApiKeysResp](docs/Model/ApiGetApiKeysResp.md)
+ - [ApiPublicNodeInfo](docs/Model/ApiPublicNodeInfo.md)
  - [AutoretrieveInitBody](docs/Model/AutoretrieveInitBody.md)
+ - [CidCid](docs/Model/CidCid.md)
+ - [CollectionsCidType](docs/Model/CollectionsCidType.md)
  - [CollectionsCollection](docs/Model/CollectionsCollection.md)
- - [ContentAddBody](docs/Model/ContentAddBody.md)
- - [MainChannelIDParam](docs/Model/MainChannelIDParam.md)
- - [MainCreateCollectionBody](docs/Model/MainCreateCollectionBody.md)
- - [MainDeleteContentFromCollectionBody](docs/Model/MainDeleteContentFromCollectionBody.md)
- - [MainEstimateDealBody](docs/Model/MainEstimateDealBody.md)
- - [MainGetApiKeysResp](docs/Model/MainGetApiKeysResp.md)
+ - [CollectionsCollectionListResponse](docs/Model/CollectionsCollectionListResponse.md)
  - [MainImportDealBody](docs/Model/MainImportDealBody.md)
+ - [MinerClaimMinerBody](docs/Model/MinerClaimMinerBody.md)
+ - [MinerMinerSetInfoParams](docs/Model/MinerMinerSetInfoParams.md)
+ - [MinerSuspendMinerBody](docs/Model/MinerSuspendMinerBody.md)
  - [TypesIpfsListPinStatusResponse](docs/Model/TypesIpfsListPinStatusResponse.md)
  - [TypesIpfsPin](docs/Model/TypesIpfsPin.md)
  - [TypesIpfsPinStatusResponse](docs/Model/TypesIpfsPinStatusResponse.md)
+ - [TypesPinningStatus](docs/Model/TypesPinningStatus.md)
  - [UtilContentAddIpfsBody](docs/Model/UtilContentAddIpfsBody.md)
  - [UtilContentAddResponse](docs/Model/UtilContentAddResponse.md)
  - [UtilContentCreateBody](docs/Model/UtilContentCreateBody.md)
+ - [UtilContentType](docs/Model/UtilContentType.md)
+ - [UtilDbCID](docs/Model/UtilDbCID.md)
  - [UtilHttpError](docs/Model/UtilHttpError.md)
+ - [UtilUserSettings](docs/Model/UtilUserSettings.md)
+ - [UtilViewerResponse](docs/Model/UtilViewerResponse.md)
 
 ## Documentation For Authorization
 

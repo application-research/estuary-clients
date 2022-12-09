@@ -188,17 +188,17 @@ var routes = Routes{
 	},
 
 	Route{
+		"AdminInvitesCodePost",
+		strings.ToUpper("Post"),
+		"/admin/invites/{code}",
+		AdminInvitesCodePost,
+	},
+
+	Route{
 		"AdminInvitesGet",
 		strings.ToUpper("Get"),
 		"/admin/invites",
 		AdminInvitesGet,
-	},
-
-	Route{
-		"AdminInvitesPost",
-		strings.ToUpper("Post"),
-		"/admin/invites",
-		AdminInvitesPost,
 	},
 
 	Route{
@@ -412,10 +412,52 @@ var routes = Routes{
 	},
 
 	Route{
+		"ViewerGet",
+		strings.ToUpper("Get"),
+		"/viewer",
+		ViewerGet,
+	},
+
+	Route{
 		"PublicMetricsDealsOnChainGet",
 		strings.ToUpper("Get"),
 		"/public/metrics/deals-on-chain",
 		PublicMetricsDealsOnChainGet,
+	},
+
+	Route{
+		"MinerClaimMinerGet",
+		strings.ToUpper("Get"),
+		"/miner/claim/{miner}",
+		MinerClaimMinerGet,
+	},
+
+	Route{
+		"MinerClaimPost",
+		strings.ToUpper("Post"),
+		"/miner/claim",
+		MinerClaimPost,
+	},
+
+	Route{
+		"MinerSetInfoMinerPut",
+		strings.ToUpper("Put"),
+		"/miner/set-info/{miner}",
+		MinerSetInfoMinerPut,
+	},
+
+	Route{
+		"MinerSuspendMinerPost",
+		strings.ToUpper("Post"),
+		"/miner/suspend/{miner}",
+		MinerSuspendMinerPost,
+	},
+
+	Route{
+		"MinerUnsuspendMinerPut",
+		strings.ToUpper("Put"),
+		"/miner/unsuspend/{miner}",
+		MinerUnsuspendMinerPut,
 	},
 
 	Route{

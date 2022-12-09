@@ -2,6 +2,8 @@ package io.swagger.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.model.UtilContentType;
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -17,7 +19,7 @@ public class UtilContentCreateBody   {
   private String location = null;
   private String name = null;
   private String root = null;
-  private Integer type = null;
+  private UtilContentType type = null;
 
   /**
    **/
@@ -111,7 +113,7 @@ public class UtilContentCreateBody   {
 
   /**
    **/
-  public UtilContentCreateBody type(Integer type) {
+  public UtilContentCreateBody type(UtilContentType type) {
     this.type = type;
     return this;
   }
@@ -120,10 +122,11 @@ public class UtilContentCreateBody   {
   
   @Schema(description = "")
   @JsonProperty("type")
-  public Integer getType() {
+  @Valid
+  public UtilContentType getType() {
     return type;
   }
-  public void setType(Integer type) {
+  public void setType(UtilContentType type) {
     this.type = type;
   }
 

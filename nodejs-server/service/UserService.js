@@ -56,7 +56,7 @@ exports.userApi_keysKey_or_hashDELETE = function(key_or_hash) {
  *
  * expiry String Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)
  * perms String Permissions -- currently unused (optional)
- * returns main.getApiKeysResp
+ * returns api.getApiKeysResp
  **/
 exports.userApi_keysPOST = function(expiry,perms) {
   return new Promise(function(resolve, reject) {
@@ -97,7 +97,7 @@ exports.userExportGET = function() {
 
 /**
  * Get stats for the current user
- * This endpoint is used to geet stats for the current user.
+ * This endpoint is used to get stats for the current user.
  *
  * returns String
  **/

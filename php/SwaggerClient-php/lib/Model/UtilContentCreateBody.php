@@ -61,7 +61,7 @@ class UtilContentCreateBody implements ModelInterface, ArrayAccess
 'location' => 'string',
 'name' => 'string',
 'root' => 'string',
-'type' => 'int'    ];
+'type' => '\Swagger\Client\Model\UtilContentType'    ];
 
     /**
       * Array of property to format mappings. Used for (de)serialization
@@ -349,7 +349,7 @@ class UtilContentCreateBody implements ModelInterface, ArrayAccess
     /**
      * Gets type
      *
-     * @return int
+     * @return \Swagger\Client\Model\UtilContentType
      */
     public function getType()
     {
@@ -359,7 +359,7 @@ class UtilContentCreateBody implements ModelInterface, ArrayAccess
     /**
      * Sets type
      *
-     * @param int $type type
+     * @param \Swagger\Client\Model\UtilContentType $type type
      *
      * @return $this
      */

@@ -19,13 +19,14 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.swagger.client.model.UtilContentType;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 /**
  * UtilContentCreateBody
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-11-29T10:27:00.219Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-12-09T03:38:44.300Z[GMT]")
 public class UtilContentCreateBody {
   @SerializedName("coluuid")
   private String coluuid = null;
@@ -43,7 +44,7 @@ public class UtilContentCreateBody {
   private String root = null;
 
   @SerializedName("type")
-  private Integer type = null;
+  private UtilContentType type = null;
 
   public UtilContentCreateBody coluuid(String coluuid) {
     this.coluuid = coluuid;
@@ -135,7 +136,7 @@ public class UtilContentCreateBody {
     this.root = root;
   }
 
-  public UtilContentCreateBody type(Integer type) {
+  public UtilContentCreateBody type(UtilContentType type) {
     this.type = type;
     return this;
   }
@@ -145,11 +146,11 @@ public class UtilContentCreateBody {
    * @return type
   **/
   @Schema(description = "")
-  public Integer getType() {
+  public UtilContentType getType() {
     return type;
   }
 
-  public void setType(Integer type) {
+  public void setType(UtilContentType type) {
     this.type = type;
   }
 

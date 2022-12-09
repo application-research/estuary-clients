@@ -5,8 +5,8 @@ from __future__ import absolute_import
 from flask import json
 from six import BytesIO
 
-from estuary-client.models.main_channel_id_param import MainChannelIDParam  # noqa: E501
-from estuary-client.models.main_estimate_deal_body import MainEstimateDealBody  # noqa: E501
+from estuary-client.models.api_channel_id_param import ApiChannelIDParam  # noqa: E501
+from estuary-client.models.api_estimate_deal_body import ApiEstimateDealBody  # noqa: E501
 from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
 from estuary-client.test import BaseTestCase
 
@@ -19,7 +19,7 @@ class TestDealsController(BaseTestCase):
 
         Estimate the cost of a deal
         """
-        body = MainEstimateDealBody()
+        body = ApiEstimateDealBody()
         response = self.client.open(
             '/deal/estimate',
             method='POST',
@@ -99,7 +99,7 @@ class TestDealsController(BaseTestCase):
 
         Transfer Status
         """
-        body = MainChannelIDParam()
+        body = ApiChannelIDParam()
         response = self.client.open(
             '/deal/transfer/status',
             method='POST',

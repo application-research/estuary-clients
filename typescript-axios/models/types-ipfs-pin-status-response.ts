@@ -12,6 +12,7 @@
  * Do not edit the class manually.
  */
 import { TypesIpfsPin } from './types-ipfs-pin';
+import { TypesPinningStatus } from './types-pinning-status';
 /**
  * 
  * @export
@@ -50,8 +51,8 @@ export interface TypesIpfsPinStatusResponse {
     requestid?: string;
     /**
      * 
-     * @type {string}
+     * @type {TypesPinningStatus}
      * @memberof TypesIpfsPinStatusResponse
      */
-    status?: string;
+    status?: TypesPinningStatus;
 }

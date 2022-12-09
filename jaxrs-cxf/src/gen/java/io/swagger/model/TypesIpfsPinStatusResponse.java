@@ -1,6 +1,7 @@
 package io.swagger.model;
 
 import io.swagger.model.TypesIpfsPin;
+import io.swagger.model.TypesPinningStatus;
 import java.util.ArrayList;
 import java.util.List;
 import javax.validation.constraints.*;
@@ -35,7 +36,7 @@ public class TypesIpfsPinStatusResponse   {
   private String requestid = null;
   
   @Schema(description = "")
-  private String status = null;
+  private TypesPinningStatus status = null;
  /**
    * Get created
    * @return created
@@ -136,15 +137,15 @@ public class TypesIpfsPinStatusResponse   {
    * @return status
   **/
   @JsonProperty("status")
-  public String getStatus() {
+  public TypesPinningStatus getStatus() {
     return status;
   }
 
-  public void setStatus(String status) {
+  public void setStatus(TypesPinningStatus status) {
     this.status = status;
   }
 
-  public TypesIpfsPinStatusResponse status(String status) {
+  public TypesIpfsPinStatusResponse status(TypesPinningStatus status) {
     this.status = status;
     return this;
   }

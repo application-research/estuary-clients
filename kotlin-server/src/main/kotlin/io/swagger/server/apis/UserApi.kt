@@ -33,7 +33,7 @@ import estuary-client.Paths
 import estuary-client.infrastructure.ApiPrincipal
 
 
-import io.swagger.server.models.MaingetApiKeysResp
+import io.swagger.server.models.ApigetApiKeysResp
 import io.swagger.server.models.UtilHttpError
 
 @KtorExperimentalLocationsAPI

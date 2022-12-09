@@ -9,6 +9,7 @@ from estuary_client.api.autoretrieve_api import AutoretrieveApi
 from estuary_client.api.collections_api import CollectionsApi
 from estuary_client.api.content_api import ContentApi
 from estuary_client.api.deals_api import DealsApi
+from estuary_client.api.default_api import DefaultApi
 from estuary_client.api.metrics_api import MetricsApi
 from estuary_client.api.miner_api import MinerApi
 from estuary_client.api.net_api import NetApi

@@ -11,9 +11,10 @@
 */package io.swagger.server.models
 
 import io.swagger.server.models.TypesIpfsPin
+import io.swagger.server.models.TypesPinningStatus
 
 /**
  *  * @param created  * @param delegates  * @param info  * @param pin  * @param requestid  * @param status */
-data class TypesIpfsPinStatusResponse (    val created: kotlin.String? = null,    val delegates: kotlin.Array<kotlin.String>? = null,    val info: kotlin.Any? = null,    val pin: TypesIpfsPin? = null,    val requestid: kotlin.String? = null,    val status: kotlin.String? = null
+data class TypesIpfsPinStatusResponse (    val created: kotlin.String? = null,    val delegates: kotlin.Array<kotlin.String>? = null,    val info: kotlin.Any? = null,    val pin: TypesIpfsPin? = null,    val requestid: kotlin.String? = null,    val status: TypesPinningStatus? = null
 ) {
 }

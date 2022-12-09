@@ -4,11 +4,11 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**admin_invites_code_post**](ContentApi.md#admin_invites_code_post) | **POST** /admin/invites/{code} | Create an Estuary invite
 [**admin_invites_get**](ContentApi.md#admin_invites_get) | **GET** /admin/invites | Get Estuary invites
-[**admin_invites_post**](ContentApi.md#admin_invites_post) | **POST** /admin/invites | Create an Estuary invite
-[**content_add_car_post**](ContentApi.md#content_add_car_post) | **POST** /content/add-car | Add Car object
+[**content_add_car_post**](ContentApi.md#content_add_car_post) | **POST** /content/add-car | Upload content via a car file
 [**content_add_ipfs_post**](ContentApi.md#content_add_ipfs_post) | **POST** /content/add-ipfs | Add IPFS object
-[**content_add_post**](ContentApi.md#content_add_post) | **POST** /content/add | Add new content
+[**content_add_post**](ContentApi.md#content_add_post) | **POST** /content/add | Upload a file
 [**content_aggregated_content_get**](ContentApi.md#content_aggregated_content_get) | **GET** /content/aggregated/{content} | Get aggregated content stats
 [**content_all_deals_get**](ContentApi.md#content_all_deals_get) | **GET** /content/all-deals | Get all deals for a user
 [**content_bw_usage_content_get**](ContentApi.md#content_bw_usage_content_get) | **GET** /content/bw-usage/{content} | Get content bandwidth
@@ -23,6 +23,59 @@ Method | HTTP request | Description
 [**content_staging_zones_get**](ContentApi.md#content_staging_zones_get) | **GET** /content/staging-zones | Get staging zone for user
 [**content_stats_get**](ContentApi.md#content_stats_get) | **GET** /content/stats | Get content statistics
 [**content_status_id_get**](ContentApi.md#content_status_id_get) | **GET** /content/status/{id} | Content Status
+
+# **admin_invites_code_post**
+> String admin_invites_code_post(code)
+
+Create an Estuary invite
+
+This endpoint is used to create an estuary invite.
+
+### Example
+```ruby
+# load the gem
+require 'swagger_client'
+# setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: bearerAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::ContentApi.new
+code = 'code_example' # String | Invite code to be created
+
+
+begin
+  #Create an Estuary invite
+  result = api_instance.admin_invites_code_post(code)
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling ContentApi->admin_invites_code_post: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **code** | **String**| Invite code to be created | 
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
 
 # **admin_invites_get**
 > String admin_invites_get
@@ -72,12 +125,12 @@ This endpoint does not need any parameter.
 
 
 
-# **admin_invites_post**
-> String admin_invites_post(code)
+# **content_add_car_post**
+> String content_add_car_post
 
-Create an Estuary invite
+Upload content via a car file
 
-This endpoint is used to create an estuary invite.
+This endpoint uploads content via a car file
 
 ### Example
 ```ruby
@@ -92,23 +145,18 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-code = 'code_example' # String | Invite code to be created
-
 
 begin
-  #Create an Estuary invite
-  result = api_instance.admin_invites_post(code)
+  #Upload content via a car file
+  result = api_instance.content_add_car_post
   p result
 rescue SwaggerClient::ApiError => e
-  puts "Exception when calling ContentApi->admin_invites_post: #{e}"
+  puts "Exception when calling ContentApi->content_add_car_post: #{e}"
 end
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **String**| Invite code to be created | 
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -121,64 +169,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-
-# **content_add_car_post**
-> UtilContentAddResponse content_add_car_post(body, opts)
-
-Add Car object
-
-This endpoint is used to add a car object to the network. The object can be a file or a directory.
-
-### Example
-```ruby
-# load the gem
-require 'swagger_client'
-# setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::ContentApi.new
-body = 'body_example' # String | Car
-opts = { 
-  ignore_dupes: 'ignore_dupes_example' # String | Ignore Dupes
-  filename: 'filename_example' # String | Filename
-}
-
-begin
-  #Add Car object
-  result = api_instance.content_add_car_post(body, opts)
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling ContentApi->content_add_car_post: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**String**](String.md)| Car | 
- **ignore_dupes** | **String**| Ignore Dupes | [optional] 
- **filename** | **String**| Filename | [optional] 
-
-### Return type
-
-[**UtilContentAddResponse**](UtilContentAddResponse.md)
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: */*
  - **Accept**: application/json
 
 
@@ -240,11 +230,11 @@ Name | Type | Description  | Notes
 
 
 # **content_add_post**
-> UtilContentAddResponse content_add_post(datafilename, opts)
+> String content_add_post
 
-Add new content
+Upload a file
 
-This endpoint is used to upload new content.
+This endpoint uploads a file.
 
 ### Example
 ```ruby
@@ -259,19 +249,10 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-data = 'data_example' # String | 
-filename = 'filename_example' # String | 
-opts = { 
-  coluuid: 'coluuid_example' # String | Collection UUID
-  replication: 56 # Integer | Replication value
-  ignore_dupes: 'ignore_dupes_example' # String | Ignore Dupes true/false
-  lazy_provide: 'lazy_provide_example' # String | Lazy Provide true/false
-  dir: 'dir_example' # String | Directory
-}
 
 begin
-  #Add new content
-  result = api_instance.content_add_post(datafilename, opts)
+  #Upload a file
+  result = api_instance.content_add_post
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ContentApi->content_add_post: #{e}"
@@ -279,20 +260,11 @@ end
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **data** | **String**|  | 
- **filename** | **String**|  | 
- **coluuid** | **String**| Collection UUID | [optional] 
- **replication** | **Integer**| Replication value | [optional] 
- **ignore_dupes** | **String**| Ignore Dupes true/false | [optional] 
- **lazy_provide** | **String**| Lazy Provide true/false | [optional] 
- **dir** | **String**| Directory | [optional] 
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**UtilContentAddResponse**](UtilContentAddResponse.md)
+**String**
 
 ### Authorization
 
@@ -300,7 +272,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 
@@ -946,7 +918,7 @@ This endpoint does not need any parameter.
 
 Get content statistics
 
-This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
 
 ### Example
 ```ruby

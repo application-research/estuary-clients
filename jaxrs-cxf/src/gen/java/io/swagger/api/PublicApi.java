@@ -1,5 +1,6 @@
 package io.swagger.api;
 
+import io.swagger.model.ApiPublicNodeInfo;
 import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
@@ -72,10 +73,10 @@ public interface PublicApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Get public node info", tags={ "public" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiPublicNodeInfo.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public String publicInfoGet();
+    public ApiPublicNodeInfo publicInfoGet();
 
     /**
      * Get deal metrics

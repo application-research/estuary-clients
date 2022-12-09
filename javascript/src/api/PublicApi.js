@@ -13,6 +13,7 @@
  *
  */
 import {ApiClient} from "../ApiClient";
+import {ApiPublicNodeInfo} from '../model/ApiPublicNodeInfo';
 import {UtilHttpError} from '../model/UtilHttpError';
 
 /**
@@ -131,7 +132,7 @@ export class PublicApi {
      * Callback function to receive the result of the publicInfoGet operation.
      * @callback moduleapi/PublicApi~publicInfoGetCallback
      * @param {String} error Error message, if any.
-     * @param {'String'{ data The data returned by the service call.
+     * @param {module:model/ApiPublicNodeInfo{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -161,7 +162,7 @@ export class PublicApi {
       let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = 'String';
+      let returnType = ApiPublicNodeInfo;
 
       return this.apiClient.callApi(
         '/public/info', 'GET',

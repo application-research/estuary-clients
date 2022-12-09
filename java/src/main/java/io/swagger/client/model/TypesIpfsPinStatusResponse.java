@@ -20,6 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import io.swagger.client.model.TypesIpfsPin;
+import io.swagger.client.model.TypesPinningStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ import java.util.List;
  * TypesIpfsPinStatusResponse
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-11-29T10:27:00.219Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-12-09T03:38:44.300Z[GMT]")
 public class TypesIpfsPinStatusResponse {
   @SerializedName("created")
   private String created = null;
@@ -46,7 +47,7 @@ public class TypesIpfsPinStatusResponse {
   private String requestid = null;
 
   @SerializedName("status")
-  private String status = null;
+  private TypesPinningStatus status = null;
 
   public TypesIpfsPinStatusResponse created(String created) {
     this.created = created;
@@ -146,7 +147,7 @@ public class TypesIpfsPinStatusResponse {
     this.requestid = requestid;
   }
 
-  public TypesIpfsPinStatusResponse status(String status) {
+  public TypesIpfsPinStatusResponse status(TypesPinningStatus status) {
     this.status = status;
     return this;
   }
@@ -156,11 +157,11 @@ public class TypesIpfsPinStatusResponse {
    * @return status
   **/
   @Schema(description = "")
-  public String getStatus() {
+  public TypesPinningStatus getStatus() {
     return status;
   }
 
-  public void setStatus(String status) {
+  public void setStatus(TypesPinningStatus status) {
     this.status = status;
   }
 

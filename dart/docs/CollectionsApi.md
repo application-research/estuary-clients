@@ -81,7 +81,7 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new CollectionsApi();
-var body = new MainDeleteContentFromCollectionBody(); // MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
+var body = new ApiDeleteContentFromCollectionBody(); // ApiDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
 var coluuid = coluuid_example; // String | Collection ID
 
 try {
@@ -96,7 +96,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) | 
+ **body** | [**ApiDeleteContentFromCollectionBody**](ApiDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) | 
  **coluuid** | **String**| Collection ID | 
 
 ### Return type
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collectionsColuuidGet**
-> String collectionsColuuidGet(coluuid, dir)
+> List<CollectionsCollectionListResponse> collectionsColuuidGet(coluuid, dir)
 
 Get contents in a collection
 
@@ -197,7 +197,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**String**
+[**List<CollectionsCollectionListResponse>**](CollectionsCollectionListResponse.md)
 
 ### Authorization
 
@@ -371,7 +371,7 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new CollectionsApi();
-var body = new MainCreateCollectionBody(); // MainCreateCollectionBody | Collection name and description
+var body = new ApiCreateCollectionBody(); // ApiCreateCollectionBody | Collection name and description
 
 try {
     var result = api_instance.collectionsPost(body);
@@ -385,7 +385,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainCreateCollectionBody**](MainCreateCollectionBody.md)| Collection name and description | 
+ **body** | [**ApiCreateCollectionBody**](ApiCreateCollectionBody.md)| Collection name and description | 
 
 ### Return type
 

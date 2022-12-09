@@ -33,6 +33,7 @@ import estuary-client.Paths
 import estuary-client.infrastructure.ApiPrincipal
 
 
+import io.swagger.server.models.ApipublicNodeInfo
 import io.swagger.server.models.UtilHttpError
 
 @KtorExperimentalLocationsAPI
@@ -67,7 +68,9 @@ fun Route.PublicApi() {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
             val exampleContentType = "application/json"
-            val exampleContentString = """"""""
+            val exampleContentString = """{
+  "primaryAddress" : { }
+}"""
             
             when(exampleContentType) {
                 "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))

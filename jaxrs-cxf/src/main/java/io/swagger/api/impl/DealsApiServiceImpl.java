@@ -1,8 +1,8 @@
 package io.swagger.api.impl;
 
 import io.swagger.api.*;
-import io.swagger.model.MainChannelIDParam;
-import io.swagger.model.MainEstimateDealBody;
+import io.swagger.model.ApiChannelIDParam;
+import io.swagger.model.ApiEstimateDealBody;
 import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
@@ -30,7 +30,7 @@ public class DealsApiServiceImpl implements DealsApi {
      * This endpoint estimates the cost of a deal
      *
      */
-    public String dealEstimatePost(MainEstimateDealBody body) {
+    public String dealEstimatePost(ApiEstimateDealBody body) {
         // TODO: Implement...
         
         return null;
@@ -114,7 +114,7 @@ public class DealsApiServiceImpl implements DealsApi {
      * This endpoint returns the status of a transfer
      *
      */
-    public String dealTransferStatusPost(MainChannelIDParam body) {
+    public String dealTransferStatusPost(ApiChannelIDParam body) {
         // TODO: Implement...
         
         return null;

@@ -5,7 +5,7 @@ import akka.http.scaladsl.server.Route
 import akka.http.scaladsl.unmarshalling.FromRequestUnmarshaller
 import akka.http.scaladsl.marshalling.ToEntityMarshaller
 import io.swagger.server.AkkaHttpHelper._
-import io.swagger.server.model.main.getApiKeysResp
+import io.swagger.server.model.api.getApiKeysResp
 import io.swagger.server.model.util.HttpError
 
 class UserApi(
@@ -94,8 +94,8 @@ class UserApi(
 
 trait UserApiService {
 
-  def userApiKeysGet200(responsemain.getApiKeysResparray: List[main.getApiKeysResp])(implicit toEntityMarshallermain.getApiKeysResparray: ToEntityMarshaller[List[main.getApiKeysResp]]): Route =
-    complete((200, responsemain.getApiKeysResparray))
+  def userApiKeysGet200(responseapi.getApiKeysResparray: List[api.getApiKeysResp])(implicit toEntityMarshallerapi.getApiKeysResparray: ToEntityMarshaller[List[api.getApiKeysResp]]): Route =
+    complete((200, responseapi.getApiKeysResparray))
   def userApiKeysGet400(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((400, responseutil.HttpError))
   def userApiKeysGet404(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
@@ -103,13 +103,13 @@ trait UserApiService {
   def userApiKeysGet500(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((500, responseutil.HttpError))
   /**
-   * Code: 200, Message: OK, DataType: List[main.getApiKeysResp]
+   * Code: 200, Message: OK, DataType: List[api.getApiKeysResp]
    * Code: 400, Message: Bad Request, DataType: util.HttpError
    * Code: 404, Message: Not Found, DataType: util.HttpError
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
   def userApiKeysGet()
-      (implicit toEntityMarshallermain.getApiKeysResparray: ToEntityMarshaller[List[main.getApiKeysResp]], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
+      (implicit toEntityMarshallerapi.getApiKeysResparray: ToEntityMarshaller[List[api.getApiKeysResp]], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
   def userApiKeysKeyOrHashDelete200(responseString: String): Route =
     complete((200, responseString))
@@ -125,8 +125,8 @@ trait UserApiService {
   def userApiKeysKeyOrHashDelete(keyOrHash: String)
       (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
-  def userApiKeysPost200(responsemain.getApiKeysResp: main.getApiKeysResp)(implicit toEntityMarshallermain.getApiKeysResp: ToEntityMarshaller[main.getApiKeysResp]): Route =
-    complete((200, responsemain.getApiKeysResp))
+  def userApiKeysPost200(responseapi.getApiKeysResp: api.getApiKeysResp)(implicit toEntityMarshallerapi.getApiKeysResp: ToEntityMarshaller[api.getApiKeysResp]): Route =
+    complete((200, responseapi.getApiKeysResp))
   def userApiKeysPost400(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((400, responseutil.HttpError))
   def userApiKeysPost404(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
@@ -134,13 +134,13 @@ trait UserApiService {
   def userApiKeysPost500(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((500, responseutil.HttpError))
   /**
-   * Code: 200, Message: OK, DataType: main.getApiKeysResp
+   * Code: 200, Message: OK, DataType: api.getApiKeysResp
    * Code: 400, Message: Bad Request, DataType: util.HttpError
    * Code: 404, Message: Not Found, DataType: util.HttpError
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
   def userApiKeysPost(expiry: Option[String], perms: Option[String])
-      (implicit toEntityMarshallermain.getApiKeysResp: ToEntityMarshaller[main.getApiKeysResp], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
+      (implicit toEntityMarshallerapi.getApiKeysResp: ToEntityMarshaller[api.getApiKeysResp], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
   def userExportGet200(responseString: String): Route =
     complete((200, responseString))
@@ -174,7 +174,7 @@ trait UserApiService {
 
 trait UserApiMarshaller {
 
-  implicit def toEntityMarshallermain.getApiKeysResparray: ToEntityMarshaller[List[main.getApiKeysResp]]
+  implicit def toEntityMarshallerapi.getApiKeysResparray: ToEntityMarshaller[List[api.getApiKeysResp]]
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 
@@ -186,7 +186,7 @@ trait UserApiMarshaller {
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 
-  implicit def toEntityMarshallermain.getApiKeysResp: ToEntityMarshaller[main.getApiKeysResp]
+  implicit def toEntityMarshallerapi.getApiKeysResp: ToEntityMarshaller[api.getApiKeysResp]
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 

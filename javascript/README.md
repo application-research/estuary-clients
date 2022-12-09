@@ -116,11 +116,11 @@ Class | Method | HTTP request | Description
 *EstuaryClient.CollectionsApi* | [**collectionsFsAddPost**](docs/CollectionsApi.md#collectionsFsAddPost) | **POST** /collections/fs/add | Add a file to a collection
 *EstuaryClient.CollectionsApi* | [**collectionsGet**](docs/CollectionsApi.md#collectionsGet) | **GET** /collections/ | List all collections
 *EstuaryClient.CollectionsApi* | [**collectionsPost**](docs/CollectionsApi.md#collectionsPost) | **POST** /collections/ | Create a new collection
+*EstuaryClient.ContentApi* | [**adminInvitesCodePost**](docs/ContentApi.md#adminInvitesCodePost) | **POST** /admin/invites/{code} | Create an Estuary invite
 *EstuaryClient.ContentApi* | [**adminInvitesGet**](docs/ContentApi.md#adminInvitesGet) | **GET** /admin/invites | Get Estuary invites
-*EstuaryClient.ContentApi* | [**adminInvitesPost**](docs/ContentApi.md#adminInvitesPost) | **POST** /admin/invites | Create an Estuary invite
-*EstuaryClient.ContentApi* | [**contentAddCarPost**](docs/ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Add Car object
+*EstuaryClient.ContentApi* | [**contentAddCarPost**](docs/ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Upload content via a car file
 *EstuaryClient.ContentApi* | [**contentAddIpfsPost**](docs/ContentApi.md#contentAddIpfsPost) | **POST** /content/add-ipfs | Add IPFS object
-*EstuaryClient.ContentApi* | [**contentAddPost**](docs/ContentApi.md#contentAddPost) | **POST** /content/add | Add new content
+*EstuaryClient.ContentApi* | [**contentAddPost**](docs/ContentApi.md#contentAddPost) | **POST** /content/add | Upload a file
 *EstuaryClient.ContentApi* | [**contentAggregatedContentGet**](docs/ContentApi.md#contentAggregatedContentGet) | **GET** /content/aggregated/{content} | Get aggregated content stats
 *EstuaryClient.ContentApi* | [**contentAllDealsGet**](docs/ContentApi.md#contentAllDealsGet) | **GET** /content/all-deals | Get all deals for a user
 *EstuaryClient.ContentApi* | [**contentBwUsageContentGet**](docs/ContentApi.md#contentBwUsageContentGet) | **GET** /content/bw-usage/{content} | Get content bandwidth
@@ -148,7 +148,13 @@ Class | Method | HTTP request | Description
 *EstuaryClient.DealsApi* | [**dealsStatusDealGet**](docs/DealsApi.md#dealsStatusDealGet) | **GET** /deals/status/{deal} | Get Deal Status
 *EstuaryClient.DealsApi* | [**publicDealsFailuresGet**](docs/DealsApi.md#publicDealsFailuresGet) | **GET** /public/deals/failures | Get storage failures
 *EstuaryClient.DealsApi* | [**publicMinersStorageQueryMinerGet**](docs/DealsApi.md#publicMinersStorageQueryMinerGet) | **GET** /public/miners/storage/query/{miner} | Query Ask
+*EstuaryClient.DefaultApi* | [**viewerGet**](docs/DefaultApi.md#viewerGet) | **GET** /viewer | Fetch viewer details
 *EstuaryClient.MetricsApi* | [**publicMetricsDealsOnChainGet**](docs/MetricsApi.md#publicMetricsDealsOnChainGet) | **GET** /public/metrics/deals-on-chain | Get deal metrics
+*EstuaryClient.MinerApi* | [**minerClaimMinerGet**](docs/MinerApi.md#minerClaimMinerGet) | **GET** /miner/claim/{miner} | Get Claim Miner Message
+*EstuaryClient.MinerApi* | [**minerClaimPost**](docs/MinerApi.md#minerClaimPost) | **POST** /miner/claim | Claim Miner
+*EstuaryClient.MinerApi* | [**minerSetInfoMinerPut**](docs/MinerApi.md#minerSetInfoMinerPut) | **PUT** /miner/set-info/{miner} | Set Miner Info
+*EstuaryClient.MinerApi* | [**minerSuspendMinerPost**](docs/MinerApi.md#minerSuspendMinerPost) | **POST** /miner/suspend/{miner} | Suspend Miner
+*EstuaryClient.MinerApi* | [**minerUnsuspendMinerPut**](docs/MinerApi.md#minerUnsuspendMinerPut) | **PUT** /miner/unsuspend/{miner} | Unuspend Miner
 *EstuaryClient.MinerApi* | [**publicMinersDealsMinerGet**](docs/MinerApi.md#publicMinersDealsMinerGet) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *EstuaryClient.MinerApi* | [**publicMinersStatsMinerGet**](docs/MinerApi.md#publicMinersStatsMinerGet) | **GET** /public/miners/stats/{miner} | Get miner stats
 *EstuaryClient.NetApi* | [**netAddrsGet**](docs/NetApi.md#netAddrsGet) | **GET** /net/addrs | Net Addrs
@@ -180,22 +186,37 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [EstuaryClient.AddressAddress](docs/AddressAddress.md)
+ - [EstuaryClient.ApiChannelIDParam](docs/ApiChannelIDParam.md)
+ - [EstuaryClient.ApiClaimMsgResponse](docs/ApiClaimMsgResponse.md)
+ - [EstuaryClient.ApiClaimResponse](docs/ApiClaimResponse.md)
+ - [EstuaryClient.ApiCreateCollectionBody](docs/ApiCreateCollectionBody.md)
+ - [EstuaryClient.ApiDeleteContentFromCollectionBody](docs/ApiDeleteContentFromCollectionBody.md)
+ - [EstuaryClient.ApiEmptyResp](docs/ApiEmptyResp.md)
+ - [EstuaryClient.ApiEstimateDealBody](docs/ApiEstimateDealBody.md)
+ - [EstuaryClient.ApiGetApiKeysResp](docs/ApiGetApiKeysResp.md)
+ - [EstuaryClient.ApiPublicNodeInfo](docs/ApiPublicNodeInfo.md)
  - [EstuaryClient.AutoretrieveInitBody](docs/AutoretrieveInitBody.md)
+ - [EstuaryClient.CidCid](docs/CidCid.md)
+ - [EstuaryClient.CollectionsCidType](docs/CollectionsCidType.md)
  - [EstuaryClient.CollectionsCollection](docs/CollectionsCollection.md)
- - [EstuaryClient.ContentAddBody](docs/ContentAddBody.md)
- - [EstuaryClient.MainChannelIDParam](docs/MainChannelIDParam.md)
- - [EstuaryClient.MainCreateCollectionBody](docs/MainCreateCollectionBody.md)
- - [EstuaryClient.MainDeleteContentFromCollectionBody](docs/MainDeleteContentFromCollectionBody.md)
- - [EstuaryClient.MainEstimateDealBody](docs/MainEstimateDealBody.md)
- - [EstuaryClient.MainGetApiKeysResp](docs/MainGetApiKeysResp.md)
+ - [EstuaryClient.CollectionsCollectionListResponse](docs/CollectionsCollectionListResponse.md)
  - [EstuaryClient.MainImportDealBody](docs/MainImportDealBody.md)
+ - [EstuaryClient.MinerClaimMinerBody](docs/MinerClaimMinerBody.md)
+ - [EstuaryClient.MinerMinerSetInfoParams](docs/MinerMinerSetInfoParams.md)
+ - [EstuaryClient.MinerSuspendMinerBody](docs/MinerSuspendMinerBody.md)
  - [EstuaryClient.TypesIpfsListPinStatusResponse](docs/TypesIpfsListPinStatusResponse.md)
  - [EstuaryClient.TypesIpfsPin](docs/TypesIpfsPin.md)
  - [EstuaryClient.TypesIpfsPinStatusResponse](docs/TypesIpfsPinStatusResponse.md)
+ - [EstuaryClient.TypesPinningStatus](docs/TypesPinningStatus.md)
  - [EstuaryClient.UtilContentAddIpfsBody](docs/UtilContentAddIpfsBody.md)
  - [EstuaryClient.UtilContentAddResponse](docs/UtilContentAddResponse.md)
  - [EstuaryClient.UtilContentCreateBody](docs/UtilContentCreateBody.md)
+ - [EstuaryClient.UtilContentType](docs/UtilContentType.md)
+ - [EstuaryClient.UtilDbCID](docs/UtilDbCID.md)
  - [EstuaryClient.UtilHttpError](docs/UtilHttpError.md)
+ - [EstuaryClient.UtilUserSettings](docs/UtilUserSettings.md)
+ - [EstuaryClient.UtilViewerResponse](docs/UtilViewerResponse.md)
 
 ## Documentation for Authorization
 

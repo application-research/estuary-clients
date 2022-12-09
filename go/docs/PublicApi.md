@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PublicInfoGet**
-> string PublicInfoGet(ctx, )
+> ApiPublicNodeInfo PublicInfoGet(ctx, )
 Get public node info
 
 This endpoint returns information about the node
@@ -83,7 +83,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**string**
+[**ApiPublicNodeInfo**](api.publicNodeInfo.md)
 
 ### Authorization
 

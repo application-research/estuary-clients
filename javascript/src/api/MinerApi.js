@@ -13,6 +13,12 @@
  *
  */
 import {ApiClient} from "../ApiClient";
+import {ApiClaimMsgResponse} from '../model/ApiClaimMsgResponse';
+import {ApiClaimResponse} from '../model/ApiClaimResponse';
+import {ApiEmptyResp} from '../model/ApiEmptyResp';
+import {MinerClaimMinerBody} from '../model/MinerClaimMinerBody';
+import {MinerMinerSetInfoParams} from '../model/MinerMinerSetInfoParams';
+import {MinerSuspendMinerBody} from '../model/MinerSuspendMinerBody';
 import {UtilHttpError} from '../model/UtilHttpError';
 
 /**
@@ -34,6 +40,251 @@ export class MinerApi {
         this.apiClient = apiClient || ApiClient.instance;
     }
 
+    /**
+     * Callback function to receive the result of the minerClaimMinerGet operation.
+     * @callback moduleapi/MinerApi~minerClaimMinerGetCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ApiClaimMsgResponse{ data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get Claim Miner Message
+     * This endpoint lets a user get the message in order to claim a miner
+     * @param {String} miner Miner claim message
+     * @param {module:api/MinerApi~minerClaimMinerGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
+     */
+    minerClaimMinerGet(miner, callback) {
+      
+      let postBody = null;
+      // verify the required parameter 'miner' is set
+      if (miner === undefined || miner === null) {
+        throw new Error("Missing the required parameter 'miner' when calling minerClaimMinerGet");
+      }
+
+      let pathParams = {
+        'miner': miner
+      };
+      let queryParams = {
+        
+      };
+      let headerParams = {
+        
+      };
+      let formParams = {
+        
+      };
+
+      let authNames = ['bearerAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ApiClaimMsgResponse;
+
+      return this.apiClient.callApi(
+        '/miner/claim/{miner}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+    /**
+     * Callback function to receive the result of the minerClaimPost operation.
+     * @callback moduleapi/MinerApi~minerClaimPostCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ApiClaimResponse{ data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Claim Miner
+     * This endpoint lets a user claim a miner
+     * @param {module:model/MinerClaimMinerBody} body Claim Miner Body
+     * @param {module:api/MinerApi~minerClaimPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
+     */
+    minerClaimPost(body, callback) {
+      
+      let postBody = body;
+      // verify the required parameter 'body' is set
+      if (body === undefined || body === null) {
+        throw new Error("Missing the required parameter 'body' when calling minerClaimPost");
+      }
+
+      let pathParams = {
+        
+      };
+      let queryParams = {
+        
+      };
+      let headerParams = {
+        
+      };
+      let formParams = {
+        
+      };
+
+      let authNames = ['bearerAuth'];
+      let contentTypes = ['*/*'];
+      let accepts = ['application/json'];
+      let returnType = ApiClaimResponse;
+
+      return this.apiClient.callApi(
+        '/miner/claim', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+    /**
+     * Callback function to receive the result of the minerSetInfoMinerPut operation.
+     * @callback moduleapi/MinerApi~minerSetInfoMinerPutCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ApiEmptyResp{ data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Set Miner Info
+     * This endpoint lets a user set miner info.
+     * @param {module:model/MinerMinerSetInfoParams} body Miner set info params
+     * @param {String} miner Miner to set info for
+     * @param {module:api/MinerApi~minerSetInfoMinerPutCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
+     */
+    minerSetInfoMinerPut(body, miner, callback) {
+      
+      let postBody = body;
+      // verify the required parameter 'body' is set
+      if (body === undefined || body === null) {
+        throw new Error("Missing the required parameter 'body' when calling minerSetInfoMinerPut");
+      }
+      // verify the required parameter 'miner' is set
+      if (miner === undefined || miner === null) {
+        throw new Error("Missing the required parameter 'miner' when calling minerSetInfoMinerPut");
+      }
+
+      let pathParams = {
+        'miner': miner
+      };
+      let queryParams = {
+        
+      };
+      let headerParams = {
+        
+      };
+      let formParams = {
+        
+      };
+
+      let authNames = ['bearerAuth'];
+      let contentTypes = ['*/*'];
+      let accepts = ['application/json'];
+      let returnType = ApiEmptyResp;
+
+      return this.apiClient.callApi(
+        '/miner/set-info/{miner}', 'PUT',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+    /**
+     * Callback function to receive the result of the minerSuspendMinerPost operation.
+     * @callback moduleapi/MinerApi~minerSuspendMinerPostCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ApiEmptyResp{ data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Suspend Miner
+     * This endpoint lets a user suspend a miner.
+     * @param {module:model/MinerSuspendMinerBody} body Suspend Miner Body
+     * @param {String} miner Miner to suspend
+     * @param {module:api/MinerApi~minerSuspendMinerPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
+     */
+    minerSuspendMinerPost(body, miner, callback) {
+      
+      let postBody = body;
+      // verify the required parameter 'body' is set
+      if (body === undefined || body === null) {
+        throw new Error("Missing the required parameter 'body' when calling minerSuspendMinerPost");
+      }
+      // verify the required parameter 'miner' is set
+      if (miner === undefined || miner === null) {
+        throw new Error("Missing the required parameter 'miner' when calling minerSuspendMinerPost");
+      }
+
+      let pathParams = {
+        'miner': miner
+      };
+      let queryParams = {
+        
+      };
+      let headerParams = {
+        
+      };
+      let formParams = {
+        
+      };
+
+      let authNames = ['bearerAuth'];
+      let contentTypes = ['*/*'];
+      let accepts = ['application/json'];
+      let returnType = ApiEmptyResp;
+
+      return this.apiClient.callApi(
+        '/miner/suspend/{miner}', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+    /**
+     * Callback function to receive the result of the minerUnsuspendMinerPut operation.
+     * @callback moduleapi/MinerApi~minerUnsuspendMinerPutCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ApiEmptyResp{ data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Unuspend Miner
+     * This endpoint lets a user unsuspend a miner.
+     * @param {String} miner Miner to unsuspend
+     * @param {module:api/MinerApi~minerUnsuspendMinerPutCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
+     */
+    minerUnsuspendMinerPut(miner, callback) {
+      
+      let postBody = null;
+      // verify the required parameter 'miner' is set
+      if (miner === undefined || miner === null) {
+        throw new Error("Missing the required parameter 'miner' when calling minerUnsuspendMinerPut");
+      }
+
+      let pathParams = {
+        'miner': miner
+      };
+      let queryParams = {
+        
+      };
+      let headerParams = {
+        
+      };
+      let formParams = {
+        
+      };
+
+      let authNames = ['bearerAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ApiEmptyResp;
+
+      return this.apiClient.callApi(
+        '/miner/unsuspend/{miner}', 'PUT',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
     /**
      * Callback function to receive the result of the publicMinersDealsMinerGet operation.
      * @callback moduleapi/MinerApi~publicMinersDealsMinerGetCallback

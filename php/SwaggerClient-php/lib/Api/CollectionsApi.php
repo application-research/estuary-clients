@@ -374,7 +374,7 @@ class CollectionsApi
      *
      * Deletes a content from a collection
      *
-     * @param  \Swagger\Client\Model\MainDeleteContentFromCollectionBody $body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) (required)
+     * @param  \Swagger\Client\Model\ApiDeleteContentFromCollectionBody $body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) (required)
      * @param  string $coluuid Collection ID (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -392,7 +392,7 @@ class CollectionsApi
      *
      * Deletes a content from a collection
      *
-     * @param  \Swagger\Client\Model\MainDeleteContentFromCollectionBody $body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) (required)
+     * @param  \Swagger\Client\Model\ApiDeleteContentFromCollectionBody $body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) (required)
      * @param  string $coluuid Collection ID (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -484,7 +484,7 @@ class CollectionsApi
      *
      * Deletes a content from a collection
      *
-     * @param  \Swagger\Client\Model\MainDeleteContentFromCollectionBody $body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) (required)
+     * @param  \Swagger\Client\Model\ApiDeleteContentFromCollectionBody $body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) (required)
      * @param  string $coluuid Collection ID (required)
      *
      * @throws \InvalidArgumentException
@@ -505,7 +505,7 @@ class CollectionsApi
      *
      * Deletes a content from a collection
      *
-     * @param  \Swagger\Client\Model\MainDeleteContentFromCollectionBody $body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) (required)
+     * @param  \Swagger\Client\Model\ApiDeleteContentFromCollectionBody $body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) (required)
      * @param  string $coluuid Collection ID (required)
      *
      * @throws \InvalidArgumentException
@@ -556,7 +556,7 @@ class CollectionsApi
     /**
      * Create request for operation 'collectionsColuuidContentsDelete'
      *
-     * @param  \Swagger\Client\Model\MainDeleteContentFromCollectionBody $body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) (required)
+     * @param  \Swagger\Client\Model\ApiDeleteContentFromCollectionBody $body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) (required)
      * @param  string $coluuid Collection ID (required)
      *
      * @throws \InvalidArgumentException
@@ -959,7 +959,7 @@ class CollectionsApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return string
+     * @return \Swagger\Client\Model\CollectionsCollectionListResponse[]
      */
     public function collectionsColuuidGet($coluuid, $dir = null)
     {
@@ -977,11 +977,11 @@ class CollectionsApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\CollectionsCollectionListResponse[], HTTP status code, HTTP response headers (array of strings)
      */
     public function collectionsColuuidGetWithHttpInfo($coluuid, $dir = null)
     {
-        $returnType = 'string';
+        $returnType = '\Swagger\Client\Model\CollectionsCollectionListResponse[]';
         $request = $this->collectionsColuuidGetRequest($coluuid, $dir);
 
         try {
@@ -1033,7 +1033,7 @@ class CollectionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'string',
+                        '\Swagger\Client\Model\CollectionsCollectionListResponse[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1093,7 +1093,7 @@ class CollectionsApi
      */
     public function collectionsColuuidGetAsyncWithHttpInfo($coluuid, $dir = null)
     {
-        $returnType = 'string';
+        $returnType = '\Swagger\Client\Model\CollectionsCollectionListResponse[]';
         $request = $this->collectionsColuuidGetRequest($coluuid, $dir);
 
         return $this->client
@@ -2133,7 +2133,7 @@ class CollectionsApi
      *
      * Create a new collection
      *
-     * @param  \Swagger\Client\Model\MainCreateCollectionBody $body Collection name and description (required)
+     * @param  \Swagger\Client\Model\ApiCreateCollectionBody $body Collection name and description (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2150,7 +2150,7 @@ class CollectionsApi
      *
      * Create a new collection
      *
-     * @param  \Swagger\Client\Model\MainCreateCollectionBody $body Collection name and description (required)
+     * @param  \Swagger\Client\Model\ApiCreateCollectionBody $body Collection name and description (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2249,7 +2249,7 @@ class CollectionsApi
      *
      * Create a new collection
      *
-     * @param  \Swagger\Client\Model\MainCreateCollectionBody $body Collection name and description (required)
+     * @param  \Swagger\Client\Model\ApiCreateCollectionBody $body Collection name and description (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2269,7 +2269,7 @@ class CollectionsApi
      *
      * Create a new collection
      *
-     * @param  \Swagger\Client\Model\MainCreateCollectionBody $body Collection name and description (required)
+     * @param  \Swagger\Client\Model\ApiCreateCollectionBody $body Collection name and description (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2319,7 +2319,7 @@ class CollectionsApi
     /**
      * Create request for operation 'collectionsPost'
      *
-     * @param  \Swagger\Client\Model\MainCreateCollectionBody $body Collection name and description (required)
+     * @param  \Swagger\Client\Model\ApiCreateCollectionBody $body Collection name and description (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

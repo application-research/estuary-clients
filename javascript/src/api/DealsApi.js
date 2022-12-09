@@ -13,8 +13,8 @@
  *
  */
 import {ApiClient} from "../ApiClient";
-import {MainChannelIDParam} from '../model/MainChannelIDParam';
-import {MainEstimateDealBody} from '../model/MainEstimateDealBody';
+import {ApiChannelIDParam} from '../model/ApiChannelIDParam';
+import {ApiEstimateDealBody} from '../model/ApiEstimateDealBody';
 import {UtilHttpError} from '../model/UtilHttpError';
 
 /**
@@ -47,7 +47,7 @@ export class DealsApi {
     /**
      * Estimate the cost of a deal
      * This endpoint estimates the cost of a deal
-     * @param {module:model/MainEstimateDealBody} body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
+     * @param {module:model/ApiEstimateDealBody} body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
      * @param {module:api/DealsApi~dealEstimatePostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
@@ -376,7 +376,7 @@ export class DealsApi {
     /**
      * Transfer Status
      * This endpoint returns the status of a transfer
-     * @param {module:model/MainChannelIDParam} body Channel ID
+     * @param {module:model/ApiChannelIDParam} body Channel ID
      * @param {module:api/DealsApi~dealTransferStatusPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */

@@ -197,7 +197,7 @@ module SwaggerClient
     # @param coluuid coluuid
     # @param [Hash] opts the optional parameters
     # @option opts [String] :dir Directory
-    # @return [String]
+    # @return [Array<CollectionsCollectionListResponse>]
     def collections_coluuid_get(coluuid, opts = {})
       data, _status_code, _headers = collections_coluuid_get_with_http_info(coluuid, opts)
       data
@@ -208,7 +208,7 @@ module SwaggerClient
     # @param coluuid coluuid
     # @param [Hash] opts the optional parameters
     # @option opts [String] :dir Directory
-    # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
+    # @return [Array<(Array<CollectionsCollectionListResponse>, Integer, Hash)>] Array<CollectionsCollectionListResponse> data, response status code and response headers
     def collections_coluuid_get_with_http_info(coluuid, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CollectionsApi.collections_coluuid_get ...'
@@ -235,7 +235,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] || 'String' 
+      return_type = opts[:return_type] || 'Array<CollectionsCollectionListResponse>' 
 
       auth_names = opts[:auth_names] || ['bearerAuth']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,

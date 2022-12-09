@@ -17,7 +17,6 @@ import (
 	"strings"
 	"fmt"
 	"github.com/antihax/optional"
-	"os"
 )
 
 // Linger please
@@ -26,6 +25,124 @@ var (
 )
 
 type ContentApiService service
+/*
+ContentApiService Create an Estuary invite
+This endpoint is used to create an estuary invite.
+ * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param code Invite code to be created
+@return string
+*/
+func (a *ContentApiService) AdminInvitesCodePost(ctx context.Context, code string) (string, *http.Response, error) {
+	var (
+		localVarHttpMethod = strings.ToUpper("Post")
+		localVarPostBody   interface{}
+		localVarFileName   string
+		localVarFileBytes  []byte
+		localVarReturnValue string
+	)
+
+	// create path and map variables
+	localVarPath := a.client.cfg.BasePath + "/admin/invites/{code}"
+	localVarPath = strings.Replace(localVarPath, "{"+"code"+"}", fmt.Sprintf("%v", code), -1)
+
+	localVarHeaderParams := make(map[string]string)
+	localVarQueryParams := url.Values{}
+	localVarFormParams := url.Values{}
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{}
+
+	// set Content-Type header
+	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		localVarHeaderParams["Content-Type"] = localVarHttpContentType
+	}
+
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{"application/json"}
+
+	// set Accept header
+	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
+	}
+	if ctx != nil {
+		// API Key Authentication
+		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
+			var key string
+			if auth.Prefix != "" {
+				key = auth.Prefix + " " + auth.Key
+			} else {
+				key = auth.Key
+			}
+			localVarHeaderParams["Authorization"] = key
+			
+		}
+	}
+	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
+	if err != nil {
+		return localVarReturnValue, nil, err
+	}
+
+	localVarHttpResponse, err := a.client.callAPI(r)
+	if err != nil || localVarHttpResponse == nil {
+		return localVarReturnValue, localVarHttpResponse, err
+	}
+
+	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
+	localVarHttpResponse.Body.Close()
+	if err != nil {
+		return localVarReturnValue, localVarHttpResponse, err
+	}
+
+	if localVarHttpResponse.StatusCode < 300 {
+		// If we succeed, return the data, otherwise pass on to decode error.
+		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+		if err == nil { 
+			return localVarReturnValue, localVarHttpResponse, err
+		}
+	}
+
+	if localVarHttpResponse.StatusCode >= 300 {
+		newErr := GenericSwaggerError{
+			body: localVarBody,
+			error: localVarHttpResponse.Status,
+		}
+		if localVarHttpResponse.StatusCode == 200 {
+			var v string
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHttpResponse, newErr
+				}
+				newErr.model = v
+				return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		if localVarHttpResponse.StatusCode == 400 {
+			var v UtilHttpError
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHttpResponse, newErr
+				}
+				newErr.model = v
+				return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		if localVarHttpResponse.StatusCode == 500 {
+			var v UtilHttpError
+			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
+				if err != nil {
+					newErr.error = err.Error()
+					return localVarReturnValue, localVarHttpResponse, newErr
+				}
+				newErr.model = v
+				return localVarReturnValue, localVarHttpResponse, newErr
+		}
+		return localVarReturnValue, localVarHttpResponse, newErr
+	}
+
+	return localVarReturnValue, localVarHttpResponse, nil
+}
 /*
 ContentApiService Get Estuary invites
 This endpoint is used to list all estuary invites.
@@ -143,13 +260,12 @@ func (a *ContentApiService) AdminInvitesGet(ctx context.Context) (string, *http.
 	return localVarReturnValue, localVarHttpResponse, nil
 }
 /*
-ContentApiService Create an Estuary invite
-This endpoint is used to create an estuary invite.
+ContentApiService Upload content via a car file
+This endpoint uploads content via a car file
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param code Invite code to be created
 @return string
 */
-func (a *ContentApiService) AdminInvitesPost(ctx context.Context, code string) (string, *http.Response, error) {
+func (a *ContentApiService) ContentAddCarPost(ctx context.Context) (string, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -159,8 +275,7 @@ func (a *ContentApiService) AdminInvitesPost(ctx context.Context, code string) (
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/admin/invites"
-	localVarPath = strings.Replace(localVarPath, "{"+"code"+"}", fmt.Sprintf("%v", code), -1)
+	localVarPath := a.client.cfg.BasePath + "/content/add-car"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -227,140 +342,6 @@ func (a *ContentApiService) AdminInvitesPost(ctx context.Context, code string) (
 		}
 		if localVarHttpResponse.StatusCode == 200 {
 			var v string
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
-				return localVarReturnValue, localVarHttpResponse, newErr
-		}
-		if localVarHttpResponse.StatusCode == 400 {
-			var v UtilHttpError
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
-				return localVarReturnValue, localVarHttpResponse, newErr
-		}
-		if localVarHttpResponse.StatusCode == 500 {
-			var v UtilHttpError
-			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-				if err != nil {
-					newErr.error = err.Error()
-					return localVarReturnValue, localVarHttpResponse, newErr
-				}
-				newErr.model = v
-				return localVarReturnValue, localVarHttpResponse, newErr
-		}
-		return localVarReturnValue, localVarHttpResponse, newErr
-	}
-
-	return localVarReturnValue, localVarHttpResponse, nil
-}
-/*
-ContentApiService Add Car object
-This endpoint is used to add a car object to the network. The object can be a file or a directory.
- * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param body Car
- * @param optional nil or *ContentApiContentAddCarPostOpts - Optional Parameters:
-     * @param "IgnoreDupes" (optional.String) -  Ignore Dupes
-     * @param "Filename" (optional.String) -  Filename
-@return UtilContentAddResponse
-*/
-
-type ContentApiContentAddCarPostOpts struct {
-    IgnoreDupes optional.String
-    Filename optional.String
-}
-
-func (a *ContentApiService) ContentAddCarPost(ctx context.Context, body string, localVarOptionals *ContentApiContentAddCarPostOpts) (UtilContentAddResponse, *http.Response, error) {
-	var (
-		localVarHttpMethod = strings.ToUpper("Post")
-		localVarPostBody   interface{}
-		localVarFileName   string
-		localVarFileBytes  []byte
-		localVarReturnValue UtilContentAddResponse
-	)
-
-	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/content/add-car"
-
-	localVarHeaderParams := make(map[string]string)
-	localVarQueryParams := url.Values{}
-	localVarFormParams := url.Values{}
-
-	if localVarOptionals != nil && localVarOptionals.IgnoreDupes.IsSet() {
-		localVarQueryParams.Add("ignore-dupes", parameterToString(localVarOptionals.IgnoreDupes.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.Filename.IsSet() {
-		localVarQueryParams.Add("filename", parameterToString(localVarOptionals.Filename.Value(), ""))
-	}
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{"*/*"}
-
-	// set Content-Type header
-	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		localVarHeaderParams["Content-Type"] = localVarHttpContentType
-	}
-
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{"application/json"}
-
-	// set Accept header
-	localVarHttpHeaderAccept := selectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
-	}
-	// body params
-	localVarPostBody = &body
-	if ctx != nil {
-		// API Key Authentication
-		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
-			var key string
-			if auth.Prefix != "" {
-				key = auth.Prefix + " " + auth.Key
-			} else {
-				key = auth.Key
-			}
-			localVarHeaderParams["Authorization"] = key
-			
-		}
-	}
-	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
-	if err != nil {
-		return localVarReturnValue, nil, err
-	}
-
-	localVarHttpResponse, err := a.client.callAPI(r)
-	if err != nil || localVarHttpResponse == nil {
-		return localVarReturnValue, localVarHttpResponse, err
-	}
-
-	localVarBody, err := ioutil.ReadAll(localVarHttpResponse.Body)
-	localVarHttpResponse.Body.Close()
-	if err != nil {
-		return localVarReturnValue, localVarHttpResponse, err
-	}
-
-	if localVarHttpResponse.StatusCode < 300 {
-		// If we succeed, return the data, otherwise pass on to decode error.
-		err = a.client.decode(&localVarReturnValue, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
-		if err == nil { 
-			return localVarReturnValue, localVarHttpResponse, err
-		}
-	}
-
-	if localVarHttpResponse.StatusCode >= 300 {
-		newErr := GenericSwaggerError{
-			body: localVarBody,
-			error: localVarHttpResponse.Status,
-		}
-		if localVarHttpResponse.StatusCode == 200 {
-			var v UtilContentAddResponse
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -524,35 +505,18 @@ func (a *ContentApiService) ContentAddIpfsPost(ctx context.Context, body UtilCon
 	return localVarReturnValue, localVarHttpResponse, nil
 }
 /*
-ContentApiService Add new content
-This endpoint is used to upload new content.
+ContentApiService Upload a file
+This endpoint uploads a file.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param data
- * @param filename
- * @param optional nil or *ContentApiContentAddPostOpts - Optional Parameters:
-     * @param "Coluuid" (optional.String) -  Collection UUID
-     * @param "Replication" (optional.Int32) -  Replication value
-     * @param "IgnoreDupes" (optional.String) -  Ignore Dupes true/false
-     * @param "LazyProvide" (optional.String) -  Lazy Provide true/false
-     * @param "Dir" (optional.String) -  Directory
-@return UtilContentAddResponse
+@return string
 */
-
-type ContentApiContentAddPostOpts struct {
-    Coluuid optional.String
-    Replication optional.Int32
-    IgnoreDupes optional.String
-    LazyProvide optional.String
-    Dir optional.String
-}
-
-func (a *ContentApiService) ContentAddPost(ctx context.Context, data *os.File, filename string, localVarOptionals *ContentApiContentAddPostOpts) (UtilContentAddResponse, *http.Response, error) {
+func (a *ContentApiService) ContentAddPost(ctx context.Context) (string, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue UtilContentAddResponse
+		localVarReturnValue string
 	)
 
 	// create path and map variables
@@ -562,23 +526,8 @@ func (a *ContentApiService) ContentAddPost(ctx context.Context, data *os.File, f
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
-	if localVarOptionals != nil && localVarOptionals.Coluuid.IsSet() {
-		localVarQueryParams.Add("coluuid", parameterToString(localVarOptionals.Coluuid.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.Replication.IsSet() {
-		localVarQueryParams.Add("replication", parameterToString(localVarOptionals.Replication.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.IgnoreDupes.IsSet() {
-		localVarQueryParams.Add("ignore-dupes", parameterToString(localVarOptionals.IgnoreDupes.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.LazyProvide.IsSet() {
-		localVarQueryParams.Add("lazy-provide", parameterToString(localVarOptionals.LazyProvide.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.Dir.IsSet() {
-		localVarQueryParams.Add("dir", parameterToString(localVarOptionals.Dir.Value(), ""))
-	}
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{"multipart/form-data"}
+	localVarHttpContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -594,14 +543,6 @@ func (a *ContentApiService) ContentAddPost(ctx context.Context, data *os.File, f
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-    localVarFile := data
-	if localVarFile != nil {
-		fbs, _ := ioutil.ReadAll(localVarFile)
-		localVarFileBytes = fbs
-		localVarFileName = localVarFile.Name()
-		localVarFile.Close()
-	}
-	localVarFormParams.Add("filename", parameterToString(filename, ""))
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {
@@ -645,7 +586,7 @@ func (a *ContentApiService) ContentAddPost(ctx context.Context, data *os.File, f
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v UtilContentAddResponse
+			var v string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -2122,7 +2063,7 @@ func (a *ContentApiService) ContentStagingZonesGet(ctx context.Context) (string,
 }
 /*
 ContentApiService Get content statistics
-This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param limit limit
  * @param offset offset

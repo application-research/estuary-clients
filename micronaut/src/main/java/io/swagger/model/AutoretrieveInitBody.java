@@ -12,7 +12,7 @@ import javax.validation.constraints.*;
  * AutoretrieveInitBody
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-29T10:27:04.066Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-12-09T03:38:45.180Z[GMT]")
 public class AutoretrieveInitBody   {
   @JsonProperty("addresses")
   private String addresses = null;

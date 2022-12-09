@@ -5,6 +5,7 @@ import akka.http.scaladsl.server.Route
 import akka.http.scaladsl.unmarshalling.FromRequestUnmarshaller
 import akka.http.scaladsl.marshalling.ToEntityMarshaller
 import io.swagger.server.AkkaHttpHelper._
+import io.swagger.server.model.api.publicNodeInfo
 import io.swagger.server.model.util.HttpError
 
 class PublicApi(
@@ -211,19 +212,19 @@ trait PublicApiService {
   def publicByCidCidGet(cid: String)
       (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
-  def publicInfoGet200(responseString: String): Route =
-    complete((200, responseString))
+  def publicInfoGet200(responseapi.publicNodeInfo: api.publicNodeInfo)(implicit toEntityMarshallerapi.publicNodeInfo: ToEntityMarshaller[api.publicNodeInfo]): Route =
+    complete((200, responseapi.publicNodeInfo))
   def publicInfoGet400(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((400, responseutil.HttpError))
   def publicInfoGet500(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((500, responseutil.HttpError))
   /**
-   * Code: 200, Message: OK, DataType: String
+   * Code: 200, Message: OK, DataType: api.publicNodeInfo
    * Code: 400, Message: Bad Request, DataType: util.HttpError
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
   def publicInfoGet()
-      (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
+      (implicit toEntityMarshallerapi.publicNodeInfo: ToEntityMarshaller[api.publicNodeInfo], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
   def publicMetricsDealsOnChainGet200(responseString: String): Route =
     complete((200, responseString))
@@ -342,6 +343,8 @@ trait PublicApiMarshaller {
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
+
+  implicit def toEntityMarshallerapi.publicNodeInfo: ToEntityMarshaller[api.publicNodeInfo]
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 

@@ -2,11 +2,12 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.model.UtilContentType;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-29T10:27:02.700Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-12-09T03:38:44.168Z[GMT]")
 public class UtilContentCreateBody   {
   @JsonProperty("coluuid")
   private String coluuid = null;
@@ -19,7 +20,7 @@ public class UtilContentCreateBody   {
   @JsonProperty("root")
   private String root = null;
   @JsonProperty("type")
-  private Integer type = null;
+  private UtilContentType type = null;
   /**
    **/
   public UtilContentCreateBody coluuid(String coluuid) {
@@ -107,7 +108,7 @@ public class UtilContentCreateBody   {
 
   /**
    **/
-  public UtilContentCreateBody type(Integer type) {
+  public UtilContentCreateBody type(UtilContentType type) {
     this.type = type;
     return this;
   }
@@ -115,10 +116,10 @@ public class UtilContentCreateBody   {
   
   @Schema(description = "")
   @JsonProperty("type")
-  public Integer getType() {
+  public UtilContentType getType() {
     return type;
   }
-  public void setType(Integer type) {
+  public void setType(UtilContentType type) {
     this.type = type;
   }
 

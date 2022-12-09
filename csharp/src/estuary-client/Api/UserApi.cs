@@ -30,8 +30,8 @@ namespace estuary-client.Api
         /// This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;MainGetApiKeysResp&gt;</returns>
-        List<MainGetApiKeysResp> UserApiKeysGet ();
+        /// <returns>List&lt;ApiGetApiKeysResp&gt;</returns>
+        List<ApiGetApiKeysResp> UserApiKeysGet ();
 
         /// <summary>
         /// Get API keys for a user
@@ -40,8 +40,8 @@ namespace estuary-client.Api
         /// This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;MainGetApiKeysResp&gt;</returns>
-        ApiResponse<List<MainGetApiKeysResp>> UserApiKeysGetWithHttpInfo ();
+        /// <returns>ApiResponse of List&lt;ApiGetApiKeysResp&gt;</returns>
+        ApiResponse<List<ApiGetApiKeysResp>> UserApiKeysGetWithHttpInfo ();
         /// <summary>
         /// Revoke a User API Key.
         /// </summary>
@@ -72,8 +72,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="expiry">Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)</param>
         /// <param name="perms">Permissions - - currently unused (optional)</param>
-        /// <returns>MainGetApiKeysResp</returns>
-        MainGetApiKeysResp UserApiKeysPost (string expiry = null, string perms = null);
+        /// <returns>ApiGetApiKeysResp</returns>
+        ApiGetApiKeysResp UserApiKeysPost (string expiry = null, string perms = null);
 
         /// <summary>
         /// Create API keys for a user
@@ -84,8 +84,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="expiry">Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)</param>
         /// <param name="perms">Permissions - - currently unused (optional)</param>
-        /// <returns>ApiResponse of MainGetApiKeysResp</returns>
-        ApiResponse<MainGetApiKeysResp> UserApiKeysPostWithHttpInfo (string expiry = null, string perms = null);
+        /// <returns>ApiResponse of ApiGetApiKeysResp</returns>
+        ApiResponse<ApiGetApiKeysResp> UserApiKeysPostWithHttpInfo (string expiry = null, string perms = null);
         /// <summary>
         /// Export user data
         /// </summary>
@@ -109,7 +109,7 @@ namespace estuary-client.Api
         /// Get stats for the current user
         /// </summary>
         /// <remarks>
-        /// This endpoint is used to geet stats for the current user.
+        /// This endpoint is used to get stats for the current user.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>string</returns>
@@ -119,7 +119,7 @@ namespace estuary-client.Api
         /// Get stats for the current user
         /// </summary>
         /// <remarks>
-        /// This endpoint is used to geet stats for the current user.
+        /// This endpoint is used to get stats for the current user.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of string</returns>
@@ -133,8 +133,8 @@ namespace estuary-client.Api
         /// This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of List&lt;MainGetApiKeysResp&gt;</returns>
-        System.Threading.Tasks.Task<List<MainGetApiKeysResp>> UserApiKeysGetAsync ();
+        /// <returns>Task of List&lt;ApiGetApiKeysResp&gt;</returns>
+        System.Threading.Tasks.Task<List<ApiGetApiKeysResp>> UserApiKeysGetAsync ();
 
         /// <summary>
         /// Get API keys for a user
@@ -143,8 +143,8 @@ namespace estuary-client.Api
         /// This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;MainGetApiKeysResp&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<MainGetApiKeysResp>>> UserApiKeysGetAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse (List&lt;ApiGetApiKeysResp&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<ApiGetApiKeysResp>>> UserApiKeysGetAsyncWithHttpInfo ();
         /// <summary>
         /// Revoke a User API Key.
         /// </summary>
@@ -175,8 +175,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="expiry">Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)</param>
         /// <param name="perms">Permissions - - currently unused (optional)</param>
-        /// <returns>Task of MainGetApiKeysResp</returns>
-        System.Threading.Tasks.Task<MainGetApiKeysResp> UserApiKeysPostAsync (string expiry = null, string perms = null);
+        /// <returns>Task of ApiGetApiKeysResp</returns>
+        System.Threading.Tasks.Task<ApiGetApiKeysResp> UserApiKeysPostAsync (string expiry = null, string perms = null);
 
         /// <summary>
         /// Create API keys for a user
@@ -187,8 +187,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="expiry">Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)</param>
         /// <param name="perms">Permissions - - currently unused (optional)</param>
-        /// <returns>Task of ApiResponse (MainGetApiKeysResp)</returns>
-        System.Threading.Tasks.Task<ApiResponse<MainGetApiKeysResp>> UserApiKeysPostAsyncWithHttpInfo (string expiry = null, string perms = null);
+        /// <returns>Task of ApiResponse (ApiGetApiKeysResp)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ApiGetApiKeysResp>> UserApiKeysPostAsyncWithHttpInfo (string expiry = null, string perms = null);
         /// <summary>
         /// Export user data
         /// </summary>
@@ -212,7 +212,7 @@ namespace estuary-client.Api
         /// Get stats for the current user
         /// </summary>
         /// <remarks>
-        /// This endpoint is used to geet stats for the current user.
+        /// This endpoint is used to get stats for the current user.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of string</returns>
@@ -222,7 +222,7 @@ namespace estuary-client.Api
         /// Get stats for the current user
         /// </summary>
         /// <remarks>
-        /// This endpoint is used to geet stats for the current user.
+        /// This endpoint is used to get stats for the current user.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (string)</returns>
@@ -342,10 +342,10 @@ namespace estuary-client.Api
         /// Get API keys for a user This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>List&lt;MainGetApiKeysResp&gt;</returns>
-        public List<MainGetApiKeysResp> UserApiKeysGet ()
+        /// <returns>List&lt;ApiGetApiKeysResp&gt;</returns>
+        public List<ApiGetApiKeysResp> UserApiKeysGet ()
         {
-             ApiResponse<List<MainGetApiKeysResp>> localVarResponse = UserApiKeysGetWithHttpInfo();
+             ApiResponse<List<ApiGetApiKeysResp>> localVarResponse = UserApiKeysGetWithHttpInfo();
              return localVarResponse.Data;
         }
 
@@ -353,8 +353,8 @@ namespace estuary-client.Api
         /// Get API keys for a user This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of List&lt;MainGetApiKeysResp&gt;</returns>
-        public ApiResponse< List<MainGetApiKeysResp> > UserApiKeysGetWithHttpInfo ()
+        /// <returns>ApiResponse of List&lt;ApiGetApiKeysResp&gt;</returns>
+        public ApiResponse< List<ApiGetApiKeysResp> > UserApiKeysGetWithHttpInfo ()
         {
 
             var localVarPath = "/user/api-keys";
@@ -397,19 +397,19 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<MainGetApiKeysResp>>(localVarStatusCode,
+            return new ApiResponse<List<ApiGetApiKeysResp>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<MainGetApiKeysResp>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<MainGetApiKeysResp>)));
+                (List<ApiGetApiKeysResp>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ApiGetApiKeysResp>)));
         }
 
         /// <summary>
         /// Get API keys for a user This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of List&lt;MainGetApiKeysResp&gt;</returns>
-        public async System.Threading.Tasks.Task<List<MainGetApiKeysResp>> UserApiKeysGetAsync ()
+        /// <returns>Task of List&lt;ApiGetApiKeysResp&gt;</returns>
+        public async System.Threading.Tasks.Task<List<ApiGetApiKeysResp>> UserApiKeysGetAsync ()
         {
-             ApiResponse<List<MainGetApiKeysResp>> localVarResponse = await UserApiKeysGetAsyncWithHttpInfo();
+             ApiResponse<List<ApiGetApiKeysResp>> localVarResponse = await UserApiKeysGetAsyncWithHttpInfo();
              return localVarResponse.Data;
 
         }
@@ -418,8 +418,8 @@ namespace estuary-client.Api
         /// Get API keys for a user This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;MainGetApiKeysResp&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<MainGetApiKeysResp>>> UserApiKeysGetAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse (List&lt;ApiGetApiKeysResp&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<ApiGetApiKeysResp>>> UserApiKeysGetAsyncWithHttpInfo ()
         {
 
             var localVarPath = "/user/api-keys";
@@ -462,9 +462,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<MainGetApiKeysResp>>(localVarStatusCode,
+            return new ApiResponse<List<ApiGetApiKeysResp>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<MainGetApiKeysResp>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<MainGetApiKeysResp>)));
+                (List<ApiGetApiKeysResp>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ApiGetApiKeysResp>)));
         }
 
         /// <summary>
@@ -614,10 +614,10 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="expiry">Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)</param>
         /// <param name="perms">Permissions - - currently unused (optional)</param>
-        /// <returns>MainGetApiKeysResp</returns>
-        public MainGetApiKeysResp UserApiKeysPost (string expiry = null, string perms = null)
+        /// <returns>ApiGetApiKeysResp</returns>
+        public ApiGetApiKeysResp UserApiKeysPost (string expiry = null, string perms = null)
         {
-             ApiResponse<MainGetApiKeysResp> localVarResponse = UserApiKeysPostWithHttpInfo(expiry, perms);
+             ApiResponse<ApiGetApiKeysResp> localVarResponse = UserApiKeysPostWithHttpInfo(expiry, perms);
              return localVarResponse.Data;
         }
 
@@ -627,8 +627,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="expiry">Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)</param>
         /// <param name="perms">Permissions - - currently unused (optional)</param>
-        /// <returns>ApiResponse of MainGetApiKeysResp</returns>
-        public ApiResponse< MainGetApiKeysResp > UserApiKeysPostWithHttpInfo (string expiry = null, string perms = null)
+        /// <returns>ApiResponse of ApiGetApiKeysResp</returns>
+        public ApiResponse< ApiGetApiKeysResp > UserApiKeysPostWithHttpInfo (string expiry = null, string perms = null)
         {
 
             var localVarPath = "/user/api-keys";
@@ -673,9 +673,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<MainGetApiKeysResp>(localVarStatusCode,
+            return new ApiResponse<ApiGetApiKeysResp>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (MainGetApiKeysResp) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MainGetApiKeysResp)));
+                (ApiGetApiKeysResp) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiGetApiKeysResp)));
         }
 
         /// <summary>
@@ -684,10 +684,10 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="expiry">Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)</param>
         /// <param name="perms">Permissions - - currently unused (optional)</param>
-        /// <returns>Task of MainGetApiKeysResp</returns>
-        public async System.Threading.Tasks.Task<MainGetApiKeysResp> UserApiKeysPostAsync (string expiry = null, string perms = null)
+        /// <returns>Task of ApiGetApiKeysResp</returns>
+        public async System.Threading.Tasks.Task<ApiGetApiKeysResp> UserApiKeysPostAsync (string expiry = null, string perms = null)
         {
-             ApiResponse<MainGetApiKeysResp> localVarResponse = await UserApiKeysPostAsyncWithHttpInfo(expiry, perms);
+             ApiResponse<ApiGetApiKeysResp> localVarResponse = await UserApiKeysPostAsyncWithHttpInfo(expiry, perms);
              return localVarResponse.Data;
 
         }
@@ -698,8 +698,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="expiry">Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h (optional)</param>
         /// <param name="perms">Permissions - - currently unused (optional)</param>
-        /// <returns>Task of ApiResponse (MainGetApiKeysResp)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<MainGetApiKeysResp>> UserApiKeysPostAsyncWithHttpInfo (string expiry = null, string perms = null)
+        /// <returns>Task of ApiResponse (ApiGetApiKeysResp)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ApiGetApiKeysResp>> UserApiKeysPostAsyncWithHttpInfo (string expiry = null, string perms = null)
         {
 
             var localVarPath = "/user/api-keys";
@@ -744,9 +744,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<MainGetApiKeysResp>(localVarStatusCode,
+            return new ApiResponse<ApiGetApiKeysResp>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (MainGetApiKeysResp) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MainGetApiKeysResp)));
+                (ApiGetApiKeysResp) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiGetApiKeysResp)));
         }
 
         /// <summary>
@@ -879,7 +879,7 @@ namespace estuary-client.Api
         }
 
         /// <summary>
-        /// Get stats for the current user This endpoint is used to geet stats for the current user.
+        /// Get stats for the current user This endpoint is used to get stats for the current user.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>string</returns>
@@ -890,7 +890,7 @@ namespace estuary-client.Api
         }
 
         /// <summary>
-        /// Get stats for the current user This endpoint is used to geet stats for the current user.
+        /// Get stats for the current user This endpoint is used to get stats for the current user.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of string</returns>
@@ -943,7 +943,7 @@ namespace estuary-client.Api
         }
 
         /// <summary>
-        /// Get stats for the current user This endpoint is used to geet stats for the current user.
+        /// Get stats for the current user This endpoint is used to get stats for the current user.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of string</returns>
@@ -955,7 +955,7 @@ namespace estuary-client.Api
         }
 
         /// <summary>
-        /// Get stats for the current user This endpoint is used to geet stats for the current user.
+        /// Get stats for the current user This endpoint is used to get stats for the current user.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (string)</returns>

@@ -69,7 +69,7 @@ namespace estuary-client.Test
         public void DealEstimatePostTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //MainEstimateDealBody body = null;
+            //ApiEstimateDealBody body = null;
             //var response = instance.DealEstimatePost(body);
             //Assert.IsInstanceOf<string> (response, "response is string");
         }
@@ -146,7 +146,7 @@ namespace estuary-client.Test
         public void DealTransferStatusPostTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //MainChannelIDParam body = null;
+            //ApiChannelIDParam body = null;
             //var response = instance.DealTransferStatusPost(body);
             //Assert.IsInstanceOf<string> (response, "response is string");
         }

@@ -16,6 +16,62 @@ module SwaggerClient
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+    # Create an Estuary invite
+    # This endpoint is used to create an estuary invite.
+    # @param code Invite code to be created
+    # @param [Hash] opts the optional parameters
+    # @return [String]
+    def admin_invites_code_post(code, opts = {})
+      data, _status_code, _headers = admin_invites_code_post_with_http_info(code, opts)
+      data
+    end
+
+    # Create an Estuary invite
+    # This endpoint is used to create an estuary invite.
+    # @param code Invite code to be created
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
+    def admin_invites_code_post_with_http_info(code, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ContentApi.admin_invites_code_post ...'
+      end
+      # verify the required parameter 'code' is set
+      if @api_client.config.client_side_validation && code.nil?
+        fail ArgumentError, "Missing the required parameter 'code' when calling ContentApi.admin_invites_code_post"
+      end
+      # resource path
+      local_var_path = '/admin/invites/{code}'.sub('{' + 'code' + '}', code.to_s)
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] 
+
+      return_type = opts[:return_type] || 'String' 
+
+      auth_names = opts[:auth_names] || ['bearerAuth']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type)
+
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ContentApi#admin_invites_code_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Get Estuary invites
     # This endpoint is used to list all estuary invites.
     # @param [Hash] opts the optional parameters
@@ -66,31 +122,25 @@ module SwaggerClient
       end
       return data, status_code, headers
     end
-    # Create an Estuary invite
-    # This endpoint is used to create an estuary invite.
-    # @param code Invite code to be created
+    # Upload content via a car file
+    # This endpoint uploads content via a car file
     # @param [Hash] opts the optional parameters
     # @return [String]
-    def admin_invites_post(code, opts = {})
-      data, _status_code, _headers = admin_invites_post_with_http_info(code, opts)
+    def content_add_car_post(opts = {})
+      data, _status_code, _headers = content_add_car_post_with_http_info(opts)
       data
     end
 
-    # Create an Estuary invite
-    # This endpoint is used to create an estuary invite.
-    # @param code Invite code to be created
+    # Upload content via a car file
+    # This endpoint uploads content via a car file
     # @param [Hash] opts the optional parameters
     # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
-    def admin_invites_post_with_http_info(code, opts = {})
+    def content_add_car_post_with_http_info(opts = {})
       if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ContentApi.admin_invites_post ...'
-      end
-      # verify the required parameter 'code' is set
-      if @api_client.config.client_side_validation && code.nil?
-        fail ArgumentError, "Missing the required parameter 'code' when calling ContentApi.admin_invites_post"
+        @api_client.config.logger.debug 'Calling API: ContentApi.content_add_car_post ...'
       end
       # resource path
-      local_var_path = '/admin/invites'.sub('{' + 'code' + '}', code.to_s)
+      local_var_path = '/content/add-car'
 
       # query parameters
       query_params = opts[:query_params] || {}
@@ -107,70 +157,6 @@ module SwaggerClient
       post_body = opts[:body] 
 
       return_type = opts[:return_type] || 'String' 
-
-      auth_names = opts[:auth_names] || ['bearerAuth']
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type)
-
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ContentApi#admin_invites_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-    # Add Car object
-    # This endpoint is used to add a car object to the network. The object can be a file or a directory.
-    # @param body Car
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :ignore_dupes Ignore Dupes
-    # @option opts [String] :filename Filename
-    # @return [UtilContentAddResponse]
-    def content_add_car_post(body, opts = {})
-      data, _status_code, _headers = content_add_car_post_with_http_info(body, opts)
-      data
-    end
-
-    # Add Car object
-    # This endpoint is used to add a car object to the network. The object can be a file or a directory.
-    # @param body Car
-    # @param [Hash] opts the optional parameters
-    # @option opts [String] :ignore_dupes Ignore Dupes
-    # @option opts [String] :filename Filename
-    # @return [Array<(UtilContentAddResponse, Integer, Hash)>] UtilContentAddResponse data, response status code and response headers
-    def content_add_car_post_with_http_info(body, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ContentApi.content_add_car_post ...'
-      end
-      # verify the required parameter 'body' is set
-      if @api_client.config.client_side_validation && body.nil?
-        fail ArgumentError, "Missing the required parameter 'body' when calling ContentApi.content_add_car_post"
-      end
-      # resource path
-      local_var_path = '/content/add-car'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-      query_params[:'ignore-dupes'] = opts[:'ignore_dupes'] if !opts[:'ignore_dupes'].nil?
-      query_params[:'filename'] = opts[:'filename'] if !opts[:'filename'].nil?
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['*/*'])
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:body] || @api_client.object_to_http_body(body) 
-
-      return_type = opts[:return_type] || 'UtilContentAddResponse' 
 
       auth_names = opts[:auth_names] || ['bearerAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
@@ -247,72 +233,41 @@ module SwaggerClient
       end
       return data, status_code, headers
     end
-    # Add new content
-    # This endpoint is used to upload new content.
-    # @param data 
-    # @param filename 
+    # Upload a file
+    # This endpoint uploads a file.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :coluuid Collection UUID
-    # @option opts [Integer] :replication Replication value
-    # @option opts [String] :ignore_dupes Ignore Dupes true/false
-    # @option opts [String] :lazy_provide Lazy Provide true/false
-    # @option opts [String] :dir Directory
-    # @return [UtilContentAddResponse]
-    def content_add_post(data, filename, opts = {})
-      data, _status_code, _headers = content_add_post_with_http_info(data, filename, opts)
+    # @return [String]
+    def content_add_post(opts = {})
+      data, _status_code, _headers = content_add_post_with_http_info(opts)
       data
     end
 
-    # Add new content
-    # This endpoint is used to upload new content.
-    # @param data 
-    # @param filename 
+    # Upload a file
+    # This endpoint uploads a file.
     # @param [Hash] opts the optional parameters
-    # @option opts [String] :coluuid Collection UUID
-    # @option opts [Integer] :replication Replication value
-    # @option opts [String] :ignore_dupes Ignore Dupes true/false
-    # @option opts [String] :lazy_provide Lazy Provide true/false
-    # @option opts [String] :dir Directory
-    # @return [Array<(UtilContentAddResponse, Integer, Hash)>] UtilContentAddResponse data, response status code and response headers
-    def content_add_post_with_http_info(data, filename, opts = {})
+    # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
+    def content_add_post_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ContentApi.content_add_post ...'
-      end
-      # verify the required parameter 'data' is set
-      if @api_client.config.client_side_validation && data.nil?
-        fail ArgumentError, "Missing the required parameter 'data' when calling ContentApi.content_add_post"
-      end
-      # verify the required parameter 'filename' is set
-      if @api_client.config.client_side_validation && filename.nil?
-        fail ArgumentError, "Missing the required parameter 'filename' when calling ContentApi.content_add_post"
       end
       # resource path
       local_var_path = '/content/add'
 
       # query parameters
       query_params = opts[:query_params] || {}
-      query_params[:'coluuid'] = opts[:'coluuid'] if !opts[:'coluuid'].nil?
-      query_params[:'replication'] = opts[:'replication'] if !opts[:'replication'].nil?
-      query_params[:'ignore-dupes'] = opts[:'ignore_dupes'] if !opts[:'ignore_dupes'].nil?
-      query_params[:'lazy-provide'] = opts[:'lazy_provide'] if !opts[:'lazy_provide'].nil?
-      query_params[:'dir'] = opts[:'dir'] if !opts[:'dir'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
 
       # form parameters
       form_params = opts[:form_params] || {}
-      form_params['data'] = data
-      form_params['filename'] = filename
 
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] || 'UtilContentAddResponse' 
+      return_type = opts[:return_type] || 'String' 
 
       auth_names = opts[:auth_names] || ['bearerAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
@@ -1011,7 +966,7 @@ module SwaggerClient
       return data, status_code, headers
     end
     # Get content statistics
-    # This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+    # This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
     # @param limit limit
     # @param offset offset
     # @param [Hash] opts the optional parameters
@@ -1022,7 +977,7 @@ module SwaggerClient
     end
 
     # Get content statistics
-    # This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+    # This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
     # @param limit limit
     # @param offset offset
     # @param [Hash] opts the optional parameters

@@ -631,7 +631,7 @@ class PublicApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return string
+     * @return \Swagger\Client\Model\ApiPublicNodeInfo
      */
     public function publicInfoGet()
     {
@@ -647,11 +647,11 @@ class PublicApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\ApiPublicNodeInfo, HTTP status code, HTTP response headers (array of strings)
      */
     public function publicInfoGetWithHttpInfo()
     {
-        $returnType = 'string';
+        $returnType = '\Swagger\Client\Model\ApiPublicNodeInfo';
         $request = $this->publicInfoGetRequest();
 
         try {
@@ -703,7 +703,7 @@ class PublicApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'string',
+                        '\Swagger\Client\Model\ApiPublicNodeInfo',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -759,7 +759,7 @@ class PublicApi
      */
     public function publicInfoGetAsyncWithHttpInfo()
     {
-        $returnType = 'string';
+        $returnType = '\Swagger\Client\Model\ApiPublicNodeInfo';
         $request = $this->publicInfoGetRequest();
 
         return $this->client

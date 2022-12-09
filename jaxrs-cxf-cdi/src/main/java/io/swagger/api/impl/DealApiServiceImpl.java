@@ -5,8 +5,8 @@ import io.swagger.model.*;
 
 import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 
-import io.swagger.model.MainChannelIDParam;
-import io.swagger.model.MainEstimateDealBody;
+import io.swagger.model.ApiChannelIDParam;
+import io.swagger.model.ApiEstimateDealBody;
 import io.swagger.model.UtilHttpError;
 
 import java.util.List;
@@ -18,9 +18,9 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-29T10:27:03.434Z[GMT]")public class DealApiServiceImpl implements DealApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-12-09T03:38:46.964Z[GMT]")public class DealApiServiceImpl implements DealApiService {
       @Override
-      public Response dealEstimatePost(MainEstimateDealBody body, SecurityContext securityContext) {
+      public Response dealEstimatePost(ApiEstimateDealBody body, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
@@ -55,7 +55,7 @@ import javax.ws.rs.core.SecurityContext;
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response dealTransferStatusPost(MainChannelIDParam body, SecurityContext securityContext) {
+      public Response dealTransferStatusPost(ApiChannelIDParam body, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }

@@ -17,8 +17,8 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { MainChannelIDParam } from '../model/mainChannelIDParam';
-import { MainEstimateDealBody } from '../model/mainEstimateDealBody';
+import { ApiChannelIDParam } from '../model/apiChannelIDParam';
+import { ApiEstimateDealBody } from '../model/apiEstimateDealBody';
 import { UtilHttpError } from '../model/utilHttpError';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -64,10 +64,10 @@ export class DealsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public dealEstimatePost(body: MainEstimateDealBody, observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public dealEstimatePost(body: MainEstimateDealBody, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public dealEstimatePost(body: MainEstimateDealBody, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
-    public dealEstimatePost(body: MainEstimateDealBody, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public dealEstimatePost(body: ApiEstimateDealBody, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public dealEstimatePost(body: ApiEstimateDealBody, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public dealEstimatePost(body: ApiEstimateDealBody, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public dealEstimatePost(body: ApiEstimateDealBody, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling dealEstimatePost.');
@@ -392,10 +392,10 @@ export class DealsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public dealTransferStatusPost(body: MainChannelIDParam, observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public dealTransferStatusPost(body: MainChannelIDParam, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public dealTransferStatusPost(body: MainChannelIDParam, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
-    public dealTransferStatusPost(body: MainChannelIDParam, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public dealTransferStatusPost(body: ApiChannelIDParam, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public dealTransferStatusPost(body: ApiChannelIDParam, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public dealTransferStatusPost(body: ApiChannelIDParam, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public dealTransferStatusPost(body: ApiChannelIDParam, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling dealTransferStatusPost.');

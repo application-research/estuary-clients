@@ -13,27 +13,43 @@
  *
  */
 import {ApiClient} from './ApiClient';
+import {AddressAddress} from './model/AddressAddress';
+import {ApiChannelIDParam} from './model/ApiChannelIDParam';
+import {ApiClaimMsgResponse} from './model/ApiClaimMsgResponse';
+import {ApiClaimResponse} from './model/ApiClaimResponse';
+import {ApiCreateCollectionBody} from './model/ApiCreateCollectionBody';
+import {ApiDeleteContentFromCollectionBody} from './model/ApiDeleteContentFromCollectionBody';
+import {ApiEmptyResp} from './model/ApiEmptyResp';
+import {ApiEstimateDealBody} from './model/ApiEstimateDealBody';
+import {ApiGetApiKeysResp} from './model/ApiGetApiKeysResp';
+import {ApiPublicNodeInfo} from './model/ApiPublicNodeInfo';
 import {AutoretrieveInitBody} from './model/AutoretrieveInitBody';
+import {CidCid} from './model/CidCid';
+import {CollectionsCidType} from './model/CollectionsCidType';
 import {CollectionsCollection} from './model/CollectionsCollection';
-import {ContentAddBody} from './model/ContentAddBody';
-import {MainChannelIDParam} from './model/MainChannelIDParam';
-import {MainCreateCollectionBody} from './model/MainCreateCollectionBody';
-import {MainDeleteContentFromCollectionBody} from './model/MainDeleteContentFromCollectionBody';
-import {MainEstimateDealBody} from './model/MainEstimateDealBody';
-import {MainGetApiKeysResp} from './model/MainGetApiKeysResp';
+import {CollectionsCollectionListResponse} from './model/CollectionsCollectionListResponse';
 import {MainImportDealBody} from './model/MainImportDealBody';
+import {MinerClaimMinerBody} from './model/MinerClaimMinerBody';
+import {MinerMinerSetInfoParams} from './model/MinerMinerSetInfoParams';
+import {MinerSuspendMinerBody} from './model/MinerSuspendMinerBody';
 import {TypesIpfsListPinStatusResponse} from './model/TypesIpfsListPinStatusResponse';
 import {TypesIpfsPin} from './model/TypesIpfsPin';
 import {TypesIpfsPinStatusResponse} from './model/TypesIpfsPinStatusResponse';
+import {TypesPinningStatus} from './model/TypesPinningStatus';
 import {UtilContentAddIpfsBody} from './model/UtilContentAddIpfsBody';
 import {UtilContentAddResponse} from './model/UtilContentAddResponse';
 import {UtilContentCreateBody} from './model/UtilContentCreateBody';
+import {UtilContentType} from './model/UtilContentType';
+import {UtilDbCID} from './model/UtilDbCID';
 import {UtilHttpError} from './model/UtilHttpError';
+import {UtilUserSettings} from './model/UtilUserSettings';
+import {UtilViewerResponse} from './model/UtilViewerResponse';
 import {AdminApi} from './api/AdminApi';
 import {AutoretrieveApi} from './api/AutoretrieveApi';
 import {CollectionsApi} from './api/CollectionsApi';
 import {ContentApi} from './api/ContentApi';
 import {DealsApi} from './api/DealsApi';
+import {DefaultApi} from './api/DefaultApi';
 import {MetricsApi} from './api/MetricsApi';
 import {MinerApi} from './api/MinerApi';
 import {NetApi} from './api/NetApi';
@@ -80,10 +96,82 @@ export {
     ApiClient,
 
     /**
+     * The AddressAddress model constructor.
+     * @property {module:model/AddressAddress}
+     */
+    AddressAddress,
+
+    /**
+     * The ApiChannelIDParam model constructor.
+     * @property {module:model/ApiChannelIDParam}
+     */
+    ApiChannelIDParam,
+
+    /**
+     * The ApiClaimMsgResponse model constructor.
+     * @property {module:model/ApiClaimMsgResponse}
+     */
+    ApiClaimMsgResponse,
+
+    /**
+     * The ApiClaimResponse model constructor.
+     * @property {module:model/ApiClaimResponse}
+     */
+    ApiClaimResponse,
+
+    /**
+     * The ApiCreateCollectionBody model constructor.
+     * @property {module:model/ApiCreateCollectionBody}
+     */
+    ApiCreateCollectionBody,
+
+    /**
+     * The ApiDeleteContentFromCollectionBody model constructor.
+     * @property {module:model/ApiDeleteContentFromCollectionBody}
+     */
+    ApiDeleteContentFromCollectionBody,
+
+    /**
+     * The ApiEmptyResp model constructor.
+     * @property {module:model/ApiEmptyResp}
+     */
+    ApiEmptyResp,
+
+    /**
+     * The ApiEstimateDealBody model constructor.
+     * @property {module:model/ApiEstimateDealBody}
+     */
+    ApiEstimateDealBody,
+
+    /**
+     * The ApiGetApiKeysResp model constructor.
+     * @property {module:model/ApiGetApiKeysResp}
+     */
+    ApiGetApiKeysResp,
+
+    /**
+     * The ApiPublicNodeInfo model constructor.
+     * @property {module:model/ApiPublicNodeInfo}
+     */
+    ApiPublicNodeInfo,
+
+    /**
      * The AutoretrieveInitBody model constructor.
      * @property {module:model/AutoretrieveInitBody}
      */
     AutoretrieveInitBody,
+
+    /**
+     * The CidCid model constructor.
+     * @property {module:model/CidCid}
+     */
+    CidCid,
+
+    /**
+     * The CollectionsCidType model constructor.
+     * @property {module:model/CollectionsCidType}
+     */
+    CollectionsCidType,
 
     /**
      * The CollectionsCollection model constructor.
@@ -92,46 +180,34 @@ export {
     CollectionsCollection,
 
     /**
-     * The ContentAddBody model constructor.
-     * @property {module:model/ContentAddBody}
+     * The CollectionsCollectionListResponse model constructor.
+     * @property {module:model/CollectionsCollectionListResponse}
      */
-    ContentAddBody,
-
-    /**
-     * The MainChannelIDParam model constructor.
-     * @property {module:model/MainChannelIDParam}
-     */
-    MainChannelIDParam,
-
-    /**
-     * The MainCreateCollectionBody model constructor.
-     * @property {module:model/MainCreateCollectionBody}
-     */
-    MainCreateCollectionBody,
-
-    /**
-     * The MainDeleteContentFromCollectionBody model constructor.
-     * @property {module:model/MainDeleteContentFromCollectionBody}
-     */
-    MainDeleteContentFromCollectionBody,
-
-    /**
-     * The MainEstimateDealBody model constructor.
-     * @property {module:model/MainEstimateDealBody}
-     */
-    MainEstimateDealBody,
-
-    /**
-     * The MainGetApiKeysResp model constructor.
-     * @property {module:model/MainGetApiKeysResp}
-     */
-    MainGetApiKeysResp,
+    CollectionsCollectionListResponse,
 
     /**
      * The MainImportDealBody model constructor.
      * @property {module:model/MainImportDealBody}
      */
     MainImportDealBody,
+
+    /**
+     * The MinerClaimMinerBody model constructor.
+     * @property {module:model/MinerClaimMinerBody}
+     */
+    MinerClaimMinerBody,
+
+    /**
+     * The MinerMinerSetInfoParams model constructor.
+     * @property {module:model/MinerMinerSetInfoParams}
+     */
+    MinerMinerSetInfoParams,
+
+    /**
+     * The MinerSuspendMinerBody model constructor.
+     * @property {module:model/MinerSuspendMinerBody}
+     */
+    MinerSuspendMinerBody,
 
     /**
      * The TypesIpfsListPinStatusResponse model constructor.
@@ -152,6 +228,12 @@ export {
     TypesIpfsPinStatusResponse,
 
     /**
+     * The TypesPinningStatus model constructor.
+     * @property {module:model/TypesPinningStatus}
+     */
+    TypesPinningStatus,
+
+    /**
      * The UtilContentAddIpfsBody model constructor.
      * @property {module:model/UtilContentAddIpfsBody}
      */
@@ -170,10 +252,34 @@ export {
     UtilContentCreateBody,
 
     /**
+     * The UtilContentType model constructor.
+     * @property {module:model/UtilContentType}
+     */
+    UtilContentType,
+
+    /**
+     * The UtilDbCID model constructor.
+     * @property {module:model/UtilDbCID}
+     */
+    UtilDbCID,
+
+    /**
      * The UtilHttpError model constructor.
      * @property {module:model/UtilHttpError}
      */
     UtilHttpError,
+
+    /**
+     * The UtilUserSettings model constructor.
+     * @property {module:model/UtilUserSettings}
+     */
+    UtilUserSettings,
+
+    /**
+     * The UtilViewerResponse model constructor.
+     * @property {module:model/UtilViewerResponse}
+     */
+    UtilViewerResponse,
 
     /**
     * The AdminApi service constructor.
@@ -204,6 +310,12 @@ export {
     * @property {module:api/DealsApi}
     */
     DealsApi,
+
+    /**
+    * The DefaultApi service constructor.
+    * @property {module:api/DefaultApi}
+    */
+    DefaultApi,
 
     /**
     * The MetricsApi service constructor.

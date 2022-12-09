@@ -15,7 +15,6 @@
 import {ApiClient} from "../ApiClient";
 import {MainImportDealBody} from '../model/MainImportDealBody';
 import {UtilContentAddIpfsBody} from '../model/UtilContentAddIpfsBody';
-import {UtilContentAddResponse} from '../model/UtilContentAddResponse';
 import {UtilContentCreateBody} from '../model/UtilContentCreateBody';
 import {UtilHttpError} from '../model/UtilHttpError';
 
@@ -38,6 +37,53 @@ export class ContentApi {
         this.apiClient = apiClient || ApiClient.instance;
     }
 
+    /**
+     * Callback function to receive the result of the adminInvitesCodePost operation.
+     * @callback moduleapi/ContentApi~adminInvitesCodePostCallback
+     * @param {String} error Error message, if any.
+     * @param {'String'{ data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Create an Estuary invite
+     * This endpoint is used to create an estuary invite.
+     * @param {String} code Invite code to be created
+     * @param {module:api/ContentApi~adminInvitesCodePostCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
+     */
+    adminInvitesCodePost(code, callback) {
+      
+      let postBody = null;
+      // verify the required parameter 'code' is set
+      if (code === undefined || code === null) {
+        throw new Error("Missing the required parameter 'code' when calling adminInvitesCodePost");
+      }
+
+      let pathParams = {
+        'code': code
+      };
+      let queryParams = {
+        
+      };
+      let headerParams = {
+        
+      };
+      let formParams = {
+        
+      };
+
+      let authNames = ['bearerAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = 'String';
+
+      return this.apiClient.callApi(
+        '/admin/invites/{code}', 'POST',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
     /**
      * Callback function to receive the result of the adminInvitesGet operation.
      * @callback moduleapi/ContentApi~adminInvitesGetCallback
@@ -81,30 +127,25 @@ export class ContentApi {
       );
     }
     /**
-     * Callback function to receive the result of the adminInvitesPost operation.
-     * @callback moduleapi/ContentApi~adminInvitesPostCallback
+     * Callback function to receive the result of the contentAddCarPost operation.
+     * @callback moduleapi/ContentApi~contentAddCarPostCallback
      * @param {String} error Error message, if any.
      * @param {'String'{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Create an Estuary invite
-     * This endpoint is used to create an estuary invite.
-     * @param {String} code Invite code to be created
-     * @param {module:api/ContentApi~adminInvitesPostCallback} callback The callback function, accepting three arguments: error, data, response
+     * Upload content via a car file
+     * This endpoint uploads content via a car file
+     * @param {module:api/ContentApi~contentAddCarPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
-    adminInvitesPost(code, callback) {
+    contentAddCarPost(callback) {
       
       let postBody = null;
-      // verify the required parameter 'code' is set
-      if (code === undefined || code === null) {
-        throw new Error("Missing the required parameter 'code' when calling adminInvitesPost");
-      }
 
       let pathParams = {
-        'code': code
+        
       };
       let queryParams = {
         
@@ -120,56 +161,6 @@ export class ContentApi {
       let contentTypes = [];
       let accepts = ['application/json'];
       let returnType = 'String';
-
-      return this.apiClient.callApi(
-        '/admin/invites', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-    /**
-     * Callback function to receive the result of the contentAddCarPost operation.
-     * @callback moduleapi/ContentApi~contentAddCarPostCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/UtilContentAddResponse{ data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Add Car object
-     * This endpoint is used to add a car object to the network. The object can be a file or a directory.
-     * @param {String} body Car
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.ignoreDupes Ignore Dupes
-     * @param {String} opts.filename Filename
-     * @param {module:api/ContentApi~contentAddCarPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
-     */
-    contentAddCarPost(body, opts, callback) {
-      opts = opts || {};
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling contentAddCarPost");
-      }
-
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        'ignore-dupes': opts['ignoreDupes'],'filename': opts['filename']
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
-
-      let authNames = ['bearerAuth'];
-      let contentTypes = ['*/*'];
-      let accepts = ['application/json'];
-      let returnType = UtilContentAddResponse;
 
       return this.apiClient.callApi(
         '/content/add-car', 'POST',
@@ -230,53 +221,37 @@ export class ContentApi {
      * Callback function to receive the result of the contentAddPost operation.
      * @callback moduleapi/ContentApi~contentAddPostCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/UtilContentAddResponse{ data The data returned by the service call.
+     * @param {'String'{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Add new content
-     * This endpoint is used to upload new content.
-     * @param {Blob} data 
-     * @param {String} filename 
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.coluuid Collection UUID
-     * @param {Number} opts.replication Replication value
-     * @param {String} opts.ignoreDupes Ignore Dupes true/false
-     * @param {String} opts.lazyProvide Lazy Provide true/false
-     * @param {String} opts.dir Directory
+     * Upload a file
+     * This endpoint uploads a file.
      * @param {module:api/ContentApi~contentAddPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
-    contentAddPost(data, filename, opts, callback) {
-      opts = opts || {};
+    contentAddPost(callback) {
+      
       let postBody = null;
-      // verify the required parameter 'data' is set
-      if (data === undefined || data === null) {
-        throw new Error("Missing the required parameter 'data' when calling contentAddPost");
-      }
-      // verify the required parameter 'filename' is set
-      if (filename === undefined || filename === null) {
-        throw new Error("Missing the required parameter 'filename' when calling contentAddPost");
-      }
 
       let pathParams = {
         
       };
       let queryParams = {
-        'coluuid': opts['coluuid'],'replication': opts['replication'],'ignore-dupes': opts['ignoreDupes'],'lazy-provide': opts['lazyProvide'],'dir': opts['dir']
+        
       };
       let headerParams = {
         
       };
       let formParams = {
-        'data': data,'filename': filename
+        
       };
 
       let authNames = ['bearerAuth'];
-      let contentTypes = ['multipart/form-data'];
+      let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = UtilContentAddResponse;
+      let returnType = 'String';
 
       return this.apiClient.callApi(
         '/content/add', 'POST',
@@ -858,7 +833,7 @@ export class ContentApi {
 
     /**
      * Get content statistics
-     * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+     * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
      * @param {String} limit limit
      * @param {String} offset offset
      * @param {module:api/ContentApi~contentStatsGetCallback} callback The callback function, accepting three arguments: error, data, response

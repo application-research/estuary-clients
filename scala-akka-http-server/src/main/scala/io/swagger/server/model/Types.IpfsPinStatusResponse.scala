@@ -15,6 +15,6 @@ case class Types.IpfsPinStatusResponse (
   info: Option[Object],
   pin: Option[types.IpfsPin],
   requestid: Option[String],
-  status: Option[String]
+  status: Option[types.PinningStatus]
 )
 

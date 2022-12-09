@@ -66,7 +66,7 @@ namespace estuary-client.Models
         /// </summary>
 
         [DataMember(Name="status")]
-        public string Status { get; set; }
+        public TypesPinningStatus Status { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

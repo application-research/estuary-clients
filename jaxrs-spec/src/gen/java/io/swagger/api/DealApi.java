@@ -1,7 +1,7 @@
 package io.swagger.api;
 
-import io.swagger.model.MainChannelIDParam;
-import io.swagger.model.MainEstimateDealBody;
+import io.swagger.model.ApiChannelIDParam;
+import io.swagger.model.ApiEstimateDealBody;
 import io.swagger.model.UtilHttpError;
 
 import javax.ws.rs.*;
@@ -23,7 +23,7 @@ import javax.validation.Valid;
 
 @Path("/deal")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2022-11-29T10:27:02.215Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2022-12-09T03:38:45.112Z[GMT]")
 public class DealApi {
 
     @POST
@@ -37,7 +37,7 @@ public class DealApi {
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
     })
-    public Response dealEstimatePost(@Valid MainEstimateDealBody body) {
+    public Response dealEstimatePost(@Valid ApiEstimateDealBody body) {
         return Response.ok().entity("magic!").build();
     }
     @GET
@@ -147,6 +147,6 @@ public class DealApi {
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
     })
-    public Response dealTransferStatusPost(@Valid MainChannelIDParam body) {
+    public Response dealTransferStatusPost(@Valid ApiChannelIDParam body) {
         return Response.ok().entity("magic!").build();
     }}

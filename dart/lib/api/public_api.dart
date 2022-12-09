@@ -112,7 +112,7 @@ class PublicApi {
   /// Get public node info
   ///
   /// This endpoint returns information about the node
-  Future<String> publicInfoGet() async {
+  Future<ApiPublicNodeInfo> publicInfoGet() async {
     Object postBody = null;
 
     // verify required params are set
@@ -152,7 +152,7 @@ class PublicApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          apiClient.deserialize(response.body, 'String') as String ;
+          apiClient.deserialize(response.body, 'ApiPublicNodeInfo') as ApiPublicNodeInfo ;
     } else {
       return null;
     }

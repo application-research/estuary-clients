@@ -258,15 +258,15 @@ func (a *PublicApiService) PublicByCidCidGet(ctx context.Context, cid string) (s
 PublicApiService Get public node info
 This endpoint returns information about the node
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-@return string
+@return ApiPublicNodeInfo
 */
-func (a *PublicApiService) PublicInfoGet(ctx context.Context) (string, *http.Response, error) {
+func (a *PublicApiService) PublicInfoGet(ctx context.Context) (ApiPublicNodeInfo, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue string
+		localVarReturnValue ApiPublicNodeInfo
 	)
 
 	// create path and map variables
@@ -336,7 +336,7 @@ func (a *PublicApiService) PublicInfoGet(ctx context.Context) (string, *http.Res
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v string
+			var v ApiPublicNodeInfo
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()

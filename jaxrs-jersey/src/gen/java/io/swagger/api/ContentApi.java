@@ -14,10 +14,8 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
-import java.io.File;
 import io.swagger.model.MainImportDealBody;
 import io.swagger.model.UtilContentAddIpfsBody;
-import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 
@@ -41,7 +39,7 @@ import javax.validation.constraints.*;
 @Path("/content")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-29T10:27:02.850Z[GMT]")public class ContentApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-12-09T03:38:44.975Z[GMT]")public class ContentApi  {
    private final ContentApiService delegate;
 
    public ContentApi(@Context ServletConfig servletContext) {
@@ -67,23 +65,19 @@ import javax.validation.constraints.*;
 
     @POST
     @Path("/add-car")
-    @Consumes({ "*/*" })
+    
     @Produces({ "application/json" })
-    @Operation(summary = "Add Car object", description = "This endpoint is used to add a car object to the network. The object can be a file or a directory.", security = {
+    @Operation(summary = "Upload content via a car file", description = "This endpoint uploads content via a car file", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilContentAddResponse.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response contentAddCarPost(@Parameter(in = ParameterIn.DEFAULT, description = "Car" ,required=true) String body
-
-,@Parameter(in = ParameterIn.QUERY, description = "Ignore Dupes") @QueryParam("ignore-dupes") String ignoreDupes
-,@Parameter(in = ParameterIn.QUERY, description = "Filename") @QueryParam("filename") String filename
-,@Context SecurityContext securityContext)
+    public Response contentAddCarPost(@Context SecurityContext securityContext)
     throws NotFoundException {
-        return delegate.contentAddCarPost(body,ignoreDupes,filename,securityContext);
+        return delegate.contentAddCarPost(securityContext);
     }
     @POST
     @Path("/add-ipfs")
@@ -106,27 +100,19 @@ import javax.validation.constraints.*;
     }
     @POST
     @Path("/add")
-    @Consumes({ "multipart/form-data" })
+    
     @Produces({ "application/json" })
-    @Operation(summary = "Add new content", description = "This endpoint is used to upload new content.", security = {
+    @Operation(summary = "Upload a file", description = "This endpoint uploads a file.", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilContentAddResponse.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response contentAddPost(@FormDataParam("data") InputStream dataInputStream,
-            @FormDataParam("data") FormDataContentDisposition dataDetail
-,@Parameter(description = "", required=true)  @FormParam("filename")  String filename
-,@Parameter(in = ParameterIn.QUERY, description = "Collection UUID") @QueryParam("coluuid") String coluuid
-,@Parameter(in = ParameterIn.QUERY, description = "Replication value") @QueryParam("replication") Integer replication
-,@Parameter(in = ParameterIn.QUERY, description = "Ignore Dupes true/false") @QueryParam("ignore-dupes") String ignoreDupes
-,@Parameter(in = ParameterIn.QUERY, description = "Lazy Provide true/false") @QueryParam("lazy-provide") String lazyProvide
-,@Parameter(in = ParameterIn.QUERY, description = "Directory") @QueryParam("dir") String dir
-,@Context SecurityContext securityContext)
+    public Response contentAddPost(@Context SecurityContext securityContext)
     throws NotFoundException {
-        return delegate.contentAddPost(data,filename,coluuid,replication,ignoreDupes,lazyProvide,dir,securityContext);
+        return delegate.contentAddPost(securityContext);
     }
     @GET
     @Path("/aggregated/{content}")
@@ -340,7 +326,7 @@ import javax.validation.constraints.*;
     @Path("/stats")
     
     @Produces({ "application/json" })
-    @Operation(summary = "Get content statistics", description = "This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten", security = {
+    @Operation(summary = "Get content statistics", description = "This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),

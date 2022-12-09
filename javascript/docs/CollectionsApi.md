@@ -83,7 +83,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 //bearerAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new EstuaryClient.CollectionsApi();
-let body = new EstuaryClient.MainDeleteContentFromCollectionBody(); // MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
+let body = new EstuaryClient.ApiDeleteContentFromCollectionBody(); // ApiDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
 let coluuid = "coluuid_example"; // String | Collection ID
 
 apiInstance.collectionsColuuidContentsDelete(body, coluuid, (error, data, response) => {
@@ -99,7 +99,7 @@ apiInstance.collectionsColuuidContentsDelete(body, coluuid, (error, data, respon
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) | 
+ **body** | [**ApiDeleteContentFromCollectionBody**](ApiDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) | 
  **coluuid** | **String**| Collection ID | 
 
 ### Return type
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsColuuidGet"></a>
 # **collectionsColuuidGet**
-> &#x27;String&#x27; collectionsColuuidGet(coluuid, opts)
+> [CollectionsCollectionListResponse] collectionsColuuidGet(coluuid, opts)
 
 Get contents in a collection
 
@@ -207,7 +207,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**&#x27;String&#x27;**
+[**[CollectionsCollectionListResponse]**](CollectionsCollectionListResponse.md)
 
 ### Authorization
 
@@ -392,7 +392,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 //bearerAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new EstuaryClient.CollectionsApi();
-let body = new EstuaryClient.MainCreateCollectionBody(); // MainCreateCollectionBody | Collection name and description
+let body = new EstuaryClient.ApiCreateCollectionBody(); // ApiCreateCollectionBody | Collection name and description
 
 apiInstance.collectionsPost(body, (error, data, response) => {
   if (error) {
@@ -407,7 +407,7 @@ apiInstance.collectionsPost(body, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainCreateCollectionBody**](MainCreateCollectionBody.md)| Collection name and description | 
+ **body** | [**ApiCreateCollectionBody**](ApiCreateCollectionBody.md)| Collection name and description | 
 
 ### Return type
 

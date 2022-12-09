@@ -14,5 +14,5 @@ type UtilContentCreateBody struct {
 	Location string `json:"location,omitempty"`
 	Name string `json:"name,omitempty"`
 	Root string `json:"root,omitempty"`
-	Type_ int32 `json:"type,omitempty"`
+	Type_ *UtilContentType `json:"type,omitempty"`
 }

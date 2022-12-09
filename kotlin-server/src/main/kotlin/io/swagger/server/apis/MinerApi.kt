@@ -33,12 +33,92 @@ import estuary-client.Paths
 import estuary-client.infrastructure.ApiPrincipal
 
 
+import io.swagger.server.models.ApiclaimMsgResponse
+import io.swagger.server.models.ApiclaimResponse
+import io.swagger.server.models.ApiemptyResp
+import io.swagger.server.models.MinerClaimMinerBody
+import io.swagger.server.models.MinerMinerSetInfoParams
+import io.swagger.server.models.MinerSuspendMinerBody
 import io.swagger.server.models.UtilHttpError
 
 @KtorExperimentalLocationsAPI
 fun Route.MinerApi() {
     val gson = Gson()
     val empty = mutableMapOf<String, Any?>()
+    get<Paths.minerClaimMinerGet> {  _: Paths.minerClaimMinerGet ->
+        val principal = call.authentication.principal<ApiPrincipal>()
+        if (principal == null) {
+            call.respond(HttpStatusCode.Unauthorized)
+        } else {
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+  "hexmsg" : "hexmsg"
+}"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
+    }
+    post<Paths.minerClaimPost> {  _: Paths.minerClaimPost ->
+        val principal = call.authentication.principal<ApiPrincipal>()
+        if (principal == null) {
+            call.respond(HttpStatusCode.Unauthorized)
+        } else {
+            val exampleContentType = "application/json"
+            val exampleContentString = """{
+  "success" : true
+}"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
+    }
+    put<Paths.minerSetInfoMinerPut> {  _: Paths.minerSetInfoMinerPut ->
+        val principal = call.authentication.principal<ApiPrincipal>()
+        if (principal == null) {
+            call.respond(HttpStatusCode.Unauthorized)
+        } else {
+            val exampleContentType = "application/json"
+            val exampleContentString = """{ }"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
+    }
+    post<Paths.minerSuspendMinerPost> {  _: Paths.minerSuspendMinerPost ->
+        val principal = call.authentication.principal<ApiPrincipal>()
+        if (principal == null) {
+            call.respond(HttpStatusCode.Unauthorized)
+        } else {
+            val exampleContentType = "application/json"
+            val exampleContentString = """{ }"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
+    }
+    put<Paths.minerUnsuspendMinerPut> {  _: Paths.minerUnsuspendMinerPut ->
+        val principal = call.authentication.principal<ApiPrincipal>()
+        if (principal == null) {
+            call.respond(HttpStatusCode.Unauthorized)
+        } else {
+            val exampleContentType = "application/json"
+            val exampleContentString = """{ }"""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
+    }
     get<Paths.publicMinersDealsMinerGet> {  _: Paths.publicMinersDealsMinerGet ->
         val principal = call.authentication.principal<ApiPrincipal>()
         if (principal == null) {

@@ -24,8 +24,8 @@
 
 package io.swagger.api;
 
-import io.swagger.model.MainChannelIDParam;
-import io.swagger.model.MainEstimateDealBody;
+import io.swagger.model.ApiChannelIDParam;
+import io.swagger.model.ApiEstimateDealBody;
 import io.swagger.model.UtilHttpError;
 import org.junit.Test;
 import org.junit.Before;
@@ -81,7 +81,7 @@ public class DealsApiTest {
      */
     @Test
     public void dealEstimatePostTest() {
-        MainEstimateDealBody body = null;
+        ApiEstimateDealBody body = null;
         //String response = api.dealEstimatePost(body);
         //assertNotNull(response);
         // TODO: test validations
@@ -200,7 +200,7 @@ public class DealsApiTest {
      */
     @Test
     public void dealTransferStatusPostTest() {
-        MainChannelIDParam body = null;
+        ApiChannelIDParam body = null;
         //String response = api.dealTransferStatusPost(body);
         //assertNotNull(response);
         // TODO: test validations

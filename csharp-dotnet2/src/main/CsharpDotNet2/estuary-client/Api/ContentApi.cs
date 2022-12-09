@@ -12,24 +12,21 @@ namespace IO.Swagger.Api
     public interface IContentApi
     {
         /// <summary>
+        /// Create an Estuary invite This endpoint is used to create an estuary invite.
+        /// </summary>
+        /// <param name="code">Invite code to be created</param>
+        /// <returns>string</returns>
+        string AdminInvitesCodePost (string code);
+        /// <summary>
         /// Get Estuary invites This endpoint is used to list all estuary invites.
         /// </summary>
         /// <returns>string</returns>
         string AdminInvitesGet ();
         /// <summary>
-        /// Create an Estuary invite This endpoint is used to create an estuary invite.
+        /// Upload content via a car file This endpoint uploads content via a car file
         /// </summary>
-        /// <param name="code">Invite code to be created</param>
         /// <returns>string</returns>
-        string AdminInvitesPost (string code);
-        /// <summary>
-        /// Add Car object This endpoint is used to add a car object to the network. The object can be a file or a directory.
-        /// </summary>
-        /// <param name="body">Car</param>
-        /// <param name="ignoreDupes">Ignore Dupes</param>
-        /// <param name="filename">Filename</param>
-        /// <returns>UtilContentAddResponse</returns>
-        UtilContentAddResponse ContentAddCarPost (string body, string ignoreDupes, string filename);
+        string ContentAddCarPost ();
         /// <summary>
         /// Add IPFS object This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
         /// </summary>
@@ -38,17 +35,10 @@ namespace IO.Swagger.Api
         /// <returns>string</returns>
         string ContentAddIpfsPost (UtilContentAddIpfsBody body, string ignoreDupes);
         /// <summary>
-        /// Add new content This endpoint is used to upload new content.
+        /// Upload a file This endpoint uploads a file.
         /// </summary>
-        /// <param name="data"></param>
-        /// <param name="filename"></param>
-        /// <param name="coluuid">Collection UUID</param>
-        /// <param name="replication">Replication value</param>
-        /// <param name="ignoreDupes">Ignore Dupes true/false</param>
-        /// <param name="lazyProvide">Lazy Provide true/false</param>
-        /// <param name="dir">Directory</param>
-        /// <returns>UtilContentAddResponse</returns>
-        UtilContentAddResponse ContentAddPost (byte[] data, string filename, string coluuid, int? replication, string ignoreDupes, string lazyProvide, string dir);
+        /// <returns>string</returns>
+        string ContentAddPost ();
         /// <summary>
         /// Get aggregated content stats This endpoint returns aggregated content stats
         /// </summary>
@@ -124,7 +114,7 @@ namespace IO.Swagger.Api
         /// <returns>string</returns>
         string ContentStagingZonesGet ();
         /// <summary>
-        /// Get content statistics This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+        /// Get content statistics This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
         /// </summary>
         /// <param name="limit">limit</param>
         /// <param name="offset">offset</param>
@@ -192,6 +182,41 @@ namespace IO.Swagger.Api
         public ApiClient ApiClient {get; set;}
     
         /// <summary>
+        /// Create an Estuary invite This endpoint is used to create an estuary invite.
+        /// </summary>
+        /// <param name="code">Invite code to be created</param>
+        /// <returns>string</returns>
+        public string AdminInvitesCodePost (string code)
+        {
+            // verify the required parameter 'code' is set
+            if (code == null) throw new ApiException(400, "Missing required parameter 'code' when calling AdminInvitesCodePost");
+    
+            var path = "/admin/invites/{code}";
+            path = path.Replace("{format}", "json");
+            path = path.Replace("{" + "code" + "}", ApiClient.ParameterToString(code));
+    
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+                                    
+            // authentication setting, if any
+            String[] authSettings = new String[] { "bearerAuth" };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling AdminInvitesCodePost: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling AdminInvitesCodePost: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
+        }
+    
+        /// <summary>
         /// Get Estuary invites This endpoint is used to list all estuary invites.
         /// </summary>
         /// <returns>string</returns>
@@ -223,19 +248,15 @@ namespace IO.Swagger.Api
         }
     
         /// <summary>
-        /// Create an Estuary invite This endpoint is used to create an estuary invite.
+        /// Upload content via a car file This endpoint uploads content via a car file
         /// </summary>
-        /// <param name="code">Invite code to be created</param>
         /// <returns>string</returns>
-        public string AdminInvitesPost (string code)
+        public string ContentAddCarPost ()
         {
-            // verify the required parameter 'code' is set
-            if (code == null) throw new ApiException(400, "Missing required parameter 'code' when calling AdminInvitesPost");
     
-            var path = "/admin/invites";
+            var path = "/content/add-car";
             path = path.Replace("{format}", "json");
-            path = path.Replace("{" + "code" + "}", ApiClient.ParameterToString(code));
-    
+                
             var queryParams = new Dictionary<String, String>();
             var headerParams = new Dictionary<String, String>();
             var formParams = new Dictionary<String, String>();
@@ -250,50 +271,11 @@ namespace IO.Swagger.Api
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
     
             if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling AdminInvitesPost: " + response.Content, response.Content);
-            else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling AdminInvitesPost: " + response.ErrorMessage, response.ErrorMessage);
-    
-            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
-        }
-    
-        /// <summary>
-        /// Add Car object This endpoint is used to add a car object to the network. The object can be a file or a directory.
-        /// </summary>
-        /// <param name="body">Car</param>
-        /// <param name="ignoreDupes">Ignore Dupes</param>
-        /// <param name="filename">Filename</param>
-        /// <returns>UtilContentAddResponse</returns>
-        public UtilContentAddResponse ContentAddCarPost (string body, string ignoreDupes, string filename)
-        {
-            // verify the required parameter 'body' is set
-            if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling ContentAddCarPost");
-    
-            var path = "/content/add-car";
-            path = path.Replace("{format}", "json");
-                
-            var queryParams = new Dictionary<String, String>();
-            var headerParams = new Dictionary<String, String>();
-            var formParams = new Dictionary<String, String>();
-            var fileParams = new Dictionary<String, FileParameter>();
-            String postBody = null;
-    
-             if (ignoreDupes != null) queryParams.Add("ignore-dupes", ApiClient.ParameterToString(ignoreDupes)); // query parameter
- if (filename != null) queryParams.Add("filename", ApiClient.ParameterToString(filename)); // query parameter
-                        postBody = ApiClient.Serialize(body); // http body (model) parameter
-
-            // authentication setting, if any
-            String[] authSettings = new String[] { "bearerAuth" };
-    
-            // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
-    
-            if (((int)response.StatusCode) >= 400)
                 throw new ApiException ((int)response.StatusCode, "Error calling ContentAddCarPost: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling ContentAddCarPost: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (UtilContentAddResponse) ApiClient.Deserialize(response.Content, typeof(UtilContentAddResponse), response.Headers);
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
@@ -334,22 +316,11 @@ namespace IO.Swagger.Api
         }
     
         /// <summary>
-        /// Add new content This endpoint is used to upload new content.
+        /// Upload a file This endpoint uploads a file.
         /// </summary>
-        /// <param name="data"></param>
-        /// <param name="filename"></param>
-        /// <param name="coluuid">Collection UUID</param>
-        /// <param name="replication">Replication value</param>
-        /// <param name="ignoreDupes">Ignore Dupes true/false</param>
-        /// <param name="lazyProvide">Lazy Provide true/false</param>
-        /// <param name="dir">Directory</param>
-        /// <returns>UtilContentAddResponse</returns>
-        public UtilContentAddResponse ContentAddPost (byte[] data, string filename, string coluuid, int? replication, string ignoreDupes, string lazyProvide, string dir)
+        /// <returns>string</returns>
+        public string ContentAddPost ()
         {
-            // verify the required parameter 'data' is set
-            if (data == null) throw new ApiException(400, "Missing required parameter 'data' when calling ContentAddPost");
-            // verify the required parameter 'filename' is set
-            if (filename == null) throw new ApiException(400, "Missing required parameter 'filename' when calling ContentAddPost");
     
             var path = "/content/add";
             path = path.Replace("{format}", "json");
@@ -360,14 +331,7 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-             if (coluuid != null) queryParams.Add("coluuid", ApiClient.ParameterToString(coluuid)); // query parameter
- if (replication != null) queryParams.Add("replication", ApiClient.ParameterToString(replication)); // query parameter
- if (ignoreDupes != null) queryParams.Add("ignore-dupes", ApiClient.ParameterToString(ignoreDupes)); // query parameter
- if (lazyProvide != null) queryParams.Add("lazy-provide", ApiClient.ParameterToString(lazyProvide)); // query parameter
- if (dir != null) queryParams.Add("dir", ApiClient.ParameterToString(dir)); // query parameter
-                        if (data != null) fileParams.Add("data", ApiClient.ParameterToFile("data", data));
-if (filename != null) formParams.Add("filename", ApiClient.ParameterToString(filename)); // form parameter
-
+                                    
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     
@@ -379,7 +343,7 @@ if (filename != null) formParams.Add("filename", ApiClient.ParameterToString(fil
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling ContentAddPost: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (UtilContentAddResponse) ApiClient.Deserialize(response.Content, typeof(UtilContentAddResponse), response.Headers);
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }
     
         /// <summary>
@@ -805,7 +769,7 @@ if (filename != null) formParams.Add("filename", ApiClient.ParameterToString(fil
         }
     
         /// <summary>
-        /// Get content statistics This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+        /// Get content statistics This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
         /// </summary>
         /// <param name="limit">limit</param>
         /// <param name="offset">offset</param>

@@ -32,6 +32,509 @@ class MinerApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
+    def miner_claim_miner_get(self, miner, **kwargs):  # noqa: E501
+        """Get Claim Miner Message  # noqa: E501
+
+        This endpoint lets a user get the message in order to claim a miner  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.miner_claim_miner_get(miner, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str miner: Miner claim message (required)
+        :return: ApiClaimMsgResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.miner_claim_miner_get_with_http_info(miner, **kwargs)  # noqa: E501
+        else:
+            (data) = self.miner_claim_miner_get_with_http_info(miner, **kwargs)  # noqa: E501
+            return data
+
+    def miner_claim_miner_get_with_http_info(self, miner, **kwargs):  # noqa: E501
+        """Get Claim Miner Message  # noqa: E501
+
+        This endpoint lets a user get the message in order to claim a miner  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.miner_claim_miner_get_with_http_info(miner, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str miner: Miner claim message (required)
+        :return: ApiClaimMsgResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['miner']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method miner_claim_miner_get" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'miner' is set
+        if ('miner' not in params or
+                params['miner'] is None):
+            raise ValueError("Missing the required parameter `miner` when calling `miner_claim_miner_get`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'miner' in params:
+            path_params['miner'] = params['miner']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['bearerAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/miner/claim/{miner}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ApiClaimMsgResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def miner_claim_post(self, body, **kwargs):  # noqa: E501
+        """Claim Miner  # noqa: E501
+
+        This endpoint lets a user claim a miner  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.miner_claim_post(body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param MinerClaimMinerBody body: Claim Miner Body (required)
+        :return: ApiClaimResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.miner_claim_post_with_http_info(body, **kwargs)  # noqa: E501
+        else:
+            (data) = self.miner_claim_post_with_http_info(body, **kwargs)  # noqa: E501
+            return data
+
+    def miner_claim_post_with_http_info(self, body, **kwargs):  # noqa: E501
+        """Claim Miner  # noqa: E501
+
+        This endpoint lets a user claim a miner  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.miner_claim_post_with_http_info(body, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param MinerClaimMinerBody body: Claim Miner Body (required)
+        :return: ApiClaimResponse
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['body']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method miner_claim_post" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'body' is set
+        if ('body' not in params or
+                params['body'] is None):
+            raise ValueError("Missing the required parameter `body` when calling `miner_claim_post`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'body' in params:
+            body_params = params['body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['*/*'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['bearerAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/miner/claim', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ApiClaimResponse',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def miner_set_info_miner_put(self, body, miner, **kwargs):  # noqa: E501
+        """Set Miner Info  # noqa: E501
+
+        This endpoint lets a user set miner info.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.miner_set_info_miner_put(body, miner, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param MinerMinerSetInfoParams body: Miner set info params (required)
+        :param str miner: Miner to set info for (required)
+        :return: ApiEmptyResp
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.miner_set_info_miner_put_with_http_info(body, miner, **kwargs)  # noqa: E501
+        else:
+            (data) = self.miner_set_info_miner_put_with_http_info(body, miner, **kwargs)  # noqa: E501
+            return data
+
+    def miner_set_info_miner_put_with_http_info(self, body, miner, **kwargs):  # noqa: E501
+        """Set Miner Info  # noqa: E501
+
+        This endpoint lets a user set miner info.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.miner_set_info_miner_put_with_http_info(body, miner, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param MinerMinerSetInfoParams body: Miner set info params (required)
+        :param str miner: Miner to set info for (required)
+        :return: ApiEmptyResp
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['body', 'miner']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method miner_set_info_miner_put" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'body' is set
+        if ('body' not in params or
+                params['body'] is None):
+            raise ValueError("Missing the required parameter `body` when calling `miner_set_info_miner_put`")  # noqa: E501
+        # verify the required parameter 'miner' is set
+        if ('miner' not in params or
+                params['miner'] is None):
+            raise ValueError("Missing the required parameter `miner` when calling `miner_set_info_miner_put`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'miner' in params:
+            path_params['miner'] = params['miner']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'body' in params:
+            body_params = params['body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['*/*'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['bearerAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/miner/set-info/{miner}', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ApiEmptyResp',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def miner_suspend_miner_post(self, body, miner, **kwargs):  # noqa: E501
+        """Suspend Miner  # noqa: E501
+
+        This endpoint lets a user suspend a miner.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.miner_suspend_miner_post(body, miner, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param MinerSuspendMinerBody body: Suspend Miner Body (required)
+        :param str miner: Miner to suspend (required)
+        :return: ApiEmptyResp
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.miner_suspend_miner_post_with_http_info(body, miner, **kwargs)  # noqa: E501
+        else:
+            (data) = self.miner_suspend_miner_post_with_http_info(body, miner, **kwargs)  # noqa: E501
+            return data
+
+    def miner_suspend_miner_post_with_http_info(self, body, miner, **kwargs):  # noqa: E501
+        """Suspend Miner  # noqa: E501
+
+        This endpoint lets a user suspend a miner.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.miner_suspend_miner_post_with_http_info(body, miner, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param MinerSuspendMinerBody body: Suspend Miner Body (required)
+        :param str miner: Miner to suspend (required)
+        :return: ApiEmptyResp
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['body', 'miner']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method miner_suspend_miner_post" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'body' is set
+        if ('body' not in params or
+                params['body'] is None):
+            raise ValueError("Missing the required parameter `body` when calling `miner_suspend_miner_post`")  # noqa: E501
+        # verify the required parameter 'miner' is set
+        if ('miner' not in params or
+                params['miner'] is None):
+            raise ValueError("Missing the required parameter `miner` when calling `miner_suspend_miner_post`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'miner' in params:
+            path_params['miner'] = params['miner']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'body' in params:
+            body_params = params['body']
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['*/*'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['bearerAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/miner/suspend/{miner}', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ApiEmptyResp',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def miner_unsuspend_miner_put(self, miner, **kwargs):  # noqa: E501
+        """Unuspend Miner  # noqa: E501
+
+        This endpoint lets a user unsuspend a miner.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.miner_unsuspend_miner_put(miner, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str miner: Miner to unsuspend (required)
+        :return: ApiEmptyResp
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.miner_unsuspend_miner_put_with_http_info(miner, **kwargs)  # noqa: E501
+        else:
+            (data) = self.miner_unsuspend_miner_put_with_http_info(miner, **kwargs)  # noqa: E501
+            return data
+
+    def miner_unsuspend_miner_put_with_http_info(self, miner, **kwargs):  # noqa: E501
+        """Unuspend Miner  # noqa: E501
+
+        This endpoint lets a user unsuspend a miner.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.miner_unsuspend_miner_put_with_http_info(miner, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str miner: Miner to unsuspend (required)
+        :return: ApiEmptyResp
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['miner']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method miner_unsuspend_miner_put" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'miner' is set
+        if ('miner' not in params or
+                params['miner'] is None):
+            raise ValueError("Missing the required parameter `miner` when calling `miner_unsuspend_miner_put`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'miner' in params:
+            path_params['miner'] = params['miner']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['bearerAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/miner/unsuspend/{miner}', 'PUT',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='ApiEmptyResp',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def public_miners_deals_miner_get(self, miner, **kwargs):  # noqa: E501
         """Get all miners deals  # noqa: E501
 

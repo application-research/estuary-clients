@@ -3,9 +3,10 @@ package io.swagger.api;
 import io.swagger.api.*;
 import io.swagger.model.*;
 
+import io.swagger.model.ApiCreateCollectionBody;
+import io.swagger.model.ApiDeleteContentFromCollectionBody;
 import io.swagger.model.CollectionsCollection;
-import io.swagger.model.MainCreateCollectionBody;
-import io.swagger.model.MainDeleteContentFromCollectionBody;
+import io.swagger.model.CollectionsCollectionListResponse;
 import io.swagger.model.UtilHttpError;
 
 import java.util.List;
@@ -16,10 +17,10 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-29T10:27:03.154Z[GMT]")public interface CollectionsApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-12-09T03:38:45.256Z[GMT]")public interface CollectionsApiService {
       Response collectionsColuuidCommitPost(String coluuid,SecurityContext securityContext)
       throws NotFoundException;
-      Response collectionsColuuidContentsDelete(MainDeleteContentFromCollectionBody body,String coluuid,SecurityContext securityContext)
+      Response collectionsColuuidContentsDelete(ApiDeleteContentFromCollectionBody body,String coluuid,SecurityContext securityContext)
       throws NotFoundException;
       Response collectionsColuuidDelete(String coluuid,SecurityContext securityContext)
       throws NotFoundException;
@@ -31,6 +32,6 @@ import javax.ws.rs.core.SecurityContext;
       throws NotFoundException;
       Response collectionsGet(SecurityContext securityContext)
       throws NotFoundException;
-      Response collectionsPost(MainCreateCollectionBody body,SecurityContext securityContext)
+      Response collectionsPost(ApiCreateCollectionBody body,SecurityContext securityContext)
       throws NotFoundException;
 }

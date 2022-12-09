@@ -32,7 +32,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-29T10:27:05.128Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-09T03:38:46.898Z[GMT]")
 @Validated
 public interface AdminApi {
 
@@ -65,6 +65,20 @@ public interface AdminApi {
     ResponseEntity<String> adminAutoretrieveListGet();
 
 
+    @Operation(summary = "Create an Estuary invite", description = "This endpoint is used to create an estuary invite.", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    @RequestMapping(value = "/admin/invites/{code}",
+        produces = { "application/json" }, 
+        method = RequestMethod.POST)
+    ResponseEntity<String> adminInvitesCodePost(@Parameter(in = ParameterIn.PATH, description = "Invite code to be created", required=true, schema=@Schema()) @PathVariable("code") String code);
+
+
     @Operation(summary = "Get Estuary invites", description = "This endpoint is used to list all estuary invites.", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
@@ -77,20 +91,6 @@ public interface AdminApi {
         produces = { "application/json" }, 
         method = RequestMethod.GET)
     ResponseEntity<String> adminInvitesGet();
-
-
-    @Operation(summary = "Create an Estuary invite", description = "This endpoint is used to create an estuary invite.", security = {
-        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
-        
-        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
-        
-        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    @RequestMapping(value = "/admin/invites",
-        produces = { "application/json" }, 
-        method = RequestMethod.POST)
-    ResponseEntity<String> adminInvitesPost(@Parameter(in = ParameterIn.PATH, description = "Invite code to be created", required=true, schema=@Schema()) @PathVariable("code") String code);
 
 
     @Operation(summary = "Remove peers on Peering Service", description = "This endpoint can be used to remove a Peer from the Peering Service", security = {

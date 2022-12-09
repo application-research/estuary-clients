@@ -5,9 +5,10 @@ from __future__ import absolute_import
 from flask import json
 from six import BytesIO
 
+from estuary-client.models.api_create_collection_body import ApiCreateCollectionBody  # noqa: E501
+from estuary-client.models.api_delete_content_from_collection_body import ApiDeleteContentFromCollectionBody  # noqa: E501
 from estuary-client.models.collections_collection import CollectionsCollection  # noqa: E501
-from estuary-client.models.main_create_collection_body import MainCreateCollectionBody  # noqa: E501
-from estuary-client.models.main_delete_content_from_collection_body import MainDeleteContentFromCollectionBody  # noqa: E501
+from estuary-client.models.collections_collection_list_response import CollectionsCollectionListResponse  # noqa: E501
 from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
 from estuary-client.test import BaseTestCase
 
@@ -31,7 +32,7 @@ class TestCollectionsController(BaseTestCase):
 
         Deletes a content from a collection
         """
-        body = MainDeleteContentFromCollectionBody()
+        body = ApiDeleteContentFromCollectionBody()
         response = self.client.open(
             '/collections/{coluuid}/contents'.format(coluuid='coluuid_example'),
             method='DELETE',
@@ -111,7 +112,7 @@ class TestCollectionsController(BaseTestCase):
 
         Create a new collection
         """
-        body = MainCreateCollectionBody()
+        body = ApiCreateCollectionBody()
         response = self.client.open(
             '/collections/',
             method='POST',

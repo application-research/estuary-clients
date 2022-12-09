@@ -66,7 +66,7 @@ namespace estuary-client.Models
         /// </summary>
 
         [DataMember(Name="type")]
-        public int? Type { get; set; }
+        public UtilContentType Type { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

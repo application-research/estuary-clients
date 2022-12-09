@@ -2,6 +2,26 @@
 
 
 /**
+ * Create an Estuary invite
+ * This endpoint is used to create an estuary invite.
+ *
+ * code String Invite code to be created
+ * returns String
+ **/
+exports.adminInvitesCodePOST = function(code) {
+  return new Promise(function(resolve, reject) {
+    var examples = {};
+    examples['application/json'] = "";
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
+  });
+}
+
+
+/**
  * Get Estuary invites
  * This endpoint is used to list all estuary invites.
  *
@@ -21,13 +41,12 @@ exports.adminInvitesGET = function() {
 
 
 /**
- * Create an Estuary invite
- * This endpoint is used to create an estuary invite.
+ * Upload a file
+ * This endpoint uploads a file.
  *
- * code String Invite code to be created
  * returns String
  **/
-exports.adminInvitesPOST = function(code) {
+exports.contentAddPOST = function() {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = "";
@@ -41,54 +60,15 @@ exports.adminInvitesPOST = function(code) {
 
 
 /**
- * Add new content
- * This endpoint is used to upload new content.
+ * Upload content via a car file
+ * This endpoint uploads content via a car file
  *
- * coluuid String Collection UUID (optional)
- * replication Integer Replication value (optional)
- * ignoreDupes String Ignore Dupes true/false (optional)
- * lazyProvide String Lazy Provide true/false (optional)
- * dir String Directory (optional)
- * returns util.ContentAddResponse
+ * returns String
  **/
-exports.contentAddPOST = function(coluuid,replication,ignoreDupes,lazyProvide,dir) {
+exports.contentAdd_carPOST = function() {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = {
-  "retrieval_url" : "retrieval_url",
-  "estuaryId" : 0,
-  "estuary_retrieval_url" : "estuary_retrieval_url",
-  "providers" : [ "providers", "providers" ],
-  "cid" : "cid"
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
-  });
-}
-
-
-/**
- * Add Car object
- * This endpoint is used to add a car object to the network. The object can be a file or a directory.
- *
- * body String Car
- * ignoreDupes String Ignore Dupes (optional)
- * filename String Filename (optional)
- * returns util.ContentAddResponse
- **/
-exports.contentAdd_carPOST = function(body,ignoreDupes,filename) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "retrieval_url" : "retrieval_url",
-  "estuaryId" : 0,
-  "estuary_retrieval_url" : "estuary_retrieval_url",
-  "providers" : [ "providers", "providers" ],
-  "cid" : "cid"
-};
+    examples['application/json'] = "";
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -363,7 +343,7 @@ exports.contentStaging_zonesGET = function() {
 
 /**
  * Get content statistics
- * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+ * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
  *
  * limit String limit
  * offset String offset

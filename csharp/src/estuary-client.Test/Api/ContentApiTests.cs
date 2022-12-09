@@ -63,6 +63,17 @@ namespace estuary-client.Test
         }
 
         /// <summary>
+        /// Test AdminInvitesCodePost
+        /// </summary>
+        [Test]
+        public void AdminInvitesCodePostTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string code = null;
+            //var response = instance.AdminInvitesCodePost(code);
+            //Assert.IsInstanceOf<string> (response, "response is string");
+        }
+        /// <summary>
         /// Test AdminInvitesGet
         /// </summary>
         [Test]
@@ -73,28 +84,14 @@ namespace estuary-client.Test
             //Assert.IsInstanceOf<string> (response, "response is string");
         }
         /// <summary>
-        /// Test AdminInvitesPost
-        /// </summary>
-        [Test]
-        public void AdminInvitesPostTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string code = null;
-            //var response = instance.AdminInvitesPost(code);
-            //Assert.IsInstanceOf<string> (response, "response is string");
-        }
-        /// <summary>
         /// Test ContentAddCarPost
         /// </summary>
         [Test]
         public void ContentAddCarPostTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //string body = null;
-            //string ignoreDupes = null;
-            //string filename = null;
-            //var response = instance.ContentAddCarPost(body, ignoreDupes, filename);
-            //Assert.IsInstanceOf<UtilContentAddResponse> (response, "response is UtilContentAddResponse");
+            //var response = instance.ContentAddCarPost();
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         /// <summary>
         /// Test ContentAddIpfsPost
@@ -115,15 +112,8 @@ namespace estuary-client.Test
         public void ContentAddPostTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //byte[] data = null;
-            //string filename = null;
-            //string coluuid = null;
-            //int? replication = null;
-            //string ignoreDupes = null;
-            //string lazyProvide = null;
-            //string dir = null;
-            //var response = instance.ContentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir);
-            //Assert.IsInstanceOf<UtilContentAddResponse> (response, "response is UtilContentAddResponse");
+            //var response = instance.ContentAddPost();
+            //Assert.IsInstanceOf<string> (response, "response is string");
         }
         /// <summary>
         /// Test ContentAggregatedContentGet

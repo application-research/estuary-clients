@@ -16,9 +16,9 @@ public struct TypesIpfsPinStatusResponse: Codable {
     public var info: Any?
     public var pin: TypesIpfsPin?
     public var requestid: String?
-    public var status: String?
+    public var status: TypesPinningStatus?
 
-    public init(created: String? = nil, delegates: [String]? = nil, info: Any? = nil, pin: TypesIpfsPin? = nil, requestid: String? = nil, status: String? = nil) {
+    public init(created: String? = nil, delegates: [String]? = nil, info: Any? = nil, pin: TypesIpfsPin? = nil, requestid: String? = nil, status: TypesPinningStatus? = nil) {
         self.created = created
         self.delegates = delegates
         self.info = info

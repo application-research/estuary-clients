@@ -63,6 +63,63 @@ namespace estuary-client.Test
         }
 
         /// <summary>
+        /// Test MinerClaimMinerGet
+        /// </summary>
+        [Test]
+        public void MinerClaimMinerGetTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string miner = null;
+            //var response = instance.MinerClaimMinerGet(miner);
+            //Assert.IsInstanceOf<ApiClaimMsgResponse> (response, "response is ApiClaimMsgResponse");
+        }
+        /// <summary>
+        /// Test MinerClaimPost
+        /// </summary>
+        [Test]
+        public void MinerClaimPostTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //MinerClaimMinerBody body = null;
+            //var response = instance.MinerClaimPost(body);
+            //Assert.IsInstanceOf<ApiClaimResponse> (response, "response is ApiClaimResponse");
+        }
+        /// <summary>
+        /// Test MinerSetInfoMinerPut
+        /// </summary>
+        [Test]
+        public void MinerSetInfoMinerPutTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //MinerMinerSetInfoParams body = null;
+            //string miner = null;
+            //var response = instance.MinerSetInfoMinerPut(body, miner);
+            //Assert.IsInstanceOf<ApiEmptyResp> (response, "response is ApiEmptyResp");
+        }
+        /// <summary>
+        /// Test MinerSuspendMinerPost
+        /// </summary>
+        [Test]
+        public void MinerSuspendMinerPostTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //MinerSuspendMinerBody body = null;
+            //string miner = null;
+            //var response = instance.MinerSuspendMinerPost(body, miner);
+            //Assert.IsInstanceOf<ApiEmptyResp> (response, "response is ApiEmptyResp");
+        }
+        /// <summary>
+        /// Test MinerUnsuspendMinerPut
+        /// </summary>
+        [Test]
+        public void MinerUnsuspendMinerPutTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string miner = null;
+            //var response = instance.MinerUnsuspendMinerPut(miner);
+            //Assert.IsInstanceOf<ApiEmptyResp> (response, "response is ApiEmptyResp");
+        }
+        /// <summary>
         /// Test PublicMinersDealsMinerGet
         /// </summary>
         [Test]

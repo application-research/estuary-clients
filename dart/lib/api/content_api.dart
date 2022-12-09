@@ -7,6 +7,57 @@ class ContentApi {
 
   ContentApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
 
+  /// Create an Estuary invite
+  ///
+  /// This endpoint is used to create an estuary invite.
+  Future<String> adminInvitesCodePost(String code) async {
+    Object postBody = null;
+
+    // verify required params are set
+    if(code == null) {
+     throw new ApiException(400, "Missing required param: code");
+    }
+
+    // create path and map variables
+    String path = "/admin/invites/{code}".replaceAll("{format}","json").replaceAll("{" + "code" + "}", code.toString());
+
+    // query params
+    List<QueryParam> queryParams = [];
+    Map<String, String> headerParams = {};
+    Map<String, String> formParams = {};
+    
+    List<String> contentTypes = [];
+
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+    List<String> authNames = ["bearerAuth"];
+
+    if(contentType.startsWith("multipart/form-data")) {
+      bool hasFields = false;
+      MultipartRequest mp = new MultipartRequest(null, null);
+      if(hasFields)
+        postBody = mp;
+    }
+    else {
+          }
+
+    var response = await apiClient.invokeAPI(path,
+                                             'POST',
+                                             queryParams,
+                                             postBody,
+                                             headerParams,
+                                             formParams,
+                                             contentType,
+                                             authNames);
+
+    if(response.statusCode >= 400) {
+      throw new ApiException(response.statusCode, response.body);
+    } else if(response.body != null) {
+      return
+          apiClient.deserialize(response.body, 'String') as String ;
+    } else {
+      return null;
+    }
+  }
   /// Get Estuary invites
   ///
   /// This endpoint is used to list all estuary invites.
@@ -55,19 +106,16 @@ class ContentApi {
       return null;
     }
   }
-  /// Create an Estuary invite
+  /// Upload content via a car file
   ///
-  /// This endpoint is used to create an estuary invite.
-  Future<String> adminInvitesPost(String code) async {
+  /// This endpoint uploads content via a car file
+  Future<String> contentAddCarPost() async {
     Object postBody = null;
 
     // verify required params are set
-    if(code == null) {
-     throw new ApiException(400, "Missing required param: code");
-    }
 
     // create path and map variables
-    String path = "/admin/invites".replaceAll("{format}","json").replaceAll("{" + "code" + "}", code.toString());
+    String path = "/content/add-car".replaceAll("{format}","json");
 
     // query params
     List<QueryParam> queryParams = [];
@@ -102,63 +150,6 @@ class ContentApi {
     } else if(response.body != null) {
       return
           apiClient.deserialize(response.body, 'String') as String ;
-    } else {
-      return null;
-    }
-  }
-  /// Add Car object
-  ///
-  /// This endpoint is used to add a car object to the network. The object can be a file or a directory.
-  Future<UtilContentAddResponse> contentAddCarPost(String body, { String ignoreDupes, String filename }) async {
-    Object postBody = body;
-
-    // verify required params are set
-    if(body == null) {
-     throw new ApiException(400, "Missing required param: body");
-    }
-
-    // create path and map variables
-    String path = "/content/add-car".replaceAll("{format}","json");
-
-    // query params
-    List<QueryParam> queryParams = [];
-    Map<String, String> headerParams = {};
-    Map<String, String> formParams = {};
-    if(ignoreDupes != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat("", "ignore-dupes", ignoreDupes));
-    }
-    if(filename != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat("", "filename", filename));
-    }
-    
-    List<String> contentTypes = ["*/*"];
-
-    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = ["bearerAuth"];
-
-    if(contentType.startsWith("multipart/form-data")) {
-      bool hasFields = false;
-      MultipartRequest mp = new MultipartRequest(null, null);
-      if(hasFields)
-        postBody = mp;
-    }
-    else {
-          }
-
-    var response = await apiClient.invokeAPI(path,
-                                             'POST',
-                                             queryParams,
-                                             postBody,
-                                             headerParams,
-                                             formParams,
-                                             contentType,
-                                             authNames);
-
-    if(response.statusCode >= 400) {
-      throw new ApiException(response.statusCode, response.body);
-    } else if(response.body != null) {
-      return
-          apiClient.deserialize(response.body, 'UtilContentAddResponse') as UtilContentAddResponse ;
     } else {
       return null;
     }
@@ -217,19 +208,13 @@ class ContentApi {
       return null;
     }
   }
-  /// Add new content
+  /// Upload a file
   ///
-  /// This endpoint is used to upload new content.
-  Future<UtilContentAddResponse> contentAddPost(String data, String filename, { String coluuid, int replication, String ignoreDupes, String lazyProvide, String dir }) async {
+  /// This endpoint uploads a file.
+  Future<String> contentAddPost() async {
     Object postBody = null;
 
     // verify required params are set
-    if(data == null) {
-     throw new ApiException(400, "Missing required param: data");
-    }
-    if(filename == null) {
-     throw new ApiException(400, "Missing required param: filename");
-    }
 
     // create path and map variables
     String path = "/content/add".replaceAll("{format}","json");
@@ -238,23 +223,8 @@ class ContentApi {
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
-    if(coluuid != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat("", "coluuid", coluuid));
-    }
-    if(replication != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat("", "replication", replication));
-    }
-    if(ignoreDupes != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat("", "ignore-dupes", ignoreDupes));
-    }
-    if(lazyProvide != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat("", "lazy-provide", lazyProvide));
-    }
-    if(dir != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat("", "dir", dir));
-    }
     
-    List<String> contentTypes = ["multipart/form-data"];
+    List<String> contentTypes = [];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
     List<String> authNames = ["bearerAuth"];
@@ -262,23 +232,11 @@ class ContentApi {
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
-      if (data != null) {
-        hasFields = true;
-        mp.fields['data'] = data.field;
-        mp.files.add(data);
-      }
-      if (filename != null) {
-        hasFields = true;
-        mp.fields['filename'] = parameterToString(filename);
-      }
       if(hasFields)
         postBody = mp;
     }
     else {
-      
-if (filename != null)
-        formParams['filename'] = parameterToString(filename);
-    }
+          }
 
     var response = await apiClient.invokeAPI(path,
                                              'POST',
@@ -293,7 +251,7 @@ if (filename != null)
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          apiClient.deserialize(response.body, 'UtilContentAddResponse') as UtilContentAddResponse ;
+          apiClient.deserialize(response.body, 'String') as String ;
     } else {
       return null;
     }
@@ -921,7 +879,7 @@ if (filename != null)
   }
   /// Get content statistics
   ///
-  /// This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+  /// This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
   Future<String> contentStatsGet(String limit, String offset) async {
     Object postBody = null;
 

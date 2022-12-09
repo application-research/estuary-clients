@@ -90,7 +90,7 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = estuary_client.CollectionsApi(estuary_client.ApiClient(configuration))
-body = estuary_client.MainDeleteContentFromCollectionBody() # MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
+body = estuary_client.ApiDeleteContentFromCollectionBody() # ApiDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
 coluuid = 'coluuid_example' # str | Collection ID
 
 try:
@@ -105,7 +105,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) | 
+ **body** | [**ApiDeleteContentFromCollectionBody**](ApiDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) | 
  **coluuid** | **str**| Collection ID | 
 
 ### Return type
@@ -178,7 +178,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_coluuid_get**
-> str collections_coluuid_get(coluuid, dir=dir)
+> list[CollectionsCollectionListResponse] collections_coluuid_get(coluuid, dir=dir)
 
 Get contents in a collection
 
@@ -220,7 +220,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**str**
+[**list[CollectionsCollectionListResponse]**](CollectionsCollectionListResponse.md)
 
 ### Authorization
 
@@ -422,7 +422,7 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = estuary_client.CollectionsApi(estuary_client.ApiClient(configuration))
-body = estuary_client.MainCreateCollectionBody() # MainCreateCollectionBody | Collection name and description
+body = estuary_client.ApiCreateCollectionBody() # ApiCreateCollectionBody | Collection name and description
 
 try:
     # Create a new collection
@@ -436,7 +436,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainCreateCollectionBody**](MainCreateCollectionBody.md)| Collection name and description | 
+ **body** | [**ApiCreateCollectionBody**](ApiCreateCollectionBody.md)| Collection name and description | 
 
 ### Return type
 

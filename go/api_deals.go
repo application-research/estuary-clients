@@ -31,7 +31,7 @@ This endpoint estimates the cost of a deal
  * @param body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
 @return string
 */
-func (a *DealsApiService) DealEstimatePost(ctx context.Context, body MainEstimateDealBody) (string, *http.Response, error) {
+func (a *DealsApiService) DealEstimatePost(ctx context.Context, body ApiEstimateDealBody) (string, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -858,7 +858,7 @@ This endpoint returns the status of a transfer
  * @param body Channel ID
 @return string
 */
-func (a *DealsApiService) DealTransferStatusPost(ctx context.Context, body MainChannelIdParam) (string, *http.Response, error) {
+func (a *DealsApiService) DealTransferStatusPost(ctx context.Context, body ApiChannelIdParam) (string, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}

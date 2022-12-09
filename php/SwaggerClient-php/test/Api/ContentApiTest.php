@@ -71,6 +71,16 @@ class ContentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for adminInvitesCodePost
+     *
+     * Create an Estuary invite.
+     *
+     */
+    public function testAdminInvitesCodePost()
+    {
+    }
+
+    /**
      * Test case for adminInvitesGet
      *
      * Get Estuary invites.
@@ -81,19 +91,9 @@ class ContentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test case for adminInvitesPost
-     *
-     * Create an Estuary invite.
-     *
-     */
-    public function testAdminInvitesPost()
-    {
-    }
-
-    /**
      * Test case for contentAddCarPost
      *
-     * Add Car object.
+     * Upload content via a car file.
      *
      */
     public function testContentAddCarPost()
@@ -113,7 +113,7 @@ class ContentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for contentAddPost
      *
-     * Add new content.
+     * Upload a file.
      *
      */
     public function testContentAddPost()

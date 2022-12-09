@@ -1,6 +1,7 @@
 package io.swagger.model;
 
 import io.swagger.model.TypesIpfsPin;
+import io.swagger.model.TypesPinningStatus;
 import java.util.ArrayList;
 import java.util.List;
 import javax.validation.constraints.*;
@@ -24,7 +25,7 @@ public class TypesIpfsPinStatusResponse   {
 
   private @Valid String requestid = null;
 
-  private @Valid String status = null;
+  private @Valid TypesPinningStatus status = null;
 
   /**
    **/
@@ -118,7 +119,7 @@ public class TypesIpfsPinStatusResponse   {
 
   /**
    **/
-  public TypesIpfsPinStatusResponse status(String status) {
+  public TypesIpfsPinStatusResponse status(TypesPinningStatus status) {
     this.status = status;
     return this;
   }
@@ -127,10 +128,10 @@ public class TypesIpfsPinStatusResponse   {
   @ApiModelProperty(value = "")
   @JsonProperty("status")
 
-  public String getStatus() {
+  public TypesPinningStatus getStatus() {
     return status;
   }
-  public void setStatus(String status) {
+  public void setStatus(TypesPinningStatus status) {
     this.status = status;
   }
 

@@ -26,6 +26,6 @@ case class IpfsPinStatusResponse (
   info: Option[Any] = None,
   pin: Option[types.IpfsPin] = None,
   requestid: Option[String] = None,
-  status: Option[String] = None
+  status: Option[types.PinningStatus] = None
 )
 

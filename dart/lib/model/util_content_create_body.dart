@@ -12,7 +12,7 @@ class UtilContentCreateBody {
 
   String root = null;
 
-  int type = null;
+  UtilContentType type = null;
 
   UtilContentCreateBody();
 
@@ -28,7 +28,7 @@ class UtilContentCreateBody {
     location = json['location'];
     name = json['name'];
     root = json['root'];
-    type = json['type'];
+    type = new UtilContentType.fromJson(json['type']);
   }
 
   Map<String, dynamic> toJson() {

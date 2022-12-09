@@ -1,7 +1,7 @@
 package io.swagger.api;
 
-import io.swagger.model.MainChannelIDParam;
-import io.swagger.model.MainEstimateDealBody;
+import io.swagger.model.ApiChannelIDParam;
+import io.swagger.model.ApiEstimateDealBody;
 import io.swagger.model.UtilHttpError;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.Operation;
@@ -34,7 +34,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-29T10:27:05.128Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-09T03:38:46.898Z[GMT]")
 @RestController
 public class DealApiController implements DealApi {
 
@@ -50,7 +50,7 @@ public class DealApiController implements DealApi {
         this.request = request;
     }
 
-    public ResponseEntity<String> dealEstimatePost(@Parameter(in = ParameterIn.DEFAULT, description = "The size of the deal in bytes, the replication factor, and the duration of the deal in blocks", required=true, schema=@Schema()) @Valid @RequestBody MainEstimateDealBody body) {
+    public ResponseEntity<String> dealEstimatePost(@Parameter(in = ParameterIn.DEFAULT, description = "The size of the deal in bytes, the replication factor, and the duration of the deal in blocks", required=true, schema=@Schema()) @Valid @RequestBody ApiEstimateDealBody body) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
@@ -148,7 +148,7 @@ public class DealApiController implements DealApi {
         return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<String> dealTransferStatusPost(@Parameter(in = ParameterIn.DEFAULT, description = "Channel ID", required=true, schema=@Schema()) @Valid @RequestBody MainChannelIDParam body) {
+    public ResponseEntity<String> dealTransferStatusPost(@Parameter(in = ParameterIn.DEFAULT, description = "Channel ID", required=true, schema=@Schema()) @Valid @RequestBody ApiChannelIDParam body) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {

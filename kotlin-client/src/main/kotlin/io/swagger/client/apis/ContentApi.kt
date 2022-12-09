@@ -13,7 +13,6 @@ package io.swagger.client.apis
 
 import io.swagger.client.models.MainimportDealBody
 import io.swagger.client.models.UtilContentAddIpfsBody
-import io.swagger.client.models.UtilContentAddResponse
 import io.swagger.client.models.UtilContentCreateBody
 import io.swagger.client.models.UtilHttpError
 
@@ -21,6 +20,31 @@ import estuary-client.infrastructure.*
 
 class ContentApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(basePath) {
 
+    /**
+     * Create an Estuary invite
+     * This endpoint is used to create an estuary invite.
+     * @param code Invite code to be created 
+     * @return kotlin.String
+     */
+    @Suppress("UNCHECKED_CAST")
+    fun adminInvitesCodePost(code: kotlin.String): kotlin.String {
+        
+        val localVariableConfig = RequestConfig(
+                RequestMethod.POST,
+                "/admin/invites/{code}".replace("{" + "code" + "}", "$code")
+        )
+        val response = request<kotlin.String>(
+                localVariableConfig
+        )
+
+        return when (response.responseType) {
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
+            ResponseType.Informational -> TODO()
+            ResponseType.Redirection -> TODO()
+            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+        }
+    }
     /**
      * Get Estuary invites
      * This endpoint is used to list all estuary invites.
@@ -46,17 +70,16 @@ class ContentApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(ba
         }
     }
     /**
-     * Create an Estuary invite
-     * This endpoint is used to create an estuary invite.
-     * @param code Invite code to be created 
+     * Upload content via a car file
+     * This endpoint uploads content via a car file
      * @return kotlin.String
      */
     @Suppress("UNCHECKED_CAST")
-    fun adminInvitesPost(code: kotlin.String): kotlin.String {
+    fun contentAddCarPost(): kotlin.String {
         
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
-                "/admin/invites".replace("{" + "code" + "}", "$code")
+                "/content/add-car"
         )
         val response = request<kotlin.String>(
                 localVariableConfig
@@ -64,34 +87,6 @@ class ContentApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(ba
 
         return when (response.responseType) {
             ResponseType.Success -> (response as Success<*>).data as kotlin.String
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-        }
-    }
-    /**
-     * Add Car object
-     * This endpoint is used to add a car object to the network. The object can be a file or a directory.
-     * @param body Car 
-     * @param ignoreDupes Ignore Dupes (optional)
-     * @param filename Filename (optional)
-     * @return UtilContentAddResponse
-     */
-    @Suppress("UNCHECKED_CAST")
-    fun contentAddCarPost(body: kotlin.String, ignoreDupes: kotlin.String? = null, filename: kotlin.String? = null): UtilContentAddResponse {
-        val localVariableBody: kotlin.Any? = body
-        val localVariableQuery: MultiValueMap = mapOf("ignore-dupes" to listOf("$ignoreDupes"), "filename" to listOf("$filename"))
-        val localVariableConfig = RequestConfig(
-                RequestMethod.POST,
-                "/content/add-car", query = localVariableQuery
-        )
-        val response = request<UtilContentAddResponse>(
-                localVariableConfig, localVariableBody
-        )
-
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as UtilContentAddResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -126,32 +121,23 @@ class ContentApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(ba
         }
     }
     /**
-     * Add new content
-     * This endpoint is used to upload new content.
-     * @param &#x60;data&#x60;  
-     * @param filename  
-     * @param coluuid Collection UUID (optional)
-     * @param replication Replication value (optional)
-     * @param ignoreDupes Ignore Dupes true/false (optional)
-     * @param lazyProvide Lazy Provide true/false (optional)
-     * @param dir Directory (optional)
-     * @return UtilContentAddResponse
+     * Upload a file
+     * This endpoint uploads a file.
+     * @return kotlin.String
      */
     @Suppress("UNCHECKED_CAST")
-    fun contentAddPost(&#x60;data&#x60;: kotlin.Array<kotlin.Byte>, filename: kotlin.String, coluuid: kotlin.String? = null, replication: kotlin.Int? = null, ignoreDupes: kotlin.String? = null, lazyProvide: kotlin.String? = null, dir: kotlin.String? = null): UtilContentAddResponse {
-        val localVariableBody: kotlin.Any? = mapOf("data" to "$&#x60;data&#x60;", "filename" to "$filename")
-        val localVariableQuery: MultiValueMap = mapOf("coluuid" to listOf("$coluuid"), "replication" to listOf("$replication"), "ignore-dupes" to listOf("$ignoreDupes"), "lazy-provide" to listOf("$lazyProvide"), "dir" to listOf("$dir"))
-        val localVariableHeaders: kotlin.collections.Map<kotlin.String, kotlin.String> = mapOf("Content-Type" to "multipart/form-data")
+    fun contentAddPost(): kotlin.String {
+        
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
-                "/content/add", query = localVariableQuery, headers = localVariableHeaders
+                "/content/add"
         )
-        val response = request<UtilContentAddResponse>(
-                localVariableConfig, localVariableBody
+        val response = request<kotlin.String>(
+                localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as UtilContentAddResponse
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -464,7 +450,7 @@ class ContentApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(ba
     }
     /**
      * Get content statistics
-     * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+     * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
      * @param limit limit 
      * @param offset offset 
      * @return kotlin.String

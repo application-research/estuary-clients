@@ -23,7 +23,7 @@ exports.pinningPinsGET = function() {
     "requestid" : "requestid",
     "delegates" : [ "delegates", "delegates" ],
     "info" : { },
-    "status" : "status"
+    "status" : "pinning"
   }, {
     "pin" : {
       "meta" : { },
@@ -35,7 +35,7 @@ exports.pinningPinsGET = function() {
     "requestid" : "requestid",
     "delegates" : [ "delegates", "delegates" ],
     "info" : { },
-    "status" : "status"
+    "status" : "pinning"
   } ]
 };
     if (Object.keys(examples).length > 0) {
@@ -68,7 +68,7 @@ exports.pinningPinsPOST = function(body) {
   "requestid" : "requestid",
   "delegates" : [ "delegates", "delegates" ],
   "info" : { },
-  "status" : "status"
+  "status" : "pinning"
 };
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
@@ -114,7 +114,7 @@ exports.pinningPinsPinidGET = function(pinid) {
   "requestid" : "requestid",
   "delegates" : [ "delegates", "delegates" ],
   "info" : { },
-  "status" : "status"
+  "status" : "pinning"
 };
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
@@ -147,7 +147,7 @@ exports.pinningPinsPinidPOST = function(body,pinid) {
   "requestid" : "requestid",
   "delegates" : [ "delegates", "delegates" ],
   "info" : { },
-  "status" : "status"
+  "status" : "pinning"
 };
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);

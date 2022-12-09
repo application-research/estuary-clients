@@ -6,6 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from estuary-client.models.base_model_ import Model
+from estuary-client.models.util_content_type import UtilContentType  # noqa: F401,E501
 from estuary-client import util
 
 
@@ -14,7 +15,7 @@ class UtilContentCreateBody(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, coluuid: str=None, dir: str=None, location: str=None, name: str=None, root: str=None, type: int=None):  # noqa: E501
+    def __init__(self, coluuid: str=None, dir: str=None, location: str=None, name: str=None, root: str=None, type: UtilContentType=None):  # noqa: E501
         """UtilContentCreateBody - a model defined in Swagger
 
         :param coluuid: The coluuid of this UtilContentCreateBody.  # noqa: E501
@@ -28,7 +29,7 @@ class UtilContentCreateBody(Model):
         :param root: The root of this UtilContentCreateBody.  # noqa: E501
         :type root: str
         :param type: The type of this UtilContentCreateBody.  # noqa: E501
-        :type type: int
+        :type type: UtilContentType
         """
         self.swagger_types = {
             'coluuid': str,
@@ -36,7 +37,7 @@ class UtilContentCreateBody(Model):
             'location': str,
             'name': str,
             'root': str,
-            'type': int
+            'type': UtilContentType
         }
 
         self.attribute_map = {
@@ -171,22 +172,22 @@ class UtilContentCreateBody(Model):
         self._root = root
 
     @property
-    def type(self) -> int:
+    def type(self) -> UtilContentType:
         """Gets the type of this UtilContentCreateBody.
 
 
         :return: The type of this UtilContentCreateBody.
-        :rtype: int
+        :rtype: UtilContentType
         """
         return self._type
 
     @type.setter
-    def type(self, type: int):
+    def type(self, type: UtilContentType):
         """Sets the type of this UtilContentCreateBody.
 
 
         :param type: The type of this UtilContentCreateBody.
-        :type type: int
+        :type type: UtilContentType
         """
 
         self._type = type

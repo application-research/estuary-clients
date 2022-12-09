@@ -39,12 +39,14 @@ exports.publicBy_cidCidGET = function(cid) {
  * Get public node info
  * This endpoint returns information about the node
  *
- * returns String
+ * returns api.publicNodeInfo
  **/
 exports.publicInfoGET = function() {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = "";
+    examples['application/json'] = {
+  "primaryAddress" : { }
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {

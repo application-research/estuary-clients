@@ -29,7 +29,7 @@ import javax.validation.constraints.*;
 @Path("/pinning")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-29T10:27:02.680Z[GMT]")public interface PinningApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-12-09T03:38:45.054Z[GMT]")public interface PinningApi  {
    
     @GET
     @Path("/pins")
@@ -51,7 +51,7 @@ import javax.validation.constraints.*;
     @Operation(summary = "Delete a pinned object", description = "This endpoint deletes a pinned object.", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "pinning" })
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "202", description = ""),
+        @ApiResponse(responseCode = "202", description = "Accepted"),
                 @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
          })
     Response pinningPinsPinidDelete( @PathParam("pinid") String pinid,@Context SecurityContext securityContext);

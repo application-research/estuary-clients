@@ -38,38 +38,68 @@ class ApiClient {
           return value is bool ? value : '$value'.toLowerCase() == 'true';
         case 'double':
           return value is double ? value : double.parse('$value');
+        case 'AddressAddress':
+          return new AddressAddress.fromJson(value);
+        case 'ApiChannelIDParam':
+          return new ApiChannelIDParam.fromJson(value);
+        case 'ApiClaimMsgResponse':
+          return new ApiClaimMsgResponse.fromJson(value);
+        case 'ApiClaimResponse':
+          return new ApiClaimResponse.fromJson(value);
+        case 'ApiCreateCollectionBody':
+          return new ApiCreateCollectionBody.fromJson(value);
+        case 'ApiDeleteContentFromCollectionBody':
+          return new ApiDeleteContentFromCollectionBody.fromJson(value);
+        case 'ApiEmptyResp':
+          return new ApiEmptyResp.fromJson(value);
+        case 'ApiEstimateDealBody':
+          return new ApiEstimateDealBody.fromJson(value);
+        case 'ApiGetApiKeysResp':
+          return new ApiGetApiKeysResp.fromJson(value);
+        case 'ApiPublicNodeInfo':
+          return new ApiPublicNodeInfo.fromJson(value);
         case 'AutoretrieveInitBody':
           return new AutoretrieveInitBody.fromJson(value);
+        case 'CidCid':
+          return new CidCid.fromJson(value);
+        case 'CollectionsCidType':
+           return new CollectionsCidType.fromJson(value);
         case 'CollectionsCollection':
           return new CollectionsCollection.fromJson(value);
-        case 'ContentAddBody':
-          return new ContentAddBody.fromJson(value);
-        case 'MainChannelIDParam':
-          return new MainChannelIDParam.fromJson(value);
-        case 'MainCreateCollectionBody':
-          return new MainCreateCollectionBody.fromJson(value);
-        case 'MainDeleteContentFromCollectionBody':
-          return new MainDeleteContentFromCollectionBody.fromJson(value);
-        case 'MainEstimateDealBody':
-          return new MainEstimateDealBody.fromJson(value);
-        case 'MainGetApiKeysResp':
-          return new MainGetApiKeysResp.fromJson(value);
+        case 'CollectionsCollectionListResponse':
+          return new CollectionsCollectionListResponse.fromJson(value);
         case 'MainImportDealBody':
           return new MainImportDealBody.fromJson(value);
+        case 'MinerClaimMinerBody':
+          return new MinerClaimMinerBody.fromJson(value);
+        case 'MinerMinerSetInfoParams':
+          return new MinerMinerSetInfoParams.fromJson(value);
+        case 'MinerSuspendMinerBody':
+          return new MinerSuspendMinerBody.fromJson(value);
         case 'TypesIpfsListPinStatusResponse':
           return new TypesIpfsListPinStatusResponse.fromJson(value);
         case 'TypesIpfsPin':
           return new TypesIpfsPin.fromJson(value);
         case 'TypesIpfsPinStatusResponse':
           return new TypesIpfsPinStatusResponse.fromJson(value);
+        case 'TypesPinningStatus':
+           return new TypesPinningStatus.fromJson(value);
         case 'UtilContentAddIpfsBody':
           return new UtilContentAddIpfsBody.fromJson(value);
         case 'UtilContentAddResponse':
           return new UtilContentAddResponse.fromJson(value);
         case 'UtilContentCreateBody':
           return new UtilContentCreateBody.fromJson(value);
+        case 'UtilContentType':
+           return new UtilContentType.fromJson(value);
+        case 'UtilDbCID':
+          return new UtilDbCID.fromJson(value);
         case 'UtilHttpError':
           return new UtilHttpError.fromJson(value);
+        case 'UtilUserSettings':
+          return new UtilUserSettings.fromJson(value);
+        case 'UtilViewerResponse':
+          return new UtilViewerResponse.fromJson(value);
         default:
           {
             Match match;

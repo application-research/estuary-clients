@@ -4,11 +4,11 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AdminInvitesCodePost**](ContentApi.md#AdminInvitesCodePost) | **Post** /admin/invites/{code} | Create an Estuary invite
 [**AdminInvitesGet**](ContentApi.md#AdminInvitesGet) | **Get** /admin/invites | Get Estuary invites
-[**AdminInvitesPost**](ContentApi.md#AdminInvitesPost) | **Post** /admin/invites | Create an Estuary invite
-[**ContentAddCarPost**](ContentApi.md#ContentAddCarPost) | **Post** /content/add-car | Add Car object
+[**ContentAddCarPost**](ContentApi.md#ContentAddCarPost) | **Post** /content/add-car | Upload content via a car file
 [**ContentAddIpfsPost**](ContentApi.md#ContentAddIpfsPost) | **Post** /content/add-ipfs | Add IPFS object
-[**ContentAddPost**](ContentApi.md#ContentAddPost) | **Post** /content/add | Add new content
+[**ContentAddPost**](ContentApi.md#ContentAddPost) | **Post** /content/add | Upload a file
 [**ContentAggregatedContentGet**](ContentApi.md#ContentAggregatedContentGet) | **Get** /content/aggregated/{content} | Get aggregated content stats
 [**ContentAllDealsGet**](ContentApi.md#ContentAllDealsGet) | **Get** /content/all-deals | Get all deals for a user
 [**ContentBwUsageContentGet**](ContentApi.md#ContentBwUsageContentGet) | **Get** /content/bw-usage/{content} | Get content bandwidth
@@ -24,32 +24,8 @@ Method | HTTP request | Description
 [**ContentStatsGet**](ContentApi.md#ContentStatsGet) | **Get** /content/stats | Get content statistics
 [**ContentStatusIdGet**](ContentApi.md#ContentStatusIdGet) | **Get** /content/status/{id} | Content Status
 
-# **AdminInvitesGet**
-> string AdminInvitesGet(ctx, )
-Get Estuary invites
-
-This endpoint is used to list all estuary invites.
-
-### Required Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-**string**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **AdminInvitesPost**
-> string AdminInvitesPost(ctx, code)
+# **AdminInvitesCodePost**
+> string AdminInvitesCodePost(ctx, code)
 Create an Estuary invite
 
 This endpoint is used to create an estuary invite.
@@ -76,31 +52,18 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **ContentAddCarPost**
-> UtilContentAddResponse ContentAddCarPost(ctx, body, optional)
-Add Car object
+# **AdminInvitesGet**
+> string AdminInvitesGet(ctx, )
+Get Estuary invites
 
-This endpoint is used to add a car object to the network. The object can be a file or a directory.
+This endpoint is used to list all estuary invites.
 
 ### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**string**](string.md)| Car | 
- **optional** | ***ContentApiContentAddCarPostOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a pointer to a ContentApiContentAddCarPostOpts struct
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
- **ignoreDupes** | **optional.**| Ignore Dupes | 
- **filename** | **optional.**| Filename | 
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**UtilContentAddResponse**](util.ContentAddResponse.md)
+**string**
 
 ### Authorization
 
@@ -108,7 +71,31 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: */*
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ContentAddCarPost**
+> string ContentAddCarPost(ctx, )
+Upload content via a car file
+
+This endpoint uploads content via a car file
+
+### Required Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+**string**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -150,35 +137,17 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ContentAddPost**
-> UtilContentAddResponse ContentAddPost(ctx, data, filename, optional)
-Add new content
+> string ContentAddPost(ctx, )
+Upload a file
 
-This endpoint is used to upload new content.
+This endpoint uploads a file.
 
 ### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **data** | ***os.File*****os.File**|  | 
-  **filename** | **string**|  | 
- **optional** | ***ContentApiContentAddPostOpts** | optional parameters | nil if no parameters
-
-### Optional Parameters
-Optional parameters are passed through a pointer to a ContentApiContentAddPostOpts struct
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
-
-
- **coluuid** | **optional.**| Collection UUID | 
- **replication** | **optional.**| Replication value | 
- **ignoreDupes** | **optional.**| Ignore Dupes true/false | 
- **lazyProvide** | **optional.**| Lazy Provide true/false | 
- **dir** | **optional.**| Directory | 
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**UtilContentAddResponse**](util.ContentAddResponse.md)
+**string**
 
 ### Authorization
 
@@ -186,7 +155,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -540,7 +509,7 @@ This endpoint does not need any parameter.
 > string ContentStatsGet(ctx, limit, offset)
 Get content statistics
 
-This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
 
 ### Required Parameters
 

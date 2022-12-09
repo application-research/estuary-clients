@@ -41,11 +41,11 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**CollectionsFsAddPost**](docs/CollectionsApi.md#collectionsfsaddpost) | **Post** /collections/fs/add | Add a file to a collection
 *CollectionsApi* | [**CollectionsGet**](docs/CollectionsApi.md#collectionsget) | **Get** /collections/ | List all collections
 *CollectionsApi* | [**CollectionsPost**](docs/CollectionsApi.md#collectionspost) | **Post** /collections/ | Create a new collection
+*ContentApi* | [**AdminInvitesCodePost**](docs/ContentApi.md#admininvitescodepost) | **Post** /admin/invites/{code} | Create an Estuary invite
 *ContentApi* | [**AdminInvitesGet**](docs/ContentApi.md#admininvitesget) | **Get** /admin/invites | Get Estuary invites
-*ContentApi* | [**AdminInvitesPost**](docs/ContentApi.md#admininvitespost) | **Post** /admin/invites | Create an Estuary invite
-*ContentApi* | [**ContentAddCarPost**](docs/ContentApi.md#contentaddcarpost) | **Post** /content/add-car | Add Car object
+*ContentApi* | [**ContentAddCarPost**](docs/ContentApi.md#contentaddcarpost) | **Post** /content/add-car | Upload content via a car file
 *ContentApi* | [**ContentAddIpfsPost**](docs/ContentApi.md#contentaddipfspost) | **Post** /content/add-ipfs | Add IPFS object
-*ContentApi* | [**ContentAddPost**](docs/ContentApi.md#contentaddpost) | **Post** /content/add | Add new content
+*ContentApi* | [**ContentAddPost**](docs/ContentApi.md#contentaddpost) | **Post** /content/add | Upload a file
 *ContentApi* | [**ContentAggregatedContentGet**](docs/ContentApi.md#contentaggregatedcontentget) | **Get** /content/aggregated/{content} | Get aggregated content stats
 *ContentApi* | [**ContentAllDealsGet**](docs/ContentApi.md#contentalldealsget) | **Get** /content/all-deals | Get all deals for a user
 *ContentApi* | [**ContentBwUsageContentGet**](docs/ContentApi.md#contentbwusagecontentget) | **Get** /content/bw-usage/{content} | Get content bandwidth
@@ -73,7 +73,13 @@ Class | Method | HTTP request | Description
 *DealsApi* | [**DealsStatusDealGet**](docs/DealsApi.md#dealsstatusdealget) | **Get** /deals/status/{deal} | Get Deal Status
 *DealsApi* | [**PublicDealsFailuresGet**](docs/DealsApi.md#publicdealsfailuresget) | **Get** /public/deals/failures | Get storage failures
 *DealsApi* | [**PublicMinersStorageQueryMinerGet**](docs/DealsApi.md#publicminersstoragequeryminerget) | **Get** /public/miners/storage/query/{miner} | Query Ask
+*DefaultApi* | [**ViewerGet**](docs/DefaultApi.md#viewerget) | **Get** /viewer | Fetch viewer details
 *MetricsApi* | [**PublicMetricsDealsOnChainGet**](docs/MetricsApi.md#publicmetricsdealsonchainget) | **Get** /public/metrics/deals-on-chain | Get deal metrics
+*MinerApi* | [**MinerClaimMinerGet**](docs/MinerApi.md#minerclaimminerget) | **Get** /miner/claim/{miner} | Get Claim Miner Message
+*MinerApi* | [**MinerClaimPost**](docs/MinerApi.md#minerclaimpost) | **Post** /miner/claim | Claim Miner
+*MinerApi* | [**MinerSetInfoMinerPut**](docs/MinerApi.md#minersetinfominerput) | **Put** /miner/set-info/{miner} | Set Miner Info
+*MinerApi* | [**MinerSuspendMinerPost**](docs/MinerApi.md#minersuspendminerpost) | **Post** /miner/suspend/{miner} | Suspend Miner
+*MinerApi* | [**MinerUnsuspendMinerPut**](docs/MinerApi.md#minerunsuspendminerput) | **Put** /miner/unsuspend/{miner} | Unuspend Miner
 *MinerApi* | [**PublicMinersDealsMinerGet**](docs/MinerApi.md#publicminersdealsminerget) | **Get** /public/miners/deals/{miner} | Get all miners deals
 *MinerApi* | [**PublicMinersStatsMinerGet**](docs/MinerApi.md#publicminersstatsminerget) | **Get** /public/miners/stats/{miner} | Get miner stats
 *NetApi* | [**NetAddrsGet**](docs/NetApi.md#netaddrsget) | **Get** /net/addrs | Net Addrs
@@ -105,22 +111,37 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
+ - [AddressAddress](docs/AddressAddress.md)
+ - [ApiChannelIdParam](docs/ApiChannelIdParam.md)
+ - [ApiClaimMsgResponse](docs/ApiClaimMsgResponse.md)
+ - [ApiClaimResponse](docs/ApiClaimResponse.md)
+ - [ApiCreateCollectionBody](docs/ApiCreateCollectionBody.md)
+ - [ApiDeleteContentFromCollectionBody](docs/ApiDeleteContentFromCollectionBody.md)
+ - [ApiEmptyResp](docs/ApiEmptyResp.md)
+ - [ApiEstimateDealBody](docs/ApiEstimateDealBody.md)
+ - [ApiGetApiKeysResp](docs/ApiGetApiKeysResp.md)
+ - [ApiPublicNodeInfo](docs/ApiPublicNodeInfo.md)
  - [AutoretrieveInitBody](docs/AutoretrieveInitBody.md)
+ - [CidCid](docs/CidCid.md)
+ - [CollectionsCidType](docs/CollectionsCidType.md)
  - [CollectionsCollection](docs/CollectionsCollection.md)
- - [ContentAddBody](docs/ContentAddBody.md)
- - [MainChannelIdParam](docs/MainChannelIdParam.md)
- - [MainCreateCollectionBody](docs/MainCreateCollectionBody.md)
- - [MainDeleteContentFromCollectionBody](docs/MainDeleteContentFromCollectionBody.md)
- - [MainEstimateDealBody](docs/MainEstimateDealBody.md)
- - [MainGetApiKeysResp](docs/MainGetApiKeysResp.md)
+ - [CollectionsCollectionListResponse](docs/CollectionsCollectionListResponse.md)
  - [MainImportDealBody](docs/MainImportDealBody.md)
+ - [MinerClaimMinerBody](docs/MinerClaimMinerBody.md)
+ - [MinerMinerSetInfoParams](docs/MinerMinerSetInfoParams.md)
+ - [MinerSuspendMinerBody](docs/MinerSuspendMinerBody.md)
  - [TypesIpfsListPinStatusResponse](docs/TypesIpfsListPinStatusResponse.md)
  - [TypesIpfsPin](docs/TypesIpfsPin.md)
  - [TypesIpfsPinStatusResponse](docs/TypesIpfsPinStatusResponse.md)
+ - [TypesPinningStatus](docs/TypesPinningStatus.md)
  - [UtilContentAddIpfsBody](docs/UtilContentAddIpfsBody.md)
  - [UtilContentAddResponse](docs/UtilContentAddResponse.md)
  - [UtilContentCreateBody](docs/UtilContentCreateBody.md)
+ - [UtilContentType](docs/UtilContentType.md)
+ - [UtilDbCid](docs/UtilDbCid.md)
  - [UtilHttpError](docs/UtilHttpError.md)
+ - [UtilUserSettings](docs/UtilUserSettings.md)
+ - [UtilViewerResponse](docs/UtilViewerResponse.md)
 
 ## Documentation For Authorization
 

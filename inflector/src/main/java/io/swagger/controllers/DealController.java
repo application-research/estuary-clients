@@ -10,11 +10,11 @@ import java.util.List;
 
 import io.swagger.model.*;
 
-import io.swagger.model.MainChannelIDParam;
-import io.swagger.model.MainEstimateDealBody;
+import io.swagger.model.ApiChannelIDParam;
+import io.swagger.model.ApiEstimateDealBody;
 import io.swagger.model.UtilHttpError;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-11-29T10:27:02.700Z[GMT]")public class DealController  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-12-09T03:38:44.168Z[GMT]")public class DealController  {
   /** 
    * Uncomment and implement as you see fit.  These operations will map
    * Directly to operation calls from the routing logic.  Because the inflector
@@ -22,7 +22,7 @@ import io.swagger.model.UtilHttpError;
    **/
 
   /*
-    public ResponseContext dealEstimatePOST(RequestContext request , MainEstimateDealBody body 
+    public ResponseContext dealEstimatePOST(RequestContext request , ApiEstimateDealBody body 
 ) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
@@ -71,7 +71,7 @@ import io.swagger.model.UtilHttpError;
   */
 
   /*
-    public ResponseContext dealTransferStatusPOST(RequestContext request , MainChannelIDParam body 
+    public ResponseContext dealTransferStatusPOST(RequestContext request , ApiChannelIDParam body 
 ) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }

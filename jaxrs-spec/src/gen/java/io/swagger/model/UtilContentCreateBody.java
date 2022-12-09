@@ -1,5 +1,6 @@
 package io.swagger.model;
 
+import io.swagger.model.UtilContentType;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -21,7 +22,7 @@ public class UtilContentCreateBody   {
 
   private @Valid String root = null;
 
-  private @Valid Integer type = null;
+  private @Valid UtilContentType type = null;
 
   /**
    **/
@@ -115,7 +116,7 @@ public class UtilContentCreateBody   {
 
   /**
    **/
-  public UtilContentCreateBody type(Integer type) {
+  public UtilContentCreateBody type(UtilContentType type) {
     this.type = type;
     return this;
   }
@@ -124,10 +125,10 @@ public class UtilContentCreateBody   {
   @ApiModelProperty(value = "")
   @JsonProperty("type")
 
-  public Integer getType() {
+  public UtilContentType getType() {
     return type;
   }
-  public void setType(Integer type) {
+  public void setType(UtilContentType type) {
     this.type = type;
   }
 

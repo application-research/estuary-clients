@@ -38,7 +38,7 @@ namespace estuary-client.Model
         /// <param name="name">name.</param>
         /// <param name="root">root.</param>
         /// <param name="type">type.</param>
-        public UtilContentCreateBody(string coluuid = default(string), string dir = default(string), string location = default(string), string name = default(string), string root = default(string), int? type = default(int?))
+        public UtilContentCreateBody(string coluuid = default(string), string dir = default(string), string location = default(string), string name = default(string), string root = default(string), UtilContentType type = default(UtilContentType))
         {
             this.Coluuid = coluuid;
             this.Dir = dir;
@@ -82,7 +82,7 @@ namespace estuary-client.Model
         /// Gets or Sets Type
         /// </summary>
         [DataMember(Name="type", EmitDefaultValue=false)]
-        public int? Type { get; set; }
+        public UtilContentType Type { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

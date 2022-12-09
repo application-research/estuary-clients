@@ -20,5 +20,5 @@ type TypesIpfsPinStatusResponse struct {
 
 	Requestid string `json:"requestid,omitempty"`
 
-	Status string `json:"status,omitempty"`
+	Status *TypesPinningStatus `json:"status,omitempty"`
 }

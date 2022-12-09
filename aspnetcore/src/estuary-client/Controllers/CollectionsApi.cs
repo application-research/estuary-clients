@@ -79,7 +79,7 @@ namespace estuary-client.Controllers
         [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
         [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
-        public virtual IActionResult CollectionsColuuidContentsDelete([FromBody]MainDeleteContentFromCollectionBody body, [FromRoute][Required]string coluuid)
+        public virtual IActionResult CollectionsColuuidContentsDelete([FromBody]ApiDeleteContentFromCollectionBody body, [FromRoute][Required]string coluuid)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(string));
@@ -147,13 +147,13 @@ namespace estuary-client.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("CollectionsColuuidGet")]
-        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 200, type: typeof(List<CollectionsCollectionListResponse>), description: "OK")]
         [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult CollectionsColuuidGet([FromRoute][Required]string coluuid, [FromQuery]string dir)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(string));
+            // return StatusCode(200, default(List<CollectionsCollectionListResponse>));
 
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(400, default(UtilHttpError));
@@ -161,11 +161,11 @@ namespace estuary-client.Controllers
             //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(500, default(UtilHttpError));
             string exampleJson = null;
-            exampleJson = "\"\"";
+            exampleJson = "[ {\n  \"coluuid\" : \"coluuid\",\n  \"contId\" : 0,\n  \"size\" : 6,\n  \"name\" : \"name\",\n  \"dir\" : \"dir\",\n  \"type\" : \"directory\",\n  \"cid\" : {\n    \"cid\" : { }\n  },\n  \"updatedAt\" : \"updatedAt\"\n}, {\n  \"coluuid\" : \"coluuid\",\n  \"contId\" : 0,\n  \"size\" : 6,\n  \"name\" : \"name\",\n  \"dir\" : \"dir\",\n  \"type\" : \"directory\",\n  \"cid\" : {\n    \"cid\" : { }\n  },\n  \"updatedAt\" : \"updatedAt\"\n} ]";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<string>(exampleJson)
-                        : default(string);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<List<CollectionsCollectionListResponse>>(exampleJson)
+                        : default(List<CollectionsCollectionListResponse>);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
 
@@ -300,7 +300,7 @@ namespace estuary-client.Controllers
         [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
         [SwaggerResponse(statusCode: 404, type: typeof(UtilHttpError), description: "Not Found")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
-        public virtual IActionResult CollectionsPost([FromBody]MainCreateCollectionBody body)
+        public virtual IActionResult CollectionsPost([FromBody]ApiCreateCollectionBody body)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(CollectionsCollection));

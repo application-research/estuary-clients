@@ -50,7 +50,7 @@
             expect(dataCtr).to.not.be.empty();
             for (let p in dataCtr) {
               let data = dataCtr[p];
-              expect(data).to.be.a(EstuaryClient.MainGetApiKeysResp);
+              expect(data).to.be.a(EstuaryClient.ApiGetApiKeysResp);
             }
 
             done();
@@ -93,7 +93,7 @@
               return;
             }
             // TODO: update response assertions
-            expect(data).to.be.a(EstuaryClient.MainGetApiKeysResp);
+            expect(data).to.be.a(EstuaryClient.ApiGetApiKeysResp);
 
             done();
           });

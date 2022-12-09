@@ -32,7 +32,7 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The size of the deal in bytes, the replication factor, and the duration of the deal in blocks</param>
         /// <returns>string</returns>
-        string DealEstimatePost (MainEstimateDealBody body);
+        string DealEstimatePost (ApiEstimateDealBody body);
 
         /// <summary>
         /// Estimate the cost of a deal
@@ -43,7 +43,7 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The size of the deal in bytes, the replication factor, and the duration of the deal in blocks</param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> DealEstimatePostWithHttpInfo (MainEstimateDealBody body);
+        ApiResponse<string> DealEstimatePostWithHttpInfo (ApiEstimateDealBody body);
         /// <summary>
         /// Get Deal Info
         /// </summary>
@@ -179,7 +179,7 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Channel ID</param>
         /// <returns>string</returns>
-        string DealTransferStatusPost (MainChannelIDParam body);
+        string DealTransferStatusPost (ApiChannelIDParam body);
 
         /// <summary>
         /// Transfer Status
@@ -190,7 +190,7 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Channel ID</param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> DealTransferStatusPostWithHttpInfo (MainChannelIDParam body);
+        ApiResponse<string> DealTransferStatusPostWithHttpInfo (ApiChannelIDParam body);
         /// <summary>
         /// Get storage failures for user
         /// </summary>
@@ -305,7 +305,7 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The size of the deal in bytes, the replication factor, and the duration of the deal in blocks</param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> DealEstimatePostAsync (MainEstimateDealBody body);
+        System.Threading.Tasks.Task<string> DealEstimatePostAsync (ApiEstimateDealBody body);
 
         /// <summary>
         /// Estimate the cost of a deal
@@ -316,7 +316,7 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The size of the deal in bytes, the replication factor, and the duration of the deal in blocks</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> DealEstimatePostAsyncWithHttpInfo (MainEstimateDealBody body);
+        System.Threading.Tasks.Task<ApiResponse<string>> DealEstimatePostAsyncWithHttpInfo (ApiEstimateDealBody body);
         /// <summary>
         /// Get Deal Info
         /// </summary>
@@ -452,7 +452,7 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Channel ID</param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> DealTransferStatusPostAsync (MainChannelIDParam body);
+        System.Threading.Tasks.Task<string> DealTransferStatusPostAsync (ApiChannelIDParam body);
 
         /// <summary>
         /// Transfer Status
@@ -463,7 +463,7 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Channel ID</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> DealTransferStatusPostAsyncWithHttpInfo (MainChannelIDParam body);
+        System.Threading.Tasks.Task<ApiResponse<string>> DealTransferStatusPostAsyncWithHttpInfo (ApiChannelIDParam body);
         /// <summary>
         /// Get storage failures for user
         /// </summary>
@@ -684,7 +684,7 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The size of the deal in bytes, the replication factor, and the duration of the deal in blocks</param>
         /// <returns>string</returns>
-        public string DealEstimatePost (MainEstimateDealBody body)
+        public string DealEstimatePost (ApiEstimateDealBody body)
         {
              ApiResponse<string> localVarResponse = DealEstimatePostWithHttpInfo(body);
              return localVarResponse.Data;
@@ -696,7 +696,7 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The size of the deal in bytes, the replication factor, and the duration of the deal in blocks</param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > DealEstimatePostWithHttpInfo (MainEstimateDealBody body)
+        public ApiResponse< string > DealEstimatePostWithHttpInfo (ApiEstimateDealBody body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -762,7 +762,7 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The size of the deal in bytes, the replication factor, and the duration of the deal in blocks</param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> DealEstimatePostAsync (MainEstimateDealBody body)
+        public async System.Threading.Tasks.Task<string> DealEstimatePostAsync (ApiEstimateDealBody body)
         {
              ApiResponse<string> localVarResponse = await DealEstimatePostAsyncWithHttpInfo(body);
              return localVarResponse.Data;
@@ -775,7 +775,7 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">The size of the deal in bytes, the replication factor, and the duration of the deal in blocks</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> DealEstimatePostAsyncWithHttpInfo (MainEstimateDealBody body)
+        public async System.Threading.Tasks.Task<ApiResponse<string>> DealEstimatePostAsyncWithHttpInfo (ApiEstimateDealBody body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1687,7 +1687,7 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Channel ID</param>
         /// <returns>string</returns>
-        public string DealTransferStatusPost (MainChannelIDParam body)
+        public string DealTransferStatusPost (ApiChannelIDParam body)
         {
              ApiResponse<string> localVarResponse = DealTransferStatusPostWithHttpInfo(body);
              return localVarResponse.Data;
@@ -1699,7 +1699,7 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Channel ID</param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > DealTransferStatusPostWithHttpInfo (MainChannelIDParam body)
+        public ApiResponse< string > DealTransferStatusPostWithHttpInfo (ApiChannelIDParam body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1765,7 +1765,7 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Channel ID</param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> DealTransferStatusPostAsync (MainChannelIDParam body)
+        public async System.Threading.Tasks.Task<string> DealTransferStatusPostAsync (ApiChannelIDParam body)
         {
              ApiResponse<string> localVarResponse = await DealTransferStatusPostAsyncWithHttpInfo(body);
              return localVarResponse.Data;
@@ -1778,7 +1778,7 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Channel ID</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> DealTransferStatusPostAsyncWithHttpInfo (MainChannelIDParam body)
+        public async System.Threading.Tasks.Task<ApiResponse<string>> DealTransferStatusPostAsyncWithHttpInfo (ApiChannelIDParam body)
         {
             // verify the required parameter 'body' is set
             if (body == null)

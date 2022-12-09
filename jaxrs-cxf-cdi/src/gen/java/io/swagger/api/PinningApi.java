@@ -35,7 +35,7 @@ import javax.validation.constraints.*;
 
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-11-29T10:27:03.434Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-12-09T03:38:46.964Z[GMT]")
 public class PinningApi  {
 
   @Context SecurityContext securityContext;
@@ -64,7 +64,7 @@ public class PinningApi  {
     @Operation(summary = "Delete a pinned object", description = "This endpoint deletes a pinned object.", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "pinning" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "202", description = ""),
+        @ApiResponse(responseCode = "202", description = "Accepted"),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response pinningPinsPinidDelete(
 @Parameter(description = "Pin ID",required=true) @PathParam("pinid") String pinid

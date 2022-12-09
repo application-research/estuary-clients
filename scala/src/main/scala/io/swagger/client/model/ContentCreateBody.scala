@@ -26,6 +26,6 @@ case class ContentCreateBody (
   location: Option[String] = None,
   name: Option[String] = None,
   root: Option[String] = None,
-  `type`: Option[Integer] = None
+  `type`: Option[util.ContentType] = None
 )
 

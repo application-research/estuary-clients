@@ -50,7 +50,7 @@ TypesIpfsPinStatusResponse <- R6::R6Class(
         self$`requestid` <- `requestid`
       }
       if (!missing(`status`)) {
-        stopifnot(is.character(`status`), length(`status`) == 1)
+        stopifnot(R6::is.R6(`status`))
         self$`status` <- `status`
       }
     },
@@ -72,7 +72,7 @@ TypesIpfsPinStatusResponse <- R6::R6Class(
         TypesIpfsPinStatusResponseObject[['requestid']] <- self$`requestid`
       }
       if (!is.null(self$`status`)) {
-        TypesIpfsPinStatusResponseObject[['status']] <- self$`status`
+        TypesIpfsPinStatusResponseObject[['status']] <- self$`status`$toJSON()
       }
 
       TypesIpfsPinStatusResponseObject
@@ -99,7 +99,9 @@ TypesIpfsPinStatusResponse <- R6::R6Class(
         self$`requestid` <- TypesIpfsPinStatusResponseObject$`requestid`
       }
       if (!is.null(TypesIpfsPinStatusResponseObject$`status`)) {
-        self$`status` <- TypesIpfsPinStatusResponseObject$`status`
+        statusObject <- TypesPinningStatus$new()
+        statusObject$fromJSON(jsonlite::toJSON(TypesIpfsPinStatusResponseObject$status, auto_unbox = TRUE))
+        self$`status` <- statusObject
       }
     },
     toJSONString = function() {
@@ -117,7 +119,7 @@ TypesIpfsPinStatusResponse <- R6::R6Class(
         self$`info`$toJSON(),
         self$`pin`$toJSON(),
         self$`requestid`,
-        self$`status`
+        self$`status`$toJSON()
       )
     },
     fromJSONString = function(TypesIpfsPinStatusResponseJson) {
@@ -129,7 +131,8 @@ TypesIpfsPinStatusResponse <- R6::R6Class(
       TypesIpfsPinObject <- TypesIpfsPin$new()
       self$`pin` <- TypesIpfsPinObject$fromJSON(jsonlite::toJSON(TypesIpfsPinStatusResponseObject$pin, auto_unbox = TRUE))
       self$`requestid` <- TypesIpfsPinStatusResponseObject$`requestid`
-      self$`status` <- TypesIpfsPinStatusResponseObject$`status`
+      TypesPinningStatusObject <- TypesPinningStatus$new()
+      self$`status` <- TypesPinningStatusObject$fromJSON(jsonlite::toJSON(TypesIpfsPinStatusResponseObject$status, auto_unbox = TRUE))
     }
   )
 )

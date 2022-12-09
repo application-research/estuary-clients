@@ -12,7 +12,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
-import io.swagger.model.MainGetApiKeysResp;
+import io.swagger.model.ApiGetApiKeysResp;
 import io.swagger.model.UtilHttpError;
 
 import java.util.Map;
@@ -31,7 +31,7 @@ import javax.validation.constraints.*;
 @Path("/user")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-11-29T10:27:03.154Z[GMT]")public class UserApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-12-09T03:38:45.256Z[GMT]")public class UserApi  {
 
     @Inject UserApiService service;
 
@@ -43,7 +43,7 @@ import javax.validation.constraints.*;
         @SecurityRequirement(name = "bearerAuth")
     }, tags={ "User" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = MainGetApiKeysResp.class)))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = ApiGetApiKeysResp.class)))),
         
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
@@ -79,7 +79,7 @@ import javax.validation.constraints.*;
         @SecurityRequirement(name = "bearerAuth")
     }, tags={ "User" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = MainGetApiKeysResp.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiGetApiKeysResp.class))),
         
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
@@ -111,7 +111,7 @@ import javax.validation.constraints.*;
     @Path("/stats")
     
     @Produces({ "application/json" })
-    @Operation(summary = "Get stats for the current user", description = "This endpoint is used to geet stats for the current user.", security = {
+    @Operation(summary = "Get stats for the current user", description = "This endpoint is used to get stats for the current user.", security = {
         @SecurityRequirement(name = "bearerAuth")
     }, tags={ "User" })
     @ApiResponses(value = { 

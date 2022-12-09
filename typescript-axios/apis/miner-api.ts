@@ -16,6 +16,12 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
+import { ApiClaimMsgResponse } from '../models';
+import { ApiClaimResponse } from '../models';
+import { ApiEmptyResp } from '../models';
+import { MinerClaimMinerBody } from '../models';
+import { MinerMinerSetInfoParams } from '../models';
+import { MinerSuspendMinerBody } from '../models';
 import { UtilHttpError } from '../models';
 /**
  * MinerApi - axios parameter creator
@@ -23,6 +29,267 @@ import { UtilHttpError } from '../models';
  */
 export const MinerApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * This endpoint lets a user get the message in order to claim a miner
+         * @summary Get Claim Miner Message
+         * @param {string} miner Miner claim message
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        minerClaimMinerGet: async (miner: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'miner' is not null or undefined
+            if (miner === null || miner === undefined) {
+                throw new RequiredError('miner','Required parameter miner was null or undefined when calling minerClaimMinerGet.');
+            }
+            const localVarPath = `/miner/claim/{miner}`
+                .replace(`{${"miner"}}`, encodeURIComponent(String(miner)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? await configuration.apiKey("Authorization")
+                    : await configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * This endpoint lets a user claim a miner
+         * @summary Claim Miner
+         * @param {MinerClaimMinerBody} body Claim Miner Body
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        minerClaimPost: async (body: MinerClaimMinerBody, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling minerClaimPost.');
+            }
+            const localVarPath = `/miner/claim`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? await configuration.apiKey("Authorization")
+                    : await configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            localVarHeaderParameter['Content-Type'] = '*/*';
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            const needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * This endpoint lets a user set miner info.
+         * @summary Set Miner Info
+         * @param {MinerMinerSetInfoParams} body Miner set info params
+         * @param {string} miner Miner to set info for
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        minerSetInfoMinerPut: async (body: MinerMinerSetInfoParams, miner: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling minerSetInfoMinerPut.');
+            }
+            // verify required parameter 'miner' is not null or undefined
+            if (miner === null || miner === undefined) {
+                throw new RequiredError('miner','Required parameter miner was null or undefined when calling minerSetInfoMinerPut.');
+            }
+            const localVarPath = `/miner/set-info/{miner}`
+                .replace(`{${"miner"}}`, encodeURIComponent(String(miner)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? await configuration.apiKey("Authorization")
+                    : await configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            localVarHeaderParameter['Content-Type'] = '*/*';
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            const needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * This endpoint lets a user suspend a miner.
+         * @summary Suspend Miner
+         * @param {MinerSuspendMinerBody} body Suspend Miner Body
+         * @param {string} miner Miner to suspend
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        minerSuspendMinerPost: async (body: MinerSuspendMinerBody, miner: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling minerSuspendMinerPost.');
+            }
+            // verify required parameter 'miner' is not null or undefined
+            if (miner === null || miner === undefined) {
+                throw new RequiredError('miner','Required parameter miner was null or undefined when calling minerSuspendMinerPost.');
+            }
+            const localVarPath = `/miner/suspend/{miner}`
+                .replace(`{${"miner"}}`, encodeURIComponent(String(miner)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? await configuration.apiKey("Authorization")
+                    : await configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            localVarHeaderParameter['Content-Type'] = '*/*';
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            const needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * This endpoint lets a user unsuspend a miner.
+         * @summary Unuspend Miner
+         * @param {string} miner Miner to unsuspend
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        minerUnsuspendMinerPut: async (miner: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'miner' is not null or undefined
+            if (miner === null || miner === undefined) {
+                throw new RequiredError('miner','Required parameter miner was null or undefined when calling minerUnsuspendMinerPut.');
+            }
+            const localVarPath = `/miner/unsuspend/{miner}`
+                .replace(`{${"miner"}}`, encodeURIComponent(String(miner)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'PUT', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? await configuration.apiKey("Authorization")
+                    : await configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * This endpoint returns all miners deals
          * @summary Get all miners deals
@@ -134,6 +401,78 @@ export const MinerApiAxiosParamCreator = function (configuration?: Configuration
 export const MinerApiFp = function(configuration?: Configuration) {
     return {
         /**
+         * This endpoint lets a user get the message in order to claim a miner
+         * @summary Get Claim Miner Message
+         * @param {string} miner Miner claim message
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async minerClaimMinerGet(miner: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ApiClaimMsgResponse>>> {
+            const localVarAxiosArgs = await MinerApiAxiosParamCreator(configuration).minerClaimMinerGet(miner, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * This endpoint lets a user claim a miner
+         * @summary Claim Miner
+         * @param {MinerClaimMinerBody} body Claim Miner Body
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async minerClaimPost(body: MinerClaimMinerBody, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ApiClaimResponse>>> {
+            const localVarAxiosArgs = await MinerApiAxiosParamCreator(configuration).minerClaimPost(body, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * This endpoint lets a user set miner info.
+         * @summary Set Miner Info
+         * @param {MinerMinerSetInfoParams} body Miner set info params
+         * @param {string} miner Miner to set info for
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async minerSetInfoMinerPut(body: MinerMinerSetInfoParams, miner: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ApiEmptyResp>>> {
+            const localVarAxiosArgs = await MinerApiAxiosParamCreator(configuration).minerSetInfoMinerPut(body, miner, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * This endpoint lets a user suspend a miner.
+         * @summary Suspend Miner
+         * @param {MinerSuspendMinerBody} body Suspend Miner Body
+         * @param {string} miner Miner to suspend
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async minerSuspendMinerPost(body: MinerSuspendMinerBody, miner: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ApiEmptyResp>>> {
+            const localVarAxiosArgs = await MinerApiAxiosParamCreator(configuration).minerSuspendMinerPost(body, miner, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * This endpoint lets a user unsuspend a miner.
+         * @summary Unuspend Miner
+         * @param {string} miner Miner to unsuspend
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async minerUnsuspendMinerPut(miner: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ApiEmptyResp>>> {
+            const localVarAxiosArgs = await MinerApiAxiosParamCreator(configuration).minerUnsuspendMinerPut(miner, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
          * This endpoint returns all miners deals
          * @summary Get all miners deals
          * @param {string} miner Filter by miner
@@ -172,6 +511,58 @@ export const MinerApiFp = function(configuration?: Configuration) {
 export const MinerApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     return {
         /**
+         * This endpoint lets a user get the message in order to claim a miner
+         * @summary Get Claim Miner Message
+         * @param {string} miner Miner claim message
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async minerClaimMinerGet(miner: string, options?: AxiosRequestConfig): Promise<AxiosResponse<ApiClaimMsgResponse>> {
+            return MinerApiFp(configuration).minerClaimMinerGet(miner, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * This endpoint lets a user claim a miner
+         * @summary Claim Miner
+         * @param {MinerClaimMinerBody} body Claim Miner Body
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async minerClaimPost(body: MinerClaimMinerBody, options?: AxiosRequestConfig): Promise<AxiosResponse<ApiClaimResponse>> {
+            return MinerApiFp(configuration).minerClaimPost(body, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * This endpoint lets a user set miner info.
+         * @summary Set Miner Info
+         * @param {MinerMinerSetInfoParams} body Miner set info params
+         * @param {string} miner Miner to set info for
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async minerSetInfoMinerPut(body: MinerMinerSetInfoParams, miner: string, options?: AxiosRequestConfig): Promise<AxiosResponse<ApiEmptyResp>> {
+            return MinerApiFp(configuration).minerSetInfoMinerPut(body, miner, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * This endpoint lets a user suspend a miner.
+         * @summary Suspend Miner
+         * @param {MinerSuspendMinerBody} body Suspend Miner Body
+         * @param {string} miner Miner to suspend
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async minerSuspendMinerPost(body: MinerSuspendMinerBody, miner: string, options?: AxiosRequestConfig): Promise<AxiosResponse<ApiEmptyResp>> {
+            return MinerApiFp(configuration).minerSuspendMinerPost(body, miner, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * This endpoint lets a user unsuspend a miner.
+         * @summary Unuspend Miner
+         * @param {string} miner Miner to unsuspend
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async minerUnsuspendMinerPut(miner: string, options?: AxiosRequestConfig): Promise<AxiosResponse<ApiEmptyResp>> {
+            return MinerApiFp(configuration).minerUnsuspendMinerPut(miner, options).then((request) => request(axios, basePath));
+        },
+        /**
          * This endpoint returns all miners deals
          * @summary Get all miners deals
          * @param {string} miner Filter by miner
@@ -202,6 +593,63 @@ export const MinerApiFactory = function (configuration?: Configuration, basePath
  * @extends {BaseAPI}
  */
 export class MinerApi extends BaseAPI {
+    /**
+     * This endpoint lets a user get the message in order to claim a miner
+     * @summary Get Claim Miner Message
+     * @param {string} miner Miner claim message
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MinerApi
+     */
+    public async minerClaimMinerGet(miner: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<ApiClaimMsgResponse>> {
+        return MinerApiFp(this.configuration).minerClaimMinerGet(miner, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * This endpoint lets a user claim a miner
+     * @summary Claim Miner
+     * @param {MinerClaimMinerBody} body Claim Miner Body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MinerApi
+     */
+    public async minerClaimPost(body: MinerClaimMinerBody, options?: AxiosRequestConfig) : Promise<AxiosResponse<ApiClaimResponse>> {
+        return MinerApiFp(this.configuration).minerClaimPost(body, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * This endpoint lets a user set miner info.
+     * @summary Set Miner Info
+     * @param {MinerMinerSetInfoParams} body Miner set info params
+     * @param {string} miner Miner to set info for
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MinerApi
+     */
+    public async minerSetInfoMinerPut(body: MinerMinerSetInfoParams, miner: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<ApiEmptyResp>> {
+        return MinerApiFp(this.configuration).minerSetInfoMinerPut(body, miner, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * This endpoint lets a user suspend a miner.
+     * @summary Suspend Miner
+     * @param {MinerSuspendMinerBody} body Suspend Miner Body
+     * @param {string} miner Miner to suspend
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MinerApi
+     */
+    public async minerSuspendMinerPost(body: MinerSuspendMinerBody, miner: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<ApiEmptyResp>> {
+        return MinerApiFp(this.configuration).minerSuspendMinerPost(body, miner, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * This endpoint lets a user unsuspend a miner.
+     * @summary Unuspend Miner
+     * @param {string} miner Miner to unsuspend
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MinerApi
+     */
+    public async minerUnsuspendMinerPut(miner: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<ApiEmptyResp>> {
+        return MinerApiFp(this.configuration).minerUnsuspendMinerPut(miner, options).then((request) => request(this.axios, this.basePath));
+    }
     /**
      * This endpoint returns all miners deals
      * @summary Get all miners deals

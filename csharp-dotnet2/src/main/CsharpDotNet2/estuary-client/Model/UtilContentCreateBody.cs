@@ -52,7 +52,7 @@ namespace IO.Swagger.Model {
     /// </summary>
     [DataMember(Name="type", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "type")]
-    public int? Type { get; set; }
+    public UtilContentType Type { get; set; }
 
 
     /// <summary>

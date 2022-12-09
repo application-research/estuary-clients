@@ -5,18 +5,19 @@ import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.model.TypesIpfsPin;
+import io.swagger.model.TypesPinningStatus;
 import java.util.List;
 import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-11-29T10:27:02.680Z[GMT]")public class TypesIpfsPinStatusResponse   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-12-09T03:38:45.054Z[GMT]")public class TypesIpfsPinStatusResponse   {
   private String created = null;
   private List<String> delegates = new ArrayList<String>();
   private Object info = null;
   private TypesIpfsPin pin = null;
   private String requestid = null;
-  private String status = null;
+  private TypesPinningStatus status = null;
 
   /**
    **/
@@ -83,10 +84,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
   
   @Schema(description = "")
   @JsonProperty("status")
-  public String getStatus() {
+  public TypesPinningStatus getStatus() {
     return status;
   }
-  public void setStatus(String status) {
+  public void setStatus(TypesPinningStatus status) {
     this.status = status;
   }
 

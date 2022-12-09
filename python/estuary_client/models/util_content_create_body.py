@@ -33,7 +33,7 @@ class UtilContentCreateBody(object):
         'location': 'str',
         'name': 'str',
         'root': 'str',
-        'type': 'int'
+        'type': 'UtilContentType'
     }
 
     attribute_map = {
@@ -178,7 +178,7 @@ class UtilContentCreateBody(object):
 
 
         :return: The type of this UtilContentCreateBody.  # noqa: E501
-        :rtype: int
+        :rtype: UtilContentType
         """
         return self._type
 
@@ -188,7 +188,7 @@ class UtilContentCreateBody(object):
 
 
         :param type: The type of this UtilContentCreateBody.  # noqa: E501
-        :type: int
+        :type: UtilContentType
         """
 
         self._type = type

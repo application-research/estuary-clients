@@ -12,6 +12,202 @@ import Alamofire
 
 open class MinerAPI {
     /**
+     Get Claim Miner Message
+     - parameter miner: (path) Miner claim message 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func minerClaimMinerGet(miner: String, completion: @escaping ((_ data: ApiClaimMsgResponse?,_ error: Error?) -> Void)) {
+        minerClaimMinerGetWithRequestBuilder(miner: miner).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Get Claim Miner Message
+     - GET /miner/claim/{miner}
+     - This endpoint lets a user get the message in order to claim a miner
+     - API Key:
+       - type: apiKey Authorization 
+       - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "hexmsg" : "hexmsg"
+}}]
+     - parameter miner: (path) Miner claim message 
+
+     - returns: RequestBuilder<ApiClaimMsgResponse> 
+     */
+    open class func minerClaimMinerGetWithRequestBuilder(miner: String) -> RequestBuilder<ApiClaimMsgResponse> {
+        var path = "/miner/claim/{miner}"
+        let minerPreEscape = "\(miner)"
+        let minerPostEscape = minerPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{miner}", with: minerPostEscape, options: .literal, range: nil)
+        let URLString = estuary-clientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<ApiClaimMsgResponse>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Claim Miner
+     - parameter body: (body) Claim Miner Body 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func minerClaimPost(body: MinerClaimMinerBody, completion: @escaping ((_ data: ApiClaimResponse?,_ error: Error?) -> Void)) {
+        minerClaimPostWithRequestBuilder(body: body).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Claim Miner
+     - POST /miner/claim
+     - This endpoint lets a user claim a miner
+     - API Key:
+       - type: apiKey Authorization 
+       - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "success" : true
+}}]
+     - parameter body: (body) Claim Miner Body 
+
+     - returns: RequestBuilder<ApiClaimResponse> 
+     */
+    open class func minerClaimPostWithRequestBuilder(body: MinerClaimMinerBody) -> RequestBuilder<ApiClaimResponse> {
+        let path = "/miner/claim"
+        let URLString = estuary-clientAPI.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<ApiClaimResponse>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Set Miner Info
+     - parameter body: (body) Miner set info params      - parameter miner: (path) Miner to set info for 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func minerSetInfoMinerPut(body: MinerMinerSetInfoParams, miner: String, completion: @escaping ((_ data: ApiEmptyResp?,_ error: Error?) -> Void)) {
+        minerSetInfoMinerPutWithRequestBuilder(body: body, miner: miner).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Set Miner Info
+     - PUT /miner/set-info/{miner}
+     - This endpoint lets a user set miner info.
+     - API Key:
+       - type: apiKey Authorization 
+       - name: bearerAuth
+     - examples: [{contentType=application/json, example={ }}]
+     - parameter body: (body) Miner set info params      - parameter miner: (path) Miner to set info for 
+
+     - returns: RequestBuilder<ApiEmptyResp> 
+     */
+    open class func minerSetInfoMinerPutWithRequestBuilder(body: MinerMinerSetInfoParams, miner: String) -> RequestBuilder<ApiEmptyResp> {
+        var path = "/miner/set-info/{miner}"
+        let minerPreEscape = "\(miner)"
+        let minerPostEscape = minerPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{miner}", with: minerPostEscape, options: .literal, range: nil)
+        let URLString = estuary-clientAPI.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<ApiEmptyResp>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Suspend Miner
+     - parameter body: (body) Suspend Miner Body      - parameter miner: (path) Miner to suspend 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func minerSuspendMinerPost(body: MinerSuspendMinerBody, miner: String, completion: @escaping ((_ data: ApiEmptyResp?,_ error: Error?) -> Void)) {
+        minerSuspendMinerPostWithRequestBuilder(body: body, miner: miner).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Suspend Miner
+     - POST /miner/suspend/{miner}
+     - This endpoint lets a user suspend a miner.
+     - API Key:
+       - type: apiKey Authorization 
+       - name: bearerAuth
+     - examples: [{contentType=application/json, example={ }}]
+     - parameter body: (body) Suspend Miner Body      - parameter miner: (path) Miner to suspend 
+
+     - returns: RequestBuilder<ApiEmptyResp> 
+     */
+    open class func minerSuspendMinerPostWithRequestBuilder(body: MinerSuspendMinerBody, miner: String) -> RequestBuilder<ApiEmptyResp> {
+        var path = "/miner/suspend/{miner}"
+        let minerPreEscape = "\(miner)"
+        let minerPostEscape = minerPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{miner}", with: minerPostEscape, options: .literal, range: nil)
+        let URLString = estuary-clientAPI.basePath + path
+        let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<ApiEmptyResp>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
+    }
+
+    /**
+     Unuspend Miner
+     - parameter miner: (path) Miner to unsuspend 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func minerUnsuspendMinerPut(miner: String, completion: @escaping ((_ data: ApiEmptyResp?,_ error: Error?) -> Void)) {
+        minerUnsuspendMinerPutWithRequestBuilder(miner: miner).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Unuspend Miner
+     - PUT /miner/unsuspend/{miner}
+     - This endpoint lets a user unsuspend a miner.
+     - API Key:
+       - type: apiKey Authorization 
+       - name: bearerAuth
+     - examples: [{contentType=application/json, example={ }}]
+     - parameter miner: (path) Miner to unsuspend 
+
+     - returns: RequestBuilder<ApiEmptyResp> 
+     */
+    open class func minerUnsuspendMinerPutWithRequestBuilder(miner: String) -> RequestBuilder<ApiEmptyResp> {
+        var path = "/miner/unsuspend/{miner}"
+        let minerPreEscape = "\(miner)"
+        let minerPostEscape = minerPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{miner}", with: minerPostEscape, options: .literal, range: nil)
+        let URLString = estuary-clientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<ApiEmptyResp>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
      Get all miners deals
      - parameter miner: (path) Filter by miner      - parameter ignoreFailed: (query) Ignore Failed (optional)
      - parameter completion: completion handler to receive the data and the error objects

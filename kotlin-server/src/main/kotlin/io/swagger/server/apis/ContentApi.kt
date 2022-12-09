@@ -35,7 +35,6 @@ import estuary-client.infrastructure.ApiPrincipal
 
 import io.swagger.server.models.MainimportDealBody
 import io.swagger.server.models.UtilContentAddIpfsBody
-import io.swagger.server.models.UtilContentAddResponse
 import io.swagger.server.models.UtilContentCreateBody
 import io.swagger.server.models.UtilHttpError
 
@@ -43,7 +42,7 @@ import io.swagger.server.models.UtilHttpError
 fun Route.ContentApi() {
     val gson = Gson()
     val empty = mutableMapOf<String, Any?>()
-    get<Paths.adminInvitesGet> {  _: Paths.adminInvitesGet ->
+    post<Paths.adminInvitesCodePost> {  _: Paths.adminInvitesCodePost ->
         val principal = call.authentication.principal<ApiPrincipal>()
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
@@ -57,7 +56,7 @@ fun Route.ContentApi() {
                 else -> call.respondText(exampleContentString)
             }        }
     }
-    post<Paths.adminInvitesPost> {  _: Paths.adminInvitesPost ->
+    get<Paths.adminInvitesGet> {  _: Paths.adminInvitesGet ->
         val principal = call.authentication.principal<ApiPrincipal>()
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
@@ -77,13 +76,7 @@ fun Route.ContentApi() {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
             val exampleContentType = "application/json"
-            val exampleContentString = """{
-  "retrieval_url" : "retrieval_url",
-  "estuaryId" : 0,
-  "estuary_retrieval_url" : "estuary_retrieval_url",
-  "providers" : [ "providers", "providers" ],
-  "cid" : "cid"
-}"""
+            val exampleContentString = """"""""
             
             when(exampleContentType) {
                 "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
@@ -111,13 +104,7 @@ fun Route.ContentApi() {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
             val exampleContentType = "application/json"
-            val exampleContentString = """{
-  "retrieval_url" : "retrieval_url",
-  "estuaryId" : 0,
-  "estuary_retrieval_url" : "estuary_retrieval_url",
-  "providers" : [ "providers", "providers" ],
-  "cid" : "cid"
-}"""
+            val exampleContentString = """"""""
             
             when(exampleContentType) {
                 "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))

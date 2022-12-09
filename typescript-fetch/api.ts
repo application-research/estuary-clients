@@ -80,6 +80,184 @@ export class RequiredError extends Error {
 /**
  * 
  * @export
+ * @interface AddressAddress
+ */
+export interface AddressAddress {
+}
+/**
+ * 
+ * @export
+ * @interface ApiChannelIDParam
+ */
+export interface ApiChannelIDParam {
+    /**
+     * 
+     * @type {number}
+     * @memberof ApiChannelIDParam
+     */
+    id?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ApiChannelIDParam
+     */
+    initiator?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ApiChannelIDParam
+     */
+    responder?: string;
+}
+/**
+ * 
+ * @export
+ * @interface ApiClaimMsgResponse
+ */
+export interface ApiClaimMsgResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof ApiClaimMsgResponse
+     */
+    hexmsg?: string;
+}
+/**
+ * 
+ * @export
+ * @interface ApiClaimResponse
+ */
+export interface ApiClaimResponse {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ApiClaimResponse
+     */
+    success?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface ApiCreateCollectionBody
+ */
+export interface ApiCreateCollectionBody {
+    /**
+     * 
+     * @type {string}
+     * @memberof ApiCreateCollectionBody
+     */
+    description?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ApiCreateCollectionBody
+     */
+    name?: string;
+}
+/**
+ * 
+ * @export
+ * @interface ApiDeleteContentFromCollectionBody
+ */
+export interface ApiDeleteContentFromCollectionBody {
+    /**
+     * 
+     * @type {string}
+     * @memberof ApiDeleteContentFromCollectionBody
+     */
+    by?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ApiDeleteContentFromCollectionBody
+     */
+    value?: string;
+}
+/**
+ * 
+ * @export
+ * @interface ApiEmptyResp
+ */
+export interface ApiEmptyResp {
+}
+/**
+ * 
+ * @export
+ * @interface ApiEstimateDealBody
+ */
+export interface ApiEstimateDealBody {
+    /**
+     * 
+     * @type {number}
+     * @memberof ApiEstimateDealBody
+     */
+    durationBlks?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ApiEstimateDealBody
+     */
+    replication?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof ApiEstimateDealBody
+     */
+    size?: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ApiEstimateDealBody
+     */
+    verified?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface ApiGetApiKeysResp
+ */
+export interface ApiGetApiKeysResp {
+    /**
+     * 
+     * @type {string}
+     * @memberof ApiGetApiKeysResp
+     */
+    expiry?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ApiGetApiKeysResp
+     */
+    label?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ApiGetApiKeysResp
+     */
+    token?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ApiGetApiKeysResp
+     */
+    tokenHash?: string;
+}
+/**
+ * 
+ * @export
+ * @interface ApiPublicNodeInfo
+ */
+export interface ApiPublicNodeInfo {
+    /**
+     * 
+     * @type {AddressAddress}
+     * @memberof ApiPublicNodeInfo
+     */
+    primaryAddress?: AddressAddress;
+}
+/**
+ * 
+ * @export
  * @interface AutoretrieveInitBody
  */
 export interface AutoretrieveInitBody {
@@ -95,6 +273,22 @@ export interface AutoretrieveInitBody {
      * @memberof AutoretrieveInitBody
      */
     pubKey: string;
+}
+/**
+ * 
+ * @export
+ * @interface CidCid
+ */
+export interface CidCid {
+}
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+export enum CollectionsCidType {
+    Directory = <any> 'directory',
+    File = <any> 'file'
 }
 /**
  * 
@@ -142,146 +336,57 @@ export interface CollectionsCollection {
 /**
  * 
  * @export
- * @interface ContentAddBody
+ * @interface CollectionsCollectionListResponse
  */
-export interface ContentAddBody {
+export interface CollectionsCollectionListResponse {
     /**
-     * File to upload
-     * @type {Blob}
-     * @memberof ContentAddBody
+     * 
+     * @type {UtilDbCID}
+     * @memberof CollectionsCollectionListResponse
      */
-    data: Blob;
+    cid?: UtilDbCID;
     /**
-     * Filename to use for upload
+     * 
      * @type {string}
-     * @memberof ContentAddBody
+     * @memberof CollectionsCollectionListResponse
      */
-    filename?: string;
-}
-/**
- * 
- * @export
- * @interface MainChannelIDParam
- */
-export interface MainChannelIDParam {
+    coluuid?: string;
     /**
      * 
      * @type {number}
-     * @memberof MainChannelIDParam
+     * @memberof CollectionsCollectionListResponse
      */
-    id?: number;
+    contId?: number;
     /**
      * 
      * @type {string}
-     * @memberof MainChannelIDParam
+     * @memberof CollectionsCollectionListResponse
      */
-    initiator?: string;
+    dir?: string;
     /**
      * 
      * @type {string}
-     * @memberof MainChannelIDParam
-     */
-    responder?: string;
-}
-/**
- * 
- * @export
- * @interface MainCreateCollectionBody
- */
-export interface MainCreateCollectionBody {
-    /**
-     * 
-     * @type {string}
-     * @memberof MainCreateCollectionBody
-     */
-    description?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof MainCreateCollectionBody
+     * @memberof CollectionsCollectionListResponse
      */
     name?: string;
-}
-/**
- * 
- * @export
- * @interface MainDeleteContentFromCollectionBody
- */
-export interface MainDeleteContentFromCollectionBody {
-    /**
-     * 
-     * @type {string}
-     * @memberof MainDeleteContentFromCollectionBody
-     */
-    by?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof MainDeleteContentFromCollectionBody
-     */
-    value?: string;
-}
-/**
- * 
- * @export
- * @interface MainEstimateDealBody
- */
-export interface MainEstimateDealBody {
     /**
      * 
      * @type {number}
-     * @memberof MainEstimateDealBody
-     */
-    durationBlks?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof MainEstimateDealBody
-     */
-    replication?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof MainEstimateDealBody
+     * @memberof CollectionsCollectionListResponse
      */
     size?: number;
     /**
      * 
-     * @type {boolean}
-     * @memberof MainEstimateDealBody
+     * @type {CollectionsCidType}
+     * @memberof CollectionsCollectionListResponse
      */
-    verified?: boolean;
-}
-/**
- * 
- * @export
- * @interface MainGetApiKeysResp
- */
-export interface MainGetApiKeysResp {
+    type?: CollectionsCidType;
     /**
      * 
      * @type {string}
-     * @memberof MainGetApiKeysResp
+     * @memberof CollectionsCollectionListResponse
      */
-    expiry?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof MainGetApiKeysResp
-     */
-    label?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof MainGetApiKeysResp
-     */
-    token?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof MainGetApiKeysResp
-     */
-    tokenHash?: string;
+    updatedAt?: string;
 }
 /**
  * 
@@ -313,6 +418,57 @@ export interface MainImportDealBody {
      * @memberof MainImportDealBody
      */
     name?: string;
+}
+/**
+ * 
+ * @export
+ * @interface MinerClaimMinerBody
+ */
+export interface MinerClaimMinerBody {
+    /**
+     * 
+     * @type {string}
+     * @memberof MinerClaimMinerBody
+     */
+    claim?: string;
+    /**
+     * 
+     * @type {AddressAddress}
+     * @memberof MinerClaimMinerBody
+     */
+    miner?: AddressAddress;
+    /**
+     * 
+     * @type {string}
+     * @memberof MinerClaimMinerBody
+     */
+    name?: string;
+}
+/**
+ * 
+ * @export
+ * @interface MinerMinerSetInfoParams
+ */
+export interface MinerMinerSetInfoParams {
+    /**
+     * 
+     * @type {string}
+     * @memberof MinerMinerSetInfoParams
+     */
+    name?: string;
+}
+/**
+ * 
+ * @export
+ * @interface MinerSuspendMinerBody
+ */
+export interface MinerSuspendMinerBody {
+    /**
+     * 
+     * @type {string}
+     * @memberof MinerSuspendMinerBody
+     */
+    reason?: string;
 }
 /**
  * 
@@ -402,10 +558,21 @@ export interface TypesIpfsPinStatusResponse {
     requestid?: string;
     /**
      * 
-     * @type {string}
+     * @type {TypesPinningStatus}
      * @memberof TypesIpfsPinStatusResponse
      */
-    status?: string;
+    status?: TypesPinningStatus;
+}
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+export enum TypesPinningStatus {
+    Pinning = <any> 'pinning',
+    Pinned = <any> 'pinned',
+    Failed = <any> 'failed',
+    Queued = <any> 'queued'
 }
 /**
  * 
@@ -519,10 +686,33 @@ export interface UtilContentCreateBody {
     root?: string;
     /**
      * 
-     * @type {number}
+     * @type {UtilContentType}
      * @memberof UtilContentCreateBody
      */
-    type?: number;
+    type?: UtilContentType;
+}
+/**
+ * 
+ * @export
+ * @enum {string}
+ */
+export enum UtilContentType {
+    NUMBER_0 = <any> 0,
+    NUMBER_1 = <any> 1,
+    NUMBER_2 = <any> 2
+}
+/**
+ * 
+ * @export
+ * @interface UtilDbCID
+ */
+export interface UtilDbCID {
+    /**
+     * 
+     * @type {CidCid}
+     * @memberof UtilDbCID
+     */
+    cid?: CidCid;
 }
 /**
  * 
@@ -548,6 +738,110 @@ export interface UtilHttpError {
      * @memberof UtilHttpError
      */
     reason?: string;
+}
+/**
+ * 
+ * @export
+ * @interface UtilUserSettings
+ */
+export interface UtilUserSettings {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UtilUserSettings
+     */
+    contentAddingDisabled?: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof UtilUserSettings
+     */
+    dealDuration?: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UtilUserSettings
+     */
+    dealMakingDisabled?: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof UtilUserSettings
+     */
+    fileStagingThreshold?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof UtilUserSettings
+     */
+    flags?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof UtilUserSettings
+     */
+    replication?: number;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof UtilUserSettings
+     */
+    uploadEndpoints?: Array<string>;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof UtilUserSettings
+     */
+    verified?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface UtilViewerResponse
+ */
+export interface UtilViewerResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof UtilViewerResponse
+     */
+    address?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UtilViewerResponse
+     */
+    authExpiry?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof UtilViewerResponse
+     */
+    id?: number;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof UtilViewerResponse
+     */
+    miners?: Array<string>;
+    /**
+     * 
+     * @type {number}
+     * @memberof UtilViewerResponse
+     */
+    perms?: number;
+    /**
+     * 
+     * @type {UtilUserSettings}
+     * @memberof UtilViewerResponse
+     */
+    settings?: UtilUserSettings;
+    /**
+     * 
+     * @type {string}
+     * @memberof UtilViewerResponse
+     */
+    username?: string;
 }
 /**
  * AdminApi - fetch parameter creator
@@ -1476,12 +1770,12 @@ export const CollectionsApiFetchParamCreator = function (configuration?: Configu
         /**
          * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
          * @summary Deletes a content from a collection
-         * @param {MainDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
+         * @param {ApiDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
          * @param {string} coluuid Collection ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, options: any = {}): FetchArgs {
+        collectionsColuuidContentsDelete(body: ApiDeleteContentFromCollectionBody, coluuid: string, options: any = {}): FetchArgs {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling collectionsColuuidContentsDelete.');
@@ -1511,7 +1805,7 @@ export const CollectionsApiFetchParamCreator = function (configuration?: Configu
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"MainDeleteContentFromCollectionBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (<any>"ApiDeleteContentFromCollectionBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
 
             return {
@@ -1741,11 +2035,11 @@ export const CollectionsApiFetchParamCreator = function (configuration?: Configu
         /**
          * This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.
          * @summary Create a new collection
-         * @param {MainCreateCollectionBody} body Collection name and description
+         * @param {ApiCreateCollectionBody} body Collection name and description
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsPost(body: MainCreateCollectionBody, options: any = {}): FetchArgs {
+        collectionsPost(body: ApiCreateCollectionBody, options: any = {}): FetchArgs {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling collectionsPost.');
@@ -1770,7 +2064,7 @@ export const CollectionsApiFetchParamCreator = function (configuration?: Configu
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"MainCreateCollectionBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (<any>"ApiCreateCollectionBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
 
             return {
@@ -1809,12 +2103,12 @@ export const CollectionsApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
          * @summary Deletes a content from a collection
-         * @param {MainDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
+         * @param {ApiDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
          * @param {string} coluuid Collection ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+        collectionsColuuidContentsDelete(body: ApiDeleteContentFromCollectionBody, coluuid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = CollectionsApiFetchParamCreator(configuration).collectionsColuuidContentsDelete(body, coluuid, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -1853,7 +2147,7 @@ export const CollectionsApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsColuuidGet(coluuid: string, dir?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+        collectionsColuuidGet(coluuid: string, dir?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Array<CollectionsCollectionListResponse>> {
             const localVarFetchArgs = CollectionsApiFetchParamCreator(configuration).collectionsColuuidGet(coluuid, dir, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -1928,11 +2222,11 @@ export const CollectionsApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.
          * @summary Create a new collection
-         * @param {MainCreateCollectionBody} body Collection name and description
+         * @param {ApiCreateCollectionBody} body Collection name and description
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsPost(body: MainCreateCollectionBody, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<CollectionsCollection> {
+        collectionsPost(body: ApiCreateCollectionBody, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<CollectionsCollection> {
             const localVarFetchArgs = CollectionsApiFetchParamCreator(configuration).collectionsPost(body, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -1966,12 +2260,12 @@ export const CollectionsApiFactory = function (configuration?: Configuration, fe
         /**
          * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
          * @summary Deletes a content from a collection
-         * @param {MainDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
+         * @param {ApiDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
          * @param {string} coluuid Collection ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, options?: any) {
+        collectionsColuuidContentsDelete(body: ApiDeleteContentFromCollectionBody, coluuid: string, options?: any) {
             return CollectionsApiFp(configuration).collectionsColuuidContentsDelete(body, coluuid, options)(fetch, basePath);
         },
         /**
@@ -2031,11 +2325,11 @@ export const CollectionsApiFactory = function (configuration?: Configuration, fe
         /**
          * This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.
          * @summary Create a new collection
-         * @param {MainCreateCollectionBody} body Collection name and description
+         * @param {ApiCreateCollectionBody} body Collection name and description
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsPost(body: MainCreateCollectionBody, options?: any) {
+        collectionsPost(body: ApiCreateCollectionBody, options?: any) {
             return CollectionsApiFp(configuration).collectionsPost(body, options)(fetch, basePath);
         },
     };
@@ -2063,13 +2357,13 @@ export class CollectionsApi extends BaseAPI {
     /**
      * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
      * @summary Deletes a content from a collection
-     * @param {MainDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
+     * @param {ApiDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
      * @param {string} coluuid Collection ID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CollectionsApi
      */
-    public collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, options?: any) {
+    public collectionsColuuidContentsDelete(body: ApiDeleteContentFromCollectionBody, coluuid: string, options?: any) {
         return CollectionsApiFp(this.configuration).collectionsColuuidContentsDelete(body, coluuid, options)(this.fetch, this.basePath);
     }
 
@@ -2140,12 +2434,12 @@ export class CollectionsApi extends BaseAPI {
     /**
      * This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.
      * @summary Create a new collection
-     * @param {MainCreateCollectionBody} body Collection name and description
+     * @param {ApiCreateCollectionBody} body Collection name and description
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CollectionsApi
      */
-    public collectionsPost(body: MainCreateCollectionBody, options?: any) {
+    public collectionsPost(body: ApiCreateCollectionBody, options?: any) {
         return CollectionsApiFp(this.configuration).collectionsPost(body, options)(this.fetch, this.basePath);
     }
 
@@ -2156,6 +2450,43 @@ export class CollectionsApi extends BaseAPI {
  */
 export const ContentApiFetchParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * This endpoint is used to create an estuary invite.
+         * @summary Create an Estuary invite
+         * @param {string} code Invite code to be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        adminInvitesCodePost(code: string, options: any = {}): FetchArgs {
+            // verify required parameter 'code' is not null or undefined
+            if (code === null || code === undefined) {
+                throw new RequiredError('code','Required parameter code was null or undefined when calling adminInvitesCodePost.');
+            }
+            const localVarPath = `/admin/invites/{code}`
+                .replace(`{${"code"}}`, encodeURIComponent(String(code)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+					? configuration.apiKey("Authorization")
+					: configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * This endpoint is used to list all estuary invites.
          * @summary Get Estuary invites
@@ -2188,56 +2519,12 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * This endpoint is used to create an estuary invite.
-         * @summary Create an Estuary invite
-         * @param {string} code Invite code to be created
+         * This endpoint uploads content via a car file
+         * @summary Upload content via a car file
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminInvitesPost(code: string, options: any = {}): FetchArgs {
-            // verify required parameter 'code' is not null or undefined
-            if (code === null || code === undefined) {
-                throw new RequiredError('code','Required parameter code was null or undefined when calling adminInvitesPost.');
-            }
-            const localVarPath = `/admin/invites`
-                .replace(`{${"code"}}`, encodeURIComponent(String(code)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearerAuth required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-					? configuration.apiKey("Authorization")
-					: configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * This endpoint is used to add a car object to the network. The object can be a file or a directory.
-         * @summary Add Car object
-         * @param {string} body Car
-         * @param {string} [ignoreDupes] Ignore Dupes
-         * @param {string} [filename] Filename
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, options: any = {}): FetchArgs {
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling contentAddCarPost.');
-            }
+        contentAddCarPost(options: any = {}): FetchArgs {
             const localVarPath = `/content/add-car`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
@@ -2252,22 +2539,10 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
                 localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
             }
 
-            if (ignoreDupes !== undefined) {
-                localVarQueryParameter['ignore-dupes'] = ignoreDupes;
-            }
-
-            if (filename !== undefined) {
-                localVarQueryParameter['filename'] = filename;
-            }
-
-            localVarHeaderParameter['Content-Type'] = '*/*';
-
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"string" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -2320,33 +2595,17 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * This endpoint is used to upload new content.
-         * @summary Add new content
-         * @param {Blob} data 
-         * @param {string} filename 
-         * @param {string} [coluuid] Collection UUID
-         * @param {number} [replication] Replication value
-         * @param {string} [ignoreDupes] Ignore Dupes true/false
-         * @param {string} [lazyProvide] Lazy Provide true/false
-         * @param {string} [dir] Directory
+         * This endpoint uploads a file.
+         * @summary Upload a file
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddPost(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, options: any = {}): FetchArgs {
-            // verify required parameter 'data' is not null or undefined
-            if (data === null || data === undefined) {
-                throw new RequiredError('data','Required parameter data was null or undefined when calling contentAddPost.');
-            }
-            // verify required parameter 'filename' is not null or undefined
-            if (filename === null || filename === undefined) {
-                throw new RequiredError('filename','Required parameter filename was null or undefined when calling contentAddPost.');
-            }
+        contentAddPost(options: any = {}): FetchArgs {
             const localVarPath = `/content/add`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-            const localVarFormParams = new url.URLSearchParams();
 
             // authentication bearerAuth required
             if (configuration && configuration.apiKey) {
@@ -2356,41 +2615,10 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
                 localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
             }
 
-            if (coluuid !== undefined) {
-                localVarQueryParameter['coluuid'] = coluuid;
-            }
-
-            if (replication !== undefined) {
-                localVarQueryParameter['replication'] = replication;
-            }
-
-            if (ignoreDupes !== undefined) {
-                localVarQueryParameter['ignore-dupes'] = ignoreDupes;
-            }
-
-            if (lazyProvide !== undefined) {
-                localVarQueryParameter['lazy-provide'] = lazyProvide;
-            }
-
-            if (dir !== undefined) {
-                localVarQueryParameter['dir'] = dir;
-            }
-
-            if (data !== undefined) {
-                localVarFormParams.set('data', data as any);
-            }
-
-            if (filename !== undefined) {
-                localVarFormParams.set('filename', filename as any);
-            }
-
-            localVarHeaderParameter['Content-Type'] = 'application/x-www-form-urlencoded';
-
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            localVarRequestOptions.body = localVarFormParams.toString();
 
             return {
                 url: url.format(localVarUrlObj),
@@ -2866,7 +3094,7 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+         * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
          * @summary Get content statistics
          * @param {string} limit limit
          * @param {string} offset offset
@@ -2961,6 +3189,25 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
 export const ContentApiFp = function(configuration?: Configuration) {
     return {
         /**
+         * This endpoint is used to create an estuary invite.
+         * @summary Create an Estuary invite
+         * @param {string} code Invite code to be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        adminInvitesCodePost(code: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+            const localVarFetchArgs = ContentApiFetchParamCreator(configuration).adminInvitesCodePost(code, options);
+            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
          * This endpoint is used to list all estuary invites.
          * @summary Get Estuary invites
          * @param {*} [options] Override http request option.
@@ -2979,35 +3226,13 @@ export const ContentApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         * This endpoint is used to create an estuary invite.
-         * @summary Create an Estuary invite
-         * @param {string} code Invite code to be created
+         * This endpoint uploads content via a car file
+         * @summary Upload content via a car file
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminInvitesPost(code: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
-            const localVarFetchArgs = ContentApiFetchParamCreator(configuration).adminInvitesPost(code, options);
-            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-        /**
-         * This endpoint is used to add a car object to the network. The object can be a file or a directory.
-         * @summary Add Car object
-         * @param {string} body Car
-         * @param {string} [ignoreDupes] Ignore Dupes
-         * @param {string} [filename] Filename
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<UtilContentAddResponse> {
-            const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentAddCarPost(body, ignoreDupes, filename, options);
+        contentAddCarPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+            const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentAddCarPost(options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -3039,20 +3264,13 @@ export const ContentApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         * This endpoint is used to upload new content.
-         * @summary Add new content
-         * @param {Blob} data 
-         * @param {string} filename 
-         * @param {string} [coluuid] Collection UUID
-         * @param {number} [replication] Replication value
-         * @param {string} [ignoreDupes] Ignore Dupes true/false
-         * @param {string} [lazyProvide] Lazy Provide true/false
-         * @param {string} [dir] Directory
+         * This endpoint uploads a file.
+         * @summary Upload a file
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddPost(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<UtilContentAddResponse> {
-            const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, options);
+        contentAddPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+            const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentAddPost(options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -3294,7 +3512,7 @@ export const ContentApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+         * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
          * @summary Get content statistics
          * @param {string} limit limit
          * @param {string} offset offset
@@ -3342,6 +3560,16 @@ export const ContentApiFp = function(configuration?: Configuration) {
 export const ContentApiFactory = function (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) {
     return {
         /**
+         * This endpoint is used to create an estuary invite.
+         * @summary Create an Estuary invite
+         * @param {string} code Invite code to be created
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        adminInvitesCodePost(code: string, options?: any) {
+            return ContentApiFp(configuration).adminInvitesCodePost(code, options)(fetch, basePath);
+        },
+        /**
          * This endpoint is used to list all estuary invites.
          * @summary Get Estuary invites
          * @param {*} [options] Override http request option.
@@ -3351,26 +3579,13 @@ export const ContentApiFactory = function (configuration?: Configuration, fetch?
             return ContentApiFp(configuration).adminInvitesGet(options)(fetch, basePath);
         },
         /**
-         * This endpoint is used to create an estuary invite.
-         * @summary Create an Estuary invite
-         * @param {string} code Invite code to be created
+         * This endpoint uploads content via a car file
+         * @summary Upload content via a car file
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminInvitesPost(code: string, options?: any) {
-            return ContentApiFp(configuration).adminInvitesPost(code, options)(fetch, basePath);
-        },
-        /**
-         * This endpoint is used to add a car object to the network. The object can be a file or a directory.
-         * @summary Add Car object
-         * @param {string} body Car
-         * @param {string} [ignoreDupes] Ignore Dupes
-         * @param {string} [filename] Filename
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, options?: any) {
-            return ContentApiFp(configuration).contentAddCarPost(body, ignoreDupes, filename, options)(fetch, basePath);
+        contentAddCarPost(options?: any) {
+            return ContentApiFp(configuration).contentAddCarPost(options)(fetch, basePath);
         },
         /**
          * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
@@ -3384,20 +3599,13 @@ export const ContentApiFactory = function (configuration?: Configuration, fetch?
             return ContentApiFp(configuration).contentAddIpfsPost(body, ignoreDupes, options)(fetch, basePath);
         },
         /**
-         * This endpoint is used to upload new content.
-         * @summary Add new content
-         * @param {Blob} data 
-         * @param {string} filename 
-         * @param {string} [coluuid] Collection UUID
-         * @param {number} [replication] Replication value
-         * @param {string} [ignoreDupes] Ignore Dupes true/false
-         * @param {string} [lazyProvide] Lazy Provide true/false
-         * @param {string} [dir] Directory
+         * This endpoint uploads a file.
+         * @summary Upload a file
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddPost(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, options?: any) {
-            return ContentApiFp(configuration).contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, options)(fetch, basePath);
+        contentAddPost(options?: any) {
+            return ContentApiFp(configuration).contentAddPost(options)(fetch, basePath);
         },
         /**
          * This endpoint returns aggregated content stats
@@ -3522,7 +3730,7 @@ export const ContentApiFactory = function (configuration?: Configuration, fetch?
             return ContentApiFp(configuration).contentStagingZonesGet(options)(fetch, basePath);
         },
         /**
-         * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+         * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
          * @summary Get content statistics
          * @param {string} limit limit
          * @param {string} offset offset
@@ -3553,6 +3761,18 @@ export const ContentApiFactory = function (configuration?: Configuration, fetch?
  */
 export class ContentApi extends BaseAPI {
     /**
+     * This endpoint is used to create an estuary invite.
+     * @summary Create an Estuary invite
+     * @param {string} code Invite code to be created
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ContentApi
+     */
+    public adminInvitesCodePost(code: string, options?: any) {
+        return ContentApiFp(this.configuration).adminInvitesCodePost(code, options)(this.fetch, this.basePath);
+    }
+
+    /**
      * This endpoint is used to list all estuary invites.
      * @summary Get Estuary invites
      * @param {*} [options] Override http request option.
@@ -3564,29 +3784,14 @@ export class ContentApi extends BaseAPI {
     }
 
     /**
-     * This endpoint is used to create an estuary invite.
-     * @summary Create an Estuary invite
-     * @param {string} code Invite code to be created
+     * This endpoint uploads content via a car file
+     * @summary Upload content via a car file
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContentApi
      */
-    public adminInvitesPost(code: string, options?: any) {
-        return ContentApiFp(this.configuration).adminInvitesPost(code, options)(this.fetch, this.basePath);
-    }
-
-    /**
-     * This endpoint is used to add a car object to the network. The object can be a file or a directory.
-     * @summary Add Car object
-     * @param {string} body Car
-     * @param {string} [ignoreDupes] Ignore Dupes
-     * @param {string} [filename] Filename
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ContentApi
-     */
-    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, options?: any) {
-        return ContentApiFp(this.configuration).contentAddCarPost(body, ignoreDupes, filename, options)(this.fetch, this.basePath);
+    public contentAddCarPost(options?: any) {
+        return ContentApiFp(this.configuration).contentAddCarPost(options)(this.fetch, this.basePath);
     }
 
     /**
@@ -3603,21 +3808,14 @@ export class ContentApi extends BaseAPI {
     }
 
     /**
-     * This endpoint is used to upload new content.
-     * @summary Add new content
-     * @param {Blob} data 
-     * @param {string} filename 
-     * @param {string} [coluuid] Collection UUID
-     * @param {number} [replication] Replication value
-     * @param {string} [ignoreDupes] Ignore Dupes true/false
-     * @param {string} [lazyProvide] Lazy Provide true/false
-     * @param {string} [dir] Directory
+     * This endpoint uploads a file.
+     * @summary Upload a file
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContentApi
      */
-    public contentAddPost(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, options?: any) {
-        return ContentApiFp(this.configuration).contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, options)(this.fetch, this.basePath);
+    public contentAddPost(options?: any) {
+        return ContentApiFp(this.configuration).contentAddPost(options)(this.fetch, this.basePath);
     }
 
     /**
@@ -3767,7 +3965,7 @@ export class ContentApi extends BaseAPI {
     }
 
     /**
-     * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+     * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
      * @summary Get content statistics
      * @param {string} limit limit
      * @param {string} offset offset
@@ -3801,11 +3999,11 @@ export const DealsApiFetchParamCreator = function (configuration?: Configuration
         /**
          * This endpoint estimates the cost of a deal
          * @summary Estimate the cost of a deal
-         * @param {MainEstimateDealBody} body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
+         * @param {ApiEstimateDealBody} body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dealEstimatePost(body: MainEstimateDealBody, options: any = {}): FetchArgs {
+        dealEstimatePost(body: ApiEstimateDealBody, options: any = {}): FetchArgs {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling dealEstimatePost.');
@@ -3830,7 +4028,7 @@ export const DealsApiFetchParamCreator = function (configuration?: Configuration
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"MainEstimateDealBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (<any>"ApiEstimateDealBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
 
             return {
@@ -4063,11 +4261,11 @@ export const DealsApiFetchParamCreator = function (configuration?: Configuration
         /**
          * This endpoint returns the status of a transfer
          * @summary Transfer Status
-         * @param {MainChannelIDParam} body Channel ID
+         * @param {ApiChannelIDParam} body Channel ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dealTransferStatusPost(body: MainChannelIDParam, options: any = {}): FetchArgs {
+        dealTransferStatusPost(body: ApiChannelIDParam, options: any = {}): FetchArgs {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling dealTransferStatusPost.');
@@ -4092,7 +4290,7 @@ export const DealsApiFetchParamCreator = function (configuration?: Configuration
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"MainChannelIDParam" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (<any>"ApiChannelIDParam" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
 
             return {
@@ -4294,11 +4492,11 @@ export const DealsApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint estimates the cost of a deal
          * @summary Estimate the cost of a deal
-         * @param {MainEstimateDealBody} body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
+         * @param {ApiEstimateDealBody} body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dealEstimatePost(body: MainEstimateDealBody, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+        dealEstimatePost(body: ApiEstimateDealBody, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = DealsApiFetchParamCreator(configuration).dealEstimatePost(body, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -4427,11 +4625,11 @@ export const DealsApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint returns the status of a transfer
          * @summary Transfer Status
-         * @param {MainChannelIDParam} body Channel ID
+         * @param {ApiChannelIDParam} body Channel ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dealTransferStatusPost(body: MainChannelIDParam, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+        dealTransferStatusPost(body: ApiChannelIDParam, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = DealsApiFetchParamCreator(configuration).dealTransferStatusPost(body, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -4549,11 +4747,11 @@ export const DealsApiFactory = function (configuration?: Configuration, fetch?: 
         /**
          * This endpoint estimates the cost of a deal
          * @summary Estimate the cost of a deal
-         * @param {MainEstimateDealBody} body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
+         * @param {ApiEstimateDealBody} body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dealEstimatePost(body: MainEstimateDealBody, options?: any) {
+        dealEstimatePost(body: ApiEstimateDealBody, options?: any) {
             return DealsApiFp(configuration).dealEstimatePost(body, options)(fetch, basePath);
         },
         /**
@@ -4619,11 +4817,11 @@ export const DealsApiFactory = function (configuration?: Configuration, fetch?: 
         /**
          * This endpoint returns the status of a transfer
          * @summary Transfer Status
-         * @param {MainChannelIDParam} body Channel ID
+         * @param {ApiChannelIDParam} body Channel ID
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        dealTransferStatusPost(body: MainChannelIDParam, options?: any) {
+        dealTransferStatusPost(body: ApiChannelIDParam, options?: any) {
             return DealsApiFp(configuration).dealTransferStatusPost(body, options)(fetch, basePath);
         },
         /**
@@ -4688,12 +4886,12 @@ export class DealsApi extends BaseAPI {
     /**
      * This endpoint estimates the cost of a deal
      * @summary Estimate the cost of a deal
-     * @param {MainEstimateDealBody} body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
+     * @param {ApiEstimateDealBody} body The size of the deal in bytes, the replication factor, and the duration of the deal in blocks
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DealsApi
      */
-    public dealEstimatePost(body: MainEstimateDealBody, options?: any) {
+    public dealEstimatePost(body: ApiEstimateDealBody, options?: any) {
         return DealsApiFp(this.configuration).dealEstimatePost(body, options)(this.fetch, this.basePath);
     }
 
@@ -4772,12 +4970,12 @@ export class DealsApi extends BaseAPI {
     /**
      * This endpoint returns the status of a transfer
      * @summary Transfer Status
-     * @param {MainChannelIDParam} body Channel ID
+     * @param {ApiChannelIDParam} body Channel ID
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DealsApi
      */
-    public dealTransferStatusPost(body: MainChannelIDParam, options?: any) {
+    public dealTransferStatusPost(body: ApiChannelIDParam, options?: any) {
         return DealsApiFp(this.configuration).dealTransferStatusPost(body, options)(this.fetch, this.basePath);
     }
 
@@ -4838,6 +5036,110 @@ export class DealsApi extends BaseAPI {
      */
     public publicMinersStorageQueryMinerGet(miner: string, options?: any) {
         return DealsApiFp(this.configuration).publicMinersStorageQueryMinerGet(miner, options)(this.fetch, this.basePath);
+    }
+
+}
+/**
+ * DefaultApi - fetch parameter creator
+ * @export
+ */
+export const DefaultApiFetchParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * This endpoint fetches viewer details such as username, permissions, address, owned miners, user settings etc.
+         * @summary Fetch viewer details
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        viewerGet(options: any = {}): FetchArgs {
+            const localVarPath = `/viewer`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+					? configuration.apiKey("Authorization")
+					: configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * DefaultApi - functional programming interface
+ * @export
+ */
+export const DefaultApiFp = function(configuration?: Configuration) {
+    return {
+        /**
+         * This endpoint fetches viewer details such as username, permissions, address, owned miners, user settings etc.
+         * @summary Fetch viewer details
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        viewerGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<UtilViewerResponse> {
+            const localVarFetchArgs = DefaultApiFetchParamCreator(configuration).viewerGet(options);
+            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+    }
+};
+
+/**
+ * DefaultApi - factory interface
+ * @export
+ */
+export const DefaultApiFactory = function (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) {
+    return {
+        /**
+         * This endpoint fetches viewer details such as username, permissions, address, owned miners, user settings etc.
+         * @summary Fetch viewer details
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        viewerGet(options?: any) {
+            return DefaultApiFp(configuration).viewerGet(options)(fetch, basePath);
+        },
+    };
+};
+
+/**
+ * DefaultApi - object-oriented interface
+ * @export
+ * @class DefaultApi
+ * @extends {BaseAPI}
+ */
+export class DefaultApi extends BaseAPI {
+    /**
+     * This endpoint fetches viewer details such as username, permissions, address, owned miners, user settings etc.
+     * @summary Fetch viewer details
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public viewerGet(options?: any) {
+        return DefaultApiFp(this.configuration).viewerGet(options)(this.fetch, this.basePath);
     }
 
 }
@@ -4952,6 +5254,212 @@ export class MetricsApi extends BaseAPI {
 export const MinerApiFetchParamCreator = function (configuration?: Configuration) {
     return {
         /**
+         * This endpoint lets a user get the message in order to claim a miner
+         * @summary Get Claim Miner Message
+         * @param {string} miner Miner claim message
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        minerClaimMinerGet(miner: string, options: any = {}): FetchArgs {
+            // verify required parameter 'miner' is not null or undefined
+            if (miner === null || miner === undefined) {
+                throw new RequiredError('miner','Required parameter miner was null or undefined when calling minerClaimMinerGet.');
+            }
+            const localVarPath = `/miner/claim/{miner}`
+                .replace(`{${"miner"}}`, encodeURIComponent(String(miner)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+					? configuration.apiKey("Authorization")
+					: configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * This endpoint lets a user claim a miner
+         * @summary Claim Miner
+         * @param {MinerClaimMinerBody} body Claim Miner Body
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        minerClaimPost(body: MinerClaimMinerBody, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling minerClaimPost.');
+            }
+            const localVarPath = `/miner/claim`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+					? configuration.apiKey("Authorization")
+					: configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            localVarHeaderParameter['Content-Type'] = '*/*';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"MinerClaimMinerBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * This endpoint lets a user set miner info.
+         * @summary Set Miner Info
+         * @param {MinerMinerSetInfoParams} body Miner set info params
+         * @param {string} miner Miner to set info for
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        minerSetInfoMinerPut(body: MinerMinerSetInfoParams, miner: string, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling minerSetInfoMinerPut.');
+            }
+            // verify required parameter 'miner' is not null or undefined
+            if (miner === null || miner === undefined) {
+                throw new RequiredError('miner','Required parameter miner was null or undefined when calling minerSetInfoMinerPut.');
+            }
+            const localVarPath = `/miner/set-info/{miner}`
+                .replace(`{${"miner"}}`, encodeURIComponent(String(miner)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'PUT' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+					? configuration.apiKey("Authorization")
+					: configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            localVarHeaderParameter['Content-Type'] = '*/*';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"MinerMinerSetInfoParams" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * This endpoint lets a user suspend a miner.
+         * @summary Suspend Miner
+         * @param {MinerSuspendMinerBody} body Suspend Miner Body
+         * @param {string} miner Miner to suspend
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        minerSuspendMinerPost(body: MinerSuspendMinerBody, miner: string, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling minerSuspendMinerPost.');
+            }
+            // verify required parameter 'miner' is not null or undefined
+            if (miner === null || miner === undefined) {
+                throw new RequiredError('miner','Required parameter miner was null or undefined when calling minerSuspendMinerPost.');
+            }
+            const localVarPath = `/miner/suspend/{miner}`
+                .replace(`{${"miner"}}`, encodeURIComponent(String(miner)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+					? configuration.apiKey("Authorization")
+					: configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            localVarHeaderParameter['Content-Type'] = '*/*';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"MinerSuspendMinerBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * This endpoint lets a user unsuspend a miner.
+         * @summary Unuspend Miner
+         * @param {string} miner Miner to unsuspend
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        minerUnsuspendMinerPut(miner: string, options: any = {}): FetchArgs {
+            // verify required parameter 'miner' is not null or undefined
+            if (miner === null || miner === undefined) {
+                throw new RequiredError('miner','Required parameter miner was null or undefined when calling minerUnsuspendMinerPut.');
+            }
+            const localVarPath = `/miner/unsuspend/{miner}`
+                .replace(`{${"miner"}}`, encodeURIComponent(String(miner)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'PUT' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+					? configuration.apiKey("Authorization")
+					: configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * This endpoint returns all miners deals
          * @summary Get all miners deals
          * @param {string} miner Filter by miner
@@ -5040,6 +5548,103 @@ export const MinerApiFetchParamCreator = function (configuration?: Configuration
 export const MinerApiFp = function(configuration?: Configuration) {
     return {
         /**
+         * This endpoint lets a user get the message in order to claim a miner
+         * @summary Get Claim Miner Message
+         * @param {string} miner Miner claim message
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        minerClaimMinerGet(miner: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ApiClaimMsgResponse> {
+            const localVarFetchArgs = MinerApiFetchParamCreator(configuration).minerClaimMinerGet(miner, options);
+            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * This endpoint lets a user claim a miner
+         * @summary Claim Miner
+         * @param {MinerClaimMinerBody} body Claim Miner Body
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        minerClaimPost(body: MinerClaimMinerBody, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ApiClaimResponse> {
+            const localVarFetchArgs = MinerApiFetchParamCreator(configuration).minerClaimPost(body, options);
+            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * This endpoint lets a user set miner info.
+         * @summary Set Miner Info
+         * @param {MinerMinerSetInfoParams} body Miner set info params
+         * @param {string} miner Miner to set info for
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        minerSetInfoMinerPut(body: MinerMinerSetInfoParams, miner: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ApiEmptyResp> {
+            const localVarFetchArgs = MinerApiFetchParamCreator(configuration).minerSetInfoMinerPut(body, miner, options);
+            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * This endpoint lets a user suspend a miner.
+         * @summary Suspend Miner
+         * @param {MinerSuspendMinerBody} body Suspend Miner Body
+         * @param {string} miner Miner to suspend
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        minerSuspendMinerPost(body: MinerSuspendMinerBody, miner: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ApiEmptyResp> {
+            const localVarFetchArgs = MinerApiFetchParamCreator(configuration).minerSuspendMinerPost(body, miner, options);
+            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * This endpoint lets a user unsuspend a miner.
+         * @summary Unuspend Miner
+         * @param {string} miner Miner to unsuspend
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        minerUnsuspendMinerPut(miner: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ApiEmptyResp> {
+            const localVarFetchArgs = MinerApiFetchParamCreator(configuration).minerUnsuspendMinerPut(miner, options);
+            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
          * This endpoint returns all miners deals
          * @summary Get all miners deals
          * @param {string} miner Filter by miner
@@ -5088,6 +5693,58 @@ export const MinerApiFp = function(configuration?: Configuration) {
 export const MinerApiFactory = function (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) {
     return {
         /**
+         * This endpoint lets a user get the message in order to claim a miner
+         * @summary Get Claim Miner Message
+         * @param {string} miner Miner claim message
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        minerClaimMinerGet(miner: string, options?: any) {
+            return MinerApiFp(configuration).minerClaimMinerGet(miner, options)(fetch, basePath);
+        },
+        /**
+         * This endpoint lets a user claim a miner
+         * @summary Claim Miner
+         * @param {MinerClaimMinerBody} body Claim Miner Body
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        minerClaimPost(body: MinerClaimMinerBody, options?: any) {
+            return MinerApiFp(configuration).minerClaimPost(body, options)(fetch, basePath);
+        },
+        /**
+         * This endpoint lets a user set miner info.
+         * @summary Set Miner Info
+         * @param {MinerMinerSetInfoParams} body Miner set info params
+         * @param {string} miner Miner to set info for
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        minerSetInfoMinerPut(body: MinerMinerSetInfoParams, miner: string, options?: any) {
+            return MinerApiFp(configuration).minerSetInfoMinerPut(body, miner, options)(fetch, basePath);
+        },
+        /**
+         * This endpoint lets a user suspend a miner.
+         * @summary Suspend Miner
+         * @param {MinerSuspendMinerBody} body Suspend Miner Body
+         * @param {string} miner Miner to suspend
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        minerSuspendMinerPost(body: MinerSuspendMinerBody, miner: string, options?: any) {
+            return MinerApiFp(configuration).minerSuspendMinerPost(body, miner, options)(fetch, basePath);
+        },
+        /**
+         * This endpoint lets a user unsuspend a miner.
+         * @summary Unuspend Miner
+         * @param {string} miner Miner to unsuspend
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        minerUnsuspendMinerPut(miner: string, options?: any) {
+            return MinerApiFp(configuration).minerUnsuspendMinerPut(miner, options)(fetch, basePath);
+        },
+        /**
          * This endpoint returns all miners deals
          * @summary Get all miners deals
          * @param {string} miner Filter by miner
@@ -5118,6 +5775,68 @@ export const MinerApiFactory = function (configuration?: Configuration, fetch?: 
  * @extends {BaseAPI}
  */
 export class MinerApi extends BaseAPI {
+    /**
+     * This endpoint lets a user get the message in order to claim a miner
+     * @summary Get Claim Miner Message
+     * @param {string} miner Miner claim message
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MinerApi
+     */
+    public minerClaimMinerGet(miner: string, options?: any) {
+        return MinerApiFp(this.configuration).minerClaimMinerGet(miner, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * This endpoint lets a user claim a miner
+     * @summary Claim Miner
+     * @param {MinerClaimMinerBody} body Claim Miner Body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MinerApi
+     */
+    public minerClaimPost(body: MinerClaimMinerBody, options?: any) {
+        return MinerApiFp(this.configuration).minerClaimPost(body, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * This endpoint lets a user set miner info.
+     * @summary Set Miner Info
+     * @param {MinerMinerSetInfoParams} body Miner set info params
+     * @param {string} miner Miner to set info for
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MinerApi
+     */
+    public minerSetInfoMinerPut(body: MinerMinerSetInfoParams, miner: string, options?: any) {
+        return MinerApiFp(this.configuration).minerSetInfoMinerPut(body, miner, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * This endpoint lets a user suspend a miner.
+     * @summary Suspend Miner
+     * @param {MinerSuspendMinerBody} body Suspend Miner Body
+     * @param {string} miner Miner to suspend
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MinerApi
+     */
+    public minerSuspendMinerPost(body: MinerSuspendMinerBody, miner: string, options?: any) {
+        return MinerApiFp(this.configuration).minerSuspendMinerPost(body, miner, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * This endpoint lets a user unsuspend a miner.
+     * @summary Unuspend Miner
+     * @param {string} miner Miner to unsuspend
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MinerApi
+     */
+    public minerUnsuspendMinerPut(miner: string, options?: any) {
+        return MinerApiFp(this.configuration).minerUnsuspendMinerPut(miner, options)(this.fetch, this.basePath);
+    }
+
     /**
      * This endpoint returns all miners deals
      * @summary Get all miners deals
@@ -6399,7 +7118,7 @@ export const PublicApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        publicInfoGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+        publicInfoGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ApiPublicNodeInfo> {
             const localVarFetchArgs = PublicApiFetchParamCreator(configuration).publicInfoGet(options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -6958,7 +7677,7 @@ export const UserApiFetchParamCreator = function (configuration?: Configuration)
             };
         },
         /**
-         * This endpoint is used to geet stats for the current user.
+         * This endpoint is used to get stats for the current user.
          * @summary Get stats for the current user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -7003,7 +7722,7 @@ export const UserApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userApiKeysGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Array<MainGetApiKeysResp>> {
+        userApiKeysGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Array<ApiGetApiKeysResp>> {
             const localVarFetchArgs = UserApiFetchParamCreator(configuration).userApiKeysGet(options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -7042,7 +7761,7 @@ export const UserApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userApiKeysPost(expiry?: string, perms?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<MainGetApiKeysResp> {
+        userApiKeysPost(expiry?: string, perms?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ApiGetApiKeysResp> {
             const localVarFetchArgs = UserApiFetchParamCreator(configuration).userApiKeysPost(expiry, perms, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -7073,7 +7792,7 @@ export const UserApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         * This endpoint is used to geet stats for the current user.
+         * This endpoint is used to get stats for the current user.
          * @summary Get stats for the current user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -7139,7 +7858,7 @@ export const UserApiFactory = function (configuration?: Configuration, fetch?: F
             return UserApiFp(configuration).userExportGet(options)(fetch, basePath);
         },
         /**
-         * This endpoint is used to geet stats for the current user.
+         * This endpoint is used to get stats for the current user.
          * @summary Get stats for the current user
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -7205,7 +7924,7 @@ export class UserApi extends BaseAPI {
     }
 
     /**
-     * This endpoint is used to geet stats for the current user.
+     * This endpoint is used to get stats for the current user.
      * @summary Get stats for the current user
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}

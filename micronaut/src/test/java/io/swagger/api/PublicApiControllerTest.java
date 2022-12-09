@@ -1,5 +1,6 @@
 package io.swagger.api;
 
+import io.swagger.model.ApiPublicNodeInfo;
 import io.swagger.model.UtilHttpError;
 
 import io.micronaut.http.HttpResponse;

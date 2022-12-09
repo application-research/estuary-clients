@@ -5,6 +5,7 @@
  */
 package io.swagger.api;
 
+import io.swagger.model.ApiPublicNodeInfo;
 import io.swagger.model.UtilHttpError;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.micronaut.http.*;
@@ -23,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-11-29T10:27:04.066Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-12-09T03:38:45.180Z[GMT]")
 @Controller
 public interface PublicApi {
 
@@ -58,7 +59,7 @@ public interface PublicApi {
     @ApiResponse(responseCode = "400", description = "Bad Request")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
     @Get(value = "/public/info", produces = { "application/json" })
-    default Single<HttpResponse<String>> publicInfoGet() {
+    default Single<HttpResponse<ApiPublicNodeInfo>> publicInfoGet() {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });

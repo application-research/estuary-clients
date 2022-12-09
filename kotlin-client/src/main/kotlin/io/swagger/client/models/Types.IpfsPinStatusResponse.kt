@@ -12,6 +12,7 @@
 package io.swagger.client.models
 
 import io.swagger.client.models.TypesIpfsPin
+import io.swagger.client.models.TypesPinningStatus
 
 /**
  * 
@@ -29,6 +30,6 @@ data class TypesIpfsPinStatusResponse (
     val info: kotlin.Any? = null,
     val pin: TypesIpfsPin? = null,
     val requestid: kotlin.String? = null,
-    val status: kotlin.String? = null
+    val status: TypesPinningStatus? = null
 ) {
 }

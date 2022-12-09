@@ -14,7 +14,7 @@ open class TypesIpfsPinStatusResponse: JSONEncodable {
     public var info: Any?
     public var pin: TypesIpfsPin?
     public var requestid: String?
-    public var status: String?
+    public var status: TypesPinningStatus?
 
     public init() {}
 
@@ -26,7 +26,7 @@ open class TypesIpfsPinStatusResponse: JSONEncodable {
         nillableDictionary["info"] = self.info
         nillableDictionary["pin"] = self.pin?.encodeToJSON()
         nillableDictionary["requestid"] = self.requestid
-        nillableDictionary["status"] = self.status
+        nillableDictionary["status"] = self.status?.encodeToJSON()
 
         let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary

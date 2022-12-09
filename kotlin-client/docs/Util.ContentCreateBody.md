@@ -8,4 +8,4 @@ Name | Type | Description | Notes
 **location** | [**kotlin.String**](.md) |  |  [optional]
 **name** | [**kotlin.String**](.md) |  |  [optional]
 **root** | [**kotlin.String**](.md) |  |  [optional]
-**type** | [**kotlin.Int**](.md) |  |  [optional]
+**type** | [**UtilContentType**](UtilContentType.md) |  |  [optional]

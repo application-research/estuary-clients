@@ -111,11 +111,11 @@ trait PinningApiService {
       (implicit toEntityMarshallertypes.IpfsListPinStatusResponse: ToEntityMarshaller[types.IpfsListPinStatusResponse], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
   def pinningPinsPinidDelete202: Route =
-    complete((202, ""))
+    complete((202, "Accepted"))
   def pinningPinsPinidDelete500(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((500, responseutil.HttpError))
   /**
-   * Code: 202
+   * Code: 202, Message: Accepted
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
   def pinningPinsPinidDelete(pinid: String)

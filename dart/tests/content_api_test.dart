@@ -7,6 +7,15 @@ void main() {
   var instance = new ContentApi();
 
   group('tests for ContentApi', () {
+    // Create an Estuary invite
+    //
+    // This endpoint is used to create an estuary invite.
+    //
+    //Future<String> adminInvitesCodePost(String code) async
+    test('test adminInvitesCodePost', () async {
+      // TODO
+    });
+
     // Get Estuary invites
     //
     // This endpoint is used to list all estuary invites.
@@ -16,20 +25,11 @@ void main() {
       // TODO
     });
 
-    // Create an Estuary invite
+    // Upload content via a car file
     //
-    // This endpoint is used to create an estuary invite.
+    // This endpoint uploads content via a car file
     //
-    //Future<String> adminInvitesPost(String code) async
-    test('test adminInvitesPost', () async {
-      // TODO
-    });
-
-    // Add Car object
-    //
-    // This endpoint is used to add a car object to the network. The object can be a file or a directory.
-    //
-    //Future<UtilContentAddResponse> contentAddCarPost(String body, { String ignoreDupes, String filename }) async
+    //Future<String> contentAddCarPost() async
     test('test contentAddCarPost', () async {
       // TODO
     });
@@ -43,11 +43,11 @@ void main() {
       // TODO
     });
 
-    // Add new content
+    // Upload a file
     //
-    // This endpoint is used to upload new content.
+    // This endpoint uploads a file.
     //
-    //Future<UtilContentAddResponse> contentAddPost(String data, String filename, { String coluuid, int replication, String ignoreDupes, String lazyProvide, String dir }) async
+    //Future<String> contentAddPost() async
     test('test contentAddPost', () async {
       // TODO
     });
@@ -162,7 +162,7 @@ void main() {
 
     // Get content statistics
     //
-    // This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+    // This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
     //
     //Future<String> contentStatsGet(String limit, String offset) async
     test('test contentStatsGet', () async {

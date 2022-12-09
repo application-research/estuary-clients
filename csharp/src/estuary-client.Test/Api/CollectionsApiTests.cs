@@ -80,7 +80,7 @@ namespace estuary-client.Test
         public void CollectionsColuuidContentsDeleteTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //MainDeleteContentFromCollectionBody body = null;
+            //ApiDeleteContentFromCollectionBody body = null;
             //string coluuid = null;
             //var response = instance.CollectionsColuuidContentsDelete(body, coluuid);
             //Assert.IsInstanceOf<string> (response, "response is string");
@@ -106,7 +106,7 @@ namespace estuary-client.Test
             //string coluuid = null;
             //string dir = null;
             //var response = instance.CollectionsColuuidGet(coluuid, dir);
-            //Assert.IsInstanceOf<string> (response, "response is string");
+            //Assert.IsInstanceOf<List<CollectionsCollectionListResponse>> (response, "response is List<CollectionsCollectionListResponse>");
         }
         /// <summary>
         /// Test CollectionsColuuidPost
@@ -151,7 +151,7 @@ namespace estuary-client.Test
         public void CollectionsPostTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //MainCreateCollectionBody body = null;
+            //ApiCreateCollectionBody body = null;
             //var response = instance.CollectionsPost(body);
             //Assert.IsInstanceOf<CollectionsCollection> (response, "response is CollectionsCollection");
         }

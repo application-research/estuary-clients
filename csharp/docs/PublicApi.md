@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="publicinfoget"></a>
 # **PublicInfoGet**
-> string PublicInfoGet ()
+> ApiPublicNodeInfo PublicInfoGet ()
 
 Get public node info
 
@@ -177,7 +177,7 @@ namespace Example
             try
             {
                 // Get public node info
-                string result = apiInstance.PublicInfoGet();
+                ApiPublicNodeInfo result = apiInstance.PublicInfoGet();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -194,7 +194,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**string**
+[**ApiPublicNodeInfo**](ApiPublicNodeInfo.md)
 
 ### Authorization
 

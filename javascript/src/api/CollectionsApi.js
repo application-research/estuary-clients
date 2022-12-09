@@ -13,9 +13,10 @@
  *
  */
 import {ApiClient} from "../ApiClient";
+import {ApiCreateCollectionBody} from '../model/ApiCreateCollectionBody';
+import {ApiDeleteContentFromCollectionBody} from '../model/ApiDeleteContentFromCollectionBody';
 import {CollectionsCollection} from '../model/CollectionsCollection';
-import {MainCreateCollectionBody} from '../model/MainCreateCollectionBody';
-import {MainDeleteContentFromCollectionBody} from '../model/MainDeleteContentFromCollectionBody';
+import {CollectionsCollectionListResponse} from '../model/CollectionsCollectionListResponse';
 import {UtilHttpError} from '../model/UtilHttpError';
 
 /**
@@ -95,7 +96,7 @@ export class CollectionsApi {
     /**
      * Deletes a content from a collection
      * This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
-     * @param {module:model/MainDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
+     * @param {module:model/ApiDeleteContentFromCollectionBody} body Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;)
      * @param {String} coluuid Collection ID
      * @param {module:api/CollectionsApi~collectionsColuuidContentsDeleteCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
@@ -187,7 +188,7 @@ export class CollectionsApi {
      * Callback function to receive the result of the collectionsColuuidGet operation.
      * @callback moduleapi/CollectionsApi~collectionsColuuidGetCallback
      * @param {String} error Error message, if any.
-     * @param {'String'{ data The data returned by the service call.
+     * @param {Array.<module:model/CollectionsCollectionListResponse>{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -224,7 +225,7 @@ export class CollectionsApi {
       let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = 'String';
+      let returnType = [CollectionsCollectionListResponse];
 
       return this.apiClient.callApi(
         '/collections/{coluuid}', 'GET',
@@ -396,7 +397,7 @@ export class CollectionsApi {
     /**
      * Create a new collection
      * This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.
-     * @param {module:model/MainCreateCollectionBody} body Collection name and description
+     * @param {module:model/ApiCreateCollectionBody} body Collection name and description
      * @param {module:api/CollectionsApi~collectionsPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */

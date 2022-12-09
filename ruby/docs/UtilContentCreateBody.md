@@ -8,5 +8,5 @@ Name | Type | Description | Notes
 **location** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
 **root** | **String** |  | [optional] 
-**type** | **Integer** |  | [optional] 
+**type** | [**UtilContentType**](UtilContentType.md) |  | [optional] 
 

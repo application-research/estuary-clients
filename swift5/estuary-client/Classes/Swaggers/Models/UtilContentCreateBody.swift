@@ -16,9 +16,9 @@ public struct UtilContentCreateBody: Codable {
     public var location: String?
     public var name: String?
     public var root: String?
-    public var type: Int?
+    public var type: UtilContentType?
 
-    public init(coluuid: String? = nil, dir: String? = nil, location: String? = nil, name: String? = nil, root: String? = nil, type: Int? = nil) {
+    public init(coluuid: String? = nil, dir: String? = nil, location: String? = nil, name: String? = nil, root: String? = nil, type: UtilContentType? = nil) {
         self.coluuid = coluuid
         self.dir = dir
         self.location = location

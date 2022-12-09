@@ -49,7 +49,7 @@ UtilContentCreateBody <- R6::R6Class(
         self$`root` <- `root`
       }
       if (!missing(`type`)) {
-        stopifnot(is.numeric(`type`), length(`type`) == 1)
+        stopifnot(R6::is.R6(`type`))
         self$`type` <- `type`
       }
     },
@@ -71,7 +71,7 @@ UtilContentCreateBody <- R6::R6Class(
         UtilContentCreateBodyObject[['root']] <- self$`root`
       }
       if (!is.null(self$`type`)) {
-        UtilContentCreateBodyObject[['type']] <- self$`type`
+        UtilContentCreateBodyObject[['type']] <- self$`type`$toJSON()
       }
 
       UtilContentCreateBodyObject
@@ -94,7 +94,9 @@ UtilContentCreateBody <- R6::R6Class(
         self$`root` <- UtilContentCreateBodyObject$`root`
       }
       if (!is.null(UtilContentCreateBodyObject$`type`)) {
-        self$`type` <- UtilContentCreateBodyObject$`type`
+        typeObject <- UtilContentType$new()
+        typeObject$fromJSON(jsonlite::toJSON(UtilContentCreateBodyObject$type, auto_unbox = TRUE))
+        self$`type` <- typeObject
       }
     },
     toJSONString = function() {
@@ -105,14 +107,14 @@ UtilContentCreateBody <- R6::R6Class(
            "location": %s,
            "name": %s,
            "root": %s,
-           "type": %d
+           "type": %s
         }',
         self$`coluuid`,
         self$`dir`,
         self$`location`,
         self$`name`,
         self$`root`,
-        self$`type`
+        self$`type`$toJSON()
       )
     },
     fromJSONString = function(UtilContentCreateBodyJson) {
@@ -122,7 +124,8 @@ UtilContentCreateBody <- R6::R6Class(
       self$`location` <- UtilContentCreateBodyObject$`location`
       self$`name` <- UtilContentCreateBodyObject$`name`
       self$`root` <- UtilContentCreateBodyObject$`root`
-      self$`type` <- UtilContentCreateBodyObject$`type`
+      UtilContentTypeObject <- UtilContentType$new()
+      self$`type` <- UtilContentTypeObject$fromJSON(jsonlite::toJSON(UtilContentCreateBodyObject$type, auto_unbox = TRUE))
     }
   )
 )

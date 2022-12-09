@@ -151,7 +151,7 @@ This endpoint is used to delete an existing content from an existing collection.
  * @param coluuid Collection ID
 @return string
 */
-func (a *CollectionsApiService) CollectionsColuuidContentsDelete(ctx context.Context, body MainDeleteContentFromCollectionBody, coluuid string) (string, *http.Response, error) {
+func (a *CollectionsApiService) CollectionsColuuidContentsDelete(ctx context.Context, body ApiDeleteContentFromCollectionBody, coluuid string) (string, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -389,20 +389,20 @@ This endpoint is used to get contents in a collection. If no colpath query param
  * @param coluuid coluuid
  * @param optional nil or *CollectionsApiCollectionsColuuidGetOpts - Optional Parameters:
      * @param "Dir" (optional.String) -  Directory
-@return string
+@return []CollectionsCollectionListResponse
 */
 
 type CollectionsApiCollectionsColuuidGetOpts struct {
     Dir optional.String
 }
 
-func (a *CollectionsApiService) CollectionsColuuidGet(ctx context.Context, coluuid string, localVarOptionals *CollectionsApiCollectionsColuuidGetOpts) (string, *http.Response, error) {
+func (a *CollectionsApiService) CollectionsColuuidGet(ctx context.Context, coluuid string, localVarOptionals *CollectionsApiCollectionsColuuidGetOpts) ([]CollectionsCollectionListResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue string
+		localVarReturnValue []CollectionsCollectionListResponse
 	)
 
 	// create path and map variables
@@ -476,7 +476,7 @@ func (a *CollectionsApiService) CollectionsColuuidGet(ctx context.Context, coluu
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v string
+			var v []CollectionsCollectionListResponse
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -896,7 +896,7 @@ This endpoint is used to create a new collection. A collection is a representaio
  * @param body Collection name and description
 @return CollectionsCollection
 */
-func (a *CollectionsApiService) CollectionsPost(ctx context.Context, body MainCreateCollectionBody) (CollectionsCollection, *http.Response, error) {
+func (a *CollectionsApiService) CollectionsPost(ctx context.Context, body ApiCreateCollectionBody) (CollectionsCollection, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}

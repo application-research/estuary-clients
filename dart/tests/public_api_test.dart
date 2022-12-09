@@ -29,7 +29,7 @@ void main() {
     //
     // This endpoint returns information about the node
     //
-    //Future<String> publicInfoGet() async
+    //Future<ApiPublicNodeInfo> publicInfoGet() async
     test('test publicInfoGet', () async {
       // TODO
     });

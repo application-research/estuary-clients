@@ -1,6 +1,7 @@
 import connexion
 import six
 
+from estuary-client.models.api_public_node_info import ApiPublicNodeInfo  # noqa: E501
 from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
 from estuary-client import util
 
@@ -37,7 +38,7 @@ def public_info_get():  # noqa: E501
     This endpoint returns information about the node # noqa: E501
 
 
-    :rtype: str
+    :rtype: ApiPublicNodeInfo
     """
     return 'do some magic!'
 

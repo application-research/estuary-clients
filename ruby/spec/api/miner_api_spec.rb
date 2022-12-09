@@ -31,6 +31,68 @@ describe 'MinerApi' do
     end
   end
 
+  # unit tests for miner_claim_miner_get
+  # Get Claim Miner Message
+  # This endpoint lets a user get the message in order to claim a miner
+  # @param miner Miner claim message
+  # @param [Hash] opts the optional parameters
+  # @return [ApiClaimMsgResponse]
+  describe 'miner_claim_miner_get test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for miner_claim_post
+  # Claim Miner
+  # This endpoint lets a user claim a miner
+  # @param body Claim Miner Body
+  # @param [Hash] opts the optional parameters
+  # @return [ApiClaimResponse]
+  describe 'miner_claim_post test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for miner_set_info_miner_put
+  # Set Miner Info
+  # This endpoint lets a user set miner info.
+  # @param body Miner set info params
+  # @param miner Miner to set info for
+  # @param [Hash] opts the optional parameters
+  # @return [ApiEmptyResp]
+  describe 'miner_set_info_miner_put test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for miner_suspend_miner_post
+  # Suspend Miner
+  # This endpoint lets a user suspend a miner.
+  # @param body Suspend Miner Body
+  # @param miner Miner to suspend
+  # @param [Hash] opts the optional parameters
+  # @return [ApiEmptyResp]
+  describe 'miner_suspend_miner_post test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for miner_unsuspend_miner_put
+  # Unuspend Miner
+  # This endpoint lets a user unsuspend a miner.
+  # @param miner Miner to unsuspend
+  # @param [Hash] opts the optional parameters
+  # @return [ApiEmptyResp]
+  describe 'miner_unsuspend_miner_put test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for public_miners_deals_miner_get
   # Get all miners deals
   # This endpoint returns all miners deals

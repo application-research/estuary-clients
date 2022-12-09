@@ -33,7 +33,7 @@ class TypesIpfsPinStatusResponse(object):
         'info': 'object',
         'pin': 'TypesIpfsPin',
         'requestid': 'str',
-        'status': 'str'
+        'status': 'TypesPinningStatus'
     }
 
     attribute_map = {
@@ -178,7 +178,7 @@ class TypesIpfsPinStatusResponse(object):
 
 
         :return: The status of this TypesIpfsPinStatusResponse.  # noqa: E501
-        :rtype: str
+        :rtype: TypesPinningStatus
         """
         return self._status
 
@@ -188,7 +188,7 @@ class TypesIpfsPinStatusResponse(object):
 
 
         :param status: The status of this TypesIpfsPinStatusResponse.  # noqa: E501
-        :type: str
+        :type: TypesPinningStatus
         """
 
         self._status = status

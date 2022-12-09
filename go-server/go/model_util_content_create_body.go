@@ -20,5 +20,5 @@ type UtilContentCreateBody struct {
 
 	Root string `json:"root,omitempty"`
 
-	Type_ int32 `json:"type,omitempty"`
+	Type_ *UtilContentType `json:"type,omitempty"`
 }

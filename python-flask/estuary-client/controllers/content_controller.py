@@ -3,10 +3,22 @@ import six
 
 from estuary-client.models.main_import_deal_body import MainImportDealBody  # noqa: E501
 from estuary-client.models.util_content_add_ipfs_body import UtilContentAddIpfsBody  # noqa: E501
-from estuary-client.models.util_content_add_response import UtilContentAddResponse  # noqa: E501
 from estuary-client.models.util_content_create_body import UtilContentCreateBody  # noqa: E501
 from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
 from estuary-client import util
+
+
+def admin_invites_code_post(code):  # noqa: E501
+    """Create an Estuary invite
+
+    This endpoint is used to create an estuary invite. # noqa: E501
+
+    :param code: Invite code to be created
+    :type code: str
+
+    :rtype: str
+    """
+    return 'do some magic!'
 
 
 def admin_invites_get():  # noqa: E501
@@ -20,35 +32,14 @@ def admin_invites_get():  # noqa: E501
     return 'do some magic!'
 
 
-def admin_invites_post(code):  # noqa: E501
-    """Create an Estuary invite
+def content_add_car_post():  # noqa: E501
+    """Upload content via a car file
 
-    This endpoint is used to create an estuary invite. # noqa: E501
+    This endpoint uploads content via a car file # noqa: E501
 
-    :param code: Invite code to be created
-    :type code: str
 
     :rtype: str
     """
-    return 'do some magic!'
-
-
-def content_add_car_post(body, ignore_dupes=None, filename=None):  # noqa: E501
-    """Add Car object
-
-    This endpoint is used to add a car object to the network. The object can be a file or a directory. # noqa: E501
-
-    :param body: Car
-    :type body: dict | bytes
-    :param ignore_dupes: Ignore Dupes
-    :type ignore_dupes: str
-    :param filename: Filename
-    :type filename: str
-
-    :rtype: UtilContentAddResponse
-    """
-    if connexion.request.is_json:
-        body = str.from_dict(connexion.request.get_json())  # noqa: E501
     return 'do some magic!'
 
 
@@ -69,27 +60,13 @@ def content_add_ipfs_post(body, ignore_dupes=None):  # noqa: E501
     return 'do some magic!'
 
 
-def content_add_post(data, filename, coluuid=None, replication=None, ignore_dupes=None, lazy_provide=None, dir=None):  # noqa: E501
-    """Add new content
+def content_add_post():  # noqa: E501
+    """Upload a file
 
-    This endpoint is used to upload new content. # noqa: E501
+    This endpoint uploads a file. # noqa: E501
 
-    :param data: 
-    :type data: strstr
-    :param filename: 
-    :type filename: str
-    :param coluuid: Collection UUID
-    :type coluuid: str
-    :param replication: Replication value
-    :type replication: int
-    :param ignore_dupes: Ignore Dupes true/false
-    :type ignore_dupes: str
-    :param lazy_provide: Lazy Provide true/false
-    :type lazy_provide: str
-    :param dir: Directory
-    :type dir: str
 
-    :rtype: UtilContentAddResponse
+    :rtype: str
     """
     return 'do some magic!'
 
@@ -261,7 +238,7 @@ def content_staging_zones_get():  # noqa: E501
 def content_stats_get(limit, offset):  # noqa: E501
     """Get content statistics
 
-    This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten # noqa: E501
+    This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content # noqa: E501
 
     :param limit: limit
     :type limit: str

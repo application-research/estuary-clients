@@ -17,9 +17,10 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
+import { ApiCreateCollectionBody } from '../model/apiCreateCollectionBody';
+import { ApiDeleteContentFromCollectionBody } from '../model/apiDeleteContentFromCollectionBody';
 import { CollectionsCollection } from '../model/collectionsCollection';
-import { MainCreateCollectionBody } from '../model/mainCreateCollectionBody';
-import { MainDeleteContentFromCollectionBody } from '../model/mainDeleteContentFromCollectionBody';
+import { CollectionsCollectionListResponse } from '../model/collectionsCollectionListResponse';
 import { UtilHttpError } from '../model/utilHttpError';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -112,10 +113,10 @@ export class CollectionsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
-    public collectionsColuuidContentsDelete(body: MainDeleteContentFromCollectionBody, coluuid: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public collectionsColuuidContentsDelete(body: ApiDeleteContentFromCollectionBody, coluuid: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public collectionsColuuidContentsDelete(body: ApiDeleteContentFromCollectionBody, coluuid: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public collectionsColuuidContentsDelete(body: ApiDeleteContentFromCollectionBody, coluuid: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public collectionsColuuidContentsDelete(body: ApiDeleteContentFromCollectionBody, coluuid: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling collectionsColuuidContentsDelete.');
@@ -215,9 +216,9 @@ export class CollectionsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public collectionsColuuidGet(coluuid: string, dir?: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public collectionsColuuidGet(coluuid: string, dir?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public collectionsColuuidGet(coluuid: string, dir?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public collectionsColuuidGet(coluuid: string, dir?: string, observe?: 'body', reportProgress?: boolean): Observable<Array<CollectionsCollectionListResponse>>;
+    public collectionsColuuidGet(coluuid: string, dir?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<Array<CollectionsCollectionListResponse>>>;
+    public collectionsColuuidGet(coluuid: string, dir?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<Array<CollectionsCollectionListResponse>>>;
     public collectionsColuuidGet(coluuid: string, dir?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (coluuid === null || coluuid === undefined) {
@@ -250,7 +251,7 @@ export class CollectionsService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<string>('get',`${this.basePath}/collections/${encodeURIComponent(String(coluuid))}`,
+        return this.httpClient.request<Array<CollectionsCollectionListResponse>>('get',`${this.basePath}/collections/${encodeURIComponent(String(coluuid))}`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
@@ -442,10 +443,10 @@ export class CollectionsService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public collectionsPost(body: MainCreateCollectionBody, observe?: 'body', reportProgress?: boolean): Observable<CollectionsCollection>;
-    public collectionsPost(body: MainCreateCollectionBody, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<CollectionsCollection>>;
-    public collectionsPost(body: MainCreateCollectionBody, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<CollectionsCollection>>;
-    public collectionsPost(body: MainCreateCollectionBody, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public collectionsPost(body: ApiCreateCollectionBody, observe?: 'body', reportProgress?: boolean): Observable<CollectionsCollection>;
+    public collectionsPost(body: ApiCreateCollectionBody, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<CollectionsCollection>>;
+    public collectionsPost(body: ApiCreateCollectionBody, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<CollectionsCollection>>;
+    public collectionsPost(body: ApiCreateCollectionBody, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling collectionsPost.');

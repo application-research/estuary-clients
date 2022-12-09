@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 
 
 # **public_info_get**
-> String public_info_get
+> ApiPublicNodeInfo public_info_get
 
 Get public node info
 
@@ -156,7 +156,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**String**
+[**ApiPublicNodeInfo**](ApiPublicNodeInfo.md)
 
 ### Authorization
 

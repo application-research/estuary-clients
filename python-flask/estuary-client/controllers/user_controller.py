@@ -1,7 +1,7 @@
 import connexion
 import six
 
-from estuary-client.models.main_get_api_keys_resp import MainGetApiKeysResp  # noqa: E501
+from estuary-client.models.api_get_api_keys_resp import ApiGetApiKeysResp  # noqa: E501
 from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
 from estuary-client import util
 
@@ -12,7 +12,7 @@ def user_api_keys_get():  # noqa: E501
     This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user. # noqa: E501
 
 
-    :rtype: List[MainGetApiKeysResp]
+    :rtype: List[ApiGetApiKeysResp]
     """
     return 'do some magic!'
 
@@ -40,7 +40,7 @@ def user_api_keys_post(expiry=None, perms=None):  # noqa: E501
     :param perms: Permissions -- currently unused
     :type perms: str
 
-    :rtype: MainGetApiKeysResp
+    :rtype: ApiGetApiKeysResp
     """
     return 'do some magic!'
 
@@ -59,7 +59,7 @@ def user_export_get():  # noqa: E501
 def user_stats_get():  # noqa: E501
     """Get stats for the current user
 
-    This endpoint is used to geet stats for the current user. # noqa: E501
+    This endpoint is used to get stats for the current user. # noqa: E501
 
 
     :rtype: str

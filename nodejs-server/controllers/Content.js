@@ -3,6 +3,16 @@
 var utils = require('../utils/writer.js');
 var Content = require('../service/ContentService');
 
+module.exports.adminInvitesCodePOST = function adminInvitesCodePOST (req, res, next, code) {
+  Content.adminInvitesCodePOST(code)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
 module.exports.adminInvitesGET = function adminInvitesGET (req, res, next) {
   Content.adminInvitesGET()
     .then(function (response) {
@@ -13,8 +23,8 @@ module.exports.adminInvitesGET = function adminInvitesGET (req, res, next) {
     });
 };
 
-module.exports.adminInvitesPOST = function adminInvitesPOST (req, res, next, code) {
-  Content.adminInvitesPOST(code)
+module.exports.contentAddPOST = function contentAddPOST (req, res, next) {
+  Content.contentAddPOST()
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -23,18 +33,8 @@ module.exports.adminInvitesPOST = function adminInvitesPOST (req, res, next, cod
     });
 };
 
-module.exports.contentAddPOST = function contentAddPOST (req, res, next, coluuid, replication, ignoreDupes, lazyProvide, dir) {
-  Content.contentAddPOST(coluuid, replication, ignoreDupes, lazyProvide, dir)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
-module.exports.contentAdd_carPOST = function contentAdd_carPOST (req, res, next, body, ignoreDupes, filename) {
-  Content.contentAdd_carPOST(body, ignoreDupes, filename)
+module.exports.contentAdd_carPOST = function contentAdd_carPOST (req, res, next) {
+  Content.contentAdd_carPOST()
     .then(function (response) {
       utils.writeJson(res, response);
     })

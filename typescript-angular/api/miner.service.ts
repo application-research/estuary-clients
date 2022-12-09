@@ -17,6 +17,12 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
+import { ApiClaimMsgResponse } from '../model/apiClaimMsgResponse';
+import { ApiClaimResponse } from '../model/apiClaimResponse';
+import { ApiEmptyResp } from '../model/apiEmptyResp';
+import { MinerClaimMinerBody } from '../model/minerClaimMinerBody';
+import { MinerMinerSetInfoParams } from '../model/minerMinerSetInfoParams';
+import { MinerSuspendMinerBody } from '../model/minerSuspendMinerBody';
 import { UtilHttpError } from '../model/utilHttpError';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -54,6 +60,264 @@ export class MinerService {
         return false;
     }
 
+
+    /**
+     * Get Claim Miner Message
+     * This endpoint lets a user get the message in order to claim a miner
+     * @param miner Miner claim message
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public minerClaimMinerGet(miner: string, observe?: 'body', reportProgress?: boolean): Observable<ApiClaimMsgResponse>;
+    public minerClaimMinerGet(miner: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ApiClaimMsgResponse>>;
+    public minerClaimMinerGet(miner: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ApiClaimMsgResponse>>;
+    public minerClaimMinerGet(miner: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (miner === null || miner === undefined) {
+            throw new Error('Required parameter miner was null or undefined when calling minerClaimMinerGet.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (bearerAuth) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<ApiClaimMsgResponse>('get',`${this.basePath}/miner/claim/${encodeURIComponent(String(miner))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Claim Miner
+     * This endpoint lets a user claim a miner
+     * @param body Claim Miner Body
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public minerClaimPost(body: MinerClaimMinerBody, observe?: 'body', reportProgress?: boolean): Observable<ApiClaimResponse>;
+    public minerClaimPost(body: MinerClaimMinerBody, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ApiClaimResponse>>;
+    public minerClaimPost(body: MinerClaimMinerBody, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ApiClaimResponse>>;
+    public minerClaimPost(body: MinerClaimMinerBody, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (body === null || body === undefined) {
+            throw new Error('Required parameter body was null or undefined when calling minerClaimPost.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (bearerAuth) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            '*/*'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected != undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
+
+        return this.httpClient.request<ApiClaimResponse>('post',`${this.basePath}/miner/claim`,
+            {
+                body: body,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Set Miner Info
+     * This endpoint lets a user set miner info.
+     * @param body Miner set info params
+     * @param miner Miner to set info for
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public minerSetInfoMinerPut(body: MinerMinerSetInfoParams, miner: string, observe?: 'body', reportProgress?: boolean): Observable<ApiEmptyResp>;
+    public minerSetInfoMinerPut(body: MinerMinerSetInfoParams, miner: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ApiEmptyResp>>;
+    public minerSetInfoMinerPut(body: MinerMinerSetInfoParams, miner: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ApiEmptyResp>>;
+    public minerSetInfoMinerPut(body: MinerMinerSetInfoParams, miner: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (body === null || body === undefined) {
+            throw new Error('Required parameter body was null or undefined when calling minerSetInfoMinerPut.');
+        }
+
+        if (miner === null || miner === undefined) {
+            throw new Error('Required parameter miner was null or undefined when calling minerSetInfoMinerPut.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (bearerAuth) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            '*/*'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected != undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
+
+        return this.httpClient.request<ApiEmptyResp>('put',`${this.basePath}/miner/set-info/${encodeURIComponent(String(miner))}`,
+            {
+                body: body,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Suspend Miner
+     * This endpoint lets a user suspend a miner.
+     * @param body Suspend Miner Body
+     * @param miner Miner to suspend
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public minerSuspendMinerPost(body: MinerSuspendMinerBody, miner: string, observe?: 'body', reportProgress?: boolean): Observable<ApiEmptyResp>;
+    public minerSuspendMinerPost(body: MinerSuspendMinerBody, miner: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ApiEmptyResp>>;
+    public minerSuspendMinerPost(body: MinerSuspendMinerBody, miner: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ApiEmptyResp>>;
+    public minerSuspendMinerPost(body: MinerSuspendMinerBody, miner: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (body === null || body === undefined) {
+            throw new Error('Required parameter body was null or undefined when calling minerSuspendMinerPost.');
+        }
+
+        if (miner === null || miner === undefined) {
+            throw new Error('Required parameter miner was null or undefined when calling minerSuspendMinerPost.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (bearerAuth) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            '*/*'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected != undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
+
+        return this.httpClient.request<ApiEmptyResp>('post',`${this.basePath}/miner/suspend/${encodeURIComponent(String(miner))}`,
+            {
+                body: body,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Unuspend Miner
+     * This endpoint lets a user unsuspend a miner.
+     * @param miner Miner to unsuspend
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public minerUnsuspendMinerPut(miner: string, observe?: 'body', reportProgress?: boolean): Observable<ApiEmptyResp>;
+    public minerUnsuspendMinerPut(miner: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ApiEmptyResp>>;
+    public minerUnsuspendMinerPut(miner: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ApiEmptyResp>>;
+    public minerUnsuspendMinerPut(miner: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (miner === null || miner === undefined) {
+            throw new Error('Required parameter miner was null or undefined when calling minerUnsuspendMinerPut.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (bearerAuth) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<ApiEmptyResp>('put',`${this.basePath}/miner/unsuspend/${encodeURIComponent(String(miner))}`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
 
     /**
      * Get all miners deals

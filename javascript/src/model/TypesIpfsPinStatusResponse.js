@@ -14,6 +14,7 @@
  */
 import {ApiClient} from '../ApiClient';
 import {TypesIpfsPin} from './TypesIpfsPin';
+import {TypesPinningStatus} from './TypesPinningStatus';
 
 /**
  * The TypesIpfsPinStatusResponse model module.
@@ -50,7 +51,7 @@ export class TypesIpfsPinStatusResponse {
       if (data.hasOwnProperty('requestid'))
         obj.requestid = ApiClient.convertToType(data['requestid'], 'String');
       if (data.hasOwnProperty('status'))
-        obj.status = ApiClient.convertToType(data['status'], 'String');
+        obj.status = TypesPinningStatus.constructFromObject(data['status']);
     }
     return obj;
   }
@@ -82,7 +83,7 @@ TypesIpfsPinStatusResponse.prototype.pin = undefined;
 TypesIpfsPinStatusResponse.prototype.requestid = undefined;
 
 /**
- * @member {String} status
+ * @member {module:model/TypesPinningStatus} status
  */
 TypesIpfsPinStatusResponse.prototype.status = undefined;
 

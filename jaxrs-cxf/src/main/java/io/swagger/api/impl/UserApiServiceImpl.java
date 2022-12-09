@@ -1,7 +1,7 @@
 package io.swagger.api.impl;
 
 import io.swagger.api.*;
-import io.swagger.model.MainGetApiKeysResp;
+import io.swagger.model.ApiGetApiKeysResp;
 import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
@@ -29,7 +29,7 @@ public class UserApiServiceImpl implements UserApi {
      * This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
      *
      */
-    public List<MainGetApiKeysResp> userApiKeysGet() {
+    public List<ApiGetApiKeysResp> userApiKeysGet() {
         // TODO: Implement...
         
         return null;
@@ -53,7 +53,7 @@ public class UserApiServiceImpl implements UserApi {
      * This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.
      *
      */
-    public MainGetApiKeysResp userApiKeysPost(String expiry, String perms) {
+    public ApiGetApiKeysResp userApiKeysPost(String expiry, String perms) {
         // TODO: Implement...
         
         return null;
@@ -74,7 +74,7 @@ public class UserApiServiceImpl implements UserApi {
     /**
      * Get stats for the current user
      *
-     * This endpoint is used to geet stats for the current user.
+     * This endpoint is used to get stats for the current user.
      *
      */
     public String userStatsGet() {

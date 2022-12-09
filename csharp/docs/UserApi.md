@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="userapikeysget"></a>
 # **UserApiKeysGet**
-> List<MainGetApiKeysResp> UserApiKeysGet ()
+> List<ApiGetApiKeysResp> UserApiKeysGet ()
 
 Get API keys for a user
 
@@ -42,7 +42,7 @@ namespace Example
             try
             {
                 // Get API keys for a user
-                List&lt;MainGetApiKeysResp&gt; result = apiInstance.UserApiKeysGet();
+                List&lt;ApiGetApiKeysResp&gt; result = apiInstance.UserApiKeysGet();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -59,7 +59,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**List<MainGetApiKeysResp>**](MainGetApiKeysResp.md)
+[**List<ApiGetApiKeysResp>**](ApiGetApiKeysResp.md)
 
 ### Authorization
 
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="userapikeyspost"></a>
 # **UserApiKeysPost**
-> MainGetApiKeysResp UserApiKeysPost (string expiry = null, string perms = null)
+> ApiGetApiKeysResp UserApiKeysPost (string expiry = null, string perms = null)
 
 Create API keys for a user
 
@@ -170,7 +170,7 @@ namespace Example
             try
             {
                 // Create API keys for a user
-                MainGetApiKeysResp result = apiInstance.UserApiKeysPost(expiry, perms);
+                ApiGetApiKeysResp result = apiInstance.UserApiKeysPost(expiry, perms);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -191,7 +191,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainGetApiKeysResp**](MainGetApiKeysResp.md)
+[**ApiGetApiKeysResp**](ApiGetApiKeysResp.md)
 
 ### Authorization
 
@@ -270,7 +270,7 @@ This endpoint does not need any parameter.
 
 Get stats for the current user
 
-This endpoint is used to geet stats for the current user.
+This endpoint is used to get stats for the current user.
 
 ### Example
 ```csharp

@@ -5,8 +5,8 @@ import io.swagger.model.*;
 
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 
-import io.swagger.model.MainChannelIDParam;
-import io.swagger.model.MainEstimateDealBody;
+import io.swagger.model.ApiChannelIDParam;
+import io.swagger.model.ApiEstimateDealBody;
 import io.swagger.model.UtilHttpError;
 
 import java.util.Map;
@@ -18,13 +18,13 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-11-29T10:27:02.850Z[GMT]")public abstract class DealApiService {
-    public abstract Response dealEstimatePost(MainEstimateDealBody body,SecurityContext securityContext) throws NotFoundException;
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-12-09T03:38:44.975Z[GMT]")public abstract class DealApiService {
+    public abstract Response dealEstimatePost(ApiEstimateDealBody body,SecurityContext securityContext) throws NotFoundException;
     public abstract Response dealInfoDealidGet(Integer dealid,SecurityContext securityContext) throws NotFoundException;
     public abstract Response dealProposalPropcidGet(String propcid,SecurityContext securityContext) throws NotFoundException;
     public abstract Response dealQueryMinerGet(String miner,SecurityContext securityContext) throws NotFoundException;
     public abstract Response dealStatusByProposalPropcidGet(String propcid,SecurityContext securityContext) throws NotFoundException;
     public abstract Response dealStatusMinerPropcidGet(String miner,String propcid,SecurityContext securityContext) throws NotFoundException;
     public abstract Response dealTransferInProgressGet(SecurityContext securityContext) throws NotFoundException;
-    public abstract Response dealTransferStatusPost(MainChannelIDParam body,SecurityContext securityContext) throws NotFoundException;
+    public abstract Response dealTransferStatusPost(ApiChannelIDParam body,SecurityContext securityContext) throws NotFoundException;
 }

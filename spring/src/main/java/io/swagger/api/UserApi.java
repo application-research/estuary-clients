@@ -5,7 +5,7 @@
  */
 package io.swagger.api;
 
-import io.swagger.model.MainGetApiKeysResp;
+import io.swagger.model.ApiGetApiKeysResp;
 import io.swagger.model.UtilHttpError;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -33,14 +33,14 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-11-29T10:27:05.128Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-09T03:38:46.898Z[GMT]")
 @Validated
 public interface UserApi {
 
     @Operation(summary = "Get API keys for a user", description = "This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "User" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = MainGetApiKeysResp.class)))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = ApiGetApiKeysResp.class)))),
         
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
@@ -50,7 +50,7 @@ public interface UserApi {
     @RequestMapping(value = "/user/api-keys",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
-    ResponseEntity<List<MainGetApiKeysResp>> userApiKeysGet();
+    ResponseEntity<List<ApiGetApiKeysResp>> userApiKeysGet();
 
 
     @Operation(summary = "Revoke a User API Key.", description = "This endpoint is used to revoke a user API key. In estuary, every user is assigned with an API key, this API key is generated and issued for each user and is primarily used to access all estuary features. This endpoint can be used to revoke the API key that's assigned to the user. Revoked API keys are completely deleted and are not recoverable.", security = {
@@ -70,7 +70,7 @@ public interface UserApi {
     @Operation(summary = "Create API keys for a user", description = "This endpoint is used to create API keys for a user. In estuary, each user is given an API key to access all features.", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "User" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = MainGetApiKeysResp.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiGetApiKeysResp.class))),
         
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
@@ -80,7 +80,7 @@ public interface UserApi {
     @RequestMapping(value = "/user/api-keys",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<MainGetApiKeysResp> userApiKeysPost(@Parameter(in = ParameterIn.QUERY, description = "Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h" ,schema=@Schema()) @Valid @RequestParam(value = "expiry", required = false) String expiry, @Parameter(in = ParameterIn.QUERY, description = "Permissions -- currently unused" ,schema=@Schema()) @Valid @RequestParam(value = "perms", required = false) String perms);
+    ResponseEntity<ApiGetApiKeysResp> userApiKeysPost(@Parameter(in = ParameterIn.QUERY, description = "Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h" ,schema=@Schema()) @Valid @RequestParam(value = "expiry", required = false) String expiry, @Parameter(in = ParameterIn.QUERY, description = "Permissions -- currently unused" ,schema=@Schema()) @Valid @RequestParam(value = "perms", required = false) String perms);
 
 
     @Operation(summary = "Export user data", description = "This endpoint is used to get API keys for a user.", security = {
@@ -97,7 +97,7 @@ public interface UserApi {
     ResponseEntity<String> userExportGet();
 
 
-    @Operation(summary = "Get stats for the current user", description = "This endpoint is used to geet stats for the current user.", security = {
+    @Operation(summary = "Get stats for the current user", description = "This endpoint is used to get stats for the current user.", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "User" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),

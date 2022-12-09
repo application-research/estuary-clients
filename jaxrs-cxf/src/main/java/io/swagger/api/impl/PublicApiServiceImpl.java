@@ -1,6 +1,7 @@
 package io.swagger.api.impl;
 
 import io.swagger.api.*;
+import io.swagger.model.ApiPublicNodeInfo;
 import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
@@ -52,7 +53,7 @@ public class PublicApiServiceImpl implements PublicApi {
      * This endpoint returns information about the node
      *
      */
-    public String publicInfoGet() {
+    public ApiPublicNodeInfo publicInfoGet() {
         // TODO: Implement...
         
         return null;

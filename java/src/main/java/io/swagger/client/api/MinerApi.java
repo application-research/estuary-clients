@@ -26,6 +26,12 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
+import io.swagger.client.model.ApiClaimMsgResponse;
+import io.swagger.client.model.ApiClaimResponse;
+import io.swagger.client.model.ApiEmptyResp;
+import io.swagger.client.model.MinerClaimMinerBody;
+import io.swagger.client.model.MinerMinerSetInfoParams;
+import io.swagger.client.model.MinerSuspendMinerBody;
 import io.swagger.client.model.UtilHttpError;
 
 import java.lang.reflect.Type;
@@ -53,6 +59,646 @@ public class MinerApi {
         this.apiClient = apiClient;
     }
 
+    /**
+     * Build call for minerClaimMinerGet
+     * @param miner Miner claim message (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call minerClaimMinerGetCall(String miner, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/miner/claim/{miner}"
+            .replaceAll("\\{" + "miner" + "\\}", apiClient.escapeString(miner.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call minerClaimMinerGetValidateBeforeCall(String miner, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'miner' is set
+        if (miner == null) {
+            throw new ApiException("Missing the required parameter 'miner' when calling minerClaimMinerGet(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = minerClaimMinerGetCall(miner, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Get Claim Miner Message
+     * This endpoint lets a user get the message in order to claim a miner
+     * @param miner Miner claim message (required)
+     * @return ApiClaimMsgResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiClaimMsgResponse minerClaimMinerGet(String miner) throws ApiException {
+        ApiResponse<ApiClaimMsgResponse> resp = minerClaimMinerGetWithHttpInfo(miner);
+        return resp.getData();
+    }
+
+    /**
+     * Get Claim Miner Message
+     * This endpoint lets a user get the message in order to claim a miner
+     * @param miner Miner claim message (required)
+     * @return ApiResponse&lt;ApiClaimMsgResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiClaimMsgResponse> minerClaimMinerGetWithHttpInfo(String miner) throws ApiException {
+        com.squareup.okhttp.Call call = minerClaimMinerGetValidateBeforeCall(miner, null, null);
+        Type localVarReturnType = new TypeToken<ApiClaimMsgResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Get Claim Miner Message (asynchronously)
+     * This endpoint lets a user get the message in order to claim a miner
+     * @param miner Miner claim message (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call minerClaimMinerGetAsync(String miner, final ApiCallback<ApiClaimMsgResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = minerClaimMinerGetValidateBeforeCall(miner, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiClaimMsgResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for minerClaimPost
+     * @param body Claim Miner Body (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call minerClaimPostCall(MinerClaimMinerBody body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/miner/claim";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "*/*"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call minerClaimPostValidateBeforeCall(MinerClaimMinerBody body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling minerClaimPost(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = minerClaimPostCall(body, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Claim Miner
+     * This endpoint lets a user claim a miner
+     * @param body Claim Miner Body (required)
+     * @return ApiClaimResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiClaimResponse minerClaimPost(MinerClaimMinerBody body) throws ApiException {
+        ApiResponse<ApiClaimResponse> resp = minerClaimPostWithHttpInfo(body);
+        return resp.getData();
+    }
+
+    /**
+     * Claim Miner
+     * This endpoint lets a user claim a miner
+     * @param body Claim Miner Body (required)
+     * @return ApiResponse&lt;ApiClaimResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiClaimResponse> minerClaimPostWithHttpInfo(MinerClaimMinerBody body) throws ApiException {
+        com.squareup.okhttp.Call call = minerClaimPostValidateBeforeCall(body, null, null);
+        Type localVarReturnType = new TypeToken<ApiClaimResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Claim Miner (asynchronously)
+     * This endpoint lets a user claim a miner
+     * @param body Claim Miner Body (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call minerClaimPostAsync(MinerClaimMinerBody body, final ApiCallback<ApiClaimResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = minerClaimPostValidateBeforeCall(body, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiClaimResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for minerSetInfoMinerPut
+     * @param body Miner set info params (required)
+     * @param miner Miner to set info for (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call minerSetInfoMinerPutCall(MinerMinerSetInfoParams body, String miner, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/miner/set-info/{miner}"
+            .replaceAll("\\{" + "miner" + "\\}", apiClient.escapeString(miner.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "*/*"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call minerSetInfoMinerPutValidateBeforeCall(MinerMinerSetInfoParams body, String miner, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling minerSetInfoMinerPut(Async)");
+        }
+        // verify the required parameter 'miner' is set
+        if (miner == null) {
+            throw new ApiException("Missing the required parameter 'miner' when calling minerSetInfoMinerPut(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = minerSetInfoMinerPutCall(body, miner, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Set Miner Info
+     * This endpoint lets a user set miner info.
+     * @param body Miner set info params (required)
+     * @param miner Miner to set info for (required)
+     * @return ApiEmptyResp
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiEmptyResp minerSetInfoMinerPut(MinerMinerSetInfoParams body, String miner) throws ApiException {
+        ApiResponse<ApiEmptyResp> resp = minerSetInfoMinerPutWithHttpInfo(body, miner);
+        return resp.getData();
+    }
+
+    /**
+     * Set Miner Info
+     * This endpoint lets a user set miner info.
+     * @param body Miner set info params (required)
+     * @param miner Miner to set info for (required)
+     * @return ApiResponse&lt;ApiEmptyResp&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiEmptyResp> minerSetInfoMinerPutWithHttpInfo(MinerMinerSetInfoParams body, String miner) throws ApiException {
+        com.squareup.okhttp.Call call = minerSetInfoMinerPutValidateBeforeCall(body, miner, null, null);
+        Type localVarReturnType = new TypeToken<ApiEmptyResp>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Set Miner Info (asynchronously)
+     * This endpoint lets a user set miner info.
+     * @param body Miner set info params (required)
+     * @param miner Miner to set info for (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call minerSetInfoMinerPutAsync(MinerMinerSetInfoParams body, String miner, final ApiCallback<ApiEmptyResp> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = minerSetInfoMinerPutValidateBeforeCall(body, miner, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiEmptyResp>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for minerSuspendMinerPost
+     * @param body Suspend Miner Body (required)
+     * @param miner Miner to suspend (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call minerSuspendMinerPostCall(MinerSuspendMinerBody body, String miner, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
+        
+        // create path and map variables
+        String localVarPath = "/miner/suspend/{miner}"
+            .replaceAll("\\{" + "miner" + "\\}", apiClient.escapeString(miner.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "*/*"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call minerSuspendMinerPostValidateBeforeCall(MinerSuspendMinerBody body, String miner, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling minerSuspendMinerPost(Async)");
+        }
+        // verify the required parameter 'miner' is set
+        if (miner == null) {
+            throw new ApiException("Missing the required parameter 'miner' when calling minerSuspendMinerPost(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = minerSuspendMinerPostCall(body, miner, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Suspend Miner
+     * This endpoint lets a user suspend a miner.
+     * @param body Suspend Miner Body (required)
+     * @param miner Miner to suspend (required)
+     * @return ApiEmptyResp
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiEmptyResp minerSuspendMinerPost(MinerSuspendMinerBody body, String miner) throws ApiException {
+        ApiResponse<ApiEmptyResp> resp = minerSuspendMinerPostWithHttpInfo(body, miner);
+        return resp.getData();
+    }
+
+    /**
+     * Suspend Miner
+     * This endpoint lets a user suspend a miner.
+     * @param body Suspend Miner Body (required)
+     * @param miner Miner to suspend (required)
+     * @return ApiResponse&lt;ApiEmptyResp&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiEmptyResp> minerSuspendMinerPostWithHttpInfo(MinerSuspendMinerBody body, String miner) throws ApiException {
+        com.squareup.okhttp.Call call = minerSuspendMinerPostValidateBeforeCall(body, miner, null, null);
+        Type localVarReturnType = new TypeToken<ApiEmptyResp>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Suspend Miner (asynchronously)
+     * This endpoint lets a user suspend a miner.
+     * @param body Suspend Miner Body (required)
+     * @param miner Miner to suspend (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call minerSuspendMinerPostAsync(MinerSuspendMinerBody body, String miner, final ApiCallback<ApiEmptyResp> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = minerSuspendMinerPostValidateBeforeCall(body, miner, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiEmptyResp>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for minerUnsuspendMinerPut
+     * @param miner Miner to unsuspend (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call minerUnsuspendMinerPutCall(String miner, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/miner/unsuspend/{miner}"
+            .replaceAll("\\{" + "miner" + "\\}", apiClient.escapeString(miner.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        return apiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call minerUnsuspendMinerPutValidateBeforeCall(String miner, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'miner' is set
+        if (miner == null) {
+            throw new ApiException("Missing the required parameter 'miner' when calling minerUnsuspendMinerPut(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = minerUnsuspendMinerPutCall(miner, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Unuspend Miner
+     * This endpoint lets a user unsuspend a miner.
+     * @param miner Miner to unsuspend (required)
+     * @return ApiEmptyResp
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiEmptyResp minerUnsuspendMinerPut(String miner) throws ApiException {
+        ApiResponse<ApiEmptyResp> resp = minerUnsuspendMinerPutWithHttpInfo(miner);
+        return resp.getData();
+    }
+
+    /**
+     * Unuspend Miner
+     * This endpoint lets a user unsuspend a miner.
+     * @param miner Miner to unsuspend (required)
+     * @return ApiResponse&lt;ApiEmptyResp&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ApiEmptyResp> minerUnsuspendMinerPutWithHttpInfo(String miner) throws ApiException {
+        com.squareup.okhttp.Call call = minerUnsuspendMinerPutValidateBeforeCall(miner, null, null);
+        Type localVarReturnType = new TypeToken<ApiEmptyResp>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Unuspend Miner (asynchronously)
+     * This endpoint lets a user unsuspend a miner.
+     * @param miner Miner to unsuspend (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call minerUnsuspendMinerPutAsync(String miner, final ApiCallback<ApiEmptyResp> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = minerUnsuspendMinerPutValidateBeforeCall(miner, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ApiEmptyResp>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
     /**
      * Build call for publicMinersDealsMinerGet
      * @param miner Filter by miner (required)

@@ -14,7 +14,7 @@ open class UtilContentCreateBody: JSONEncodable {
     public var location: String?
     public var name: String?
     public var root: String?
-    public var type: Int32?
+    public var type: UtilContentType?
 
     public init() {}
 

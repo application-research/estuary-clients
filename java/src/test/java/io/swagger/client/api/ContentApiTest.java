@@ -12,10 +12,8 @@
 
 package io.swagger.client.api;
 
-import java.io.File;
 import io.swagger.client.model.MainImportDealBody;
 import io.swagger.client.model.UtilContentAddIpfsBody;
-import io.swagger.client.model.UtilContentAddResponse;
 import io.swagger.client.model.UtilContentCreateBody;
 import io.swagger.client.model.UtilHttpError;
 import org.junit.Test;
@@ -37,6 +35,21 @@ public class ContentApiTest {
     private final ContentApi api = new ContentApi();
 
     /**
+     * Create an Estuary invite
+     *
+     * This endpoint is used to create an estuary invite.
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void adminInvitesCodePostTest() throws Exception {
+        String code = null;
+        String response = api.adminInvitesCodePost(code);
+
+        // TODO: test validations
+    }
+    /**
      * Get Estuary invites
      *
      * This endpoint is used to list all estuary invites.
@@ -51,34 +64,16 @@ public class ContentApiTest {
         // TODO: test validations
     }
     /**
-     * Create an Estuary invite
+     * Upload content via a car file
      *
-     * This endpoint is used to create an estuary invite.
-     *
-     * @throws Exception
-     *          if the Api call fails
-     */
-    @Test
-    public void adminInvitesPostTest() throws Exception {
-        String code = null;
-        String response = api.adminInvitesPost(code);
-
-        // TODO: test validations
-    }
-    /**
-     * Add Car object
-     *
-     * This endpoint is used to add a car object to the network. The object can be a file or a directory.
+     * This endpoint uploads content via a car file
      *
      * @throws Exception
      *          if the Api call fails
      */
     @Test
     public void contentAddCarPostTest() throws Exception {
-        String body = null;
-        String ignoreDupes = null;
-        String filename = null;
-        UtilContentAddResponse response = api.contentAddCarPost(body, ignoreDupes, filename);
+        String response = api.contentAddCarPost();
 
         // TODO: test validations
     }
@@ -99,23 +94,16 @@ public class ContentApiTest {
         // TODO: test validations
     }
     /**
-     * Add new content
+     * Upload a file
      *
-     * This endpoint is used to upload new content.
+     * This endpoint uploads a file.
      *
      * @throws Exception
      *          if the Api call fails
      */
     @Test
     public void contentAddPostTest() throws Exception {
-        File data = null;
-        String filename = null;
-        String coluuid = null;
-        Integer replication = null;
-        String ignoreDupes = null;
-        String lazyProvide = null;
-        String dir = null;
-        UtilContentAddResponse response = api.contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir);
+        String response = api.contentAddPost();
 
         // TODO: test validations
     }
@@ -304,7 +292,7 @@ public class ContentApiTest {
     /**
      * Get content statistics
      *
-     * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+     * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
      *
      * @throws Exception
      *          if the Api call fails

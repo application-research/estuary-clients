@@ -61,7 +61,7 @@ class CollectionsApi {
   /// Deletes a content from a collection
   ///
   /// This endpoint is used to delete an existing content from an existing collection. If two or more files with the same contentid exist in the collection, delete the one in the specified path
-  Future<String> collectionsColuuidContentsDelete(MainDeleteContentFromCollectionBody body, String coluuid) async {
+  Future<String> collectionsColuuidContentsDelete(ApiDeleteContentFromCollectionBody body, String coluuid) async {
     Object postBody = body;
 
     // verify required params are set
@@ -166,7 +166,7 @@ class CollectionsApi {
   /// Get contents in a collection
   ///
   /// This endpoint is used to get contents in a collection. If no colpath query param is passed
-  Future<String> collectionsColuuidGet(String coluuid, { String dir }) async {
+  Future<List<CollectionsCollectionListResponse>> collectionsColuuidGet(String coluuid, { String dir }) async {
     Object postBody = null;
 
     // verify required params are set
@@ -212,7 +212,7 @@ class CollectionsApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          apiClient.deserialize(response.body, 'String') as String ;
+        (apiClient.deserialize(response.body, 'List<CollectionsCollectionListResponse>') as List).map((item) => item as CollectionsCollectionListResponse).toList();
     } else {
       return null;
     }
@@ -385,7 +385,7 @@ class CollectionsApi {
   /// Create a new collection
   ///
   /// This endpoint is used to create a new collection. A collection is a representaion of a group of objects added on the estuary. This endpoint can be used to create a new collection.
-  Future<CollectionsCollection> collectionsPost(MainCreateCollectionBody body) async {
+  Future<CollectionsCollection> collectionsPost(ApiCreateCollectionBody body) async {
     Object postBody = body;
 
     // verify required params are set

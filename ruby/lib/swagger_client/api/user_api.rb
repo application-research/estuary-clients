@@ -19,7 +19,7 @@ module SwaggerClient
     # Get API keys for a user
     # This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
     # @param [Hash] opts the optional parameters
-    # @return [Array<MainGetApiKeysResp>]
+    # @return [Array<ApiGetApiKeysResp>]
     def user_api_keys_get(opts = {})
       data, _status_code, _headers = user_api_keys_get_with_http_info(opts)
       data
@@ -28,7 +28,7 @@ module SwaggerClient
     # Get API keys for a user
     # This endpoint is used to get API keys for a user. In estuary, each user can be given multiple API keys (tokens). This endpoint can be used to retrieve all available API keys for a given user.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(Array<MainGetApiKeysResp>, Integer, Hash)>] Array<MainGetApiKeysResp> data, response status code and response headers
+    # @return [Array<(Array<ApiGetApiKeysResp>, Integer, Hash)>] Array<ApiGetApiKeysResp> data, response status code and response headers
     def user_api_keys_get_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: UserApi.user_api_keys_get ...'
@@ -50,7 +50,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] || 'Array<MainGetApiKeysResp>' 
+      return_type = opts[:return_type] || 'Array<ApiGetApiKeysResp>' 
 
       auth_names = opts[:auth_names] || ['bearerAuth']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
@@ -127,7 +127,7 @@ module SwaggerClient
     # @param [Hash] opts the optional parameters
     # @option opts [String] :expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
     # @option opts [String] :perms Permissions -- currently unused
-    # @return [MainGetApiKeysResp]
+    # @return [ApiGetApiKeysResp]
     def user_api_keys_post(opts = {})
       data, _status_code, _headers = user_api_keys_post_with_http_info(opts)
       data
@@ -138,7 +138,7 @@ module SwaggerClient
     # @param [Hash] opts the optional parameters
     # @option opts [String] :expiry Expiration - Expiration - Valid time units are ns, us (or µs),  ms,  s,  m,  h.  for  example  300h
     # @option opts [String] :perms Permissions -- currently unused
-    # @return [Array<(MainGetApiKeysResp, Integer, Hash)>] MainGetApiKeysResp data, response status code and response headers
+    # @return [Array<(ApiGetApiKeysResp, Integer, Hash)>] ApiGetApiKeysResp data, response status code and response headers
     def user_api_keys_post_with_http_info(opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: UserApi.user_api_keys_post ...'
@@ -162,7 +162,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] || 'MainGetApiKeysResp' 
+      return_type = opts[:return_type] || 'ApiGetApiKeysResp' 
 
       auth_names = opts[:auth_names] || ['bearerAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
@@ -229,7 +229,7 @@ module SwaggerClient
       return data, status_code, headers
     end
     # Get stats for the current user
-    # This endpoint is used to geet stats for the current user.
+    # This endpoint is used to get stats for the current user.
     # @param [Hash] opts the optional parameters
     # @return [String]
     def user_stats_get(opts = {})
@@ -238,7 +238,7 @@ module SwaggerClient
     end
 
     # Get stats for the current user
-    # This endpoint is used to geet stats for the current user.
+    # This endpoint is used to get stats for the current user.
     # @param [Hash] opts the optional parameters
     # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
     def user_stats_get_with_http_info(opts = {})

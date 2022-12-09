@@ -32,6 +32,101 @@ class ContentApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
+    def admin_invites_code_post(self, code, **kwargs):  # noqa: E501
+        """Create an Estuary invite  # noqa: E501
+
+        This endpoint is used to create an estuary invite.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.admin_invites_code_post(code, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str code: Invite code to be created (required)
+        :return: str
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.admin_invites_code_post_with_http_info(code, **kwargs)  # noqa: E501
+        else:
+            (data) = self.admin_invites_code_post_with_http_info(code, **kwargs)  # noqa: E501
+            return data
+
+    def admin_invites_code_post_with_http_info(self, code, **kwargs):  # noqa: E501
+        """Create an Estuary invite  # noqa: E501
+
+        This endpoint is used to create an estuary invite.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.admin_invites_code_post_with_http_info(code, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str code: Invite code to be created (required)
+        :return: str
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['code']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method admin_invites_code_post" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'code' is set
+        if ('code' not in params or
+                params['code'] is None):
+            raise ValueError("Missing the required parameter `code` when calling `admin_invites_code_post`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'code' in params:
+            path_params['code'] = params['code']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['bearerAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/admin/invites/{code}', 'POST',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='str',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def admin_invites_get(self, **kwargs):  # noqa: E501
         """Get Estuary invites  # noqa: E501
 
@@ -119,144 +214,43 @@ class ContentApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def admin_invites_post(self, code, **kwargs):  # noqa: E501
-        """Create an Estuary invite  # noqa: E501
+    def content_add_car_post(self, **kwargs):  # noqa: E501
+        """Upload content via a car file  # noqa: E501
 
-        This endpoint is used to create an estuary invite.  # noqa: E501
+        This endpoint uploads content via a car file  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.admin_invites_post(code, async_req=True)
+        >>> thread = api.content_add_car_post(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str code: Invite code to be created (required)
         :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.admin_invites_post_with_http_info(code, **kwargs)  # noqa: E501
+            return self.content_add_car_post_with_http_info(**kwargs)  # noqa: E501
         else:
-            (data) = self.admin_invites_post_with_http_info(code, **kwargs)  # noqa: E501
+            (data) = self.content_add_car_post_with_http_info(**kwargs)  # noqa: E501
             return data
 
-    def admin_invites_post_with_http_info(self, code, **kwargs):  # noqa: E501
-        """Create an Estuary invite  # noqa: E501
+    def content_add_car_post_with_http_info(self, **kwargs):  # noqa: E501
+        """Upload content via a car file  # noqa: E501
 
-        This endpoint is used to create an estuary invite.  # noqa: E501
+        This endpoint uploads content via a car file  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.admin_invites_post_with_http_info(code, async_req=True)
+        >>> thread = api.content_add_car_post_with_http_info(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str code: Invite code to be created (required)
         :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['code']  # noqa: E501
-        all_params.append('async_req')
-        all_params.append('_return_http_data_only')
-        all_params.append('_preload_content')
-        all_params.append('_request_timeout')
-
-        params = locals()
-        for key, val in six.iteritems(params['kwargs']):
-            if key not in all_params:
-                raise TypeError(
-                    "Got an unexpected keyword argument '%s'"
-                    " to method admin_invites_post" % key
-                )
-            params[key] = val
-        del params['kwargs']
-        # verify the required parameter 'code' is set
-        if ('code' not in params or
-                params['code'] is None):
-            raise ValueError("Missing the required parameter `code` when calling `admin_invites_post`")  # noqa: E501
-
-        collection_formats = {}
-
-        path_params = {}
-        if 'code' in params:
-            path_params['code'] = params['code']  # noqa: E501
-
-        query_params = []
-
-        header_params = {}
-
-        form_params = []
-        local_var_files = {}
-
-        body_params = None
-        # HTTP header `Accept`
-        header_params['Accept'] = self.api_client.select_header_accept(
-            ['application/json'])  # noqa: E501
-
-        # Authentication setting
-        auth_settings = ['bearerAuth']  # noqa: E501
-
-        return self.api_client.call_api(
-            '/admin/invites', 'POST',
-            path_params,
-            query_params,
-            header_params,
-            body=body_params,
-            post_params=form_params,
-            files=local_var_files,
-            response_type='str',  # noqa: E501
-            auth_settings=auth_settings,
-            async_req=params.get('async_req'),
-            _return_http_data_only=params.get('_return_http_data_only'),
-            _preload_content=params.get('_preload_content', True),
-            _request_timeout=params.get('_request_timeout'),
-            collection_formats=collection_formats)
-
-    def content_add_car_post(self, body, **kwargs):  # noqa: E501
-        """Add Car object  # noqa: E501
-
-        This endpoint is used to add a car object to the network. The object can be a file or a directory.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.content_add_car_post(body, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str body: Car (required)
-        :param str ignore_dupes: Ignore Dupes
-        :param str filename: Filename
-        :return: UtilContentAddResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-        kwargs['_return_http_data_only'] = True
-        if kwargs.get('async_req'):
-            return self.content_add_car_post_with_http_info(body, **kwargs)  # noqa: E501
-        else:
-            (data) = self.content_add_car_post_with_http_info(body, **kwargs)  # noqa: E501
-            return data
-
-    def content_add_car_post_with_http_info(self, body, **kwargs):  # noqa: E501
-        """Add Car object  # noqa: E501
-
-        This endpoint is used to add a car object to the network. The object can be a file or a directory.  # noqa: E501
-        This method makes a synchronous HTTP request by default. To make an
-        asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.content_add_car_post_with_http_info(body, async_req=True)
-        >>> result = thread.get()
-
-        :param async_req bool
-        :param str body: Car (required)
-        :param str ignore_dupes: Ignore Dupes
-        :param str filename: Filename
-        :return: UtilContentAddResponse
-                 If the method is called asynchronously,
-                 returns the request thread.
-        """
-
-        all_params = ['body', 'ignore_dupes', 'filename']  # noqa: E501
+        all_params = []  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -271,20 +265,12 @@ class ContentApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'body' is set
-        if ('body' not in params or
-                params['body'] is None):
-            raise ValueError("Missing the required parameter `body` when calling `content_add_car_post`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if 'ignore_dupes' in params:
-            query_params.append(('ignore-dupes', params['ignore_dupes']))  # noqa: E501
-        if 'filename' in params:
-            query_params.append(('filename', params['filename']))  # noqa: E501
 
         header_params = {}
 
@@ -292,15 +278,9 @@ class ContentApi(object):
         local_var_files = {}
 
         body_params = None
-        if 'body' in params:
-            body_params = params['body']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['*/*'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['bearerAuth']  # noqa: E501
@@ -313,7 +293,7 @@ class ContentApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='UtilContentAddResponse',  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -424,57 +404,43 @@ class ContentApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def content_add_post(self, data, filename, **kwargs):  # noqa: E501
-        """Add new content  # noqa: E501
+    def content_add_post(self, **kwargs):  # noqa: E501
+        """Upload a file  # noqa: E501
 
-        This endpoint is used to upload new content.  # noqa: E501
+        This endpoint uploads a file.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.content_add_post(data, filename, async_req=True)
+        >>> thread = api.content_add_post(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str data: (required)
-        :param str filename: (required)
-        :param str coluuid: Collection UUID
-        :param int replication: Replication value
-        :param str ignore_dupes: Ignore Dupes true/false
-        :param str lazy_provide: Lazy Provide true/false
-        :param str dir: Directory
-        :return: UtilContentAddResponse
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.content_add_post_with_http_info(data, filename, **kwargs)  # noqa: E501
+            return self.content_add_post_with_http_info(**kwargs)  # noqa: E501
         else:
-            (data) = self.content_add_post_with_http_info(data, filename, **kwargs)  # noqa: E501
+            (data) = self.content_add_post_with_http_info(**kwargs)  # noqa: E501
             return data
 
-    def content_add_post_with_http_info(self, data, filename, **kwargs):  # noqa: E501
-        """Add new content  # noqa: E501
+    def content_add_post_with_http_info(self, **kwargs):  # noqa: E501
+        """Upload a file  # noqa: E501
 
-        This endpoint is used to upload new content.  # noqa: E501
+        This endpoint uploads a file.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.content_add_post_with_http_info(data, filename, async_req=True)
+        >>> thread = api.content_add_post_with_http_info(async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param str data: (required)
-        :param str filename: (required)
-        :param str coluuid: Collection UUID
-        :param int replication: Replication value
-        :param str ignore_dupes: Ignore Dupes true/false
-        :param str lazy_provide: Lazy Provide true/false
-        :param str dir: Directory
-        :return: UtilContentAddResponse
+        :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['data', 'filename', 'coluuid', 'replication', 'ignore_dupes', 'lazy_provide', 'dir']  # noqa: E501
+        all_params = []  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -489,48 +455,22 @@ class ContentApi(object):
                 )
             params[key] = val
         del params['kwargs']
-        # verify the required parameter 'data' is set
-        if ('data' not in params or
-                params['data'] is None):
-            raise ValueError("Missing the required parameter `data` when calling `content_add_post`")  # noqa: E501
-        # verify the required parameter 'filename' is set
-        if ('filename' not in params or
-                params['filename'] is None):
-            raise ValueError("Missing the required parameter `filename` when calling `content_add_post`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if 'coluuid' in params:
-            query_params.append(('coluuid', params['coluuid']))  # noqa: E501
-        if 'replication' in params:
-            query_params.append(('replication', params['replication']))  # noqa: E501
-        if 'ignore_dupes' in params:
-            query_params.append(('ignore-dupes', params['ignore_dupes']))  # noqa: E501
-        if 'lazy_provide' in params:
-            query_params.append(('lazy-provide', params['lazy_provide']))  # noqa: E501
-        if 'dir' in params:
-            query_params.append(('dir', params['dir']))  # noqa: E501
 
         header_params = {}
 
         form_params = []
         local_var_files = {}
-        if 'data' in params:
-            local_var_files['data'] = params['data']  # noqa: E501
-        if 'filename' in params:
-            form_params.append(('filename', params['filename']))  # noqa: E501
 
         body_params = None
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
-
-        # HTTP header `Content-Type`
-        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
-            ['multipart/form-data'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['bearerAuth']  # noqa: E501
@@ -543,7 +483,7 @@ class ContentApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='UtilContentAddResponse',  # noqa: E501
+            response_type='str',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1706,7 +1646,7 @@ class ContentApi(object):
     def content_stats_get(self, limit, offset, **kwargs):  # noqa: E501
         """Get content statistics  # noqa: E501
 
-        This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten  # noqa: E501
+        This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.content_stats_get(limit, offset, async_req=True)
@@ -1729,7 +1669,7 @@ class ContentApi(object):
     def content_stats_get_with_http_info(self, limit, offset, **kwargs):  # noqa: E501
         """Get content statistics  # noqa: E501
 
-        This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten  # noqa: E501
+        This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.content_stats_get_with_http_info(limit, offset, async_req=True)

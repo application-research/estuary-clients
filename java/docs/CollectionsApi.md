@@ -94,7 +94,7 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 CollectionsApi apiInstance = new CollectionsApi();
-MainDeleteContentFromCollectionBody body = new MainDeleteContentFromCollectionBody(); // MainDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
+ApiDeleteContentFromCollectionBody body = new ApiDeleteContentFromCollectionBody(); // ApiDeleteContentFromCollectionBody | Variable to use when filtering for files (must be either 'path' or 'content_id')
 String coluuid = "coluuid_example"; // String | Collection ID
 try {
     String result = apiInstance.collectionsColuuidContentsDelete(body, coluuid);
@@ -109,7 +109,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainDeleteContentFromCollectionBody**](MainDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) |
+ **body** | [**ApiDeleteContentFromCollectionBody**](ApiDeleteContentFromCollectionBody.md)| Variable to use when filtering for files (must be either &#x27;path&#x27; or &#x27;content_id&#x27;) |
  **coluuid** | **String**| Collection ID |
 
 ### Return type
@@ -182,7 +182,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsColuuidGet"></a>
 # **collectionsColuuidGet**
-> String collectionsColuuidGet(coluuid, dir)
+> List&lt;CollectionsCollectionListResponse&gt; collectionsColuuidGet(coluuid, dir)
 
 Get contents in a collection
 
@@ -209,7 +209,7 @@ CollectionsApi apiInstance = new CollectionsApi();
 String coluuid = "coluuid_example"; // String | coluuid
 String dir = "dir_example"; // String | Directory
 try {
-    String result = apiInstance.collectionsColuuidGet(coluuid, dir);
+    List<CollectionsCollectionListResponse> result = apiInstance.collectionsColuuidGet(coluuid, dir);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollectionsApi#collectionsColuuidGet");
@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**String**
+[**List&lt;CollectionsCollectionListResponse&gt;**](CollectionsCollectionListResponse.md)
 
 ### Authorization
 
@@ -432,7 +432,7 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 CollectionsApi apiInstance = new CollectionsApi();
-MainCreateCollectionBody body = new MainCreateCollectionBody(); // MainCreateCollectionBody | Collection name and description
+ApiCreateCollectionBody body = new ApiCreateCollectionBody(); // ApiCreateCollectionBody | Collection name and description
 try {
     CollectionsCollection result = apiInstance.collectionsPost(body);
     System.out.println(result);
@@ -446,7 +446,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**MainCreateCollectionBody**](MainCreateCollectionBody.md)| Collection name and description |
+ **body** | [**ApiCreateCollectionBody**](ApiCreateCollectionBody.md)| Collection name and description |
 
 ### Return type
 

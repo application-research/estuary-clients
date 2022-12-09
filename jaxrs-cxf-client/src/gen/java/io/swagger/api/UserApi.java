@@ -1,6 +1,6 @@
 package io.swagger.api;
 
-import io.swagger.model.MainGetApiKeysResp;
+import io.swagger.model.ApiGetApiKeysResp;
 import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
@@ -39,11 +39,11 @@ public interface UserApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Get API keys for a user", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = MainGetApiKeysResp.class)))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = ApiGetApiKeysResp.class)))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public List<MainGetApiKeysResp> userApiKeysGet();
+    public List<ApiGetApiKeysResp> userApiKeysGet();
 
     /**
      * Revoke a User API Key.
@@ -72,11 +72,11 @@ public interface UserApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Create API keys for a user", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = MainGetApiKeysResp.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiGetApiKeysResp.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public MainGetApiKeysResp userApiKeysPost(@QueryParam("expiry")String expiry, @QueryParam("perms")String perms);
+    public ApiGetApiKeysResp userApiKeysPost(@QueryParam("expiry")String expiry, @QueryParam("perms")String perms);
 
     /**
      * Export user data
@@ -97,7 +97,7 @@ public interface UserApi  {
     /**
      * Get stats for the current user
      *
-     * This endpoint is used to geet stats for the current user.
+     * This endpoint is used to get stats for the current user.
      *
      */
     @GET

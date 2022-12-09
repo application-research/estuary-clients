@@ -10,6 +10,7 @@
  * Do not edit the class manually.
  */
 import { TypesIpfsPin } from './typesIpfsPin';
+import { TypesPinningStatus } from './typesPinningStatus';
 
 export interface TypesIpfsPinStatusResponse { 
     created?: string;
@@ -17,5 +18,5 @@ export interface TypesIpfsPinStatusResponse {
     info?: any;
     pin?: TypesIpfsPin;
     requestid?: string;
-    status?: string;
+    status?: TypesPinningStatus;
 }

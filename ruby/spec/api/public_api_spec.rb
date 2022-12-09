@@ -59,7 +59,7 @@ describe 'PublicApi' do
   # Get public node info
   # This endpoint returns information about the node
   # @param [Hash] opts the optional parameters
-  # @return [String]
+  # @return [ApiPublicNodeInfo]
   describe 'public_info_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

@@ -14,5 +14,5 @@ type TypesIpfsPinStatusResponse struct {
 	Info *interface{} `json:"info,omitempty"`
 	Pin *TypesIpfsPin `json:"pin,omitempty"`
 	Requestid string `json:"requestid,omitempty"`
-	Status string `json:"status,omitempty"`
+	Status *TypesPinningStatus `json:"status,omitempty"`
 }

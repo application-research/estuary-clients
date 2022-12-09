@@ -16,6 +16,7 @@ import java.text.SimpleDateFormat
 import io.swagger.client.model.CreateCollectionBody
 import io.swagger.client.model.DeleteContentFromCollectionBody
 import io.swagger.client.model.collections.Collection
+import io.swagger.client.model.collections.CollectionListResponse
 import io.swagger.client.model.util.HttpError
 import io.swagger.client.{ApiInvoker, ApiException}
 
@@ -167,9 +168,9 @@ class CollectionsApi(
    *
    * @param coluuid coluuid 
    * @param dir Directory (optional)
-   * @return String
+   * @return List[collections.CollectionListResponse]
    */
-  def collectionsColuuidGet(coluuid: String, dir: Option[String] = None): Option[String] = {
+  def collectionsColuuidGet(coluuid: String, dir: Option[String] = None): Option[List[collections.CollectionListResponse]] = {
     val await = Try(Await.result(collectionsColuuidGetAsync(coluuid, dir), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -183,9 +184,9 @@ class CollectionsApi(
    *
    * @param coluuid coluuid 
    * @param dir Directory (optional)
-   * @return Future(String)
+   * @return Future(List[collections.CollectionListResponse])
    */
-  def collectionsColuuidGetAsync(coluuid: String, dir: Option[String] = None): Future[String] = {
+  def collectionsColuuidGetAsync(coluuid: String, dir: Option[String] = None): Future[List[collections.CollectionListResponse]] = {
       helper.collectionsColuuidGet(coluuid, dir)
   }
 
@@ -361,7 +362,7 @@ class CollectionsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) 
 
   def collectionsColuuidGet(coluuid: String,
     dir: Option[String] = None
-    )(implicit reader: ClientResponseReader[String]): Future[String] = {
+    )(implicit reader: ClientResponseReader[List[collections.CollectionListResponse]]): Future[List[collections.CollectionListResponse]] = {
     // create path and map variables
     val path = (addFmt("/collections/{coluuid}")
       replaceAll("\\{" + "coluuid" + "\\}", coluuid.toString))

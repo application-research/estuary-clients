@@ -16,7 +16,7 @@ open class DealsAPI {
      - parameter body: (body) The size of the deal in bytes, the replication factor, and the duration of the deal in blocks 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func dealEstimatePost(body: MainEstimateDealBody, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
+    open class func dealEstimatePost(body: ApiEstimateDealBody, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
         dealEstimatePostWithRequestBuilder(body: body).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -35,7 +35,7 @@ open class DealsAPI {
 
      - returns: RequestBuilder<String> 
      */
-    open class func dealEstimatePostWithRequestBuilder(body: MainEstimateDealBody) -> RequestBuilder<String> {
+    open class func dealEstimatePostWithRequestBuilder(body: ApiEstimateDealBody) -> RequestBuilder<String> {
         let path = "/deal/estimate"
         let URLString = estuary-clientAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
@@ -285,7 +285,7 @@ open class DealsAPI {
      - parameter body: (body) Channel ID 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func dealTransferStatusPost(body: MainChannelIDParam, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
+    open class func dealTransferStatusPost(body: ApiChannelIDParam, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
         dealTransferStatusPostWithRequestBuilder(body: body).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -304,7 +304,7 @@ open class DealsAPI {
 
      - returns: RequestBuilder<String> 
      */
-    open class func dealTransferStatusPostWithRequestBuilder(body: MainChannelIDParam) -> RequestBuilder<String> {
+    open class func dealTransferStatusPostWithRequestBuilder(body: ApiChannelIDParam) -> RequestBuilder<String> {
         let path = "/deal/transfer/status"
         let URLString = estuary-clientAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)

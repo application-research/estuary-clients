@@ -33,9 +33,10 @@ import estuary-client.Paths
 import estuary-client.infrastructure.ApiPrincipal
 
 
+import io.swagger.server.models.ApicreateCollectionBody
+import io.swagger.server.models.ApideleteContentFromCollectionBody
 import io.swagger.server.models.CollectionsCollection
-import io.swagger.server.models.MaincreateCollectionBody
-import io.swagger.server.models.MaindeleteContentFromCollectionBody
+import io.swagger.server.models.CollectionsCollectionListResponse
 import io.swagger.server.models.UtilHttpError
 
 @KtorExperimentalLocationsAPI
@@ -90,7 +91,29 @@ fun Route.CollectionsApi() {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
             val exampleContentType = "application/json"
-            val exampleContentString = """"""""
+            val exampleContentString = """[ {
+  "coluuid" : "coluuid",
+  "contId" : 0,
+  "size" : 6,
+  "name" : "name",
+  "dir" : "dir",
+  "type" : "directory",
+  "cid" : {
+    "cid" : { }
+  },
+  "updatedAt" : "updatedAt"
+}, {
+  "coluuid" : "coluuid",
+  "contId" : 0,
+  "size" : 6,
+  "name" : "name",
+  "dir" : "dir",
+  "type" : "directory",
+  "cid" : {
+    "cid" : { }
+  },
+  "updatedAt" : "updatedAt"
+} ]"""
             
             when(exampleContentType) {
                 "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))

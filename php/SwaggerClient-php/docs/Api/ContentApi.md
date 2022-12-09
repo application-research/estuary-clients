@@ -4,11 +4,11 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**adminInvitesCodePost**](ContentApi.md#admininvitescodepost) | **POST** /admin/invites/{code} | Create an Estuary invite
 [**adminInvitesGet**](ContentApi.md#admininvitesget) | **GET** /admin/invites | Get Estuary invites
-[**adminInvitesPost**](ContentApi.md#admininvitespost) | **POST** /admin/invites | Create an Estuary invite
-[**contentAddCarPost**](ContentApi.md#contentaddcarpost) | **POST** /content/add-car | Add Car object
+[**contentAddCarPost**](ContentApi.md#contentaddcarpost) | **POST** /content/add-car | Upload content via a car file
 [**contentAddIpfsPost**](ContentApi.md#contentaddipfspost) | **POST** /content/add-ipfs | Add IPFS object
-[**contentAddPost**](ContentApi.md#contentaddpost) | **POST** /content/add | Add new content
+[**contentAddPost**](ContentApi.md#contentaddpost) | **POST** /content/add | Upload a file
 [**contentAggregatedContentGet**](ContentApi.md#contentaggregatedcontentget) | **GET** /content/aggregated/{content} | Get aggregated content stats
 [**contentAllDealsGet**](ContentApi.md#contentalldealsget) | **GET** /content/all-deals | Get all deals for a user
 [**contentBwUsageContentGet**](ContentApi.md#contentbwusagecontentget) | **GET** /content/bw-usage/{content} | Get content bandwidth
@@ -23,6 +23,60 @@ Method | HTTP request | Description
 [**contentStagingZonesGet**](ContentApi.md#contentstagingzonesget) | **GET** /content/staging-zones | Get staging zone for user
 [**contentStatsGet**](ContentApi.md#contentstatsget) | **GET** /content/stats | Get content statistics
 [**contentStatusIdGet**](ContentApi.md#contentstatusidget) | **GET** /content/status/{id} | Content Status
+
+# **adminInvitesCodePost**
+> string adminInvitesCodePost($code)
+
+Create an Estuary invite
+
+This endpoint is used to create an estuary invite.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+// Configure API key authorization: bearerAuth
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ContentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$code = "code_example"; // string | Invite code to be created
+
+try {
+    $result = $apiInstance->adminInvitesCodePost($code);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ContentApi->adminInvitesCodePost: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **code** | **string**| Invite code to be created |
+
+### Return type
+
+**string**
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **adminInvitesGet**
 > string adminInvitesGet()
@@ -74,12 +128,12 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **adminInvitesPost**
-> string adminInvitesPost($code)
+# **contentAddCarPost**
+> string contentAddCarPost()
 
-Create an Estuary invite
+Upload content via a car file
 
-This endpoint is used to create an estuary invite.
+This endpoint uploads content via a car file
 
 ### Example
 ```php
@@ -96,22 +150,18 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$code = "code_example"; // string | Invite code to be created
 
 try {
-    $result = $apiInstance->adminInvitesPost($code);
+    $result = $apiInstance->contentAddCarPost();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ContentApi->adminInvitesPost: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ContentApi->contentAddCarPost: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **code** | **string**| Invite code to be created |
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -124,64 +174,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-# **contentAddCarPost**
-> \Swagger\Client\Model\UtilContentAddResponse contentAddCarPost($body, $ignore_dupes, $filename)
-
-Add Car object
-
-This endpoint is used to add a car object to the network. The object can be a file or a directory.
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: bearerAuth
-$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
-
-$apiInstance = new Swagger\Client\Api\ContentApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$body = "body_example"; // string | Car
-$ignore_dupes = "ignore_dupes_example"; // string | Ignore Dupes
-$filename = "filename_example"; // string | Filename
-
-try {
-    $result = $apiInstance->contentAddCarPost($body, $ignore_dupes, $filename);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling ContentApi->contentAddCarPost: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**string**](../Model/string.md)| Car |
- **ignore_dupes** | **string**| Ignore Dupes | [optional]
- **filename** | **string**| Filename | [optional]
-
-### Return type
-
-[**\Swagger\Client\Model\UtilContentAddResponse**](../Model/UtilContentAddResponse.md)
-
-### Authorization
-
-[bearerAuth](../../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
@@ -243,11 +235,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **contentAddPost**
-> \Swagger\Client\Model\UtilContentAddResponse contentAddPost($data, $filename, $coluuid, $replication, $ignore_dupes, $lazy_provide, $dir)
+> string contentAddPost()
 
-Add new content
+Upload a file
 
-This endpoint is used to upload new content.
+This endpoint uploads a file.
 
 ### Example
 ```php
@@ -264,16 +256,9 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$data = "data_example"; // string | 
-$filename = "filename_example"; // string | 
-$coluuid = "coluuid_example"; // string | Collection UUID
-$replication = 56; // int | Replication value
-$ignore_dupes = "ignore_dupes_example"; // string | Ignore Dupes true/false
-$lazy_provide = "lazy_provide_example"; // string | Lazy Provide true/false
-$dir = "dir_example"; // string | Directory
 
 try {
-    $result = $apiInstance->contentAddPost($data, $filename, $coluuid, $replication, $ignore_dupes, $lazy_provide, $dir);
+    $result = $apiInstance->contentAddPost();
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContentApi->contentAddPost: ', $e->getMessage(), PHP_EOL;
@@ -282,20 +267,11 @@ try {
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **data** | **string****string**|  |
- **filename** | **string**|  |
- **coluuid** | **string**| Collection UUID | [optional]
- **replication** | **int**| Replication value | [optional]
- **ignore_dupes** | **string**| Ignore Dupes true/false | [optional]
- **lazy_provide** | **string**| Lazy Provide true/false | [optional]
- **dir** | **string**| Directory | [optional]
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Swagger\Client\Model\UtilContentAddResponse**](../Model/UtilContentAddResponse.md)
+**string**
 
 ### Authorization
 
@@ -303,7 +279,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: multipart/form-data
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
@@ -961,7 +937,7 @@ This endpoint does not need any parameter.
 
 Get content statistics
 
-This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a conten
+This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
 
 ### Example
 ```php

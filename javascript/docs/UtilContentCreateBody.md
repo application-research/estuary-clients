@@ -8,4 +8,4 @@ Name | Type | Description | Notes
 **location** | **String** |  | [optional] 
 **name** | **String** |  | [optional] 
 **root** | **String** |  | [optional] 
-**type** | **Number** |  | [optional] 
+**type** | [**UtilContentType**](UtilContentType.md) |  | [optional] 
