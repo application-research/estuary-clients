@@ -233,10 +233,30 @@ class ContentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for contentStagingZonesGet
      *
-     * Get staging zone for user.
+     * Get staging zone for user, excluding its contents.
      *
      */
     public function testContentStagingZonesGet()
+    {
+    }
+
+    /**
+     * Test case for contentStagingZonesStagingZoneContentsGet
+     *
+     * Get contents for a staging zone.
+     *
+     */
+    public function testContentStagingZonesStagingZoneContentsGet()
+    {
+    }
+
+    /**
+     * Test case for contentStagingZonesStagingZoneGet
+     *
+     * Get staging zone without its contents field populated.
+     *
+     */
+    public function testContentStagingZonesStagingZoneGet()
     {
     }
 

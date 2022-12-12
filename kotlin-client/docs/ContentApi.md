@@ -20,7 +20,9 @@ Method | HTTP request | Description
 [**contentImportdealPost**](ContentApi.md#contentImportdealPost) | **POST** /content/importdeal | Import a deal
 [**contentListGet**](ContentApi.md#contentListGet) | **GET** /content/list | List all pinned content
 [**contentReadContGet**](ContentApi.md#contentReadContGet) | **GET** /content/read/{cont} | Read content
-[**contentStagingZonesGet**](ContentApi.md#contentStagingZonesGet) | **GET** /content/staging-zones | Get staging zone for user
+[**contentStagingZonesGet**](ContentApi.md#contentStagingZonesGet) | **GET** /content/staging-zones | Get staging zone for user, excluding its contents
+[**contentStagingZonesStagingZoneContentsGet**](ContentApi.md#contentStagingZonesStagingZoneContentsGet) | **GET** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
+[**contentStagingZonesStagingZoneGet**](ContentApi.md#contentStagingZonesStagingZoneGet) | **GET** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
 [**contentStatsGet**](ContentApi.md#contentStatsGet) | **GET** /content/stats | Get content statistics
 [**contentStatusIdGet**](ContentApi.md#contentStatusIdGet) | **GET** /content/status/{id} | Content Status
 
@@ -774,9 +776,9 @@ Name | Type | Description  | Notes
 # **contentStagingZonesGet**
 > kotlin.String contentStagingZonesGet()
 
-Get staging zone for user
+Get staging zone for user, excluding its contents
 
-This endpoint is used to get staging zone for user.
+This endpoint is used to get staging zone for user, excluding its contents.
 
 ### Example
 ```kotlin
@@ -799,6 +801,104 @@ try {
 
 ### Parameters
 This endpoint does not need any parameter.
+
+### Return type
+
+**kotlin.String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="contentStagingZonesStagingZoneContentsGet"></a>
+# **contentStagingZonesStagingZoneContentsGet**
+> kotlin.String contentStagingZonesStagingZoneContentsGet(stagingZone, limit, offset)
+
+Get contents for a staging zone
+
+This endpoint is used to get the contents for a staging zone
+
+### Example
+```kotlin
+// Import classes:
+//import estuary-client.infrastructure.*
+//import io.swagger.client.models.*;
+
+val apiInstance = ContentApi()
+val stagingZone : kotlin.Int = 56 // kotlin.Int | Staging Zone Content ID
+val limit : kotlin.String = limit_example // kotlin.String | limit
+val offset : kotlin.String = offset_example // kotlin.String | offset
+try {
+    val result : kotlin.String = apiInstance.contentStagingZonesStagingZoneContentsGet(stagingZone, limit, offset)
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling ContentApi#contentStagingZonesStagingZoneContentsGet")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling ContentApi#contentStagingZonesStagingZoneContentsGet")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **stagingZone** | **kotlin.Int**| Staging Zone Content ID |
+ **limit** | **kotlin.String**| limit |
+ **offset** | **kotlin.String**| offset |
+
+### Return type
+
+**kotlin.String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="contentStagingZonesStagingZoneGet"></a>
+# **contentStagingZonesStagingZoneGet**
+> kotlin.String contentStagingZonesStagingZoneGet(stagingZone)
+
+Get staging zone without its contents field populated
+
+This endpoint is used to get a staging zone, excluding its contents.
+
+### Example
+```kotlin
+// Import classes:
+//import estuary-client.infrastructure.*
+//import io.swagger.client.models.*;
+
+val apiInstance = ContentApi()
+val stagingZone : kotlin.Int = 56 // kotlin.Int | Staging Zone Content ID
+try {
+    val result : kotlin.String = apiInstance.contentStagingZonesStagingZoneGet(stagingZone)
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling ContentApi#contentStagingZonesStagingZoneGet")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling ContentApi#contentStagingZonesStagingZoneGet")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **stagingZone** | **kotlin.Int**| Staging Zone Content ID |
 
 ### Return type
 

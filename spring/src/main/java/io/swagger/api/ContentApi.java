@@ -35,7 +35,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-12T11:11:38.432Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-12T21:11:36.792Z[GMT]")
 @Validated
 public interface ContentApi {
 
@@ -238,7 +238,7 @@ public interface ContentApi {
     ResponseEntity<String> contentReadContGet(@Parameter(in = ParameterIn.PATH, description = "CID", required=true, schema=@Schema()) @PathVariable("cont") String cont);
 
 
-    @Operation(summary = "Get staging zone for user", description = "This endpoint is used to get staging zone for user.", security = {
+    @Operation(summary = "Get staging zone for user, excluding its contents", description = "This endpoint is used to get staging zone for user, excluding its contents.", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
@@ -250,6 +250,34 @@ public interface ContentApi {
         produces = { "application/json" }, 
         method = RequestMethod.GET)
     ResponseEntity<String> contentStagingZonesGet();
+
+
+    @Operation(summary = "Get contents for a staging zone", description = "This endpoint is used to get the contents for a staging zone", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    @RequestMapping(value = "/content/staging-zones/{staging_zone}/contents",
+        produces = { "application/json" }, 
+        method = RequestMethod.GET)
+    ResponseEntity<String> contentStagingZonesStagingZoneContentsGet(@Parameter(in = ParameterIn.PATH, description = "Staging Zone Content ID", required=true, schema=@Schema()) @PathVariable("staging_zone") Integer stagingZone, @NotNull @Parameter(in = ParameterIn.QUERY, description = "limit" ,required=true,schema=@Schema()) @Valid @RequestParam(value = "limit", required = true) String limit, @NotNull @Parameter(in = ParameterIn.QUERY, description = "offset" ,required=true,schema=@Schema()) @Valid @RequestParam(value = "offset", required = true) String offset);
+
+
+    @Operation(summary = "Get staging zone without its contents field populated", description = "This endpoint is used to get a staging zone, excluding its contents.", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    @RequestMapping(value = "/content/staging-zones/{staging_zone}",
+        produces = { "application/json" }, 
+        method = RequestMethod.GET)
+    ResponseEntity<String> contentStagingZonesStagingZoneGet(@Parameter(in = ParameterIn.PATH, description = "Staging Zone Content ID", required=true, schema=@Schema()) @PathVariable("staging_zone") Integer stagingZone);
 
 
     @Operation(summary = "Get content statistics", description = "This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content", security = {

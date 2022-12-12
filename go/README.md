@@ -57,7 +57,9 @@ Class | Method | HTTP request | Description
 *ContentApi* | [**ContentImportdealPost**](docs/ContentApi.md#contentimportdealpost) | **Post** /content/importdeal | Import a deal
 *ContentApi* | [**ContentListGet**](docs/ContentApi.md#contentlistget) | **Get** /content/list | List all pinned content
 *ContentApi* | [**ContentReadContGet**](docs/ContentApi.md#contentreadcontget) | **Get** /content/read/{cont} | Read content
-*ContentApi* | [**ContentStagingZonesGet**](docs/ContentApi.md#contentstagingzonesget) | **Get** /content/staging-zones | Get staging zone for user
+*ContentApi* | [**ContentStagingZonesGet**](docs/ContentApi.md#contentstagingzonesget) | **Get** /content/staging-zones | Get staging zone for user, excluding its contents
+*ContentApi* | [**ContentStagingZonesStagingZoneContentsGet**](docs/ContentApi.md#contentstagingzonesstagingzonecontentsget) | **Get** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
+*ContentApi* | [**ContentStagingZonesStagingZoneGet**](docs/ContentApi.md#contentstagingzonesstagingzoneget) | **Get** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
 *ContentApi* | [**ContentStatsGet**](docs/ContentApi.md#contentstatsget) | **Get** /content/stats | Get content statistics
 *ContentApi* | [**ContentStatusIdGet**](docs/ContentApi.md#contentstatusidget) | **Get** /content/status/{id} | Content Status
 *DealsApi* | [**DealEstimatePost**](docs/DealsApi.md#dealestimatepost) | **Post** /deal/estimate | Estimate the cost of a deal

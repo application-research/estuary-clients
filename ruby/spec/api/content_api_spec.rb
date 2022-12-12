@@ -225,11 +225,37 @@ describe 'ContentApi' do
   end
 
   # unit tests for content_staging_zones_get
-  # Get staging zone for user
-  # This endpoint is used to get staging zone for user.
+  # Get staging zone for user, excluding its contents
+  # This endpoint is used to get staging zone for user, excluding its contents.
   # @param [Hash] opts the optional parameters
   # @return [String]
   describe 'content_staging_zones_get test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for content_staging_zones_staging_zone_contents_get
+  # Get contents for a staging zone
+  # This endpoint is used to get the contents for a staging zone
+  # @param staging_zone Staging Zone Content ID
+  # @param limit limit
+  # @param offset offset
+  # @param [Hash] opts the optional parameters
+  # @return [String]
+  describe 'content_staging_zones_staging_zone_contents_get test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for content_staging_zones_staging_zone_get
+  # Get staging zone without its contents field populated
+  # This endpoint is used to get a staging zone, excluding its contents.
+  # @param staging_zone Staging Zone Content ID
+  # @param [Hash] opts the optional parameters
+  # @return [String]
+  describe 'content_staging_zones_staging_zone_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

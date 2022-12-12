@@ -35,7 +35,7 @@ import javax.validation.constraints.*;
 
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-12-12T11:11:35.311Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-12-12T21:11:38.275Z[GMT]")
 public class ContentApi  {
 
   @Context SecurityContext securityContext;
@@ -275,7 +275,7 @@ public class ContentApi  {
     @Path("/staging-zones")
     
     @Produces({ "application/json" })
-    @Operation(summary = "Get staging zone for user", description = "This endpoint is used to get staging zone for user.", security = {
+    @Operation(summary = "Get staging zone for user, excluding its contents", description = "This endpoint is used to get staging zone for user, excluding its contents.", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
@@ -283,6 +283,42 @@ public class ContentApi  {
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response contentStagingZonesGet() {
         return delegate.contentStagingZonesGet(securityContext);
+    }
+
+    @GET
+    @Path("/staging-zones/{staging_zone}/contents")
+    
+    @Produces({ "application/json" })
+    @Operation(summary = "Get contents for a staging zone", description = "This endpoint is used to get the contents for a staging zone", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public Response contentStagingZonesStagingZoneContentsGet(
+@Parameter(description = "Staging Zone Content ID",required=true) @PathParam("staging_zone") Integer stagingZone
+,  @NotNull 
+@Parameter(description = "limit",required=true)  @QueryParam("limit") String limit
+,  @NotNull 
+@Parameter(description = "offset",required=true)  @QueryParam("offset") String offset
+) {
+        return delegate.contentStagingZonesStagingZoneContentsGet(stagingZone, limit, offset, securityContext);
+    }
+
+    @GET
+    @Path("/staging-zones/{staging_zone}")
+    
+    @Produces({ "application/json" })
+    @Operation(summary = "Get staging zone without its contents field populated", description = "This endpoint is used to get a staging zone, excluding its contents.", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public Response contentStagingZonesStagingZoneGet(
+@Parameter(description = "Staging Zone Content ID",required=true) @PathParam("staging_zone") Integer stagingZone
+) {
+        return delegate.contentStagingZonesStagingZoneGet(stagingZone, securityContext);
     }
 
     @GET

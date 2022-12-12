@@ -3026,13 +3026,105 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * This endpoint is used to get staging zone for user.
-         * @summary Get staging zone for user
+         * This endpoint is used to get staging zone for user, excluding its contents.
+         * @summary Get staging zone for user, excluding its contents
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         contentStagingZonesGet(options: any = {}): FetchArgs {
             const localVarPath = `/content/staging-zones`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+					? configuration.apiKey("Authorization")
+					: configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * This endpoint is used to get the contents for a staging zone
+         * @summary Get contents for a staging zone
+         * @param {number} stagingZone Staging Zone Content ID
+         * @param {string} limit limit
+         * @param {string} offset offset
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        contentStagingZonesStagingZoneContentsGet(stagingZone: number, limit: string, offset: string, options: any = {}): FetchArgs {
+            // verify required parameter 'stagingZone' is not null or undefined
+            if (stagingZone === null || stagingZone === undefined) {
+                throw new RequiredError('stagingZone','Required parameter stagingZone was null or undefined when calling contentStagingZonesStagingZoneContentsGet.');
+            }
+            // verify required parameter 'limit' is not null or undefined
+            if (limit === null || limit === undefined) {
+                throw new RequiredError('limit','Required parameter limit was null or undefined when calling contentStagingZonesStagingZoneContentsGet.');
+            }
+            // verify required parameter 'offset' is not null or undefined
+            if (offset === null || offset === undefined) {
+                throw new RequiredError('offset','Required parameter offset was null or undefined when calling contentStagingZonesStagingZoneContentsGet.');
+            }
+            const localVarPath = `/content/staging-zones/{staging_zone}/contents`
+                .replace(`{${"staging_zone"}}`, encodeURIComponent(String(stagingZone)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+					? configuration.apiKey("Authorization")
+					: configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * This endpoint is used to get a staging zone, excluding its contents.
+         * @summary Get staging zone without its contents field populated
+         * @param {number} stagingZone Staging Zone Content ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        contentStagingZonesStagingZoneGet(stagingZone: number, options: any = {}): FetchArgs {
+            // verify required parameter 'stagingZone' is not null or undefined
+            if (stagingZone === null || stagingZone === undefined) {
+                throw new RequiredError('stagingZone','Required parameter stagingZone was null or undefined when calling contentStagingZonesStagingZoneGet.');
+            }
+            const localVarPath = `/content/staging-zones/{staging_zone}`
+                .replace(`{${"staging_zone"}}`, encodeURIComponent(String(stagingZone)));
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = {} as any;
@@ -3457,13 +3549,53 @@ export const ContentApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         * This endpoint is used to get staging zone for user.
-         * @summary Get staging zone for user
+         * This endpoint is used to get staging zone for user, excluding its contents.
+         * @summary Get staging zone for user, excluding its contents
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         contentStagingZonesGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentStagingZonesGet(options);
+            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * This endpoint is used to get the contents for a staging zone
+         * @summary Get contents for a staging zone
+         * @param {number} stagingZone Staging Zone Content ID
+         * @param {string} limit limit
+         * @param {string} offset offset
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        contentStagingZonesStagingZoneContentsGet(stagingZone: number, limit: string, offset: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+            const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentStagingZonesStagingZoneContentsGet(stagingZone, limit, offset, options);
+            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * This endpoint is used to get a staging zone, excluding its contents.
+         * @summary Get staging zone without its contents field populated
+         * @param {number} stagingZone Staging Zone Content ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        contentStagingZonesStagingZoneGet(stagingZone: number, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+            const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentStagingZonesStagingZoneGet(stagingZone, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -3684,13 +3816,35 @@ export const ContentApiFactory = function (configuration?: Configuration, fetch?
             return ContentApiFp(configuration).contentReadContGet(cont, options)(fetch, basePath);
         },
         /**
-         * This endpoint is used to get staging zone for user.
-         * @summary Get staging zone for user
+         * This endpoint is used to get staging zone for user, excluding its contents.
+         * @summary Get staging zone for user, excluding its contents
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         contentStagingZonesGet(options?: any) {
             return ContentApiFp(configuration).contentStagingZonesGet(options)(fetch, basePath);
+        },
+        /**
+         * This endpoint is used to get the contents for a staging zone
+         * @summary Get contents for a staging zone
+         * @param {number} stagingZone Staging Zone Content ID
+         * @param {string} limit limit
+         * @param {string} offset offset
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        contentStagingZonesStagingZoneContentsGet(stagingZone: number, limit: string, offset: string, options?: any) {
+            return ContentApiFp(configuration).contentStagingZonesStagingZoneContentsGet(stagingZone, limit, offset, options)(fetch, basePath);
+        },
+        /**
+         * This endpoint is used to get a staging zone, excluding its contents.
+         * @summary Get staging zone without its contents field populated
+         * @param {number} stagingZone Staging Zone Content ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        contentStagingZonesStagingZoneGet(stagingZone: number, options?: any) {
+            return ContentApiFp(configuration).contentStagingZonesStagingZoneGet(stagingZone, options)(fetch, basePath);
         },
         /**
          * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
@@ -3917,14 +4071,40 @@ export class ContentApi extends BaseAPI {
     }
 
     /**
-     * This endpoint is used to get staging zone for user.
-     * @summary Get staging zone for user
+     * This endpoint is used to get staging zone for user, excluding its contents.
+     * @summary Get staging zone for user, excluding its contents
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContentApi
      */
     public contentStagingZonesGet(options?: any) {
         return ContentApiFp(this.configuration).contentStagingZonesGet(options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * This endpoint is used to get the contents for a staging zone
+     * @summary Get contents for a staging zone
+     * @param {number} stagingZone Staging Zone Content ID
+     * @param {string} limit limit
+     * @param {string} offset offset
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ContentApi
+     */
+    public contentStagingZonesStagingZoneContentsGet(stagingZone: number, limit: string, offset: string, options?: any) {
+        return ContentApiFp(this.configuration).contentStagingZonesStagingZoneContentsGet(stagingZone, limit, offset, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * This endpoint is used to get a staging zone, excluding its contents.
+     * @summary Get staging zone without its contents field populated
+     * @param {number} stagingZone Staging Zone Content ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ContentApi
+     */
+    public contentStagingZonesStagingZoneGet(stagingZone: number, options?: any) {
+        return ContentApiFp(this.configuration).contentStagingZonesStagingZoneGet(stagingZone, options)(this.fetch, this.basePath);
     }
 
     /**

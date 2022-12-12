@@ -20,7 +20,9 @@ Method | HTTP request | Description
 [**ContentImportdealPost**](ContentApi.md#contentimportdealpost) | **POST** /content/importdeal | Import a deal
 [**ContentListGet**](ContentApi.md#contentlistget) | **GET** /content/list | List all pinned content
 [**ContentReadContGet**](ContentApi.md#contentreadcontget) | **GET** /content/read/{cont} | Read content
-[**ContentStagingZonesGet**](ContentApi.md#contentstagingzonesget) | **GET** /content/staging-zones | Get staging zone for user
+[**ContentStagingZonesGet**](ContentApi.md#contentstagingzonesget) | **GET** /content/staging-zones | Get staging zone for user, excluding its contents
+[**ContentStagingZonesStagingZoneContentsGet**](ContentApi.md#contentstagingzonesstagingzonecontentsget) | **GET** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
+[**ContentStagingZonesStagingZoneGet**](ContentApi.md#contentstagingzonesstagingzoneget) | **GET** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
 [**ContentStatsGet**](ContentApi.md#contentstatsget) | **GET** /content/stats | Get content statistics
 [**ContentStatusIdGet**](ContentApi.md#contentstatusidget) | **GET** /content/status/{id} | Content Status
 
@@ -1094,9 +1096,9 @@ Name | Type | Description  | Notes
 # **ContentStagingZonesGet**
 > string ContentStagingZonesGet ()
 
-Get staging zone for user
+Get staging zone for user, excluding its contents
 
-This endpoint is used to get staging zone for user.
+This endpoint is used to get staging zone for user, excluding its contents.
 
 ### Example
 ```csharp
@@ -1122,7 +1124,7 @@ namespace Example
 
             try
             {
-                // Get staging zone for user
+                // Get staging zone for user, excluding its contents
                 string result = apiInstance.ContentStagingZonesGet();
                 Debug.WriteLine(result);
             }
@@ -1137,6 +1139,144 @@ namespace Example
 
 ### Parameters
 This endpoint does not need any parameter.
+
+### Return type
+
+**string**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="contentstagingzonesstagingzonecontentsget"></a>
+# **ContentStagingZonesStagingZoneContentsGet**
+> string ContentStagingZonesStagingZoneContentsGet (int? stagingZone, string limit, string offset)
+
+Get contents for a staging zone
+
+This endpoint is used to get the contents for a staging zone
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class ContentStagingZonesStagingZoneContentsGetExample
+    {
+        public void main()
+        {
+
+            // Configure API key authorization: bearerAuth
+            Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
+
+            var apiInstance = new ContentApi();
+            var stagingZone = 56;  // int? | Staging Zone Content ID
+            var limit = limit_example;  // string | limit
+            var offset = offset_example;  // string | offset
+
+            try
+            {
+                // Get contents for a staging zone
+                string result = apiInstance.ContentStagingZonesStagingZoneContentsGet(stagingZone, limit, offset);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling ContentApi.ContentStagingZonesStagingZoneContentsGet: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **stagingZone** | **int?**| Staging Zone Content ID | 
+ **limit** | **string**| limit | 
+ **offset** | **string**| offset | 
+
+### Return type
+
+**string**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="contentstagingzonesstagingzoneget"></a>
+# **ContentStagingZonesStagingZoneGet**
+> string ContentStagingZonesStagingZoneGet (int? stagingZone)
+
+Get staging zone without its contents field populated
+
+This endpoint is used to get a staging zone, excluding its contents.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class ContentStagingZonesStagingZoneGetExample
+    {
+        public void main()
+        {
+
+            // Configure API key authorization: bearerAuth
+            Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
+
+            var apiInstance = new ContentApi();
+            var stagingZone = 56;  // int? | Staging Zone Content ID
+
+            try
+            {
+                // Get staging zone without its contents field populated
+                string result = apiInstance.ContentStagingZonesStagingZoneGet(stagingZone);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling ContentApi.ContentStagingZonesStagingZoneGet: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **stagingZone** | **int?**| Staging Zone Content ID | 
 
 ### Return type
 

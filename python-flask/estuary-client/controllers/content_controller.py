@@ -225,10 +225,40 @@ def content_read_cont_get(cont):  # noqa: E501
 
 
 def content_staging_zones_get():  # noqa: E501
-    """Get staging zone for user
+    """Get staging zone for user, excluding its contents
 
-    This endpoint is used to get staging zone for user. # noqa: E501
+    This endpoint is used to get staging zone for user, excluding its contents. # noqa: E501
 
+
+    :rtype: str
+    """
+    return 'do some magic!'
+
+
+def content_staging_zones_staging_zone_contents_get(staging_zone, limit, offset):  # noqa: E501
+    """Get contents for a staging zone
+
+    This endpoint is used to get the contents for a staging zone # noqa: E501
+
+    :param staging_zone: Staging Zone Content ID
+    :type staging_zone: int
+    :param limit: limit
+    :type limit: str
+    :param offset: offset
+    :type offset: str
+
+    :rtype: str
+    """
+    return 'do some magic!'
+
+
+def content_staging_zones_staging_zone_get(staging_zone):  # noqa: E501
+    """Get staging zone without its contents field populated
+
+    This endpoint is used to get a staging zone, excluding its contents. # noqa: E501
+
+    :param staging_zone: Staging Zone Content ID
+    :type staging_zone: int
 
     :rtype: str
     """

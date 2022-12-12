@@ -323,12 +323,54 @@ exports.contentReadContGET = function(cont) {
 
 
 /**
- * Get staging zone for user
- * This endpoint is used to get staging zone for user.
+ * Get staging zone for user, excluding its contents
+ * This endpoint is used to get staging zone for user, excluding its contents.
  *
  * returns String
  **/
 exports.contentStaging_zonesGET = function() {
+  return new Promise(function(resolve, reject) {
+    var examples = {};
+    examples['application/json'] = "";
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
+  });
+}
+
+
+/**
+ * Get contents for a staging zone
+ * This endpoint is used to get the contents for a staging zone
+ *
+ * staging_zone Integer Staging Zone Content ID
+ * limit String limit
+ * offset String offset
+ * returns String
+ **/
+exports.contentStaging_zonesStaging_zoneContentsGET = function(staging_zone,limit,offset) {
+  return new Promise(function(resolve, reject) {
+    var examples = {};
+    examples['application/json'] = "";
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
+  });
+}
+
+
+/**
+ * Get staging zone without its contents field populated
+ * This endpoint is used to get a staging zone, excluding its contents.
+ *
+ * staging_zone Integer Staging Zone Content ID
+ * returns String
+ **/
+exports.contentStaging_zonesStaging_zoneGET = function(staging_zone) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = "";

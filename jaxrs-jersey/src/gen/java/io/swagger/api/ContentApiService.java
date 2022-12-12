@@ -19,7 +19,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-12-12T11:11:33.362Z[GMT]")public abstract class ContentApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-12-12T21:11:35.185Z[GMT]")public abstract class ContentApiService {
     public abstract Response contentAddCarPost(SecurityContext securityContext) throws NotFoundException;
     public abstract Response contentAddIpfsPost(TypesIpfsPin body, String ignoreDupes,SecurityContext securityContext) throws NotFoundException;
     public abstract Response contentAddPost(SecurityContext securityContext) throws NotFoundException;
@@ -35,6 +35,8 @@ import javax.validation.constraints.*;
     public abstract Response contentListGet(SecurityContext securityContext) throws NotFoundException;
     public abstract Response contentReadContGet(String cont,SecurityContext securityContext) throws NotFoundException;
     public abstract Response contentStagingZonesGet(SecurityContext securityContext) throws NotFoundException;
+    public abstract Response contentStagingZonesStagingZoneContentsGet(Integer stagingZone, @NotNull String limit, @NotNull String offset,SecurityContext securityContext) throws NotFoundException;
+    public abstract Response contentStagingZonesStagingZoneGet(Integer stagingZone,SecurityContext securityContext) throws NotFoundException;
     public abstract Response contentStatsGet( @NotNull String limit, @NotNull String offset,SecurityContext securityContext) throws NotFoundException;
     public abstract Response contentStatusIdGet(Integer id,SecurityContext securityContext) throws NotFoundException;
 }

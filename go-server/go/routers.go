@@ -307,6 +307,20 @@ var routes = Routes{
 	},
 
 	Route{
+		"ContentStagingZonesStagingZoneContentsGet",
+		strings.ToUpper("Get"),
+		"/content/staging-zones/{staging_zone}/contents",
+		ContentStagingZonesStagingZoneContentsGet,
+	},
+
+	Route{
+		"ContentStagingZonesStagingZoneGet",
+		strings.ToUpper("Get"),
+		"/content/staging-zones/{staging_zone}",
+		ContentStagingZonesStagingZoneGet,
+	},
+
+	Route{
 		"ContentStatsGet",
 		strings.ToUpper("Get"),
 		"/content/stats",

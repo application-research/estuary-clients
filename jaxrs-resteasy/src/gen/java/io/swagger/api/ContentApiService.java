@@ -16,7 +16,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-12-12T11:11:33.532Z[GMT]")public interface ContentApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-12-12T21:11:36.544Z[GMT]")public interface ContentApiService {
       Response contentAddCarPost(SecurityContext securityContext)
       throws NotFoundException;
       Response contentAddIpfsPost(TypesIpfsPin body,String ignoreDupes,SecurityContext securityContext)
@@ -46,6 +46,10 @@ import javax.ws.rs.core.SecurityContext;
       Response contentReadContGet(String cont,SecurityContext securityContext)
       throws NotFoundException;
       Response contentStagingZonesGet(SecurityContext securityContext)
+      throws NotFoundException;
+      Response contentStagingZonesStagingZoneContentsGet(Integer stagingZone,String limit,String offset,SecurityContext securityContext)
+      throws NotFoundException;
+      Response contentStagingZonesStagingZoneGet(Integer stagingZone,SecurityContext securityContext)
       throws NotFoundException;
       Response contentStatsGet(String limit,String offset,SecurityContext securityContext)
       throws NotFoundException;

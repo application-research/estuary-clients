@@ -20,7 +20,9 @@ Method | HTTP request | Description
 [**contentImportdealPost**](ContentApi.md#contentimportdealpost) | **POST** /content/importdeal | Import a deal
 [**contentListGet**](ContentApi.md#contentlistget) | **GET** /content/list | List all pinned content
 [**contentReadContGet**](ContentApi.md#contentreadcontget) | **GET** /content/read/{cont} | Read content
-[**contentStagingZonesGet**](ContentApi.md#contentstagingzonesget) | **GET** /content/staging-zones | Get staging zone for user
+[**contentStagingZonesGet**](ContentApi.md#contentstagingzonesget) | **GET** /content/staging-zones | Get staging zone for user, excluding its contents
+[**contentStagingZonesStagingZoneContentsGet**](ContentApi.md#contentstagingzonesstagingzonecontentsget) | **GET** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
+[**contentStagingZonesStagingZoneGet**](ContentApi.md#contentstagingzonesstagingzoneget) | **GET** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
 [**contentStatsGet**](ContentApi.md#contentstatsget) | **GET** /content/stats | Get content statistics
 [**contentStatusIdGet**](ContentApi.md#contentstatusidget) | **GET** /content/status/{id} | Content Status
 
@@ -885,9 +887,9 @@ Name | Type | Description  | Notes
 # **contentStagingZonesGet**
 > string contentStagingZonesGet()
 
-Get staging zone for user
+Get staging zone for user, excluding its contents
 
-This endpoint is used to get staging zone for user.
+This endpoint is used to get staging zone for user, excluding its contents.
 
 ### Example
 ```php
@@ -916,6 +918,118 @@ try {
 
 ### Parameters
 This endpoint does not need any parameter.
+
+### Return type
+
+**string**
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **contentStagingZonesStagingZoneContentsGet**
+> string contentStagingZonesStagingZoneContentsGet($staging_zone, $limit, $offset)
+
+Get contents for a staging zone
+
+This endpoint is used to get the contents for a staging zone
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+// Configure API key authorization: bearerAuth
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ContentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$staging_zone = 56; // int | Staging Zone Content ID
+$limit = "limit_example"; // string | limit
+$offset = "offset_example"; // string | offset
+
+try {
+    $result = $apiInstance->contentStagingZonesStagingZoneContentsGet($staging_zone, $limit, $offset);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ContentApi->contentStagingZonesStagingZoneContentsGet: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **staging_zone** | **int**| Staging Zone Content ID |
+ **limit** | **string**| limit |
+ **offset** | **string**| offset |
+
+### Return type
+
+**string**
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **contentStagingZonesStagingZoneGet**
+> string contentStagingZonesStagingZoneGet($staging_zone)
+
+Get staging zone without its contents field populated
+
+This endpoint is used to get a staging zone, excluding its contents.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+// Configure API key authorization: bearerAuth
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\ContentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$staging_zone = 56; // int | Staging Zone Content ID
+
+try {
+    $result = $apiInstance->contentStagingZonesStagingZoneGet($staging_zone);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ContentApi->contentStagingZonesStagingZoneGet: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **staging_zone** | **int**| Staging Zone Content ID |
 
 ### Return type
 

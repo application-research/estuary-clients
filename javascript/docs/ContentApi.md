@@ -20,7 +20,9 @@ Method | HTTP request | Description
 [**contentImportdealPost**](ContentApi.md#contentImportdealPost) | **POST** /content/importdeal | Import a deal
 [**contentListGet**](ContentApi.md#contentListGet) | **GET** /content/list | List all pinned content
 [**contentReadContGet**](ContentApi.md#contentReadContGet) | **GET** /content/read/{cont} | Read content
-[**contentStagingZonesGet**](ContentApi.md#contentStagingZonesGet) | **GET** /content/staging-zones | Get staging zone for user
+[**contentStagingZonesGet**](ContentApi.md#contentStagingZonesGet) | **GET** /content/staging-zones | Get staging zone for user, excluding its contents
+[**contentStagingZonesStagingZoneContentsGet**](ContentApi.md#contentStagingZonesStagingZoneContentsGet) | **GET** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
+[**contentStagingZonesStagingZoneGet**](ContentApi.md#contentStagingZonesStagingZoneGet) | **GET** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
 [**contentStatsGet**](ContentApi.md#contentStatsGet) | **GET** /content/stats | Get content statistics
 [**contentStatusIdGet**](ContentApi.md#contentStatusIdGet) | **GET** /content/status/{id} | Content Status
 
@@ -821,9 +823,9 @@ Name | Type | Description  | Notes
 # **contentStagingZonesGet**
 > &#x27;String&#x27; contentStagingZonesGet()
 
-Get staging zone for user
+Get staging zone for user, excluding its contents
 
-This endpoint is used to get staging zone for user.
+This endpoint is used to get staging zone for user, excluding its contents.
 
 ### Example
 ```javascript
@@ -848,6 +850,110 @@ apiInstance.contentStagingZonesGet((error, data, response) => {
 
 ### Parameters
 This endpoint does not need any parameter.
+
+### Return type
+
+**&#x27;String&#x27;**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="contentStagingZonesStagingZoneContentsGet"></a>
+# **contentStagingZonesStagingZoneContentsGet**
+> &#x27;String&#x27; contentStagingZonesStagingZoneContentsGet(stagingZone, limit, offset)
+
+Get contents for a staging zone
+
+This endpoint is used to get the contents for a staging zone
+
+### Example
+```javascript
+import {EstuaryClient} from 'estuary-client';
+let defaultClient = EstuaryClient.ApiClient.instance;
+
+// Configure API key authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearerAuth.apiKeyPrefix = 'Token';
+
+let apiInstance = new EstuaryClient.ContentApi();
+let stagingZone = 56; // Number | Staging Zone Content ID
+let limit = "limit_example"; // String | limit
+let offset = "offset_example"; // String | offset
+
+apiInstance.contentStagingZonesStagingZoneContentsGet(stagingZone, limit, offset, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **stagingZone** | **Number**| Staging Zone Content ID | 
+ **limit** | **String**| limit | 
+ **offset** | **String**| offset | 
+
+### Return type
+
+**&#x27;String&#x27;**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="contentStagingZonesStagingZoneGet"></a>
+# **contentStagingZonesStagingZoneGet**
+> &#x27;String&#x27; contentStagingZonesStagingZoneGet(stagingZone)
+
+Get staging zone without its contents field populated
+
+This endpoint is used to get a staging zone, excluding its contents.
+
+### Example
+```javascript
+import {EstuaryClient} from 'estuary-client';
+let defaultClient = EstuaryClient.ApiClient.instance;
+
+// Configure API key authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearerAuth.apiKeyPrefix = 'Token';
+
+let apiInstance = new EstuaryClient.ContentApi();
+let stagingZone = 56; // Number | Staging Zone Content ID
+
+apiInstance.contentStagingZonesStagingZoneGet(stagingZone, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **stagingZone** | **Number**| Staging Zone Content ID | 
 
 ### Return type
 

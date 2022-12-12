@@ -174,6 +174,28 @@ class ContentApiControllerTest {
     }
 
     @Test
+    void contentStagingZonesStagingZoneContentsGetTest() {
+        Integer stagingZone = 56;
+        String limit = "limit_example";
+        String offset = "offset_example";
+        try {
+            api.contentStagingZonesStagingZoneContentsGet(stagingZone, limit, offset).blockingGet();
+        } catch (UnsupportedOperationException e) {
+            assumeTrue(false, "API is not yet implemented");
+        }
+    }
+
+    @Test
+    void contentStagingZonesStagingZoneGetTest() {
+        Integer stagingZone = 56;
+        try {
+            api.contentStagingZonesStagingZoneGet(stagingZone).blockingGet();
+        } catch (UnsupportedOperationException e) {
+            assumeTrue(false, "API is not yet implemented");
+        }
+    }
+
+    @Test
     void contentStatsGetTest() {
         String limit = "limit_example";
         String offset = "offset_example";

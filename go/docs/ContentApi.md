@@ -20,7 +20,9 @@ Method | HTTP request | Description
 [**ContentImportdealPost**](ContentApi.md#ContentImportdealPost) | **Post** /content/importdeal | Import a deal
 [**ContentListGet**](ContentApi.md#ContentListGet) | **Get** /content/list | List all pinned content
 [**ContentReadContGet**](ContentApi.md#ContentReadContGet) | **Get** /content/read/{cont} | Read content
-[**ContentStagingZonesGet**](ContentApi.md#ContentStagingZonesGet) | **Get** /content/staging-zones | Get staging zone for user
+[**ContentStagingZonesGet**](ContentApi.md#ContentStagingZonesGet) | **Get** /content/staging-zones | Get staging zone for user, excluding its contents
+[**ContentStagingZonesStagingZoneContentsGet**](ContentApi.md#ContentStagingZonesStagingZoneContentsGet) | **Get** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
+[**ContentStagingZonesStagingZoneGet**](ContentApi.md#ContentStagingZonesStagingZoneGet) | **Get** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
 [**ContentStatsGet**](ContentApi.md#ContentStatsGet) | **Get** /content/stats | Get content statistics
 [**ContentStatusIdGet**](ContentApi.md#ContentStatusIdGet) | **Get** /content/status/{id} | Content Status
 
@@ -483,12 +485,70 @@ Name | Type | Description  | Notes
 
 # **ContentStagingZonesGet**
 > string ContentStagingZonesGet(ctx, )
-Get staging zone for user
+Get staging zone for user, excluding its contents
 
-This endpoint is used to get staging zone for user.
+This endpoint is used to get staging zone for user, excluding its contents.
 
 ### Required Parameters
 This endpoint does not need any parameter.
+
+### Return type
+
+**string**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ContentStagingZonesStagingZoneContentsGet**
+> string ContentStagingZonesStagingZoneContentsGet(ctx, stagingZone, limit, offset)
+Get contents for a staging zone
+
+This endpoint is used to get the contents for a staging zone
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **stagingZone** | **int32**| Staging Zone Content ID | 
+  **limit** | **string**| limit | 
+  **offset** | **string**| offset | 
+
+### Return type
+
+**string**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **ContentStagingZonesStagingZoneGet**
+> string ContentStagingZonesStagingZoneGet(ctx, stagingZone)
+Get staging zone without its contents field populated
+
+This endpoint is used to get a staging zone, excluding its contents.
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **stagingZone** | **int32**| Staging Zone Content ID | 
 
 ### Return type
 

@@ -20,7 +20,9 @@ Method | HTTP request | Description
 [**contentImportdealPost**](ContentApi.md#contentImportdealPost) | **POST** /content/importdeal | Import a deal
 [**contentListGet**](ContentApi.md#contentListGet) | **GET** /content/list | List all pinned content
 [**contentReadContGet**](ContentApi.md#contentReadContGet) | **GET** /content/read/{cont} | Read content
-[**contentStagingZonesGet**](ContentApi.md#contentStagingZonesGet) | **GET** /content/staging-zones | Get staging zone for user
+[**contentStagingZonesGet**](ContentApi.md#contentStagingZonesGet) | **GET** /content/staging-zones | Get staging zone for user, excluding its contents
+[**contentStagingZonesStagingZoneContentsGet**](ContentApi.md#contentStagingZonesStagingZoneContentsGet) | **GET** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
+[**contentStagingZonesStagingZoneGet**](ContentApi.md#contentStagingZonesStagingZoneGet) | **GET** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
 [**contentStatsGet**](ContentApi.md#contentStatsGet) | **GET** /content/stats | Get content statistics
 [**contentStatusIdGet**](ContentApi.md#contentStatusIdGet) | **GET** /content/status/{id} | Content Status
 
@@ -902,9 +904,9 @@ Name | Type | Description  | Notes
 # **contentStagingZonesGet**
 > String contentStagingZonesGet()
 
-Get staging zone for user
+Get staging zone for user, excluding its contents
 
-This endpoint is used to get staging zone for user.
+This endpoint is used to get staging zone for user, excluding its contents.
 
 ### Example
 ```java
@@ -935,6 +937,120 @@ try {
 
 ### Parameters
 This endpoint does not need any parameter.
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="contentStagingZonesStagingZoneContentsGet"></a>
+# **contentStagingZonesStagingZoneContentsGet**
+> String contentStagingZonesStagingZoneContentsGet(stagingZone, limit, offset)
+
+Get contents for a staging zone
+
+This endpoint is used to get the contents for a staging zone
+
+### Example
+```java
+// Import classes:
+//import io.swagger.client.ApiClient;
+//import io.swagger.client.ApiException;
+//import io.swagger.client.Configuration;
+//import io.swagger.client.auth.*;
+//import io.swagger.client.api.ContentApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: bearerAuth
+ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearerAuth.setApiKeyPrefix("Token");
+
+ContentApi apiInstance = new ContentApi();
+Integer stagingZone = 56; // Integer | Staging Zone Content ID
+String limit = "limit_example"; // String | limit
+String offset = "offset_example"; // String | offset
+try {
+    String result = apiInstance.contentStagingZonesStagingZoneContentsGet(stagingZone, limit, offset);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling ContentApi#contentStagingZonesStagingZoneContentsGet");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **stagingZone** | **Integer**| Staging Zone Content ID |
+ **limit** | **String**| limit |
+ **offset** | **String**| offset |
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="contentStagingZonesStagingZoneGet"></a>
+# **contentStagingZonesStagingZoneGet**
+> String contentStagingZonesStagingZoneGet(stagingZone)
+
+Get staging zone without its contents field populated
+
+This endpoint is used to get a staging zone, excluding its contents.
+
+### Example
+```java
+// Import classes:
+//import io.swagger.client.ApiClient;
+//import io.swagger.client.ApiException;
+//import io.swagger.client.Configuration;
+//import io.swagger.client.auth.*;
+//import io.swagger.client.api.ContentApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API key authorization: bearerAuth
+ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
+bearerAuth.setApiKey("YOUR API KEY");
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearerAuth.setApiKeyPrefix("Token");
+
+ContentApi apiInstance = new ContentApi();
+Integer stagingZone = 56; // Integer | Staging Zone Content ID
+try {
+    String result = apiInstance.contentStagingZonesStagingZoneGet(stagingZone);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling ContentApi#contentStagingZonesStagingZoneGet");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **stagingZone** | **Integer**| Staging Zone Content ID |
 
 ### Return type
 

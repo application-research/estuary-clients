@@ -65,7 +65,13 @@
 #' content_read_cont_get Read content
 #'
 #'
-#' content_staging_zones_get Get staging zone for user
+#' content_staging_zones_get Get staging zone for user, excluding its contents
+#'
+#'
+#' content_staging_zones_staging_zone_contents_get Get contents for a staging zone
+#'
+#'
+#' content_staging_zones_staging_zone_get Get staging zone without its contents field populated
 #'
 #'
 #' content_stats_get Get content statistics
@@ -553,6 +559,70 @@ ContentApi <- R6::R6Class(
       headerParams <- character()
 
       urlPath <- "/content/staging-zones"
+      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+      
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        returnObject <- Character$new()
+        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
+        Response$new(returnObject, resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        Response$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        Response$new("API server error", resp)
+      }
+
+    }
+    content_staging_zones_staging_zone_contents_get = function(staging_zone, limit, offset, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- character()
+
+      if (!missing(`limit`)) {
+        queryParams['limit'] <- limit
+      }
+
+      if (!missing(`offset`)) {
+        queryParams['offset'] <- offset
+      }
+
+      urlPath <- "/content/staging-zones/{staging_zone}/contents"
+      if (!missing(`staging_zone`)) {
+        urlPath <- gsub(paste0("\\{", "staging_zone", "\\}"), `staging_zone`, urlPath)
+      }
+
+      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+      
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        returnObject <- Character$new()
+        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
+        Response$new(returnObject, resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        Response$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        Response$new("API server error", resp)
+      }
+
+    }
+    content_staging_zones_staging_zone_get = function(staging_zone, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- character()
+
+      urlPath <- "/content/staging-zones/{staging_zone}"
+      if (!missing(`staging_zone`)) {
+        urlPath <- gsub(paste0("\\{", "staging_zone", "\\}"), `staging_zone`, urlPath)
+      }
+
       resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "GET",
                                  queryParams = queryParams,

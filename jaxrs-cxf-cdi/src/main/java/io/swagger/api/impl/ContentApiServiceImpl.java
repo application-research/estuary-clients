@@ -19,7 +19,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-12-12T11:11:35.311Z[GMT]")public class ContentApiServiceImpl implements ContentApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-12-12T21:11:38.275Z[GMT]")public class ContentApiServiceImpl implements ContentApiService {
       @Override
       public Response contentAddCarPost(SecurityContext securityContext) {
       // do some magic!
@@ -92,6 +92,16 @@ import javax.ws.rs.core.SecurityContext;
   }
       @Override
       public Response contentStagingZonesGet(SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().entity("magic!").build();
+  }
+      @Override
+      public Response contentStagingZonesStagingZoneContentsGet(Integer stagingZone, String limit, String offset, SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().entity("magic!").build();
+  }
+      @Override
+      public Response contentStagingZonesStagingZoneGet(Integer stagingZone, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }

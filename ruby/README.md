@@ -721,11 +721,51 @@ end
 api_instance = SwaggerClient::ContentApi.new
 
 begin
-  #Get staging zone for user
+  #Get staging zone for user, excluding its contents
   result = api_instance.content_staging_zones_get
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ContentApi->content_staging_zones_get: #{e}"
+end
+# Setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: bearerAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::ContentApi.new
+staging_zone = 56 # Integer | Staging Zone Content ID
+limit = 'limit_example' # String | limit
+offset = 'offset_example' # String | offset
+
+
+begin
+  #Get contents for a staging zone
+  result = api_instance.content_staging_zones_staging_zone_contents_get(staging_zone, limit, offset)
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling ContentApi->content_staging_zones_staging_zone_contents_get: #{e}"
+end
+# Setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: bearerAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::ContentApi.new
+staging_zone = 56 # Integer | Staging Zone Content ID
+
+
+begin
+  #Get staging zone without its contents field populated
+  result = api_instance.content_staging_zones_staging_zone_get(staging_zone)
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling ContentApi->content_staging_zones_staging_zone_get: #{e}"
 end
 # Setup authorization
 SwaggerClient.configure do |config|
@@ -1692,7 +1732,9 @@ Class | Method | HTTP request | Description
 *SwaggerClient::ContentApi* | [**content_importdeal_post**](docs/ContentApi.md#content_importdeal_post) | **POST** /content/importdeal | Import a deal
 *SwaggerClient::ContentApi* | [**content_list_get**](docs/ContentApi.md#content_list_get) | **GET** /content/list | List all pinned content
 *SwaggerClient::ContentApi* | [**content_read_cont_get**](docs/ContentApi.md#content_read_cont_get) | **GET** /content/read/{cont} | Read content
-*SwaggerClient::ContentApi* | [**content_staging_zones_get**](docs/ContentApi.md#content_staging_zones_get) | **GET** /content/staging-zones | Get staging zone for user
+*SwaggerClient::ContentApi* | [**content_staging_zones_get**](docs/ContentApi.md#content_staging_zones_get) | **GET** /content/staging-zones | Get staging zone for user, excluding its contents
+*SwaggerClient::ContentApi* | [**content_staging_zones_staging_zone_contents_get**](docs/ContentApi.md#content_staging_zones_staging_zone_contents_get) | **GET** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
+*SwaggerClient::ContentApi* | [**content_staging_zones_staging_zone_get**](docs/ContentApi.md#content_staging_zones_staging_zone_get) | **GET** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
 *SwaggerClient::ContentApi* | [**content_stats_get**](docs/ContentApi.md#content_stats_get) | **GET** /content/stats | Get content statistics
 *SwaggerClient::ContentApi* | [**content_status_id_get**](docs/ContentApi.md#content_status_id_get) | **GET** /content/status/{id} | Content Status
 *SwaggerClient::DealsApi* | [**deal_estimate_post**](docs/DealsApi.md#deal_estimate_post) | **POST** /deal/estimate | Estimate the cost of a deal

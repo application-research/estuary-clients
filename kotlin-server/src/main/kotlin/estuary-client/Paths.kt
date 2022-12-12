@@ -276,10 +276,26 @@ object Paths {
     @Location("/content/read/{cont}") class contentReadContGet(val cont: kotlin.String)
 
     /**
-     * Get staging zone for user
-     * This endpoint is used to get staging zone for user.
+     * Get staging zone for user, excluding its contents
+     * This endpoint is used to get staging zone for user, excluding its contents.
      */
     @Location("/content/staging-zones") class contentStagingZonesGet()
+
+    /**
+     * Get contents for a staging zone
+     * This endpoint is used to get the contents for a staging zone
+     * @param stagingZone Staging Zone Content ID 
+     * @param limit limit 
+     * @param offset offset 
+     */
+    @Location("/content/staging-zones/{stagingZone}/contents") class contentStagingZonesStagingZoneContentsGet(val stagingZone: kotlin.Int, val limit: kotlin.String, val offset: kotlin.String)
+
+    /**
+     * Get staging zone without its contents field populated
+     * This endpoint is used to get a staging zone, excluding its contents.
+     * @param stagingZone Staging Zone Content ID 
+     */
+    @Location("/content/staging-zones/{stagingZone}") class contentStagingZonesStagingZoneGet(val stagingZone: kotlin.Int)
 
     /**
      * Get content statistics

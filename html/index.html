@@ -243,6 +243,8 @@
   <li><a href="#contentListGet"><code><span class="http-method">get</span> /content/list</code></a></li>
   <li><a href="#contentReadContGet"><code><span class="http-method">get</span> /content/read/{cont}</code></a></li>
   <li><a href="#contentStagingZonesGet"><code><span class="http-method">get</span> /content/staging-zones</code></a></li>
+  <li><a href="#contentStagingZonesStagingZoneContentsGet"><code><span class="http-method">get</span> /content/staging-zones/{staging_zone}/contents</code></a></li>
+  <li><a href="#contentStagingZonesStagingZoneGet"><code><span class="http-method">get</span> /content/staging-zones/{staging_zone}</code></a></li>
   <li><a href="#contentStatsGet"><code><span class="http-method">get</span> /content/stats</code></a></li>
   <li><a href="#contentStatusIdGet"><code><span class="http-method">get</span> /content/status/{id}</code></a></li>
   </ul>
@@ -2113,9 +2115,114 @@
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
     <pre class="get"><code class="huge"><span class="http-method">get</span> /content/staging-zones</code></pre></div>
-    <div class="method-summary">Get staging zone for user (<span class="nickname">contentStagingZonesGet</span>)</div>
-    <div class="method-notes">This endpoint is used to get staging zone for user.</div>
+    <div class="method-summary">Get staging zone for user, excluding its contents (<span class="nickname">contentStagingZonesGet</span>)</div>
+    <div class="method-notes">This endpoint is used to get staging zone for user, excluding its contents.</div>
 
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      String
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>""</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#String">String</a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#util.HttpError">util.HttpError</a>
+    <h4 class="field-label">500</h4>
+    Internal Server Error
+        <a href="#util.HttpError">util.HttpError</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="contentStagingZonesStagingZoneContentsGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /content/staging-zones/{staging_zone}/contents</code></pre></div>
+    <div class="method-summary">Get contents for a staging zone (<span class="nickname">contentStagingZonesStagingZoneContentsGet</span>)</div>
+    <div class="method-notes">This endpoint is used to get the contents for a staging zone</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">staging_zone (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Staging Zone Content ID </div>    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">limit (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; limit </div>      <div class="param">offset (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; offset </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      String
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>""</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#String">String</a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#util.HttpError">util.HttpError</a>
+    <h4 class="field-label">500</h4>
+    Internal Server Error
+        <a href="#util.HttpError">util.HttpError</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="contentStagingZonesStagingZoneGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /content/staging-zones/{staging_zone}</code></pre></div>
+    <div class="method-summary">Get staging zone without its contents field populated (<span class="nickname">contentStagingZonesStagingZoneGet</span>)</div>
+    <div class="method-notes">This endpoint is used to get a staging zone, excluding its contents.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">staging_zone (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Staging Zone Content ID </div>    </div>  <!-- field-items -->
 
 
 

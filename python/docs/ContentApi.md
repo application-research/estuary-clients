@@ -20,7 +20,9 @@ Method | HTTP request | Description
 [**content_importdeal_post**](ContentApi.md#content_importdeal_post) | **POST** /content/importdeal | Import a deal
 [**content_list_get**](ContentApi.md#content_list_get) | **GET** /content/list | List all pinned content
 [**content_read_cont_get**](ContentApi.md#content_read_cont_get) | **GET** /content/read/{cont} | Read content
-[**content_staging_zones_get**](ContentApi.md#content_staging_zones_get) | **GET** /content/staging-zones | Get staging zone for user
+[**content_staging_zones_get**](ContentApi.md#content_staging_zones_get) | **GET** /content/staging-zones | Get staging zone for user, excluding its contents
+[**content_staging_zones_staging_zone_contents_get**](ContentApi.md#content_staging_zones_staging_zone_contents_get) | **GET** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
+[**content_staging_zones_staging_zone_get**](ContentApi.md#content_staging_zones_staging_zone_get) | **GET** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
 [**content_stats_get**](ContentApi.md#content_stats_get) | **GET** /content/stats | Get content statistics
 [**content_status_id_get**](ContentApi.md#content_status_id_get) | **GET** /content/status/{id} | Content Status
 
@@ -885,9 +887,9 @@ Name | Type | Description  | Notes
 # **content_staging_zones_get**
 > str content_staging_zones_get()
 
-Get staging zone for user
+Get staging zone for user, excluding its contents
 
-This endpoint is used to get staging zone for user.
+This endpoint is used to get staging zone for user, excluding its contents.
 
 ### Example
 ```python
@@ -907,7 +909,7 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
 
 try:
-    # Get staging zone for user
+    # Get staging zone for user, excluding its contents
     api_response = api_instance.content_staging_zones_get()
     pprint(api_response)
 except ApiException as e:
@@ -916,6 +918,118 @@ except ApiException as e:
 
 ### Parameters
 This endpoint does not need any parameter.
+
+### Return type
+
+**str**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **content_staging_zones_staging_zone_contents_get**
+> str content_staging_zones_staging_zone_contents_get(staging_zone, limit, offset)
+
+Get contents for a staging zone
+
+This endpoint is used to get the contents for a staging zone
+
+### Example
+```python
+from __future__ import print_function
+import time
+import estuary_client
+from estuary_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: bearerAuth
+configuration = estuary_client.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
+staging_zone = 56 # int | Staging Zone Content ID
+limit = 'limit_example' # str | limit
+offset = 'offset_example' # str | offset
+
+try:
+    # Get contents for a staging zone
+    api_response = api_instance.content_staging_zones_staging_zone_contents_get(staging_zone, limit, offset)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ContentApi->content_staging_zones_staging_zone_contents_get: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **staging_zone** | **int**| Staging Zone Content ID | 
+ **limit** | **str**| limit | 
+ **offset** | **str**| offset | 
+
+### Return type
+
+**str**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **content_staging_zones_staging_zone_get**
+> str content_staging_zones_staging_zone_get(staging_zone)
+
+Get staging zone without its contents field populated
+
+This endpoint is used to get a staging zone, excluding its contents.
+
+### Example
+```python
+from __future__ import print_function
+import time
+import estuary_client
+from estuary_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: bearerAuth
+configuration = estuary_client.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
+staging_zone = 56 # int | Staging Zone Content ID
+
+try:
+    # Get staging zone without its contents field populated
+    api_response = api_instance.content_staging_zones_staging_zone_get(staging_zone)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ContentApi->content_staging_zones_staging_zone_get: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **staging_zone** | **int**| Staging Zone Content ID | 
 
 ### Return type
 

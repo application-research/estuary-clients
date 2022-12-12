@@ -272,6 +272,36 @@ class ContentApi(
         }
       }
     } ~
+    path() { (stagingZone) => 
+      get {
+        parameters("limit".as[String], "offset".as[String]) { (limit, offset) =>
+          
+            formFields() { () =>
+              
+                
+                  contentService.contentStagingZonesStagingZoneContentsGet(stagingZone = stagingZone, limit = limit, offset = offset)
+               
+             
+            }
+         
+        }
+      }
+    } ~
+    path() { (stagingZone) => 
+      get {
+        parameters() { () =>
+          
+            formFields() { () =>
+              
+                
+                  contentService.contentStagingZonesStagingZoneGet(stagingZone = stagingZone)
+               
+             
+            }
+         
+        }
+      }
+    } ~
     path() { () => 
       get {
         parameters("limit".as[String], "offset".as[String]) { (limit, offset) =>
@@ -544,6 +574,34 @@ trait ContentApiService {
   def contentStagingZonesGet()
       (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
+  def contentStagingZonesStagingZoneContentsGet200(responseString: String): Route =
+    complete((200, responseString))
+  def contentStagingZonesStagingZoneContentsGet400(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
+    complete((400, responseutil.HttpError))
+  def contentStagingZonesStagingZoneContentsGet500(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
+    complete((500, responseutil.HttpError))
+  /**
+   * Code: 200, Message: OK, DataType: String
+   * Code: 400, Message: Bad Request, DataType: util.HttpError
+   * Code: 500, Message: Internal Server Error, DataType: util.HttpError
+   */
+  def contentStagingZonesStagingZoneContentsGet(stagingZone: Int, limit: String, offset: String)
+      (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
+
+  def contentStagingZonesStagingZoneGet200(responseString: String): Route =
+    complete((200, responseString))
+  def contentStagingZonesStagingZoneGet400(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
+    complete((400, responseutil.HttpError))
+  def contentStagingZonesStagingZoneGet500(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
+    complete((500, responseutil.HttpError))
+  /**
+   * Code: 200, Message: OK, DataType: String
+   * Code: 400, Message: Bad Request, DataType: util.HttpError
+   * Code: 500, Message: Internal Server Error, DataType: util.HttpError
+   */
+  def contentStagingZonesStagingZoneGet(stagingZone: Int)
+      (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
+
   def contentStatsGet200(responseString: String): Route =
     complete((200, responseString))
   def contentStatsGet400(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
@@ -581,6 +639,14 @@ trait ContentApiMarshaller {
 
   implicit def fromRequestUnmarshallerMain.importDealBody: FromRequestUnmarshaller[Main.importDealBody]
 
+
+  implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
+
+  implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
+
+  implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
+
+  implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 

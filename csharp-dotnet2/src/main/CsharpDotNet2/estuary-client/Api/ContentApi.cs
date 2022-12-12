@@ -109,10 +109,24 @@ namespace IO.Swagger.Api
         /// <returns>string</returns>
         string ContentReadContGet (string cont);
         /// <summary>
-        /// Get staging zone for user This endpoint is used to get staging zone for user.
+        /// Get staging zone for user, excluding its contents This endpoint is used to get staging zone for user, excluding its contents.
         /// </summary>
         /// <returns>string</returns>
         string ContentStagingZonesGet ();
+        /// <summary>
+        /// Get contents for a staging zone This endpoint is used to get the contents for a staging zone
+        /// </summary>
+        /// <param name="stagingZone">Staging Zone Content ID</param>
+        /// <param name="limit">limit</param>
+        /// <param name="offset">offset</param>
+        /// <returns>string</returns>
+        string ContentStagingZonesStagingZoneContentsGet (int? stagingZone, string limit, string offset);
+        /// <summary>
+        /// Get staging zone without its contents field populated This endpoint is used to get a staging zone, excluding its contents.
+        /// </summary>
+        /// <param name="stagingZone">Staging Zone Content ID</param>
+        /// <returns>string</returns>
+        string ContentStagingZonesStagingZoneGet (int? stagingZone);
         /// <summary>
         /// Get content statistics This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
         /// </summary>
@@ -738,7 +752,7 @@ namespace IO.Swagger.Api
         }
     
         /// <summary>
-        /// Get staging zone for user This endpoint is used to get staging zone for user.
+        /// Get staging zone for user, excluding its contents This endpoint is used to get staging zone for user, excluding its contents.
         /// </summary>
         /// <returns>string</returns>
         public string ContentStagingZonesGet ()
@@ -764,6 +778,84 @@ namespace IO.Swagger.Api
                 throw new ApiException ((int)response.StatusCode, "Error calling ContentStagingZonesGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling ContentStagingZonesGet: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
+        }
+    
+        /// <summary>
+        /// Get contents for a staging zone This endpoint is used to get the contents for a staging zone
+        /// </summary>
+        /// <param name="stagingZone">Staging Zone Content ID</param>
+        /// <param name="limit">limit</param>
+        /// <param name="offset">offset</param>
+        /// <returns>string</returns>
+        public string ContentStagingZonesStagingZoneContentsGet (int? stagingZone, string limit, string offset)
+        {
+            // verify the required parameter 'stagingZone' is set
+            if (stagingZone == null) throw new ApiException(400, "Missing required parameter 'stagingZone' when calling ContentStagingZonesStagingZoneContentsGet");
+            // verify the required parameter 'limit' is set
+            if (limit == null) throw new ApiException(400, "Missing required parameter 'limit' when calling ContentStagingZonesStagingZoneContentsGet");
+            // verify the required parameter 'offset' is set
+            if (offset == null) throw new ApiException(400, "Missing required parameter 'offset' when calling ContentStagingZonesStagingZoneContentsGet");
+    
+            var path = "/content/staging-zones/{staging_zone}/contents";
+            path = path.Replace("{format}", "json");
+            path = path.Replace("{" + "staging_zone" + "}", ApiClient.ParameterToString(stagingZone));
+    
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+             if (limit != null) queryParams.Add("limit", ApiClient.ParameterToString(limit)); // query parameter
+ if (offset != null) queryParams.Add("offset", ApiClient.ParameterToString(offset)); // query parameter
+                        
+            // authentication setting, if any
+            String[] authSettings = new String[] { "bearerAuth" };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling ContentStagingZonesStagingZoneContentsGet: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling ContentStagingZonesStagingZoneContentsGet: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
+        }
+    
+        /// <summary>
+        /// Get staging zone without its contents field populated This endpoint is used to get a staging zone, excluding its contents.
+        /// </summary>
+        /// <param name="stagingZone">Staging Zone Content ID</param>
+        /// <returns>string</returns>
+        public string ContentStagingZonesStagingZoneGet (int? stagingZone)
+        {
+            // verify the required parameter 'stagingZone' is set
+            if (stagingZone == null) throw new ApiException(400, "Missing required parameter 'stagingZone' when calling ContentStagingZonesStagingZoneGet");
+    
+            var path = "/content/staging-zones/{staging_zone}";
+            path = path.Replace("{format}", "json");
+            path = path.Replace("{" + "staging_zone" + "}", ApiClient.ParameterToString(stagingZone));
+    
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+                                    
+            // authentication setting, if any
+            String[] authSettings = new String[] { "bearerAuth" };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling ContentStagingZonesStagingZoneGet: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling ContentStagingZonesStagingZoneGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }

@@ -4569,7 +4569,7 @@ class ContentApi
     /**
      * Operation contentStagingZonesGet
      *
-     * Get staging zone for user
+     * Get staging zone for user, excluding its contents
      *
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -4585,7 +4585,7 @@ class ContentApi
     /**
      * Operation contentStagingZonesGetWithHttpInfo
      *
-     * Get staging zone for user
+     * Get staging zone for user, excluding its contents
      *
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -4675,7 +4675,7 @@ class ContentApi
     /**
      * Operation contentStagingZonesGetAsync
      *
-     * Get staging zone for user
+     * Get staging zone for user, excluding its contents
      *
      *
      * @throws \InvalidArgumentException
@@ -4694,7 +4694,7 @@ class ContentApi
     /**
      * Operation contentStagingZonesGetAsyncWithHttpInfo
      *
-     * Get staging zone for user
+     * Get staging zone for user, excluding its contents
      *
      *
      * @throws \InvalidArgumentException
@@ -4760,6 +4760,602 @@ class ContentApi
         $multipart = false;
 
 
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation contentStagingZonesStagingZoneContentsGet
+     *
+     * Get contents for a staging zone
+     *
+     * @param  int $staging_zone Staging Zone Content ID (required)
+     * @param  string $limit limit (required)
+     * @param  string $offset offset (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return string
+     */
+    public function contentStagingZonesStagingZoneContentsGet($staging_zone, $limit, $offset)
+    {
+        list($response) = $this->contentStagingZonesStagingZoneContentsGetWithHttpInfo($staging_zone, $limit, $offset);
+        return $response;
+    }
+
+    /**
+     * Operation contentStagingZonesStagingZoneContentsGetWithHttpInfo
+     *
+     * Get contents for a staging zone
+     *
+     * @param  int $staging_zone Staging Zone Content ID (required)
+     * @param  string $limit limit (required)
+     * @param  string $offset offset (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function contentStagingZonesStagingZoneContentsGetWithHttpInfo($staging_zone, $limit, $offset)
+    {
+        $returnType = 'string';
+        $request = $this->contentStagingZonesStagingZoneContentsGetRequest($staging_zone, $limit, $offset);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if (!in_array($returnType, ['string','integer','bool'])) {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\UtilHttpError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\UtilHttpError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation contentStagingZonesStagingZoneContentsGetAsync
+     *
+     * Get contents for a staging zone
+     *
+     * @param  int $staging_zone Staging Zone Content ID (required)
+     * @param  string $limit limit (required)
+     * @param  string $offset offset (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function contentStagingZonesStagingZoneContentsGetAsync($staging_zone, $limit, $offset)
+    {
+        return $this->contentStagingZonesStagingZoneContentsGetAsyncWithHttpInfo($staging_zone, $limit, $offset)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation contentStagingZonesStagingZoneContentsGetAsyncWithHttpInfo
+     *
+     * Get contents for a staging zone
+     *
+     * @param  int $staging_zone Staging Zone Content ID (required)
+     * @param  string $limit limit (required)
+     * @param  string $offset offset (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function contentStagingZonesStagingZoneContentsGetAsyncWithHttpInfo($staging_zone, $limit, $offset)
+    {
+        $returnType = 'string';
+        $request = $this->contentStagingZonesStagingZoneContentsGetRequest($staging_zone, $limit, $offset);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'contentStagingZonesStagingZoneContentsGet'
+     *
+     * @param  int $staging_zone Staging Zone Content ID (required)
+     * @param  string $limit limit (required)
+     * @param  string $offset offset (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function contentStagingZonesStagingZoneContentsGetRequest($staging_zone, $limit, $offset)
+    {
+        // verify the required parameter 'staging_zone' is set
+        if ($staging_zone === null || (is_array($staging_zone) && count($staging_zone) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $staging_zone when calling contentStagingZonesStagingZoneContentsGet'
+            );
+        }
+        // verify the required parameter 'limit' is set
+        if ($limit === null || (is_array($limit) && count($limit) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $limit when calling contentStagingZonesStagingZoneContentsGet'
+            );
+        }
+        // verify the required parameter 'offset' is set
+        if ($offset === null || (is_array($offset) && count($offset) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $offset when calling contentStagingZonesStagingZoneContentsGet'
+            );
+        }
+
+        $resourcePath = '/content/staging-zones/{staging_zone}/contents';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit, null);
+        }
+        // query params
+        if ($offset !== null) {
+            $queryParams['offset'] = ObjectSerializer::toQueryValue($offset, null);
+        }
+
+        // path params
+        if ($staging_zone !== null) {
+            $resourcePath = str_replace(
+                '{' . 'staging_zone' . '}',
+                ObjectSerializer::toPathValue($staging_zone),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation contentStagingZonesStagingZoneGet
+     *
+     * Get staging zone without its contents field populated
+     *
+     * @param  int $staging_zone Staging Zone Content ID (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return string
+     */
+    public function contentStagingZonesStagingZoneGet($staging_zone)
+    {
+        list($response) = $this->contentStagingZonesStagingZoneGetWithHttpInfo($staging_zone);
+        return $response;
+    }
+
+    /**
+     * Operation contentStagingZonesStagingZoneGetWithHttpInfo
+     *
+     * Get staging zone without its contents field populated
+     *
+     * @param  int $staging_zone Staging Zone Content ID (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function contentStagingZonesStagingZoneGetWithHttpInfo($staging_zone)
+    {
+        $returnType = 'string';
+        $request = $this->contentStagingZonesStagingZoneGetRequest($staging_zone);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if (!in_array($returnType, ['string','integer','bool'])) {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\UtilHttpError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\UtilHttpError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation contentStagingZonesStagingZoneGetAsync
+     *
+     * Get staging zone without its contents field populated
+     *
+     * @param  int $staging_zone Staging Zone Content ID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function contentStagingZonesStagingZoneGetAsync($staging_zone)
+    {
+        return $this->contentStagingZonesStagingZoneGetAsyncWithHttpInfo($staging_zone)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation contentStagingZonesStagingZoneGetAsyncWithHttpInfo
+     *
+     * Get staging zone without its contents field populated
+     *
+     * @param  int $staging_zone Staging Zone Content ID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function contentStagingZonesStagingZoneGetAsyncWithHttpInfo($staging_zone)
+    {
+        $returnType = 'string';
+        $request = $this->contentStagingZonesStagingZoneGetRequest($staging_zone);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'contentStagingZonesStagingZoneGet'
+     *
+     * @param  int $staging_zone Staging Zone Content ID (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function contentStagingZonesStagingZoneGetRequest($staging_zone)
+    {
+        // verify the required parameter 'staging_zone' is set
+        if ($staging_zone === null || (is_array($staging_zone) && count($staging_zone) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $staging_zone when calling contentStagingZonesStagingZoneGet'
+            );
+        }
+
+        $resourcePath = '/content/staging-zones/{staging_zone}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // path params
+        if ($staging_zone !== null) {
+            $resourcePath = str_replace(
+                '{' . 'staging_zone' . '}',
+                ObjectSerializer::toPathValue($staging_zone),
+                $resourcePath
+            );
+        }
 
         // body params
         $_tempBody = null;

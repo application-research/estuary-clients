@@ -143,7 +143,21 @@ class TestContentApi(unittest.TestCase):
     def test_content_staging_zones_get(self):
         """Test case for content_staging_zones_get
 
-        Get staging zone for user  # noqa: E501
+        Get staging zone for user, excluding its contents  # noqa: E501
+        """
+        pass
+
+    def test_content_staging_zones_staging_zone_contents_get(self):
+        """Test case for content_staging_zones_staging_zone_contents_get
+
+        Get contents for a staging zone  # noqa: E501
+        """
+        pass
+
+    def test_content_staging_zones_staging_zone_get(self):
+        """Test case for content_staging_zones_staging_zone_get
+
+        Get staging zone without its contents field populated  # noqa: E501
         """
         pass
 

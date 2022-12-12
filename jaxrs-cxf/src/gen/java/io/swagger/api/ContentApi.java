@@ -292,20 +292,52 @@ public interface ContentApi  {
     public String contentReadContGet(@PathParam("cont") String cont);
 
     /**
-     * Get staging zone for user
+     * Get staging zone for user, excluding its contents
      *
-     * This endpoint is used to get staging zone for user.
+     * This endpoint is used to get staging zone for user, excluding its contents.
      *
      */
     @GET
     @Path("/content/staging-zones")
     @Produces({ "application/json" })
-    @Operation(summary = "Get staging zone for user", tags={ "content" })
+    @Operation(summary = "Get staging zone for user, excluding its contents", tags={ "content" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public String contentStagingZonesGet();
+
+    /**
+     * Get contents for a staging zone
+     *
+     * This endpoint is used to get the contents for a staging zone
+     *
+     */
+    @GET
+    @Path("/content/staging-zones/{staging_zone}/contents")
+    @Produces({ "application/json" })
+    @Operation(summary = "Get contents for a staging zone", tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public String contentStagingZonesStagingZoneContentsGet(@PathParam("staging_zone") Integer stagingZone, @QueryParam("limit") @NotNull String limit, @QueryParam("offset") @NotNull String offset);
+
+    /**
+     * Get staging zone without its contents field populated
+     *
+     * This endpoint is used to get a staging zone, excluding its contents.
+     *
+     */
+    @GET
+    @Path("/content/staging-zones/{staging_zone}")
+    @Produces({ "application/json" })
+    @Operation(summary = "Get staging zone without its contents field populated", tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public String contentStagingZonesStagingZoneGet(@PathParam("staging_zone") Integer stagingZone);
 
     /**
      * Get content statistics

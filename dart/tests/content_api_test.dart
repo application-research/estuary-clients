@@ -151,12 +151,30 @@ void main() {
       // TODO
     });
 
-    // Get staging zone for user
+    // Get staging zone for user, excluding its contents
     //
-    // This endpoint is used to get staging zone for user.
+    // This endpoint is used to get staging zone for user, excluding its contents.
     //
     //Future<String> contentStagingZonesGet() async
     test('test contentStagingZonesGet', () async {
+      // TODO
+    });
+
+    // Get contents for a staging zone
+    //
+    // This endpoint is used to get the contents for a staging zone
+    //
+    //Future<String> contentStagingZonesStagingZoneContentsGet(int stagingZone, String limit, String offset) async
+    test('test contentStagingZonesStagingZoneContentsGet', () async {
+      // TODO
+    });
+
+    // Get staging zone without its contents field populated
+    //
+    // This endpoint is used to get a staging zone, excluding its contents.
+    //
+    //Future<String> contentStagingZonesStagingZoneGet(int stagingZone) async
+    test('test contentStagingZonesStagingZoneGet', () async {
       // TODO
     });
 

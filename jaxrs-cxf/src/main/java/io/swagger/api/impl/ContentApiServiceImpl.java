@@ -218,12 +218,36 @@ public class ContentApiServiceImpl implements ContentApi {
     }
     
     /**
-     * Get staging zone for user
+     * Get staging zone for user, excluding its contents
      *
-     * This endpoint is used to get staging zone for user.
+     * This endpoint is used to get staging zone for user, excluding its contents.
      *
      */
     public String contentStagingZonesGet() {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * Get contents for a staging zone
+     *
+     * This endpoint is used to get the contents for a staging zone
+     *
+     */
+    public String contentStagingZonesStagingZoneContentsGet(Integer stagingZone, String limit, String offset) {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
+     * Get staging zone without its contents field populated
+     *
+     * This endpoint is used to get a staging zone, excluding its contents.
+     *
+     */
+    public String contentStagingZonesStagingZoneGet(Integer stagingZone) {
         // TODO: Implement...
         
         return null;

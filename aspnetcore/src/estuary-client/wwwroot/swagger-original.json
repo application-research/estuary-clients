@@ -1756,8 +1756,130 @@
     "/content/staging-zones" : {
       "get" : {
         "tags" : [ "content" ],
-        "summary" : "Get staging zone for user",
-        "description" : "This endpoint is used to get staging zone for user.",
+        "summary" : "Get staging zone for user, excluding its contents",
+        "description" : "This endpoint is used to get staging zone for user, excluding its contents.",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/util.HttpError"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/util.HttpError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/content/staging-zones/{staging_zone}" : {
+      "get" : {
+        "tags" : [ "content" ],
+        "summary" : "Get staging zone without its contents field populated",
+        "description" : "This endpoint is used to get a staging zone, excluding its contents.",
+        "parameters" : [ {
+          "name" : "staging_zone",
+          "in" : "path",
+          "description" : "Staging Zone Content ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/util.HttpError"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/util.HttpError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/content/staging-zones/{staging_zone}/contents" : {
+      "get" : {
+        "tags" : [ "content" ],
+        "summary" : "Get contents for a staging zone",
+        "description" : "This endpoint is used to get the contents for a staging zone",
+        "parameters" : [ {
+          "name" : "staging_zone",
+          "in" : "path",
+          "description" : "Staging Zone Content ID",
+          "required" : true,
+          "style" : "simple",
+          "explode" : false,
+          "schema" : {
+            "type" : "integer"
+          }
+        }, {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "limit",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "offset",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
         "responses" : {
           "200" : {
             "description" : "OK",

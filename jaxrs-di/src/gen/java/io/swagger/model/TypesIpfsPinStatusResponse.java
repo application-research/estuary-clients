@@ -26,7 +26,7 @@ import javax.validation.Valid;
 /**
  * TypesIpfsPinStatusResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-12-12T11:11:34.140Z[GMT]")public class TypesIpfsPinStatusResponse   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-12-12T21:11:36.293Z[GMT]")public class TypesIpfsPinStatusResponse   {
   @JsonProperty("created")
   private String created = null;
 

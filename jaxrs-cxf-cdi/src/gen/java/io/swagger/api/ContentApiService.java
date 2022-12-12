@@ -18,7 +18,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-12-12T11:11:35.311Z[GMT]")public interface ContentApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-12-12T21:11:38.275Z[GMT]")public interface ContentApiService {
       public Response contentAddCarPost(SecurityContext securityContext);
       public Response contentAddIpfsPost(TypesIpfsPin body, String ignoreDupes, SecurityContext securityContext);
       public Response contentAddPost(SecurityContext securityContext);
@@ -34,6 +34,8 @@ import javax.ws.rs.core.SecurityContext;
       public Response contentListGet(SecurityContext securityContext);
       public Response contentReadContGet(String cont, SecurityContext securityContext);
       public Response contentStagingZonesGet(SecurityContext securityContext);
+      public Response contentStagingZonesStagingZoneContentsGet(Integer stagingZone, String limit, String offset, SecurityContext securityContext);
+      public Response contentStagingZonesStagingZoneGet(Integer stagingZone, SecurityContext securityContext);
       public Response contentStatsGet(String limit, String offset, SecurityContext securityContext);
       public Response contentStatusIdGet(Integer id, SecurityContext securityContext);
 }

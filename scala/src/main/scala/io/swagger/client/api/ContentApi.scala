@@ -500,8 +500,8 @@ class ContentApi(
   }
 
   /**
-   * Get staging zone for user
-   * This endpoint is used to get staging zone for user.
+   * Get staging zone for user, excluding its contents
+   * This endpoint is used to get staging zone for user, excluding its contents.
    *
    * @return String
    */
@@ -514,13 +514,69 @@ class ContentApi(
   }
 
   /**
-   * Get staging zone for user asynchronously
-   * This endpoint is used to get staging zone for user.
+   * Get staging zone for user, excluding its contents asynchronously
+   * This endpoint is used to get staging zone for user, excluding its contents.
    *
    * @return Future(String)
    */
   def contentStagingZonesGetAsync(): Future[String] = {
       helper.contentStagingZonesGet()
+  }
+
+  /**
+   * Get contents for a staging zone
+   * This endpoint is used to get the contents for a staging zone
+   *
+   * @param stagingZone Staging Zone Content ID 
+   * @param limit limit 
+   * @param offset offset 
+   * @return String
+   */
+  def contentStagingZonesStagingZoneContentsGet(stagingZone: Integer, limit: String, offset: String): Option[String] = {
+    val await = Try(Await.result(contentStagingZonesStagingZoneContentsGetAsync(stagingZone, limit, offset), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Get contents for a staging zone asynchronously
+   * This endpoint is used to get the contents for a staging zone
+   *
+   * @param stagingZone Staging Zone Content ID 
+   * @param limit limit 
+   * @param offset offset 
+   * @return Future(String)
+   */
+  def contentStagingZonesStagingZoneContentsGetAsync(stagingZone: Integer, limit: String, offset: String): Future[String] = {
+      helper.contentStagingZonesStagingZoneContentsGet(stagingZone, limit, offset)
+  }
+
+  /**
+   * Get staging zone without its contents field populated
+   * This endpoint is used to get a staging zone, excluding its contents.
+   *
+   * @param stagingZone Staging Zone Content ID 
+   * @return String
+   */
+  def contentStagingZonesStagingZoneGet(stagingZone: Integer): Option[String] = {
+    val await = Try(Await.result(contentStagingZonesStagingZoneGetAsync(stagingZone), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Get staging zone without its contents field populated asynchronously
+   * This endpoint is used to get a staging zone, excluding its contents.
+   *
+   * @param stagingZone Staging Zone Content ID 
+   * @return Future(String)
+   */
+  def contentStagingZonesStagingZoneGetAsync(stagingZone: Integer): Future[String] = {
+      helper.contentStagingZonesStagingZoneGet(stagingZone)
   }
 
   /**
@@ -879,6 +935,46 @@ class ContentApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   def contentStagingZonesGet()(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/content/staging-zones"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def contentStagingZonesStagingZoneContentsGet(stagingZone: Integer,
+    limit: String,
+    offset: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
+    // create path and map variables
+    val path = (addFmt("/content/staging-zones/{staging_zone}/contents")
+      replaceAll("\\{" + "staging_zone" + "\\}", stagingZone.toString))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (limit == null) throw new Exception("Missing required parameter 'limit' when calling ContentApi->contentStagingZonesStagingZoneContentsGet")
+
+    if (offset == null) throw new Exception("Missing required parameter 'offset' when calling ContentApi->contentStagingZonesStagingZoneContentsGet")
+
+    queryParams += "limit" -> limit.toString
+    queryParams += "offset" -> offset.toString
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def contentStagingZonesStagingZoneGet(stagingZone: Integer)(implicit reader: ClientResponseReader[String]): Future[String] = {
+    // create path and map variables
+    val path = (addFmt("/content/staging-zones/{staging_zone}")
+      replaceAll("\\{" + "staging_zone" + "\\}", stagingZone.toString))
 
     // query params
     val queryParams = new mutable.HashMap[String, String]

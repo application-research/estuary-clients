@@ -10,7 +10,7 @@ import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-12-12T11:11:33.532Z[GMT]")public class CollectionsCollectionListResponse   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-12-12T21:11:36.544Z[GMT]")public class CollectionsCollectionListResponse   {
   private UtilDbCID cid = null;  private String coluuid = null;  private Integer contId = null;  private String dir = null;  private String name = null;  private Integer size = null;  private CollectionsCidType type = null;  private String updatedAt = null;
 
   /**

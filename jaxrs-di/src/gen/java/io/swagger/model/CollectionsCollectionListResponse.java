@@ -24,7 +24,7 @@ import javax.validation.Valid;
 /**
  * CollectionsCollectionListResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-12-12T11:11:34.140Z[GMT]")public class CollectionsCollectionListResponse   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-12-12T21:11:36.293Z[GMT]")public class CollectionsCollectionListResponse   {
   @JsonProperty("cid")
   private UtilDbCID cid = null;
 

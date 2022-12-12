@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-12-12T11:11:32.220Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-12-12T21:11:36.611Z[GMT]")
 @Controller
 public interface ContentApi {
 
@@ -215,12 +215,40 @@ public interface ContentApi {
     }
 
 
-    @Operation(summary = "Get staging zone for user", operationId = "contentStagingZonesGet", description = "This endpoint is used to get staging zone for user." , tags = {"content"})
+    @Operation(summary = "Get staging zone for user, excluding its contents", operationId = "contentStagingZonesGet", description = "This endpoint is used to get staging zone for user, excluding its contents." , tags = {"content"})
     @ApiResponse(responseCode = "200", description = "OK")
     @ApiResponse(responseCode = "400", description = "Bad Request")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
     @Get(value = "/content/staging-zones", produces = { "application/json" })
     default Single<HttpResponse<String>> contentStagingZonesGet() {
+        return Single.fromCallable(() -> {
+            throw new UnsupportedOperationException();
+        });
+    }
+
+
+    @Operation(summary = "Get contents for a staging zone", operationId = "contentStagingZonesStagingZoneContentsGet", description = "This endpoint is used to get the contents for a staging zone" , tags = {"content"})
+    @ApiResponse(responseCode = "200", description = "OK")
+    @ApiResponse(responseCode = "400", description = "Bad Request")
+    @ApiResponse(responseCode = "500", description = "Internal Server Error")
+    @Get(value = "/content/staging-zones/{staging_zone}/contents", produces = { "application/json" })
+    default Single<HttpResponse<String>> contentStagingZonesStagingZoneContentsGet(@Parameter(description = "Staging Zone Content ID") @PathVariable("staging_zone") Integer stagingZone
+,@NotNull @Parameter(description = "limit") @Valid @QueryValue(value = "limit") String limit
+,@NotNull @Parameter(description = "offset") @Valid @QueryValue(value = "offset") String offset
+) {
+        return Single.fromCallable(() -> {
+            throw new UnsupportedOperationException();
+        });
+    }
+
+
+    @Operation(summary = "Get staging zone without its contents field populated", operationId = "contentStagingZonesStagingZoneGet", description = "This endpoint is used to get a staging zone, excluding its contents." , tags = {"content"})
+    @ApiResponse(responseCode = "200", description = "OK")
+    @ApiResponse(responseCode = "400", description = "Bad Request")
+    @ApiResponse(responseCode = "500", description = "Internal Server Error")
+    @Get(value = "/content/staging-zones/{staging_zone}", produces = { "application/json" })
+    default Single<HttpResponse<String>> contentStagingZonesStagingZoneGet(@Parameter(description = "Staging Zone Content ID") @PathVariable("staging_zone") Integer stagingZone
+) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });

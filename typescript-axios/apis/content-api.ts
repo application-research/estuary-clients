@@ -815,13 +815,127 @@ export const ContentApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * This endpoint is used to get staging zone for user.
-         * @summary Get staging zone for user
+         * This endpoint is used to get staging zone for user, excluding its contents.
+         * @summary Get staging zone for user, excluding its contents
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         contentStagingZonesGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/content/staging-zones`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? await configuration.apiKey("Authorization")
+                    : await configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * This endpoint is used to get the contents for a staging zone
+         * @summary Get contents for a staging zone
+         * @param {number} stagingZone Staging Zone Content ID
+         * @param {string} limit limit
+         * @param {string} offset offset
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        contentStagingZonesStagingZoneContentsGet: async (stagingZone: number, limit: string, offset: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'stagingZone' is not null or undefined
+            if (stagingZone === null || stagingZone === undefined) {
+                throw new RequiredError('stagingZone','Required parameter stagingZone was null or undefined when calling contentStagingZonesStagingZoneContentsGet.');
+            }
+            // verify required parameter 'limit' is not null or undefined
+            if (limit === null || limit === undefined) {
+                throw new RequiredError('limit','Required parameter limit was null or undefined when calling contentStagingZonesStagingZoneContentsGet.');
+            }
+            // verify required parameter 'offset' is not null or undefined
+            if (offset === null || offset === undefined) {
+                throw new RequiredError('offset','Required parameter offset was null or undefined when calling contentStagingZonesStagingZoneContentsGet.');
+            }
+            const localVarPath = `/content/staging-zones/{staging_zone}/contents`
+                .replace(`{${"staging_zone"}}`, encodeURIComponent(String(stagingZone)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? await configuration.apiKey("Authorization")
+                    : await configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * This endpoint is used to get a staging zone, excluding its contents.
+         * @summary Get staging zone without its contents field populated
+         * @param {number} stagingZone Staging Zone Content ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        contentStagingZonesStagingZoneGet: async (stagingZone: number, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'stagingZone' is not null or undefined
+            if (stagingZone === null || stagingZone === undefined) {
+                throw new RequiredError('stagingZone','Required parameter stagingZone was null or undefined when calling contentStagingZonesStagingZoneGet.');
+            }
+            const localVarPath = `/content/staging-zones/{staging_zone}`
+                .replace(`{${"staging_zone"}}`, encodeURIComponent(String(stagingZone)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -1199,13 +1313,43 @@ export const ContentApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         * This endpoint is used to get staging zone for user.
-         * @summary Get staging zone for user
+         * This endpoint is used to get staging zone for user, excluding its contents.
+         * @summary Get staging zone for user, excluding its contents
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         async contentStagingZonesGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
             const localVarAxiosArgs = await ContentApiAxiosParamCreator(configuration).contentStagingZonesGet(options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * This endpoint is used to get the contents for a staging zone
+         * @summary Get contents for a staging zone
+         * @param {number} stagingZone Staging Zone Content ID
+         * @param {string} limit limit
+         * @param {string} offset offset
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async contentStagingZonesStagingZoneContentsGet(stagingZone: number, limit: string, offset: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
+            const localVarAxiosArgs = await ContentApiAxiosParamCreator(configuration).contentStagingZonesStagingZoneContentsGet(stagingZone, limit, offset, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
+         * This endpoint is used to get a staging zone, excluding its contents.
+         * @summary Get staging zone without its contents field populated
+         * @param {number} stagingZone Staging Zone Content ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async contentStagingZonesStagingZoneGet(stagingZone: number, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
+            const localVarAxiosArgs = await ContentApiAxiosParamCreator(configuration).contentStagingZonesStagingZoneGet(stagingZone, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -1411,13 +1555,35 @@ export const ContentApiFactory = function (configuration?: Configuration, basePa
             return ContentApiFp(configuration).contentReadContGet(cont, options).then((request) => request(axios, basePath));
         },
         /**
-         * This endpoint is used to get staging zone for user.
-         * @summary Get staging zone for user
+         * This endpoint is used to get staging zone for user, excluding its contents.
+         * @summary Get staging zone for user, excluding its contents
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
         async contentStagingZonesGet(options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
             return ContentApiFp(configuration).contentStagingZonesGet(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * This endpoint is used to get the contents for a staging zone
+         * @summary Get contents for a staging zone
+         * @param {number} stagingZone Staging Zone Content ID
+         * @param {string} limit limit
+         * @param {string} offset offset
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async contentStagingZonesStagingZoneContentsGet(stagingZone: number, limit: string, offset: string, options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
+            return ContentApiFp(configuration).contentStagingZonesStagingZoneContentsGet(stagingZone, limit, offset, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * This endpoint is used to get a staging zone, excluding its contents.
+         * @summary Get staging zone without its contents field populated
+         * @param {number} stagingZone Staging Zone Content ID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async contentStagingZonesStagingZoneGet(stagingZone: number, options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
+            return ContentApiFp(configuration).contentStagingZonesStagingZoneGet(stagingZone, options).then((request) => request(axios, basePath));
         },
         /**
          * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content
@@ -1628,14 +1794,38 @@ export class ContentApi extends BaseAPI {
         return ContentApiFp(this.configuration).contentReadContGet(cont, options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     * This endpoint is used to get staging zone for user.
-     * @summary Get staging zone for user
+     * This endpoint is used to get staging zone for user, excluding its contents.
+     * @summary Get staging zone for user, excluding its contents
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContentApi
      */
     public async contentStagingZonesGet(options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
         return ContentApiFp(this.configuration).contentStagingZonesGet(options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * This endpoint is used to get the contents for a staging zone
+     * @summary Get contents for a staging zone
+     * @param {number} stagingZone Staging Zone Content ID
+     * @param {string} limit limit
+     * @param {string} offset offset
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ContentApi
+     */
+    public async contentStagingZonesStagingZoneContentsGet(stagingZone: number, limit: string, offset: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
+        return ContentApiFp(this.configuration).contentStagingZonesStagingZoneContentsGet(stagingZone, limit, offset, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * This endpoint is used to get a staging zone, excluding its contents.
+     * @summary Get staging zone without its contents field populated
+     * @param {number} stagingZone Staging Zone Content ID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ContentApi
+     */
+    public async contentStagingZonesStagingZoneGet(stagingZone: number, options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
+        return ContentApiFp(this.configuration).contentStagingZonesStagingZoneGet(stagingZone, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * This endpoint is used to get content statistics. Every content stored in the network (estuary) is tracked by a unique ID which can be used to get information about the content. This endpoint will allow the consumer to get the collected stats of a content

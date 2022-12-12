@@ -182,7 +182,9 @@ Class | Method | HTTP request | Description
 *ContentApi* | [**content_importdeal_post**](docs/ContentApi.md#content_importdeal_post) | **POST** /content/importdeal | Import a deal
 *ContentApi* | [**content_list_get**](docs/ContentApi.md#content_list_get) | **GET** /content/list | List all pinned content
 *ContentApi* | [**content_read_cont_get**](docs/ContentApi.md#content_read_cont_get) | **GET** /content/read/{cont} | Read content
-*ContentApi* | [**content_staging_zones_get**](docs/ContentApi.md#content_staging_zones_get) | **GET** /content/staging-zones | Get staging zone for user
+*ContentApi* | [**content_staging_zones_get**](docs/ContentApi.md#content_staging_zones_get) | **GET** /content/staging-zones | Get staging zone for user, excluding its contents
+*ContentApi* | [**content_staging_zones_staging_zone_contents_get**](docs/ContentApi.md#content_staging_zones_staging_zone_contents_get) | **GET** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
+*ContentApi* | [**content_staging_zones_staging_zone_get**](docs/ContentApi.md#content_staging_zones_staging_zone_get) | **GET** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
 *ContentApi* | [**content_stats_get**](docs/ContentApi.md#content_stats_get) | **GET** /content/stats | Get content statistics
 *ContentApi* | [**content_status_id_get**](docs/ContentApi.md#content_status_id_get) | **GET** /content/status/{id} | Content Status
 *DealsApi* | [**deal_estimate_post**](docs/DealsApi.md#deal_estimate_post) | **POST** /deal/estimate | Estimate the cost of a deal

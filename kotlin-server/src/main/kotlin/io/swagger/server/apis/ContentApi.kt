@@ -280,6 +280,34 @@ fun Route.ContentApi() {
                 else -> call.respondText(exampleContentString)
             }        }
     }
+    get<Paths.contentStagingZonesStagingZoneContentsGet> {  _: Paths.contentStagingZonesStagingZoneContentsGet ->
+        val principal = call.authentication.principal<ApiPrincipal>()
+        if (principal == null) {
+            call.respond(HttpStatusCode.Unauthorized)
+        } else {
+            val exampleContentType = "application/json"
+            val exampleContentString = """"""""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
+    }
+    get<Paths.contentStagingZonesStagingZoneGet> {  _: Paths.contentStagingZonesStagingZoneGet ->
+        val principal = call.authentication.principal<ApiPrincipal>()
+        if (principal == null) {
+            call.respond(HttpStatusCode.Unauthorized)
+        } else {
+            val exampleContentType = "application/json"
+            val exampleContentString = """"""""
+            
+            when(exampleContentType) {
+                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
+                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
+                else -> call.respondText(exampleContentString)
+            }        }
+    }
     get<Paths.contentStatsGet> {  _: Paths.contentStatsGet ->
         val principal = call.authentication.principal<ApiPrincipal>()
         if (principal == null) {

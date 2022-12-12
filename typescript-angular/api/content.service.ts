@@ -839,8 +839,8 @@ export class ContentService {
     }
 
     /**
-     * Get staging zone for user
-     * This endpoint is used to get staging zone for user.
+     * Get staging zone for user, excluding its contents
+     * This endpoint is used to get staging zone for user, excluding its contents.
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
@@ -870,6 +870,117 @@ export class ContentService {
         ];
 
         return this.httpClient.request<string>('get',`${this.basePath}/content/staging-zones`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Get contents for a staging zone
+     * This endpoint is used to get the contents for a staging zone
+     * @param stagingZone Staging Zone Content ID
+     * @param limit limit
+     * @param offset offset
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public contentStagingZonesStagingZoneContentsGet(stagingZone: number, limit: string, offset: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public contentStagingZonesStagingZoneContentsGet(stagingZone: number, limit: string, offset: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public contentStagingZonesStagingZoneContentsGet(stagingZone: number, limit: string, offset: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public contentStagingZonesStagingZoneContentsGet(stagingZone: number, limit: string, offset: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (stagingZone === null || stagingZone === undefined) {
+            throw new Error('Required parameter stagingZone was null or undefined when calling contentStagingZonesStagingZoneContentsGet.');
+        }
+
+        if (limit === null || limit === undefined) {
+            throw new Error('Required parameter limit was null or undefined when calling contentStagingZonesStagingZoneContentsGet.');
+        }
+
+        if (offset === null || offset === undefined) {
+            throw new Error('Required parameter offset was null or undefined when calling contentStagingZonesStagingZoneContentsGet.');
+        }
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (limit !== undefined && limit !== null) {
+            queryParameters = queryParameters.set('limit', <any>limit);
+        }
+        if (offset !== undefined && offset !== null) {
+            queryParameters = queryParameters.set('offset', <any>offset);
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (bearerAuth) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<string>('get',`${this.basePath}/content/staging-zones/${encodeURIComponent(String(stagingZone))}/contents`,
+            {
+                params: queryParameters,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Get staging zone without its contents field populated
+     * This endpoint is used to get a staging zone, excluding its contents.
+     * @param stagingZone Staging Zone Content ID
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public contentStagingZonesStagingZoneGet(stagingZone: number, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public contentStagingZonesStagingZoneGet(stagingZone: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public contentStagingZonesStagingZoneGet(stagingZone: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public contentStagingZonesStagingZoneGet(stagingZone: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (stagingZone === null || stagingZone === undefined) {
+            throw new Error('Required parameter stagingZone was null or undefined when calling contentStagingZonesStagingZoneGet.');
+        }
+
+        let headers = this.defaultHeaders;
+
+        // authentication (bearerAuth) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<string>('get',`${this.basePath}/content/staging-zones/${encodeURIComponent(String(stagingZone))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

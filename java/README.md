@@ -2,7 +2,7 @@
 
 Estuary API
 - API version: 0.0.0
-  - Build date: 2022-12-12T11:11:30.699Z[GMT]
+  - Build date: 2022-12-12T21:11:32.832Z[GMT]
 
 This is the API for the Estuary application.
 
@@ -348,7 +348,9 @@ Class | Method | HTTP request | Description
 *ContentApi* | [**contentImportdealPost**](docs/ContentApi.md#contentImportdealPost) | **POST** /content/importdeal | Import a deal
 *ContentApi* | [**contentListGet**](docs/ContentApi.md#contentListGet) | **GET** /content/list | List all pinned content
 *ContentApi* | [**contentReadContGet**](docs/ContentApi.md#contentReadContGet) | **GET** /content/read/{cont} | Read content
-*ContentApi* | [**contentStagingZonesGet**](docs/ContentApi.md#contentStagingZonesGet) | **GET** /content/staging-zones | Get staging zone for user
+*ContentApi* | [**contentStagingZonesGet**](docs/ContentApi.md#contentStagingZonesGet) | **GET** /content/staging-zones | Get staging zone for user, excluding its contents
+*ContentApi* | [**contentStagingZonesStagingZoneContentsGet**](docs/ContentApi.md#contentStagingZonesStagingZoneContentsGet) | **GET** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
+*ContentApi* | [**contentStagingZonesStagingZoneGet**](docs/ContentApi.md#contentStagingZonesStagingZoneGet) | **GET** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
 *ContentApi* | [**contentStatsGet**](docs/ContentApi.md#contentStatsGet) | **GET** /content/stats | Get content statistics
 *ContentApi* | [**contentStatusIdGet**](docs/ContentApi.md#contentStatusIdGet) | **GET** /content/status/{id} | Content Status
 *DealsApi* | [**dealEstimatePost**](docs/DealsApi.md#dealEstimatePost) | **POST** /deal/estimate | Estimate the cost of a deal

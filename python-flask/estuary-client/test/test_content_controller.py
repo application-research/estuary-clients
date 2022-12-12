@@ -214,10 +214,35 @@ class TestContentController(BaseTestCase):
     def test_content_staging_zones_get(self):
         """Test case for content_staging_zones_get
 
-        Get staging zone for user
+        Get staging zone for user, excluding its contents
         """
         response = self.client.open(
             '/content/staging-zones',
+            method='GET')
+        self.assert200(response,
+                       'Response body is : ' + response.data.decode('utf-8'))
+
+    def test_content_staging_zones_staging_zone_contents_get(self):
+        """Test case for content_staging_zones_staging_zone_contents_get
+
+        Get contents for a staging zone
+        """
+        query_string = [('limit', 'limit_example'),
+                        ('offset', 'offset_example')]
+        response = self.client.open(
+            '/content/staging-zones/{staging_zone}/contents'.format(staging_zone=56),
+            method='GET',
+            query_string=query_string)
+        self.assert200(response,
+                       'Response body is : ' + response.data.decode('utf-8'))
+
+    def test_content_staging_zones_staging_zone_get(self):
+        """Test case for content_staging_zones_staging_zone_get
+
+        Get staging zone without its contents field populated
+        """
+        response = self.client.open(
+            '/content/staging-zones/{staging_zone}'.format(staging_zone=56),
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))

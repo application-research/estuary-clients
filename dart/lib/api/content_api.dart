@@ -829,9 +829,9 @@ class ContentApi {
       return null;
     }
   }
-  /// Get staging zone for user
+  /// Get staging zone for user, excluding its contents
   ///
-  /// This endpoint is used to get staging zone for user.
+  /// This endpoint is used to get staging zone for user, excluding its contents.
   Future<String> contentStagingZonesGet() async {
     Object postBody = null;
 
@@ -839,6 +839,116 @@ class ContentApi {
 
     // create path and map variables
     String path = "/content/staging-zones".replaceAll("{format}","json");
+
+    // query params
+    List<QueryParam> queryParams = [];
+    Map<String, String> headerParams = {};
+    Map<String, String> formParams = {};
+    
+    List<String> contentTypes = [];
+
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+    List<String> authNames = ["bearerAuth"];
+
+    if(contentType.startsWith("multipart/form-data")) {
+      bool hasFields = false;
+      MultipartRequest mp = new MultipartRequest(null, null);
+      if(hasFields)
+        postBody = mp;
+    }
+    else {
+          }
+
+    var response = await apiClient.invokeAPI(path,
+                                             'GET',
+                                             queryParams,
+                                             postBody,
+                                             headerParams,
+                                             formParams,
+                                             contentType,
+                                             authNames);
+
+    if(response.statusCode >= 400) {
+      throw new ApiException(response.statusCode, response.body);
+    } else if(response.body != null) {
+      return
+          apiClient.deserialize(response.body, 'String') as String ;
+    } else {
+      return null;
+    }
+  }
+  /// Get contents for a staging zone
+  ///
+  /// This endpoint is used to get the contents for a staging zone
+  Future<String> contentStagingZonesStagingZoneContentsGet(int stagingZone, String limit, String offset) async {
+    Object postBody = null;
+
+    // verify required params are set
+    if(stagingZone == null) {
+     throw new ApiException(400, "Missing required param: stagingZone");
+    }
+    if(limit == null) {
+     throw new ApiException(400, "Missing required param: limit");
+    }
+    if(offset == null) {
+     throw new ApiException(400, "Missing required param: offset");
+    }
+
+    // create path and map variables
+    String path = "/content/staging-zones/{staging_zone}/contents".replaceAll("{format}","json").replaceAll("{" + "staging_zone" + "}", stagingZone.toString());
+
+    // query params
+    List<QueryParam> queryParams = [];
+    Map<String, String> headerParams = {};
+    Map<String, String> formParams = {};
+      queryParams.addAll(_convertParametersForCollectionFormat("", "limit", limit));
+      queryParams.addAll(_convertParametersForCollectionFormat("", "offset", offset));
+    
+    List<String> contentTypes = [];
+
+    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
+    List<String> authNames = ["bearerAuth"];
+
+    if(contentType.startsWith("multipart/form-data")) {
+      bool hasFields = false;
+      MultipartRequest mp = new MultipartRequest(null, null);
+      if(hasFields)
+        postBody = mp;
+    }
+    else {
+          }
+
+    var response = await apiClient.invokeAPI(path,
+                                             'GET',
+                                             queryParams,
+                                             postBody,
+                                             headerParams,
+                                             formParams,
+                                             contentType,
+                                             authNames);
+
+    if(response.statusCode >= 400) {
+      throw new ApiException(response.statusCode, response.body);
+    } else if(response.body != null) {
+      return
+          apiClient.deserialize(response.body, 'String') as String ;
+    } else {
+      return null;
+    }
+  }
+  /// Get staging zone without its contents field populated
+  ///
+  /// This endpoint is used to get a staging zone, excluding its contents.
+  Future<String> contentStagingZonesStagingZoneGet(int stagingZone) async {
+    Object postBody = null;
+
+    // verify required params are set
+    if(stagingZone == null) {
+     throw new ApiException(400, "Missing required param: stagingZone");
+    }
+
+    // create path and map variables
+    String path = "/content/staging-zones/{staging_zone}".replaceAll("{format}","json").replaceAll("{" + "staging_zone" + "}", stagingZone.toString());
 
     // query params
     List<QueryParam> queryParams = [];

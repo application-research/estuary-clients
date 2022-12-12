@@ -25,7 +25,9 @@ Method | HTTP request | Description
 [**contentImportdealPost**](ContentApi.md#contentImportdealPost) | **POST** /content/importdeal | Import a deal
 [**contentListGet**](ContentApi.md#contentListGet) | **GET** /content/list | List all pinned content
 [**contentReadContGet**](ContentApi.md#contentReadContGet) | **GET** /content/read/{cont} | Read content
-[**contentStagingZonesGet**](ContentApi.md#contentStagingZonesGet) | **GET** /content/staging-zones | Get staging zone for user
+[**contentStagingZonesGet**](ContentApi.md#contentStagingZonesGet) | **GET** /content/staging-zones | Get staging zone for user, excluding its contents
+[**contentStagingZonesStagingZoneContentsGet**](ContentApi.md#contentStagingZonesStagingZoneContentsGet) | **GET** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
+[**contentStagingZonesStagingZoneGet**](ContentApi.md#contentStagingZonesStagingZoneGet) | **GET** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
 [**contentStatsGet**](ContentApi.md#contentStatsGet) | **GET** /content/stats | Get content statistics
 [**contentStatusIdGet**](ContentApi.md#contentStatusIdGet) | **GET** /content/status/{id} | Content Status
 
@@ -778,9 +780,9 @@ Name | Type | Description  | Notes
 # **contentStagingZonesGet**
 > String contentStagingZonesGet()
 
-Get staging zone for user
+Get staging zone for user, excluding its contents
 
-This endpoint is used to get staging zone for user.
+This endpoint is used to get staging zone for user, excluding its contents.
 
 ### Example
 ```dart
@@ -802,6 +804,104 @@ try {
 
 ### Parameters
 This endpoint does not need any parameter.
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **contentStagingZonesStagingZoneContentsGet**
+> String contentStagingZonesStagingZoneContentsGet(stagingZone, limit, offset)
+
+Get contents for a staging zone
+
+This endpoint is used to get the contents for a staging zone
+
+### Example
+```dart
+import 'package:swagger/api.dart';
+// TODO Configure API key authorization: bearerAuth
+//swagger.api.Configuration.apiKey{'Authorization'} = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
+
+var api_instance = new ContentApi();
+var stagingZone = 56; // int | Staging Zone Content ID
+var limit = limit_example; // String | limit
+var offset = offset_example; // String | offset
+
+try {
+    var result = api_instance.contentStagingZonesStagingZoneContentsGet(stagingZone, limit, offset);
+    print(result);
+} catch (e) {
+    print("Exception when calling ContentApi->contentStagingZonesStagingZoneContentsGet: $e\n");
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **stagingZone** | **int**| Staging Zone Content ID | 
+ **limit** | **String**| limit | 
+ **offset** | **String**| offset | 
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **contentStagingZonesStagingZoneGet**
+> String contentStagingZonesStagingZoneGet(stagingZone)
+
+Get staging zone without its contents field populated
+
+This endpoint is used to get a staging zone, excluding its contents.
+
+### Example
+```dart
+import 'package:swagger/api.dart';
+// TODO Configure API key authorization: bearerAuth
+//swagger.api.Configuration.apiKey{'Authorization'} = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
+
+var api_instance = new ContentApi();
+var stagingZone = 56; // int | Staging Zone Content ID
+
+try {
+    var result = api_instance.contentStagingZonesStagingZoneGet(stagingZone);
+    print(result);
+} catch (e) {
+    print("Exception when calling ContentApi->contentStagingZonesStagingZoneGet: $e\n");
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **stagingZone** | **int**| Staging Zone Content ID | 
 
 ### Return type
 

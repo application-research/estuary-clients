@@ -1242,6 +1242,12 @@
                     <li data-group="Content" data-name="contentStagingZonesGet" class="">
                       <a href="#api-Content-contentStagingZonesGet">contentStagingZonesGet</a>
                     </li>
+                    <li data-group="Content" data-name="contentStagingZonesStagingZoneContentsGet" class="">
+                      <a href="#api-Content-contentStagingZonesStagingZoneContentsGet">contentStagingZonesStagingZoneContentsGet</a>
+                    </li>
+                    <li data-group="Content" data-name="contentStagingZonesStagingZoneGet" class="">
+                      <a href="#api-Content-contentStagingZonesStagingZoneGet">contentStagingZonesStagingZoneGet</a>
+                    </li>
                     <li data-group="Content" data-name="contentStatsGet" class="">
                       <a href="#api-Content-contentStatsGet">contentStatsGet</a>
                     </li>
@@ -16710,12 +16716,12 @@ except ApiException as e:
                       <article id="api-Content-contentStagingZonesGet-0" data-group="User" data-name="contentStagingZonesGet" data-version="0">
                         <div class="pull-left">
                           <h1>contentStagingZonesGet</h1>
-                          <p>Get staging zone for user</p>
+                          <p>Get staging zone for user, excluding its contents</p>
                         </div>
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
                         <p></p>
-                        <p class="marked">This endpoint is used to get staging zone for user.</p>
+                        <p class="marked">This endpoint is used to get staging zone for user, excluding its contents.</p>
                         <p></p>
                         <br />
                         <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/content/staging-zones</span></code></pre>
@@ -16805,7 +16811,7 @@ public class ContentApiExample {
 
 ContentApi *apiInstance = [[ContentApi alloc] init];
 
-// Get staging zone for user
+// Get staging zone for user, excluding its contents
 [apiInstance contentStagingZonesGetWithCompletionHandler: 
               ^('String' output, NSError* error) {
                             if (output) {
@@ -16866,7 +16872,7 @@ namespace Example
 
             try
             {
-                // Get staging zone for user
+                // Get staging zone for user, excluding its contents
                 'String' result = apiInstance.contentStagingZonesGet();
                 Debug.WriteLine(result);
             }
@@ -16937,7 +16943,7 @@ swagger_client.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 api_instance = swagger_client.ContentApi()
 
 try: 
-    # Get staging zone for user
+    # Get staging zone for user, excluding its contents
     api_response = api_instance.content_staging_zones_get()
     pprint(api_response)
 except ApiException as e:
@@ -17095,6 +17101,941 @@ except ApiException as e:
                                     </script>
                                   </div>
                                   <input id='responses-contentStagingZonesGet-500-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Content-contentStagingZonesStagingZoneContentsGet">
+                      <article id="api-Content-contentStagingZonesStagingZoneContentsGet-0" data-group="User" data-name="contentStagingZonesStagingZoneContentsGet" data-version="0">
+                        <div class="pull-left">
+                          <h1>contentStagingZonesStagingZoneContentsGet</h1>
+                          <p>Get contents for a staging zone</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">This endpoint is used to get the contents for a staging zone</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/content/staging-zones/{staging_zone}/contents</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Content-contentStagingZonesStagingZoneContentsGet-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Content-contentStagingZonesStagingZoneContentsGet-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Content-contentStagingZonesStagingZoneContentsGet-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Content-contentStagingZonesStagingZoneContentsGet-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Content-contentStagingZonesStagingZoneContentsGet-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Content-contentStagingZonesStagingZoneContentsGet-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Content-contentStagingZonesStagingZoneContentsGet-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Content-contentStagingZonesStagingZoneContentsGet-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Content-contentStagingZonesStagingZoneContentsGet-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Content-contentStagingZonesStagingZoneContentsGet-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Content-contentStagingZonesStagingZoneContentsGet-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Content-contentStagingZonesStagingZoneContentsGet-0-curl">
+                           <pre class="prettyprint"><code class="language-bsh">curl -X GET\
+-H "Authorization: [[apiKey]]"\
+-H "Accept: application/json"\
+"//api.estuary.tech//content/staging-zones/{staging_zone}/contents?limit=&offset="</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Content-contentStagingZonesStagingZoneContentsGet-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.ContentApi;
+
+import java.io.File;
+import java.util.*;
+
+public class ContentApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: bearerAuth
+        ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //bearerAuth.setApiKeyPrefix("Token");
+
+        ContentApi apiInstance = new ContentApi();
+        Integer stagingZone = 56; // Integer | Staging Zone Content ID
+        String limit = limit_example; // String | limit
+        String offset = offset_example; // String | offset
+        try {
+            'String' result = apiInstance.contentStagingZonesStagingZoneContentsGet(stagingZone, limit, offset);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ContentApi#contentStagingZonesStagingZoneContentsGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Content-contentStagingZonesStagingZoneContentsGet-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.ContentApi;
+
+public class ContentApiExample {
+
+    public static void main(String[] args) {
+        ContentApi apiInstance = new ContentApi();
+        Integer stagingZone = 56; // Integer | Staging Zone Content ID
+        String limit = limit_example; // String | limit
+        String offset = offset_example; // String | offset
+        try {
+            'String' result = apiInstance.contentStagingZonesStagingZoneContentsGet(stagingZone, limit, offset);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ContentApi#contentStagingZonesStagingZoneContentsGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Content-contentStagingZonesStagingZoneContentsGet-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Content-contentStagingZonesStagingZoneContentsGet-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: bearerAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"Authorization"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
+Integer *stagingZone = 56; // Staging Zone Content ID
+String *limit = limit_example; // limit
+String *offset = offset_example; // offset
+
+ContentApi *apiInstance = [[ContentApi alloc] init];
+
+// Get contents for a staging zone
+[apiInstance contentStagingZonesStagingZoneContentsGetWith:stagingZone
+    limit:limit
+    offset:offset
+              completionHandler: ^('String' output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Content-contentStagingZonesStagingZoneContentsGet-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var EstuaryApi = require('estuary_api');
+var defaultClient = EstuaryApi.ApiClient.instance;
+
+// Configure API key authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearerAuth.apiKeyPrefix['Authorization'] = "Token"
+
+var api = new EstuaryApi.ContentApi()
+var stagingZone = 56; // {{Integer}} Staging Zone Content ID
+var limit = limit_example; // {{String}} limit
+var offset = offset_example; // {{String}} offset
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.contentStagingZonesStagingZoneContentsGet(stagingZone, limit, offset, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Content-contentStagingZonesStagingZoneContentsGet-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Content-contentStagingZonesStagingZoneContentsGet-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
+
+namespace Example
+{
+    public class contentStagingZonesStagingZoneContentsGetExample
+    {
+        public void main()
+        {
+
+            // Configure API key authorization: bearerAuth
+            Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
+
+            var apiInstance = new ContentApi();
+            var stagingZone = 56;  // Integer | Staging Zone Content ID
+            var limit = limit_example;  // String | limit
+            var offset = offset_example;  // String | offset
+
+            try
+            {
+                // Get contents for a staging zone
+                'String' result = apiInstance.contentStagingZonesStagingZoneContentsGet(stagingZone, limit, offset);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling ContentApi.contentStagingZonesStagingZoneContentsGet: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Content-contentStagingZonesStagingZoneContentsGet-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: bearerAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$api_instance = new Swagger\Client\ApiContentApi();
+$stagingZone = 56; // Integer | Staging Zone Content ID
+$limit = limit_example; // String | limit
+$offset = offset_example; // String | offset
+
+try {
+    $result = $api_instance->contentStagingZonesStagingZoneContentsGet($stagingZone, $limit, $offset);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ContentApi->contentStagingZonesStagingZoneContentsGet: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Content-contentStagingZonesStagingZoneContentsGet-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::ContentApi;
+
+# Configure API key authorization: bearerAuth
+$WWW::SwaggerClient::Configuration::api_key->{'Authorization'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'Authorization'} = "Bearer";
+
+my $api_instance = WWW::SwaggerClient::ContentApi->new();
+my $stagingZone = 56; # Integer | Staging Zone Content ID
+my $limit = limit_example; # String | limit
+my $offset = offset_example; # String | offset
+
+eval { 
+    my $result = $api_instance->contentStagingZonesStagingZoneContentsGet(stagingZone => $stagingZone, limit => $limit, offset => $offset);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling ContentApi->contentStagingZonesStagingZoneContentsGet: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Content-contentStagingZonesStagingZoneContentsGet-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: bearerAuth
+swagger_client.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = swagger_client.ContentApi()
+stagingZone = 56 # Integer | Staging Zone Content ID
+limit = limit_example # String | limit
+offset = offset_example # String | offset
+
+try: 
+    # Get contents for a staging zone
+    api_response = api_instance.content_staging_zones_staging_zone_contents_get(stagingZone, limit, offset)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ContentApi->contentStagingZonesStagingZoneContentsGet: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">staging_zone*</td>
+                                  <td>
+                                  
+                                  
+                                      <div id="d2e199_contentStagingZonesStagingZoneContentsGet_stagingZone">
+                                          <div class="json-schema-view">
+                                              <div class="primitive">
+                                                  <span class="type">
+                                                      Integer
+                                                  </span>
+                                  
+                                                      <div class="inner description">
+                                                          Staging Zone Content ID
+                                                      </div>
+                                              </div>
+                                                  <div class="inner required">
+                                                      Required
+                                                  </div>
+                                          </div>
+                                      </div>
+                                  </td>
+                                  </tr>
+                            </table>
+
+
+
+
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">limit*</td>
+                                <td>
+                                
+                                
+                                    <div id="d2e199_contentStagingZonesStagingZoneContentsGet_limit">
+                                        <div class="json-schema-view">
+                                            <div class="primitive">
+                                                <span class="type">
+                                                    String
+                                                </span>
+                                
+                                                    <div class="inner description">
+                                                        limit
+                                                    </div>
+                                            </div>
+                                                <div class="inner required">
+                                                    Required
+                                                </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr><td style="width:150px;">offset*</td>
+                                <td>
+                                
+                                
+                                    <div id="d2e199_contentStagingZonesStagingZoneContentsGet_offset">
+                                        <div class="json-schema-view">
+                                            <div class="primitive">
+                                                <span class="type">
+                                                    String
+                                                </span>
+                                
+                                                    <div class="inner description">
+                                                        offset
+                                                    </div>
+                                            </div>
+                                                <div class="inner required">
+                                                    Required
+                                                </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                </tr>
+                            </table>
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - OK </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-contentStagingZonesStagingZoneContentsGet-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-contentStagingZonesStagingZoneContentsGet-200-schema">
+                                  <div id='responses-contentStagingZonesStagingZoneContentsGet-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "OK",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "type" : "string",
+        "x-content-type" : "application/json"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-contentStagingZonesStagingZoneContentsGet-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-contentStagingZonesStagingZoneContentsGet-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-contentStagingZonesStagingZoneContentsGet-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 400 - Bad Request </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-contentStagingZonesStagingZoneContentsGet-400-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-contentStagingZonesStagingZoneContentsGet-400-schema">
+                                  <div id='responses-contentStagingZonesStagingZoneContentsGet-400-schema-400' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Bad Request",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/util.HttpError"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-contentStagingZonesStagingZoneContentsGet-400-schema-data').val(stringify(schema));
+                                        var result = $('#responses-contentStagingZonesStagingZoneContentsGet-400-schema-400');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-contentStagingZonesStagingZoneContentsGet-400-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 500 - Internal Server Error </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-contentStagingZonesStagingZoneContentsGet-500-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-contentStagingZonesStagingZoneContentsGet-500-schema">
+                                  <div id='responses-contentStagingZonesStagingZoneContentsGet-500-schema-500' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Internal Server Error",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/util.HttpError"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-contentStagingZonesStagingZoneContentsGet-500-schema-data').val(stringify(schema));
+                                        var result = $('#responses-contentStagingZonesStagingZoneContentsGet-500-schema-500');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-contentStagingZonesStagingZoneContentsGet-500-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Content-contentStagingZonesStagingZoneGet">
+                      <article id="api-Content-contentStagingZonesStagingZoneGet-0" data-group="User" data-name="contentStagingZonesStagingZoneGet" data-version="0">
+                        <div class="pull-left">
+                          <h1>contentStagingZonesStagingZoneGet</h1>
+                          <p>Get staging zone without its contents field populated</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">This endpoint is used to get a staging zone, excluding its contents.</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/content/staging-zones/{staging_zone}</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Content-contentStagingZonesStagingZoneGet-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Content-contentStagingZonesStagingZoneGet-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Content-contentStagingZonesStagingZoneGet-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Content-contentStagingZonesStagingZoneGet-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Content-contentStagingZonesStagingZoneGet-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Content-contentStagingZonesStagingZoneGet-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Content-contentStagingZonesStagingZoneGet-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Content-contentStagingZonesStagingZoneGet-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Content-contentStagingZonesStagingZoneGet-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Content-contentStagingZonesStagingZoneGet-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Content-contentStagingZonesStagingZoneGet-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Content-contentStagingZonesStagingZoneGet-0-curl">
+                           <pre class="prettyprint"><code class="language-bsh">curl -X GET\
+-H "Authorization: [[apiKey]]"\
+-H "Accept: application/json"\
+"//api.estuary.tech//content/staging-zones/{staging_zone}"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Content-contentStagingZonesStagingZoneGet-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.ContentApi;
+
+import java.io.File;
+import java.util.*;
+
+public class ContentApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: bearerAuth
+        ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //bearerAuth.setApiKeyPrefix("Token");
+
+        ContentApi apiInstance = new ContentApi();
+        Integer stagingZone = 56; // Integer | Staging Zone Content ID
+        try {
+            'String' result = apiInstance.contentStagingZonesStagingZoneGet(stagingZone);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ContentApi#contentStagingZonesStagingZoneGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Content-contentStagingZonesStagingZoneGet-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.ContentApi;
+
+public class ContentApiExample {
+
+    public static void main(String[] args) {
+        ContentApi apiInstance = new ContentApi();
+        Integer stagingZone = 56; // Integer | Staging Zone Content ID
+        try {
+            'String' result = apiInstance.contentStagingZonesStagingZoneGet(stagingZone);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling ContentApi#contentStagingZonesStagingZoneGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Content-contentStagingZonesStagingZoneGet-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Content-contentStagingZonesStagingZoneGet-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: bearerAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"Authorization"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
+Integer *stagingZone = 56; // Staging Zone Content ID
+
+ContentApi *apiInstance = [[ContentApi alloc] init];
+
+// Get staging zone without its contents field populated
+[apiInstance contentStagingZonesStagingZoneGetWith:stagingZone
+              completionHandler: ^('String' output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Content-contentStagingZonesStagingZoneGet-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var EstuaryApi = require('estuary_api');
+var defaultClient = EstuaryApi.ApiClient.instance;
+
+// Configure API key authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearerAuth.apiKeyPrefix['Authorization'] = "Token"
+
+var api = new EstuaryApi.ContentApi()
+var stagingZone = 56; // {{Integer}} Staging Zone Content ID
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.contentStagingZonesStagingZoneGet(stagingZone, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Content-contentStagingZonesStagingZoneGet-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Content-contentStagingZonesStagingZoneGet-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
+
+namespace Example
+{
+    public class contentStagingZonesStagingZoneGetExample
+    {
+        public void main()
+        {
+
+            // Configure API key authorization: bearerAuth
+            Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
+
+            var apiInstance = new ContentApi();
+            var stagingZone = 56;  // Integer | Staging Zone Content ID
+
+            try
+            {
+                // Get staging zone without its contents field populated
+                'String' result = apiInstance.contentStagingZonesStagingZoneGet(stagingZone);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling ContentApi.contentStagingZonesStagingZoneGet: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Content-contentStagingZonesStagingZoneGet-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: bearerAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$api_instance = new Swagger\Client\ApiContentApi();
+$stagingZone = 56; // Integer | Staging Zone Content ID
+
+try {
+    $result = $api_instance->contentStagingZonesStagingZoneGet($stagingZone);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ContentApi->contentStagingZonesStagingZoneGet: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Content-contentStagingZonesStagingZoneGet-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::ContentApi;
+
+# Configure API key authorization: bearerAuth
+$WWW::SwaggerClient::Configuration::api_key->{'Authorization'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'Authorization'} = "Bearer";
+
+my $api_instance = WWW::SwaggerClient::ContentApi->new();
+my $stagingZone = 56; # Integer | Staging Zone Content ID
+
+eval { 
+    my $result = $api_instance->contentStagingZonesStagingZoneGet(stagingZone => $stagingZone);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling ContentApi->contentStagingZonesStagingZoneGet: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Content-contentStagingZonesStagingZoneGet-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: bearerAuth
+swagger_client.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = swagger_client.ContentApi()
+stagingZone = 56 # Integer | Staging Zone Content ID
+
+try: 
+    # Get staging zone without its contents field populated
+    api_response = api_instance.content_staging_zones_staging_zone_get(stagingZone)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ContentApi->contentStagingZonesStagingZoneGet: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+                            <div class="methodsubtabletitle">Path parameters</div>
+                            <table id="methodsubtable">
+                                <tr>
+                                  <th width="150px">Name</th>
+                                  <th>Description</th>
+                                </tr>
+                                  <tr><td style="width:150px;">staging_zone*</td>
+                                  <td>
+                                  
+                                  
+                                      <div id="d2e199_contentStagingZonesStagingZoneGet_stagingZone">
+                                          <div class="json-schema-view">
+                                              <div class="primitive">
+                                                  <span class="type">
+                                                      Integer
+                                                  </span>
+                                  
+                                                      <div class="inner description">
+                                                          Staging Zone Content ID
+                                                      </div>
+                                              </div>
+                                                  <div class="inner required">
+                                                      Required
+                                                  </div>
+                                          </div>
+                                      </div>
+                                  </td>
+                                  </tr>
+                            </table>
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - OK </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-contentStagingZonesStagingZoneGet-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-contentStagingZonesStagingZoneGet-200-schema">
+                                  <div id='responses-contentStagingZonesStagingZoneGet-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "OK",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "type" : "string",
+        "x-content-type" : "application/json"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-contentStagingZonesStagingZoneGet-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-contentStagingZonesStagingZoneGet-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-contentStagingZonesStagingZoneGet-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 400 - Bad Request </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-contentStagingZonesStagingZoneGet-400-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-contentStagingZonesStagingZoneGet-400-schema">
+                                  <div id='responses-contentStagingZonesStagingZoneGet-400-schema-400' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Bad Request",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/util.HttpError"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-contentStagingZonesStagingZoneGet-400-schema-data').val(stringify(schema));
+                                        var result = $('#responses-contentStagingZonesStagingZoneGet-400-schema-400');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-contentStagingZonesStagingZoneGet-400-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 500 - Internal Server Error </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-contentStagingZonesStagingZoneGet-500-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-contentStagingZonesStagingZoneGet-500-schema">
+                                  <div id='responses-contentStagingZonesStagingZoneGet-500-schema-500' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Internal Server Error",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/util.HttpError"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-contentStagingZonesStagingZoneGet-500-schema-data').val(stringify(schema));
+                                        var result = $('#responses-contentStagingZonesStagingZoneGet-500-schema-500');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-contentStagingZonesStagingZoneGet-500-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
 

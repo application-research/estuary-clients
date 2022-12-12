@@ -362,24 +362,70 @@ namespace estuary-client.Api
         /// <returns>ApiResponse of string</returns>
         ApiResponse<string> ContentReadContGetWithHttpInfo (string cont);
         /// <summary>
-        /// Get staging zone for user
+        /// Get staging zone for user, excluding its contents
         /// </summary>
         /// <remarks>
-        /// This endpoint is used to get staging zone for user.
+        /// This endpoint is used to get staging zone for user, excluding its contents.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>string</returns>
         string ContentStagingZonesGet ();
 
         /// <summary>
-        /// Get staging zone for user
+        /// Get staging zone for user, excluding its contents
         /// </summary>
         /// <remarks>
-        /// This endpoint is used to get staging zone for user.
+        /// This endpoint is used to get staging zone for user, excluding its contents.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of string</returns>
         ApiResponse<string> ContentStagingZonesGetWithHttpInfo ();
+        /// <summary>
+        /// Get contents for a staging zone
+        /// </summary>
+        /// <remarks>
+        /// This endpoint is used to get the contents for a staging zone
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="stagingZone">Staging Zone Content ID</param>
+        /// <param name="limit">limit</param>
+        /// <param name="offset">offset</param>
+        /// <returns>string</returns>
+        string ContentStagingZonesStagingZoneContentsGet (int? stagingZone, string limit, string offset);
+
+        /// <summary>
+        /// Get contents for a staging zone
+        /// </summary>
+        /// <remarks>
+        /// This endpoint is used to get the contents for a staging zone
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="stagingZone">Staging Zone Content ID</param>
+        /// <param name="limit">limit</param>
+        /// <param name="offset">offset</param>
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> ContentStagingZonesStagingZoneContentsGetWithHttpInfo (int? stagingZone, string limit, string offset);
+        /// <summary>
+        /// Get staging zone without its contents field populated
+        /// </summary>
+        /// <remarks>
+        /// This endpoint is used to get a staging zone, excluding its contents.
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="stagingZone">Staging Zone Content ID</param>
+        /// <returns>string</returns>
+        string ContentStagingZonesStagingZoneGet (int? stagingZone);
+
+        /// <summary>
+        /// Get staging zone without its contents field populated
+        /// </summary>
+        /// <remarks>
+        /// This endpoint is used to get a staging zone, excluding its contents.
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="stagingZone">Staging Zone Content ID</param>
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> ContentStagingZonesStagingZoneGetWithHttpInfo (int? stagingZone);
         /// <summary>
         /// Get content statistics
         /// </summary>
@@ -765,24 +811,70 @@ namespace estuary-client.Api
         /// <returns>Task of ApiResponse (string)</returns>
         System.Threading.Tasks.Task<ApiResponse<string>> ContentReadContGetAsyncWithHttpInfo (string cont);
         /// <summary>
-        /// Get staging zone for user
+        /// Get staging zone for user, excluding its contents
         /// </summary>
         /// <remarks>
-        /// This endpoint is used to get staging zone for user.
+        /// This endpoint is used to get staging zone for user, excluding its contents.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of string</returns>
         System.Threading.Tasks.Task<string> ContentStagingZonesGetAsync ();
 
         /// <summary>
-        /// Get staging zone for user
+        /// Get staging zone for user, excluding its contents
         /// </summary>
         /// <remarks>
-        /// This endpoint is used to get staging zone for user.
+        /// This endpoint is used to get staging zone for user, excluding its contents.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (string)</returns>
         System.Threading.Tasks.Task<ApiResponse<string>> ContentStagingZonesGetAsyncWithHttpInfo ();
+        /// <summary>
+        /// Get contents for a staging zone
+        /// </summary>
+        /// <remarks>
+        /// This endpoint is used to get the contents for a staging zone
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="stagingZone">Staging Zone Content ID</param>
+        /// <param name="limit">limit</param>
+        /// <param name="offset">offset</param>
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> ContentStagingZonesStagingZoneContentsGetAsync (int? stagingZone, string limit, string offset);
+
+        /// <summary>
+        /// Get contents for a staging zone
+        /// </summary>
+        /// <remarks>
+        /// This endpoint is used to get the contents for a staging zone
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="stagingZone">Staging Zone Content ID</param>
+        /// <param name="limit">limit</param>
+        /// <param name="offset">offset</param>
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> ContentStagingZonesStagingZoneContentsGetAsyncWithHttpInfo (int? stagingZone, string limit, string offset);
+        /// <summary>
+        /// Get staging zone without its contents field populated
+        /// </summary>
+        /// <remarks>
+        /// This endpoint is used to get a staging zone, excluding its contents.
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="stagingZone">Staging Zone Content ID</param>
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> ContentStagingZonesStagingZoneGetAsync (int? stagingZone);
+
+        /// <summary>
+        /// Get staging zone without its contents field populated
+        /// </summary>
+        /// <remarks>
+        /// This endpoint is used to get a staging zone, excluding its contents.
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="stagingZone">Staging Zone Content ID</param>
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> ContentStagingZonesStagingZoneGetAsyncWithHttpInfo (int? stagingZone);
         /// <summary>
         /// Get content statistics
         /// </summary>
@@ -3231,7 +3323,7 @@ namespace estuary-client.Api
         }
 
         /// <summary>
-        /// Get staging zone for user This endpoint is used to get staging zone for user.
+        /// Get staging zone for user, excluding its contents This endpoint is used to get staging zone for user, excluding its contents.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>string</returns>
@@ -3242,7 +3334,7 @@ namespace estuary-client.Api
         }
 
         /// <summary>
-        /// Get staging zone for user This endpoint is used to get staging zone for user.
+        /// Get staging zone for user, excluding its contents This endpoint is used to get staging zone for user, excluding its contents.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of string</returns>
@@ -3295,7 +3387,7 @@ namespace estuary-client.Api
         }
 
         /// <summary>
-        /// Get staging zone for user This endpoint is used to get staging zone for user.
+        /// Get staging zone for user, excluding its contents This endpoint is used to get staging zone for user, excluding its contents.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of string</returns>
@@ -3307,7 +3399,7 @@ namespace estuary-client.Api
         }
 
         /// <summary>
-        /// Get staging zone for user This endpoint is used to get staging zone for user.
+        /// Get staging zone for user, excluding its contents This endpoint is used to get staging zone for user, excluding its contents.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (string)</returns>
@@ -3351,6 +3443,312 @@ namespace estuary-client.Api
             if (ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("ContentStagingZonesGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<string>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+        }
+
+        /// <summary>
+        /// Get contents for a staging zone This endpoint is used to get the contents for a staging zone
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="stagingZone">Staging Zone Content ID</param>
+        /// <param name="limit">limit</param>
+        /// <param name="offset">offset</param>
+        /// <returns>string</returns>
+        public string ContentStagingZonesStagingZoneContentsGet (int? stagingZone, string limit, string offset)
+        {
+             ApiResponse<string> localVarResponse = ContentStagingZonesStagingZoneContentsGetWithHttpInfo(stagingZone, limit, offset);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get contents for a staging zone This endpoint is used to get the contents for a staging zone
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="stagingZone">Staging Zone Content ID</param>
+        /// <param name="limit">limit</param>
+        /// <param name="offset">offset</param>
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > ContentStagingZonesStagingZoneContentsGetWithHttpInfo (int? stagingZone, string limit, string offset)
+        {
+            // verify the required parameter 'stagingZone' is set
+            if (stagingZone == null)
+                throw new ApiException(400, "Missing required parameter 'stagingZone' when calling ContentApi->ContentStagingZonesStagingZoneContentsGet");
+            // verify the required parameter 'limit' is set
+            if (limit == null)
+                throw new ApiException(400, "Missing required parameter 'limit' when calling ContentApi->ContentStagingZonesStagingZoneContentsGet");
+            // verify the required parameter 'offset' is set
+            if (offset == null)
+                throw new ApiException(400, "Missing required parameter 'offset' when calling ContentApi->ContentStagingZonesStagingZoneContentsGet");
+
+            var localVarPath = "/content/staging-zones/{staging_zone}/contents";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (stagingZone != null) localVarPathParams.Add("staging_zone", this.Configuration.ApiClient.ParameterToString(stagingZone)); // path parameter
+            if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
+            if (offset != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
+            // authentication (bearerAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ContentStagingZonesStagingZoneContentsGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<string>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+        }
+
+        /// <summary>
+        /// Get contents for a staging zone This endpoint is used to get the contents for a staging zone
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="stagingZone">Staging Zone Content ID</param>
+        /// <param name="limit">limit</param>
+        /// <param name="offset">offset</param>
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> ContentStagingZonesStagingZoneContentsGetAsync (int? stagingZone, string limit, string offset)
+        {
+             ApiResponse<string> localVarResponse = await ContentStagingZonesStagingZoneContentsGetAsyncWithHttpInfo(stagingZone, limit, offset);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get contents for a staging zone This endpoint is used to get the contents for a staging zone
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="stagingZone">Staging Zone Content ID</param>
+        /// <param name="limit">limit</param>
+        /// <param name="offset">offset</param>
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> ContentStagingZonesStagingZoneContentsGetAsyncWithHttpInfo (int? stagingZone, string limit, string offset)
+        {
+            // verify the required parameter 'stagingZone' is set
+            if (stagingZone == null)
+                throw new ApiException(400, "Missing required parameter 'stagingZone' when calling ContentApi->ContentStagingZonesStagingZoneContentsGet");
+            // verify the required parameter 'limit' is set
+            if (limit == null)
+                throw new ApiException(400, "Missing required parameter 'limit' when calling ContentApi->ContentStagingZonesStagingZoneContentsGet");
+            // verify the required parameter 'offset' is set
+            if (offset == null)
+                throw new ApiException(400, "Missing required parameter 'offset' when calling ContentApi->ContentStagingZonesStagingZoneContentsGet");
+
+            var localVarPath = "/content/staging-zones/{staging_zone}/contents";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (stagingZone != null) localVarPathParams.Add("staging_zone", this.Configuration.ApiClient.ParameterToString(stagingZone)); // path parameter
+            if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
+            if (offset != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
+            // authentication (bearerAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ContentStagingZonesStagingZoneContentsGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<string>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+        }
+
+        /// <summary>
+        /// Get staging zone without its contents field populated This endpoint is used to get a staging zone, excluding its contents.
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="stagingZone">Staging Zone Content ID</param>
+        /// <returns>string</returns>
+        public string ContentStagingZonesStagingZoneGet (int? stagingZone)
+        {
+             ApiResponse<string> localVarResponse = ContentStagingZonesStagingZoneGetWithHttpInfo(stagingZone);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get staging zone without its contents field populated This endpoint is used to get a staging zone, excluding its contents.
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="stagingZone">Staging Zone Content ID</param>
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > ContentStagingZonesStagingZoneGetWithHttpInfo (int? stagingZone)
+        {
+            // verify the required parameter 'stagingZone' is set
+            if (stagingZone == null)
+                throw new ApiException(400, "Missing required parameter 'stagingZone' when calling ContentApi->ContentStagingZonesStagingZoneGet");
+
+            var localVarPath = "/content/staging-zones/{staging_zone}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (stagingZone != null) localVarPathParams.Add("staging_zone", this.Configuration.ApiClient.ParameterToString(stagingZone)); // path parameter
+            // authentication (bearerAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ContentStagingZonesStagingZoneGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<string>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+        }
+
+        /// <summary>
+        /// Get staging zone without its contents field populated This endpoint is used to get a staging zone, excluding its contents.
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="stagingZone">Staging Zone Content ID</param>
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> ContentStagingZonesStagingZoneGetAsync (int? stagingZone)
+        {
+             ApiResponse<string> localVarResponse = await ContentStagingZonesStagingZoneGetAsyncWithHttpInfo(stagingZone);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get staging zone without its contents field populated This endpoint is used to get a staging zone, excluding its contents.
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="stagingZone">Staging Zone Content ID</param>
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> ContentStagingZonesStagingZoneGetAsyncWithHttpInfo (int? stagingZone)
+        {
+            // verify the required parameter 'stagingZone' is set
+            if (stagingZone == null)
+                throw new ApiException(400, "Missing required parameter 'stagingZone' when calling ContentApi->ContentStagingZonesStagingZoneGet");
+
+            var localVarPath = "/content/staging-zones/{staging_zone}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (stagingZone != null) localVarPathParams.Add("staging_zone", this.Configuration.ApiClient.ParameterToString(stagingZone)); // path parameter
+            // authentication (bearerAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ContentStagingZonesStagingZoneGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 

@@ -276,9 +276,9 @@ public class ContentApiTest {
         // TODO: test validations
     }
     /**
-     * Get staging zone for user
+     * Get staging zone for user, excluding its contents
      *
-     * This endpoint is used to get staging zone for user.
+     * This endpoint is used to get staging zone for user, excluding its contents.
      *
      * @throws Exception
      *          if the Api call fails
@@ -286,6 +286,38 @@ public class ContentApiTest {
     @Test
     public void contentStagingZonesGetTest() throws Exception {
         String response = api.contentStagingZonesGet();
+
+        // TODO: test validations
+    }
+    /**
+     * Get contents for a staging zone
+     *
+     * This endpoint is used to get the contents for a staging zone
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void contentStagingZonesStagingZoneContentsGetTest() throws Exception {
+        Integer stagingZone = null;
+        String limit = null;
+        String offset = null;
+        String response = api.contentStagingZonesStagingZoneContentsGet(stagingZone, limit, offset);
+
+        // TODO: test validations
+    }
+    /**
+     * Get staging zone without its contents field populated
+     *
+     * This endpoint is used to get a staging zone, excluding its contents.
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void contentStagingZonesStagingZoneGetTest() throws Exception {
+        Integer stagingZone = null;
+        String response = api.contentStagingZonesStagingZoneGet(stagingZone);
 
         // TODO: test validations
     }

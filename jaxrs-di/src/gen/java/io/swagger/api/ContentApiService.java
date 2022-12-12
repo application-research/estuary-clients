@@ -18,7 +18,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-12-12T11:11:34.140Z[GMT]")public interface ContentApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-12-12T21:11:36.293Z[GMT]")public interface ContentApiService {
     public Response contentAddCarPost(SecurityContext securityContext);
     public Response contentAddIpfsPost(TypesIpfsPin body, String ignoreDupes,SecurityContext securityContext);
     public Response contentAddPost(SecurityContext securityContext);
@@ -34,6 +34,8 @@ import javax.validation.constraints.*;
     public Response contentListGet(SecurityContext securityContext);
     public Response contentReadContGet(String cont,SecurityContext securityContext);
     public Response contentStagingZonesGet(SecurityContext securityContext);
+    public Response contentStagingZonesStagingZoneContentsGet(Integer stagingZone, @NotNull String limit, @NotNull String offset,SecurityContext securityContext);
+    public Response contentStagingZonesStagingZoneGet(Integer stagingZone,SecurityContext securityContext);
     public Response contentStatsGet( @NotNull String limit, @NotNull String offset,SecurityContext securityContext);
     public Response contentStatusIdGet(Integer id,SecurityContext securityContext);
 }

@@ -19,7 +19,7 @@ import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-12-12T11:11:33.362Z[GMT]")public class ContentApiServiceImpl extends ContentApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-12-12T21:11:35.185Z[GMT]")public class ContentApiServiceImpl extends ContentApiService {
     @Override
     public Response contentAddCarPost(SecurityContext securityContext) throws NotFoundException {
         // do some magic!
@@ -92,6 +92,16 @@ import javax.validation.constraints.*;
     }
     @Override
     public Response contentStagingZonesGet(SecurityContext securityContext) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response contentStagingZonesStagingZoneContentsGet(Integer stagingZone,  @NotNull String limit,  @NotNull String offset, SecurityContext securityContext) throws NotFoundException {
+        // do some magic!
+        return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
+    }
+    @Override
+    public Response contentStagingZonesStagingZoneGet(Integer stagingZone, SecurityContext securityContext) throws NotFoundException {
         // do some magic!
         return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
     }

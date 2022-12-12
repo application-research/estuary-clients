@@ -132,7 +132,9 @@ Class | Method | HTTP request | Description
 *EstuaryClient.ContentApi* | [**contentImportdealPost**](docs/ContentApi.md#contentImportdealPost) | **POST** /content/importdeal | Import a deal
 *EstuaryClient.ContentApi* | [**contentListGet**](docs/ContentApi.md#contentListGet) | **GET** /content/list | List all pinned content
 *EstuaryClient.ContentApi* | [**contentReadContGet**](docs/ContentApi.md#contentReadContGet) | **GET** /content/read/{cont} | Read content
-*EstuaryClient.ContentApi* | [**contentStagingZonesGet**](docs/ContentApi.md#contentStagingZonesGet) | **GET** /content/staging-zones | Get staging zone for user
+*EstuaryClient.ContentApi* | [**contentStagingZonesGet**](docs/ContentApi.md#contentStagingZonesGet) | **GET** /content/staging-zones | Get staging zone for user, excluding its contents
+*EstuaryClient.ContentApi* | [**contentStagingZonesStagingZoneContentsGet**](docs/ContentApi.md#contentStagingZonesStagingZoneContentsGet) | **GET** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
+*EstuaryClient.ContentApi* | [**contentStagingZonesStagingZoneGet**](docs/ContentApi.md#contentStagingZonesStagingZoneGet) | **GET** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
 *EstuaryClient.ContentApi* | [**contentStatsGet**](docs/ContentApi.md#contentStatsGet) | **GET** /content/stats | Get content statistics
 *EstuaryClient.ContentApi* | [**contentStatusIdGet**](docs/ContentApi.md#contentStatusIdGet) | **GET** /content/status/{id} | Content Status
 *EstuaryClient.DealsApi* | [**dealEstimatePost**](docs/DealsApi.md#dealEstimatePost) | **POST** /deal/estimate | Estimate the cost of a deal

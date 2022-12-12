@@ -2114,8 +2114,8 @@ public class ContentApi {
     }
 
     /**
-     * Get staging zone for user
-     * This endpoint is used to get staging zone for user.
+     * Get staging zone for user, excluding its contents
+     * This endpoint is used to get staging zone for user, excluding its contents.
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -2125,8 +2125,8 @@ public class ContentApi {
     }
 
     /**
-     * Get staging zone for user
-     * This endpoint is used to get staging zone for user.
+     * Get staging zone for user, excluding its contents
+     * This endpoint is used to get staging zone for user, excluding its contents.
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
@@ -2137,8 +2137,8 @@ public class ContentApi {
     }
 
     /**
-     * Get staging zone for user (asynchronously)
-     * This endpoint is used to get staging zone for user.
+     * Get staging zone for user, excluding its contents (asynchronously)
+     * This endpoint is used to get staging zone for user, excluding its contents.
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -2165,6 +2165,276 @@ public class ContentApi {
         }
 
         com.squareup.okhttp.Call call = contentStagingZonesGetValidateBeforeCall(progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for contentStagingZonesStagingZoneContentsGet
+     * @param stagingZone Staging Zone Content ID (required)
+     * @param limit limit (required)
+     * @param offset offset (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call contentStagingZonesStagingZoneContentsGetCall(Integer stagingZone, String limit, String offset, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/content/staging-zones/{staging_zone}/contents"
+            .replaceAll("\\{" + "staging_zone" + "\\}", apiClient.escapeString(stagingZone.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (limit != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("limit", limit));
+        if (offset != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("offset", offset));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call contentStagingZonesStagingZoneContentsGetValidateBeforeCall(Integer stagingZone, String limit, String offset, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'stagingZone' is set
+        if (stagingZone == null) {
+            throw new ApiException("Missing the required parameter 'stagingZone' when calling contentStagingZonesStagingZoneContentsGet(Async)");
+        }
+        // verify the required parameter 'limit' is set
+        if (limit == null) {
+            throw new ApiException("Missing the required parameter 'limit' when calling contentStagingZonesStagingZoneContentsGet(Async)");
+        }
+        // verify the required parameter 'offset' is set
+        if (offset == null) {
+            throw new ApiException("Missing the required parameter 'offset' when calling contentStagingZonesStagingZoneContentsGet(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = contentStagingZonesStagingZoneContentsGetCall(stagingZone, limit, offset, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Get contents for a staging zone
+     * This endpoint is used to get the contents for a staging zone
+     * @param stagingZone Staging Zone Content ID (required)
+     * @param limit limit (required)
+     * @param offset offset (required)
+     * @return String
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public String contentStagingZonesStagingZoneContentsGet(Integer stagingZone, String limit, String offset) throws ApiException {
+        ApiResponse<String> resp = contentStagingZonesStagingZoneContentsGetWithHttpInfo(stagingZone, limit, offset);
+        return resp.getData();
+    }
+
+    /**
+     * Get contents for a staging zone
+     * This endpoint is used to get the contents for a staging zone
+     * @param stagingZone Staging Zone Content ID (required)
+     * @param limit limit (required)
+     * @param offset offset (required)
+     * @return ApiResponse&lt;String&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<String> contentStagingZonesStagingZoneContentsGetWithHttpInfo(Integer stagingZone, String limit, String offset) throws ApiException {
+        com.squareup.okhttp.Call call = contentStagingZonesStagingZoneContentsGetValidateBeforeCall(stagingZone, limit, offset, null, null);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Get contents for a staging zone (asynchronously)
+     * This endpoint is used to get the contents for a staging zone
+     * @param stagingZone Staging Zone Content ID (required)
+     * @param limit limit (required)
+     * @param offset offset (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call contentStagingZonesStagingZoneContentsGetAsync(Integer stagingZone, String limit, String offset, final ApiCallback<String> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = contentStagingZonesStagingZoneContentsGetValidateBeforeCall(stagingZone, limit, offset, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for contentStagingZonesStagingZoneGet
+     * @param stagingZone Staging Zone Content ID (required)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call contentStagingZonesStagingZoneGetCall(Integer stagingZone, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // create path and map variables
+        String localVarPath = "/content/staging-zones/{staging_zone}"
+            .replaceAll("\\{" + "staging_zone" + "\\}", apiClient.escapeString(stagingZone.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "bearerAuth" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+    
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call contentStagingZonesStagingZoneGetValidateBeforeCall(Integer stagingZone, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'stagingZone' is set
+        if (stagingZone == null) {
+            throw new ApiException("Missing the required parameter 'stagingZone' when calling contentStagingZonesStagingZoneGet(Async)");
+        }
+        
+        com.squareup.okhttp.Call call = contentStagingZonesStagingZoneGetCall(stagingZone, progressListener, progressRequestListener);
+        return call;
+
+        
+        
+        
+        
+    }
+
+    /**
+     * Get staging zone without its contents field populated
+     * This endpoint is used to get a staging zone, excluding its contents.
+     * @param stagingZone Staging Zone Content ID (required)
+     * @return String
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public String contentStagingZonesStagingZoneGet(Integer stagingZone) throws ApiException {
+        ApiResponse<String> resp = contentStagingZonesStagingZoneGetWithHttpInfo(stagingZone);
+        return resp.getData();
+    }
+
+    /**
+     * Get staging zone without its contents field populated
+     * This endpoint is used to get a staging zone, excluding its contents.
+     * @param stagingZone Staging Zone Content ID (required)
+     * @return ApiResponse&lt;String&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<String> contentStagingZonesStagingZoneGetWithHttpInfo(Integer stagingZone) throws ApiException {
+        com.squareup.okhttp.Call call = contentStagingZonesStagingZoneGetValidateBeforeCall(stagingZone, null, null);
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Get staging zone without its contents field populated (asynchronously)
+     * This endpoint is used to get a staging zone, excluding its contents.
+     * @param stagingZone Staging Zone Content ID (required)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call contentStagingZonesStagingZoneGetAsync(Integer stagingZone, final ApiCallback<String> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = contentStagingZonesStagingZoneGetValidateBeforeCall(stagingZone, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

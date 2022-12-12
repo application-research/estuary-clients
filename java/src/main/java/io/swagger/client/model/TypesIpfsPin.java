@@ -27,7 +27,7 @@ import java.util.List;
  * TypesIpfsPin
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-12-12T11:11:30.699Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-12-12T21:11:32.832Z[GMT]")
 public class TypesIpfsPin {
   @SerializedName("cid")
   private String cid = null;

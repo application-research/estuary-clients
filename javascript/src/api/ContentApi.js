@@ -790,8 +790,8 @@ export class ContentApi {
      */
 
     /**
-     * Get staging zone for user
-     * This endpoint is used to get staging zone for user.
+     * Get staging zone for user, excluding its contents
+     * This endpoint is used to get staging zone for user, excluding its contents.
      * @param {module:api/ContentApi~contentStagingZonesGetCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
@@ -819,6 +819,110 @@ export class ContentApi {
 
       return this.apiClient.callApi(
         '/content/staging-zones', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+    /**
+     * Callback function to receive the result of the contentStagingZonesStagingZoneContentsGet operation.
+     * @callback moduleapi/ContentApi~contentStagingZonesStagingZoneContentsGetCallback
+     * @param {String} error Error message, if any.
+     * @param {'String'{ data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get contents for a staging zone
+     * This endpoint is used to get the contents for a staging zone
+     * @param {Number} stagingZone Staging Zone Content ID
+     * @param {String} limit limit
+     * @param {String} offset offset
+     * @param {module:api/ContentApi~contentStagingZonesStagingZoneContentsGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
+     */
+    contentStagingZonesStagingZoneContentsGet(stagingZone, limit, offset, callback) {
+      
+      let postBody = null;
+      // verify the required parameter 'stagingZone' is set
+      if (stagingZone === undefined || stagingZone === null) {
+        throw new Error("Missing the required parameter 'stagingZone' when calling contentStagingZonesStagingZoneContentsGet");
+      }
+      // verify the required parameter 'limit' is set
+      if (limit === undefined || limit === null) {
+        throw new Error("Missing the required parameter 'limit' when calling contentStagingZonesStagingZoneContentsGet");
+      }
+      // verify the required parameter 'offset' is set
+      if (offset === undefined || offset === null) {
+        throw new Error("Missing the required parameter 'offset' when calling contentStagingZonesStagingZoneContentsGet");
+      }
+
+      let pathParams = {
+        'staging_zone': stagingZone
+      };
+      let queryParams = {
+        'limit': limit,'offset': offset
+      };
+      let headerParams = {
+        
+      };
+      let formParams = {
+        
+      };
+
+      let authNames = ['bearerAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = 'String';
+
+      return this.apiClient.callApi(
+        '/content/staging-zones/{staging_zone}/contents', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+    /**
+     * Callback function to receive the result of the contentStagingZonesStagingZoneGet operation.
+     * @callback moduleapi/ContentApi~contentStagingZonesStagingZoneGetCallback
+     * @param {String} error Error message, if any.
+     * @param {'String'{ data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get staging zone without its contents field populated
+     * This endpoint is used to get a staging zone, excluding its contents.
+     * @param {Number} stagingZone Staging Zone Content ID
+     * @param {module:api/ContentApi~contentStagingZonesStagingZoneGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
+     */
+    contentStagingZonesStagingZoneGet(stagingZone, callback) {
+      
+      let postBody = null;
+      // verify the required parameter 'stagingZone' is set
+      if (stagingZone === undefined || stagingZone === null) {
+        throw new Error("Missing the required parameter 'stagingZone' when calling contentStagingZonesStagingZoneGet");
+      }
+
+      let pathParams = {
+        'staging_zone': stagingZone
+      };
+      let queryParams = {
+        
+      };
+      let headerParams = {
+        
+      };
+      let formParams = {
+        
+      };
+
+      let authNames = ['bearerAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = 'String';
+
+      return this.apiClient.callApi(
+        '/content/staging-zones/{staging_zone}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

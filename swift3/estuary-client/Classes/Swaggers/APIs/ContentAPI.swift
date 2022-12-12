@@ -605,7 +605,7 @@ open class ContentAPI: APIBase {
     }
 
     /**
-     Get staging zone for user
+     Get staging zone for user, excluding its contents
      - parameter completion: completion handler to receive the data and the error objects
      */
     open class func contentStagingZonesGet(completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
@@ -616,9 +616,9 @@ open class ContentAPI: APIBase {
 
 
     /**
-     Get staging zone for user
+     Get staging zone for user, excluding its contents
      - GET /content/staging-zones
-     - This endpoint is used to get staging zone for user.
+     - This endpoint is used to get staging zone for user, excluding its contents.
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
@@ -627,6 +627,89 @@ open class ContentAPI: APIBase {
      */
     open class func contentStagingZonesGetWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/content/staging-zones"
+        let URLString = estuary-clientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Get contents for a staging zone
+     - parameter stagingZone: (path) Staging Zone Content ID 
+     - parameter limit: (query) limit 
+     - parameter offset: (query) offset 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func contentStagingZonesStagingZoneContentsGet(stagingZone: Int32, limit: String, offset: String, completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
+        contentStagingZonesStagingZoneContentsGetWithRequestBuilder(stagingZone: stagingZone, limit: limit, offset: offset).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Get contents for a staging zone
+     - GET /content/staging-zones/{staging_zone}/contents
+     - This endpoint is used to get the contents for a staging zone
+     - API Key:
+       - type: apiKey Authorization 
+       - name: bearerAuth
+     - examples: [{contentType=application/json, example=""}]
+     - parameter stagingZone: (path) Staging Zone Content ID 
+     - parameter limit: (query) limit 
+     - parameter offset: (query) offset 
+     - returns: RequestBuilder<String> 
+     */
+    open class func contentStagingZonesStagingZoneContentsGetWithRequestBuilder(stagingZone: Int32, limit: String, offset: String) -> RequestBuilder<String> {
+        var path = "/content/staging-zones/{staging_zone}/contents"
+        let stagingZonePreEscape = "\(stagingZone)"
+        let stagingZonePostEscape = stagingZonePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{staging_zone}", with: stagingZonePostEscape, options: .literal, range: nil)
+        let URLString = estuary-clientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems(values:[
+                        "limit": limit,
+                        "offset": offset
+        ])
+
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
+     Get staging zone without its contents field populated
+     - parameter stagingZone: (path) Staging Zone Content ID 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func contentStagingZonesStagingZoneGet(stagingZone: Int32, completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
+        contentStagingZonesStagingZoneGetWithRequestBuilder(stagingZone: stagingZone).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Get staging zone without its contents field populated
+     - GET /content/staging-zones/{staging_zone}
+     - This endpoint is used to get a staging zone, excluding its contents.
+     - API Key:
+       - type: apiKey Authorization 
+       - name: bearerAuth
+     - examples: [{contentType=application/json, example=""}]
+     - parameter stagingZone: (path) Staging Zone Content ID 
+     - returns: RequestBuilder<String> 
+     */
+    open class func contentStagingZonesStagingZoneGetWithRequestBuilder(stagingZone: Int32) -> RequestBuilder<String> {
+        var path = "/content/staging-zones/{staging_zone}"
+        let stagingZonePreEscape = "\(stagingZone)"
+        let stagingZonePostEscape = stagingZonePreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        path = path.replacingOccurrences(of: "{staging_zone}", with: stagingZonePostEscape, options: .literal, range: nil)
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
 

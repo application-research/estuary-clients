@@ -29,7 +29,7 @@ import javax.validation.constraints.*;
 @Path("/content")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-12-12T11:11:34.214Z[GMT]")public interface ContentApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-12-12T21:11:36.430Z[GMT]")public interface ContentApi  {
    
     @POST
     @Path("/add-car")
@@ -217,7 +217,7 @@ import javax.validation.constraints.*;
     @Path("/staging-zones")
     
     @Produces({ "application/json" })
-    @Operation(summary = "Get staging zone for user", description = "This endpoint is used to get staging zone for user.", security = {
+    @Operation(summary = "Get staging zone for user, excluding its contents", description = "This endpoint is used to get staging zone for user, excluding its contents.", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = {
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
@@ -225,6 +225,32 @@ import javax.validation.constraints.*;
                 @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
          })
     Response contentStagingZonesGet(@Context SecurityContext securityContext);
+
+    @GET
+    @Path("/staging-zones/{staging_zone}/contents")
+    
+    @Produces({ "application/json" })
+    @Operation(summary = "Get contents for a staging zone", description = "This endpoint is used to get the contents for a staging zone", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+                @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+                @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
+         })
+    Response contentStagingZonesStagingZoneContentsGet( @PathParam("staging_zone") Integer stagingZone, @NotNull @QueryParam("limit") String limit, @NotNull @QueryParam("offset") String offset,@Context SecurityContext securityContext);
+
+    @GET
+    @Path("/staging-zones/{staging_zone}")
+    
+    @Produces({ "application/json" })
+    @Operation(summary = "Get staging zone without its contents field populated", description = "This endpoint is used to get a staging zone, excluding its contents.", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+                @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+                @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
+         })
+    Response contentStagingZonesStagingZoneGet( @PathParam("staging_zone") Integer stagingZone,@Context SecurityContext securityContext);
 
     @GET
     @Path("/stats")

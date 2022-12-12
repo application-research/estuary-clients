@@ -394,6 +394,48 @@
           done();
         });
       });
+      describe('contentStagingZonesStagingZoneContentsGet', function() {
+        it('should call contentStagingZonesStagingZoneContentsGet successfully', function(done) {
+          // TODO: uncomment, update parameter values for contentStagingZonesStagingZoneContentsGet call and complete the assertions
+          /*
+
+          instance.contentStagingZonesStagingZoneContentsGet(stagingZone, limit, offset, function(error, data, response) {
+            if (error) {
+              done(error);
+              return;
+            }
+            // TODO: update response assertions
+            expect(data).to.be.a(&#x27;string&#x27;);
+            // expect(data).to.be(null);
+
+            done();
+          });
+          */
+          // TODO: uncomment and complete method invocation above, then delete this line and the next:
+          done();
+        });
+      });
+      describe('contentStagingZonesStagingZoneGet', function() {
+        it('should call contentStagingZonesStagingZoneGet successfully', function(done) {
+          // TODO: uncomment, update parameter values for contentStagingZonesStagingZoneGet call and complete the assertions
+          /*
+
+          instance.contentStagingZonesStagingZoneGet(stagingZone, function(error, data, response) {
+            if (error) {
+              done(error);
+              return;
+            }
+            // TODO: update response assertions
+            expect(data).to.be.a(&#x27;string&#x27;);
+            // expect(data).to.be(null);
+
+            done();
+          });
+          */
+          // TODO: uncomment and complete method invocation above, then delete this line and the next:
+          done();
+        });
+      });
       describe('contentStatsGet', function() {
         it('should call contentStatsGet successfully', function(done) {
           // TODO: uncomment, update parameter values for contentStatsGet call and complete the assertions

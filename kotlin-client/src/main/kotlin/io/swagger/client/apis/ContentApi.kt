@@ -425,8 +425,8 @@ class ContentApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(ba
         }
     }
     /**
-     * Get staging zone for user
-     * This endpoint is used to get staging zone for user.
+     * Get staging zone for user, excluding its contents
+     * This endpoint is used to get staging zone for user, excluding its contents.
      * @return kotlin.String
      */
     @Suppress("UNCHECKED_CAST")
@@ -435,6 +435,58 @@ class ContentApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(ba
         val localVariableConfig = RequestConfig(
                 RequestMethod.GET,
                 "/content/staging-zones"
+        )
+        val response = request<kotlin.String>(
+                localVariableConfig
+        )
+
+        return when (response.responseType) {
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
+            ResponseType.Informational -> TODO()
+            ResponseType.Redirection -> TODO()
+            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+        }
+    }
+    /**
+     * Get contents for a staging zone
+     * This endpoint is used to get the contents for a staging zone
+     * @param stagingZone Staging Zone Content ID 
+     * @param limit limit 
+     * @param offset offset 
+     * @return kotlin.String
+     */
+    @Suppress("UNCHECKED_CAST")
+    fun contentStagingZonesStagingZoneContentsGet(stagingZone: kotlin.Int, limit: kotlin.String, offset: kotlin.String): kotlin.String {
+        val localVariableQuery: MultiValueMap = mapOf("limit" to listOf("$limit"), "offset" to listOf("$offset"))
+        val localVariableConfig = RequestConfig(
+                RequestMethod.GET,
+                "/content/staging-zones/{staging_zone}/contents".replace("{" + "staging_zone" + "}", "$stagingZone"), query = localVariableQuery
+        )
+        val response = request<kotlin.String>(
+                localVariableConfig
+        )
+
+        return when (response.responseType) {
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
+            ResponseType.Informational -> TODO()
+            ResponseType.Redirection -> TODO()
+            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+        }
+    }
+    /**
+     * Get staging zone without its contents field populated
+     * This endpoint is used to get a staging zone, excluding its contents.
+     * @param stagingZone Staging Zone Content ID 
+     * @return kotlin.String
+     */
+    @Suppress("UNCHECKED_CAST")
+    fun contentStagingZonesStagingZoneGet(stagingZone: kotlin.Int): kotlin.String {
+        
+        val localVariableConfig = RequestConfig(
+                RequestMethod.GET,
+                "/content/staging-zones/{staging_zone}".replace("{" + "staging_zone" + "}", "$stagingZone")
         )
         val response = request<kotlin.String>(
                 localVariableConfig

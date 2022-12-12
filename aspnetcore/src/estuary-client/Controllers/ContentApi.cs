@@ -589,9 +589,9 @@ namespace estuary-client.Controllers
         }
 
         /// <summary>
-        /// Get staging zone for user
+        /// Get staging zone for user, excluding its contents
         /// </summary>
-        /// <remarks>This endpoint is used to get staging zone for user.</remarks>
+        /// <remarks>This endpoint is used to get staging zone for user, excluding its contents.</remarks>
         /// <response code="200">OK</response>
         /// <response code="400">Bad Request</response>
         /// <response code="500">Internal Server Error</response>
@@ -604,6 +604,78 @@ namespace estuary-client.Controllers
         [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult ContentStagingZonesGet()
+        { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(string));
+
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
+            string exampleJson = null;
+            exampleJson = "\"\"";
+            
+                        var example = exampleJson != null
+                        ? JsonConvert.DeserializeObject<string>(exampleJson)
+                        : default(string);            //TODO: Change the data returned
+            return new ObjectResult(example);
+        }
+
+        /// <summary>
+        /// Get contents for a staging zone
+        /// </summary>
+        /// <remarks>This endpoint is used to get the contents for a staging zone</remarks>
+        /// <param name="stagingZone">Staging Zone Content ID</param>
+        /// <param name="limit">limit</param>
+        /// <param name="offset">offset</param>
+        /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
+        [HttpGet]
+        [Route("//api.estuary.tech//content/staging-zones/{staging_zone}/contents")]
+        [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
+        [ValidateModelState]
+        [SwaggerOperation("ContentStagingZonesStagingZoneContentsGet")]
+        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
+        public virtual IActionResult ContentStagingZonesStagingZoneContentsGet([FromRoute][Required]int? stagingZone, [FromQuery][Required()]string limit, [FromQuery][Required()]string offset)
+        { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(string));
+
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
+            string exampleJson = null;
+            exampleJson = "\"\"";
+            
+                        var example = exampleJson != null
+                        ? JsonConvert.DeserializeObject<string>(exampleJson)
+                        : default(string);            //TODO: Change the data returned
+            return new ObjectResult(example);
+        }
+
+        /// <summary>
+        /// Get staging zone without its contents field populated
+        /// </summary>
+        /// <remarks>This endpoint is used to get a staging zone, excluding its contents.</remarks>
+        /// <param name="stagingZone">Staging Zone Content ID</param>
+        /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
+        [HttpGet]
+        [Route("//api.estuary.tech//content/staging-zones/{staging_zone}")]
+        [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
+        [ValidateModelState]
+        [SwaggerOperation("ContentStagingZonesStagingZoneGet")]
+        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
+        public virtual IActionResult ContentStagingZonesStagingZoneGet([FromRoute][Required]int? stagingZone)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(string));

@@ -173,6 +173,26 @@ module.exports.contentStaging_zonesGET = function contentStaging_zonesGET (req, 
     });
 };
 
+module.exports.contentStaging_zonesStaging_zoneContentsGET = function contentStaging_zonesStaging_zoneContentsGET (req, res, next, staging_zone, limit, offset) {
+  Content.contentStaging_zonesStaging_zoneContentsGET(staging_zone, limit, offset)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
+module.exports.contentStaging_zonesStaging_zoneGET = function contentStaging_zonesStaging_zoneGET (req, res, next, staging_zone) {
+  Content.contentStaging_zonesStaging_zoneGET(staging_zone)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
 module.exports.contentStatsGET = function contentStatsGET (req, res, next, limit, offset) {
   Content.contentStatsGET(limit, offset)
     .then(function (response) {

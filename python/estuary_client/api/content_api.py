@@ -1557,9 +1557,9 @@ class ContentApi(object):
             collection_formats=collection_formats)
 
     def content_staging_zones_get(self, **kwargs):  # noqa: E501
-        """Get staging zone for user  # noqa: E501
+        """Get staging zone for user, excluding its contents  # noqa: E501
 
-        This endpoint is used to get staging zone for user.  # noqa: E501
+        This endpoint is used to get staging zone for user, excluding its contents.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.content_staging_zones_get(async_req=True)
@@ -1578,9 +1578,9 @@ class ContentApi(object):
             return data
 
     def content_staging_zones_get_with_http_info(self, **kwargs):  # noqa: E501
-        """Get staging zone for user  # noqa: E501
+        """Get staging zone for user, excluding its contents  # noqa: E501
 
-        This endpoint is used to get staging zone for user.  # noqa: E501
+        This endpoint is used to get staging zone for user, excluding its contents.  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
         >>> thread = api.content_staging_zones_get_with_http_info(async_req=True)
@@ -1629,6 +1629,212 @@ class ContentApi(object):
 
         return self.api_client.call_api(
             '/content/staging-zones', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='str',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def content_staging_zones_staging_zone_contents_get(self, staging_zone, limit, offset, **kwargs):  # noqa: E501
+        """Get contents for a staging zone  # noqa: E501
+
+        This endpoint is used to get the contents for a staging zone  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.content_staging_zones_staging_zone_contents_get(staging_zone, limit, offset, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param int staging_zone: Staging Zone Content ID (required)
+        :param str limit: limit (required)
+        :param str offset: offset (required)
+        :return: str
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.content_staging_zones_staging_zone_contents_get_with_http_info(staging_zone, limit, offset, **kwargs)  # noqa: E501
+        else:
+            (data) = self.content_staging_zones_staging_zone_contents_get_with_http_info(staging_zone, limit, offset, **kwargs)  # noqa: E501
+            return data
+
+    def content_staging_zones_staging_zone_contents_get_with_http_info(self, staging_zone, limit, offset, **kwargs):  # noqa: E501
+        """Get contents for a staging zone  # noqa: E501
+
+        This endpoint is used to get the contents for a staging zone  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.content_staging_zones_staging_zone_contents_get_with_http_info(staging_zone, limit, offset, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param int staging_zone: Staging Zone Content ID (required)
+        :param str limit: limit (required)
+        :param str offset: offset (required)
+        :return: str
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['staging_zone', 'limit', 'offset']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method content_staging_zones_staging_zone_contents_get" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'staging_zone' is set
+        if ('staging_zone' not in params or
+                params['staging_zone'] is None):
+            raise ValueError("Missing the required parameter `staging_zone` when calling `content_staging_zones_staging_zone_contents_get`")  # noqa: E501
+        # verify the required parameter 'limit' is set
+        if ('limit' not in params or
+                params['limit'] is None):
+            raise ValueError("Missing the required parameter `limit` when calling `content_staging_zones_staging_zone_contents_get`")  # noqa: E501
+        # verify the required parameter 'offset' is set
+        if ('offset' not in params or
+                params['offset'] is None):
+            raise ValueError("Missing the required parameter `offset` when calling `content_staging_zones_staging_zone_contents_get`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'staging_zone' in params:
+            path_params['staging_zone'] = params['staging_zone']  # noqa: E501
+
+        query_params = []
+        if 'limit' in params:
+            query_params.append(('limit', params['limit']))  # noqa: E501
+        if 'offset' in params:
+            query_params.append(('offset', params['offset']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['bearerAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/content/staging-zones/{staging_zone}/contents', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='str',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def content_staging_zones_staging_zone_get(self, staging_zone, **kwargs):  # noqa: E501
+        """Get staging zone without its contents field populated  # noqa: E501
+
+        This endpoint is used to get a staging zone, excluding its contents.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.content_staging_zones_staging_zone_get(staging_zone, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param int staging_zone: Staging Zone Content ID (required)
+        :return: str
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.content_staging_zones_staging_zone_get_with_http_info(staging_zone, **kwargs)  # noqa: E501
+        else:
+            (data) = self.content_staging_zones_staging_zone_get_with_http_info(staging_zone, **kwargs)  # noqa: E501
+            return data
+
+    def content_staging_zones_staging_zone_get_with_http_info(self, staging_zone, **kwargs):  # noqa: E501
+        """Get staging zone without its contents field populated  # noqa: E501
+
+        This endpoint is used to get a staging zone, excluding its contents.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.content_staging_zones_staging_zone_get_with_http_info(staging_zone, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param int staging_zone: Staging Zone Content ID (required)
+        :return: str
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['staging_zone']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method content_staging_zones_staging_zone_get" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'staging_zone' is set
+        if ('staging_zone' not in params or
+                params['staging_zone'] is None):
+            raise ValueError("Missing the required parameter `staging_zone` when calling `content_staging_zones_staging_zone_get`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'staging_zone' in params:
+            path_params['staging_zone'] = params['staging_zone']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['bearerAuth']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/content/staging-zones/{staging_zone}', 'GET',
             path_params,
             query_params,
             header_params,

@@ -12,7 +12,7 @@ import javax.validation.constraints.*;
  * ApiClaimResponse
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-12-12T11:11:32.220Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-12-12T21:11:36.611Z[GMT]")
 public class ApiClaimResponse   {
   @JsonProperty("success")
   private Boolean success = null;

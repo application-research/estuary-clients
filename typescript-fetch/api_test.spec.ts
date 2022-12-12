@@ -187,6 +187,16 @@ describe("ContentApi", () => {
   test("contentStagingZonesGet", () => {
     return expect(instance.contentStagingZonesGet({})).resolves.toBe(null)
   })
+  test("contentStagingZonesStagingZoneContentsGet", () => {
+    const stagingZone: number = 56
+    const limit: string = "limit_example"
+    const offset: string = "offset_example"
+    return expect(instance.contentStagingZonesStagingZoneContentsGet(stagingZone, limit, offset, {})).resolves.toBe(null)
+  })
+  test("contentStagingZonesStagingZoneGet", () => {
+    const stagingZone: number = 56
+    return expect(instance.contentStagingZonesStagingZoneGet(stagingZone, {})).resolves.toBe(null)
+  })
   test("contentStatsGet", () => {
     const limit: string = "limit_example"
     const offset: string = "offset_example"

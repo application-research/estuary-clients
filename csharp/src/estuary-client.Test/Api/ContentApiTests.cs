@@ -250,6 +250,30 @@ namespace estuary-client.Test
             //Assert.IsInstanceOf<string> (response, "response is string");
         }
         /// <summary>
+        /// Test ContentStagingZonesStagingZoneContentsGet
+        /// </summary>
+        [Test]
+        public void ContentStagingZonesStagingZoneContentsGetTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //int? stagingZone = null;
+            //string limit = null;
+            //string offset = null;
+            //var response = instance.ContentStagingZonesStagingZoneContentsGet(stagingZone, limit, offset);
+            //Assert.IsInstanceOf<string> (response, "response is string");
+        }
+        /// <summary>
+        /// Test ContentStagingZonesStagingZoneGet
+        /// </summary>
+        [Test]
+        public void ContentStagingZonesStagingZoneGetTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //int? stagingZone = null;
+            //var response = instance.ContentStagingZonesStagingZoneGet(stagingZone);
+            //Assert.IsInstanceOf<string> (response, "response is string");
+        }
+        /// <summary>
         /// Test ContentStatsGet
         /// </summary>
         [Test]
