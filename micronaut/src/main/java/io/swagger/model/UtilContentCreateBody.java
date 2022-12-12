@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
  * UtilContentCreateBody
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-12-09T03:38:45.180Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-12-12T11:11:32.220Z[GMT]")
 public class UtilContentCreateBody   {
   @JsonProperty("coluuid")
   private String coluuid = null;

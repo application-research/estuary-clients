@@ -1,7 +1,7 @@
 package io.swagger.api;
 
 import io.swagger.model.MainImportDealBody;
-import io.swagger.model.UtilContentAddIpfsBody;
+import io.swagger.model.TypesIpfsPin;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 
@@ -33,7 +33,7 @@ class ContentApiControllerTest {
 
     @Test
     void contentAddIpfsPostTest() {
-        UtilContentAddIpfsBody body = new UtilContentAddIpfsBody();
+        TypesIpfsPin body = new TypesIpfsPin();
         String ignoreDupes = "ignoreDupes_example";
         try {
             api.contentAddIpfsPost(body, ignoreDupes).blockingGet();

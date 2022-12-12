@@ -14,7 +14,7 @@
  */
 import {ApiClient} from "../ApiClient";
 import {MainImportDealBody} from '../model/MainImportDealBody';
-import {UtilContentAddIpfsBody} from '../model/UtilContentAddIpfsBody';
+import {TypesIpfsPin} from '../model/TypesIpfsPin';
 import {UtilContentCreateBody} from '../model/UtilContentCreateBody';
 import {UtilHttpError} from '../model/UtilHttpError';
 
@@ -179,7 +179,7 @@ export class ContentApi {
     /**
      * Add IPFS object
      * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
-     * @param {module:model/UtilContentAddIpfsBody} body IPFS Body
+     * @param {module:model/TypesIpfsPin} body IPFS Body
      * @param {Object} opts Optional parameters
      * @param {String} opts.ignoreDupes Ignore Dupes
      * @param {module:api/ContentApi~contentAddIpfsPostCallback} callback The callback function, accepting three arguments: error, data, response

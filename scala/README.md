@@ -165,7 +165,6 @@ Class | Method | HTTP request | Description
  - [ClaimResponse](ClaimResponse.md)
  - [Collection](Collection.md)
  - [CollectionListResponse](CollectionListResponse.md)
- - [ContentAddIpfsBody](ContentAddIpfsBody.md)
  - [ContentAddResponse](ContentAddResponse.md)
  - [ContentCreateBody](ContentCreateBody.md)
  - [CreateCollectionBody](CreateCollectionBody.md)

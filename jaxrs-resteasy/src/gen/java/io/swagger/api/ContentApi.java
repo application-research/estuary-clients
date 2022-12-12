@@ -13,7 +13,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 import io.swagger.model.MainImportDealBody;
-import io.swagger.model.UtilContentAddIpfsBody;
+import io.swagger.model.TypesIpfsPin;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 
@@ -33,7 +33,7 @@ import javax.validation.constraints.*;
 @Path("/content")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-12-09T03:38:45.256Z[GMT]")public class ContentApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-12-12T11:11:33.532Z[GMT]")public class ContentApi  {
 
     @Inject ContentApiService service;
 
@@ -67,7 +67,7 @@ import javax.validation.constraints.*;
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response contentAddIpfsPost(@Parameter(description = "IPFS Body" ,required=true) UtilContentAddIpfsBody body,  @QueryParam("ignore-dupes") String ignoreDupes,@Context SecurityContext securityContext)
+    public Response contentAddIpfsPost(@Parameter(description = "IPFS Body" ,required=true) TypesIpfsPin body,  @QueryParam("ignore-dupes") String ignoreDupes,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.contentAddIpfsPost(body,ignoreDupes,securityContext);
     }

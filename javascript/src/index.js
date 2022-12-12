@@ -36,7 +36,6 @@ import {TypesIpfsListPinStatusResponse} from './model/TypesIpfsListPinStatusResp
 import {TypesIpfsPin} from './model/TypesIpfsPin';
 import {TypesIpfsPinStatusResponse} from './model/TypesIpfsPinStatusResponse';
 import {TypesPinningStatus} from './model/TypesPinningStatus';
-import {UtilContentAddIpfsBody} from './model/UtilContentAddIpfsBody';
 import {UtilContentAddResponse} from './model/UtilContentAddResponse';
 import {UtilContentCreateBody} from './model/UtilContentCreateBody';
 import {UtilContentType} from './model/UtilContentType';
@@ -232,12 +231,6 @@ export {
      * @property {module:model/TypesPinningStatus}
      */
     TypesPinningStatus,
-
-    /**
-     * The UtilContentAddIpfsBody model constructor.
-     * @property {module:model/UtilContentAddIpfsBody}
-     */
-    UtilContentAddIpfsBody,
 
     /**
      * The UtilContentAddResponse model constructor.

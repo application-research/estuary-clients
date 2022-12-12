@@ -120,7 +120,7 @@ open class ContentAPI: APIBase {
      - parameter ignoreDupes: (query) Ignore Dupes (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes: String? = nil, completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
+    open class func contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes: String? = nil, completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
         contentAddIpfsPostWithRequestBuilder(body: body, ignoreDupes: ignoreDupes).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -139,7 +139,7 @@ open class ContentAPI: APIBase {
      - parameter ignoreDupes: (query) Ignore Dupes (optional)
      - returns: RequestBuilder<String> 
      */
-    open class func contentAddIpfsPostWithRequestBuilder(body: UtilContentAddIpfsBody, ignoreDupes: String? = nil) -> RequestBuilder<String> {
+    open class func contentAddIpfsPostWithRequestBuilder(body: TypesIpfsPin, ignoreDupes: String? = nil) -> RequestBuilder<String> {
         let path = "/content/add-ipfs"
         let URLString = estuary-clientAPI.basePath + path
         let parameters = body.encodeToJSON()

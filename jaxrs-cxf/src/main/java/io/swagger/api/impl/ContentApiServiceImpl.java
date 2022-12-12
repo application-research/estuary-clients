@@ -2,7 +2,7 @@ package io.swagger.api.impl;
 
 import io.swagger.api.*;
 import io.swagger.model.MainImportDealBody;
-import io.swagger.model.UtilContentAddIpfsBody;
+import io.swagger.model.TypesIpfsPin;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 
@@ -67,7 +67,7 @@ public class ContentApiServiceImpl implements ContentApi {
      * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
      *
      */
-    public String contentAddIpfsPost(UtilContentAddIpfsBody body, String ignoreDupes) {
+    public String contentAddIpfsPost(TypesIpfsPin body, String ignoreDupes) {
         // TODO: Implement...
         
         return null;

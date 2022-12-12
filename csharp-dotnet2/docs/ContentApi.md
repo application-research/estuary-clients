@@ -219,7 +219,7 @@ This endpoint does not need any parameter.
 
 <a name="contentaddipfspost"></a>
 # **ContentAddIpfsPost**
-> string ContentAddIpfsPost (UtilContentAddIpfsBody body, string ignoreDupes)
+> string ContentAddIpfsPost (TypesIpfsPin body, string ignoreDupes)
 
 Add IPFS object
 
@@ -246,7 +246,7 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new ContentApi();
-            var body = new UtilContentAddIpfsBody(); // UtilContentAddIpfsBody | IPFS Body
+            var body = new TypesIpfsPin(); // TypesIpfsPin | IPFS Body
             var ignoreDupes = ignoreDupes_example;  // string | Ignore Dupes (optional) 
 
             try
@@ -268,7 +268,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**UtilContentAddIpfsBody**](UtilContentAddIpfsBody.md)| IPFS Body | 
+ **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| IPFS Body | 
  **ignoreDupes** | **string**| Ignore Dupes | [optional] 
 
 ### Return type

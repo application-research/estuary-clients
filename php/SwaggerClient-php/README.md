@@ -330,7 +330,6 @@ Class | Method | HTTP request | Description
  - [TypesIpfsPin](docs/Model/TypesIpfsPin.md)
  - [TypesIpfsPinStatusResponse](docs/Model/TypesIpfsPinStatusResponse.md)
  - [TypesPinningStatus](docs/Model/TypesPinningStatus.md)
- - [UtilContentAddIpfsBody](docs/Model/UtilContentAddIpfsBody.md)
  - [UtilContentAddResponse](docs/Model/UtilContentAddResponse.md)
  - [UtilContentCreateBody](docs/Model/UtilContentCreateBody.md)
  - [UtilContentType](docs/Model/UtilContentType.md)

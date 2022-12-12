@@ -4,7 +4,7 @@ import io.swagger.api.*;
 import io.swagger.model.*;
 
 import io.swagger.model.MainImportDealBody;
-import io.swagger.model.UtilContentAddIpfsBody;
+import io.swagger.model.TypesIpfsPin;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 
@@ -18,13 +18,13 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-12-09T03:38:45.256Z[GMT]")public class ContentApiServiceImpl implements ContentApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-12-12T11:11:33.532Z[GMT]")public class ContentApiServiceImpl implements ContentApiService {
       public Response contentAddCarPost(SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
-      public Response contentAddIpfsPost(UtilContentAddIpfsBody body,String ignoreDupes,SecurityContext securityContext)
+      public Response contentAddIpfsPost(TypesIpfsPin body,String ignoreDupes,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();

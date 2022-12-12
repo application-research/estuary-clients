@@ -577,43 +577,6 @@ export enum TypesPinningStatus {
 /**
  * 
  * @export
- * @interface UtilContentAddIpfsBody
- */
-export interface UtilContentAddIpfsBody {
-    /**
-     * 
-     * @type {string}
-     * @memberof UtilContentAddIpfsBody
-     */
-    coluuid?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UtilContentAddIpfsBody
-     */
-    dir?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UtilContentAddIpfsBody
-     */
-    filename?: string;
-    /**
-     * 
-     * @type {Array<string>}
-     * @memberof UtilContentAddIpfsBody
-     */
-    peers?: Array<string>;
-    /**
-     * 
-     * @type {string}
-     * @memberof UtilContentAddIpfsBody
-     */
-    root?: string;
-}
-/**
- * 
- * @export
  * @interface UtilContentAddResponse
  */
 export interface UtilContentAddResponse {
@@ -2552,12 +2515,12 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
         /**
          * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
          * @summary Add IPFS object
-         * @param {UtilContentAddIpfsBody} body IPFS Body
+         * @param {TypesIpfsPin} body IPFS Body
          * @param {string} [ignoreDupes] Ignore Dupes
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, options: any = {}): FetchArgs {
+        contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, options: any = {}): FetchArgs {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling contentAddIpfsPost.');
@@ -2586,7 +2549,7 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"UtilContentAddIpfsBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (<any>"TypesIpfsPin" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
 
             return {
@@ -3246,12 +3209,12 @@ export const ContentApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
          * @summary Add IPFS object
-         * @param {UtilContentAddIpfsBody} body IPFS Body
+         * @param {TypesIpfsPin} body IPFS Body
          * @param {string} [ignoreDupes] Ignore Dupes
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+        contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentAddIpfsPost(body, ignoreDupes, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -3590,12 +3553,12 @@ export const ContentApiFactory = function (configuration?: Configuration, fetch?
         /**
          * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
          * @summary Add IPFS object
-         * @param {UtilContentAddIpfsBody} body IPFS Body
+         * @param {TypesIpfsPin} body IPFS Body
          * @param {string} [ignoreDupes] Ignore Dupes
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, options?: any) {
+        contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, options?: any) {
             return ContentApiFp(configuration).contentAddIpfsPost(body, ignoreDupes, options)(fetch, basePath);
         },
         /**
@@ -3797,13 +3760,13 @@ export class ContentApi extends BaseAPI {
     /**
      * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
      * @summary Add IPFS object
-     * @param {UtilContentAddIpfsBody} body IPFS Body
+     * @param {TypesIpfsPin} body IPFS Body
      * @param {string} [ignoreDupes] Ignore Dupes
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContentApi
      */
-    public contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, options?: any) {
+    public contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, options?: any) {
         return ContentApiFp(this.configuration).contentAddIpfsPost(body, ignoreDupes, options)(this.fetch, this.basePath);
     }
 

@@ -82,7 +82,7 @@ exports.contentAdd_carPOST = function() {
  * Add IPFS object
  * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
  *
- * body Util.ContentAddIpfsBody IPFS Body
+ * body Types.IpfsPin IPFS Body
  * ignoreDupes String Ignore Dupes (optional)
  * returns String
  **/

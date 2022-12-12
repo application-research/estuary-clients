@@ -1169,7 +1169,7 @@
           "content" : {
             "*/*" : {
               "schema" : {
-                "$ref" : "#/components/schemas/util.ContentAddIpfsBody"
+                "$ref" : "#/components/schemas/types.IpfsPin"
               }
             }
           },
@@ -4288,29 +4288,6 @@
         "type" : "string",
         "enum" : [ "pinning", "pinned", "failed", "queued" ],
         "x-enum-varnames" : [ "PinningStatusPinning", "PinningStatusPinned", "PinningStatusFailed", "PinningStatusQueued" ]
-      },
-      "util.ContentAddIpfsBody" : {
-        "type" : "object",
-        "properties" : {
-          "coluuid" : {
-            "type" : "string"
-          },
-          "dir" : {
-            "type" : "string"
-          },
-          "filename" : {
-            "type" : "string"
-          },
-          "peers" : {
-            "type" : "array",
-            "items" : {
-              "type" : "string"
-            }
-          },
-          "root" : {
-            "type" : "string"
-          }
-        }
       },
       "util.ContentAddResponse" : {
         "type" : "object",

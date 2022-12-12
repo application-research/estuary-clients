@@ -6,7 +6,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-12-09T03:38:44.168Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-12-12T11:11:32.823Z[GMT]")
 public class MinerMinerSetInfoParams   {
   @JsonProperty("name")
   private String name = null;

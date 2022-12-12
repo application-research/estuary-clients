@@ -980,29 +980,6 @@
   "enum" : [ "pinning", "pinned", "failed", "queued" ],
   "x-enum-varnames" : [ "PinningStatusPinning", "PinningStatusPinned", "PinningStatusFailed", "PinningStatusQueued" ]
 };
-            defs["util.ContentAddIpfsBody"] = {
-  "type" : "object",
-  "properties" : {
-    "coluuid" : {
-      "type" : "string"
-    },
-    "dir" : {
-      "type" : "string"
-    },
-    "filename" : {
-      "type" : "string"
-    },
-    "peers" : {
-      "type" : "array",
-      "items" : {
-        "type" : "string"
-      }
-    },
-    "root" : {
-      "type" : "string"
-    }
-  }
-};
             defs["util.ContentAddResponse"] = {
   "type" : "object",
   "properties" : {
@@ -11027,7 +11004,7 @@ public class ContentApiExample {
         //bearerAuth.setApiKeyPrefix("Token");
 
         ContentApi apiInstance = new ContentApi();
-        Util.ContentAddIpfsBody body = ; // Util.ContentAddIpfsBody | IPFS Body
+        Types.IpfsPin body = ; // Types.IpfsPin | IPFS Body
         String ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
         try {
             'String' result = apiInstance.contentAddIpfsPost(body, ignoreDupes);
@@ -11047,7 +11024,7 @@ public class ContentApiExample {
 
     public static void main(String[] args) {
         ContentApi apiInstance = new ContentApi();
-        Util.ContentAddIpfsBody body = ; // Util.ContentAddIpfsBody | IPFS Body
+        Types.IpfsPin body = ; // Types.IpfsPin | IPFS Body
         String ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
         try {
             'String' result = apiInstance.contentAddIpfsPost(body, ignoreDupes);
@@ -11069,7 +11046,7 @@ public class ContentApiExample {
 [apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"Authorization"];
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
-Util.ContentAddIpfsBody *body = ; // IPFS Body
+Types.IpfsPin *body = ; // IPFS Body
 String *ignoreDupes = ignoreDupes_example; // Ignore Dupes (optional)
 
 ContentApi *apiInstance = [[ContentApi alloc] init];
@@ -11099,7 +11076,7 @@ bearerAuth.apiKey = "YOUR API KEY"
 //bearerAuth.apiKeyPrefix['Authorization'] = "Token"
 
 var api = new EstuaryApi.ContentApi()
-var body = ; // {{Util.ContentAddIpfsBody}} IPFS Body
+var body = ; // {{Types.IpfsPin}} IPFS Body
 var opts = { 
   'ignoreDupes': ignoreDupes_example // {{String}} Ignore Dupes
 };
@@ -11137,7 +11114,7 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new ContentApi();
-            var body = new Util.ContentAddIpfsBody(); // Util.ContentAddIpfsBody | IPFS Body
+            var body = new Types.IpfsPin(); // Types.IpfsPin | IPFS Body
             var ignoreDupes = ignoreDupes_example;  // String | Ignore Dupes (optional) 
 
             try
@@ -11166,7 +11143,7 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorizatio
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 $api_instance = new Swagger\Client\ApiContentApi();
-$body = ; // Util.ContentAddIpfsBody | IPFS Body
+$body = ; // Types.IpfsPin | IPFS Body
 $ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
 
 try {
@@ -11189,7 +11166,7 @@ $WWW::SwaggerClient::Configuration::api_key->{'Authorization'} = 'YOUR_API_KEY';
 #$WWW::SwaggerClient::Configuration::api_key_prefix->{'Authorization'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::ContentApi->new();
-my $body = WWW::SwaggerClient::Object::Util.ContentAddIpfsBody->new(); # Util.ContentAddIpfsBody | IPFS Body
+my $body = WWW::SwaggerClient::Object::Types.IpfsPin->new(); # Types.IpfsPin | IPFS Body
 my $ignoreDupes = ignoreDupes_example; # String | Ignore Dupes
 
 eval { 
@@ -11215,7 +11192,7 @@ swagger_client.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = swagger_client.ContentApi()
-body =  # Util.ContentAddIpfsBody | IPFS Body
+body =  # Types.IpfsPin | IPFS Body
 ignoreDupes = ignoreDupes_example # String | Ignore Dupes (optional)
 
 try: 
@@ -11248,7 +11225,7 @@ except ApiException as e:
   "content" : {
     "*/*" : {
       "schema" : {
-        "$ref" : "#/components/schemas/util.ContentAddIpfsBody"
+        "$ref" : "#/components/schemas/types.IpfsPin"
       }
     }
   },

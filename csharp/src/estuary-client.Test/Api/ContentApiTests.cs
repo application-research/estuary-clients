@@ -100,7 +100,7 @@ namespace estuary-client.Test
         public void ContentAddIpfsPostTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //UtilContentAddIpfsBody body = null;
+            //TypesIpfsPin body = null;
             //string ignoreDupes = null;
             //var response = instance.ContentAddIpfsPost(body, ignoreDupes);
             //Assert.IsInstanceOf<string> (response, "response is string");

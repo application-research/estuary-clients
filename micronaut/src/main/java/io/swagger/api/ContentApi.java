@@ -6,7 +6,7 @@
 package io.swagger.api;
 
 import io.swagger.model.MainImportDealBody;
-import io.swagger.model.UtilContentAddIpfsBody;
+import io.swagger.model.TypesIpfsPin;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-12-09T03:38:45.180Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-12-12T11:11:32.220Z[GMT]")
 @Controller
 public interface ContentApi {
 
@@ -48,7 +48,7 @@ public interface ContentApi {
     @ApiResponse(responseCode = "400", description = "Bad Request")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
     @Post(value = "/content/add-ipfs", produces = { "application/json" }, consumes = {"*/*"})
-    default Single<HttpResponse<String>> contentAddIpfsPost(@Parameter(description = "IPFS Body") @Valid @Body UtilContentAddIpfsBody body
+    default Single<HttpResponse<String>> contentAddIpfsPost(@Parameter(description = "IPFS Body") @Valid @Body TypesIpfsPin body
 ,@Nullable @Parameter(description = "Ignore Dupes") @Valid @QueryValue(value = "ignore-dupes") String ignoreDupes
 ) {
         return Single.fromCallable(() -> {

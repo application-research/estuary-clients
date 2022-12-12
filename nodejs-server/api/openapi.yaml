@@ -847,7 +847,7 @@ paths:
         content:
           '*/*':
             schema:
-              $ref: '#/components/schemas/util.ContentAddIpfsBody'
+              $ref: '#/components/schemas/types.IpfsPin'
         required: true
       responses:
         "200":
@@ -3115,21 +3115,6 @@ components:
       - PinningStatusPinned
       - PinningStatusFailed
       - PinningStatusQueued
-    util.ContentAddIpfsBody:
-      type: object
-      properties:
-        coluuid:
-          type: string
-        dir:
-          type: string
-        filename:
-          type: string
-        peers:
-          type: array
-          items:
-            type: string
-        root:
-          type: string
     util.ContentAddResponse:
       type: object
       properties:

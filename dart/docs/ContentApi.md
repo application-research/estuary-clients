@@ -178,7 +178,7 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new ContentApi();
-var body = new UtilContentAddIpfsBody(); // UtilContentAddIpfsBody | IPFS Body
+var body = new TypesIpfsPin(); // TypesIpfsPin | IPFS Body
 var ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
 
 try {
@@ -193,7 +193,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**UtilContentAddIpfsBody**](UtilContentAddIpfsBody.md)| IPFS Body | 
+ **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| IPFS Body | 
  **ignoreDupes** | **String**| Ignore Dupes | [optional] 
 
 ### Return type

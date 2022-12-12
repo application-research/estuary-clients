@@ -33,7 +33,7 @@ namespace IO.Swagger.Api
         /// <param name="body">IPFS Body</param>
         /// <param name="ignoreDupes">Ignore Dupes</param>
         /// <returns>string</returns>
-        string ContentAddIpfsPost (UtilContentAddIpfsBody body, string ignoreDupes);
+        string ContentAddIpfsPost (TypesIpfsPin body, string ignoreDupes);
         /// <summary>
         /// Upload a file This endpoint uploads a file.
         /// </summary>
@@ -284,7 +284,7 @@ namespace IO.Swagger.Api
         /// <param name="body">IPFS Body</param>
         /// <param name="ignoreDupes">Ignore Dupes</param>
         /// <returns>string</returns>
-        public string ContentAddIpfsPost (UtilContentAddIpfsBody body, string ignoreDupes)
+        public string ContentAddIpfsPost (TypesIpfsPin body, string ignoreDupes)
         {
             // verify the required parameter 'body' is set
             if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling ContentAddIpfsPost");

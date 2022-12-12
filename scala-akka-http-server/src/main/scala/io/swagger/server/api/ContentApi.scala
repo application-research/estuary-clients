@@ -6,7 +6,7 @@ import akka.http.scaladsl.unmarshalling.FromRequestUnmarshaller
 import akka.http.scaladsl.marshalling.ToEntityMarshaller
 import io.swagger.server.AkkaHttpHelper._
 import io.swagger.server.model.Main.importDealBody
-import io.swagger.server.model.Util.ContentAddIpfsBody
+import io.swagger.server.model.Types.IpfsPin
 import io.swagger.server.model.Util.ContentCreateBody
 import io.swagger.server.model.util.HttpError
 
@@ -68,7 +68,7 @@ class ContentApi(
           
             formFields() { () =>
               
-                entity(as[Util.ContentAddIpfsBody]){ body =>
+                entity(as[Types.IpfsPin]){ body =>
                   contentService.contentAddIpfsPost(body = body, ignoreDupes = ignoreDupes)
                 }
              
@@ -359,7 +359,7 @@ trait ContentApiService {
    * Code: 400, Message: Bad Request, DataType: util.HttpError
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
-  def contentAddIpfsPost(body: Util.ContentAddIpfsBody, ignoreDupes: Option[String])
+  def contentAddIpfsPost(body: Types.IpfsPin, ignoreDupes: Option[String])
       (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
   def contentAddPost200(responseString: String): Route =
@@ -575,9 +575,9 @@ trait ContentApiService {
 }
 
 trait ContentApiMarshaller {
-  implicit def fromRequestUnmarshallerUtil.ContentAddIpfsBody: FromRequestUnmarshaller[Util.ContentAddIpfsBody]
-
   implicit def fromRequestUnmarshallerUtil.ContentCreateBody: FromRequestUnmarshaller[Util.ContentCreateBody]
+
+  implicit def fromRequestUnmarshallerTypes.IpfsPin: FromRequestUnmarshaller[Types.IpfsPin]
 
   implicit def fromRequestUnmarshallerMain.importDealBody: FromRequestUnmarshaller[Main.importDealBody]
 

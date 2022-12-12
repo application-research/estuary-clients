@@ -207,7 +207,7 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 ContentApi apiInstance = new ContentApi();
-UtilContentAddIpfsBody body = new UtilContentAddIpfsBody(); // UtilContentAddIpfsBody | IPFS Body
+TypesIpfsPin body = new TypesIpfsPin(); // TypesIpfsPin | IPFS Body
 String ignoreDupes = "ignoreDupes_example"; // String | Ignore Dupes
 try {
     String result = apiInstance.contentAddIpfsPost(body, ignoreDupes);
@@ -222,7 +222,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**UtilContentAddIpfsBody**](UtilContentAddIpfsBody.md)| IPFS Body |
+ **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| IPFS Body |
  **ignoreDupes** | **String**| Ignore Dupes | [optional]
 
 ### Return type

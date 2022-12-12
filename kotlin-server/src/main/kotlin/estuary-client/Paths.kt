@@ -187,7 +187,7 @@ object Paths {
      * @param body IPFS Body 
      * @param ignoreDupes Ignore Dupes (optional)
      */
-    @Location("/content/add-ipfs") class contentAddIpfsPost(val body: UtilContentAddIpfsBody, val ignoreDupes: kotlin.String)
+    @Location("/content/add-ipfs") class contentAddIpfsPost(val body: TypesIpfsPin, val ignoreDupes: kotlin.String)
 
     /**
      * Upload a file

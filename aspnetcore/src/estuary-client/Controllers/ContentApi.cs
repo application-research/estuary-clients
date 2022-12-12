@@ -147,7 +147,7 @@ namespace estuary-client.Controllers
         [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
         [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
-        public virtual IActionResult ContentAddIpfsPost([FromBody]UtilContentAddIpfsBody body, [FromQuery]string ignoreDupes)
+        public virtual IActionResult ContentAddIpfsPost([FromBody]TypesIpfsPin body, [FromQuery]string ignoreDupes)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(string));

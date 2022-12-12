@@ -1,7 +1,7 @@
 package io.swagger.api;
 
 import io.swagger.model.MainImportDealBody;
-import io.swagger.model.UtilContentAddIpfsBody;
+import io.swagger.model.TypesIpfsPin;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 
@@ -93,7 +93,7 @@ public interface ContentApi  {
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public String contentAddIpfsPost(UtilContentAddIpfsBody body, @QueryParam("ignore-dupes")String ignoreDupes);
+    public String contentAddIpfsPost(TypesIpfsPin body, @QueryParam("ignore-dupes")String ignoreDupes);
 
     /**
      * Upload a file

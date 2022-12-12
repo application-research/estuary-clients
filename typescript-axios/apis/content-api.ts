@@ -17,7 +17,7 @@ import { Configuration } from '../configuration';
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
 import { MainImportDealBody } from '../models';
-import { UtilContentAddIpfsBody } from '../models';
+import { TypesIpfsPin } from '../models';
 import { UtilContentCreateBody } from '../models';
 import { UtilHttpError } from '../models';
 /**
@@ -161,12 +161,12 @@ export const ContentApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
          * @summary Add IPFS object
-         * @param {UtilContentAddIpfsBody} body IPFS Body
+         * @param {TypesIpfsPin} body IPFS Body
          * @param {string} [ignoreDupes] Ignore Dupes
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddIpfsPost: async (body: UtilContentAddIpfsBody, ignoreDupes?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        contentAddIpfsPost: async (body: TypesIpfsPin, ignoreDupes?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling contentAddIpfsPost.');
@@ -1016,12 +1016,12 @@ export const ContentApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
          * @summary Add IPFS object
-         * @param {UtilContentAddIpfsBody} body IPFS Body
+         * @param {TypesIpfsPin} body IPFS Body
          * @param {string} [ignoreDupes] Ignore Dupes
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
+        async contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
             const localVarAxiosArgs = await ContentApiAxiosParamCreator(configuration).contentAddIpfsPost(body, ignoreDupes, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -1280,12 +1280,12 @@ export const ContentApiFactory = function (configuration?: Configuration, basePa
         /**
          * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
          * @summary Add IPFS object
-         * @param {UtilContentAddIpfsBody} body IPFS Body
+         * @param {TypesIpfsPin} body IPFS Body
          * @param {string} [ignoreDupes] Ignore Dupes
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
+        async contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
             return ContentApiFp(configuration).contentAddIpfsPost(body, ignoreDupes, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1484,13 +1484,13 @@ export class ContentApi extends BaseAPI {
     /**
      * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
      * @summary Add IPFS object
-     * @param {UtilContentAddIpfsBody} body IPFS Body
+     * @param {TypesIpfsPin} body IPFS Body
      * @param {string} [ignoreDupes] Ignore Dupes
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContentApi
      */
-    public async contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
+    public async contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
         return ContentApiFp(this.configuration).contentAddIpfsPost(body, ignoreDupes, options).then((request) => request(this.axios, this.basePath));
     }
     /**

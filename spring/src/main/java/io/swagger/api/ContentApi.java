@@ -6,7 +6,7 @@
 package io.swagger.api;
 
 import io.swagger.model.MainImportDealBody;
-import io.swagger.model.UtilContentAddIpfsBody;
+import io.swagger.model.TypesIpfsPin;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 import io.swagger.v3.oas.annotations.Operation;
@@ -35,7 +35,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-09T03:38:46.898Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-12T11:11:38.432Z[GMT]")
 @Validated
 public interface ContentApi {
 
@@ -65,7 +65,7 @@ public interface ContentApi {
         produces = { "application/json" }, 
         consumes = { "*/*" }, 
         method = RequestMethod.POST)
-    ResponseEntity<String> contentAddIpfsPost(@Parameter(in = ParameterIn.DEFAULT, description = "IPFS Body", required=true, schema=@Schema()) @Valid @RequestBody UtilContentAddIpfsBody body, @Parameter(in = ParameterIn.QUERY, description = "Ignore Dupes" ,schema=@Schema()) @Valid @RequestParam(value = "ignore-dupes", required = false) String ignoreDupes);
+    ResponseEntity<String> contentAddIpfsPost(@Parameter(in = ParameterIn.DEFAULT, description = "IPFS Body", required=true, schema=@Schema()) @Valid @RequestBody TypesIpfsPin body, @Parameter(in = ParameterIn.QUERY, description = "Ignore Dupes" ,schema=@Schema()) @Valid @RequestParam(value = "ignore-dupes", required = false) String ignoreDupes);
 
 
     @Operation(summary = "Upload a file", description = "This endpoint uploads a file.", security = {

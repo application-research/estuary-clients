@@ -177,7 +177,6 @@ Class | Method | HTTP request | Description
  - [TypesIpfsPin](docs//TypesIpfsPin.md)
  - [TypesIpfsPinStatusResponse](docs//TypesIpfsPinStatusResponse.md)
  - [TypesPinningStatus](docs//TypesPinningStatus.md)
- - [UtilContentAddIpfsBody](docs//UtilContentAddIpfsBody.md)
  - [UtilContentAddResponse](docs//UtilContentAddResponse.md)
  - [UtilContentCreateBody](docs//UtilContentCreateBody.md)
  - [UtilContentType](docs//UtilContentType.md)

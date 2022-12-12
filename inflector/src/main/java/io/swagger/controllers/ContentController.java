@@ -11,11 +11,11 @@ import java.util.List;
 import io.swagger.model.*;
 
 import io.swagger.model.MainImportDealBody;
-import io.swagger.model.UtilContentAddIpfsBody;
+import io.swagger.model.TypesIpfsPin;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-12-09T03:38:44.168Z[GMT]")public class ContentController  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-12-12T11:11:32.823Z[GMT]")public class ContentController  {
   /** 
    * Uncomment and implement as you see fit.  These operations will map
    * Directly to operation calls from the routing logic.  Because the inflector
@@ -29,7 +29,7 @@ import io.swagger.model.UtilHttpError;
   */
 
   /*
-    public ResponseContext contentAddIpfsPOST(RequestContext request , UtilContentAddIpfsBody body 
+    public ResponseContext contentAddIpfsPOST(RequestContext request , TypesIpfsPin body 
 , String ignoreDupes 
 ) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );

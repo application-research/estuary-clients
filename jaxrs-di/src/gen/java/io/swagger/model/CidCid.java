@@ -19,7 +19,7 @@ import javax.validation.Valid;
 /**
  * CidCid
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-12-09T03:38:43.852Z[GMT]")public class CidCid   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-12-12T11:11:34.140Z[GMT]")public class CidCid   {
 
   @Override
   public boolean equals(java.lang.Object o) {

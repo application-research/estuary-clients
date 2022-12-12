@@ -821,40 +821,6 @@ class Decoders {
             //TODO: I don't think we need this anymore
             return Decoders.decode(clazz: TypesPinningStatus.self, source: source, instance: instance)
         }
-        // Decoder for [UtilContentAddIpfsBody]
-        Decoders.addDecoder(clazz: [UtilContentAddIpfsBody].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[UtilContentAddIpfsBody]> in
-            return Decoders.decode(clazz: [UtilContentAddIpfsBody].self, source: source)
-        }
-
-        // Decoder for UtilContentAddIpfsBody
-        Decoders.addDecoder(clazz: UtilContentAddIpfsBody.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<UtilContentAddIpfsBody> in
-            if let sourceDictionary = source as? [AnyHashable: Any] {
-                let _result = instance == nil ? UtilContentAddIpfsBody() : instance as! UtilContentAddIpfsBody
-                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["coluuid"] as AnyObject?) {
-                case let .success(value): _result.coluuid = value
-                case let .failure(error): break
-                }
-                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["dir"] as AnyObject?) {
-                case let .success(value): _result.dir = value
-                case let .failure(error): break
-                }
-                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["filename"] as AnyObject?) {
-                case let .success(value): _result.filename = value
-                case let .failure(error): break
-                }
-                switch Decoders.decodeOptional(clazz: [String].self, source: sourceDictionary["peers"] as AnyObject?) {
-                case let .success(value): _result.peers = value
-                case let .failure(error): break
-                }
-                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["root"] as AnyObject?) {
-                case let .success(value): _result.root = value
-                case let .failure(error): break
-                }
-                return .success(_result)
-            } else {
-                return .failure(.typeMismatch(expected: "UtilContentAddIpfsBody", actual: "\(source)"))
-            }
-        }
         // Decoder for [UtilContentAddResponse]
         Decoders.addDecoder(clazz: [UtilContentAddResponse].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[UtilContentAddResponse]> in
             return Decoders.decode(clazz: [UtilContentAddResponse].self, source: source)

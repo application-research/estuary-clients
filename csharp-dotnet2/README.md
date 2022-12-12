@@ -333,7 +333,6 @@ Class | Method | HTTP request | Description
  - [estuary-client.Model.TypesIpfsPin](docs/TypesIpfsPin.md)
  - [estuary-client.Model.TypesIpfsPinStatusResponse](docs/TypesIpfsPinStatusResponse.md)
  - [estuary-client.Model.TypesPinningStatus](docs/TypesPinningStatus.md)
- - [estuary-client.Model.UtilContentAddIpfsBody](docs/UtilContentAddIpfsBody.md)
  - [estuary-client.Model.UtilContentAddResponse](docs/UtilContentAddResponse.md)
  - [estuary-client.Model.UtilContentCreateBody](docs/UtilContentCreateBody.md)
  - [estuary-client.Model.UtilContentType](docs/UtilContentType.md)

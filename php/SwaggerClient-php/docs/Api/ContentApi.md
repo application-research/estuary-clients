@@ -200,7 +200,7 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = new \Swagger\Client\Model\UtilContentAddIpfsBody(); // \Swagger\Client\Model\UtilContentAddIpfsBody | IPFS Body
+$body = new \Swagger\Client\Model\TypesIpfsPin(); // \Swagger\Client\Model\TypesIpfsPin | IPFS Body
 $ignore_dupes = "ignore_dupes_example"; // string | Ignore Dupes
 
 try {
@@ -216,7 +216,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\UtilContentAddIpfsBody**](../Model/UtilContentAddIpfsBody.md)| IPFS Body |
+ **body** | [**\Swagger\Client\Model\TypesIpfsPin**](../Model/TypesIpfsPin.md)| IPFS Body |
  **ignore_dupes** | **string**| Ignore Dupes | [optional]
 
 ### Return type

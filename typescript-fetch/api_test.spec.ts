@@ -130,7 +130,7 @@ describe("ContentApi", () => {
     return expect(instance.contentAddCarPost({})).resolves.toBe(null)
   })
   test("contentAddIpfsPost", () => {
-    const body: api.UtilContentAddIpfsBody = undefined
+    const body: api.TypesIpfsPin = undefined
     const ignoreDupes: string = "ignoreDupes_example"
     return expect(instance.contentAddIpfsPost(body, ignoreDupes, {})).resolves.toBe(null)
   })

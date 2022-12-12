@@ -468,7 +468,7 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-body = SwaggerClient::UtilContentAddIpfsBody.new # UtilContentAddIpfsBody | IPFS Body
+body = SwaggerClient::TypesIpfsPin.new # TypesIpfsPin | IPFS Body
 opts = { 
   ignore_dupes: 'ignore_dupes_example' # String | Ignore Dupes
 }
@@ -1769,7 +1769,6 @@ Class | Method | HTTP request | Description
  - [SwaggerClient::TypesIpfsPin](docs/TypesIpfsPin.md)
  - [SwaggerClient::TypesIpfsPinStatusResponse](docs/TypesIpfsPinStatusResponse.md)
  - [SwaggerClient::TypesPinningStatus](docs/TypesPinningStatus.md)
- - [SwaggerClient::UtilContentAddIpfsBody](docs/UtilContentAddIpfsBody.md)
  - [SwaggerClient::UtilContentAddResponse](docs/UtilContentAddResponse.md)
  - [SwaggerClient::UtilContentCreateBody](docs/UtilContentCreateBody.md)
  - [SwaggerClient::UtilContentType](docs/UtilContentType.md)

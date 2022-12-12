@@ -29,7 +29,7 @@ import java.util.List;
  * TypesIpfsPinStatusResponse
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-12-09T03:38:44.300Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-12-12T11:11:30.699Z[GMT]")
 public class TypesIpfsPinStatusResponse {
   @SerializedName("created")
   private String created = null;

@@ -311,7 +311,7 @@ class ContentApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param UtilContentAddIpfsBody body: IPFS Body (required)
+        :param TypesIpfsPin body: IPFS Body (required)
         :param str ignore_dupes: Ignore Dupes
         :return: str
                  If the method is called asynchronously,
@@ -334,7 +334,7 @@ class ContentApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param UtilContentAddIpfsBody body: IPFS Body (required)
+        :param TypesIpfsPin body: IPFS Body (required)
         :param str ignore_dupes: Ignore Dupes
         :return: str
                  If the method is called asynchronously,

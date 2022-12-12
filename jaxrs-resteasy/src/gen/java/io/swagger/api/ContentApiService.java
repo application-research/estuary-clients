@@ -4,7 +4,7 @@ import io.swagger.api.*;
 import io.swagger.model.*;
 
 import io.swagger.model.MainImportDealBody;
-import io.swagger.model.UtilContentAddIpfsBody;
+import io.swagger.model.TypesIpfsPin;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 
@@ -16,10 +16,10 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-12-09T03:38:45.256Z[GMT]")public interface ContentApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-12-12T11:11:33.532Z[GMT]")public interface ContentApiService {
       Response contentAddCarPost(SecurityContext securityContext)
       throws NotFoundException;
-      Response contentAddIpfsPost(UtilContentAddIpfsBody body,String ignoreDupes,SecurityContext securityContext)
+      Response contentAddIpfsPost(TypesIpfsPin body,String ignoreDupes,SecurityContext securityContext)
       throws NotFoundException;
       Response contentAddPost(SecurityContext securityContext)
       throws NotFoundException;

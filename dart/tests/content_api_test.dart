@@ -38,7 +38,7 @@ void main() {
     //
     // This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
     //
-    //Future<String> contentAddIpfsPost(UtilContentAddIpfsBody body, { String ignoreDupes }) async
+    //Future<String> contentAddIpfsPost(TypesIpfsPin body, { String ignoreDupes }) async
     test('test contentAddIpfsPost', () async {
       // TODO
     });

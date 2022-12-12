@@ -26,7 +26,6 @@ from estuary-client.models.types_ipfs_list_pin_status_response import TypesIpfsL
 from estuary-client.models.types_ipfs_pin import TypesIpfsPin
 from estuary-client.models.types_ipfs_pin_status_response import TypesIpfsPinStatusResponse
 from estuary-client.models.types_pinning_status import TypesPinningStatus
-from estuary-client.models.util_content_add_ipfs_body import UtilContentAddIpfsBody
 from estuary-client.models.util_content_add_response import UtilContentAddResponse
 from estuary-client.models.util_content_create_body import UtilContentCreateBody
 from estuary-client.models.util_content_type import UtilContentType

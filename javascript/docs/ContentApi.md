@@ -184,7 +184,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 //bearerAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new EstuaryClient.ContentApi();
-let body = new EstuaryClient.UtilContentAddIpfsBody(); // UtilContentAddIpfsBody | IPFS Body
+let body = new EstuaryClient.TypesIpfsPin(); // TypesIpfsPin | IPFS Body
 let opts = { 
   'ignoreDupes': "ignoreDupes_example" // String | Ignore Dupes
 };
@@ -201,7 +201,7 @@ apiInstance.contentAddIpfsPost(body, opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**UtilContentAddIpfsBody**](UtilContentAddIpfsBody.md)| IPFS Body | 
+ **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| IPFS Body | 
  **ignoreDupes** | **String**| Ignore Dupes | [optional] 
 
 ### Return type

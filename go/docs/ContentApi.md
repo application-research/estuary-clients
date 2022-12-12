@@ -111,7 +111,7 @@ This endpoint is used to add an IPFS object to the network. The object can be a 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**UtilContentAddIpfsBody**](UtilContentAddIpfsBody.md)| IPFS Body | 
+  **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| IPFS Body | 
  **optional** | ***ContentApiContentAddIpfsPostOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters

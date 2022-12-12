@@ -18,7 +18,7 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 import { MainImportDealBody } from '../model/mainImportDealBody';
-import { UtilContentAddIpfsBody } from '../model/utilContentAddIpfsBody';
+import { TypesIpfsPin } from '../model/typesIpfsPin';
 import { UtilContentCreateBody } from '../model/utilContentCreateBody';
 import { UtilHttpError } from '../model/utilHttpError';
 
@@ -194,10 +194,10 @@ export class ContentService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
-    public contentAddIpfsPost(body: UtilContentAddIpfsBody, ignoreDupes?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling contentAddIpfsPost.');

@@ -2,7 +2,7 @@ import connexion
 import six
 
 from estuary-client.models.main_import_deal_body import MainImportDealBody  # noqa: E501
-from estuary-client.models.util_content_add_ipfs_body import UtilContentAddIpfsBody  # noqa: E501
+from estuary-client.models.types_ipfs_pin import TypesIpfsPin  # noqa: E501
 from estuary-client.models.util_content_create_body import UtilContentCreateBody  # noqa: E501
 from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
 from estuary-client import util
@@ -56,7 +56,7 @@ def content_add_ipfs_post(body, ignore_dupes=None):  # noqa: E501
     :rtype: str
     """
     if connexion.request.is_json:
-        body = UtilContentAddIpfsBody.from_dict(connexion.request.get_json())  # noqa: E501
+        body = TypesIpfsPin.from_dict(connexion.request.get_json())  # noqa: E501
     return 'do some magic!'
 
 

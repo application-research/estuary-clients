@@ -6,7 +6,7 @@ from flask import json
 from six import BytesIO
 
 from estuary-client.models.main_import_deal_body import MainImportDealBody  # noqa: E501
-from estuary-client.models.util_content_add_ipfs_body import UtilContentAddIpfsBody  # noqa: E501
+from estuary-client.models.types_ipfs_pin import TypesIpfsPin  # noqa: E501
 from estuary-client.models.util_content_create_body import UtilContentCreateBody  # noqa: E501
 from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
 from estuary-client.test import BaseTestCase
@@ -53,7 +53,7 @@ class TestContentController(BaseTestCase):
 
         Add IPFS object
         """
-        body = UtilContentAddIpfsBody()
+        body = TypesIpfsPin()
         query_string = [('ignore_dupes', 'ignore_dupes_example')]
         response = self.client.open(
             '/content/add-ipfs',

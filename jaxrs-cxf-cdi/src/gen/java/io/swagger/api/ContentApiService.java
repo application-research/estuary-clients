@@ -7,7 +7,7 @@ import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 import org.apache.cxf.jaxrs.ext.multipart.Multipart;
 
 import io.swagger.model.MainImportDealBody;
-import io.swagger.model.UtilContentAddIpfsBody;
+import io.swagger.model.TypesIpfsPin;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 
@@ -18,9 +18,9 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-12-09T03:38:46.964Z[GMT]")public interface ContentApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-12-12T11:11:35.311Z[GMT]")public interface ContentApiService {
       public Response contentAddCarPost(SecurityContext securityContext);
-      public Response contentAddIpfsPost(UtilContentAddIpfsBody body, String ignoreDupes, SecurityContext securityContext);
+      public Response contentAddIpfsPost(TypesIpfsPin body, String ignoreDupes, SecurityContext securityContext);
       public Response contentAddPost(SecurityContext securityContext);
       public Response contentAggregatedContentGet(String content, SecurityContext securityContext);
       public Response contentAllDealsGet(String begin, String duration, String all, SecurityContext securityContext);

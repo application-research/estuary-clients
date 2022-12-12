@@ -27,7 +27,7 @@ import java.io.IOException;
 
 
 import io.swagger.client.model.MainImportDealBody;
-import io.swagger.client.model.UtilContentAddIpfsBody;
+import io.swagger.client.model.TypesIpfsPin;
 import io.swagger.client.model.UtilContentCreateBody;
 import io.swagger.client.model.UtilHttpError;
 
@@ -422,7 +422,7 @@ public class ContentApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call contentAddIpfsPostCall(UtilContentAddIpfsBody body, String ignoreDupes, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call contentAddIpfsPostCall(TypesIpfsPin body, String ignoreDupes, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
         
         // create path and map variables
@@ -466,7 +466,7 @@ public class ContentApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call contentAddIpfsPostValidateBeforeCall(UtilContentAddIpfsBody body, String ignoreDupes, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call contentAddIpfsPostValidateBeforeCall(TypesIpfsPin body, String ignoreDupes, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling contentAddIpfsPost(Async)");
@@ -489,7 +489,7 @@ public class ContentApi {
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public String contentAddIpfsPost(UtilContentAddIpfsBody body, String ignoreDupes) throws ApiException {
+    public String contentAddIpfsPost(TypesIpfsPin body, String ignoreDupes) throws ApiException {
         ApiResponse<String> resp = contentAddIpfsPostWithHttpInfo(body, ignoreDupes);
         return resp.getData();
     }
@@ -502,7 +502,7 @@ public class ContentApi {
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<String> contentAddIpfsPostWithHttpInfo(UtilContentAddIpfsBody body, String ignoreDupes) throws ApiException {
+    public ApiResponse<String> contentAddIpfsPostWithHttpInfo(TypesIpfsPin body, String ignoreDupes) throws ApiException {
         com.squareup.okhttp.Call call = contentAddIpfsPostValidateBeforeCall(body, ignoreDupes, null, null);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
@@ -517,7 +517,7 @@ public class ContentApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call contentAddIpfsPostAsync(UtilContentAddIpfsBody body, String ignoreDupes, final ApiCallback<String> callback) throws ApiException {
+    public com.squareup.okhttp.Call contentAddIpfsPostAsync(TypesIpfsPin body, String ignoreDupes, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;

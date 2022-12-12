@@ -34,7 +34,7 @@ import estuary-client.infrastructure.ApiPrincipal
 
 
 import io.swagger.server.models.MainimportDealBody
-import io.swagger.server.models.UtilContentAddIpfsBody
+import io.swagger.server.models.TypesIpfsPin
 import io.swagger.server.models.UtilContentCreateBody
 import io.swagger.server.models.UtilHttpError
 

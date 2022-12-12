@@ -193,7 +193,7 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-body = SwaggerClient::UtilContentAddIpfsBody.new # UtilContentAddIpfsBody | IPFS Body
+body = SwaggerClient::TypesIpfsPin.new # TypesIpfsPin | IPFS Body
 opts = { 
   ignore_dupes: 'ignore_dupes_example' # String | Ignore Dupes
 }
@@ -211,7 +211,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**UtilContentAddIpfsBody**](UtilContentAddIpfsBody.md)| IPFS Body | 
+ **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| IPFS Body | 
  **ignore_dupes** | **String**| Ignore Dupes | [optional] 
 
 ### Return type

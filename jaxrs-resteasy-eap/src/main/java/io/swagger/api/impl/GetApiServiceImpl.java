@@ -12,7 +12,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-12-09T03:38:45.054Z[GMT]")public class GetApiServiceImpl implements GetApi {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-12-12T11:11:34.214Z[GMT]")public class GetApiServiceImpl implements GetApi {
       public Response getCidGet(String cid,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();

@@ -902,7 +902,7 @@ class ContentApi
      *
      * Add IPFS object
      *
-     * @param  \Swagger\Client\Model\UtilContentAddIpfsBody $body IPFS Body (required)
+     * @param  \Swagger\Client\Model\TypesIpfsPin $body IPFS Body (required)
      * @param  string $ignore_dupes Ignore Dupes (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -920,7 +920,7 @@ class ContentApi
      *
      * Add IPFS object
      *
-     * @param  \Swagger\Client\Model\UtilContentAddIpfsBody $body IPFS Body (required)
+     * @param  \Swagger\Client\Model\TypesIpfsPin $body IPFS Body (required)
      * @param  string $ignore_dupes Ignore Dupes (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -1012,7 +1012,7 @@ class ContentApi
      *
      * Add IPFS object
      *
-     * @param  \Swagger\Client\Model\UtilContentAddIpfsBody $body IPFS Body (required)
+     * @param  \Swagger\Client\Model\TypesIpfsPin $body IPFS Body (required)
      * @param  string $ignore_dupes Ignore Dupes (optional)
      *
      * @throws \InvalidArgumentException
@@ -1033,7 +1033,7 @@ class ContentApi
      *
      * Add IPFS object
      *
-     * @param  \Swagger\Client\Model\UtilContentAddIpfsBody $body IPFS Body (required)
+     * @param  \Swagger\Client\Model\TypesIpfsPin $body IPFS Body (required)
      * @param  string $ignore_dupes Ignore Dupes (optional)
      *
      * @throws \InvalidArgumentException
@@ -1084,7 +1084,7 @@ class ContentApi
     /**
      * Create request for operation 'contentAddIpfsPost'
      *
-     * @param  \Swagger\Client\Model\UtilContentAddIpfsBody $body IPFS Body (required)
+     * @param  \Swagger\Client\Model\TypesIpfsPin $body IPFS Body (required)
      * @param  string $ignore_dupes Ignore Dupes (optional)
      *
      * @throws \InvalidArgumentException

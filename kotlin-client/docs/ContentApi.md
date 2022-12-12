@@ -172,7 +172,7 @@ This endpoint is used to add an IPFS object to the network. The object can be a 
 //import io.swagger.client.models.*;
 
 val apiInstance = ContentApi()
-val body : UtilContentAddIpfsBody =  // UtilContentAddIpfsBody | IPFS Body
+val body : TypesIpfsPin =  // TypesIpfsPin | IPFS Body
 val ignoreDupes : kotlin.String = ignoreDupes_example // kotlin.String | Ignore Dupes
 try {
     val result : kotlin.String = apiInstance.contentAddIpfsPost(body, ignoreDupes)
@@ -190,7 +190,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**UtilContentAddIpfsBody**](UtilContentAddIpfsBody.md)| IPFS Body |
+ **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| IPFS Body |
  **ignoreDupes** | **kotlin.String**| Ignore Dupes | [optional]
 
 ### Return type

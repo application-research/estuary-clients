@@ -13,9 +13,9 @@ package io.swagger.client.api
 
 import java.text.SimpleDateFormat
 
-import io.swagger.client.model.ContentAddIpfsBody
 import io.swagger.client.model.ContentCreateBody
 import io.swagger.client.model.ImportDealBody
+import io.swagger.client.model.IpfsPin
 import io.swagger.client.model.util.HttpError
 import io.swagger.client.{ApiInvoker, ApiException}
 
@@ -163,7 +163,7 @@ class ContentApi(
    * @param ignoreDupes Ignore Dupes (optional)
    * @return String
    */
-  def contentAddIpfsPost(body: ContentAddIpfsBody, ignoreDupes: Option[String] = None): Option[String] = {
+  def contentAddIpfsPost(body: IpfsPin, ignoreDupes: Option[String] = None): Option[String] = {
     val await = Try(Await.result(contentAddIpfsPostAsync(body, ignoreDupes), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -179,7 +179,7 @@ class ContentApi(
    * @param ignoreDupes Ignore Dupes (optional)
    * @return Future(String)
    */
-  def contentAddIpfsPostAsync(body: ContentAddIpfsBody, ignoreDupes: Option[String] = None): Future[String] = {
+  def contentAddIpfsPostAsync(body: IpfsPin, ignoreDupes: Option[String] = None): Future[String] = {
       helper.contentAddIpfsPost(body, ignoreDupes)
   }
 
@@ -629,9 +629,9 @@ class ContentApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def contentAddIpfsPost(body: ContentAddIpfsBody,
+  def contentAddIpfsPost(body: IpfsPin,
     ignoreDupes: Option[String] = None
-    )(implicit reader: ClientResponseReader[String], writer: RequestWriter[ContentAddIpfsBody]): Future[String] = {
+    )(implicit reader: ClientResponseReader[String], writer: RequestWriter[IpfsPin]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/content/add-ipfs"))
 

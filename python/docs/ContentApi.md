@@ -201,7 +201,7 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
-body = estuary_client.UtilContentAddIpfsBody() # UtilContentAddIpfsBody | IPFS Body
+body = estuary_client.TypesIpfsPin() # TypesIpfsPin | IPFS Body
 ignore_dupes = 'ignore_dupes_example' # str | Ignore Dupes (optional)
 
 try:
@@ -216,7 +216,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**UtilContentAddIpfsBody**](UtilContentAddIpfsBody.md)| IPFS Body | 
+ **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| IPFS Body | 
  **ignore_dupes** | **str**| Ignore Dupes | [optional] 
 
 ### Return type

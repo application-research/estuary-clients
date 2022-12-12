@@ -25,7 +25,7 @@
 package io.swagger.api;
 
 import io.swagger.model.MainImportDealBody;
-import io.swagger.model.UtilContentAddIpfsBody;
+import io.swagger.model.TypesIpfsPin;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 import org.junit.Test;
@@ -131,7 +131,7 @@ public class ContentApiTest {
      */
     @Test
     public void contentAddIpfsPostTest() {
-        UtilContentAddIpfsBody body = null;
+        TypesIpfsPin body = null;
         String ignoreDupes = null;
         //String response = api.contentAddIpfsPost(body, ignoreDupes);
         //assertNotNull(response);

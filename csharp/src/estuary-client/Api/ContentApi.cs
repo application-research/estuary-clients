@@ -92,7 +92,7 @@ namespace estuary-client.Api
         /// <param name="body">IPFS Body</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <returns>string</returns>
-        string ContentAddIpfsPost (UtilContentAddIpfsBody body, string ignoreDupes = null);
+        string ContentAddIpfsPost (TypesIpfsPin body, string ignoreDupes = null);
 
         /// <summary>
         /// Add IPFS object
@@ -104,7 +104,7 @@ namespace estuary-client.Api
         /// <param name="body">IPFS Body</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> ContentAddIpfsPostWithHttpInfo (UtilContentAddIpfsBody body, string ignoreDupes = null);
+        ApiResponse<string> ContentAddIpfsPostWithHttpInfo (TypesIpfsPin body, string ignoreDupes = null);
         /// <summary>
         /// Upload a file
         /// </summary>
@@ -495,7 +495,7 @@ namespace estuary-client.Api
         /// <param name="body">IPFS Body</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> ContentAddIpfsPostAsync (UtilContentAddIpfsBody body, string ignoreDupes = null);
+        System.Threading.Tasks.Task<string> ContentAddIpfsPostAsync (TypesIpfsPin body, string ignoreDupes = null);
 
         /// <summary>
         /// Add IPFS object
@@ -507,7 +507,7 @@ namespace estuary-client.Api
         /// <param name="body">IPFS Body</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> ContentAddIpfsPostAsyncWithHttpInfo (UtilContentAddIpfsBody body, string ignoreDupes = null);
+        System.Threading.Tasks.Task<ApiResponse<string>> ContentAddIpfsPostAsyncWithHttpInfo (TypesIpfsPin body, string ignoreDupes = null);
         /// <summary>
         /// Upload a file
         /// </summary>
@@ -1344,7 +1344,7 @@ namespace estuary-client.Api
         /// <param name="body">IPFS Body</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <returns>string</returns>
-        public string ContentAddIpfsPost (UtilContentAddIpfsBody body, string ignoreDupes = null)
+        public string ContentAddIpfsPost (TypesIpfsPin body, string ignoreDupes = null)
         {
              ApiResponse<string> localVarResponse = ContentAddIpfsPostWithHttpInfo(body, ignoreDupes);
              return localVarResponse.Data;
@@ -1357,7 +1357,7 @@ namespace estuary-client.Api
         /// <param name="body">IPFS Body</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > ContentAddIpfsPostWithHttpInfo (UtilContentAddIpfsBody body, string ignoreDupes = null)
+        public ApiResponse< string > ContentAddIpfsPostWithHttpInfo (TypesIpfsPin body, string ignoreDupes = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1425,7 +1425,7 @@ namespace estuary-client.Api
         /// <param name="body">IPFS Body</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> ContentAddIpfsPostAsync (UtilContentAddIpfsBody body, string ignoreDupes = null)
+        public async System.Threading.Tasks.Task<string> ContentAddIpfsPostAsync (TypesIpfsPin body, string ignoreDupes = null)
         {
              ApiResponse<string> localVarResponse = await ContentAddIpfsPostAsyncWithHttpInfo(body, ignoreDupes);
              return localVarResponse.Data;
@@ -1439,7 +1439,7 @@ namespace estuary-client.Api
         /// <param name="body">IPFS Body</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> ContentAddIpfsPostAsyncWithHttpInfo (UtilContentAddIpfsBody body, string ignoreDupes = null)
+        public async System.Threading.Tasks.Task<ApiResponse<string>> ContentAddIpfsPostAsyncWithHttpInfo (TypesIpfsPin body, string ignoreDupes = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
