@@ -422,6 +422,66 @@ export const ContentApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * This endpoint is used to get user contents
+         * @summary Get user contents
+         * @param {string} limit limit
+         * @param {string} offset offset
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        contentContentsGet: async (limit: string, offset: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'limit' is not null or undefined
+            if (limit === null || limit === undefined) {
+                throw new RequiredError('limit','Required parameter limit was null or undefined when calling contentContentsGet.');
+            }
+            // verify required parameter 'offset' is not null or undefined
+            if (offset === null || offset === undefined) {
+                throw new RequiredError('offset','Required parameter offset was null or undefined when calling contentContentsGet.');
+            }
+            const localVarPath = `/content/contents`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? await configuration.apiKey("Authorization")
+                    : await configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * This endpoint adds a new content
          * @summary Add a new content
          * @param {UtilContentCreateBody} body Content
@@ -1200,6 +1260,21 @@ export const ContentApiFp = function(configuration?: Configuration) {
             };
         },
         /**
+         * This endpoint is used to get user contents
+         * @summary Get user contents
+         * @param {string} limit limit
+         * @param {string} offset offset
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async contentContentsGet(limit: string, offset: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
+            const localVarAxiosArgs = await ContentApiAxiosParamCreator(configuration).contentContentsGet(limit, offset, options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
          * This endpoint adds a new content
          * @summary Add a new content
          * @param {UtilContentCreateBody} body Content
@@ -1474,6 +1549,17 @@ export const ContentApiFactory = function (configuration?: Configuration, basePa
             return ContentApiFp(configuration).contentBwUsageContentGet(content, options).then((request) => request(axios, basePath));
         },
         /**
+         * This endpoint is used to get user contents
+         * @summary Get user contents
+         * @param {string} limit limit
+         * @param {string} offset offset
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async contentContentsGet(limit: string, offset: string, options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
+            return ContentApiFp(configuration).contentContentsGet(limit, offset, options).then((request) => request(axios, basePath));
+        },
+        /**
          * This endpoint adds a new content
          * @summary Add a new content
          * @param {UtilContentCreateBody} body Content
@@ -1703,6 +1789,18 @@ export class ContentApi extends BaseAPI {
      */
     public async contentBwUsageContentGet(content: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
         return ContentApiFp(this.configuration).contentBwUsageContentGet(content, options).then((request) => request(this.axios, this.basePath));
+    }
+    /**
+     * This endpoint is used to get user contents
+     * @summary Get user contents
+     * @param {string} limit limit
+     * @param {string} offset offset
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ContentApi
+     */
+    public async contentContentsGet(limit: string, offset: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
+        return ContentApiFp(this.configuration).contentContentsGet(limit, offset, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * This endpoint adds a new content

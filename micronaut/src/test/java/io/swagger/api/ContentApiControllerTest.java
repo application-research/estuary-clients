@@ -84,6 +84,17 @@ class ContentApiControllerTest {
     }
 
     @Test
+    void contentContentsGetTest() {
+        String limit = "limit_example";
+        String offset = "offset_example";
+        try {
+            api.contentContentsGet(limit, offset).blockingGet();
+        } catch (UnsupportedOperationException e) {
+            assumeTrue(false, "API is not yet implemented");
+        }
+    }
+
+    @Test
     void contentCreatePostTest() {
         UtilContentCreateBody body = new UtilContentCreateBody();
         String ignoreDupes = "ignoreDupes_example";

@@ -46,6 +46,7 @@ class TypesPinningStatus
 const PINNED = 'pinned';
 const FAILED = 'failed';
 const QUEUED = 'queued';
+const OFFLOADED = 'offloaded';
     /**
      * Gets allowable values of the enum
      * @return string[]
@@ -56,6 +57,7 @@ const QUEUED = 'queued';
             self::PINNING,
 self::PINNED,
 self::FAILED,
-self::QUEUED,        ];
+self::QUEUED,
+self::OFFLOADED,        ];
     }
 }

@@ -45,6 +45,12 @@ const TypesPinningStatus = {
   queued: "queued",
 
   /**
+   * value: "offloaded"
+   * @const
+   */
+  offloaded: "offloaded",
+
+  /**
    * Returns a <code>TypesPinningStatus</code> enum value from a JavaScript object name.
    * @param {Object} data The plain JavaScript object containing the name of the enum value.
   * @return {module:model/TypesPinningStatus} The enum <code>TypesPinningStatus</code> value.

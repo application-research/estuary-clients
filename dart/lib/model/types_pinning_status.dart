@@ -10,6 +10,7 @@ class TypesPinningStatus {
   static TypesPinningStatus pinned_ = TypesPinningStatus._internal("pinned");
   static TypesPinningStatus failed_ = TypesPinningStatus._internal("failed");
   static TypesPinningStatus queued_ = TypesPinningStatus._internal("queued");
+  static TypesPinningStatus offloaded_ = TypesPinningStatus._internal("offloaded");
 
   TypesPinningStatus.fromJson(dynamic data) {
     switch (data) {
@@ -17,6 +18,7 @@ class TypesPinningStatus {
           case "pinned": value = data; break;
           case "failed": value = data; break;
           case "queued": value = data; break;
+          case "offloaded": value = data; break;
     default: throw('Unknown enum value to decode: $data');
     }
   }

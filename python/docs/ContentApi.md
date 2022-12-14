@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**content_aggregated_content_get**](ContentApi.md#content_aggregated_content_get) | **GET** /content/aggregated/{content} | Get aggregated content stats
 [**content_all_deals_get**](ContentApi.md#content_all_deals_get) | **GET** /content/all-deals | Get all deals for a user
 [**content_bw_usage_content_get**](ContentApi.md#content_bw_usage_content_get) | **GET** /content/bw-usage/{content} | Get content bandwidth
+[**content_contents_get**](ContentApi.md#content_contents_get) | **GET** /content/contents | Get user contents
 [**content_create_post**](ContentApi.md#content_create_post) | **POST** /content/create | Add a new content
 [**content_deals_get**](ContentApi.md#content_deals_get) | **GET** /content/deals | Content with deals
 [**content_ensure_replication_datacid_get**](ContentApi.md#content_ensure_replication_datacid_get) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
@@ -436,6 +437,62 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **content** | **str**| Content ID | 
+
+### Return type
+
+**str**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **content_contents_get**
+> str content_contents_get(limit, offset)
+
+Get user contents
+
+This endpoint is used to get user contents
+
+### Example
+```python
+from __future__ import print_function
+import time
+import estuary_client
+from estuary_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: bearerAuth
+configuration = estuary_client.Configuration()
+configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
+limit = 'limit_example' # str | limit
+offset = 'offset_example' # str | offset
+
+try:
+    # Get user contents
+    api_response = api_instance.content_contents_get(limit, offset)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling ContentApi->content_contents_get: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **str**| limit | 
+ **offset** | **str**| offset | 
 
 ### Return type
 

@@ -24,7 +24,7 @@ import javax.validation.Valid;
 /**
  * MainImportDealBody
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-12-12T21:11:36.293Z[GMT]")public class MainImportDealBody   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-12-14T06:22:36.957Z[GMT]")public class MainImportDealBody   {
   @JsonProperty("coluuid")
   private String coluuid = null;
 

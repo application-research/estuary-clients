@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
  * UtilContentCreateBody
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-12T21:11:36.792Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-14T06:22:42.275Z[GMT]")
 
 
 public class UtilContentCreateBody   {

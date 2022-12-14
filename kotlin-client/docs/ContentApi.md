@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**contentAggregatedContentGet**](ContentApi.md#contentAggregatedContentGet) | **GET** /content/aggregated/{content} | Get aggregated content stats
 [**contentAllDealsGet**](ContentApi.md#contentAllDealsGet) | **GET** /content/all-deals | Get all deals for a user
 [**contentBwUsageContentGet**](ContentApi.md#contentBwUsageContentGet) | **GET** /content/bw-usage/{content} | Get content bandwidth
+[**contentContentsGet**](ContentApi.md#contentContentsGet) | **GET** /content/contents | Get user contents
 [**contentCreatePost**](ContentApi.md#contentCreatePost) | **POST** /content/create | Add a new content
 [**contentDealsGet**](ContentApi.md#contentDealsGet) | **GET** /content/deals | Content with deals
 [**contentEnsureReplicationDatacidGet**](ContentApi.md#contentEnsureReplicationDatacidGet) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
@@ -382,6 +383,55 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **content** | **kotlin.String**| Content ID |
+
+### Return type
+
+**kotlin.String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="contentContentsGet"></a>
+# **contentContentsGet**
+> kotlin.String contentContentsGet(limit, offset)
+
+Get user contents
+
+This endpoint is used to get user contents
+
+### Example
+```kotlin
+// Import classes:
+//import estuary-client.infrastructure.*
+//import io.swagger.client.models.*;
+
+val apiInstance = ContentApi()
+val limit : kotlin.String = limit_example // kotlin.String | limit
+val offset : kotlin.String = offset_example // kotlin.String | offset
+try {
+    val result : kotlin.String = apiInstance.contentContentsGet(limit, offset)
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling ContentApi#contentContentsGet")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling ContentApi#contentContentsGet")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **kotlin.String**| limit |
+ **offset** | **kotlin.String**| offset |
 
 ### Return type
 

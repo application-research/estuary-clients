@@ -6,7 +6,7 @@ import javax.validation.constraints.*;
 @XmlEnum(.class)
 public enum  {
 
-    @XmlEnumValue("pinning") PINNING(.valueOf("pinning")), @XmlEnumValue("pinned") PINNED(.valueOf("pinned")), @XmlEnumValue("failed") FAILED(.valueOf("failed")), @XmlEnumValue("queued") QUEUED(.valueOf("queued"));
+    @XmlEnumValue("pinning") PINNING(.valueOf("pinning")), @XmlEnumValue("pinned") PINNED(.valueOf("pinned")), @XmlEnumValue("failed") FAILED(.valueOf("failed")), @XmlEnumValue("queued") QUEUED(.valueOf("queued")), @XmlEnumValue("offloaded") OFFLOADED(.valueOf("offloaded"));
 
 
     private  value;

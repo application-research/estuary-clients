@@ -112,6 +112,20 @@ class TestContentController(BaseTestCase):
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
+    def test_content_contents_get(self):
+        """Test case for content_contents_get
+
+        Get user contents
+        """
+        query_string = [('limit', 'limit_example'),
+                        ('offset', 'offset_example')]
+        response = self.client.open(
+            '/content/contents',
+            method='GET',
+            query_string=query_string)
+        self.assert200(response,
+                       'Response body is : ' + response.data.decode('utf-8'))
+
     def test_content_create_post(self):
         """Test case for content_create_post
 

@@ -93,6 +93,7 @@ Class | Method | HTTP request | Description
 *ContentApi* | [**contentAggregatedContentGet**](ContentApi.md#contentAggregatedContentGet) | **GET** /content/aggregated/{content} | Get aggregated content stats
 *ContentApi* | [**contentAllDealsGet**](ContentApi.md#contentAllDealsGet) | **GET** /content/all-deals | Get all deals for a user
 *ContentApi* | [**contentBwUsageContentGet**](ContentApi.md#contentBwUsageContentGet) | **GET** /content/bw-usage/{content} | Get content bandwidth
+*ContentApi* | [**contentContentsGet**](ContentApi.md#contentContentsGet) | **GET** /content/contents | Get user contents
 *ContentApi* | [**contentCreatePost**](ContentApi.md#contentCreatePost) | **POST** /content/create | Add a new content
 *ContentApi* | [**contentDealsGet**](ContentApi.md#contentDealsGet) | **GET** /content/deals | Content with deals
 *ContentApi* | [**contentEnsureReplicationDatacidGet**](ContentApi.md#contentEnsureReplicationDatacidGet) | **GET** /content/ensure-replication/{datacid} | Ensure Replication

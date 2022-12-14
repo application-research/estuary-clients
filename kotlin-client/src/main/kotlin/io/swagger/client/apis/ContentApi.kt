@@ -222,6 +222,32 @@ class ContentApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(ba
         }
     }
     /**
+     * Get user contents
+     * This endpoint is used to get user contents
+     * @param limit limit 
+     * @param offset offset 
+     * @return kotlin.String
+     */
+    @Suppress("UNCHECKED_CAST")
+    fun contentContentsGet(limit: kotlin.String, offset: kotlin.String): kotlin.String {
+        val localVariableQuery: MultiValueMap = mapOf("limit" to listOf("$limit"), "offset" to listOf("$offset"))
+        val localVariableConfig = RequestConfig(
+                RequestMethod.GET,
+                "/content/contents", query = localVariableQuery
+        )
+        val response = request<kotlin.String>(
+                localVariableConfig
+        )
+
+        return when (response.responseType) {
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
+            ResponseType.Informational -> TODO()
+            ResponseType.Redirection -> TODO()
+            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+        }
+    }
+    /**
      * Add a new content
      * This endpoint adds a new content
      * @param body Content 

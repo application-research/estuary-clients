@@ -10,11 +10,12 @@
  * Do not edit the class manually.
  */
 
-export type TypesPinningStatus = 'pinning' | 'pinned' | 'failed' | 'queued';
+export type TypesPinningStatus = 'pinning' | 'pinned' | 'failed' | 'queued' | 'offloaded';
 
 export const TypesPinningStatus = {
     Pinning: 'pinning' as TypesPinningStatus,
     Pinned: 'pinned' as TypesPinningStatus,
     Failed: 'failed' as TypesPinningStatus,
-    Queued: 'queued' as TypesPinningStatus
+    Queued: 'queued' as TypesPinningStatus,
+    Offloaded: 'offloaded' as TypesPinningStatus
 };

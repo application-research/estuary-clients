@@ -3,7 +3,7 @@ import java.util.Objects;
 
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-12-12T21:11:34.436Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-12-14T06:22:38.566Z[GMT]")
 public class ApiEmptyResp   {
 
   @Override

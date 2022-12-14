@@ -124,6 +124,7 @@ Class | Method | HTTP request | Description
 *EstuaryClient.ContentApi* | [**contentAggregatedContentGet**](docs/ContentApi.md#contentAggregatedContentGet) | **GET** /content/aggregated/{content} | Get aggregated content stats
 *EstuaryClient.ContentApi* | [**contentAllDealsGet**](docs/ContentApi.md#contentAllDealsGet) | **GET** /content/all-deals | Get all deals for a user
 *EstuaryClient.ContentApi* | [**contentBwUsageContentGet**](docs/ContentApi.md#contentBwUsageContentGet) | **GET** /content/bw-usage/{content} | Get content bandwidth
+*EstuaryClient.ContentApi* | [**contentContentsGet**](docs/ContentApi.md#contentContentsGet) | **GET** /content/contents | Get user contents
 *EstuaryClient.ContentApi* | [**contentCreatePost**](docs/ContentApi.md#contentCreatePost) | **POST** /content/create | Add a new content
 *EstuaryClient.ContentApi* | [**contentDealsGet**](docs/ContentApi.md#contentDealsGet) | **GET** /content/deals | Content with deals
 *EstuaryClient.ContentApi* | [**contentEnsureReplicationDatacidGet**](docs/ContentApi.md#contentEnsureReplicationDatacidGet) | **GET** /content/ensure-replication/{datacid} | Ensure Replication

@@ -565,6 +565,26 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
+limit = 'limit_example' # String | limit
+offset = 'offset_example' # String | offset
+
+
+begin
+  #Get user contents
+  result = api_instance.content_contents_get(limit, offset)
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling ContentApi->content_contents_get: #{e}"
+end
+# Setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: bearerAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::ContentApi.new
 body = SwaggerClient::UtilContentCreateBody.new # UtilContentCreateBody | Content
 opts = { 
   ignore_dupes: 'ignore_dupes_example' # String | Ignore Dupes
@@ -1724,6 +1744,7 @@ Class | Method | HTTP request | Description
 *SwaggerClient::ContentApi* | [**content_aggregated_content_get**](docs/ContentApi.md#content_aggregated_content_get) | **GET** /content/aggregated/{content} | Get aggregated content stats
 *SwaggerClient::ContentApi* | [**content_all_deals_get**](docs/ContentApi.md#content_all_deals_get) | **GET** /content/all-deals | Get all deals for a user
 *SwaggerClient::ContentApi* | [**content_bw_usage_content_get**](docs/ContentApi.md#content_bw_usage_content_get) | **GET** /content/bw-usage/{content} | Get content bandwidth
+*SwaggerClient::ContentApi* | [**content_contents_get**](docs/ContentApi.md#content_contents_get) | **GET** /content/contents | Get user contents
 *SwaggerClient::ContentApi* | [**content_create_post**](docs/ContentApi.md#content_create_post) | **POST** /content/create | Add a new content
 *SwaggerClient::ContentApi* | [**content_deals_get**](docs/ContentApi.md#content_deals_get) | **GET** /content/deals | Content with deals
 *SwaggerClient::ContentApi* | [**content_ensure_replication_datacid_get**](docs/ContentApi.md#content_ensure_replication_datacid_get) | **GET** /content/ensure-replication/{datacid} | Ensure Replication

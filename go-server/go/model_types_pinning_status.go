@@ -16,4 +16,5 @@ const (
 	PINNED TypesPinningStatus = "pinned"
 	FAILED TypesPinningStatus = "failed"
 	QUEUED TypesPinningStatus = "queued"
+	OFFLOADED TypesPinningStatus = "offloaded"
 )

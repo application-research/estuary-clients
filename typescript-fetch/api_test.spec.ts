@@ -151,6 +151,11 @@ describe("ContentApi", () => {
     const content: string = "content_example"
     return expect(instance.contentBwUsageContentGet(content, {})).resolves.toBe(null)
   })
+  test("contentContentsGet", () => {
+    const limit: string = "limit_example"
+    const offset: string = "offset_example"
+    return expect(instance.contentContentsGet(limit, offset, {})).resolves.toBe(null)
+  })
   test("contentCreatePost", () => {
     const body: api.UtilContentCreateBody = undefined
     const ignoreDupes: string = "ignoreDupes_example"

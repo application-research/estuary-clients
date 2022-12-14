@@ -244,6 +244,13 @@ var routes = Routes{
 	},
 
 	Route{
+		"ContentContentsGet",
+		strings.ToUpper("Get"),
+		"/content/contents",
+		ContentContentsGet,
+	},
+
+	Route{
 		"ContentCreatePost",
 		strings.ToUpper("Post"),
 		"/content/create",

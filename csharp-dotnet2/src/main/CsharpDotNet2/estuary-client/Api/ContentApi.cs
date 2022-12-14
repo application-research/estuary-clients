@@ -60,6 +60,13 @@ namespace IO.Swagger.Api
         /// <returns>string</returns>
         string ContentBwUsageContentGet (string content);
         /// <summary>
+        /// Get user contents This endpoint is used to get user contents
+        /// </summary>
+        /// <param name="limit">limit</param>
+        /// <param name="offset">offset</param>
+        /// <returns>string</returns>
+        string ContentContentsGet (string limit, string offset);
+        /// <summary>
         /// Add a new content This endpoint adds a new content
         /// </summary>
         /// <param name="body">Content</param>
@@ -469,6 +476,45 @@ namespace IO.Swagger.Api
                 throw new ApiException ((int)response.StatusCode, "Error calling ContentBwUsageContentGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling ContentBwUsageContentGet: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
+        }
+    
+        /// <summary>
+        /// Get user contents This endpoint is used to get user contents
+        /// </summary>
+        /// <param name="limit">limit</param>
+        /// <param name="offset">offset</param>
+        /// <returns>string</returns>
+        public string ContentContentsGet (string limit, string offset)
+        {
+            // verify the required parameter 'limit' is set
+            if (limit == null) throw new ApiException(400, "Missing required parameter 'limit' when calling ContentContentsGet");
+            // verify the required parameter 'offset' is set
+            if (offset == null) throw new ApiException(400, "Missing required parameter 'offset' when calling ContentContentsGet");
+    
+            var path = "/content/contents";
+            path = path.Replace("{format}", "json");
+                
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+             if (limit != null) queryParams.Add("limit", ApiClient.ParameterToString(limit)); // query parameter
+ if (offset != null) queryParams.Add("offset", ApiClient.ParameterToString(offset)); // query parameter
+                        
+            // authentication setting, if any
+            String[] authSettings = new String[] { "bearerAuth" };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling ContentContentsGet: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling ContentContentsGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }

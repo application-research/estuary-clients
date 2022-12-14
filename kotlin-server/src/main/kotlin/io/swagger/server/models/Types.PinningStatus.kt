@@ -13,12 +13,13 @@
 
 /**
 * 
-* Values: PINNING,PINNED,FAILED,QUEUED
+* Values: PINNING,PINNED,FAILED,QUEUED,OFFLOADED
 */
 enum class TypesPinningStatus(val value: kotlin.String){
     PINNING("pinning"),
     PINNED("pinned"),
     FAILED("failed"),
-    QUEUED("queued");
+    QUEUED("queued"),
+    OFFLOADED("offloaded");
 }
 

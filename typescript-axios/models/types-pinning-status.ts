@@ -20,6 +20,7 @@ export enum TypesPinningStatus {
     Pinning = 'pinning',
     Pinned = 'pinned',
     Failed = 'failed',
-    Queued = 'queued'
+    Queued = 'queued',
+    Offloaded = 'offloaded'
 }
 

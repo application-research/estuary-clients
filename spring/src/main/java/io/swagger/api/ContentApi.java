@@ -35,7 +35,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-12T21:11:36.792Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-14T06:22:42.275Z[GMT]")
 @Validated
 public interface ContentApi {
 
@@ -122,6 +122,20 @@ public interface ContentApi {
         produces = { "application/json" }, 
         method = RequestMethod.GET)
     ResponseEntity<String> contentBwUsageContentGet(@Parameter(in = ParameterIn.PATH, description = "Content ID", required=true, schema=@Schema()) @PathVariable("content") String content);
+
+
+    @Operation(summary = "Get user contents", description = "This endpoint is used to get user contents", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    @RequestMapping(value = "/content/contents",
+        produces = { "application/json" }, 
+        method = RequestMethod.GET)
+    ResponseEntity<String> contentContentsGet(@NotNull @Parameter(in = ParameterIn.QUERY, description = "limit" ,required=true,schema=@Schema()) @Valid @RequestParam(value = "limit", required = true) String limit, @NotNull @Parameter(in = ParameterIn.QUERY, description = "offset" ,required=true,schema=@Schema()) @Valid @RequestParam(value = "offset", required = true) String offset);
 
 
     @Operation(summary = "Add a new content", description = "This endpoint adds a new content", security = {

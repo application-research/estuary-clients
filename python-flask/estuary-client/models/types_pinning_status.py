@@ -22,6 +22,7 @@ class TypesPinningStatus(Model):
     PINNED = "pinned"
     FAILED = "failed"
     QUEUED = "queued"
+    OFFLOADED = "offloaded"
     def __init__(self):  # noqa: E501
         """TypesPinningStatus - a model defined in Swagger
 

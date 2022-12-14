@@ -290,6 +290,34 @@ class ContentApi(
   }
 
   /**
+   * Get user contents
+   * This endpoint is used to get user contents
+   *
+   * @param limit limit 
+   * @param offset offset 
+   * @return String
+   */
+  def contentContentsGet(limit: String, offset: String): Option[String] = {
+    val await = Try(Await.result(contentContentsGetAsync(limit, offset), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Get user contents asynchronously
+   * This endpoint is used to get user contents
+   *
+   * @param limit limit 
+   * @param offset offset 
+   * @return Future(String)
+   */
+  def contentContentsGetAsync(limit: String, offset: String): Future[String] = {
+      helper.contentContentsGet(limit, offset)
+  }
+
+  /**
    * Add a new content
    * This endpoint adds a new content
    *
@@ -777,6 +805,28 @@ class ContentApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
 
     if (content == null) throw new Exception("Missing required parameter 'content' when calling ContentApi->contentBwUsageContentGet")
 
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
+  def contentContentsGet(limit: String,
+    offset: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
+    // create path and map variables
+    val path = (addFmt("/content/contents"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+    if (limit == null) throw new Exception("Missing required parameter 'limit' when calling ContentApi->contentContentsGet")
+
+    if (offset == null) throw new Exception("Missing required parameter 'offset' when calling ContentApi->contentContentsGet")
+
+    queryParams += "limit" -> limit.toString
+    queryParams += "offset" -> offset.toString
 
     val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
     resFuture flatMap { resp =>

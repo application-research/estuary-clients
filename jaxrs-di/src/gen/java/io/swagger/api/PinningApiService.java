@@ -18,7 +18,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-12-12T21:11:36.293Z[GMT]")public interface PinningApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-12-14T06:22:36.957Z[GMT]")public interface PinningApiService {
     public Response pinningPinsGet(SecurityContext securityContext);
     public Response pinningPinsPinidDelete(String pinid,SecurityContext securityContext);
     public Response pinningPinsPinidGet(String pinid,SecurityContext securityContext);

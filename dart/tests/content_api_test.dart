@@ -79,6 +79,15 @@ void main() {
       // TODO
     });
 
+    // Get user contents
+    //
+    // This endpoint is used to get user contents
+    //
+    //Future<String> contentContentsGet(String limit, String offset) async
+    test('test contentContentsGet', () async {
+      // TODO
+    });
+
     // Add a new content
     //
     // This endpoint adds a new content

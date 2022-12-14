@@ -29,7 +29,7 @@ import javax.validation.constraints.*;
 @Path("/content")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-12-12T21:11:36.430Z[GMT]")public interface ContentApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-12-14T06:22:38.963Z[GMT]")public interface ContentApi  {
    
     @POST
     @Path("/add-car")
@@ -108,6 +108,19 @@ import javax.validation.constraints.*;
                 @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
          })
     Response contentBwUsageContentGet( @PathParam("content") String content,@Context SecurityContext securityContext);
+
+    @GET
+    @Path("/contents")
+    
+    @Produces({ "application/json" })
+    @Operation(summary = "Get user contents", description = "This endpoint is used to get user contents", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+                @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+                @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
+         })
+    Response contentContentsGet( @NotNull @QueryParam("limit") String limit, @NotNull @QueryParam("offset") String offset,@Context SecurityContext securityContext);
 
     @POST
     @Path("/create")

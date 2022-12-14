@@ -59,6 +59,11 @@
         expect(instance.queued).to.be("queued");
       });
 
+      it('should have the property offloaded', function() {
+        expect(instance).to.have.property('offloaded');
+        expect(instance.offloaded).to.be("offloaded");
+      });
+
     });
   });
 

@@ -219,6 +219,14 @@ object Paths {
     @Location("/content/bw-usage/{content}") class contentBwUsageContentGet(val content: kotlin.String)
 
     /**
+     * Get user contents
+     * This endpoint is used to get user contents
+     * @param limit limit 
+     * @param offset offset 
+     */
+    @Location("/content/contents") class contentContentsGet(val limit: kotlin.String, val offset: kotlin.String)
+
+    /**
      * Add a new content
      * This endpoint adds a new content
      * @param body Content 

@@ -15,7 +15,9 @@ public enum TypesPinningStatus {
   
   FAILED("failed"),
   
-  QUEUED("queued");
+  QUEUED("queued"),
+  
+  OFFLOADED("offloaded");
 
   private String value;
 

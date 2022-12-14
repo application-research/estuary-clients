@@ -83,6 +83,16 @@ module.exports.contentBw_usageContentGET = function contentBw_usageContentGET (r
     });
 };
 
+module.exports.contentContentsGET = function contentContentsGET (req, res, next, limit, offset) {
+  Content.contentContentsGET(limit, offset)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
 module.exports.contentCreatePOST = function contentCreatePOST (req, res, next, body, ignoreDupes) {
   Content.contentCreatePOST(body, ignoreDupes)
     .then(function (response) {

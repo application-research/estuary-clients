@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**content_aggregated_content_get**](ContentApi.md#content_aggregated_content_get) | **GET** /content/aggregated/{content} | Get aggregated content stats
 [**content_all_deals_get**](ContentApi.md#content_all_deals_get) | **GET** /content/all-deals | Get all deals for a user
 [**content_bw_usage_content_get**](ContentApi.md#content_bw_usage_content_get) | **GET** /content/bw-usage/{content} | Get content bandwidth
+[**content_contents_get**](ContentApi.md#content_contents_get) | **GET** /content/contents | Get user contents
 [**content_create_post**](ContentApi.md#content_create_post) | **POST** /content/create | Add a new content
 [**content_deals_get**](ContentApi.md#content_deals_get) | **GET** /content/deals | Content with deals
 [**content_ensure_replication_datacid_get**](ContentApi.md#content_ensure_replication_datacid_get) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
@@ -426,6 +427,61 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **content** | **String**| Content ID | 
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+
+# **content_contents_get**
+> String content_contents_get(limit, offset)
+
+Get user contents
+
+This endpoint is used to get user contents
+
+### Example
+```ruby
+# load the gem
+require 'swagger_client'
+# setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: bearerAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::ContentApi.new
+limit = 'limit_example' # String | limit
+offset = 'offset_example' # String | offset
+
+
+begin
+  #Get user contents
+  result = api_instance.content_contents_get(limit, offset)
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling ContentApi->content_contents_get: #{e}"
+end
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **String**| limit | 
+ **offset** | **String**| offset | 
 
 ### Return type
 

@@ -41,6 +41,9 @@
 #' content_bw_usage_content_get Get content bandwidth
 #'
 #'
+#' content_contents_get Get user contents
+#'
+#'
 #' content_create_post Add a new content
 #'
 #'
@@ -303,6 +306,38 @@ ContentApi <- R6::R6Class(
         urlPath <- gsub(paste0("\\{", "content", "\\}"), `content`, urlPath)
       }
 
+      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+      
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        returnObject <- Character$new()
+        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
+        Response$new(returnObject, resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        Response$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        Response$new("API server error", resp)
+      }
+
+    }
+    content_contents_get = function(limit, offset, ...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- character()
+
+      if (!missing(`limit`)) {
+        queryParams['limit'] <- limit
+      }
+
+      if (!missing(`offset`)) {
+        queryParams['offset'] <- offset
+      }
+
+      urlPath <- "/content/contents"
       resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
                                  method = "GET",
                                  queryParams = queryParams,

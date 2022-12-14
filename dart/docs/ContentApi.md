@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**contentAggregatedContentGet**](ContentApi.md#contentAggregatedContentGet) | **GET** /content/aggregated/{content} | Get aggregated content stats
 [**contentAllDealsGet**](ContentApi.md#contentAllDealsGet) | **GET** /content/all-deals | Get all deals for a user
 [**contentBwUsageContentGet**](ContentApi.md#contentBwUsageContentGet) | **GET** /content/bw-usage/{content} | Get content bandwidth
+[**contentContentsGet**](ContentApi.md#contentContentsGet) | **GET** /content/contents | Get user contents
 [**contentCreatePost**](ContentApi.md#contentCreatePost) | **POST** /content/create | Add a new content
 [**contentDealsGet**](ContentApi.md#contentDealsGet) | **GET** /content/deals | Content with deals
 [**contentEnsureReplicationDatacidGet**](ContentApi.md#contentEnsureReplicationDatacidGet) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
@@ -385,6 +386,55 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **content** | **String**| Content ID | 
+
+### Return type
+
+**String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **contentContentsGet**
+> String contentContentsGet(limit, offset)
+
+Get user contents
+
+This endpoint is used to get user contents
+
+### Example
+```dart
+import 'package:swagger/api.dart';
+// TODO Configure API key authorization: bearerAuth
+//swagger.api.Configuration.apiKey{'Authorization'} = 'YOUR_API_KEY';
+// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
+
+var api_instance = new ContentApi();
+var limit = limit_example; // String | limit
+var offset = offset_example; // String | offset
+
+try {
+    var result = api_instance.contentContentsGet(limit, offset);
+    print(result);
+} catch (e) {
+    print("Exception when calling ContentApi->contentContentsGet: $e\n");
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **String**| limit | 
+ **offset** | **String**| offset | 
 
 ### Return type
 

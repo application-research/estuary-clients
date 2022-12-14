@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-12-12T21:11:36.611Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-12-14T06:22:39.266Z[GMT]")
 @Controller
 public interface ContentApi {
 
@@ -103,6 +103,20 @@ public interface ContentApi {
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
     @Get(value = "/content/bw-usage/{content}", produces = { "application/json" })
     default Single<HttpResponse<String>> contentBwUsageContentGet(@Parameter(description = "Content ID") @PathVariable("content") String content
+) {
+        return Single.fromCallable(() -> {
+            throw new UnsupportedOperationException();
+        });
+    }
+
+
+    @Operation(summary = "Get user contents", operationId = "contentContentsGet", description = "This endpoint is used to get user contents" , tags = {"content"})
+    @ApiResponse(responseCode = "200", description = "OK")
+    @ApiResponse(responseCode = "400", description = "Bad Request")
+    @ApiResponse(responseCode = "500", description = "Internal Server Error")
+    @Get(value = "/content/contents", produces = { "application/json" })
+    default Single<HttpResponse<String>> contentContentsGet(@NotNull @Parameter(description = "limit") @Valid @QueryValue(value = "limit") String limit
+,@NotNull @Parameter(description = "offset") @Valid @QueryValue(value = "offset") String offset
 ) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();

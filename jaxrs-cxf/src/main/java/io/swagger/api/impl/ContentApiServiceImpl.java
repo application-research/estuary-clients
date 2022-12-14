@@ -122,6 +122,18 @@ public class ContentApiServiceImpl implements ContentApi {
     }
     
     /**
+     * Get user contents
+     *
+     * This endpoint is used to get user contents
+     *
+     */
+    public String contentContentsGet(String limit, String offset) {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
+    /**
      * Add a new content
      *
      * This endpoint adds a new content

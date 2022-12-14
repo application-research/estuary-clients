@@ -26,7 +26,7 @@ import java.io.IOException;
  * MinerClaimMinerBody
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-12-12T21:11:32.832Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2022-12-14T06:22:37.307Z[GMT]")
 public class MinerClaimMinerBody {
   @SerializedName("claim")
   private String claim = null;

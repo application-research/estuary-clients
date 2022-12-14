@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**ContentAggregatedContentGet**](ContentApi.md#contentaggregatedcontentget) | **GET** /content/aggregated/{content} | Get aggregated content stats
 [**ContentAllDealsGet**](ContentApi.md#contentalldealsget) | **GET** /content/all-deals | Get all deals for a user
 [**ContentBwUsageContentGet**](ContentApi.md#contentbwusagecontentget) | **GET** /content/bw-usage/{content} | Get content bandwidth
+[**ContentContentsGet**](ContentApi.md#contentcontentsget) | **GET** /content/contents | Get user contents
 [**ContentCreatePost**](ContentApi.md#contentcreatepost) | **POST** /content/create | Add a new content
 [**ContentDealsGet**](ContentApi.md#contentdealsget) | **GET** /content/deals | Content with deals
 [**ContentEnsureReplicationDatacidGet**](ContentApi.md#contentensurereplicationdatacidget) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
@@ -540,6 +541,75 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **content** | **string**| Content ID | 
+
+### Return type
+
+**string**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="contentcontentsget"></a>
+# **ContentContentsGet**
+> string ContentContentsGet (string limit, string offset)
+
+Get user contents
+
+This endpoint is used to get user contents
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class ContentContentsGetExample
+    {
+        public void main()
+        {
+
+            // Configure API key authorization: bearerAuth
+            Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
+
+            var apiInstance = new ContentApi();
+            var limit = limit_example;  // string | limit
+            var offset = offset_example;  // string | offset
+
+            try
+            {
+                // Get user contents
+                string result = apiInstance.ContentContentsGet(limit, offset);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling ContentApi.ContentContentsGet: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **string**| limit | 
+ **offset** | **string**| offset | 
 
 ### Return type
 

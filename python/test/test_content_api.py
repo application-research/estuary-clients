@@ -84,6 +84,13 @@ class TestContentApi(unittest.TestCase):
         """
         pass
 
+    def test_content_contents_get(self):
+        """Test case for content_contents_get
+
+        Get user contents  # noqa: E501
+        """
+        pass
+
     def test_content_create_post(self):
         """Test case for content_create_post
 

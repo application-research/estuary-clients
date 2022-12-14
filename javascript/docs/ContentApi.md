@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**contentAggregatedContentGet**](ContentApi.md#contentAggregatedContentGet) | **GET** /content/aggregated/{content} | Get aggregated content stats
 [**contentAllDealsGet**](ContentApi.md#contentAllDealsGet) | **GET** /content/all-deals | Get all deals for a user
 [**contentBwUsageContentGet**](ContentApi.md#contentBwUsageContentGet) | **GET** /content/bw-usage/{content} | Get content bandwidth
+[**contentContentsGet**](ContentApi.md#contentContentsGet) | **GET** /content/contents | Get user contents
 [**contentCreatePost**](ContentApi.md#contentCreatePost) | **POST** /content/create | Add a new content
 [**contentDealsGet**](ContentApi.md#contentDealsGet) | **GET** /content/deals | Content with deals
 [**contentEnsureReplicationDatacidGet**](ContentApi.md#contentEnsureReplicationDatacidGet) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
@@ -404,6 +405,58 @@ apiInstance.contentBwUsageContentGet(content, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **content** | **String**| Content ID | 
+
+### Return type
+
+**&#x27;String&#x27;**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="contentContentsGet"></a>
+# **contentContentsGet**
+> &#x27;String&#x27; contentContentsGet(limit, offset)
+
+Get user contents
+
+This endpoint is used to get user contents
+
+### Example
+```javascript
+import {EstuaryClient} from 'estuary-client';
+let defaultClient = EstuaryClient.ApiClient.instance;
+
+// Configure API key authorization: bearerAuth
+let bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearerAuth.apiKeyPrefix = 'Token';
+
+let apiInstance = new EstuaryClient.ContentApi();
+let limit = "limit_example"; // String | limit
+let offset = "offset_example"; // String | offset
+
+apiInstance.contentContentsGet(limit, offset, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **String**| limit | 
+ **offset** | **String**| offset | 
 
 ### Return type
 

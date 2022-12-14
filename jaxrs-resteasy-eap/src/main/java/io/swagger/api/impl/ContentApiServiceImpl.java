@@ -15,7 +15,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-12-12T21:11:36.430Z[GMT]")public class ContentApiServiceImpl implements ContentApi {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-12-14T06:22:38.963Z[GMT]")public class ContentApiServiceImpl implements ContentApi {
       public Response contentAddCarPost(SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
@@ -37,6 +37,10 @@ import javax.ws.rs.core.SecurityContext;
       return Response.ok().build();
   }
       public Response contentBwUsageContentGet(String content,SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().build();
+  }
+      public Response contentContentsGet(String limit,String offset,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }

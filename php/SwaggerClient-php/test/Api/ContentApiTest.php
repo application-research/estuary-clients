@@ -151,6 +151,16 @@ class ContentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for contentContentsGet
+     *
+     * Get user contents.
+     *
+     */
+    public function testContentContentsGet()
+    {
+    }
+
+    /**
      * Test case for contentCreatePost
      *
      * Add a new content.

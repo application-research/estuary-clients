@@ -1384,6 +1384,67 @@
         }
       }
     },
+    "/content/contents" : {
+      "get" : {
+        "tags" : [ "content" ],
+        "summary" : "Get user contents",
+        "description" : "This endpoint is used to get user contents",
+        "parameters" : [ {
+          "name" : "limit",
+          "in" : "query",
+          "description" : "limit",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "offset",
+          "in" : "query",
+          "description" : "offset",
+          "required" : true,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "x-content-type" : "application/json"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "Bad Request",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/util.HttpError"
+                }
+              }
+            }
+          },
+          "500" : {
+            "description" : "Internal Server Error",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/util.HttpError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/content/create" : {
       "post" : {
         "tags" : [ "content" ],
@@ -4408,8 +4469,8 @@
       },
       "types.PinningStatus" : {
         "type" : "string",
-        "enum" : [ "pinning", "pinned", "failed", "queued" ],
-        "x-enum-varnames" : [ "PinningStatusPinning", "PinningStatusPinned", "PinningStatusFailed", "PinningStatusQueued" ]
+        "enum" : [ "pinning", "pinned", "failed", "queued", "offloaded" ],
+        "x-enum-varnames" : [ "PinningStatusPinning", "PinningStatusPinned", "PinningStatusFailed", "PinningStatusQueued", "PinningStatusOffloaded" ]
       },
       "util.ContentAddResponse" : {
         "type" : "object",

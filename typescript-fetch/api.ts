@@ -572,7 +572,8 @@ export enum TypesPinningStatus {
     Pinning = <any> 'pinning',
     Pinned = <any> 'pinned',
     Failed = <any> 'failed',
-    Queued = <any> 'queued'
+    Queued = <any> 'queued',
+    Offloaded = <any> 'offloaded'
 }
 /**
  * 
@@ -2721,6 +2722,55 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * This endpoint is used to get user contents
+         * @summary Get user contents
+         * @param {string} limit limit
+         * @param {string} offset offset
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        contentContentsGet(limit: string, offset: string, options: any = {}): FetchArgs {
+            // verify required parameter 'limit' is not null or undefined
+            if (limit === null || limit === undefined) {
+                throw new RequiredError('limit','Required parameter limit was null or undefined when calling contentContentsGet.');
+            }
+            // verify required parameter 'offset' is not null or undefined
+            if (offset === null || offset === undefined) {
+                throw new RequiredError('offset','Required parameter offset was null or undefined when calling contentContentsGet.');
+            }
+            const localVarPath = `/content/contents`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+					? configuration.apiKey("Authorization")
+					: configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            if (limit !== undefined) {
+                localVarQueryParameter['limit'] = limit;
+            }
+
+            if (offset !== undefined) {
+                localVarQueryParameter['offset'] = offset;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * This endpoint adds a new content
          * @summary Add a new content
          * @param {UtilContentCreateBody} body Content
@@ -3396,6 +3446,26 @@ export const ContentApiFp = function(configuration?: Configuration) {
             };
         },
         /**
+         * This endpoint is used to get user contents
+         * @summary Get user contents
+         * @param {string} limit limit
+         * @param {string} offset offset
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        contentContentsGet(limit: string, offset: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+            const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentContentsGet(limit, offset, options);
+            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
          * This endpoint adds a new content
          * @summary Add a new content
          * @param {UtilContentCreateBody} body Content
@@ -3735,6 +3805,17 @@ export const ContentApiFactory = function (configuration?: Configuration, fetch?
             return ContentApiFp(configuration).contentBwUsageContentGet(content, options)(fetch, basePath);
         },
         /**
+         * This endpoint is used to get user contents
+         * @summary Get user contents
+         * @param {string} limit limit
+         * @param {string} offset offset
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        contentContentsGet(limit: string, offset: string, options?: any) {
+            return ContentApiFp(configuration).contentContentsGet(limit, offset, options)(fetch, basePath);
+        },
+        /**
          * This endpoint adds a new content
          * @summary Add a new content
          * @param {UtilContentCreateBody} body Content
@@ -3971,6 +4052,19 @@ export class ContentApi extends BaseAPI {
      */
     public contentBwUsageContentGet(content: string, options?: any) {
         return ContentApiFp(this.configuration).contentBwUsageContentGet(content, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * This endpoint is used to get user contents
+     * @summary Get user contents
+     * @param {string} limit limit
+     * @param {string} offset offset
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof ContentApi
+     */
+    public contentContentsGet(limit: string, offset: string, options?: any) {
+        return ContentApiFp(this.configuration).contentContentsGet(limit, offset, options)(this.fetch, this.basePath);
     }
 
     /**

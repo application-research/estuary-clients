@@ -308,6 +308,42 @@ namespace estuary-client.Controllers
         }
 
         /// <summary>
+        /// Get user contents
+        /// </summary>
+        /// <remarks>This endpoint is used to get user contents</remarks>
+        /// <param name="limit">limit</param>
+        /// <param name="offset">offset</param>
+        /// <response code="200">OK</response>
+        /// <response code="400">Bad Request</response>
+        /// <response code="500">Internal Server Error</response>
+        [HttpGet]
+        [Route("//api.estuary.tech//content/contents")]
+        [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
+        [ValidateModelState]
+        [SwaggerOperation("ContentContentsGet")]
+        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
+        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
+        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
+        public virtual IActionResult ContentContentsGet([FromQuery][Required()]string limit, [FromQuery][Required()]string offset)
+        { 
+            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(200, default(string));
+
+            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(400, default(UtilHttpError));
+
+            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
+            // return StatusCode(500, default(UtilHttpError));
+            string exampleJson = null;
+            exampleJson = "\"\"";
+            
+                        var example = exampleJson != null
+                        ? JsonConvert.DeserializeObject<string>(exampleJson)
+                        : default(string);            //TODO: Change the data returned
+            return new ObjectResult(example);
+        }
+
+        /// <summary>
         /// Add a new content
         /// </summary>
         /// <remarks>This endpoint adds a new content</remarks>

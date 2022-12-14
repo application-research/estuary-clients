@@ -17,6 +17,7 @@ module SwaggerClient
     PINNED = 'pinned'.freeze
     FAILED = 'failed'.freeze
     QUEUED = 'queued'.freeze
+    OFFLOADED = 'offloaded'.freeze
 
     # Builds the enum from string
     # @param [String] The enum value in the form of the string

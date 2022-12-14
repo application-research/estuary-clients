@@ -8,5 +8,6 @@ public enum TypesPinningStatus {
   PINNING,
   PINNED,
   FAILED,
-  QUEUED;
+  QUEUED,
+  OFFLOADED;
 }

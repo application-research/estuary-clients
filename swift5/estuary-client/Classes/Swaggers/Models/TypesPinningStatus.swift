@@ -13,4 +13,5 @@ public enum TypesPinningStatus: String, Codable {
     case pinned = "pinned"
     case failed = "failed"
     case queued = "queued"
+    case offloaded = "offloaded"
 }

@@ -203,6 +203,27 @@
           done();
         });
       });
+      describe('contentContentsGet', function() {
+        it('should call contentContentsGet successfully', function(done) {
+          // TODO: uncomment, update parameter values for contentContentsGet call and complete the assertions
+          /*
+
+          instance.contentContentsGet(limit, offset, function(error, data, response) {
+            if (error) {
+              done(error);
+              return;
+            }
+            // TODO: update response assertions
+            expect(data).to.be.a(&#x27;string&#x27;);
+            // expect(data).to.be(null);
+
+            done();
+          });
+          */
+          // TODO: uncomment and complete method invocation above, then delete this line and the next:
+          done();
+        });
+      });
       describe('contentCreatePost', function() {
         it('should call contentCreatePost successfully', function(done) {
           // TODO: uncomment, update parameter values for contentCreatePost call and complete the assertions

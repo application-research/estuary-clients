@@ -24,7 +24,7 @@ import javax.validation.Valid;
 
 @Path("/content")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2022-12-12T21:11:38.438Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2022-12-14T06:22:41.298Z[GMT]")
 public class ContentApi {
 
     @POST
@@ -121,6 +121,25 @@ public class ContentApi {
     public Response contentBwUsageContentGet( @PathParam("content")
 
  @Parameter(description = "Content ID") String content
+) {
+        return Response.ok().entity("magic!").build();
+    }
+    @GET
+    @Path("/contents")
+    @Produces({ "application/json" })
+    @Operation(summary = "Get user contents", description = "This endpoint is used to get user contents", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
+    })
+    public Response contentContentsGet( @NotNull  @QueryParam("limit") 
+
+ @Parameter(description = "limit")  String limit
+, @NotNull  @QueryParam("offset") 
+
+ @Parameter(description = "offset")  String offset
 ) {
         return Response.ok().entity("magic!").build();
     }

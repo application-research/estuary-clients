@@ -35,7 +35,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-12T21:11:36.792Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-14T06:22:42.275Z[GMT]")
 @RestController
 public class ContentApiController implements ContentApi {
 
@@ -122,6 +122,20 @@ public class ContentApiController implements ContentApi {
     }
 
     public ResponseEntity<String> contentBwUsageContentGet(@Parameter(in = ParameterIn.PATH, description = "Content ID", required=true, schema=@Schema()) @PathVariable("content") String content) {
+        String accept = request.getHeader("Accept");
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<String>(objectMapper.readValue("\"\"", String.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
+    }
+
+    public ResponseEntity<String> contentContentsGet(@NotNull @Parameter(in = ParameterIn.QUERY, description = "limit" ,required=true,schema=@Schema()) @Valid @RequestParam(value = "limit", required = true) String limit,@NotNull @Parameter(in = ParameterIn.QUERY, description = "offset" ,required=true,schema=@Schema()) @Valid @RequestParam(value = "offset", required = true) String offset) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {

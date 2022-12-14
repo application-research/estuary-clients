@@ -151,6 +151,18 @@ namespace estuary-client.Test
             //Assert.IsInstanceOf<string> (response, "response is string");
         }
         /// <summary>
+        /// Test ContentContentsGet
+        /// </summary>
+        [Test]
+        public void ContentContentsGetTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string limit = null;
+            //string offset = null;
+            //var response = instance.ContentContentsGet(limit, offset);
+            //Assert.IsInstanceOf<string> (response, "response is string");
+        }
+        /// <summary>
         /// Test ContentCreatePost
         /// </summary>
         [Test]

@@ -2,7 +2,7 @@
 
 Estuary API
 - API version: 0.0.0
-  - Build date: 2022-12-12T21:11:32.832Z[GMT]
+  - Build date: 2022-12-14T06:22:37.307Z[GMT]
 
 This is the API for the Estuary application.
 
@@ -340,6 +340,7 @@ Class | Method | HTTP request | Description
 *ContentApi* | [**contentAggregatedContentGet**](docs/ContentApi.md#contentAggregatedContentGet) | **GET** /content/aggregated/{content} | Get aggregated content stats
 *ContentApi* | [**contentAllDealsGet**](docs/ContentApi.md#contentAllDealsGet) | **GET** /content/all-deals | Get all deals for a user
 *ContentApi* | [**contentBwUsageContentGet**](docs/ContentApi.md#contentBwUsageContentGet) | **GET** /content/bw-usage/{content} | Get content bandwidth
+*ContentApi* | [**contentContentsGet**](docs/ContentApi.md#contentContentsGet) | **GET** /content/contents | Get user contents
 *ContentApi* | [**contentCreatePost**](docs/ContentApi.md#contentCreatePost) | **POST** /content/create | Add a new content
 *ContentApi* | [**contentDealsGet**](docs/ContentApi.md#contentDealsGet) | **GET** /content/deals | Content with deals
 *ContentApi* | [**contentEnsureReplicationDatacidGet**](docs/ContentApi.md#contentEnsureReplicationDatacidGet) | **GET** /content/ensure-replication/{datacid} | Ensure Replication

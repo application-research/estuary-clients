@@ -33,7 +33,7 @@ import javax.validation.constraints.*;
 @Path("/content")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-12-12T21:11:36.544Z[GMT]")public class ContentApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-12-14T06:22:39.433Z[GMT]")public class ContentApi  {
 
     @Inject ContentApiService service;
 
@@ -138,6 +138,23 @@ import javax.validation.constraints.*;
     public Response contentBwUsageContentGet( @PathParam("content") String content,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.contentBwUsageContentGet(content,securityContext);
+    }
+    @GET
+    @Path("/contents")
+    
+    @Produces({ "application/json" })
+    @Operation(summary = "Get user contents", description = "This endpoint is used to get user contents", security = {
+        @SecurityRequirement(name = "bearerAuth")
+    }, tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public Response contentContentsGet( @NotNull  @QueryParam("limit") String limit, @NotNull  @QueryParam("offset") String offset,@Context SecurityContext securityContext)
+    throws NotFoundException {
+        return service.contentContentsGet(limit,offset,securityContext);
     }
     @POST
     @Path("/create")

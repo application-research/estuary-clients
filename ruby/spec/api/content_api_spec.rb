@@ -127,6 +127,19 @@ describe 'ContentApi' do
     end
   end
 
+  # unit tests for content_contents_get
+  # Get user contents
+  # This endpoint is used to get user contents
+  # @param limit limit
+  # @param offset offset
+  # @param [Hash] opts the optional parameters
+  # @return [String]
+  describe 'content_contents_get test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for content_create_post
   # Add a new content
   # This endpoint adds a new content

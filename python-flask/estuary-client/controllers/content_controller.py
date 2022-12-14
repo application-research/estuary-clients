@@ -114,6 +114,21 @@ def content_bw_usage_content_get(content):  # noqa: E501
     return 'do some magic!'
 
 
+def content_contents_get(limit, offset):  # noqa: E501
+    """Get user contents
+
+    This endpoint is used to get user contents # noqa: E501
+
+    :param limit: limit
+    :type limit: str
+    :param offset: offset
+    :type offset: str
+
+    :rtype: str
+    """
+    return 'do some magic!'
+
+
 def content_create_post(body, ignore_dupes=None):  # noqa: E501
     """Add a new content
 

@@ -19,7 +19,7 @@ import javax.validation.Valid;
 /**
  * AddressAddress
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-12-12T21:11:35.185Z[GMT]")public class AddressAddress   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-12-14T06:22:39.514Z[GMT]")public class AddressAddress   {
 
   @Override
   public boolean equals(java.lang.Object o) {

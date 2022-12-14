@@ -138,6 +138,21 @@ class ContentApi(
       }
     } ~
     path() { () => 
+      get {
+        parameters("limit".as[String], "offset".as[String]) { (limit, offset) =>
+          
+            formFields() { () =>
+              
+                
+                  contentService.contentContentsGet(limit = limit, offset = offset)
+               
+             
+            }
+         
+        }
+      }
+    } ~
+    path() { () => 
       post {
         parameters("ignore-dupes".as[String].?) { (ignoreDupes) =>
           
@@ -448,6 +463,20 @@ trait ContentApiService {
   def contentBwUsageContentGet(content: String)
       (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
+  def contentContentsGet200(responseString: String): Route =
+    complete((200, responseString))
+  def contentContentsGet400(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
+    complete((400, responseutil.HttpError))
+  def contentContentsGet500(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
+    complete((500, responseutil.HttpError))
+  /**
+   * Code: 200, Message: OK, DataType: String
+   * Code: 400, Message: Bad Request, DataType: util.HttpError
+   * Code: 500, Message: Internal Server Error, DataType: util.HttpError
+   */
+  def contentContentsGet(limit: String, offset: String)
+      (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
+
   def contentCreatePost200(responseString: String): Route =
     complete((200, responseString))
   def contentCreatePost400(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
@@ -639,6 +668,10 @@ trait ContentApiMarshaller {
 
   implicit def fromRequestUnmarshallerMain.importDealBody: FromRequestUnmarshaller[Main.importDealBody]
 
+
+  implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
+
+  implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 

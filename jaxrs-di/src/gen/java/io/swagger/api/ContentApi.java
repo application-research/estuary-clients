@@ -35,7 +35,7 @@ import javax.validation.constraints.*;
 @Path("/content")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-12-12T21:11:36.293Z[GMT]")public class ContentApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-12-14T06:22:36.957Z[GMT]")public class ContentApi  {
 
    private ContentApiService delegate;
 
@@ -150,6 +150,24 @@ import javax.validation.constraints.*;
 ,@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.contentBwUsageContentGet(content,securityContext);
+    }
+    @GET
+    @Path("/contents")
+    
+    @Produces({ "application/json" })
+    @Operation(summary = "Get user contents", description = "This endpoint is used to get user contents", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public Response contentContentsGet(@Parameter(in = ParameterIn.QUERY, description = "limit",required=true) @QueryParam("limit") String limit
+,@Parameter(in = ParameterIn.QUERY, description = "offset",required=true) @QueryParam("offset") String offset
+,@Context SecurityContext securityContext)
+    throws NotFoundException {
+        return delegate.contentContentsGet(limit,offset,securityContext);
     }
     @POST
     @Path("/create")

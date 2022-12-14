@@ -174,6 +174,7 @@ Class | Method | HTTP request | Description
 *ContentApi* | [**content_aggregated_content_get**](docs/ContentApi.md#content_aggregated_content_get) | **GET** /content/aggregated/{content} | Get aggregated content stats
 *ContentApi* | [**content_all_deals_get**](docs/ContentApi.md#content_all_deals_get) | **GET** /content/all-deals | Get all deals for a user
 *ContentApi* | [**content_bw_usage_content_get**](docs/ContentApi.md#content_bw_usage_content_get) | **GET** /content/bw-usage/{content} | Get content bandwidth
+*ContentApi* | [**content_contents_get**](docs/ContentApi.md#content_contents_get) | **GET** /content/contents | Get user contents
 *ContentApi* | [**content_create_post**](docs/ContentApi.md#content_create_post) | **POST** /content/create | Add a new content
 *ContentApi* | [**content_deals_get**](docs/ContentApi.md#content_deals_get) | **GET** /content/deals | Content with deals
 *ContentApi* | [**content_ensure_replication_datacid_get**](docs/ContentApi.md#content_ensure_replication_datacid_get) | **GET** /content/ensure-replication/{datacid} | Ensure Replication

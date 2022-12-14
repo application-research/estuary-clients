@@ -466,6 +466,70 @@ module SwaggerClient
       end
       return data, status_code, headers
     end
+    # Get user contents
+    # This endpoint is used to get user contents
+    # @param limit limit
+    # @param offset offset
+    # @param [Hash] opts the optional parameters
+    # @return [String]
+    def content_contents_get(limit, offset, opts = {})
+      data, _status_code, _headers = content_contents_get_with_http_info(limit, offset, opts)
+      data
+    end
+
+    # Get user contents
+    # This endpoint is used to get user contents
+    # @param limit limit
+    # @param offset offset
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
+    def content_contents_get_with_http_info(limit, offset, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: ContentApi.content_contents_get ...'
+      end
+      # verify the required parameter 'limit' is set
+      if @api_client.config.client_side_validation && limit.nil?
+        fail ArgumentError, "Missing the required parameter 'limit' when calling ContentApi.content_contents_get"
+      end
+      # verify the required parameter 'offset' is set
+      if @api_client.config.client_side_validation && offset.nil?
+        fail ArgumentError, "Missing the required parameter 'offset' when calling ContentApi.content_contents_get"
+      end
+      # resource path
+      local_var_path = '/content/contents'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'limit'] = limit
+      query_params[:'offset'] = offset
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] 
+
+      return_type = opts[:return_type] || 'String' 
+
+      auth_names = opts[:auth_names] || ['bearerAuth']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type)
+
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: ContentApi#content_contents_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Add a new content
     # This endpoint adds a new content
     # @param body Content

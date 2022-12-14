@@ -45,5 +45,10 @@ namespace estuary-client.Models
             /// Enum QueuedEnum for queued
             /// </summary>
             [EnumMember(Value = "queued")]
-            QueuedEnum = 3        }
+            QueuedEnum = 3,
+            /// <summary>
+            /// Enum OffloadedEnum for offloaded
+            /// </summary>
+            [EnumMember(Value = "offloaded")]
+            OffloadedEnum = 4        }
 }

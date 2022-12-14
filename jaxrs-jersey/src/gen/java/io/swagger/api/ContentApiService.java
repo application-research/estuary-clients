@@ -19,13 +19,14 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-12-12T21:11:35.185Z[GMT]")public abstract class ContentApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-12-14T06:22:39.514Z[GMT]")public abstract class ContentApiService {
     public abstract Response contentAddCarPost(SecurityContext securityContext) throws NotFoundException;
     public abstract Response contentAddIpfsPost(TypesIpfsPin body, String ignoreDupes,SecurityContext securityContext) throws NotFoundException;
     public abstract Response contentAddPost(SecurityContext securityContext) throws NotFoundException;
     public abstract Response contentAggregatedContentGet(String content,SecurityContext securityContext) throws NotFoundException;
     public abstract Response contentAllDealsGet( @NotNull String begin, @NotNull String duration, @NotNull String all,SecurityContext securityContext) throws NotFoundException;
     public abstract Response contentBwUsageContentGet(String content,SecurityContext securityContext) throws NotFoundException;
+    public abstract Response contentContentsGet( @NotNull String limit, @NotNull String offset,SecurityContext securityContext) throws NotFoundException;
     public abstract Response contentCreatePost(UtilContentCreateBody body, String ignoreDupes,SecurityContext securityContext) throws NotFoundException;
     public abstract Response contentDealsGet( Integer limit, Integer offset,SecurityContext securityContext) throws NotFoundException;
     public abstract Response contentEnsureReplicationDatacidGet(String datacid,SecurityContext securityContext) throws NotFoundException;

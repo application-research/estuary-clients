@@ -13,5 +13,6 @@ public enum TypesPinningStatus: String {
     case pinned = "pinned"
     case failed = "failed"
     case queued = "queued"
+    case offloaded = "offloaded"
     func encodeToJSON() -> Any { return self.rawValue }
 }

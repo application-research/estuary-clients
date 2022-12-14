@@ -18,13 +18,14 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-12-12T21:11:38.275Z[GMT]")public interface ContentApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-12-14T06:22:39.301Z[GMT]")public interface ContentApiService {
       public Response contentAddCarPost(SecurityContext securityContext);
       public Response contentAddIpfsPost(TypesIpfsPin body, String ignoreDupes, SecurityContext securityContext);
       public Response contentAddPost(SecurityContext securityContext);
       public Response contentAggregatedContentGet(String content, SecurityContext securityContext);
       public Response contentAllDealsGet(String begin, String duration, String all, SecurityContext securityContext);
       public Response contentBwUsageContentGet(String content, SecurityContext securityContext);
+      public Response contentContentsGet(String limit, String offset, SecurityContext securityContext);
       public Response contentCreatePost(UtilContentCreateBody body, String ignoreDupes, SecurityContext securityContext);
       public Response contentDealsGet(Integer limit, Integer offset, SecurityContext securityContext);
       public Response contentEnsureReplicationDatacidGet(String datacid, SecurityContext securityContext);

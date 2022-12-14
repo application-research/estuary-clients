@@ -6,3 +6,4 @@
 * `pinned` (value: `"pinned"`)
 * `failed` (value: `"failed"`)
 * `queued` (value: `"queued"`)
+* `offloaded` (value: `"offloaded"`)

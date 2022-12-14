@@ -411,6 +411,58 @@ export class ContentApi {
       );
     }
     /**
+     * Callback function to receive the result of the contentContentsGet operation.
+     * @callback moduleapi/ContentApi~contentContentsGetCallback
+     * @param {String} error Error message, if any.
+     * @param {'String'{ data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get user contents
+     * This endpoint is used to get user contents
+     * @param {String} limit limit
+     * @param {String} offset offset
+     * @param {module:api/ContentApi~contentContentsGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
+     */
+    contentContentsGet(limit, offset, callback) {
+      
+      let postBody = null;
+      // verify the required parameter 'limit' is set
+      if (limit === undefined || limit === null) {
+        throw new Error("Missing the required parameter 'limit' when calling contentContentsGet");
+      }
+      // verify the required parameter 'offset' is set
+      if (offset === undefined || offset === null) {
+        throw new Error("Missing the required parameter 'offset' when calling contentContentsGet");
+      }
+
+      let pathParams = {
+        
+      };
+      let queryParams = {
+        'limit': limit,'offset': offset
+      };
+      let headerParams = {
+        
+      };
+      let formParams = {
+        
+      };
+
+      let authNames = ['bearerAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = 'String';
+
+      return this.apiClient.callApi(
+        '/content/contents', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+    /**
      * Callback function to receive the result of the contentCreatePost operation.
      * @callback moduleapi/ContentApi~contentCreatePostCallback
      * @param {String} error Error message, if any.

@@ -160,6 +160,22 @@ public interface ContentApi  {
     public String contentBwUsageContentGet(@PathParam("content") String content);
 
     /**
+     * Get user contents
+     *
+     * This endpoint is used to get user contents
+     *
+     */
+    @GET
+    @Path("/content/contents")
+    @Produces({ "application/json" })
+    @Operation(summary = "Get user contents", tags={  })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public String contentContentsGet(@QueryParam("limit")String limit, @QueryParam("offset")String offset);
+
+    /**
      * Add a new content
      *
      * This endpoint adds a new content

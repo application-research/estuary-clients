@@ -247,6 +247,7 @@ Class | Method | HTTP request | Description
 *ContentApi* | [**ContentAggregatedContentGet**](docs/ContentApi.md#contentaggregatedcontentget) | **GET** /content/aggregated/{content} | Get aggregated content stats
 *ContentApi* | [**ContentAllDealsGet**](docs/ContentApi.md#contentalldealsget) | **GET** /content/all-deals | Get all deals for a user
 *ContentApi* | [**ContentBwUsageContentGet**](docs/ContentApi.md#contentbwusagecontentget) | **GET** /content/bw-usage/{content} | Get content bandwidth
+*ContentApi* | [**ContentContentsGet**](docs/ContentApi.md#contentcontentsget) | **GET** /content/contents | Get user contents
 *ContentApi* | [**ContentCreatePost**](docs/ContentApi.md#contentcreatepost) | **POST** /content/create | Add a new content
 *ContentApi* | [**ContentDealsGet**](docs/ContentApi.md#contentdealsget) | **GET** /content/deals | Content with deals
 *ContentApi* | [**ContentEnsureReplicationDatacidGet**](docs/ContentApi.md#contentensurereplicationdatacidget) | **GET** /content/ensure-replication/{datacid} | Ensure Replication

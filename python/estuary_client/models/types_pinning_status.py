@@ -28,6 +28,7 @@ class TypesPinningStatus(object):
     PINNED = "pinned"
     FAILED = "failed"
     QUEUED = "queued"
+    OFFLOADED = "offloaded"
     """
     Attributes:
       swagger_types (dict): The key is attribute name

@@ -209,6 +209,24 @@ public class ContentApiTest {
         
     }
     /**
+     * Get user contents
+     *
+     * This endpoint is used to get user contents
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void contentContentsGetTest() {
+        String limit = null;
+        String offset = null;
+        //String response = api.contentContentsGet(limit, offset);
+        //assertNotNull(response);
+        // TODO: test validations
+        
+        
+    }
+    /**
      * Add a new content
      *
      * This endpoint adds a new content

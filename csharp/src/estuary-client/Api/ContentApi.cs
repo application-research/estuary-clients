@@ -192,6 +192,29 @@ namespace estuary-client.Api
         /// <returns>ApiResponse of string</returns>
         ApiResponse<string> ContentBwUsageContentGetWithHttpInfo (string content);
         /// <summary>
+        /// Get user contents
+        /// </summary>
+        /// <remarks>
+        /// This endpoint is used to get user contents
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit">limit</param>
+        /// <param name="offset">offset</param>
+        /// <returns>string</returns>
+        string ContentContentsGet (string limit, string offset);
+
+        /// <summary>
+        /// Get user contents
+        /// </summary>
+        /// <remarks>
+        /// This endpoint is used to get user contents
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit">limit</param>
+        /// <param name="offset">offset</param>
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> ContentContentsGetWithHttpInfo (string limit, string offset);
+        /// <summary>
         /// Add a new content
         /// </summary>
         /// <remarks>
@@ -640,6 +663,29 @@ namespace estuary-client.Api
         /// <param name="content">Content ID</param>
         /// <returns>Task of ApiResponse (string)</returns>
         System.Threading.Tasks.Task<ApiResponse<string>> ContentBwUsageContentGetAsyncWithHttpInfo (string content);
+        /// <summary>
+        /// Get user contents
+        /// </summary>
+        /// <remarks>
+        /// This endpoint is used to get user contents
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit">limit</param>
+        /// <param name="offset">offset</param>
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> ContentContentsGetAsync (string limit, string offset);
+
+        /// <summary>
+        /// Get user contents
+        /// </summary>
+        /// <remarks>
+        /// This endpoint is used to get user contents
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit">limit</param>
+        /// <param name="offset">offset</param>
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> ContentContentsGetAsyncWithHttpInfo (string limit, string offset);
         /// <summary>
         /// Add a new content
         /// </summary>
@@ -2160,6 +2206,159 @@ namespace estuary-client.Api
             if (ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("ContentBwUsageContentGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<string>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+        }
+
+        /// <summary>
+        /// Get user contents This endpoint is used to get user contents
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit">limit</param>
+        /// <param name="offset">offset</param>
+        /// <returns>string</returns>
+        public string ContentContentsGet (string limit, string offset)
+        {
+             ApiResponse<string> localVarResponse = ContentContentsGetWithHttpInfo(limit, offset);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get user contents This endpoint is used to get user contents
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit">limit</param>
+        /// <param name="offset">offset</param>
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > ContentContentsGetWithHttpInfo (string limit, string offset)
+        {
+            // verify the required parameter 'limit' is set
+            if (limit == null)
+                throw new ApiException(400, "Missing required parameter 'limit' when calling ContentApi->ContentContentsGet");
+            // verify the required parameter 'offset' is set
+            if (offset == null)
+                throw new ApiException(400, "Missing required parameter 'offset' when calling ContentApi->ContentContentsGet");
+
+            var localVarPath = "/content/contents";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
+            if (offset != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
+            // authentication (bearerAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ContentContentsGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<string>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+        }
+
+        /// <summary>
+        /// Get user contents This endpoint is used to get user contents
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit">limit</param>
+        /// <param name="offset">offset</param>
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> ContentContentsGetAsync (string limit, string offset)
+        {
+             ApiResponse<string> localVarResponse = await ContentContentsGetAsyncWithHttpInfo(limit, offset);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get user contents This endpoint is used to get user contents
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="limit">limit</param>
+        /// <param name="offset">offset</param>
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> ContentContentsGetAsyncWithHttpInfo (string limit, string offset)
+        {
+            // verify the required parameter 'limit' is set
+            if (limit == null)
+                throw new ApiException(400, "Missing required parameter 'limit' when calling ContentApi->ContentContentsGet");
+            // verify the required parameter 'offset' is set
+            if (offset == null)
+                throw new ApiException(400, "Missing required parameter 'offset' when calling ContentApi->ContentContentsGet");
+
+            var localVarPath = "/content/contents";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
+            if (offset != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "offset", offset)); // query parameter
+            // authentication (bearerAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("ContentContentsGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 

@@ -234,6 +234,7 @@
   <li><a href="#contentAggregatedContentGet"><code><span class="http-method">get</span> /content/aggregated/{content}</code></a></li>
   <li><a href="#contentAllDealsGet"><code><span class="http-method">get</span> /content/all-deals</code></a></li>
   <li><a href="#contentBwUsageContentGet"><code><span class="http-method">get</span> /content/bw-usage/{content}</code></a></li>
+  <li><a href="#contentContentsGet"><code><span class="http-method">get</span> /content/contents</code></a></li>
   <li><a href="#contentCreatePost"><code><span class="http-method">post</span> /content/create</code></a></li>
   <li><a href="#contentDealsGet"><code><span class="http-method">get</span> /content/deals</code></a></li>
   <li><a href="#contentEnsureReplicationDatacidGet"><code><span class="http-method">get</span> /content/ensure-replication/{datacid}</code></a></li>
@@ -1672,6 +1673,57 @@
 
 
 
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      
+      String
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>""</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#String">String</a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#util.HttpError">util.HttpError</a>
+    <h4 class="field-label">500</h4>
+    Internal Server Error
+        <a href="#util.HttpError">util.HttpError</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="contentContentsGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /content/contents</code></pre></div>
+    <div class="method-summary">Get user contents (<span class="nickname">contentContentsGet</span>)</div>
+    <div class="method-notes">This endpoint is used to get user contents</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">limit (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; limit </div>      <div class="param">offset (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; offset </div>    </div>  <!-- field-items -->
 
 
     <h3 class="field-label">Return type</h3>

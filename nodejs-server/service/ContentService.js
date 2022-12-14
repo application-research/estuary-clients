@@ -162,6 +162,27 @@ exports.contentBw_usageContentGET = function(content) {
 
 
 /**
+ * Get user contents
+ * This endpoint is used to get user contents
+ *
+ * limit String limit
+ * offset String offset
+ * returns String
+ **/
+exports.contentContentsGET = function(limit,offset) {
+  return new Promise(function(resolve, reject) {
+    var examples = {};
+    examples['application/json'] = "";
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
+  });
+}
+
+
+/**
  * Add a new content
  * This endpoint adds a new content
  *

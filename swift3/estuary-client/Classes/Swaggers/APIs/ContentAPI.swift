@@ -306,6 +306,46 @@ open class ContentAPI: APIBase {
     }
 
     /**
+     Get user contents
+     - parameter limit: (query) limit 
+     - parameter offset: (query) offset 
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func contentContentsGet(limit: String, offset: String, completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
+        contentContentsGetWithRequestBuilder(limit: limit, offset: offset).execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Get user contents
+     - GET /content/contents
+     - This endpoint is used to get user contents
+     - API Key:
+       - type: apiKey Authorization 
+       - name: bearerAuth
+     - examples: [{contentType=application/json, example=""}]
+     - parameter limit: (query) limit 
+     - parameter offset: (query) offset 
+     - returns: RequestBuilder<String> 
+     */
+    open class func contentContentsGetWithRequestBuilder(limit: String, offset: String) -> RequestBuilder<String> {
+        let path = "/content/contents"
+        let URLString = estuary-clientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems(values:[
+                        "limit": limit,
+                        "offset": offset
+        ])
+
+        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
      Add a new content
      - parameter body: (body) Content 
      - parameter ignoreDupes: (query) Ignore Dupes (optional)
