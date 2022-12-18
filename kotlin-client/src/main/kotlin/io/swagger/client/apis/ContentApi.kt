@@ -11,8 +11,8 @@
  */
 package io.swagger.client.apis
 
-import io.swagger.client.models.MainimportDealBody
 import io.swagger.client.models.TypesIpfsPin
+import io.swagger.client.models.UtilContentAddResponse
 import io.swagger.client.models.UtilContentCreateBody
 import io.swagger.client.models.UtilHttpError
 
@@ -70,23 +70,27 @@ class ContentApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(ba
         }
     }
     /**
-     * Upload content via a car file
-     * This endpoint uploads content via a car file
-     * @return kotlin.String
+     * Add Car object
+     * This endpoint is used to add a car object to the network. The object can be a file or a directory.
+     * @param body Car 
+     * @param ignoreDupes Ignore Dupes (optional)
+     * @param filename Filename (optional)
+     * @return UtilContentAddResponse
      */
     @Suppress("UNCHECKED_CAST")
-    fun contentAddCarPost(): kotlin.String {
-        
+    fun contentAddCarPost(body: kotlin.String, ignoreDupes: kotlin.String? = null, filename: kotlin.String? = null): UtilContentAddResponse {
+        val localVariableBody: kotlin.Any? = body
+        val localVariableQuery: MultiValueMap = mapOf("ignore-dupes" to listOf("$ignoreDupes"), "filename" to listOf("$filename"))
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
-                "/content/add-car"
+                "/content/add-car", query = localVariableQuery
         )
-        val response = request<kotlin.String>(
-                localVariableConfig
+        val response = request<UtilContentAddResponse>(
+                localVariableConfig, localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as kotlin.String
+            ResponseType.Success -> (response as Success<*>).data as UtilContentAddResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -121,23 +125,32 @@ class ContentApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(ba
         }
     }
     /**
-     * Upload a file
-     * This endpoint uploads a file.
-     * @return kotlin.String
+     * Add new content
+     * This endpoint is used to upload new content.
+     * @param &#x60;data&#x60;  
+     * @param filename  
+     * @param coluuid Collection UUID (optional)
+     * @param replication Replication value (optional)
+     * @param ignoreDupes Ignore Dupes true/false (optional)
+     * @param lazyProvide Lazy Provide true/false (optional)
+     * @param dir Directory (optional)
+     * @return UtilContentAddResponse
      */
     @Suppress("UNCHECKED_CAST")
-    fun contentAddPost(): kotlin.String {
-        
+    fun contentAddPost(&#x60;data&#x60;: kotlin.Array<kotlin.Byte>, filename: kotlin.String, coluuid: kotlin.String? = null, replication: kotlin.Int? = null, ignoreDupes: kotlin.String? = null, lazyProvide: kotlin.String? = null, dir: kotlin.String? = null): UtilContentAddResponse {
+        val localVariableBody: kotlin.Any? = mapOf("data" to "$&#x60;data&#x60;", "filename" to "$filename")
+        val localVariableQuery: MultiValueMap = mapOf("coluuid" to listOf("$coluuid"), "replication" to listOf("$replication"), "ignore-dupes" to listOf("$ignoreDupes"), "lazy-provide" to listOf("$lazyProvide"), "dir" to listOf("$dir"))
+        val localVariableHeaders: kotlin.collections.Map<kotlin.String, kotlin.String> = mapOf("Content-Type" to "multipart/form-data")
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
-                "/content/add"
+                "/content/add", query = localVariableQuery, headers = localVariableHeaders
         )
-        val response = request<kotlin.String>(
-                localVariableConfig
+        val response = request<UtilContentAddResponse>(
+                localVariableConfig, localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as kotlin.String
+            ResponseType.Success -> (response as Success<*>).data as UtilContentAddResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -376,32 +389,6 @@ class ContentApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(ba
         }
     }
     /**
-     * Import a deal
-     * This endpoint imports a deal into the shuttle.
-     * @param body Import a deal 
-     * @return kotlin.String
-     */
-    @Suppress("UNCHECKED_CAST")
-    fun contentImportdealPost(body: MainimportDealBody): kotlin.String {
-        val localVariableBody: kotlin.Any? = body
-        
-        val localVariableConfig = RequestConfig(
-                RequestMethod.POST,
-                "/content/importdeal"
-        )
-        val response = request<kotlin.String>(
-                localVariableConfig, localVariableBody
-        )
-
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as kotlin.String
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-        }
-    }
-    /**
      * List all pinned content
      * This endpoint lists all content
      * @return kotlin.String
@@ -412,31 +399,6 @@ class ContentApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(ba
         val localVariableConfig = RequestConfig(
                 RequestMethod.GET,
                 "/content/list"
-        )
-        val response = request<kotlin.String>(
-                localVariableConfig
-        )
-
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as kotlin.String
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-        }
-    }
-    /**
-     * Read content
-     * This endpoint reads content from the blockstore
-     * @param cont CID 
-     * @return kotlin.String
-     */
-    @Suppress("UNCHECKED_CAST")
-    fun contentReadContGet(cont: kotlin.String): kotlin.String {
-        
-        val localVariableConfig = RequestConfig(
-                RequestMethod.GET,
-                "/content/read/{cont}".replace("{" + "cont" + "}", "$cont")
         )
         val response = request<kotlin.String>(
                 localVariableConfig

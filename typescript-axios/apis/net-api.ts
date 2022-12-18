@@ -24,48 +24,6 @@ import { UtilHttpError } from '../models';
 export const NetApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * This endpoint is used to get net addrs
-         * @summary Net Addrs
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        netAddrsGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/net/addrs`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearerAuth required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-                    ? await configuration.apiKey("Authorization")
-                    : await configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
-
-            const query = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.params) {
-                query.set(key, options.params[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * This endpoint returns all miners
          * @summary Get all miners
          * @param {string} miner Filter by miner
@@ -249,19 +207,6 @@ export const NetApiAxiosParamCreator = function (configuration?: Configuration) 
 export const NetApiFp = function(configuration?: Configuration) {
     return {
         /**
-         * This endpoint is used to get net addrs
-         * @summary Net Addrs
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async netAddrsGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
-            const localVarAxiosArgs = await NetApiAxiosParamCreator(configuration).netAddrsGet(options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
          * This endpoint returns all miners
          * @summary Get all miners
          * @param {string} miner Filter by miner
@@ -324,15 +269,6 @@ export const NetApiFp = function(configuration?: Configuration) {
 export const NetApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     return {
         /**
-         * This endpoint is used to get net addrs
-         * @summary Net Addrs
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async netAddrsGet(options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
-            return NetApiFp(configuration).netAddrsGet(options).then((request) => request(axios, basePath));
-        },
-        /**
          * This endpoint returns all miners
          * @summary Get all miners
          * @param {string} miner Filter by miner
@@ -379,16 +315,6 @@ export const NetApiFactory = function (configuration?: Configuration, basePath?:
  * @extends {BaseAPI}
  */
 export class NetApi extends BaseAPI {
-    /**
-     * This endpoint is used to get net addrs
-     * @summary Net Addrs
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof NetApi
-     */
-    public async netAddrsGet(options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
-        return NetApiFp(this.configuration).netAddrsGet(options).then((request) => request(this.axios, this.basePath));
-    }
     /**
      * This endpoint returns all miners
      * @summary Get all miners

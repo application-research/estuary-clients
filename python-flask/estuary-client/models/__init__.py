@@ -18,10 +18,11 @@ from estuary-client.models.cid_cid import CidCid
 from estuary-client.models.collections_cid_type import CollectionsCidType
 from estuary-client.models.collections_collection import CollectionsCollection
 from estuary-client.models.collections_collection_list_response import CollectionsCollectionListResponse
-from estuary-client.models.main_import_deal_body import MainImportDealBody
+from estuary-client.models.content_add_body import ContentAddBody
 from estuary-client.models.miner_claim_miner_body import MinerClaimMinerBody
 from estuary-client.models.miner_miner_set_info_params import MinerMinerSetInfoParams
 from estuary-client.models.miner_suspend_miner_body import MinerSuspendMinerBody
+from estuary-client.models.peering_peering_peer import PeeringPeeringPeer
 from estuary-client.models.types_ipfs_list_pin_status_response import TypesIpfsListPinStatusResponse
 from estuary-client.models.types_ipfs_pin import TypesIpfsPin
 from estuary-client.models.types_ipfs_pin_status_response import TypesIpfsPinStatusResponse

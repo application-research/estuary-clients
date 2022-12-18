@@ -68,14 +68,16 @@ class ApiClient {
           return new CollectionsCollection.fromJson(value);
         case 'CollectionsCollectionListResponse':
           return new CollectionsCollectionListResponse.fromJson(value);
-        case 'MainImportDealBody':
-          return new MainImportDealBody.fromJson(value);
+        case 'ContentAddBody':
+          return new ContentAddBody.fromJson(value);
         case 'MinerClaimMinerBody':
           return new MinerClaimMinerBody.fromJson(value);
         case 'MinerMinerSetInfoParams':
           return new MinerMinerSetInfoParams.fromJson(value);
         case 'MinerSuspendMinerBody':
           return new MinerSuspendMinerBody.fromJson(value);
+        case 'PeeringPeeringPeer':
+          return new PeeringPeeringPeer.fromJson(value);
         case 'TypesIpfsListPinStatusResponse':
           return new TypesIpfsListPinStatusResponse.fromJson(value);
         case 'TypesIpfsPin':

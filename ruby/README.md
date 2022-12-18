@@ -63,7 +63,7 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::AdminApi.new
-body = [true] # Array<BOOLEAN> | Peer ids
+body = ['body_example'] # Array<String> | Peer ids
 
 
 begin
@@ -99,10 +99,12 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::AdminApi.new
+body = [SwaggerClient::PeeringPeeringPeer.new] # Array<PeeringPeeringPeer> | Peering Peer array
+
 
 begin
   #Add peers on Peering Service
-  result = api_instance.admin_peering_peers_post
+  result = api_instance.admin_peering_peers_post(body)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling AdminApi->admin_peering_peers_post: #{e}"
@@ -451,10 +453,15 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
+body = 'body_example' # String | Car
+opts = { 
+  ignore_dupes: 'ignore_dupes_example', # String | Ignore Dupes
+  filename: 'filename_example' # String | Filename
+}
 
 begin
-  #Upload content via a car file
-  result = api_instance.content_add_car_post
+  #Add Car object
+  result = api_instance.content_add_car_post(body, opts)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ContentApi->content_add_car_post: #{e}"
@@ -489,10 +496,19 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
+data = 'data_example' # String | 
+filename = 'filename_example' # String | 
+opts = { 
+  coluuid: 'coluuid_example', # String | Collection UUID
+  replication: 56, # Integer | Replication value
+  ignore_dupes: 'ignore_dupes_example', # String | Ignore Dupes true/false
+  lazy_provide: 'lazy_provide_example', # String | Lazy Provide true/false
+  dir: 'dir_example' # String | Directory
+}
 
 begin
-  #Upload a file
-  result = api_instance.content_add_post
+  #Add new content
+  result = api_instance.content_add_post(data, filename, opts)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ContentApi->content_add_post: #{e}"
@@ -684,25 +700,6 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-body = SwaggerClient::MainImportDealBody.new # MainImportDealBody | Import a deal
-
-
-begin
-  #Import a deal
-  result = api_instance.content_importdeal_post(body)
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling ContentApi->content_importdeal_post: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::ContentApi.new
 
 begin
   #List all pinned content
@@ -710,25 +707,6 @@ begin
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ContentApi->content_list_get: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::ContentApi.new
-cont = 'cont_example' # String | CID
-
-
-begin
-  #Read content
-  result = api_instance.content_read_cont_get(cont)
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling ContentApi->content_read_cont_get: #{e}"
 end
 # Setup authorization
 SwaggerClient.configure do |config|
@@ -1249,23 +1227,6 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::NetApi.new
-
-begin
-  #Net Addrs
-  result = api_instance.net_addrs_get
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling NetApi->net_addrs_get: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::NetApi.new
 miner = 'miner_example' # String | Filter by miner
 
 
@@ -1738,9 +1699,9 @@ Class | Method | HTTP request | Description
 *SwaggerClient::CollectionsApi* | [**collections_post**](docs/CollectionsApi.md#collections_post) | **POST** /collections/ | Create a new collection
 *SwaggerClient::ContentApi* | [**admin_invites_code_post**](docs/ContentApi.md#admin_invites_code_post) | **POST** /admin/invites/{code} | Create an Estuary invite
 *SwaggerClient::ContentApi* | [**admin_invites_get**](docs/ContentApi.md#admin_invites_get) | **GET** /admin/invites | Get Estuary invites
-*SwaggerClient::ContentApi* | [**content_add_car_post**](docs/ContentApi.md#content_add_car_post) | **POST** /content/add-car | Upload content via a car file
+*SwaggerClient::ContentApi* | [**content_add_car_post**](docs/ContentApi.md#content_add_car_post) | **POST** /content/add-car | Add Car object
 *SwaggerClient::ContentApi* | [**content_add_ipfs_post**](docs/ContentApi.md#content_add_ipfs_post) | **POST** /content/add-ipfs | Add IPFS object
-*SwaggerClient::ContentApi* | [**content_add_post**](docs/ContentApi.md#content_add_post) | **POST** /content/add | Upload a file
+*SwaggerClient::ContentApi* | [**content_add_post**](docs/ContentApi.md#content_add_post) | **POST** /content/add | Add new content
 *SwaggerClient::ContentApi* | [**content_aggregated_content_get**](docs/ContentApi.md#content_aggregated_content_get) | **GET** /content/aggregated/{content} | Get aggregated content stats
 *SwaggerClient::ContentApi* | [**content_all_deals_get**](docs/ContentApi.md#content_all_deals_get) | **GET** /content/all-deals | Get all deals for a user
 *SwaggerClient::ContentApi* | [**content_bw_usage_content_get**](docs/ContentApi.md#content_bw_usage_content_get) | **GET** /content/bw-usage/{content} | Get content bandwidth
@@ -1750,9 +1711,7 @@ Class | Method | HTTP request | Description
 *SwaggerClient::ContentApi* | [**content_ensure_replication_datacid_get**](docs/ContentApi.md#content_ensure_replication_datacid_get) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
 *SwaggerClient::ContentApi* | [**content_failures_content_get**](docs/ContentApi.md#content_failures_content_get) | **GET** /content/failures/{content} | List all failures for a content
 *SwaggerClient::ContentApi* | [**content_id_get**](docs/ContentApi.md#content_id_get) | **GET** /content/{id} | Content
-*SwaggerClient::ContentApi* | [**content_importdeal_post**](docs/ContentApi.md#content_importdeal_post) | **POST** /content/importdeal | Import a deal
 *SwaggerClient::ContentApi* | [**content_list_get**](docs/ContentApi.md#content_list_get) | **GET** /content/list | List all pinned content
-*SwaggerClient::ContentApi* | [**content_read_cont_get**](docs/ContentApi.md#content_read_cont_get) | **GET** /content/read/{cont} | Read content
 *SwaggerClient::ContentApi* | [**content_staging_zones_get**](docs/ContentApi.md#content_staging_zones_get) | **GET** /content/staging-zones | Get staging zone for user, excluding its contents
 *SwaggerClient::ContentApi* | [**content_staging_zones_staging_zone_contents_get**](docs/ContentApi.md#content_staging_zones_staging_zone_contents_get) | **GET** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
 *SwaggerClient::ContentApi* | [**content_staging_zones_staging_zone_get**](docs/ContentApi.md#content_staging_zones_staging_zone_get) | **GET** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
@@ -1780,7 +1739,6 @@ Class | Method | HTTP request | Description
 *SwaggerClient::MinerApi* | [**miner_unsuspend_miner_put**](docs/MinerApi.md#miner_unsuspend_miner_put) | **PUT** /miner/unsuspend/{miner} | Unuspend Miner
 *SwaggerClient::MinerApi* | [**public_miners_deals_miner_get**](docs/MinerApi.md#public_miners_deals_miner_get) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *SwaggerClient::MinerApi* | [**public_miners_stats_miner_get**](docs/MinerApi.md#public_miners_stats_miner_get) | **GET** /public/miners/stats/{miner} | Get miner stats
-*SwaggerClient::NetApi* | [**net_addrs_get**](docs/NetApi.md#net_addrs_get) | **GET** /net/addrs | Net Addrs
 *SwaggerClient::NetApi* | [**public_miners_failures_miner_get**](docs/NetApi.md#public_miners_failures_miner_get) | **GET** /public/miners/failures/{miner} | Get all miners
 *SwaggerClient::NetApi* | [**public_miners_get**](docs/NetApi.md#public_miners_get) | **GET** /public/miners | Get all miners
 *SwaggerClient::NetApi* | [**public_net_addrs_get**](docs/NetApi.md#public_net_addrs_get) | **GET** /public/net/addrs | Net Addrs
@@ -1824,10 +1782,11 @@ Class | Method | HTTP request | Description
  - [SwaggerClient::CollectionsCidType](docs/CollectionsCidType.md)
  - [SwaggerClient::CollectionsCollection](docs/CollectionsCollection.md)
  - [SwaggerClient::CollectionsCollectionListResponse](docs/CollectionsCollectionListResponse.md)
- - [SwaggerClient::MainImportDealBody](docs/MainImportDealBody.md)
+ - [SwaggerClient::ContentAddBody](docs/ContentAddBody.md)
  - [SwaggerClient::MinerClaimMinerBody](docs/MinerClaimMinerBody.md)
  - [SwaggerClient::MinerMinerSetInfoParams](docs/MinerMinerSetInfoParams.md)
  - [SwaggerClient::MinerSuspendMinerBody](docs/MinerSuspendMinerBody.md)
+ - [SwaggerClient::PeeringPeeringPeer](docs/PeeringPeeringPeer.md)
  - [SwaggerClient::TypesIpfsListPinStatusResponse](docs/TypesIpfsListPinStatusResponse.md)
  - [SwaggerClient::TypesIpfsPin](docs/TypesIpfsPin.md)
  - [SwaggerClient::TypesIpfsPinStatusResponse](docs/TypesIpfsPinStatusResponse.md)

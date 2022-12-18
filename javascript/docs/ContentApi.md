@@ -6,9 +6,9 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**adminInvitesCodePost**](ContentApi.md#adminInvitesCodePost) | **POST** /admin/invites/{code} | Create an Estuary invite
 [**adminInvitesGet**](ContentApi.md#adminInvitesGet) | **GET** /admin/invites | Get Estuary invites
-[**contentAddCarPost**](ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Upload content via a car file
+[**contentAddCarPost**](ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Add Car object
 [**contentAddIpfsPost**](ContentApi.md#contentAddIpfsPost) | **POST** /content/add-ipfs | Add IPFS object
-[**contentAddPost**](ContentApi.md#contentAddPost) | **POST** /content/add | Upload a file
+[**contentAddPost**](ContentApi.md#contentAddPost) | **POST** /content/add | Add new content
 [**contentAggregatedContentGet**](ContentApi.md#contentAggregatedContentGet) | **GET** /content/aggregated/{content} | Get aggregated content stats
 [**contentAllDealsGet**](ContentApi.md#contentAllDealsGet) | **GET** /content/all-deals | Get all deals for a user
 [**contentBwUsageContentGet**](ContentApi.md#contentBwUsageContentGet) | **GET** /content/bw-usage/{content} | Get content bandwidth
@@ -18,9 +18,7 @@ Method | HTTP request | Description
 [**contentEnsureReplicationDatacidGet**](ContentApi.md#contentEnsureReplicationDatacidGet) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
 [**contentFailuresContentGet**](ContentApi.md#contentFailuresContentGet) | **GET** /content/failures/{content} | List all failures for a content
 [**contentIdGet**](ContentApi.md#contentIdGet) | **GET** /content/{id} | Content
-[**contentImportdealPost**](ContentApi.md#contentImportdealPost) | **POST** /content/importdeal | Import a deal
 [**contentListGet**](ContentApi.md#contentListGet) | **GET** /content/list | List all pinned content
-[**contentReadContGet**](ContentApi.md#contentReadContGet) | **GET** /content/read/{cont} | Read content
 [**contentStagingZonesGet**](ContentApi.md#contentStagingZonesGet) | **GET** /content/staging-zones | Get staging zone for user, excluding its contents
 [**contentStagingZonesStagingZoneContentsGet**](ContentApi.md#contentStagingZonesStagingZoneContentsGet) | **GET** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
 [**contentStagingZonesStagingZoneGet**](ContentApi.md#contentStagingZonesStagingZoneGet) | **GET** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
@@ -124,11 +122,11 @@ This endpoint does not need any parameter.
 
 <a name="contentAddCarPost"></a>
 # **contentAddCarPost**
-> &#x27;String&#x27; contentAddCarPost()
+> UtilContentAddResponse contentAddCarPost(body, opts)
 
-Upload content via a car file
+Add Car object
 
-This endpoint uploads content via a car file
+This endpoint is used to add a car object to the network. The object can be a file or a directory.
 
 ### Example
 ```javascript
@@ -142,7 +140,12 @@ bearerAuth.apiKey = 'YOUR API KEY';
 //bearerAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new EstuaryClient.ContentApi();
-apiInstance.contentAddCarPost((error, data, response) => {
+let body = "body_example"; // String | Car
+let opts = { 
+  'ignoreDupes': "ignoreDupes_example", // String | Ignore Dupes
+  'filename': "filename_example" // String | Filename
+};
+apiInstance.contentAddCarPost(body, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -152,11 +155,16 @@ apiInstance.contentAddCarPost((error, data, response) => {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**String**](String.md)| Car | 
+ **ignoreDupes** | **String**| Ignore Dupes | [optional] 
+ **filename** | **String**| Filename | [optional] 
 
 ### Return type
 
-**&#x27;String&#x27;**
+[**UtilContentAddResponse**](UtilContentAddResponse.md)
 
 ### Authorization
 
@@ -164,7 +172,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 <a name="contentAddIpfsPost"></a>
@@ -222,11 +230,11 @@ Name | Type | Description  | Notes
 
 <a name="contentAddPost"></a>
 # **contentAddPost**
-> &#x27;String&#x27; contentAddPost()
+> UtilContentAddResponse contentAddPost(data, filename, opts)
 
-Upload a file
+Add new content
 
-This endpoint uploads a file.
+This endpoint is used to upload new content.
 
 ### Example
 ```javascript
@@ -240,7 +248,16 @@ bearerAuth.apiKey = 'YOUR API KEY';
 //bearerAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new EstuaryClient.ContentApi();
-apiInstance.contentAddPost((error, data, response) => {
+let data = "data_example"; // Blob | 
+let filename = "filename_example"; // String | 
+let opts = { 
+  'coluuid': "coluuid_example", // String | Collection UUID
+  'replication': 56, // Number | Replication value
+  'ignoreDupes': "ignoreDupes_example", // String | Ignore Dupes true/false
+  'lazyProvide': "lazyProvide_example", // String | Lazy Provide true/false
+  'dir': "dir_example" // String | Directory
+};
+apiInstance.contentAddPost(data, filename, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -250,11 +267,20 @@ apiInstance.contentAddPost((error, data, response) => {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data** | **Blob**|  | 
+ **filename** | **String**|  | 
+ **coluuid** | **String**| Collection UUID | [optional] 
+ **replication** | **Number**| Replication value | [optional] 
+ **ignoreDupes** | **String**| Ignore Dupes true/false | [optional] 
+ **lazyProvide** | **String**| Lazy Provide true/false | [optional] 
+ **dir** | **String**| Directory | [optional] 
 
 ### Return type
 
-**&#x27;String&#x27;**
+[**UtilContentAddResponse**](UtilContentAddResponse.md)
 
 ### Authorization
 
@@ -262,7 +288,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 <a name="contentAggregatedContentGet"></a>
@@ -727,56 +753,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentImportdealPost"></a>
-# **contentImportdealPost**
-> &#x27;String&#x27; contentImportdealPost(body)
-
-Import a deal
-
-This endpoint imports a deal into the shuttle.
-
-### Example
-```javascript
-import {EstuaryClient} from 'estuary-client';
-let defaultClient = EstuaryClient.ApiClient.instance;
-
-// Configure API key authorization: bearerAuth
-let bearerAuth = defaultClient.authentications['bearerAuth'];
-bearerAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new EstuaryClient.ContentApi();
-let body = new EstuaryClient.MainImportDealBody(); // MainImportDealBody | Import a deal
-
-apiInstance.contentImportdealPost(body, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-});
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**MainImportDealBody**](MainImportDealBody.md)| Import a deal | 
-
-### Return type
-
-**&#x27;String&#x27;**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: */*
- - **Accept**: application/json
-
 <a name="contentListGet"></a>
 # **contentListGet**
 > &#x27;String&#x27; contentListGet()
@@ -808,56 +784,6 @@ apiInstance.contentListGet((error, data, response) => {
 
 ### Parameters
 This endpoint does not need any parameter.
-
-### Return type
-
-**&#x27;String&#x27;**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="contentReadContGet"></a>
-# **contentReadContGet**
-> &#x27;String&#x27; contentReadContGet(cont)
-
-Read content
-
-This endpoint reads content from the blockstore
-
-### Example
-```javascript
-import {EstuaryClient} from 'estuary-client';
-let defaultClient = EstuaryClient.ApiClient.instance;
-
-// Configure API key authorization: bearerAuth
-let bearerAuth = defaultClient.authentications['bearerAuth'];
-bearerAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new EstuaryClient.ContentApi();
-let cont = "cont_example"; // String | CID
-
-apiInstance.contentReadContGet(cont, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-});
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **cont** | **String**| CID | 
 
 ### Return type
 

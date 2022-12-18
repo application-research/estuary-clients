@@ -30,7 +30,7 @@ This endpoint can be used to remove a Peer from the Peering Service
  * @param body Peer ids
 @return string
 */
-func (a *AdminApiService) AdminPeeringPeersDelete(ctx context.Context, body []bool) (string, *http.Response, error) {
+func (a *AdminApiService) AdminPeeringPeersDelete(ctx context.Context, body []string) (string, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Delete")
 		localVarPostBody   interface{}
@@ -262,9 +262,10 @@ func (a *AdminApiService) AdminPeeringPeersGet(ctx context.Context) (string, *ht
 AdminApiService Add peers on Peering Service
 This endpoint can be used to add a Peer from the Peering Service
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param body Peering Peer array
 @return string
 */
-func (a *AdminApiService) AdminPeeringPeersPost(ctx context.Context) (string, *http.Response, error) {
+func (a *AdminApiService) AdminPeeringPeersPost(ctx context.Context, body []PeeringPeeringPeer) (string, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -281,7 +282,7 @@ func (a *AdminApiService) AdminPeeringPeersPost(ctx context.Context) (string, *h
 	localVarFormParams := url.Values{}
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{}
+	localVarHttpContentTypes := []string{"*/*"}
 
 	// set Content-Type header
 	localVarHttpContentType := selectHeaderContentType(localVarHttpContentTypes)
@@ -297,6 +298,8 @@ func (a *AdminApiService) AdminPeeringPeersPost(ctx context.Context) (string, *h
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
+	// body params
+	localVarPostBody = &body
 	if ctx != nil {
 		// API Key Authentication
 		if auth, ok := ctx.Value(ContextAPIKey).(APIKey); ok {

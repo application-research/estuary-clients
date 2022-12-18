@@ -14,6 +14,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
+import io.swagger.model.PeeringPeeringPeer;
 import io.swagger.model.UtilHttpError;
 
 import java.util.Map;
@@ -36,7 +37,7 @@ import javax.validation.constraints.*;
 @Path("/admin")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-12-14T06:22:39.514Z[GMT]")public class AdminApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-12-18T07:30:24.710Z[GMT]")public class AdminApi  {
    private final AdminApiService delegate;
 
    public AdminApi(@Context ServletConfig servletContext) {
@@ -139,7 +140,7 @@ import javax.validation.constraints.*;
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response adminPeeringPeersDelete(@Parameter(in = ParameterIn.DEFAULT, description = "Peer ids" ,required=true) List<Boolean> body
+    public Response adminPeeringPeersDelete(@Parameter(in = ParameterIn.DEFAULT, description = "Peer ids" ,required=true) List<String> body
 
 ,@Context SecurityContext securityContext)
     throws NotFoundException {
@@ -163,7 +164,7 @@ import javax.validation.constraints.*;
     }
     @POST
     @Path("/peering/peers")
-    
+    @Consumes({ "*/*" })
     @Produces({ "application/json" })
     @Operation(summary = "Add peers on Peering Service", description = "This endpoint can be used to add a Peer from the Peering Service", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "admin" })
@@ -173,9 +174,11 @@ import javax.validation.constraints.*;
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response adminPeeringPeersPost(@Context SecurityContext securityContext)
+    public Response adminPeeringPeersPost(@Parameter(in = ParameterIn.DEFAULT, description = "Peering Peer array" ,required=true) List<PeeringPeeringPeer> body
+
+,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return delegate.adminPeeringPeersPost(securityContext);
+        return delegate.adminPeeringPeersPost(body,securityContext);
     }
     @POST
     @Path("/peering/start")

@@ -1,5 +1,6 @@
 package io.swagger.api;
 
+import io.swagger.model.PeeringPeeringPeer;
 import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
@@ -44,7 +45,7 @@ public interface AdminApi  {
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public String adminPeeringPeersDelete(@Valid List<Boolean> body);
+    public String adminPeeringPeersDelete(@Valid List<String> body);
 
     /**
      * List all Peering peers
@@ -70,13 +71,14 @@ public interface AdminApi  {
      */
     @POST
     @Path("/admin/peering/peers")
+    @Consumes({ "*/*" })
     @Produces({ "application/json" })
     @Operation(summary = "Add peers on Peering Service", tags={ "admin" })
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public String adminPeeringPeersPost();
+    public String adminPeeringPeersPost(@Valid List<PeeringPeeringPeer> body);
 
     /**
      * Start Peering

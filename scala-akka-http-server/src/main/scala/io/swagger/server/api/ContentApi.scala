@@ -5,9 +5,10 @@ import akka.http.scaladsl.server.Route
 import akka.http.scaladsl.unmarshalling.FromRequestUnmarshaller
 import akka.http.scaladsl.marshalling.ToEntityMarshaller
 import io.swagger.server.AkkaHttpHelper._
-import io.swagger.server.model.Main.importDealBody
 import io.swagger.server.model.Types.IpfsPin
 import io.swagger.server.model.Util.ContentCreateBody
+import io.swagger.server.model.byte[]
+import io.swagger.server.model.util.ContentAddResponse
 import io.swagger.server.model.util.HttpError
 
 class ContentApi(
@@ -49,13 +50,13 @@ class ContentApi(
     } ~
     path() { () => 
       post {
-        parameters() { () =>
+        parameters("ignore-dupes".as[String].?, "filename".as[String].?) { (ignoreDupes, filename) =>
           
             formFields() { () =>
               
-                
-                  contentService.contentAddCarPost()
-               
+                entity(as[String]){ body =>
+                  contentService.contentAddCarPost(body = body, ignoreDupes = ignoreDupes, filename = filename)
+                }
              
             }
          
@@ -79,12 +80,12 @@ class ContentApi(
     } ~
     path() { () => 
       post {
-        parameters() { () =>
+        parameters("coluuid".as[String].?, "replication".as[Int].?, "ignore-dupes".as[String].?, "lazy-provide".as[String].?, "dir".as[String].?) { (coluuid, replication, ignoreDupes, lazyProvide, dir) =>
           
-            formFields() { () =>
+            formFields("data".as[byte[]], "filename".as[String]) { (data, filename) =>
               
                 
-                  contentService.contentAddPost()
+                  contentService.contentAddPost(data = data, filename = filename, coluuid = coluuid, replication = replication, ignoreDupes = ignoreDupes, lazyProvide = lazyProvide, dir = dir)
                
              
             }
@@ -228,21 +229,6 @@ class ContentApi(
       }
     } ~
     path() { () => 
-      post {
-        parameters() { () =>
-          
-            formFields() { () =>
-              
-                entity(as[Main.importDealBody]){ body =>
-                  contentService.contentImportdealPost(body = body)
-                }
-             
-            }
-         
-        }
-      }
-    } ~
-    path() { () => 
       get {
         parameters() { () =>
           
@@ -250,21 +236,6 @@ class ContentApi(
               
                 
                   contentService.contentListGet()
-               
-             
-            }
-         
-        }
-      }
-    } ~
-    path() { (cont) => 
-      get {
-        parameters() { () =>
-          
-            formFields() { () =>
-              
-                
-                  contentService.contentReadContGet(cont = cont)
                
              
             }
@@ -379,19 +350,19 @@ trait ContentApiService {
   def adminInvitesGet()
       (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
-  def contentAddCarPost200(responseString: String): Route =
-    complete((200, responseString))
+  def contentAddCarPost200(responseutil.ContentAddResponse: util.ContentAddResponse)(implicit toEntityMarshallerutil.ContentAddResponse: ToEntityMarshaller[util.ContentAddResponse]): Route =
+    complete((200, responseutil.ContentAddResponse))
   def contentAddCarPost400(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((400, responseutil.HttpError))
   def contentAddCarPost500(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((500, responseutil.HttpError))
   /**
-   * Code: 200, Message: OK, DataType: String
+   * Code: 200, Message: OK, DataType: util.ContentAddResponse
    * Code: 400, Message: Bad Request, DataType: util.HttpError
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
-  def contentAddCarPost()
-      (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
+  def contentAddCarPost(body: String, ignoreDupes: Option[String], filename: Option[String])
+      (implicit toEntityMarshallerutil.ContentAddResponse: ToEntityMarshaller[util.ContentAddResponse], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
   def contentAddIpfsPost200(responseString: String): Route =
     complete((200, responseString))
@@ -407,19 +378,19 @@ trait ContentApiService {
   def contentAddIpfsPost(body: Types.IpfsPin, ignoreDupes: Option[String])
       (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
-  def contentAddPost200(responseString: String): Route =
-    complete((200, responseString))
+  def contentAddPost200(responseutil.ContentAddResponse: util.ContentAddResponse)(implicit toEntityMarshallerutil.ContentAddResponse: ToEntityMarshaller[util.ContentAddResponse]): Route =
+    complete((200, responseutil.ContentAddResponse))
   def contentAddPost400(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((400, responseutil.HttpError))
   def contentAddPost500(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((500, responseutil.HttpError))
   /**
-   * Code: 200, Message: OK, DataType: String
+   * Code: 200, Message: OK, DataType: util.ContentAddResponse
    * Code: 400, Message: Bad Request, DataType: util.HttpError
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
-  def contentAddPost()
-      (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
+  def contentAddPost(data: String, filename: String, coluuid: Option[String], replication: Option[Int], ignoreDupes: Option[String], lazyProvide: Option[String], dir: Option[String])
+      (implicit toEntityMarshallerutil.ContentAddResponse: ToEntityMarshaller[util.ContentAddResponse], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
   def contentAggregatedContentGet200(responseString: String): Route =
     complete((200, responseString))
@@ -547,20 +518,6 @@ trait ContentApiService {
   def contentIdGet(id: Int)
       (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
-  def contentImportdealPost200(responseString: String): Route =
-    complete((200, responseString))
-  def contentImportdealPost400(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
-    complete((400, responseutil.HttpError))
-  def contentImportdealPost500(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
-    complete((500, responseutil.HttpError))
-  /**
-   * Code: 200, Message: OK, DataType: String
-   * Code: 400, Message: Bad Request, DataType: util.HttpError
-   * Code: 500, Message: Internal Server Error, DataType: util.HttpError
-   */
-  def contentImportdealPost(body: Main.importDealBody)
-      (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
-
   def contentListGet200(responseString: String): Route =
     complete((200, responseString))
   def contentListGet400(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
@@ -573,20 +530,6 @@ trait ContentApiService {
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
   def contentListGet()
-      (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
-
-  def contentReadContGet200(responseString: String): Route =
-    complete((200, responseString))
-  def contentReadContGet400(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
-    complete((400, responseutil.HttpError))
-  def contentReadContGet500(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
-    complete((500, responseutil.HttpError))
-  /**
-   * Code: 200, Message: OK, DataType: String
-   * Code: 400, Message: Bad Request, DataType: util.HttpError
-   * Code: 500, Message: Internal Server Error, DataType: util.HttpError
-   */
-  def contentReadContGet(cont: String)
       (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
   def contentStagingZonesGet200(responseString: String): Route =
@@ -666,7 +609,7 @@ trait ContentApiMarshaller {
 
   implicit def fromRequestUnmarshallerTypes.IpfsPin: FromRequestUnmarshaller[Types.IpfsPin]
 
-  implicit def fromRequestUnmarshallerMain.importDealBody: FromRequestUnmarshaller[Main.importDealBody]
+  implicit def fromRequestUnmarshallerString: FromRequestUnmarshaller[String]
 
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
@@ -677,7 +620,7 @@ trait ContentApiMarshaller {
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 
-  implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
+  implicit def toEntityMarshallerutil.ContentAddResponse: ToEntityMarshaller[util.ContentAddResponse]
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 
@@ -687,11 +630,7 @@ trait ContentApiMarshaller {
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 
-  implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
-
-  implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
-
-  implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
+  implicit def toEntityMarshallerutil.ContentAddResponse: ToEntityMarshaller[util.ContentAddResponse]
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 

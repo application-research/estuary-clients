@@ -28,22 +28,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 public interface NetApi  {
 
     /**
-     * Net Addrs
-     *
-     * This endpoint is used to get net addrs
-     *
-     */
-    @GET
-    @Path("/net/addrs")
-    @Produces({ "application/json" })
-    @Operation(summary = "Net Addrs", tags={  })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
-        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
-        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public String netAddrsGet();
-
-    /**
      * Get all miners
      *
      * This endpoint returns all miners

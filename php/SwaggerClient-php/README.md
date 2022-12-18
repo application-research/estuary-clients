@@ -68,7 +68,7 @@ $apiInstance = new Swagger\Client\Api\AdminApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = array(True); // bool[] | Peer ids
+$body = array("body_example"); // string[] | Peer ids
 
 try {
     $result = $apiInstance->adminPeeringPeersDelete($body);
@@ -107,9 +107,10 @@ $apiInstance = new Swagger\Client\Api\AdminApi(
     new GuzzleHttp\Client(),
     $config
 );
+$body = array(new \Swagger\Client\Model\PeeringPeeringPeer()); // \Swagger\Client\Model\PeeringPeeringPeer[] | Peering Peer array
 
 try {
-    $result = $apiInstance->adminPeeringPeersPost();
+    $result = $apiInstance->adminPeeringPeersPost($body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdminApi->adminPeeringPeersPost: ', $e->getMessage(), PHP_EOL;
@@ -239,9 +240,9 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**collectionsPost**](docs/Api/CollectionsApi.md#collectionspost) | **POST** /collections/ | Create a new collection
 *ContentApi* | [**adminInvitesCodePost**](docs/Api/ContentApi.md#admininvitescodepost) | **POST** /admin/invites/{code} | Create an Estuary invite
 *ContentApi* | [**adminInvitesGet**](docs/Api/ContentApi.md#admininvitesget) | **GET** /admin/invites | Get Estuary invites
-*ContentApi* | [**contentAddCarPost**](docs/Api/ContentApi.md#contentaddcarpost) | **POST** /content/add-car | Upload content via a car file
+*ContentApi* | [**contentAddCarPost**](docs/Api/ContentApi.md#contentaddcarpost) | **POST** /content/add-car | Add Car object
 *ContentApi* | [**contentAddIpfsPost**](docs/Api/ContentApi.md#contentaddipfspost) | **POST** /content/add-ipfs | Add IPFS object
-*ContentApi* | [**contentAddPost**](docs/Api/ContentApi.md#contentaddpost) | **POST** /content/add | Upload a file
+*ContentApi* | [**contentAddPost**](docs/Api/ContentApi.md#contentaddpost) | **POST** /content/add | Add new content
 *ContentApi* | [**contentAggregatedContentGet**](docs/Api/ContentApi.md#contentaggregatedcontentget) | **GET** /content/aggregated/{content} | Get aggregated content stats
 *ContentApi* | [**contentAllDealsGet**](docs/Api/ContentApi.md#contentalldealsget) | **GET** /content/all-deals | Get all deals for a user
 *ContentApi* | [**contentBwUsageContentGet**](docs/Api/ContentApi.md#contentbwusagecontentget) | **GET** /content/bw-usage/{content} | Get content bandwidth
@@ -251,9 +252,7 @@ Class | Method | HTTP request | Description
 *ContentApi* | [**contentEnsureReplicationDatacidGet**](docs/Api/ContentApi.md#contentensurereplicationdatacidget) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
 *ContentApi* | [**contentFailuresContentGet**](docs/Api/ContentApi.md#contentfailurescontentget) | **GET** /content/failures/{content} | List all failures for a content
 *ContentApi* | [**contentIdGet**](docs/Api/ContentApi.md#contentidget) | **GET** /content/{id} | Content
-*ContentApi* | [**contentImportdealPost**](docs/Api/ContentApi.md#contentimportdealpost) | **POST** /content/importdeal | Import a deal
 *ContentApi* | [**contentListGet**](docs/Api/ContentApi.md#contentlistget) | **GET** /content/list | List all pinned content
-*ContentApi* | [**contentReadContGet**](docs/Api/ContentApi.md#contentreadcontget) | **GET** /content/read/{cont} | Read content
 *ContentApi* | [**contentStagingZonesGet**](docs/Api/ContentApi.md#contentstagingzonesget) | **GET** /content/staging-zones | Get staging zone for user, excluding its contents
 *ContentApi* | [**contentStagingZonesStagingZoneContentsGet**](docs/Api/ContentApi.md#contentstagingzonesstagingzonecontentsget) | **GET** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
 *ContentApi* | [**contentStagingZonesStagingZoneGet**](docs/Api/ContentApi.md#contentstagingzonesstagingzoneget) | **GET** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
@@ -281,7 +280,6 @@ Class | Method | HTTP request | Description
 *MinerApi* | [**minerUnsuspendMinerPut**](docs/Api/MinerApi.md#minerunsuspendminerput) | **PUT** /miner/unsuspend/{miner} | Unuspend Miner
 *MinerApi* | [**publicMinersDealsMinerGet**](docs/Api/MinerApi.md#publicminersdealsminerget) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *MinerApi* | [**publicMinersStatsMinerGet**](docs/Api/MinerApi.md#publicminersstatsminerget) | **GET** /public/miners/stats/{miner} | Get miner stats
-*NetApi* | [**netAddrsGet**](docs/Api/NetApi.md#netaddrsget) | **GET** /net/addrs | Net Addrs
 *NetApi* | [**publicMinersFailuresMinerGet**](docs/Api/NetApi.md#publicminersfailuresminerget) | **GET** /public/miners/failures/{miner} | Get all miners
 *NetApi* | [**publicMinersGet**](docs/Api/NetApi.md#publicminersget) | **GET** /public/miners | Get all miners
 *NetApi* | [**publicNetAddrsGet**](docs/Api/NetApi.md#publicnetaddrsget) | **GET** /public/net/addrs | Net Addrs
@@ -325,10 +323,11 @@ Class | Method | HTTP request | Description
  - [CollectionsCidType](docs/Model/CollectionsCidType.md)
  - [CollectionsCollection](docs/Model/CollectionsCollection.md)
  - [CollectionsCollectionListResponse](docs/Model/CollectionsCollectionListResponse.md)
- - [MainImportDealBody](docs/Model/MainImportDealBody.md)
+ - [ContentAddBody](docs/Model/ContentAddBody.md)
  - [MinerClaimMinerBody](docs/Model/MinerClaimMinerBody.md)
  - [MinerMinerSetInfoParams](docs/Model/MinerMinerSetInfoParams.md)
  - [MinerSuspendMinerBody](docs/Model/MinerSuspendMinerBody.md)
+ - [PeeringPeeringPeer](docs/Model/PeeringPeeringPeer.md)
  - [TypesIpfsListPinStatusResponse](docs/Model/TypesIpfsListPinStatusResponse.md)
  - [TypesIpfsPin](docs/Model/TypesIpfsPin.md)
  - [TypesIpfsPinStatusResponse](docs/Model/TypesIpfsPinStatusResponse.md)

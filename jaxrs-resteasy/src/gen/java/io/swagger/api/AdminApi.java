@@ -12,6 +12,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
+import io.swagger.model.PeeringPeeringPeer;
 import io.swagger.model.UtilHttpError;
 
 import java.util.Map;
@@ -31,7 +32,7 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 @Path("/admin")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-12-14T06:22:39.433Z[GMT]")public class AdminApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-12-18T07:30:24.829Z[GMT]")public class AdminApi  {
 
     @Inject AdminApiService service;
 
@@ -116,7 +117,7 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response adminPeeringPeersDelete(@Parameter(description = "Peer ids" ,required=true) List<Boolean> body,@Context SecurityContext securityContext)
+    public Response adminPeeringPeersDelete(@Parameter(description = "Peer ids" ,required=true) List<String> body,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.adminPeeringPeersDelete(body,securityContext);
     }
@@ -139,7 +140,7 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
     }
     @POST
     @Path("/peering/peers")
-    
+    @Consumes({ "*/*" })
     @Produces({ "application/json" })
     @Operation(summary = "Add peers on Peering Service", description = "This endpoint can be used to add a Peer from the Peering Service", security = {
         @SecurityRequirement(name = "bearerAuth")
@@ -150,9 +151,9 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response adminPeeringPeersPost(@Context SecurityContext securityContext)
+    public Response adminPeeringPeersPost(@Parameter(description = "Peering Peer array" ,required=true) List<PeeringPeeringPeer> body,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return service.adminPeeringPeersPost(securityContext);
+        return service.adminPeeringPeersPost(body,securityContext);
     }
     @POST
     @Path("/peering/start")

@@ -28,10 +28,11 @@ import {CidCid} from './model/CidCid';
 import {CollectionsCidType} from './model/CollectionsCidType';
 import {CollectionsCollection} from './model/CollectionsCollection';
 import {CollectionsCollectionListResponse} from './model/CollectionsCollectionListResponse';
-import {MainImportDealBody} from './model/MainImportDealBody';
+import {ContentAddBody} from './model/ContentAddBody';
 import {MinerClaimMinerBody} from './model/MinerClaimMinerBody';
 import {MinerMinerSetInfoParams} from './model/MinerMinerSetInfoParams';
 import {MinerSuspendMinerBody} from './model/MinerSuspendMinerBody';
+import {PeeringPeeringPeer} from './model/PeeringPeeringPeer';
 import {TypesIpfsListPinStatusResponse} from './model/TypesIpfsListPinStatusResponse';
 import {TypesIpfsPin} from './model/TypesIpfsPin';
 import {TypesIpfsPinStatusResponse} from './model/TypesIpfsPinStatusResponse';
@@ -185,10 +186,10 @@ export {
     CollectionsCollectionListResponse,
 
     /**
-     * The MainImportDealBody model constructor.
-     * @property {module:model/MainImportDealBody}
+     * The ContentAddBody model constructor.
+     * @property {module:model/ContentAddBody}
      */
-    MainImportDealBody,
+    ContentAddBody,
 
     /**
      * The MinerClaimMinerBody model constructor.
@@ -207,6 +208,12 @@ export {
      * @property {module:model/MinerSuspendMinerBody}
      */
     MinerSuspendMinerBody,
+
+    /**
+     * The PeeringPeeringPeer model constructor.
+     * @property {module:model/PeeringPeeringPeer}
+     */
+    PeeringPeeringPeer,
 
     /**
      * The TypesIpfsListPinStatusResponse model constructor.

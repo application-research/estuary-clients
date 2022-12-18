@@ -2,9 +2,11 @@ package io.swagger.api.impl;
 
 import io.swagger.api.*;
 import io.swagger.model.*;
+import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
-import io.swagger.model.MainImportDealBody;
+import java.io.File;
 import io.swagger.model.TypesIpfsPin;
+import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 
@@ -15,8 +17,8 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-12-14T06:22:38.963Z[GMT]")public class ContentApiServiceImpl implements ContentApi {
-      public Response contentAddCarPost(SecurityContext securityContext) {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-12-18T07:30:24.278Z[GMT]")public class ContentApiServiceImpl implements ContentApi {
+      public Response contentAddCarPost(String body,String ignoreDupes,String filename,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -24,7 +26,7 @@ import javax.ws.rs.core.SecurityContext;
       // do some magic!
       return Response.ok().build();
   }
-      public Response contentAddPost(SecurityContext securityContext) {
+      public Response contentAddPost(MultipartFormDataInput input,String coluuid,Integer replication,String ignoreDupes,String lazyProvide,String dir,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -64,15 +66,7 @@ import javax.ws.rs.core.SecurityContext;
       // do some magic!
       return Response.ok().build();
   }
-      public Response contentImportdealPost(MainImportDealBody body,SecurityContext securityContext) {
-      // do some magic!
-      return Response.ok().build();
-  }
       public Response contentListGet(SecurityContext securityContext) {
-      // do some magic!
-      return Response.ok().build();
-  }
-      public Response contentReadContGet(String cont,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }

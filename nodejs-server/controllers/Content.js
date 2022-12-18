@@ -23,8 +23,8 @@ module.exports.adminInvitesGET = function adminInvitesGET (req, res, next) {
     });
 };
 
-module.exports.contentAddPOST = function contentAddPOST (req, res, next) {
-  Content.contentAddPOST()
+module.exports.contentAddPOST = function contentAddPOST (req, res, next, coluuid, replication, ignoreDupes, lazyProvide, dir) {
+  Content.contentAddPOST(coluuid, replication, ignoreDupes, lazyProvide, dir)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -33,8 +33,8 @@ module.exports.contentAddPOST = function contentAddPOST (req, res, next) {
     });
 };
 
-module.exports.contentAdd_carPOST = function contentAdd_carPOST (req, res, next) {
-  Content.contentAdd_carPOST()
+module.exports.contentAdd_carPOST = function contentAdd_carPOST (req, res, next, body, ignoreDupes, filename) {
+  Content.contentAdd_carPOST(body, ignoreDupes, filename)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -143,28 +143,8 @@ module.exports.contentIdGET = function contentIdGET (req, res, next, id) {
     });
 };
 
-module.exports.contentImportdealPOST = function contentImportdealPOST (req, res, next, body) {
-  Content.contentImportdealPOST(body)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
 module.exports.contentListGET = function contentListGET (req, res, next) {
   Content.contentListGET()
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
-module.exports.contentReadContGET = function contentReadContGET (req, res, next, cont) {
-  Content.contentReadContGET(cont)
     .then(function (response) {
       utils.writeJson(res, response);
     })

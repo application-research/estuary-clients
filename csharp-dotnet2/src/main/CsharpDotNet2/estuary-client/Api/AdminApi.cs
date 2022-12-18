@@ -16,7 +16,7 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="body">Peer ids</param>
         /// <returns>string</returns>
-        string AdminPeeringPeersDelete (List<bool?> body);
+        string AdminPeeringPeersDelete (List<string> body);
         /// <summary>
         /// List all Peering peers This endpoint can be used to list all peers on Peering Service
         /// </summary>
@@ -25,8 +25,9 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Add peers on Peering Service This endpoint can be used to add a Peer from the Peering Service
         /// </summary>
+        /// <param name="body">Peering Peer array</param>
         /// <returns>string</returns>
-        string AdminPeeringPeersPost ();
+        string AdminPeeringPeersPost (List<PeeringPeeringPeer> body);
         /// <summary>
         /// Start Peering This endpoint can be used to start the Peering Service
         /// </summary>
@@ -112,7 +113,7 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="body">Peer ids</param>
         /// <returns>string</returns>
-        public string AdminPeeringPeersDelete (List<bool?> body)
+        public string AdminPeeringPeersDelete (List<string> body)
         {
             // verify the required parameter 'body' is set
             if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling AdminPeeringPeersDelete");
@@ -176,9 +177,12 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Add peers on Peering Service This endpoint can be used to add a Peer from the Peering Service
         /// </summary>
+        /// <param name="body">Peering Peer array</param>
         /// <returns>string</returns>
-        public string AdminPeeringPeersPost ()
+        public string AdminPeeringPeersPost (List<PeeringPeeringPeer> body)
         {
+            // verify the required parameter 'body' is set
+            if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling AdminPeeringPeersPost");
     
             var path = "/admin/peering/peers";
             path = path.Replace("{format}", "json");
@@ -189,7 +193,8 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                    
+                                    postBody = ApiClient.Serialize(body); // http body (model) parameter
+
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     

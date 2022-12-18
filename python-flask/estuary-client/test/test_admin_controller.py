@@ -5,6 +5,7 @@ from __future__ import absolute_import
 from flask import json
 from six import BytesIO
 
+from estuary-client.models.peering_peering_peer import PeeringPeeringPeer  # noqa: E501
 from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
 from estuary-client.test import BaseTestCase
 
@@ -17,7 +18,7 @@ class TestAdminController(BaseTestCase):
 
         Remove peers on Peering Service
         """
-        body = [True]
+        body = ['body_example']
         response = self.client.open(
             '/admin/peering/peers',
             method='DELETE',
@@ -42,9 +43,12 @@ class TestAdminController(BaseTestCase):
 
         Add peers on Peering Service
         """
+        body = [PeeringPeeringPeer()]
         response = self.client.open(
             '/admin/peering/peers',
-            method='POST')
+            method='POST',
+            data=json.dumps(body),
+            content_type='*/*')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 

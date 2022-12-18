@@ -126,20 +126,26 @@ module SwaggerClient
     end
     # Add peers on Peering Service
     # This endpoint can be used to add a Peer from the Peering Service
+    # @param body Peering Peer array
     # @param [Hash] opts the optional parameters
     # @return [String]
-    def admin_peering_peers_post(opts = {})
-      data, _status_code, _headers = admin_peering_peers_post_with_http_info(opts)
+    def admin_peering_peers_post(body, opts = {})
+      data, _status_code, _headers = admin_peering_peers_post_with_http_info(body, opts)
       data
     end
 
     # Add peers on Peering Service
     # This endpoint can be used to add a Peer from the Peering Service
+    # @param body Peering Peer array
     # @param [Hash] opts the optional parameters
     # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
-    def admin_peering_peers_post_with_http_info(opts = {})
+    def admin_peering_peers_post_with_http_info(body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: AdminApi.admin_peering_peers_post ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling AdminApi.admin_peering_peers_post"
       end
       # resource path
       local_var_path = '/admin/peering/peers'
@@ -151,12 +157,14 @@ module SwaggerClient
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['*/*'])
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:body] 
+      post_body = opts[:body] || @api_client.object_to_http_body(body) 
 
       return_type = opts[:return_type] || 'String' 
 

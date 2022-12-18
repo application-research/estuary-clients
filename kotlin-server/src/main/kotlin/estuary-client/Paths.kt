@@ -36,7 +36,7 @@ object Paths {
      * This endpoint can be used to remove a Peer from the Peering Service
      * @param body Peer ids 
      */
-    @Location("/admin/peering/peers") class adminPeeringPeersDelete(val body: kotlin.Array<kotlin.Boolean>)
+    @Location("/admin/peering/peers") class adminPeeringPeersDelete(val body: kotlin.Array<kotlin.String>)
 
     /**
      * List all Peering peers
@@ -47,8 +47,9 @@ object Paths {
     /**
      * Add peers on Peering Service
      * This endpoint can be used to add a Peer from the Peering Service
+     * @param body Peering Peer array 
      */
-    @Location("/admin/peering/peers") class adminPeeringPeersPost()
+    @Location("/admin/peering/peers") class adminPeeringPeersPost(val body: kotlin.Array<PeeringPeeringPeer>)
 
     /**
      * Start Peering
@@ -176,10 +177,13 @@ object Paths {
     @Location("/admin/invites") class adminInvitesGet()
 
     /**
-     * Upload content via a car file
-     * This endpoint uploads content via a car file
+     * Add Car object
+     * This endpoint is used to add a car object to the network. The object can be a file or a directory.
+     * @param body Car 
+     * @param ignoreDupes Ignore Dupes (optional)
+     * @param filename Filename (optional)
      */
-    @Location("/content/add-car") class contentAddCarPost()
+    @Location("/content/add-car") class contentAddCarPost(val body: kotlin.String, val ignoreDupes: kotlin.String, val filename: kotlin.String)
 
     /**
      * Add IPFS object
@@ -190,10 +194,17 @@ object Paths {
     @Location("/content/add-ipfs") class contentAddIpfsPost(val body: TypesIpfsPin, val ignoreDupes: kotlin.String)
 
     /**
-     * Upload a file
-     * This endpoint uploads a file.
+     * Add new content
+     * This endpoint is used to upload new content.
+     * @param &#x60;data&#x60;  
+     * @param filename  
+     * @param coluuid Collection UUID (optional)
+     * @param replication Replication value (optional)
+     * @param ignoreDupes Ignore Dupes true/false (optional)
+     * @param lazyProvide Lazy Provide true/false (optional)
+     * @param dir Directory (optional)
      */
-    @Location("/content/add") class contentAddPost()
+    @Location("/content/add") class contentAddPost(val &#x60;data&#x60;: kotlin.Array<kotlin.Byte>, val filename: kotlin.String, val coluuid: kotlin.String, val replication: kotlin.Int, val ignoreDupes: kotlin.String, val lazyProvide: kotlin.String, val dir: kotlin.String)
 
     /**
      * Get aggregated content stats
@@ -264,24 +275,10 @@ object Paths {
     @Location("/content/{id}") class contentIdGet(val id: kotlin.Int)
 
     /**
-     * Import a deal
-     * This endpoint imports a deal into the shuttle.
-     * @param body Import a deal 
-     */
-    @Location("/content/importdeal") class contentImportdealPost(val body: MainimportDealBody)
-
-    /**
      * List all pinned content
      * This endpoint lists all content
      */
     @Location("/content/list") class contentListGet()
-
-    /**
-     * Read content
-     * This endpoint reads content from the blockstore
-     * @param cont CID 
-     */
-    @Location("/content/read/{cont}") class contentReadContGet(val cont: kotlin.String)
 
     /**
      * Get staging zone for user, excluding its contents
@@ -473,12 +470,6 @@ object Paths {
      * @param miner Filter by miner 
      */
     @Location("/public/miners/stats/{miner}") class publicMinersStatsMinerGet(val miner: kotlin.String)
-
-    /**
-     * Net Addrs
-     * This endpoint is used to get net addrs
-     */
-    @Location("/net/addrs") class netAddrsGet()
 
     /**
      * Get all miners

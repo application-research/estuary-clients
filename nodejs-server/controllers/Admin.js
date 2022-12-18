@@ -23,8 +23,8 @@ module.exports.adminPeeringPeersGET = function adminPeeringPeersGET (req, res, n
     });
 };
 
-module.exports.adminPeeringPeersPOST = function adminPeeringPeersPOST (req, res, next) {
-  Admin.adminPeeringPeersPOST()
+module.exports.adminPeeringPeersPOST = function adminPeeringPeersPOST (req, res, next, body) {
+  Admin.adminPeeringPeersPOST(body)
     .then(function (response) {
       utils.writeJson(res, response);
     })

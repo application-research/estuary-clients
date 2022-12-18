@@ -42,7 +42,7 @@ class AdminApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param list[bool] body: Peer ids (required)
+        :param list[str] body: Peer ids (required)
         :return: str
                  If the method is called asynchronously,
                  returns the request thread.
@@ -64,7 +64,7 @@ class AdminApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param list[bool] body: Peer ids (required)
+        :param list[str] body: Peer ids (required)
         :return: str
                  If the method is called asynchronously,
                  returns the request thread.
@@ -218,43 +218,45 @@ class AdminApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def admin_peering_peers_post(self, **kwargs):  # noqa: E501
+    def admin_peering_peers_post(self, body, **kwargs):  # noqa: E501
         """Add peers on Peering Service  # noqa: E501
 
         This endpoint can be used to add a Peer from the Peering Service  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.admin_peering_peers_post(async_req=True)
+        >>> thread = api.admin_peering_peers_post(body, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param list[PeeringPeeringPeer] body: Peering Peer array (required)
         :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.admin_peering_peers_post_with_http_info(**kwargs)  # noqa: E501
+            return self.admin_peering_peers_post_with_http_info(body, **kwargs)  # noqa: E501
         else:
-            (data) = self.admin_peering_peers_post_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.admin_peering_peers_post_with_http_info(body, **kwargs)  # noqa: E501
             return data
 
-    def admin_peering_peers_post_with_http_info(self, **kwargs):  # noqa: E501
+    def admin_peering_peers_post_with_http_info(self, body, **kwargs):  # noqa: E501
         """Add peers on Peering Service  # noqa: E501
 
         This endpoint can be used to add a Peer from the Peering Service  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.admin_peering_peers_post_with_http_info(async_req=True)
+        >>> thread = api.admin_peering_peers_post_with_http_info(body, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
+        :param list[PeeringPeeringPeer] body: Peering Peer array (required)
         :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['body']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -269,6 +271,10 @@ class AdminApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'body' is set
+        if ('body' not in params or
+                params['body'] is None):
+            raise ValueError("Missing the required parameter `body` when calling `admin_peering_peers_post`")  # noqa: E501
 
         collection_formats = {}
 
@@ -282,9 +288,15 @@ class AdminApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'body' in params:
+            body_params = params['body']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.select_header_content_type(  # noqa: E501
+            ['*/*'])  # noqa: E501
 
         # Authentication setting
         auth_settings = ['bearerAuth']  # noqa: E501

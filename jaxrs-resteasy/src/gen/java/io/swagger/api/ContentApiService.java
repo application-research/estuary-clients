@@ -2,9 +2,11 @@ package io.swagger.api;
 
 import io.swagger.api.*;
 import io.swagger.model.*;
+import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
-import io.swagger.model.MainImportDealBody;
+import java.io.File;
 import io.swagger.model.TypesIpfsPin;
+import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 
@@ -16,12 +18,12 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-12-14T06:22:39.433Z[GMT]")public interface ContentApiService {
-      Response contentAddCarPost(SecurityContext securityContext)
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-12-18T07:30:24.829Z[GMT]")public interface ContentApiService {
+      Response contentAddCarPost(String body,String ignoreDupes,String filename,SecurityContext securityContext)
       throws NotFoundException;
       Response contentAddIpfsPost(TypesIpfsPin body,String ignoreDupes,SecurityContext securityContext)
       throws NotFoundException;
-      Response contentAddPost(SecurityContext securityContext)
+      Response contentAddPost(MultipartFormDataInput input,String coluuid,Integer replication,String ignoreDupes,String lazyProvide,String dir,SecurityContext securityContext)
       throws NotFoundException;
       Response contentAggregatedContentGet(String content,SecurityContext securityContext)
       throws NotFoundException;
@@ -41,11 +43,7 @@ import javax.ws.rs.core.SecurityContext;
       throws NotFoundException;
       Response contentIdGet(Integer id,SecurityContext securityContext)
       throws NotFoundException;
-      Response contentImportdealPost(MainImportDealBody body,SecurityContext securityContext)
-      throws NotFoundException;
       Response contentListGet(SecurityContext securityContext)
-      throws NotFoundException;
-      Response contentReadContGet(String cont,SecurityContext securityContext)
       throws NotFoundException;
       Response contentStagingZonesGet(SecurityContext securityContext)
       throws NotFoundException;

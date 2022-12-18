@@ -12,11 +12,6 @@ namespace IO.Swagger.Api
     public interface INetApi
     {
         /// <summary>
-        /// Net Addrs This endpoint is used to get net addrs
-        /// </summary>
-        /// <returns>string</returns>
-        string NetAddrsGet ();
-        /// <summary>
         /// Get all miners This endpoint returns all miners
         /// </summary>
         /// <param name="miner">Filter by miner</param>
@@ -91,37 +86,6 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <value>An instance of the ApiClient</value>
         public ApiClient ApiClient {get; set;}
-    
-        /// <summary>
-        /// Net Addrs This endpoint is used to get net addrs
-        /// </summary>
-        /// <returns>string</returns>
-        public string NetAddrsGet ()
-        {
-    
-            var path = "/net/addrs";
-            path = path.Replace("{format}", "json");
-                
-            var queryParams = new Dictionary<String, String>();
-            var headerParams = new Dictionary<String, String>();
-            var formParams = new Dictionary<String, String>();
-            var fileParams = new Dictionary<String, FileParameter>();
-            String postBody = null;
-    
-                                    
-            // authentication setting, if any
-            String[] authSettings = new String[] { "bearerAuth" };
-    
-            // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
-    
-            if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling NetAddrsGet: " + response.Content, response.Content);
-            else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling NetAddrsGet: " + response.ErrorMessage, response.ErrorMessage);
-    
-            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
-        }
     
         /// <summary>
         /// Get all miners This endpoint returns all miners

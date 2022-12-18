@@ -3,16 +3,6 @@
 var utils = require('../utils/writer.js');
 var Net = require('../service/NetService');
 
-module.exports.netAddrsGET = function netAddrsGET (req, res, next) {
-  Net.netAddrsGET()
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
 module.exports.publicMinersFailuresMinerGET = function publicMinersFailuresMinerGET (req, res, next, miner) {
   Net.publicMinersFailuresMinerGET(miner)
     .then(function (response) {

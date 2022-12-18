@@ -11,9 +11,9 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**adminInvitesCodePost**](ContentApi.md#adminInvitesCodePost) | **POST** /admin/invites/{code} | Create an Estuary invite
 [**adminInvitesGet**](ContentApi.md#adminInvitesGet) | **GET** /admin/invites | Get Estuary invites
-[**contentAddCarPost**](ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Upload content via a car file
+[**contentAddCarPost**](ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Add Car object
 [**contentAddIpfsPost**](ContentApi.md#contentAddIpfsPost) | **POST** /content/add-ipfs | Add IPFS object
-[**contentAddPost**](ContentApi.md#contentAddPost) | **POST** /content/add | Upload a file
+[**contentAddPost**](ContentApi.md#contentAddPost) | **POST** /content/add | Add new content
 [**contentAggregatedContentGet**](ContentApi.md#contentAggregatedContentGet) | **GET** /content/aggregated/{content} | Get aggregated content stats
 [**contentAllDealsGet**](ContentApi.md#contentAllDealsGet) | **GET** /content/all-deals | Get all deals for a user
 [**contentBwUsageContentGet**](ContentApi.md#contentBwUsageContentGet) | **GET** /content/bw-usage/{content} | Get content bandwidth
@@ -23,9 +23,7 @@ Method | HTTP request | Description
 [**contentEnsureReplicationDatacidGet**](ContentApi.md#contentEnsureReplicationDatacidGet) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
 [**contentFailuresContentGet**](ContentApi.md#contentFailuresContentGet) | **GET** /content/failures/{content} | List all failures for a content
 [**contentIdGet**](ContentApi.md#contentIdGet) | **GET** /content/{id} | Content
-[**contentImportdealPost**](ContentApi.md#contentImportdealPost) | **POST** /content/importdeal | Import a deal
 [**contentListGet**](ContentApi.md#contentListGet) | **GET** /content/list | List all pinned content
-[**contentReadContGet**](ContentApi.md#contentReadContGet) | **GET** /content/read/{cont} | Read content
 [**contentStagingZonesGet**](ContentApi.md#contentStagingZonesGet) | **GET** /content/staging-zones | Get staging zone for user, excluding its contents
 [**contentStagingZonesStagingZoneContentsGet**](ContentApi.md#contentStagingZonesStagingZoneContentsGet) | **GET** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
 [**contentStagingZonesStagingZoneGet**](ContentApi.md#contentStagingZonesStagingZoneGet) | **GET** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
@@ -123,11 +121,11 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **contentAddCarPost**
-> String contentAddCarPost()
+> UtilContentAddResponse contentAddCarPost(body, ignoreDupes, filename)
 
-Upload content via a car file
+Add Car object
 
-This endpoint uploads content via a car file
+This endpoint is used to add a car object to the network. The object can be a file or a directory.
 
 ### Example
 ```dart
@@ -138,9 +136,12 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new ContentApi();
+var body = new String(); // String | Car
+var ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
+var filename = filename_example; // String | Filename
 
 try {
-    var result = api_instance.contentAddCarPost();
+    var result = api_instance.contentAddCarPost(body, ignoreDupes, filename);
     print(result);
 } catch (e) {
     print("Exception when calling ContentApi->contentAddCarPost: $e\n");
@@ -148,11 +149,16 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**String**](String.md)| Car | 
+ **ignoreDupes** | **String**| Ignore Dupes | [optional] 
+ **filename** | **String**| Filename | [optional] 
 
 ### Return type
 
-**String**
+[**UtilContentAddResponse**](UtilContentAddResponse.md)
 
 ### Authorization
 
@@ -160,7 +166,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -215,11 +221,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **contentAddPost**
-> String contentAddPost()
+> UtilContentAddResponse contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir)
 
-Upload a file
+Add new content
 
-This endpoint uploads a file.
+This endpoint is used to upload new content.
 
 ### Example
 ```dart
@@ -230,9 +236,16 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new ContentApi();
+var data = data_example; // String | 
+var filename = filename_example; // String | 
+var coluuid = coluuid_example; // String | Collection UUID
+var replication = 56; // int | Replication value
+var ignoreDupes = ignoreDupes_example; // String | Ignore Dupes true/false
+var lazyProvide = lazyProvide_example; // String | Lazy Provide true/false
+var dir = dir_example; // String | Directory
 
 try {
-    var result = api_instance.contentAddPost();
+    var result = api_instance.contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir);
     print(result);
 } catch (e) {
     print("Exception when calling ContentApi->contentAddPost: $e\n");
@@ -240,11 +253,20 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data** | **String****String**|  | 
+ **filename** | **String**|  | 
+ **coluuid** | **String**| Collection UUID | [optional] 
+ **replication** | **int**| Replication value | [optional] 
+ **ignoreDupes** | **String**| Ignore Dupes true/false | [optional] 
+ **lazyProvide** | **String**| Lazy Provide true/false | [optional] 
+ **dir** | **String**| Directory | [optional] 
 
 ### Return type
 
-**String**
+[**UtilContentAddResponse**](UtilContentAddResponse.md)
 
 ### Authorization
 
@@ -252,7 +274,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -690,53 +712,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **contentImportdealPost**
-> String contentImportdealPost(body)
-
-Import a deal
-
-This endpoint imports a deal into the shuttle.
-
-### Example
-```dart
-import 'package:swagger/api.dart';
-// TODO Configure API key authorization: bearerAuth
-//swagger.api.Configuration.apiKey{'Authorization'} = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
-
-var api_instance = new ContentApi();
-var body = new MainImportDealBody(); // MainImportDealBody | Import a deal
-
-try {
-    var result = api_instance.contentImportdealPost(body);
-    print(result);
-} catch (e) {
-    print("Exception when calling ContentApi->contentImportdealPost: $e\n");
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**MainImportDealBody**](MainImportDealBody.md)| Import a deal | 
-
-### Return type
-
-**String**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: */*
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **contentListGet**
 > String contentListGet()
 
@@ -764,53 +739,6 @@ try {
 
 ### Parameters
 This endpoint does not need any parameter.
-
-### Return type
-
-**String**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **contentReadContGet**
-> String contentReadContGet(cont)
-
-Read content
-
-This endpoint reads content from the blockstore
-
-### Example
-```dart
-import 'package:swagger/api.dart';
-// TODO Configure API key authorization: bearerAuth
-//swagger.api.Configuration.apiKey{'Authorization'} = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
-
-var api_instance = new ContentApi();
-var cont = cont_example; // String | CID
-
-try {
-    var result = api_instance.contentReadContGet(cont);
-    print(result);
-} catch (e) {
-    print("Exception when calling ContentApi->contentReadContGet: $e\n");
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **cont** | **String**| CID | 
 
 ### Return type
 

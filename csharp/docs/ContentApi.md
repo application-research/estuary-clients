@@ -6,9 +6,9 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AdminInvitesCodePost**](ContentApi.md#admininvitescodepost) | **POST** /admin/invites/{code} | Create an Estuary invite
 [**AdminInvitesGet**](ContentApi.md#admininvitesget) | **GET** /admin/invites | Get Estuary invites
-[**ContentAddCarPost**](ContentApi.md#contentaddcarpost) | **POST** /content/add-car | Upload content via a car file
+[**ContentAddCarPost**](ContentApi.md#contentaddcarpost) | **POST** /content/add-car | Add Car object
 [**ContentAddIpfsPost**](ContentApi.md#contentaddipfspost) | **POST** /content/add-ipfs | Add IPFS object
-[**ContentAddPost**](ContentApi.md#contentaddpost) | **POST** /content/add | Upload a file
+[**ContentAddPost**](ContentApi.md#contentaddpost) | **POST** /content/add | Add new content
 [**ContentAggregatedContentGet**](ContentApi.md#contentaggregatedcontentget) | **GET** /content/aggregated/{content} | Get aggregated content stats
 [**ContentAllDealsGet**](ContentApi.md#contentalldealsget) | **GET** /content/all-deals | Get all deals for a user
 [**ContentBwUsageContentGet**](ContentApi.md#contentbwusagecontentget) | **GET** /content/bw-usage/{content} | Get content bandwidth
@@ -18,9 +18,7 @@ Method | HTTP request | Description
 [**ContentEnsureReplicationDatacidGet**](ContentApi.md#contentensurereplicationdatacidget) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
 [**ContentFailuresContentGet**](ContentApi.md#contentfailurescontentget) | **GET** /content/failures/{content} | List all failures for a content
 [**ContentIdGet**](ContentApi.md#contentidget) | **GET** /content/{id} | Content
-[**ContentImportdealPost**](ContentApi.md#contentimportdealpost) | **POST** /content/importdeal | Import a deal
 [**ContentListGet**](ContentApi.md#contentlistget) | **GET** /content/list | List all pinned content
-[**ContentReadContGet**](ContentApi.md#contentreadcontget) | **GET** /content/read/{cont} | Read content
 [**ContentStagingZonesGet**](ContentApi.md#contentstagingzonesget) | **GET** /content/staging-zones | Get staging zone for user, excluding its contents
 [**ContentStagingZonesStagingZoneContentsGet**](ContentApi.md#contentstagingzonesstagingzonecontentsget) | **GET** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
 [**ContentStagingZonesStagingZoneGet**](ContentApi.md#contentstagingzonesstagingzoneget) | **GET** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
@@ -155,11 +153,11 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="contentaddcarpost"></a>
 # **ContentAddCarPost**
-> string ContentAddCarPost ()
+> UtilContentAddResponse ContentAddCarPost (string body, string ignoreDupes = null, string filename = null)
 
-Upload content via a car file
+Add Car object
 
-This endpoint uploads content via a car file
+This endpoint is used to add a car object to the network. The object can be a file or a directory.
 
 ### Example
 ```csharp
@@ -181,11 +179,14 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new ContentApi();
+            var body = new string(); // string | Car
+            var ignoreDupes = ignoreDupes_example;  // string | Ignore Dupes (optional) 
+            var filename = filename_example;  // string | Filename (optional) 
 
             try
             {
-                // Upload content via a car file
-                string result = apiInstance.ContentAddCarPost();
+                // Add Car object
+                UtilContentAddResponse result = apiInstance.ContentAddCarPost(body, ignoreDupes, filename);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -198,11 +199,16 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**string**](string.md)| Car | 
+ **ignoreDupes** | **string**| Ignore Dupes | [optional] 
+ **filename** | **string**| Filename | [optional] 
 
 ### Return type
 
-**string**
+[**UtilContentAddResponse**](UtilContentAddResponse.md)
 
 ### Authorization
 
@@ -210,7 +216,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -283,11 +289,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="contentaddpost"></a>
 # **ContentAddPost**
-> string ContentAddPost ()
+> UtilContentAddResponse ContentAddPost (byte[] data, string filename, string coluuid = null, int? replication = null, string ignoreDupes = null, string lazyProvide = null, string dir = null)
 
-Upload a file
+Add new content
 
-This endpoint uploads a file.
+This endpoint is used to upload new content.
 
 ### Example
 ```csharp
@@ -309,11 +315,18 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new ContentApi();
+            var data = data_example;  // byte[] | 
+            var filename = filename_example;  // string | 
+            var coluuid = coluuid_example;  // string | Collection UUID (optional) 
+            var replication = 56;  // int? | Replication value (optional) 
+            var ignoreDupes = ignoreDupes_example;  // string | Ignore Dupes true/false (optional) 
+            var lazyProvide = lazyProvide_example;  // string | Lazy Provide true/false (optional) 
+            var dir = dir_example;  // string | Directory (optional) 
 
             try
             {
-                // Upload a file
-                string result = apiInstance.ContentAddPost();
+                // Add new content
+                UtilContentAddResponse result = apiInstance.ContentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -326,11 +339,20 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data** | **byte[]****byte[]**|  | 
+ **filename** | **string**|  | 
+ **coluuid** | **string**| Collection UUID | [optional] 
+ **replication** | **int?**| Replication value | [optional] 
+ **ignoreDupes** | **string**| Ignore Dupes true/false | [optional] 
+ **lazyProvide** | **string**| Lazy Provide true/false | [optional] 
+ **dir** | **string**| Directory | [optional] 
 
 ### Return type
 
-**string**
+[**UtilContentAddResponse**](UtilContentAddResponse.md)
 
 ### Authorization
 
@@ -338,7 +360,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -937,71 +959,6 @@ Name | Type | Description  | Notes
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-<a name="contentimportdealpost"></a>
-# **ContentImportdealPost**
-> string ContentImportdealPost (MainImportDealBody body)
-
-Import a deal
-
-This endpoint imports a deal into the shuttle.
-
-### Example
-```csharp
-using System;
-using System.Diagnostics;
-using estuary-client.Api;
-using estuary-client.Client;
-using estuary-client.Model;
-
-namespace Example
-{
-    public class ContentImportdealPostExample
-    {
-        public void main()
-        {
-            // Configure API key authorization: bearerAuth
-            Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
-
-            var apiInstance = new ContentApi();
-            var body = new MainImportDealBody(); // MainImportDealBody | Import a deal
-
-            try
-            {
-                // Import a deal
-                string result = apiInstance.ContentImportdealPost(body);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling ContentApi.ContentImportdealPost: " + e.Message );
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**MainImportDealBody**](MainImportDealBody.md)| Import a deal | 
-
-### Return type
-
-**string**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: */*
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="contentlistget"></a>
 # **ContentListGet**
 > string ContentListGet ()
@@ -1048,71 +1005,6 @@ namespace Example
 
 ### Parameters
 This endpoint does not need any parameter.
-
-### Return type
-
-**string**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-<a name="contentreadcontget"></a>
-# **ContentReadContGet**
-> string ContentReadContGet (string cont)
-
-Read content
-
-This endpoint reads content from the blockstore
-
-### Example
-```csharp
-using System;
-using System.Diagnostics;
-using estuary-client.Api;
-using estuary-client.Client;
-using estuary-client.Model;
-
-namespace Example
-{
-    public class ContentReadContGetExample
-    {
-        public void main()
-        {
-            // Configure API key authorization: bearerAuth
-            Configuration.Default.AddApiKey("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
-
-            var apiInstance = new ContentApi();
-            var cont = cont_example;  // string | CID
-
-            try
-            {
-                // Read content
-                string result = apiInstance.ContentReadContGet(cont);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling ContentApi.ContentReadContGet: " + e.Message );
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **cont** | **string**| CID | 
 
 ### Return type
 

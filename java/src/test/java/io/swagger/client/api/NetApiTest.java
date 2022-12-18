@@ -32,20 +32,6 @@ public class NetApiTest {
     private final NetApi api = new NetApi();
 
     /**
-     * Net Addrs
-     *
-     * This endpoint is used to get net addrs
-     *
-     * @throws Exception
-     *          if the Api call fails
-     */
-    @Test
-    public void netAddrsGetTest() throws Exception {
-        String response = api.netAddrsGet();
-
-        // TODO: test validations
-    }
-    /**
      * Get all miners
      *
      * This endpoint returns all miners

@@ -6,8 +6,9 @@ import io.swagger.model.*;
 import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 import org.apache.cxf.jaxrs.ext.multipart.Multipart;
 
-import io.swagger.model.MainImportDealBody;
+import java.io.File;
 import io.swagger.model.TypesIpfsPin;
+import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 
@@ -18,10 +19,10 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-12-14T06:22:39.301Z[GMT]")public interface ContentApiService {
-      public Response contentAddCarPost(SecurityContext securityContext);
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-12-18T07:30:26.140Z[GMT]")public interface ContentApiService {
+      public Response contentAddCarPost(String body, String ignoreDupes, String filename, SecurityContext securityContext);
       public Response contentAddIpfsPost(TypesIpfsPin body, String ignoreDupes, SecurityContext securityContext);
-      public Response contentAddPost(SecurityContext securityContext);
+      public Response contentAddPost(InputStream dataInputStream, Attachment dataDetail, String filename, String coluuid, Integer replication, String ignoreDupes, String lazyProvide, String dir, SecurityContext securityContext);
       public Response contentAggregatedContentGet(String content, SecurityContext securityContext);
       public Response contentAllDealsGet(String begin, String duration, String all, SecurityContext securityContext);
       public Response contentBwUsageContentGet(String content, SecurityContext securityContext);
@@ -31,9 +32,7 @@ import javax.ws.rs.core.SecurityContext;
       public Response contentEnsureReplicationDatacidGet(String datacid, SecurityContext securityContext);
       public Response contentFailuresContentGet(String content, SecurityContext securityContext);
       public Response contentIdGet(Integer id, SecurityContext securityContext);
-      public Response contentImportdealPost(MainImportDealBody body, SecurityContext securityContext);
       public Response contentListGet(SecurityContext securityContext);
-      public Response contentReadContGet(String cont, SecurityContext securityContext);
       public Response contentStagingZonesGet(SecurityContext securityContext);
       public Response contentStagingZonesStagingZoneContentsGet(Integer stagingZone, String limit, String offset, SecurityContext securityContext);
       public Response contentStagingZonesStagingZoneGet(Integer stagingZone, SecurityContext securityContext);

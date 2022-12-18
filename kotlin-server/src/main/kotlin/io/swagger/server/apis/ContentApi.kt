@@ -33,8 +33,8 @@ import estuary-client.Paths
 import estuary-client.infrastructure.ApiPrincipal
 
 
-import io.swagger.server.models.MainimportDealBody
 import io.swagger.server.models.TypesIpfsPin
+import io.swagger.server.models.UtilContentAddResponse
 import io.swagger.server.models.UtilContentCreateBody
 import io.swagger.server.models.UtilHttpError
 
@@ -76,7 +76,13 @@ fun Route.ContentApi() {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
             val exampleContentType = "application/json"
-            val exampleContentString = """"""""
+            val exampleContentString = """{
+  "retrieval_url" : "retrieval_url",
+  "estuaryId" : 0,
+  "estuary_retrieval_url" : "estuary_retrieval_url",
+  "providers" : [ "providers", "providers" ],
+  "cid" : "cid"
+}"""
             
             when(exampleContentType) {
                 "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
@@ -104,7 +110,13 @@ fun Route.ContentApi() {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
             val exampleContentType = "application/json"
-            val exampleContentString = """"""""
+            val exampleContentString = """{
+  "retrieval_url" : "retrieval_url",
+  "estuaryId" : 0,
+  "estuary_retrieval_url" : "estuary_retrieval_url",
+  "providers" : [ "providers", "providers" ],
+  "cid" : "cid"
+}"""
             
             when(exampleContentType) {
                 "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
@@ -238,35 +250,7 @@ fun Route.ContentApi() {
                 else -> call.respondText(exampleContentString)
             }        }
     }
-    post<Paths.contentImportdealPost> {  _: Paths.contentImportdealPost ->
-        val principal = call.authentication.principal<ApiPrincipal>()
-        if (principal == null) {
-            call.respond(HttpStatusCode.Unauthorized)
-        } else {
-            val exampleContentType = "application/json"
-            val exampleContentString = """"""""
-            
-            when(exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
-                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
-                else -> call.respondText(exampleContentString)
-            }        }
-    }
     get<Paths.contentListGet> {  _: Paths.contentListGet ->
-        val principal = call.authentication.principal<ApiPrincipal>()
-        if (principal == null) {
-            call.respond(HttpStatusCode.Unauthorized)
-        } else {
-            val exampleContentType = "application/json"
-            val exampleContentString = """"""""
-            
-            when(exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
-                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
-                else -> call.respondText(exampleContentString)
-            }        }
-    }
-    get<Paths.contentReadContGet> {  _: Paths.contentReadContGet ->
         val principal = call.authentication.principal<ApiPrincipal>()
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)

@@ -17,9 +17,6 @@
 #' @section Methods:
 #' \describe{
 #'
-#' net_addrs_get Net Addrs
-#'
-#'
 #' public_miners_failures_miner_get Get all miners
 #'
 #'
@@ -47,30 +44,6 @@ NetApi <- R6::R6Class(
         self$apiClient <- ApiClient$new()
       }
     },
-    net_addrs_get = function(...){
-      args <- list(...)
-      queryParams <- list()
-      headerParams <- character()
-
-      urlPath <- "/net/addrs"
-      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
-                                 method = "GET",
-                                 queryParams = queryParams,
-                                 headerParams = headerParams,
-                                 body = body,
-                                 ...)
-      
-      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- Character$new()
-        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
-        Response$new(returnObject, resp)
-      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
-        Response$new("API client error", resp)
-      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
-        Response$new("API server error", resp)
-      }
-
-    }
     public_miners_failures_miner_get = function(miner, ...){
       args <- list(...)
       queryParams <- list()

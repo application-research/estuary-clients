@@ -19,10 +19,11 @@ CidCid : io.swagger.model.CidCid
 CollectionsCidType : io.swagger.model.CollectionsCidType
 CollectionsCollection : io.swagger.model.CollectionsCollection
 CollectionsCollectionListResponse : io.swagger.model.CollectionsCollectionListResponse
-MainImportDealBody : io.swagger.model.MainImportDealBody
+ContentAddBody : io.swagger.model.ContentAddBody
 MinerClaimMinerBody : io.swagger.model.MinerClaimMinerBody
 MinerMinerSetInfoParams : io.swagger.model.MinerMinerSetInfoParams
 MinerSuspendMinerBody : io.swagger.model.MinerSuspendMinerBody
+PeeringPeeringPeer : io.swagger.model.PeeringPeeringPeer
 TypesIpfsListPinStatusResponse : io.swagger.model.TypesIpfsListPinStatusResponse
 TypesIpfsPin : io.swagger.model.TypesIpfsPin
 TypesIpfsPinStatusResponse : io.swagger.model.TypesIpfsPinStatusResponse

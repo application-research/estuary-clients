@@ -1,5 +1,6 @@
 package io.swagger.api;
 
+import io.swagger.model.PeeringPeeringPeer;
 import io.swagger.model.UtilHttpError;
 
 import javax.ws.rs.*;
@@ -21,7 +22,7 @@ import javax.validation.Valid;
 
 @Path("/admin")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2022-12-14T06:22:41.298Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2022-12-18T07:30:27.375Z[GMT]")
 public class AdminApi {
 
     @POST
@@ -91,7 +92,7 @@ public class AdminApi {
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
     })
-    public Response adminPeeringPeersDelete(@Valid List<Boolean> body) {
+    public Response adminPeeringPeersDelete(@Valid List<String> body) {
         return Response.ok().entity("magic!").build();
     }
     @GET
@@ -109,6 +110,7 @@ public class AdminApi {
     }
     @POST
     @Path("/peering/peers")
+    @Consumes({ "*/*" })
     @Produces({ "application/json" })
     @Operation(summary = "Add peers on Peering Service", description = "This endpoint can be used to add a Peer from the Peering Service", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "admin" })
@@ -117,7 +119,7 @@ public class AdminApi {
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
     })
-    public Response adminPeeringPeersPost() {
+    public Response adminPeeringPeersPost(@Valid List<PeeringPeeringPeer> body) {
         return Response.ok().entity("magic!").build();
     }
     @POST

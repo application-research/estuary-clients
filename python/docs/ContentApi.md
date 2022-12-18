@@ -6,9 +6,9 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**admin_invites_code_post**](ContentApi.md#admin_invites_code_post) | **POST** /admin/invites/{code} | Create an Estuary invite
 [**admin_invites_get**](ContentApi.md#admin_invites_get) | **GET** /admin/invites | Get Estuary invites
-[**content_add_car_post**](ContentApi.md#content_add_car_post) | **POST** /content/add-car | Upload content via a car file
+[**content_add_car_post**](ContentApi.md#content_add_car_post) | **POST** /content/add-car | Add Car object
 [**content_add_ipfs_post**](ContentApi.md#content_add_ipfs_post) | **POST** /content/add-ipfs | Add IPFS object
-[**content_add_post**](ContentApi.md#content_add_post) | **POST** /content/add | Upload a file
+[**content_add_post**](ContentApi.md#content_add_post) | **POST** /content/add | Add new content
 [**content_aggregated_content_get**](ContentApi.md#content_aggregated_content_get) | **GET** /content/aggregated/{content} | Get aggregated content stats
 [**content_all_deals_get**](ContentApi.md#content_all_deals_get) | **GET** /content/all-deals | Get all deals for a user
 [**content_bw_usage_content_get**](ContentApi.md#content_bw_usage_content_get) | **GET** /content/bw-usage/{content} | Get content bandwidth
@@ -18,9 +18,7 @@ Method | HTTP request | Description
 [**content_ensure_replication_datacid_get**](ContentApi.md#content_ensure_replication_datacid_get) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
 [**content_failures_content_get**](ContentApi.md#content_failures_content_get) | **GET** /content/failures/{content} | List all failures for a content
 [**content_id_get**](ContentApi.md#content_id_get) | **GET** /content/{id} | Content
-[**content_importdeal_post**](ContentApi.md#content_importdeal_post) | **POST** /content/importdeal | Import a deal
 [**content_list_get**](ContentApi.md#content_list_get) | **GET** /content/list | List all pinned content
-[**content_read_cont_get**](ContentApi.md#content_read_cont_get) | **GET** /content/read/{cont} | Read content
 [**content_staging_zones_get**](ContentApi.md#content_staging_zones_get) | **GET** /content/staging-zones | Get staging zone for user, excluding its contents
 [**content_staging_zones_staging_zone_contents_get**](ContentApi.md#content_staging_zones_staging_zone_contents_get) | **GET** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
 [**content_staging_zones_staging_zone_get**](ContentApi.md#content_staging_zones_staging_zone_get) | **GET** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
@@ -132,11 +130,11 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_add_car_post**
-> str content_add_car_post()
+> UtilContentAddResponse content_add_car_post(body, ignore_dupes=ignore_dupes, filename=filename)
 
-Upload content via a car file
+Add Car object
 
-This endpoint uploads content via a car file
+This endpoint is used to add a car object to the network. The object can be a file or a directory.
 
 ### Example
 ```python
@@ -154,21 +152,29 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
+body = 'body_example' # str | Car
+ignore_dupes = 'ignore_dupes_example' # str | Ignore Dupes (optional)
+filename = 'filename_example' # str | Filename (optional)
 
 try:
-    # Upload content via a car file
-    api_response = api_instance.content_add_car_post()
+    # Add Car object
+    api_response = api_instance.content_add_car_post(body, ignore_dupes=ignore_dupes, filename=filename)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_add_car_post: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**str**](str.md)| Car | 
+ **ignore_dupes** | **str**| Ignore Dupes | [optional] 
+ **filename** | **str**| Filename | [optional] 
 
 ### Return type
 
-**str**
+[**UtilContentAddResponse**](UtilContentAddResponse.md)
 
 ### Authorization
 
@@ -176,7 +182,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -238,11 +244,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_add_post**
-> str content_add_post()
+> UtilContentAddResponse content_add_post(data, filename, coluuid=coluuid, replication=replication, ignore_dupes=ignore_dupes, lazy_provide=lazy_provide, dir=dir)
 
-Upload a file
+Add new content
 
-This endpoint uploads a file.
+This endpoint is used to upload new content.
 
 ### Example
 ```python
@@ -260,21 +266,37 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
+data = 'data_example' # str | 
+filename = 'filename_example' # str | 
+coluuid = 'coluuid_example' # str | Collection UUID (optional)
+replication = 56 # int | Replication value (optional)
+ignore_dupes = 'ignore_dupes_example' # str | Ignore Dupes true/false (optional)
+lazy_provide = 'lazy_provide_example' # str | Lazy Provide true/false (optional)
+dir = 'dir_example' # str | Directory (optional)
 
 try:
-    # Upload a file
-    api_response = api_instance.content_add_post()
+    # Add new content
+    api_response = api_instance.content_add_post(data, filename, coluuid=coluuid, replication=replication, ignore_dupes=ignore_dupes, lazy_provide=lazy_provide, dir=dir)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_add_post: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data** | **str**|  | 
+ **filename** | **str**|  | 
+ **coluuid** | **str**| Collection UUID | [optional] 
+ **replication** | **int**| Replication value | [optional] 
+ **ignore_dupes** | **str**| Ignore Dupes true/false | [optional] 
+ **lazy_provide** | **str**| Lazy Provide true/false | [optional] 
+ **dir** | **str**| Directory | [optional] 
 
 ### Return type
 
-**str**
+[**UtilContentAddResponse**](UtilContentAddResponse.md)
 
 ### Authorization
 
@@ -282,7 +304,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -783,60 +805,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **content_importdeal_post**
-> str content_importdeal_post(body)
-
-Import a deal
-
-This endpoint imports a deal into the shuttle.
-
-### Example
-```python
-from __future__ import print_function
-import time
-import estuary_client
-from estuary_client.rest import ApiException
-from pprint import pprint
-
-# Configure API key authorization: bearerAuth
-configuration = estuary_client.Configuration()
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
-
-# create an instance of the API class
-api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
-body = estuary_client.MainImportDealBody() # MainImportDealBody | Import a deal
-
-try:
-    # Import a deal
-    api_response = api_instance.content_importdeal_post(body)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ContentApi->content_importdeal_post: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**MainImportDealBody**](MainImportDealBody.md)| Import a deal | 
-
-### Return type
-
-**str**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: */*
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **content_list_get**
 > str content_list_get()
 
@@ -871,60 +839,6 @@ except ApiException as e:
 
 ### Parameters
 This endpoint does not need any parameter.
-
-### Return type
-
-**str**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **content_read_cont_get**
-> str content_read_cont_get(cont)
-
-Read content
-
-This endpoint reads content from the blockstore
-
-### Example
-```python
-from __future__ import print_function
-import time
-import estuary_client
-from estuary_client.rest import ApiException
-from pprint import pprint
-
-# Configure API key authorization: bearerAuth
-configuration = estuary_client.Configuration()
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
-
-# create an instance of the API class
-api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
-cont = 'cont_example' # str | CID
-
-try:
-    # Read content
-    api_response = api_instance.content_read_cont_get(cont)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ContentApi->content_read_cont_get: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **cont** | **str**| CID | 
 
 ### Return type
 

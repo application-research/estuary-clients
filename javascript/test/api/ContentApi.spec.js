@@ -78,17 +78,17 @@
       });
       describe('contentAddCarPost', function() {
         it('should call contentAddCarPost successfully', function(done) {
-          // TODO: uncomment contentAddCarPost call and complete the assertions
+          // TODO: uncomment, update parameter values for contentAddCarPost call and complete the assertions
           /*
+          var opts = {};
 
-          instance.contentAddCarPost(function(error, data, response) {
+          instance.contentAddCarPost(body, opts, function(error, data, response) {
             if (error) {
               done(error);
               return;
             }
             // TODO: update response assertions
-            expect(data).to.be.a(&#x27;string&#x27;);
-            // expect(data).to.be(null);
+            expect(data).to.be.a(EstuaryClient.UtilContentAddResponse);
 
             done();
           });
@@ -121,17 +121,17 @@
       });
       describe('contentAddPost', function() {
         it('should call contentAddPost successfully', function(done) {
-          // TODO: uncomment contentAddPost call and complete the assertions
+          // TODO: uncomment, update parameter values for contentAddPost call and complete the assertions
           /*
+          var opts = {};
 
-          instance.contentAddPost(function(error, data, response) {
+          instance.contentAddPost(data, filename, opts, function(error, data, response) {
             if (error) {
               done(error);
               return;
             }
             // TODO: update response assertions
-            expect(data).to.be.a(&#x27;string&#x27;);
-            // expect(data).to.be(null);
+            expect(data).to.be.a(EstuaryClient.UtilContentAddResponse);
 
             done();
           });
@@ -331,54 +331,12 @@
           done();
         });
       });
-      describe('contentImportdealPost', function() {
-        it('should call contentImportdealPost successfully', function(done) {
-          // TODO: uncomment, update parameter values for contentImportdealPost call and complete the assertions
-          /*
-
-          instance.contentImportdealPost(body, function(error, data, response) {
-            if (error) {
-              done(error);
-              return;
-            }
-            // TODO: update response assertions
-            expect(data).to.be.a(&#x27;string&#x27;);
-            // expect(data).to.be(null);
-
-            done();
-          });
-          */
-          // TODO: uncomment and complete method invocation above, then delete this line and the next:
-          done();
-        });
-      });
       describe('contentListGet', function() {
         it('should call contentListGet successfully', function(done) {
           // TODO: uncomment contentListGet call and complete the assertions
           /*
 
           instance.contentListGet(function(error, data, response) {
-            if (error) {
-              done(error);
-              return;
-            }
-            // TODO: update response assertions
-            expect(data).to.be.a(&#x27;string&#x27;);
-            // expect(data).to.be(null);
-
-            done();
-          });
-          */
-          // TODO: uncomment and complete method invocation above, then delete this line and the next:
-          done();
-        });
-      });
-      describe('contentReadContGet', function() {
-        it('should call contentReadContGet successfully', function(done) {
-          // TODO: uncomment, update parameter values for contentReadContGet call and complete the assertions
-          /*
-
-          instance.contentReadContGet(cont, function(error, data, response) {
             if (error) {
               done(error);
               return;

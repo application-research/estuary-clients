@@ -12,8 +12,9 @@
 
 package io.swagger.client.api;
 
-import io.swagger.client.model.MainImportDealBody;
+import java.io.File;
 import io.swagger.client.model.TypesIpfsPin;
+import io.swagger.client.model.UtilContentAddResponse;
 import io.swagger.client.model.UtilContentCreateBody;
 import io.swagger.client.model.UtilHttpError;
 import org.junit.Test;
@@ -64,16 +65,19 @@ public class ContentApiTest {
         // TODO: test validations
     }
     /**
-     * Upload content via a car file
+     * Add Car object
      *
-     * This endpoint uploads content via a car file
+     * This endpoint is used to add a car object to the network. The object can be a file or a directory.
      *
      * @throws Exception
      *          if the Api call fails
      */
     @Test
     public void contentAddCarPostTest() throws Exception {
-        String response = api.contentAddCarPost();
+        String body = null;
+        String ignoreDupes = null;
+        String filename = null;
+        UtilContentAddResponse response = api.contentAddCarPost(body, ignoreDupes, filename);
 
         // TODO: test validations
     }
@@ -94,16 +98,23 @@ public class ContentApiTest {
         // TODO: test validations
     }
     /**
-     * Upload a file
+     * Add new content
      *
-     * This endpoint uploads a file.
+     * This endpoint is used to upload new content.
      *
      * @throws Exception
      *          if the Api call fails
      */
     @Test
     public void contentAddPostTest() throws Exception {
-        String response = api.contentAddPost();
+        File data = null;
+        String filename = null;
+        String coluuid = null;
+        Integer replication = null;
+        String ignoreDupes = null;
+        String lazyProvide = null;
+        String dir = null;
+        UtilContentAddResponse response = api.contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir);
 
         // TODO: test validations
     }
@@ -248,21 +259,6 @@ public class ContentApiTest {
         // TODO: test validations
     }
     /**
-     * Import a deal
-     *
-     * This endpoint imports a deal into the shuttle.
-     *
-     * @throws Exception
-     *          if the Api call fails
-     */
-    @Test
-    public void contentImportdealPostTest() throws Exception {
-        MainImportDealBody body = null;
-        String response = api.contentImportdealPost(body);
-
-        // TODO: test validations
-    }
-    /**
      * List all pinned content
      *
      * This endpoint lists all content
@@ -273,21 +269,6 @@ public class ContentApiTest {
     @Test
     public void contentListGetTest() throws Exception {
         String response = api.contentListGet();
-
-        // TODO: test validations
-    }
-    /**
-     * Read content
-     *
-     * This endpoint reads content from the blockstore
-     *
-     * @throws Exception
-     *          if the Api call fails
-     */
-    @Test
-    public void contentReadContGetTest() throws Exception {
-        String cont = null;
-        String response = api.contentReadContGet(cont);
 
         // TODO: test validations
     }

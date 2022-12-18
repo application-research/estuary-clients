@@ -391,33 +391,21 @@ export interface CollectionsCollectionListResponse {
 /**
  * 
  * @export
- * @interface MainImportDealBody
+ * @interface ContentAddBody
  */
-export interface MainImportDealBody {
+export interface ContentAddBody {
     /**
-     * 
+     * File to upload
+     * @type {Blob}
+     * @memberof ContentAddBody
+     */
+    data: Blob;
+    /**
+     * Filename to use for upload
      * @type {string}
-     * @memberof MainImportDealBody
+     * @memberof ContentAddBody
      */
-    coluuid?: string;
-    /**
-     * 
-     * @type {Array<number>}
-     * @memberof MainImportDealBody
-     */
-    dealIDs?: Array<number>;
-    /**
-     * 
-     * @type {string}
-     * @memberof MainImportDealBody
-     */
-    dir?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof MainImportDealBody
-     */
-    name?: string;
+    filename?: string;
 }
 /**
  * 
@@ -469,6 +457,31 @@ export interface MinerSuspendMinerBody {
      * @memberof MinerSuspendMinerBody
      */
     reason?: string;
+}
+/**
+ * 
+ * @export
+ * @interface PeeringPeeringPeer
+ */
+export interface PeeringPeeringPeer {
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof PeeringPeeringPeer
+     */
+    addrs?: Array<string>;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof PeeringPeeringPeer
+     */
+    connected?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof PeeringPeeringPeer
+     */
+    ID?: string;
 }
 /**
  * 
@@ -816,11 +829,11 @@ export const AdminApiFetchParamCreator = function (configuration?: Configuration
         /**
          * This endpoint can be used to remove a Peer from the Peering Service
          * @summary Remove peers on Peering Service
-         * @param {Array<boolean>} body Peer ids
+         * @param {Array<string>} body Peer ids
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersDelete(body: Array<boolean>, options: any = {}): FetchArgs {
+        adminPeeringPeersDelete(body: Array<string>, options: any = {}): FetchArgs {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling adminPeeringPeersDelete.');
@@ -845,7 +858,7 @@ export const AdminApiFetchParamCreator = function (configuration?: Configuration
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"Array&lt;boolean&gt;" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (<any>"Array&lt;string&gt;" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
 
             return {
@@ -887,10 +900,15 @@ export const AdminApiFetchParamCreator = function (configuration?: Configuration
         /**
          * This endpoint can be used to add a Peer from the Peering Service
          * @summary Add peers on Peering Service
+         * @param {Array<PeeringPeeringPeer>} body Peering Peer array
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersPost(options: any = {}): FetchArgs {
+        adminPeeringPeersPost(body: Array<PeeringPeeringPeer>, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling adminPeeringPeersPost.');
+            }
             const localVarPath = `/admin/peering/peers`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
@@ -905,10 +923,14 @@ export const AdminApiFetchParamCreator = function (configuration?: Configuration
                 localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
             }
 
+            localVarHeaderParameter['Content-Type'] = '*/*';
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"Array&lt;PeeringPeeringPeer&gt;" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -1082,11 +1104,11 @@ export const AdminApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint can be used to remove a Peer from the Peering Service
          * @summary Remove peers on Peering Service
-         * @param {Array<boolean>} body Peer ids
+         * @param {Array<string>} body Peer ids
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersDelete(body: Array<boolean>, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+        adminPeeringPeersDelete(body: Array<string>, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = AdminApiFetchParamCreator(configuration).adminPeeringPeersDelete(body, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -1119,11 +1141,12 @@ export const AdminApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint can be used to add a Peer from the Peering Service
          * @summary Add peers on Peering Service
+         * @param {Array<PeeringPeeringPeer>} body Peering Peer array
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
-            const localVarFetchArgs = AdminApiFetchParamCreator(configuration).adminPeeringPeersPost(options);
+        adminPeeringPeersPost(body: Array<PeeringPeeringPeer>, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+            const localVarFetchArgs = AdminApiFetchParamCreator(configuration).adminPeeringPeersPost(body, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -1236,11 +1259,11 @@ export const AdminApiFactory = function (configuration?: Configuration, fetch?: 
         /**
          * This endpoint can be used to remove a Peer from the Peering Service
          * @summary Remove peers on Peering Service
-         * @param {Array<boolean>} body Peer ids
+         * @param {Array<string>} body Peer ids
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersDelete(body: Array<boolean>, options?: any) {
+        adminPeeringPeersDelete(body: Array<string>, options?: any) {
             return AdminApiFp(configuration).adminPeeringPeersDelete(body, options)(fetch, basePath);
         },
         /**
@@ -1255,11 +1278,12 @@ export const AdminApiFactory = function (configuration?: Configuration, fetch?: 
         /**
          * This endpoint can be used to add a Peer from the Peering Service
          * @summary Add peers on Peering Service
+         * @param {Array<PeeringPeeringPeer>} body Peering Peer array
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersPost(options?: any) {
-            return AdminApiFp(configuration).adminPeeringPeersPost(options)(fetch, basePath);
+        adminPeeringPeersPost(body: Array<PeeringPeeringPeer>, options?: any) {
+            return AdminApiFp(configuration).adminPeeringPeersPost(body, options)(fetch, basePath);
         },
         /**
          * This endpoint can be used to start the Peering Service
@@ -1319,12 +1343,12 @@ export class AdminApi extends BaseAPI {
     /**
      * This endpoint can be used to remove a Peer from the Peering Service
      * @summary Remove peers on Peering Service
-     * @param {Array<boolean>} body Peer ids
+     * @param {Array<string>} body Peer ids
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AdminApi
      */
-    public adminPeeringPeersDelete(body: Array<boolean>, options?: any) {
+    public adminPeeringPeersDelete(body: Array<string>, options?: any) {
         return AdminApiFp(this.configuration).adminPeeringPeersDelete(body, options)(this.fetch, this.basePath);
     }
 
@@ -1342,12 +1366,13 @@ export class AdminApi extends BaseAPI {
     /**
      * This endpoint can be used to add a Peer from the Peering Service
      * @summary Add peers on Peering Service
+     * @param {Array<PeeringPeeringPeer>} body Peering Peer array
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AdminApi
      */
-    public adminPeeringPeersPost(options?: any) {
-        return AdminApiFp(this.configuration).adminPeeringPeersPost(options)(this.fetch, this.basePath);
+    public adminPeeringPeersPost(body: Array<PeeringPeeringPeer>, options?: any) {
+        return AdminApiFp(this.configuration).adminPeeringPeersPost(body, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -2483,12 +2508,19 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * This endpoint uploads content via a car file
-         * @summary Upload content via a car file
+         * This endpoint is used to add a car object to the network. The object can be a file or a directory.
+         * @summary Add Car object
+         * @param {string} body Car
+         * @param {string} [ignoreDupes] Ignore Dupes
+         * @param {string} [filename] Filename
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddCarPost(options: any = {}): FetchArgs {
+        contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling contentAddCarPost.');
+            }
             const localVarPath = `/content/add-car`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
@@ -2503,10 +2535,22 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
                 localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
             }
 
+            if (ignoreDupes !== undefined) {
+                localVarQueryParameter['ignore-dupes'] = ignoreDupes;
+            }
+
+            if (filename !== undefined) {
+                localVarQueryParameter['filename'] = filename;
+            }
+
+            localVarHeaderParameter['Content-Type'] = '*/*';
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"string" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
 
             return {
                 url: url.format(localVarUrlObj),
@@ -2559,17 +2603,33 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * This endpoint uploads a file.
-         * @summary Upload a file
+         * This endpoint is used to upload new content.
+         * @summary Add new content
+         * @param {Blob} data 
+         * @param {string} filename 
+         * @param {string} [coluuid] Collection UUID
+         * @param {number} [replication] Replication value
+         * @param {string} [ignoreDupes] Ignore Dupes true/false
+         * @param {string} [lazyProvide] Lazy Provide true/false
+         * @param {string} [dir] Directory
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddPost(options: any = {}): FetchArgs {
+        contentAddPost(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, options: any = {}): FetchArgs {
+            // verify required parameter 'data' is not null or undefined
+            if (data === null || data === undefined) {
+                throw new RequiredError('data','Required parameter data was null or undefined when calling contentAddPost.');
+            }
+            // verify required parameter 'filename' is not null or undefined
+            if (filename === null || filename === undefined) {
+                throw new RequiredError('filename','Required parameter filename was null or undefined when calling contentAddPost.');
+            }
             const localVarPath = `/content/add`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+            const localVarFormParams = new url.URLSearchParams();
 
             // authentication bearerAuth required
             if (configuration && configuration.apiKey) {
@@ -2579,10 +2639,41 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
                 localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
             }
 
+            if (coluuid !== undefined) {
+                localVarQueryParameter['coluuid'] = coluuid;
+            }
+
+            if (replication !== undefined) {
+                localVarQueryParameter['replication'] = replication;
+            }
+
+            if (ignoreDupes !== undefined) {
+                localVarQueryParameter['ignore-dupes'] = ignoreDupes;
+            }
+
+            if (lazyProvide !== undefined) {
+                localVarQueryParameter['lazy-provide'] = lazyProvide;
+            }
+
+            if (dir !== undefined) {
+                localVarQueryParameter['dir'] = dir;
+            }
+
+            if (data !== undefined) {
+                localVarFormParams.set('data', data as any);
+            }
+
+            if (filename !== undefined) {
+                localVarFormParams.set('filename', filename as any);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'application/x-www-form-urlencoded';
+
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            localVarRequestOptions.body = localVarFormParams.toString();
 
             return {
                 url: url.format(localVarUrlObj),
@@ -2968,46 +3059,6 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * This endpoint imports a deal into the shuttle.
-         * @summary Import a deal
-         * @param {MainImportDealBody} body Import a deal
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        contentImportdealPost(body: MainImportDealBody, options: any = {}): FetchArgs {
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling contentImportdealPost.');
-            }
-            const localVarPath = `/content/importdeal`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearerAuth required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-					? configuration.apiKey("Authorization")
-					: configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
-
-            localVarHeaderParameter['Content-Type'] = '*/*';
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"MainImportDealBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * This endpoint lists all content
          * @summary List all pinned content
          * @param {*} [options] Override http request option.
@@ -3015,43 +3066,6 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
          */
         contentListGet(options: any = {}): FetchArgs {
             const localVarPath = `/content/list`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearerAuth required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-					? configuration.apiKey("Authorization")
-					: configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * This endpoint reads content from the blockstore
-         * @summary Read content
-         * @param {string} cont CID
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        contentReadContGet(cont: string, options: any = {}): FetchArgs {
-            // verify required parameter 'cont' is not null or undefined
-            if (cont === null || cont === undefined) {
-                throw new RequiredError('cont','Required parameter cont was null or undefined when calling contentReadContGet.');
-            }
-            const localVarPath = `/content/read/{cont}`
-                .replace(`{${"cont"}}`, encodeURIComponent(String(cont)));
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
             const localVarHeaderParameter = {} as any;
@@ -3331,13 +3345,16 @@ export const ContentApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         * This endpoint uploads content via a car file
-         * @summary Upload content via a car file
+         * This endpoint is used to add a car object to the network. The object can be a file or a directory.
+         * @summary Add Car object
+         * @param {string} body Car
+         * @param {string} [ignoreDupes] Ignore Dupes
+         * @param {string} [filename] Filename
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddCarPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
-            const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentAddCarPost(options);
+        contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<UtilContentAddResponse> {
+            const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentAddCarPost(body, ignoreDupes, filename, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -3369,13 +3386,20 @@ export const ContentApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         * This endpoint uploads a file.
-         * @summary Upload a file
+         * This endpoint is used to upload new content.
+         * @summary Add new content
+         * @param {Blob} data 
+         * @param {string} filename 
+         * @param {string} [coluuid] Collection UUID
+         * @param {number} [replication] Replication value
+         * @param {string} [ignoreDupes] Ignore Dupes true/false
+         * @param {string} [lazyProvide] Lazy Provide true/false
+         * @param {string} [dir] Directory
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddPost(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
-            const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentAddPost(options);
+        contentAddPost(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<UtilContentAddResponse> {
+            const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -3563,25 +3587,6 @@ export const ContentApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         * This endpoint imports a deal into the shuttle.
-         * @summary Import a deal
-         * @param {MainImportDealBody} body Import a deal
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        contentImportdealPost(body: MainImportDealBody, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
-            const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentImportdealPost(body, options);
-            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-        /**
          * This endpoint lists all content
          * @summary List all pinned content
          * @param {*} [options] Override http request option.
@@ -3589,25 +3594,6 @@ export const ContentApiFp = function(configuration?: Configuration) {
          */
         contentListGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentListGet(options);
-            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-        /**
-         * This endpoint reads content from the blockstore
-         * @summary Read content
-         * @param {string} cont CID
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        contentReadContGet(cont: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
-            const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentReadContGet(cont, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -3744,13 +3730,16 @@ export const ContentApiFactory = function (configuration?: Configuration, fetch?
             return ContentApiFp(configuration).adminInvitesGet(options)(fetch, basePath);
         },
         /**
-         * This endpoint uploads content via a car file
-         * @summary Upload content via a car file
+         * This endpoint is used to add a car object to the network. The object can be a file or a directory.
+         * @summary Add Car object
+         * @param {string} body Car
+         * @param {string} [ignoreDupes] Ignore Dupes
+         * @param {string} [filename] Filename
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddCarPost(options?: any) {
-            return ContentApiFp(configuration).contentAddCarPost(options)(fetch, basePath);
+        contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, options?: any) {
+            return ContentApiFp(configuration).contentAddCarPost(body, ignoreDupes, filename, options)(fetch, basePath);
         },
         /**
          * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
@@ -3764,13 +3753,20 @@ export const ContentApiFactory = function (configuration?: Configuration, fetch?
             return ContentApiFp(configuration).contentAddIpfsPost(body, ignoreDupes, options)(fetch, basePath);
         },
         /**
-         * This endpoint uploads a file.
-         * @summary Upload a file
+         * This endpoint is used to upload new content.
+         * @summary Add new content
+         * @param {Blob} data 
+         * @param {string} filename 
+         * @param {string} [coluuid] Collection UUID
+         * @param {number} [replication] Replication value
+         * @param {string} [ignoreDupes] Ignore Dupes true/false
+         * @param {string} [lazyProvide] Lazy Provide true/false
+         * @param {string} [dir] Directory
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddPost(options?: any) {
-            return ContentApiFp(configuration).contentAddPost(options)(fetch, basePath);
+        contentAddPost(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, options?: any) {
+            return ContentApiFp(configuration).contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, options)(fetch, basePath);
         },
         /**
          * This endpoint returns aggregated content stats
@@ -3868,16 +3864,6 @@ export const ContentApiFactory = function (configuration?: Configuration, fetch?
             return ContentApiFp(configuration).contentIdGet(id, options)(fetch, basePath);
         },
         /**
-         * This endpoint imports a deal into the shuttle.
-         * @summary Import a deal
-         * @param {MainImportDealBody} body Import a deal
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        contentImportdealPost(body: MainImportDealBody, options?: any) {
-            return ContentApiFp(configuration).contentImportdealPost(body, options)(fetch, basePath);
-        },
-        /**
          * This endpoint lists all content
          * @summary List all pinned content
          * @param {*} [options] Override http request option.
@@ -3885,16 +3871,6 @@ export const ContentApiFactory = function (configuration?: Configuration, fetch?
          */
         contentListGet(options?: any) {
             return ContentApiFp(configuration).contentListGet(options)(fetch, basePath);
-        },
-        /**
-         * This endpoint reads content from the blockstore
-         * @summary Read content
-         * @param {string} cont CID
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        contentReadContGet(cont: string, options?: any) {
-            return ContentApiFp(configuration).contentReadContGet(cont, options)(fetch, basePath);
         },
         /**
          * This endpoint is used to get staging zone for user, excluding its contents.
@@ -3982,14 +3958,17 @@ export class ContentApi extends BaseAPI {
     }
 
     /**
-     * This endpoint uploads content via a car file
-     * @summary Upload content via a car file
+     * This endpoint is used to add a car object to the network. The object can be a file or a directory.
+     * @summary Add Car object
+     * @param {string} body Car
+     * @param {string} [ignoreDupes] Ignore Dupes
+     * @param {string} [filename] Filename
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContentApi
      */
-    public contentAddCarPost(options?: any) {
-        return ContentApiFp(this.configuration).contentAddCarPost(options)(this.fetch, this.basePath);
+    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, options?: any) {
+        return ContentApiFp(this.configuration).contentAddCarPost(body, ignoreDupes, filename, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -4006,14 +3985,21 @@ export class ContentApi extends BaseAPI {
     }
 
     /**
-     * This endpoint uploads a file.
-     * @summary Upload a file
+     * This endpoint is used to upload new content.
+     * @summary Add new content
+     * @param {Blob} data 
+     * @param {string} filename 
+     * @param {string} [coluuid] Collection UUID
+     * @param {number} [replication] Replication value
+     * @param {string} [ignoreDupes] Ignore Dupes true/false
+     * @param {string} [lazyProvide] Lazy Provide true/false
+     * @param {string} [dir] Directory
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContentApi
      */
-    public contentAddPost(options?: any) {
-        return ContentApiFp(this.configuration).contentAddPost(options)(this.fetch, this.basePath);
+    public contentAddPost(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, options?: any) {
+        return ContentApiFp(this.configuration).contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -4130,18 +4116,6 @@ export class ContentApi extends BaseAPI {
     }
 
     /**
-     * This endpoint imports a deal into the shuttle.
-     * @summary Import a deal
-     * @param {MainImportDealBody} body Import a deal
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ContentApi
-     */
-    public contentImportdealPost(body: MainImportDealBody, options?: any) {
-        return ContentApiFp(this.configuration).contentImportdealPost(body, options)(this.fetch, this.basePath);
-    }
-
-    /**
      * This endpoint lists all content
      * @summary List all pinned content
      * @param {*} [options] Override http request option.
@@ -4150,18 +4124,6 @@ export class ContentApi extends BaseAPI {
      */
     public contentListGet(options?: any) {
         return ContentApiFp(this.configuration).contentListGet(options)(this.fetch, this.basePath);
-    }
-
-    /**
-     * This endpoint reads content from the blockstore
-     * @summary Read content
-     * @param {string} cont CID
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ContentApi
-     */
-    public contentReadContGet(cont: string, options?: any) {
-        return ContentApiFp(this.configuration).contentReadContGet(cont, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -6107,37 +6069,6 @@ export class MinerApi extends BaseAPI {
 export const NetApiFetchParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * This endpoint is used to get net addrs
-         * @summary Net Addrs
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        netAddrsGet(options: any = {}): FetchArgs {
-            const localVarPath = `/net/addrs`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearerAuth required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-					? configuration.apiKey("Authorization")
-					: configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
-
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            delete localVarUrlObj.search;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * This endpoint returns all miners
          * @summary Get all miners
          * @param {string} miner Filter by miner
@@ -6277,24 +6208,6 @@ export const NetApiFetchParamCreator = function (configuration?: Configuration) 
 export const NetApiFp = function(configuration?: Configuration) {
     return {
         /**
-         * This endpoint is used to get net addrs
-         * @summary Net Addrs
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        netAddrsGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
-            const localVarFetchArgs = NetApiFetchParamCreator(configuration).netAddrsGet(options);
-            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
-                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
-                    if (response.status >= 200 && response.status < 300) {
-                        return response.json();
-                    } else {
-                        throw response;
-                    }
-                });
-            };
-        },
-        /**
          * This endpoint returns all miners
          * @summary Get all miners
          * @param {string} miner Filter by miner
@@ -6377,15 +6290,6 @@ export const NetApiFp = function(configuration?: Configuration) {
 export const NetApiFactory = function (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) {
     return {
         /**
-         * This endpoint is used to get net addrs
-         * @summary Net Addrs
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        netAddrsGet(options?: any) {
-            return NetApiFp(configuration).netAddrsGet(options)(fetch, basePath);
-        },
-        /**
          * This endpoint returns all miners
          * @summary Get all miners
          * @param {string} miner Filter by miner
@@ -6432,17 +6336,6 @@ export const NetApiFactory = function (configuration?: Configuration, fetch?: Fe
  * @extends {BaseAPI}
  */
 export class NetApi extends BaseAPI {
-    /**
-     * This endpoint is used to get net addrs
-     * @summary Net Addrs
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof NetApi
-     */
-    public netAddrsGet(options?: any) {
-        return NetApiFp(this.configuration).netAddrsGet(options)(this.fetch, this.basePath);
-    }
-
     /**
      * This endpoint returns all miners
      * @summary Get all miners

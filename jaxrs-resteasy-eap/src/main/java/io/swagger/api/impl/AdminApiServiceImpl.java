@@ -4,6 +4,7 @@ import io.swagger.api.*;
 import io.swagger.model.*;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
+import io.swagger.model.PeeringPeeringPeer;
 import io.swagger.model.UtilHttpError;
 
 import java.util.List;
@@ -13,7 +14,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-12-14T06:22:38.963Z[GMT]")public class AdminApiServiceImpl implements AdminApi {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-12-18T07:30:24.278Z[GMT]")public class AdminApiServiceImpl implements AdminApi {
       public Response adminAutoretrieveInitPost(MultipartFormDataInput input,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
@@ -30,7 +31,7 @@ import javax.ws.rs.core.SecurityContext;
       // do some magic!
       return Response.ok().build();
   }
-      public Response adminPeeringPeersDelete(List<Boolean> body,SecurityContext securityContext) {
+      public Response adminPeeringPeersDelete(List<String> body,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
@@ -38,7 +39,7 @@ import javax.ws.rs.core.SecurityContext;
       // do some magic!
       return Response.ok().build();
   }
-      public Response adminPeeringPeersPost(SecurityContext securityContext) {
+      public Response adminPeeringPeersPost(List<PeeringPeeringPeer> body,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }

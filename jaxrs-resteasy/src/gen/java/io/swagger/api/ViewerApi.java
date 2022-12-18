@@ -31,7 +31,7 @@ import javax.validation.constraints.*;
 @Path("/viewer")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-12-14T06:22:39.433Z[GMT]")public class ViewerApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-12-18T07:30:24.829Z[GMT]")public class ViewerApi  {
 
     @Inject ViewerApiService service;
 

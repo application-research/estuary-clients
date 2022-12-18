@@ -28,13 +28,6 @@ class TestNetApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_net_addrs_get(self):
-        """Test case for net_addrs_get
-
-        Net Addrs  # noqa: E501
-        """
-        pass
-
     def test_public_miners_failures_miner_get(self):
         """Test case for public_miners_failures_miner_get
 

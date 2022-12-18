@@ -79,30 +79,6 @@ class NetApi(
   val helper = new NetApiAsyncHelper(client, config)
 
   /**
-   * Net Addrs
-   * This endpoint is used to get net addrs
-   *
-   * @return String
-   */
-  def netAddrsGet(): Option[String] = {
-    val await = Try(Await.result(netAddrsGetAsync(), Duration.Inf))
-    await match {
-      case Success(i) => Some(await.get)
-      case Failure(t) => None
-    }
-  }
-
-  /**
-   * Net Addrs asynchronously
-   * This endpoint is used to get net addrs
-   *
-   * @return Future(String)
-   */
-  def netAddrsGetAsync(): Future[String] = {
-      helper.netAddrsGet()
-  }
-
-  /**
    * Get all miners
    * This endpoint returns all miners
    *
@@ -203,21 +179,6 @@ class NetApi(
 }
 
 class NetApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
-
-  def netAddrsGet()(implicit reader: ClientResponseReader[String]): Future[String] = {
-    // create path and map variables
-    val path = (addFmt("/net/addrs"))
-
-    // query params
-    val queryParams = new mutable.HashMap[String, String]
-    val headerParams = new mutable.HashMap[String, String]
-
-
-    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
-    resFuture flatMap { resp =>
-      process(reader.read(resp))
-    }
-  }
 
   def publicMinersFailuresMinerGet(miner: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables

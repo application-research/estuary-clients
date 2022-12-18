@@ -1,5 +1,6 @@
 package io.swagger.api;
 
+import io.swagger.model.PeeringPeeringPeer;
 import io.swagger.model.UtilHttpError;
 
 import io.micronaut.http.HttpResponse;
@@ -60,7 +61,7 @@ class AdminApiControllerTest {
 
     @Test
     void adminPeeringPeersDeleteTest() {
-        List<Boolean> body = Arrays.asList(true);
+        List<String> body = Arrays.asList("body_example");
         try {
             api.adminPeeringPeersDelete(body).blockingGet();
         } catch (UnsupportedOperationException e) {
@@ -79,8 +80,9 @@ class AdminApiControllerTest {
 
     @Test
     void adminPeeringPeersPostTest() {
+        List<PeeringPeeringPeer> body = Arrays.asList(new PeeringPeeringPeer());
         try {
-            api.adminPeeringPeersPost().blockingGet();
+            api.adminPeeringPeersPost(body).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }

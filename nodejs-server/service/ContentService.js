@@ -41,15 +41,26 @@ exports.adminInvitesGET = function() {
 
 
 /**
- * Upload a file
- * This endpoint uploads a file.
+ * Add new content
+ * This endpoint is used to upload new content.
  *
- * returns String
+ * coluuid String Collection UUID (optional)
+ * replication Integer Replication value (optional)
+ * ignoreDupes String Ignore Dupes true/false (optional)
+ * lazyProvide String Lazy Provide true/false (optional)
+ * dir String Directory (optional)
+ * returns util.ContentAddResponse
  **/
-exports.contentAddPOST = function() {
+exports.contentAddPOST = function(coluuid,replication,ignoreDupes,lazyProvide,dir) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = "";
+    examples['application/json'] = {
+  "retrieval_url" : "retrieval_url",
+  "estuaryId" : 0,
+  "estuary_retrieval_url" : "estuary_retrieval_url",
+  "providers" : [ "providers", "providers" ],
+  "cid" : "cid"
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -60,15 +71,24 @@ exports.contentAddPOST = function() {
 
 
 /**
- * Upload content via a car file
- * This endpoint uploads content via a car file
+ * Add Car object
+ * This endpoint is used to add a car object to the network. The object can be a file or a directory.
  *
- * returns String
+ * body String Car
+ * ignoreDupes String Ignore Dupes (optional)
+ * filename String Filename (optional)
+ * returns util.ContentAddResponse
  **/
-exports.contentAdd_carPOST = function() {
+exports.contentAdd_carPOST = function(body,ignoreDupes,filename) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = "";
+    examples['application/json'] = {
+  "retrieval_url" : "retrieval_url",
+  "estuaryId" : 0,
+  "estuary_retrieval_url" : "estuary_retrieval_url",
+  "providers" : [ "providers", "providers" ],
+  "cid" : "cid"
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -285,52 +305,12 @@ exports.contentIdGET = function(id) {
 
 
 /**
- * Import a deal
- * This endpoint imports a deal into the shuttle.
- *
- * body Main.importDealBody Import a deal
- * returns String
- **/
-exports.contentImportdealPOST = function(body) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = "";
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
-  });
-}
-
-
-/**
  * List all pinned content
  * This endpoint lists all content
  *
  * returns String
  **/
 exports.contentListGET = function() {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = "";
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
-  });
-}
-
-
-/**
- * Read content
- * This endpoint reads content from the blockstore
- *
- * cont String CID
- * returns String
- **/
-exports.contentReadContGET = function(cont) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = "";

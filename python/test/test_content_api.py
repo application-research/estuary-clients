@@ -45,7 +45,7 @@ class TestContentApi(unittest.TestCase):
     def test_content_add_car_post(self):
         """Test case for content_add_car_post
 
-        Upload content via a car file  # noqa: E501
+        Add Car object  # noqa: E501
         """
         pass
 
@@ -59,7 +59,7 @@ class TestContentApi(unittest.TestCase):
     def test_content_add_post(self):
         """Test case for content_add_post
 
-        Upload a file  # noqa: E501
+        Add new content  # noqa: E501
         """
         pass
 
@@ -126,24 +126,10 @@ class TestContentApi(unittest.TestCase):
         """
         pass
 
-    def test_content_importdeal_post(self):
-        """Test case for content_importdeal_post
-
-        Import a deal  # noqa: E501
-        """
-        pass
-
     def test_content_list_get(self):
         """Test case for content_list_get
 
         List all pinned content  # noqa: E501
-        """
-        pass
-
-    def test_content_read_cont_get(self):
-        """Test case for content_read_cont_get
-
-        Read content  # noqa: E501
         """
         pass
 

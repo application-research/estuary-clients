@@ -25,11 +25,11 @@ void main() {
       // TODO
     });
 
-    // Upload content via a car file
+    // Add Car object
     //
-    // This endpoint uploads content via a car file
+    // This endpoint is used to add a car object to the network. The object can be a file or a directory.
     //
-    //Future<String> contentAddCarPost() async
+    //Future<UtilContentAddResponse> contentAddCarPost(String body, { String ignoreDupes, String filename }) async
     test('test contentAddCarPost', () async {
       // TODO
     });
@@ -43,11 +43,11 @@ void main() {
       // TODO
     });
 
-    // Upload a file
+    // Add new content
     //
-    // This endpoint uploads a file.
+    // This endpoint is used to upload new content.
     //
-    //Future<String> contentAddPost() async
+    //Future<UtilContentAddResponse> contentAddPost(String data, String filename, { String coluuid, int replication, String ignoreDupes, String lazyProvide, String dir }) async
     test('test contentAddPost', () async {
       // TODO
     });
@@ -133,30 +133,12 @@ void main() {
       // TODO
     });
 
-    // Import a deal
-    //
-    // This endpoint imports a deal into the shuttle.
-    //
-    //Future<String> contentImportdealPost(MainImportDealBody body) async
-    test('test contentImportdealPost', () async {
-      // TODO
-    });
-
     // List all pinned content
     //
     // This endpoint lists all content
     //
     //Future<String> contentListGet() async
     test('test contentListGet', () async {
-      // TODO
-    });
-
-    // Read content
-    //
-    // This endpoint reads content from the blockstore
-    //
-    //Future<String> contentReadContGet(String cont) async
-    test('test contentReadContGet', () async {
       // TODO
     });
 

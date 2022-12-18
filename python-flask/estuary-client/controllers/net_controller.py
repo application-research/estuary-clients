@@ -5,17 +5,6 @@ from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
 from estuary-client import util
 
 
-def net_addrs_get():  # noqa: E501
-    """Net Addrs
-
-    This endpoint is used to get net addrs # noqa: E501
-
-
-    :rtype: str
-    """
-    return 'do some magic!'
-
-
 def public_miners_failures_miner_get(miner):  # noqa: E501
     """Get all miners
 

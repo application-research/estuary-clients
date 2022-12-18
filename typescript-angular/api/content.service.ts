@@ -17,8 +17,8 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { MainImportDealBody } from '../model/mainImportDealBody';
 import { TypesIpfsPin } from '../model/typesIpfsPin';
+import { UtilContentAddResponse } from '../model/utilContentAddResponse';
 import { UtilContentCreateBody } from '../model/utilContentCreateBody';
 import { UtilHttpError } from '../model/utilHttpError';
 
@@ -146,15 +146,32 @@ export class ContentService {
     }
 
     /**
-     * Upload content via a car file
-     * This endpoint uploads content via a car file
+     * Add Car object
+     * This endpoint is used to add a car object to the network. The object can be a file or a directory.
+     * @param body Car
+     * @param ignoreDupes Ignore Dupes
+     * @param filename Filename
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public contentAddCarPost(observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public contentAddCarPost(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public contentAddCarPost(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
-    public contentAddCarPost(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, observe?: 'body', reportProgress?: boolean): Observable<UtilContentAddResponse>;
+    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<UtilContentAddResponse>>;
+    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<UtilContentAddResponse>>;
+    public contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (body === null || body === undefined) {
+            throw new Error('Required parameter body was null or undefined when calling contentAddCarPost.');
+        }
+
+
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (ignoreDupes !== undefined && ignoreDupes !== null) {
+            queryParameters = queryParameters.set('ignore-dupes', <any>ignoreDupes);
+        }
+        if (filename !== undefined && filename !== null) {
+            queryParameters = queryParameters.set('filename', <any>filename);
+        }
 
         let headers = this.defaultHeaders;
 
@@ -174,10 +191,17 @@ export class ContentService {
 
         // to determine the Content-Type header
         const consumes: string[] = [
+            '*/*'
         ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected != undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
 
-        return this.httpClient.request<string>('post',`${this.basePath}/content/add-car`,
+        return this.httpClient.request<UtilContentAddResponse>('post',`${this.basePath}/content/add-car`,
             {
+                body: body,
+                params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
@@ -247,15 +271,52 @@ export class ContentService {
     }
 
     /**
-     * Upload a file
-     * This endpoint uploads a file.
+     * Add new content
+     * This endpoint is used to upload new content.
+     * @param data 
+     * @param filename 
+     * @param coluuid Collection UUID
+     * @param replication Replication value
+     * @param ignoreDupes Ignore Dupes true/false
+     * @param lazyProvide Lazy Provide true/false
+     * @param dir Directory
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public contentAddPost(observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public contentAddPost(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public contentAddPost(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
-    public contentAddPost(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public contentAddPostForm(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, observe?: 'body', reportProgress?: boolean): Observable<UtilContentAddResponse>;
+    public contentAddPostForm(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<UtilContentAddResponse>>;
+    public contentAddPostForm(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<UtilContentAddResponse>>;
+    public contentAddPostForm(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (data === null || data === undefined) {
+            throw new Error('Required parameter data was null or undefined when calling contentAddPost.');
+        }
+
+        if (filename === null || filename === undefined) {
+            throw new Error('Required parameter filename was null or undefined when calling contentAddPost.');
+        }
+
+
+
+
+
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (coluuid !== undefined && coluuid !== null) {
+            queryParameters = queryParameters.set('coluuid', <any>coluuid);
+        }
+        if (replication !== undefined && replication !== null) {
+            queryParameters = queryParameters.set('replication', <any>replication);
+        }
+        if (ignoreDupes !== undefined && ignoreDupes !== null) {
+            queryParameters = queryParameters.set('ignore-dupes', <any>ignoreDupes);
+        }
+        if (lazyProvide !== undefined && lazyProvide !== null) {
+            queryParameters = queryParameters.set('lazy-provide', <any>lazyProvide);
+        }
+        if (dir !== undefined && dir !== null) {
+            queryParameters = queryParameters.set('dir', <any>dir);
+        }
 
         let headers = this.defaultHeaders;
 
@@ -275,10 +336,34 @@ export class ContentService {
 
         // to determine the Content-Type header
         const consumes: string[] = [
+            'multipart/form-data'
         ];
 
-        return this.httpClient.request<string>('post',`${this.basePath}/content/add`,
+        const canConsumeForm = this.canConsumeForm(consumes);
+
+        let formParams: { append(param: string, value: any): void; };
+        let useForm = false;
+        let convertFormParamsToString = false;
+        // use FormData to transmit files using content-type "multipart/form-data"
+        // see https://stackoverflow.com/questions/4007969/application-x-www-form-urlencoded-or-multipart-form-data
+        useForm = canConsumeForm;
+        if (useForm) {
+            formParams = new FormData();
+        } else {
+            formParams = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        }
+
+        if (data !== undefined) {
+            formParams = formParams.append('data', <any>data) as any || formParams;
+        }
+        if (filename !== undefined) {
+            formParams = formParams.append('filename', <any>filename) as any || formParams;
+        }
+
+        return this.httpClient.request<UtilContentAddResponse>('post',`${this.basePath}/content/add`,
             {
+                body: convertFormParamsToString ? formParams.toString() : formParams,
+                params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,
@@ -760,58 +845,6 @@ export class ContentService {
     }
 
     /**
-     * Import a deal
-     * This endpoint imports a deal into the shuttle.
-     * @param body Import a deal
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public contentImportdealPost(body: MainImportDealBody, observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public contentImportdealPost(body: MainImportDealBody, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public contentImportdealPost(body: MainImportDealBody, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
-    public contentImportdealPost(body: MainImportDealBody, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (body === null || body === undefined) {
-            throw new Error('Required parameter body was null or undefined when calling contentImportdealPost.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // authentication (bearerAuth) required
-        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
-            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
-        }
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-            '*/*'
-        ];
-        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
-        if (httpContentTypeSelected != undefined) {
-            headers = headers.set('Content-Type', httpContentTypeSelected);
-        }
-
-        return this.httpClient.request<string>('post',`${this.basePath}/content/importdeal`,
-            {
-                body: body,
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
      * List all pinned content
      * This endpoint lists all content
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -843,52 +876,6 @@ export class ContentService {
         ];
 
         return this.httpClient.request<string>('get',`${this.basePath}/content/list`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * Read content
-     * This endpoint reads content from the blockstore
-     * @param cont CID
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public contentReadContGet(cont: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public contentReadContGet(cont: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public contentReadContGet(cont: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
-    public contentReadContGet(cont: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        if (cont === null || cont === undefined) {
-            throw new Error('Required parameter cont was null or undefined when calling contentReadContGet.');
-        }
-
-        let headers = this.defaultHeaders;
-
-        // authentication (bearerAuth) required
-        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
-            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
-        }
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<string>('get',`${this.basePath}/content/read/${encodeURIComponent(String(cont))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

@@ -1,7 +1,8 @@
 package io.swagger.api;
 
-import io.swagger.model.MainImportDealBody;
+import java.io.File;
 import io.swagger.model.TypesIpfsPin;
+import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 
@@ -65,20 +66,21 @@ public interface ContentApi  {
     public String adminInvitesGet();
 
     /**
-     * Upload content via a car file
+     * Add Car object
      *
-     * This endpoint uploads content via a car file
+     * This endpoint is used to add a car object to the network. The object can be a file or a directory.
      *
      */
     @POST
     @Path("/content/add-car")
+    @Consumes({ "*/*" })
     @Produces({ "application/json" })
-    @Operation(summary = "Upload content via a car file", tags={ "content" })
+    @Operation(summary = "Add Car object", tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilContentAddResponse.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public String contentAddCarPost();
+    public UtilContentAddResponse contentAddCarPost(@Valid String body, @QueryParam("ignore-dupes") String ignoreDupes, @QueryParam("filename") String filename);
 
     /**
      * Add IPFS object
@@ -98,20 +100,21 @@ public interface ContentApi  {
     public String contentAddIpfsPost(@Valid TypesIpfsPin body, @QueryParam("ignore-dupes") String ignoreDupes);
 
     /**
-     * Upload a file
+     * Add new content
      *
-     * This endpoint uploads a file.
+     * This endpoint is used to upload new content.
      *
      */
     @POST
     @Path("/content/add")
+    @Consumes({ "multipart/form-data" })
     @Produces({ "application/json" })
-    @Operation(summary = "Upload a file", tags={ "content" })
+    @Operation(summary = "Add new content", tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilContentAddResponse.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public String contentAddPost();
+    public UtilContentAddResponse contentAddPost( @Multipart(value = "data" ) Attachment dataDetail, @Multipart(value = "filename")  String filename, @QueryParam("coluuid") String coluuid, @QueryParam("replication") Integer replication, @QueryParam("ignore-dupes") String ignoreDupes, @QueryParam("lazy-provide") String lazyProvide, @QueryParam("dir") String dir);
 
     /**
      * Get aggregated content stats
@@ -259,23 +262,6 @@ public interface ContentApi  {
     public String contentIdGet(@PathParam("id") Integer id);
 
     /**
-     * Import a deal
-     *
-     * This endpoint imports a deal into the shuttle.
-     *
-     */
-    @POST
-    @Path("/content/importdeal")
-    @Consumes({ "*/*" })
-    @Produces({ "application/json" })
-    @Operation(summary = "Import a deal", tags={ "content" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
-        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
-        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public String contentImportdealPost(@Valid MainImportDealBody body);
-
-    /**
      * List all pinned content
      *
      * This endpoint lists all content
@@ -290,22 +276,6 @@ public interface ContentApi  {
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public String contentListGet();
-
-    /**
-     * Read content
-     *
-     * This endpoint reads content from the blockstore
-     *
-     */
-    @GET
-    @Path("/content/read/{cont}")
-    @Produces({ "application/json" })
-    @Operation(summary = "Read content", tags={ "content" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
-        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
-        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public String contentReadContGet(@PathParam("cont") String cont);
 
     /**
      * Get staging zone for user, excluding its contents

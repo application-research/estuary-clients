@@ -1,7 +1,8 @@
 package io.swagger.api;
 
-import io.swagger.model.MainImportDealBody;
+import java.io.File;
 import io.swagger.model.TypesIpfsPin;
+import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 
@@ -24,8 +25,11 @@ class ContentApiControllerTest {
 
     @Test
     void contentAddCarPostTest() {
+        String body = "body_example";
+        String ignoreDupes = "ignoreDupes_example";
+        String filename = "filename_example";
         try {
-            api.contentAddCarPost().blockingGet();
+            api.contentAddCarPost(body, ignoreDupes, filename).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }
@@ -43,9 +47,16 @@ class ContentApiControllerTest {
     }
 
     @Test
-    void contentAddPostTest() {
+    void contentAddPostWithFormTest() {
+        File data = new File("data_example");
+        String filename = "filename_example";
+        String coluuid = "coluuid_example";
+        Integer replication = 56;
+        String ignoreDupes = "ignoreDupes_example";
+        String lazyProvide = "lazyProvide_example";
+        String dir = "dir_example";
         try {
-            api.contentAddPost().blockingGet();
+            api.contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }
@@ -147,29 +158,9 @@ class ContentApiControllerTest {
     }
 
     @Test
-    void contentImportdealPostTest() {
-        MainImportDealBody body = new MainImportDealBody();
-        try {
-            api.contentImportdealPost(body).blockingGet();
-        } catch (UnsupportedOperationException e) {
-            assumeTrue(false, "API is not yet implemented");
-        }
-    }
-
-    @Test
     void contentListGetTest() {
         try {
             api.contentListGet().blockingGet();
-        } catch (UnsupportedOperationException e) {
-            assumeTrue(false, "API is not yet implemented");
-        }
-    }
-
-    @Test
-    void contentReadContGetTest() {
-        String cont = "cont_example";
-        try {
-            api.contentReadContGet(cont).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }

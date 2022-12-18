@@ -5,6 +5,7 @@ import akka.http.scaladsl.server.Route
 import akka.http.scaladsl.unmarshalling.FromRequestUnmarshaller
 import akka.http.scaladsl.marshalling.ToEntityMarshaller
 import io.swagger.server.AkkaHttpHelper._
+import io.swagger.server.model.peering.PeeringPeer
 import io.swagger.server.model.util.HttpError
 
 class AdminApi(
@@ -20,7 +21,7 @@ class AdminApi(
           
             formFields() { () =>
               
-                entity(as[List[Boolean]]){ body =>
+                entity(as[List[String]]){ body =>
                   adminService.adminPeeringPeersDelete(body = body)
                 }
              
@@ -50,9 +51,9 @@ class AdminApi(
           
             formFields() { () =>
               
-                
-                  adminService.adminPeeringPeersPost()
-               
+                entity(as[List[peering.PeeringPeer]]){ body =>
+                  adminService.adminPeeringPeersPost(body = body)
+                }
              
             }
          
@@ -149,7 +150,7 @@ trait AdminApiService {
    * Code: 400, Message: Bad Request, DataType: util.HttpError
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
-  def adminPeeringPeersDelete(body: List[Boolean])
+  def adminPeeringPeersDelete(body: List[String])
       (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
   def adminPeeringPeersGet200(responseString: String): Route =
@@ -177,7 +178,7 @@ trait AdminApiService {
    * Code: 400, Message: Bad Request, DataType: util.HttpError
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
-  def adminPeeringPeersPost()
+  def adminPeeringPeersPost(body: List[peering.PeeringPeer])
       (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
   def adminPeeringStartPost200(responseString: String): Route =
@@ -253,7 +254,9 @@ trait AdminApiService {
 }
 
 trait AdminApiMarshaller {
-  implicit def fromRequestUnmarshallerList[Boolean]: FromRequestUnmarshaller[List[Boolean]]
+  implicit def fromRequestUnmarshallerList[String]: FromRequestUnmarshaller[List[String]]
+
+  implicit def fromRequestUnmarshallerList[peering.PeeringPeer]: FromRequestUnmarshaller[List[peering.PeeringPeer]]
 
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]

@@ -70,22 +70,6 @@ public class NetApiTest {
     }
 
     /**
-     * Net Addrs
-     *
-     * This endpoint is used to get net addrs
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void netAddrsGetTest() {
-        //String response = api.netAddrsGet();
-        //assertNotNull(response);
-        // TODO: test validations
-        
-        
-    }
-    /**
      * Get all miners
      *
      * This endpoint returns all miners

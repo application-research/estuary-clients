@@ -35,48 +35,6 @@ export class NetApi {
     }
 
     /**
-     * Callback function to receive the result of the netAddrsGet operation.
-     * @callback moduleapi/NetApi~netAddrsGetCallback
-     * @param {String} error Error message, if any.
-     * @param {'String'{ data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Net Addrs
-     * This endpoint is used to get net addrs
-     * @param {module:api/NetApi~netAddrsGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
-     */
-    netAddrsGet(callback) {
-      
-      let postBody = null;
-
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
-
-      let authNames = ['bearerAuth'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = 'String';
-
-      return this.apiClient.callApi(
-        '/net/addrs', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-    /**
      * Callback function to receive the result of the publicMinersFailuresMinerGet operation.
      * @callback moduleapi/NetApi~publicMinersFailuresMinerGetCallback
      * @param {String} error Error message, if any.

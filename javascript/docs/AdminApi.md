@@ -33,7 +33,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 //bearerAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new EstuaryClient.AdminApi();
-let body = [true]; // [Boolean] | Peer ids
+let body = ["body_example"]; // [String] | Peer ids
 
 apiInstance.adminPeeringPeersDelete(body, (error, data, response) => {
   if (error) {
@@ -48,7 +48,7 @@ apiInstance.adminPeeringPeersDelete(body, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**[Boolean]**](Boolean.md)| Peer ids | 
+ **body** | [**[String]**](String.md)| Peer ids | 
 
 ### Return type
 
@@ -110,7 +110,7 @@ This endpoint does not need any parameter.
 
 <a name="adminPeeringPeersPost"></a>
 # **adminPeeringPeersPost**
-> &#x27;String&#x27; adminPeeringPeersPost()
+> &#x27;String&#x27; adminPeeringPeersPost(body)
 
 Add peers on Peering Service
 
@@ -128,7 +128,9 @@ bearerAuth.apiKey = 'YOUR API KEY';
 //bearerAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new EstuaryClient.AdminApi();
-apiInstance.adminPeeringPeersPost((error, data, response) => {
+let body = [new EstuaryClient.PeeringPeeringPeer()]; // [PeeringPeeringPeer] | Peering Peer array
+
+apiInstance.adminPeeringPeersPost(body, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -138,7 +140,10 @@ apiInstance.adminPeeringPeersPost((error, data, response) => {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**[PeeringPeeringPeer]**](PeeringPeeringPeer.md)| Peering Peer array | 
 
 ### Return type
 
@@ -150,7 +155,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 <a name="adminPeeringStartPost"></a>

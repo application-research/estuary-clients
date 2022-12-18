@@ -6,9 +6,9 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**admin_invites_code_post**](ContentApi.md#admin_invites_code_post) | **POST** /admin/invites/{code} | Create an Estuary invite
 [**admin_invites_get**](ContentApi.md#admin_invites_get) | **GET** /admin/invites | Get Estuary invites
-[**content_add_car_post**](ContentApi.md#content_add_car_post) | **POST** /content/add-car | Upload content via a car file
+[**content_add_car_post**](ContentApi.md#content_add_car_post) | **POST** /content/add-car | Add Car object
 [**content_add_ipfs_post**](ContentApi.md#content_add_ipfs_post) | **POST** /content/add-ipfs | Add IPFS object
-[**content_add_post**](ContentApi.md#content_add_post) | **POST** /content/add | Upload a file
+[**content_add_post**](ContentApi.md#content_add_post) | **POST** /content/add | Add new content
 [**content_aggregated_content_get**](ContentApi.md#content_aggregated_content_get) | **GET** /content/aggregated/{content} | Get aggregated content stats
 [**content_all_deals_get**](ContentApi.md#content_all_deals_get) | **GET** /content/all-deals | Get all deals for a user
 [**content_bw_usage_content_get**](ContentApi.md#content_bw_usage_content_get) | **GET** /content/bw-usage/{content} | Get content bandwidth
@@ -18,9 +18,7 @@ Method | HTTP request | Description
 [**content_ensure_replication_datacid_get**](ContentApi.md#content_ensure_replication_datacid_get) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
 [**content_failures_content_get**](ContentApi.md#content_failures_content_get) | **GET** /content/failures/{content} | List all failures for a content
 [**content_id_get**](ContentApi.md#content_id_get) | **GET** /content/{id} | Content
-[**content_importdeal_post**](ContentApi.md#content_importdeal_post) | **POST** /content/importdeal | Import a deal
 [**content_list_get**](ContentApi.md#content_list_get) | **GET** /content/list | List all pinned content
-[**content_read_cont_get**](ContentApi.md#content_read_cont_get) | **GET** /content/read/{cont} | Read content
 [**content_staging_zones_get**](ContentApi.md#content_staging_zones_get) | **GET** /content/staging-zones | Get staging zone for user, excluding its contents
 [**content_staging_zones_staging_zone_contents_get**](ContentApi.md#content_staging_zones_staging_zone_contents_get) | **GET** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
 [**content_staging_zones_staging_zone_get**](ContentApi.md#content_staging_zones_staging_zone_get) | **GET** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
@@ -129,11 +127,11 @@ This endpoint does not need any parameter.
 
 
 # **content_add_car_post**
-> String content_add_car_post
+> UtilContentAddResponse content_add_car_post(body, opts)
 
-Upload content via a car file
+Add Car object
 
-This endpoint uploads content via a car file
+This endpoint is used to add a car object to the network. The object can be a file or a directory.
 
 ### Example
 ```ruby
@@ -148,10 +146,15 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
+body = 'body_example' # String | Car
+opts = { 
+  ignore_dupes: 'ignore_dupes_example' # String | Ignore Dupes
+  filename: 'filename_example' # String | Filename
+}
 
 begin
-  #Upload content via a car file
-  result = api_instance.content_add_car_post
+  #Add Car object
+  result = api_instance.content_add_car_post(body, opts)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ContentApi->content_add_car_post: #{e}"
@@ -159,11 +162,16 @@ end
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**String**](String.md)| Car | 
+ **ignore_dupes** | **String**| Ignore Dupes | [optional] 
+ **filename** | **String**| Filename | [optional] 
 
 ### Return type
 
-**String**
+[**UtilContentAddResponse**](UtilContentAddResponse.md)
 
 ### Authorization
 
@@ -171,7 +179,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 
@@ -233,11 +241,11 @@ Name | Type | Description  | Notes
 
 
 # **content_add_post**
-> String content_add_post
+> UtilContentAddResponse content_add_post(datafilename, opts)
 
-Upload a file
+Add new content
 
-This endpoint uploads a file.
+This endpoint is used to upload new content.
 
 ### Example
 ```ruby
@@ -252,10 +260,19 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
+data = 'data_example' # String | 
+filename = 'filename_example' # String | 
+opts = { 
+  coluuid: 'coluuid_example' # String | Collection UUID
+  replication: 56 # Integer | Replication value
+  ignore_dupes: 'ignore_dupes_example' # String | Ignore Dupes true/false
+  lazy_provide: 'lazy_provide_example' # String | Lazy Provide true/false
+  dir: 'dir_example' # String | Directory
+}
 
 begin
-  #Upload a file
-  result = api_instance.content_add_post
+  #Add new content
+  result = api_instance.content_add_post(datafilename, opts)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling ContentApi->content_add_post: #{e}"
@@ -263,11 +280,20 @@ end
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data** | **String**|  | 
+ **filename** | **String**|  | 
+ **coluuid** | **String**| Collection UUID | [optional] 
+ **replication** | **Integer**| Replication value | [optional] 
+ **ignore_dupes** | **String**| Ignore Dupes true/false | [optional] 
+ **lazy_provide** | **String**| Lazy Provide true/false | [optional] 
+ **dir** | **String**| Directory | [optional] 
 
 ### Return type
 
-**String**
+[**UtilContentAddResponse**](UtilContentAddResponse.md)
 
 ### Authorization
 
@@ -275,7 +301,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 
@@ -769,59 +795,6 @@ Name | Type | Description  | Notes
 
 
 
-# **content_importdeal_post**
-> String content_importdeal_post(body)
-
-Import a deal
-
-This endpoint imports a deal into the shuttle.
-
-### Example
-```ruby
-# load the gem
-require 'swagger_client'
-# setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::ContentApi.new
-body = SwaggerClient::MainImportDealBody.new # MainImportDealBody | Import a deal
-
-
-begin
-  #Import a deal
-  result = api_instance.content_importdeal_post(body)
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling ContentApi->content_importdeal_post: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**MainImportDealBody**](MainImportDealBody.md)| Import a deal | 
-
-### Return type
-
-**String**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: */*
- - **Accept**: application/json
-
-
-
 # **content_list_get**
 > String content_list_get
 
@@ -854,59 +827,6 @@ end
 
 ### Parameters
 This endpoint does not need any parameter.
-
-### Return type
-
-**String**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-
-# **content_read_cont_get**
-> String content_read_cont_get(cont)
-
-Read content
-
-This endpoint reads content from the blockstore
-
-### Example
-```ruby
-# load the gem
-require 'swagger_client'
-# setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::ContentApi.new
-cont = 'cont_example' # String | CID
-
-
-begin
-  #Read content
-  result = api_instance.content_read_cont_get(cont)
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling ContentApi->content_read_cont_get: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **cont** | **String**| CID | 
 
 ### Return type
 

@@ -82,36 +82,51 @@ open class ContentAPI: APIBase {
     }
 
     /**
-     Upload content via a car file
+     Add Car object
+     - parameter body: (body) Car 
+     - parameter ignoreDupes: (query) Ignore Dupes (optional)
+     - parameter filename: (query) Filename (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func contentAddCarPost(completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
-        contentAddCarPostWithRequestBuilder().execute { (response, error) -> Void in
+    open class func contentAddCarPost(body: String, ignoreDupes: String? = nil, filename: String? = nil, completion: @escaping ((_ data: UtilContentAddResponse?, _ error: ErrorResponse?) -> Void)) {
+        contentAddCarPostWithRequestBuilder(body: body, ignoreDupes: ignoreDupes, filename: filename).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
 
 
     /**
-     Upload content via a car file
+     Add Car object
      - POST /content/add-car
-     - This endpoint uploads content via a car file
+     - This endpoint is used to add a car object to the network. The object can be a file or a directory.
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example=""}]
-     - returns: RequestBuilder<String> 
+     - examples: [{contentType=application/json, example={
+  "retrieval_url" : "retrieval_url",
+  "estuaryId" : 0,
+  "estuary_retrieval_url" : "estuary_retrieval_url",
+  "providers" : [ "providers", "providers" ],
+  "cid" : "cid"
+}}]
+     - parameter body: (body) Car 
+     - parameter ignoreDupes: (query) Ignore Dupes (optional)
+     - parameter filename: (query) Filename (optional)
+     - returns: RequestBuilder<UtilContentAddResponse> 
      */
-    open class func contentAddCarPostWithRequestBuilder() -> RequestBuilder<String> {
+    open class func contentAddCarPostWithRequestBuilder(body: String, ignoreDupes: String? = nil, filename: String? = nil) -> RequestBuilder<UtilContentAddResponse> {
         let path = "/content/add-car"
         let URLString = estuary-clientAPI.basePath + path
-        let parameters: [String:Any]? = nil
+        let parameters = body.encodeToJSON()
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems(values:[
+                        "ignore-dupes": ignoreDupes,
+                        "filename": filename
+        ])
 
-        let url = URLComponents(string: URLString)
+        let requestBuilder: RequestBuilder<UtilContentAddResponse>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
-        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
 
     /**
@@ -154,34 +169,66 @@ open class ContentAPI: APIBase {
     }
 
     /**
-     Upload a file
+     Add new content
+     - parameter data: (form)  
+     - parameter filename: (form)  
+     - parameter coluuid: (query) Collection UUID (optional)
+     - parameter replication: (query) Replication value (optional)
+     - parameter ignoreDupes: (query) Ignore Dupes true/false (optional)
+     - parameter lazyProvide: (query) Lazy Provide true/false (optional)
+     - parameter dir: (query) Directory (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func contentAddPost(completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
-        contentAddPostWithRequestBuilder().execute { (response, error) -> Void in
+    open class func contentAddPost(data: Data, filename: String, coluuid: String? = nil, replication: Int32? = nil, ignoreDupes: String? = nil, lazyProvide: String? = nil, dir: String? = nil, completion: @escaping ((_ data: UtilContentAddResponse?, _ error: ErrorResponse?) -> Void)) {
+        contentAddPostWithRequestBuilder(data: data, filename: filename, coluuid: coluuid, replication: replication, ignoreDupes: ignoreDupes, lazyProvide: lazyProvide, dir: dir).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
 
 
     /**
-     Upload a file
+     Add new content
      - POST /content/add
-     - This endpoint uploads a file.
+     - This endpoint is used to upload new content.
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example=""}]
-     - returns: RequestBuilder<String> 
+     - examples: [{contentType=application/json, example={
+  "retrieval_url" : "retrieval_url",
+  "estuaryId" : 0,
+  "estuary_retrieval_url" : "estuary_retrieval_url",
+  "providers" : [ "providers", "providers" ],
+  "cid" : "cid"
+}}]
+     - parameter data: (form)  
+     - parameter filename: (form)  
+     - parameter coluuid: (query) Collection UUID (optional)
+     - parameter replication: (query) Replication value (optional)
+     - parameter ignoreDupes: (query) Ignore Dupes true/false (optional)
+     - parameter lazyProvide: (query) Lazy Provide true/false (optional)
+     - parameter dir: (query) Directory (optional)
+     - returns: RequestBuilder<UtilContentAddResponse> 
      */
-    open class func contentAddPostWithRequestBuilder() -> RequestBuilder<String> {
+    open class func contentAddPostWithRequestBuilder(data: Data, filename: String, coluuid: String? = nil, replication: Int32? = nil, ignoreDupes: String? = nil, lazyProvide: String? = nil, dir: String? = nil) -> RequestBuilder<UtilContentAddResponse> {
         let path = "/content/add"
         let URLString = estuary-clientAPI.basePath + path
-        let parameters: [String:Any]? = nil
+        let formParams: [String:Any?] = [
+                        "data": data,
+                        "filename": filename
+        ]
 
-        let url = URLComponents(string: URLString)
+        let nonNullParameters = APIHelper.rejectNil(formParams)
+        let parameters = APIHelper.convertBoolToString(nonNullParameters)
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems(values:[
+                        "coluuid": coluuid,
+                        "replication": replication?.encodeToJSON(),
+                        "ignore-dupes": ignoreDupes,
+                        "lazy-provide": lazyProvide,
+                        "dir": dir
+        ])
 
-        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<UtilContentAddResponse>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -539,41 +586,6 @@ open class ContentAPI: APIBase {
     }
 
     /**
-     Import a deal
-     - parameter body: (body) Import a deal 
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func contentImportdealPost(body: MainImportDealBody, completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
-        contentImportdealPostWithRequestBuilder(body: body).execute { (response, error) -> Void in
-            completion(response?.body, error)
-        }
-    }
-
-
-    /**
-     Import a deal
-     - POST /content/importdeal
-     - This endpoint imports a deal into the shuttle.
-     - API Key:
-       - type: apiKey Authorization 
-       - name: bearerAuth
-     - examples: [{contentType=application/json, example=""}]
-     - parameter body: (body) Import a deal 
-     - returns: RequestBuilder<String> 
-     */
-    open class func contentImportdealPostWithRequestBuilder(body: MainImportDealBody) -> RequestBuilder<String> {
-        let path = "/content/importdeal"
-        let URLString = estuary-clientAPI.basePath + path
-        let parameters = body.encodeToJSON()
-
-        let url = URLComponents(string: URLString)
-
-        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
-    }
-
-    /**
      List all pinned content
      - parameter completion: completion handler to receive the data and the error objects
      */
@@ -596,44 +608,6 @@ open class ContentAPI: APIBase {
      */
     open class func contentListGetWithRequestBuilder() -> RequestBuilder<String> {
         let path = "/content/list"
-        let URLString = estuary-clientAPI.basePath + path
-        let parameters: [String:Any]? = nil
-
-        let url = URLComponents(string: URLString)
-
-        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
-    }
-
-    /**
-     Read content
-     - parameter cont: (path) CID 
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func contentReadContGet(cont: String, completion: @escaping ((_ data: String?, _ error: ErrorResponse?) -> Void)) {
-        contentReadContGetWithRequestBuilder(cont: cont).execute { (response, error) -> Void in
-            completion(response?.body, error)
-        }
-    }
-
-
-    /**
-     Read content
-     - GET /content/read/{cont}
-     - This endpoint reads content from the blockstore
-     - API Key:
-       - type: apiKey Authorization 
-       - name: bearerAuth
-     - examples: [{contentType=application/json, example=""}]
-     - parameter cont: (path) CID 
-     - returns: RequestBuilder<String> 
-     */
-    open class func contentReadContGetWithRequestBuilder(cont: String) -> RequestBuilder<String> {
-        var path = "/content/read/{cont}"
-        let contPreEscape = "\(cont)"
-        let contPostEscape = contPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{cont}", with: contPostEscape, options: .literal, range: nil)
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
 

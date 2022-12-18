@@ -35,7 +35,7 @@ $apiInstance = new Swagger\Client\Api\AdminApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = array(True); // bool[] | Peer ids
+$body = array("body_example"); // string[] | Peer ids
 
 try {
     $result = $apiInstance->adminPeeringPeersDelete($body);
@@ -50,7 +50,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**bool[]**](../Model/bool.md)| Peer ids |
+ **body** | [**string[]**](../Model/string.md)| Peer ids |
 
 ### Return type
 
@@ -118,7 +118,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **adminPeeringPeersPost**
-> string adminPeeringPeersPost()
+> string adminPeeringPeersPost($body)
 
 Add peers on Peering Service
 
@@ -139,9 +139,10 @@ $apiInstance = new Swagger\Client\Api\AdminApi(
     new GuzzleHttp\Client(),
     $config
 );
+$body = array(new \Swagger\Client\Model\PeeringPeeringPeer()); // \Swagger\Client\Model\PeeringPeeringPeer[] | Peering Peer array
 
 try {
-    $result = $apiInstance->adminPeeringPeersPost();
+    $result = $apiInstance->adminPeeringPeersPost($body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdminApi->adminPeeringPeersPost: ', $e->getMessage(), PHP_EOL;
@@ -150,7 +151,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**\Swagger\Client\Model\PeeringPeeringPeer[]**](../Model/PeeringPeeringPeer.md)| Peering Peer array |
 
 ### Return type
 
@@ -162,7 +166,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)

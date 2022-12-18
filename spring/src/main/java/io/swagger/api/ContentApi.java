@@ -5,8 +5,9 @@
  */
 package io.swagger.api;
 
-import io.swagger.model.MainImportDealBody;
+import org.springframework.core.io.Resource;
 import io.swagger.model.TypesIpfsPin;
+import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 import io.swagger.v3.oas.annotations.Operation;
@@ -35,22 +36,23 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-14T06:22:42.275Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-18T07:30:27.009Z[GMT]")
 @Validated
 public interface ContentApi {
 
-    @Operation(summary = "Upload content via a car file", description = "This endpoint uploads content via a car file", security = {
+    @Operation(summary = "Add Car object", description = "This endpoint is used to add a car object to the network. The object can be a file or a directory.", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilContentAddResponse.class))),
         
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     @RequestMapping(value = "/content/add-car",
         produces = { "application/json" }, 
+        consumes = { "*/*" }, 
         method = RequestMethod.POST)
-    ResponseEntity<String> contentAddCarPost();
+    ResponseEntity<UtilContentAddResponse> contentAddCarPost(@Parameter(in = ParameterIn.DEFAULT, description = "Car", required=true, schema=@Schema()) @Valid @RequestBody String body, @Parameter(in = ParameterIn.QUERY, description = "Ignore Dupes" ,schema=@Schema()) @Valid @RequestParam(value = "ignore-dupes", required = false) String ignoreDupes, @Parameter(in = ParameterIn.QUERY, description = "Filename" ,schema=@Schema()) @Valid @RequestParam(value = "filename", required = false) String filename);
 
 
     @Operation(summary = "Add IPFS object", description = "This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.", security = {
@@ -68,18 +70,19 @@ public interface ContentApi {
     ResponseEntity<String> contentAddIpfsPost(@Parameter(in = ParameterIn.DEFAULT, description = "IPFS Body", required=true, schema=@Schema()) @Valid @RequestBody TypesIpfsPin body, @Parameter(in = ParameterIn.QUERY, description = "Ignore Dupes" ,schema=@Schema()) @Valid @RequestParam(value = "ignore-dupes", required = false) String ignoreDupes);
 
 
-    @Operation(summary = "Upload a file", description = "This endpoint uploads a file.", security = {
+    @Operation(summary = "Add new content", description = "This endpoint is used to upload new content.", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilContentAddResponse.class))),
         
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     @RequestMapping(value = "/content/add",
         produces = { "application/json" }, 
+        consumes = { "multipart/form-data" }, 
         method = RequestMethod.POST)
-    ResponseEntity<String> contentAddPost();
+    ResponseEntity<UtilContentAddResponse> contentAddPost(@Parameter(description = "file detail") @Valid @RequestPart("file") MultipartFile data, @Parameter(in = ParameterIn.DEFAULT, description = "", required=true,schema=@Schema()) @RequestParam(value="filename", required=true)  String filename, @Parameter(in = ParameterIn.QUERY, description = "Collection UUID" ,schema=@Schema()) @Valid @RequestParam(value = "coluuid", required = false) String coluuid, @Parameter(in = ParameterIn.QUERY, description = "Replication value" ,schema=@Schema()) @Valid @RequestParam(value = "replication", required = false) Integer replication, @Parameter(in = ParameterIn.QUERY, description = "Ignore Dupes true/false" ,schema=@Schema()) @Valid @RequestParam(value = "ignore-dupes", required = false) String ignoreDupes, @Parameter(in = ParameterIn.QUERY, description = "Lazy Provide true/false" ,schema=@Schema()) @Valid @RequestParam(value = "lazy-provide", required = false) String lazyProvide, @Parameter(in = ParameterIn.QUERY, description = "Directory" ,schema=@Schema()) @Valid @RequestParam(value = "dir", required = false) String dir);
 
 
     @Operation(summary = "Get aggregated content stats", description = "This endpoint returns aggregated content stats", security = {
@@ -209,21 +212,6 @@ public interface ContentApi {
     ResponseEntity<String> contentIdGet(@Parameter(in = ParameterIn.PATH, description = "Content ID", required=true, schema=@Schema()) @PathVariable("id") Integer id);
 
 
-    @Operation(summary = "Import a deal", description = "This endpoint imports a deal into the shuttle.", security = {
-        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
-        
-        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
-        
-        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    @RequestMapping(value = "/content/importdeal",
-        produces = { "application/json" }, 
-        consumes = { "*/*" }, 
-        method = RequestMethod.POST)
-    ResponseEntity<String> contentImportdealPost(@Parameter(in = ParameterIn.DEFAULT, description = "Import a deal", required=true, schema=@Schema()) @Valid @RequestBody MainImportDealBody body);
-
-
     @Operation(summary = "List all pinned content", description = "This endpoint lists all content", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
     @ApiResponses(value = { 
@@ -236,20 +224,6 @@ public interface ContentApi {
         produces = { "application/json" }, 
         method = RequestMethod.GET)
     ResponseEntity<String> contentListGet();
-
-
-    @Operation(summary = "Read content", description = "This endpoint reads content from the blockstore", security = {
-        @SecurityRequirement(name = "bearerAuth")    }, tags={ "content" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
-        
-        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
-        
-        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    @RequestMapping(value = "/content/read/{cont}",
-        produces = { "application/json" }, 
-        method = RequestMethod.GET)
-    ResponseEntity<String> contentReadContGet(@Parameter(in = ParameterIn.PATH, description = "CID", required=true, schema=@Schema()) @PathVariable("cont") String cont);
 
 
     @Operation(summary = "Get staging zone for user, excluding its contents", description = "This endpoint is used to get staging zone for user, excluding its contents.", security = {

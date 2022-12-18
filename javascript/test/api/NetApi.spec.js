@@ -34,27 +34,6 @@
 
   describe('(package)', function() {
     describe('NetApi', function() {
-      describe('netAddrsGet', function() {
-        it('should call netAddrsGet successfully', function(done) {
-          // TODO: uncomment netAddrsGet call and complete the assertions
-          /*
-
-          instance.netAddrsGet(function(error, data, response) {
-            if (error) {
-              done(error);
-              return;
-            }
-            // TODO: update response assertions
-            expect(data).to.be.a(&#x27;string&#x27;);
-            // expect(data).to.be(null);
-
-            done();
-          });
-          */
-          // TODO: uncomment and complete method invocation above, then delete this line and the next:
-          done();
-        });
-      });
       describe('publicMinersFailuresMinerGet', function() {
         it('should call publicMinersFailuresMinerGet successfully', function(done) {
           // TODO: uncomment, update parameter values for publicMinersFailuresMinerGet call and complete the assertions

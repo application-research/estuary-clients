@@ -5,6 +5,7 @@
  */
 package io.swagger.api;
 
+import io.swagger.model.PeeringPeeringPeer;
 import io.swagger.model.UtilHttpError;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -32,7 +33,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-14T06:22:42.275Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-18T07:30:27.009Z[GMT]")
 @Validated
 public interface AdminApi {
 
@@ -105,7 +106,7 @@ public interface AdminApi {
         produces = { "application/json" }, 
         consumes = { "*/*" }, 
         method = RequestMethod.DELETE)
-    ResponseEntity<String> adminPeeringPeersDelete(@Parameter(in = ParameterIn.DEFAULT, description = "Peer ids", required=true, schema=@Schema()) @Valid @RequestBody List<Boolean> body);
+    ResponseEntity<String> adminPeeringPeersDelete(@Parameter(in = ParameterIn.DEFAULT, description = "Peer ids", required=true, schema=@Schema()) @Valid @RequestBody List<String> body);
 
 
     @Operation(summary = "List all Peering peers", description = "This endpoint can be used to list all peers on Peering Service", security = {
@@ -132,8 +133,9 @@ public interface AdminApi {
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     @RequestMapping(value = "/admin/peering/peers",
         produces = { "application/json" }, 
+        consumes = { "*/*" }, 
         method = RequestMethod.POST)
-    ResponseEntity<String> adminPeeringPeersPost();
+    ResponseEntity<String> adminPeeringPeersPost(@Parameter(in = ParameterIn.DEFAULT, description = "Peering Peer array", required=true, schema=@Schema()) @Valid @RequestBody List<PeeringPeeringPeer> body);
 
 
     @Operation(summary = "Start Peering", description = "This endpoint can be used to start the Peering Service", security = {

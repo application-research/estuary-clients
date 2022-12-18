@@ -63,16 +63,6 @@ namespace estuary-client.Test
         }
 
         /// <summary>
-        /// Test NetAddrsGet
-        /// </summary>
-        [Test]
-        public void NetAddrsGetTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //var response = instance.NetAddrsGet();
-            //Assert.IsInstanceOf<string> (response, "response is string");
-        }
-        /// <summary>
         /// Test PublicMinersFailuresMinerGet
         /// </summary>
         [Test]

@@ -6,9 +6,9 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**adminInvitesCodePost**](ContentApi.md#adminInvitesCodePost) | **POST** /admin/invites/{code} | Create an Estuary invite
 [**adminInvitesGet**](ContentApi.md#adminInvitesGet) | **GET** /admin/invites | Get Estuary invites
-[**contentAddCarPost**](ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Upload content via a car file
+[**contentAddCarPost**](ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Add Car object
 [**contentAddIpfsPost**](ContentApi.md#contentAddIpfsPost) | **POST** /content/add-ipfs | Add IPFS object
-[**contentAddPost**](ContentApi.md#contentAddPost) | **POST** /content/add | Upload a file
+[**contentAddPost**](ContentApi.md#contentAddPost) | **POST** /content/add | Add new content
 [**contentAggregatedContentGet**](ContentApi.md#contentAggregatedContentGet) | **GET** /content/aggregated/{content} | Get aggregated content stats
 [**contentAllDealsGet**](ContentApi.md#contentAllDealsGet) | **GET** /content/all-deals | Get all deals for a user
 [**contentBwUsageContentGet**](ContentApi.md#contentBwUsageContentGet) | **GET** /content/bw-usage/{content} | Get content bandwidth
@@ -18,9 +18,7 @@ Method | HTTP request | Description
 [**contentEnsureReplicationDatacidGet**](ContentApi.md#contentEnsureReplicationDatacidGet) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
 [**contentFailuresContentGet**](ContentApi.md#contentFailuresContentGet) | **GET** /content/failures/{content} | List all failures for a content
 [**contentIdGet**](ContentApi.md#contentIdGet) | **GET** /content/{id} | Content
-[**contentImportdealPost**](ContentApi.md#contentImportdealPost) | **POST** /content/importdeal | Import a deal
 [**contentListGet**](ContentApi.md#contentListGet) | **GET** /content/list | List all pinned content
-[**contentReadContGet**](ContentApi.md#contentReadContGet) | **GET** /content/read/{cont} | Read content
 [**contentStagingZonesGet**](ContentApi.md#contentStagingZonesGet) | **GET** /content/staging-zones | Get staging zone for user, excluding its contents
 [**contentStagingZonesStagingZoneContentsGet**](ContentApi.md#contentStagingZonesStagingZoneContentsGet) | **GET** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
 [**contentStagingZonesStagingZoneGet**](ContentApi.md#contentStagingZonesStagingZoneGet) | **GET** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
@@ -119,11 +117,11 @@ This endpoint does not need any parameter.
 
 <a name="contentAddCarPost"></a>
 # **contentAddCarPost**
-> kotlin.String contentAddCarPost()
+> UtilContentAddResponse contentAddCarPost(body, ignoreDupes, filename)
 
-Upload content via a car file
+Add Car object
 
-This endpoint uploads content via a car file
+This endpoint is used to add a car object to the network. The object can be a file or a directory.
 
 ### Example
 ```kotlin
@@ -132,8 +130,11 @@ This endpoint uploads content via a car file
 //import io.swagger.client.models.*;
 
 val apiInstance = ContentApi()
+val body : kotlin.String =  // kotlin.String | Car
+val ignoreDupes : kotlin.String = ignoreDupes_example // kotlin.String | Ignore Dupes
+val filename : kotlin.String = filename_example // kotlin.String | Filename
 try {
-    val result : kotlin.String = apiInstance.contentAddCarPost()
+    val result : UtilContentAddResponse = apiInstance.contentAddCarPost(body, ignoreDupes, filename)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling ContentApi#contentAddCarPost")
@@ -145,11 +146,16 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**kotlin.String**](kotlin.String.md)| Car |
+ **ignoreDupes** | **kotlin.String**| Ignore Dupes | [optional]
+ **filename** | **kotlin.String**| Filename | [optional]
 
 ### Return type
 
-**kotlin.String**
+[**UtilContentAddResponse**](UtilContentAddResponse.md)
 
 ### Authorization
 
@@ -157,7 +163,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 <a name="contentAddIpfsPost"></a>
@@ -211,11 +217,11 @@ Name | Type | Description  | Notes
 
 <a name="contentAddPost"></a>
 # **contentAddPost**
-> kotlin.String contentAddPost()
+> UtilContentAddResponse contentAddPost(`data`, filename, coluuid, replication, ignoreDupes, lazyProvide, dir)
 
-Upload a file
+Add new content
 
-This endpoint uploads a file.
+This endpoint is used to upload new content.
 
 ### Example
 ```kotlin
@@ -224,8 +230,15 @@ This endpoint uploads a file.
 //import io.swagger.client.models.*;
 
 val apiInstance = ContentApi()
+val `data` : kotlin.Array<kotlin.Byte> = `data`_example // kotlin.Array<kotlin.Byte> | 
+val filename : kotlin.String = filename_example // kotlin.String | 
+val coluuid : kotlin.String = coluuid_example // kotlin.String | Collection UUID
+val replication : kotlin.Int = 56 // kotlin.Int | Replication value
+val ignoreDupes : kotlin.String = ignoreDupes_example // kotlin.String | Ignore Dupes true/false
+val lazyProvide : kotlin.String = lazyProvide_example // kotlin.String | Lazy Provide true/false
+val dir : kotlin.String = dir_example // kotlin.String | Directory
 try {
-    val result : kotlin.String = apiInstance.contentAddPost()
+    val result : UtilContentAddResponse = apiInstance.contentAddPost(`data`, filename, coluuid, replication, ignoreDupes, lazyProvide, dir)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling ContentApi#contentAddPost")
@@ -237,11 +250,20 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **&#x60;data&#x60;** | **kotlin.Array&lt;kotlin.Byte&gt;**|  |
+ **filename** | **kotlin.String**|  |
+ **coluuid** | **kotlin.String**| Collection UUID | [optional]
+ **replication** | **kotlin.Int**| Replication value | [optional]
+ **ignoreDupes** | **kotlin.String**| Ignore Dupes true/false | [optional]
+ **lazyProvide** | **kotlin.String**| Lazy Provide true/false | [optional]
+ **dir** | **kotlin.String**| Directory | [optional]
 
 ### Return type
 
-**kotlin.String**
+[**UtilContentAddResponse**](UtilContentAddResponse.md)
 
 ### Authorization
 
@@ -249,7 +271,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 <a name="contentAggregatedContentGet"></a>
@@ -685,53 +707,6 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="contentImportdealPost"></a>
-# **contentImportdealPost**
-> kotlin.String contentImportdealPost(body)
-
-Import a deal
-
-This endpoint imports a deal into the shuttle.
-
-### Example
-```kotlin
-// Import classes:
-//import estuary-client.infrastructure.*
-//import io.swagger.client.models.*;
-
-val apiInstance = ContentApi()
-val body : MainimportDealBody =  // MainimportDealBody | Import a deal
-try {
-    val result : kotlin.String = apiInstance.contentImportdealPost(body)
-    println(result)
-} catch (e: ClientException) {
-    println("4xx response calling ContentApi#contentImportdealPost")
-    e.printStackTrace()
-} catch (e: ServerException) {
-    println("5xx response calling ContentApi#contentImportdealPost")
-    e.printStackTrace()
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**MainimportDealBody**](MainimportDealBody.md)| Import a deal |
-
-### Return type
-
-**kotlin.String**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: */*
- - **Accept**: application/json
-
 <a name="contentListGet"></a>
 # **contentListGet**
 > kotlin.String contentListGet()
@@ -761,53 +736,6 @@ try {
 
 ### Parameters
 This endpoint does not need any parameter.
-
-### Return type
-
-**kotlin.String**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="contentReadContGet"></a>
-# **contentReadContGet**
-> kotlin.String contentReadContGet(cont)
-
-Read content
-
-This endpoint reads content from the blockstore
-
-### Example
-```kotlin
-// Import classes:
-//import estuary-client.infrastructure.*
-//import io.swagger.client.models.*;
-
-val apiInstance = ContentApi()
-val cont : kotlin.String = cont_example // kotlin.String | CID
-try {
-    val result : kotlin.String = apiInstance.contentReadContGet(cont)
-    println(result)
-} catch (e: ClientException) {
-    println("4xx response calling ContentApi#contentReadContGet")
-    e.printStackTrace()
-} catch (e: ServerException) {
-    println("5xx response calling ContentApi#contentReadContGet")
-    e.printStackTrace()
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **cont** | **kotlin.String**| CID |
 
 ### Return type
 

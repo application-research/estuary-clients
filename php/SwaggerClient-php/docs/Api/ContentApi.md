@@ -6,9 +6,9 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**adminInvitesCodePost**](ContentApi.md#admininvitescodepost) | **POST** /admin/invites/{code} | Create an Estuary invite
 [**adminInvitesGet**](ContentApi.md#admininvitesget) | **GET** /admin/invites | Get Estuary invites
-[**contentAddCarPost**](ContentApi.md#contentaddcarpost) | **POST** /content/add-car | Upload content via a car file
+[**contentAddCarPost**](ContentApi.md#contentaddcarpost) | **POST** /content/add-car | Add Car object
 [**contentAddIpfsPost**](ContentApi.md#contentaddipfspost) | **POST** /content/add-ipfs | Add IPFS object
-[**contentAddPost**](ContentApi.md#contentaddpost) | **POST** /content/add | Upload a file
+[**contentAddPost**](ContentApi.md#contentaddpost) | **POST** /content/add | Add new content
 [**contentAggregatedContentGet**](ContentApi.md#contentaggregatedcontentget) | **GET** /content/aggregated/{content} | Get aggregated content stats
 [**contentAllDealsGet**](ContentApi.md#contentalldealsget) | **GET** /content/all-deals | Get all deals for a user
 [**contentBwUsageContentGet**](ContentApi.md#contentbwusagecontentget) | **GET** /content/bw-usage/{content} | Get content bandwidth
@@ -18,9 +18,7 @@ Method | HTTP request | Description
 [**contentEnsureReplicationDatacidGet**](ContentApi.md#contentensurereplicationdatacidget) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
 [**contentFailuresContentGet**](ContentApi.md#contentfailurescontentget) | **GET** /content/failures/{content} | List all failures for a content
 [**contentIdGet**](ContentApi.md#contentidget) | **GET** /content/{id} | Content
-[**contentImportdealPost**](ContentApi.md#contentimportdealpost) | **POST** /content/importdeal | Import a deal
 [**contentListGet**](ContentApi.md#contentlistget) | **GET** /content/list | List all pinned content
-[**contentReadContGet**](ContentApi.md#contentreadcontget) | **GET** /content/read/{cont} | Read content
 [**contentStagingZonesGet**](ContentApi.md#contentstagingzonesget) | **GET** /content/staging-zones | Get staging zone for user, excluding its contents
 [**contentStagingZonesStagingZoneContentsGet**](ContentApi.md#contentstagingzonesstagingzonecontentsget) | **GET** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
 [**contentStagingZonesStagingZoneGet**](ContentApi.md#contentstagingzonesstagingzoneget) | **GET** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
@@ -132,11 +130,11 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **contentAddCarPost**
-> string contentAddCarPost()
+> \Swagger\Client\Model\UtilContentAddResponse contentAddCarPost($body, $ignore_dupes, $filename)
 
-Upload content via a car file
+Add Car object
 
-This endpoint uploads content via a car file
+This endpoint is used to add a car object to the network. The object can be a file or a directory.
 
 ### Example
 ```php
@@ -153,9 +151,12 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
     new GuzzleHttp\Client(),
     $config
 );
+$body = "body_example"; // string | Car
+$ignore_dupes = "ignore_dupes_example"; // string | Ignore Dupes
+$filename = "filename_example"; // string | Filename
 
 try {
-    $result = $apiInstance->contentAddCarPost();
+    $result = $apiInstance->contentAddCarPost($body, $ignore_dupes, $filename);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContentApi->contentAddCarPost: ', $e->getMessage(), PHP_EOL;
@@ -164,11 +165,16 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**string**](../Model/string.md)| Car |
+ **ignore_dupes** | **string**| Ignore Dupes | [optional]
+ **filename** | **string**| Filename | [optional]
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\UtilContentAddResponse**](../Model/UtilContentAddResponse.md)
 
 ### Authorization
 
@@ -176,7 +182,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
@@ -238,11 +244,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **contentAddPost**
-> string contentAddPost()
+> \Swagger\Client\Model\UtilContentAddResponse contentAddPost($data, $filename, $coluuid, $replication, $ignore_dupes, $lazy_provide, $dir)
 
-Upload a file
+Add new content
 
-This endpoint uploads a file.
+This endpoint is used to upload new content.
 
 ### Example
 ```php
@@ -259,9 +265,16 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
     new GuzzleHttp\Client(),
     $config
 );
+$data = "data_example"; // string | 
+$filename = "filename_example"; // string | 
+$coluuid = "coluuid_example"; // string | Collection UUID
+$replication = 56; // int | Replication value
+$ignore_dupes = "ignore_dupes_example"; // string | Ignore Dupes true/false
+$lazy_provide = "lazy_provide_example"; // string | Lazy Provide true/false
+$dir = "dir_example"; // string | Directory
 
 try {
-    $result = $apiInstance->contentAddPost();
+    $result = $apiInstance->contentAddPost($data, $filename, $coluuid, $replication, $ignore_dupes, $lazy_provide, $dir);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContentApi->contentAddPost: ', $e->getMessage(), PHP_EOL;
@@ -270,11 +283,20 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data** | **string****string**|  |
+ **filename** | **string**|  |
+ **coluuid** | **string**| Collection UUID | [optional]
+ **replication** | **int**| Replication value | [optional]
+ **ignore_dupes** | **string**| Ignore Dupes true/false | [optional]
+ **lazy_provide** | **string**| Lazy Provide true/false | [optional]
+ **dir** | **string**| Directory | [optional]
 
 ### Return type
 
-**string**
+[**\Swagger\Client\Model\UtilContentAddResponse**](../Model/UtilContentAddResponse.md)
 
 ### Authorization
 
@@ -282,7 +304,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
@@ -783,60 +805,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **contentImportdealPost**
-> string contentImportdealPost($body)
-
-Import a deal
-
-This endpoint imports a deal into the shuttle.
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: bearerAuth
-$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
-
-$apiInstance = new Swagger\Client\Api\ContentApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$body = new \Swagger\Client\Model\MainImportDealBody(); // \Swagger\Client\Model\MainImportDealBody | Import a deal
-
-try {
-    $result = $apiInstance->contentImportdealPost($body);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling ContentApi->contentImportdealPost: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\MainImportDealBody**](../Model/MainImportDealBody.md)| Import a deal |
-
-### Return type
-
-**string**
-
-### Authorization
-
-[bearerAuth](../../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: */*
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
 # **contentListGet**
 > string contentListGet()
 
@@ -871,60 +839,6 @@ try {
 
 ### Parameters
 This endpoint does not need any parameter.
-
-### Return type
-
-**string**
-
-### Authorization
-
-[bearerAuth](../../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-# **contentReadContGet**
-> string contentReadContGet($cont)
-
-Read content
-
-This endpoint reads content from the blockstore
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-// Configure API key authorization: bearerAuth
-$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
-
-$apiInstance = new Swagger\Client\Api\ContentApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$cont = "cont_example"; // string | CID
-
-try {
-    $result = $apiInstance->contentReadContGet($cont);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling ContentApi->contentReadContGet: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **cont** | **string**| CID |
 
 ### Return type
 

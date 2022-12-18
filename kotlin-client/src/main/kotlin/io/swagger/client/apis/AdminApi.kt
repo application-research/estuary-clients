@@ -11,6 +11,7 @@
  */
 package io.swagger.client.apis
 
+import io.swagger.client.models.PeeringPeeringPeer
 import io.swagger.client.models.UtilHttpError
 
 import estuary-client.infrastructure.*
@@ -24,7 +25,7 @@ class AdminApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(base
      * @return kotlin.String
      */
     @Suppress("UNCHECKED_CAST")
-    fun adminPeeringPeersDelete(body: kotlin.Array<kotlin.Boolean>): kotlin.String {
+    fun adminPeeringPeersDelete(body: kotlin.Array<kotlin.String>): kotlin.String {
         val localVariableBody: kotlin.Any? = body
         
         val localVariableConfig = RequestConfig(
@@ -70,17 +71,19 @@ class AdminApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(base
     /**
      * Add peers on Peering Service
      * This endpoint can be used to add a Peer from the Peering Service
+     * @param body Peering Peer array 
      * @return kotlin.String
      */
     @Suppress("UNCHECKED_CAST")
-    fun adminPeeringPeersPost(): kotlin.String {
+    fun adminPeeringPeersPost(body: kotlin.Array<PeeringPeeringPeer>): kotlin.String {
+        val localVariableBody: kotlin.Any? = body
         
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
                 "/admin/peering/peers"
         )
         val response = request<kotlin.String>(
-                localVariableConfig
+                localVariableConfig, localVariableBody
         )
 
         return when (response.responseType) {

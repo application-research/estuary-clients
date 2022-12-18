@@ -16,8 +16,8 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
-import { MainImportDealBody } from '../models';
 import { TypesIpfsPin } from '../models';
+import { UtilContentAddResponse } from '../models';
 import { UtilContentCreateBody } from '../models';
 import { UtilHttpError } from '../models';
 /**
@@ -117,12 +117,19 @@ export const ContentApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * This endpoint uploads content via a car file
-         * @summary Upload content via a car file
+         * This endpoint is used to add a car object to the network. The object can be a file or a directory.
+         * @summary Add Car object
+         * @param {string} body Car
+         * @param {string} [ignoreDupes] Ignore Dupes
+         * @param {string} [filename] Filename
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddCarPost: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        contentAddCarPost: async (body: string, ignoreDupes?: string, filename?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling contentAddCarPost.');
+            }
             const localVarPath = `/content/add-car`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -142,6 +149,16 @@ export const ContentApiAxiosParamCreator = function (configuration?: Configurati
                 localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
             }
 
+            if (ignoreDupes !== undefined) {
+                localVarQueryParameter['ignore-dupes'] = ignoreDupes;
+            }
+
+            if (filename !== undefined) {
+                localVarQueryParameter['filename'] = filename;
+            }
+
+            localVarHeaderParameter['Content-Type'] = '*/*';
+
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
                 query.set(key, localVarQueryParameter[key]);
@@ -152,6 +169,8 @@ export const ContentApiAxiosParamCreator = function (configuration?: Configurati
             localVarUrlObj.search = (new URLSearchParams(query)).toString();
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            const needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
 
             return {
                 url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
@@ -215,12 +234,27 @@ export const ContentApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * This endpoint uploads a file.
-         * @summary Upload a file
+         * This endpoint is used to upload new content.
+         * @summary Add new content
+         * @param {Blob} data 
+         * @param {string} filename 
+         * @param {string} [coluuid] Collection UUID
+         * @param {number} [replication] Replication value
+         * @param {string} [ignoreDupes] Ignore Dupes true/false
+         * @param {string} [lazyProvide] Lazy Provide true/false
+         * @param {string} [dir] Directory
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddPost: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        contentAddPostForm: async (data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'data' is not null or undefined
+            if (data === null || data === undefined) {
+                throw new RequiredError('data','Required parameter data was null or undefined when calling contentAddPostForm.');
+            }
+            // verify required parameter 'filename' is not null or undefined
+            if (filename === null || filename === undefined) {
+                throw new RequiredError('filename','Required parameter filename was null or undefined when calling contentAddPostForm.');
+            }
             const localVarPath = `/content/add`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -231,6 +265,7 @@ export const ContentApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+            const localVarFormParams = new FormData();
 
             // authentication bearerAuth required
             if (configuration && configuration.apiKey) {
@@ -240,6 +275,36 @@ export const ContentApiAxiosParamCreator = function (configuration?: Configurati
                 localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
             }
 
+            if (coluuid !== undefined) {
+                localVarQueryParameter['coluuid'] = coluuid;
+            }
+
+            if (replication !== undefined) {
+                localVarQueryParameter['replication'] = replication;
+            }
+
+            if (ignoreDupes !== undefined) {
+                localVarQueryParameter['ignore-dupes'] = ignoreDupes;
+            }
+
+            if (lazyProvide !== undefined) {
+                localVarQueryParameter['lazy-provide'] = lazyProvide;
+            }
+
+            if (dir !== undefined) {
+                localVarQueryParameter['dir'] = dir;
+            }
+
+
+            if (data !== undefined) { 
+                localVarFormParams.append('data', data as any);
+            }
+
+            if (filename !== undefined) { 
+                localVarFormParams.append('filename', filename as any);
+            }
+
+            localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
                 query.set(key, localVarQueryParameter[key]);
@@ -250,6 +315,7 @@ export const ContentApiAxiosParamCreator = function (configuration?: Configurati
             localVarUrlObj.search = (new URLSearchParams(query)).toString();
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = localVarFormParams;
 
             return {
                 url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
@@ -734,57 +800,6 @@ export const ContentApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * This endpoint imports a deal into the shuttle.
-         * @summary Import a deal
-         * @param {MainImportDealBody} body Import a deal
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        contentImportdealPost: async (body: MainImportDealBody, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'body' is not null or undefined
-            if (body === null || body === undefined) {
-                throw new RequiredError('body','Required parameter body was null or undefined when calling contentImportdealPost.');
-            }
-            const localVarPath = `/content/importdeal`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions :AxiosRequestConfig = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearerAuth required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-                    ? await configuration.apiKey("Authorization")
-                    : await configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
-
-            localVarHeaderParameter['Content-Type'] = '*/*';
-
-            const query = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.params) {
-                query.set(key, options.params[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            const needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
-
-            return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * This endpoint lists all content
          * @summary List all pinned content
          * @param {*} [options] Override http request option.
@@ -792,54 +807,6 @@ export const ContentApiAxiosParamCreator = function (configuration?: Configurati
          */
         contentListGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/content/list`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearerAuth required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-                    ? await configuration.apiKey("Authorization")
-                    : await configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
-
-            const query = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.params) {
-                query.set(key, options.params[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * This endpoint reads content from the blockstore
-         * @summary Read content
-         * @param {string} cont CID
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        contentReadContGet: async (cont: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'cont' is not null or undefined
-            if (cont === null || cont === undefined) {
-                throw new RequiredError('cont','Required parameter cont was null or undefined when calling contentReadContGet.');
-            }
-            const localVarPath = `/content/read/{cont}`
-                .replace(`{${"cont"}}`, encodeURIComponent(String(cont)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
             let baseOptions;
@@ -1175,13 +1142,16 @@ export const ContentApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         * This endpoint uploads content via a car file
-         * @summary Upload content via a car file
+         * This endpoint is used to add a car object to the network. The object can be a file or a directory.
+         * @summary Add Car object
+         * @param {string} body Car
+         * @param {string} [ignoreDupes] Ignore Dupes
+         * @param {string} [filename] Filename
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async contentAddCarPost(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
-            const localVarAxiosArgs = await ContentApiAxiosParamCreator(configuration).contentAddCarPost(options);
+        async contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<UtilContentAddResponse>>> {
+            const localVarAxiosArgs = await ContentApiAxiosParamCreator(configuration).contentAddCarPost(body, ignoreDupes, filename, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -1203,13 +1173,20 @@ export const ContentApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         * This endpoint uploads a file.
-         * @summary Upload a file
+         * This endpoint is used to upload new content.
+         * @summary Add new content
+         * @param {Blob} data 
+         * @param {string} filename 
+         * @param {string} [coluuid] Collection UUID
+         * @param {number} [replication] Replication value
+         * @param {string} [ignoreDupes] Ignore Dupes true/false
+         * @param {string} [lazyProvide] Lazy Provide true/false
+         * @param {string} [dir] Directory
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async contentAddPost(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
-            const localVarAxiosArgs = await ContentApiAxiosParamCreator(configuration).contentAddPost(options);
+        async contentAddPostForm(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<UtilContentAddResponse>>> {
+            const localVarAxiosArgs = await ContentApiAxiosParamCreator(configuration).contentAddPostForm(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -1347,20 +1324,6 @@ export const ContentApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         * This endpoint imports a deal into the shuttle.
-         * @summary Import a deal
-         * @param {MainImportDealBody} body Import a deal
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async contentImportdealPost(body: MainImportDealBody, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
-            const localVarAxiosArgs = await ContentApiAxiosParamCreator(configuration).contentImportdealPost(body, options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
          * This endpoint lists all content
          * @summary List all pinned content
          * @param {*} [options] Override http request option.
@@ -1368,20 +1331,6 @@ export const ContentApiFp = function(configuration?: Configuration) {
          */
         async contentListGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
             const localVarAxiosArgs = await ContentApiAxiosParamCreator(configuration).contentListGet(options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
-         * This endpoint reads content from the blockstore
-         * @summary Read content
-         * @param {string} cont CID
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async contentReadContGet(cont: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
-            const localVarAxiosArgs = await ContentApiAxiosParamCreator(configuration).contentReadContGet(cont, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -1488,13 +1437,16 @@ export const ContentApiFactory = function (configuration?: Configuration, basePa
             return ContentApiFp(configuration).adminInvitesGet(options).then((request) => request(axios, basePath));
         },
         /**
-         * This endpoint uploads content via a car file
-         * @summary Upload content via a car file
+         * This endpoint is used to add a car object to the network. The object can be a file or a directory.
+         * @summary Add Car object
+         * @param {string} body Car
+         * @param {string} [ignoreDupes] Ignore Dupes
+         * @param {string} [filename] Filename
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async contentAddCarPost(options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
-            return ContentApiFp(configuration).contentAddCarPost(options).then((request) => request(axios, basePath));
+        async contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<UtilContentAddResponse>> {
+            return ContentApiFp(configuration).contentAddCarPost(body, ignoreDupes, filename, options).then((request) => request(axios, basePath));
         },
         /**
          * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
@@ -1508,13 +1460,20 @@ export const ContentApiFactory = function (configuration?: Configuration, basePa
             return ContentApiFp(configuration).contentAddIpfsPost(body, ignoreDupes, options).then((request) => request(axios, basePath));
         },
         /**
-         * This endpoint uploads a file.
-         * @summary Upload a file
+         * This endpoint is used to upload new content.
+         * @summary Add new content
+         * @param {Blob} data 
+         * @param {string} filename 
+         * @param {string} [coluuid] Collection UUID
+         * @param {number} [replication] Replication value
+         * @param {string} [ignoreDupes] Ignore Dupes true/false
+         * @param {string} [lazyProvide] Lazy Provide true/false
+         * @param {string} [dir] Directory
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async contentAddPost(options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
-            return ContentApiFp(configuration).contentAddPost(options).then((request) => request(axios, basePath));
+        async contentAddPostForm(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<UtilContentAddResponse>> {
+            return ContentApiFp(configuration).contentAddPostForm(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, options).then((request) => request(axios, basePath));
         },
         /**
          * This endpoint returns aggregated content stats
@@ -1612,16 +1571,6 @@ export const ContentApiFactory = function (configuration?: Configuration, basePa
             return ContentApiFp(configuration).contentIdGet(id, options).then((request) => request(axios, basePath));
         },
         /**
-         * This endpoint imports a deal into the shuttle.
-         * @summary Import a deal
-         * @param {MainImportDealBody} body Import a deal
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async contentImportdealPost(body: MainImportDealBody, options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
-            return ContentApiFp(configuration).contentImportdealPost(body, options).then((request) => request(axios, basePath));
-        },
-        /**
          * This endpoint lists all content
          * @summary List all pinned content
          * @param {*} [options] Override http request option.
@@ -1629,16 +1578,6 @@ export const ContentApiFactory = function (configuration?: Configuration, basePa
          */
         async contentListGet(options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
             return ContentApiFp(configuration).contentListGet(options).then((request) => request(axios, basePath));
-        },
-        /**
-         * This endpoint reads content from the blockstore
-         * @summary Read content
-         * @param {string} cont CID
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async contentReadContGet(cont: string, options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
-            return ContentApiFp(configuration).contentReadContGet(cont, options).then((request) => request(axios, basePath));
         },
         /**
          * This endpoint is used to get staging zone for user, excluding its contents.
@@ -1724,14 +1663,17 @@ export class ContentApi extends BaseAPI {
         return ContentApiFp(this.configuration).adminInvitesGet(options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     * This endpoint uploads content via a car file
-     * @summary Upload content via a car file
+     * This endpoint is used to add a car object to the network. The object can be a file or a directory.
+     * @summary Add Car object
+     * @param {string} body Car
+     * @param {string} [ignoreDupes] Ignore Dupes
+     * @param {string} [filename] Filename
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContentApi
      */
-    public async contentAddCarPost(options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
-        return ContentApiFp(this.configuration).contentAddCarPost(options).then((request) => request(this.axios, this.basePath));
+    public async contentAddCarPost(body: string, ignoreDupes?: string, filename?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<UtilContentAddResponse>> {
+        return ContentApiFp(this.configuration).contentAddCarPost(body, ignoreDupes, filename, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
@@ -1746,14 +1688,21 @@ export class ContentApi extends BaseAPI {
         return ContentApiFp(this.configuration).contentAddIpfsPost(body, ignoreDupes, options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     * This endpoint uploads a file.
-     * @summary Upload a file
+     * This endpoint is used to upload new content.
+     * @summary Add new content
+     * @param {Blob} data 
+     * @param {string} filename 
+     * @param {string} [coluuid] Collection UUID
+     * @param {number} [replication] Replication value
+     * @param {string} [ignoreDupes] Ignore Dupes true/false
+     * @param {string} [lazyProvide] Lazy Provide true/false
+     * @param {string} [dir] Directory
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContentApi
      */
-    public async contentAddPost(options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
-        return ContentApiFp(this.configuration).contentAddPost(options).then((request) => request(this.axios, this.basePath));
+    public async contentAddPostForm(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<UtilContentAddResponse>> {
+        return ContentApiFp(this.configuration).contentAddPostForm(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * This endpoint returns aggregated content stats
@@ -1860,17 +1809,6 @@ export class ContentApi extends BaseAPI {
         return ContentApiFp(this.configuration).contentIdGet(id, options).then((request) => request(this.axios, this.basePath));
     }
     /**
-     * This endpoint imports a deal into the shuttle.
-     * @summary Import a deal
-     * @param {MainImportDealBody} body Import a deal
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ContentApi
-     */
-    public async contentImportdealPost(body: MainImportDealBody, options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
-        return ContentApiFp(this.configuration).contentImportdealPost(body, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
      * This endpoint lists all content
      * @summary List all pinned content
      * @param {*} [options] Override http request option.
@@ -1879,17 +1817,6 @@ export class ContentApi extends BaseAPI {
      */
     public async contentListGet(options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
         return ContentApiFp(this.configuration).contentListGet(options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * This endpoint reads content from the blockstore
-     * @summary Read content
-     * @param {string} cont CID
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ContentApi
-     */
-    public async contentReadContGet(cont: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
-        return ContentApiFp(this.configuration).contentReadContGet(cont, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * This endpoint is used to get staging zone for user, excluding its contents.

@@ -44,9 +44,10 @@ exports.adminPeeringPeersGET = function() {
  * Add peers on Peering Service
  * This endpoint can be used to add a Peer from the Peering Service
  *
+ * body List Peering Peer array
  * returns String
  **/
-exports.adminPeeringPeersPOST = function() {
+exports.adminPeeringPeersPOST = function(body) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = "";

@@ -23,7 +23,7 @@ import javax.validation.Valid;
 /**
  * UtilContentCreateBody
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-12-14T06:22:39.514Z[GMT]")public class UtilContentCreateBody   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2022-12-18T07:30:24.710Z[GMT]")public class UtilContentCreateBody   {
   @JsonProperty("coluuid")
   private String coluuid = null;
 

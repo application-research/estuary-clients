@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 <a name="adminpeeringpeersdelete"></a>
 # **AdminPeeringPeersDelete**
-> string AdminPeeringPeersDelete (List<bool?> body)
+> string AdminPeeringPeersDelete (List<string> body)
 
 Remove peers on Peering Service
 
@@ -41,7 +41,7 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new AdminApi();
-            var body = new List<bool?>(); // List<bool?> | Peer ids
+            var body = new List<string>(); // List<string> | Peer ids
 
             try
             {
@@ -62,7 +62,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**List&lt;bool?&gt;**](bool?.md)| Peer ids | 
+ **body** | [**List&lt;string&gt;**](string.md)| Peer ids | 
 
 ### Return type
 
@@ -141,7 +141,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="adminpeeringpeerspost"></a>
 # **AdminPeeringPeersPost**
-> string AdminPeeringPeersPost ()
+> string AdminPeeringPeersPost (List<PeeringPeeringPeer> body)
 
 Add peers on Peering Service
 
@@ -167,11 +167,12 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new AdminApi();
+            var body = new List<PeeringPeeringPeer>(); // List<PeeringPeeringPeer> | Peering Peer array
 
             try
             {
                 // Add peers on Peering Service
-                string result = apiInstance.AdminPeeringPeersPost();
+                string result = apiInstance.AdminPeeringPeersPost(body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -184,7 +185,10 @@ namespace Example
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**List&lt;PeeringPeeringPeer&gt;**](PeeringPeeringPeer.md)| Peering Peer array | 
 
 ### Return type
 
@@ -196,7 +200,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

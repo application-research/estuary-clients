@@ -1,8 +1,9 @@
 package io.swagger.api.impl;
 
 import io.swagger.api.*;
-import io.swagger.model.MainImportDealBody;
+import java.io.File;
 import io.swagger.model.TypesIpfsPin;
+import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 
@@ -50,12 +51,12 @@ public class ContentApiServiceImpl implements ContentApi {
     }
     
     /**
-     * Upload content via a car file
+     * Add Car object
      *
-     * This endpoint uploads content via a car file
+     * This endpoint is used to add a car object to the network. The object can be a file or a directory.
      *
      */
-    public String contentAddCarPost() {
+    public UtilContentAddResponse contentAddCarPost(String body, String ignoreDupes, String filename) {
         // TODO: Implement...
         
         return null;
@@ -74,12 +75,12 @@ public class ContentApiServiceImpl implements ContentApi {
     }
     
     /**
-     * Upload a file
+     * Add new content
      *
-     * This endpoint uploads a file.
+     * This endpoint is used to upload new content.
      *
      */
-    public String contentAddPost() {
+    public UtilContentAddResponse contentAddPost( Attachment dataDetail, String filename, String coluuid, Integer replication, String ignoreDupes, String lazyProvide, String dir) {
         // TODO: Implement...
         
         return null;
@@ -194,36 +195,12 @@ public class ContentApiServiceImpl implements ContentApi {
     }
     
     /**
-     * Import a deal
-     *
-     * This endpoint imports a deal into the shuttle.
-     *
-     */
-    public String contentImportdealPost(MainImportDealBody body) {
-        // TODO: Implement...
-        
-        return null;
-    }
-    
-    /**
      * List all pinned content
      *
      * This endpoint lists all content
      *
      */
     public String contentListGet() {
-        // TODO: Implement...
-        
-        return null;
-    }
-    
-    /**
-     * Read content
-     *
-     * This endpoint reads content from the blockstore
-     *
-     */
-    public String contentReadContGet(String cont) {
         // TODO: Implement...
         
         return null;

@@ -55,10 +55,13 @@ describe 'ContentApi' do
   end
 
   # unit tests for content_add_car_post
-  # Upload content via a car file
-  # This endpoint uploads content via a car file
+  # Add Car object
+  # This endpoint is used to add a car object to the network. The object can be a file or a directory.
+  # @param body Car
   # @param [Hash] opts the optional parameters
-  # @return [String]
+  # @option opts [String] :ignore_dupes Ignore Dupes
+  # @option opts [String] :filename Filename
+  # @return [UtilContentAddResponse]
   describe 'content_add_car_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -79,10 +82,17 @@ describe 'ContentApi' do
   end
 
   # unit tests for content_add_post
-  # Upload a file
-  # This endpoint uploads a file.
+  # Add new content
+  # This endpoint is used to upload new content.
+  # @param data 
+  # @param filename 
   # @param [Hash] opts the optional parameters
-  # @return [String]
+  # @option opts [String] :coluuid Collection UUID
+  # @option opts [Integer] :replication Replication value
+  # @option opts [String] :ignore_dupes Ignore Dupes true/false
+  # @option opts [String] :lazy_provide Lazy Provide true/false
+  # @option opts [String] :dir Directory
+  # @return [UtilContentAddResponse]
   describe 'content_add_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -202,36 +212,12 @@ describe 'ContentApi' do
     end
   end
 
-  # unit tests for content_importdeal_post
-  # Import a deal
-  # This endpoint imports a deal into the shuttle.
-  # @param body Import a deal
-  # @param [Hash] opts the optional parameters
-  # @return [String]
-  describe 'content_importdeal_post test' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
   # unit tests for content_list_get
   # List all pinned content
   # This endpoint lists all content
   # @param [Hash] opts the optional parameters
   # @return [String]
   describe 'content_list_get test' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
-  # unit tests for content_read_cont_get
-  # Read content
-  # This endpoint reads content from the blockstore
-  # @param cont CID
-  # @param [Hash] opts the optional parameters
-  # @return [String]
-  describe 'content_read_cont_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end

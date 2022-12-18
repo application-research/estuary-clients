@@ -286,24 +286,10 @@ var routes = Routes{
 	},
 
 	Route{
-		"ContentImportdealPost",
-		strings.ToUpper("Post"),
-		"/content/importdeal",
-		ContentImportdealPost,
-	},
-
-	Route{
 		"ContentListGet",
 		strings.ToUpper("Get"),
 		"/content/list",
 		ContentListGet,
-	},
-
-	Route{
-		"ContentReadContGet",
-		strings.ToUpper("Get"),
-		"/content/read/{cont}",
-		ContentReadContGet,
 	},
 
 	Route{
@@ -493,13 +479,6 @@ var routes = Routes{
 		strings.ToUpper("Get"),
 		"/public/miners/stats/{miner}",
 		PublicMinersStatsMinerGet,
-	},
-
-	Route{
-		"NetAddrsGet",
-		strings.ToUpper("Get"),
-		"/net/addrs",
-		NetAddrsGet,
 	},
 
 	Route{

@@ -57,6 +57,7 @@ describe 'AdminApi' do
   # unit tests for admin_peering_peers_post
   # Add peers on Peering Service
   # This endpoint can be used to add a Peer from the Peering Service
+  # @param body Peering Peer array
   # @param [Hash] opts the optional parameters
   # @return [String]
   describe 'admin_peering_peers_post test' do

@@ -26,8 +26,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import io.swagger.client.model.MainImportDealBody;
+import java.io.File;
 import io.swagger.client.model.TypesIpfsPin;
+import io.swagger.client.model.UtilContentAddResponse;
 import io.swagger.client.model.UtilContentCreateBody;
 import io.swagger.client.model.UtilHttpError;
 
@@ -299,19 +300,26 @@ public class ContentApi {
     }
     /**
      * Build call for contentAddCarPost
+     * @param body Car (required)
+     * @param ignoreDupes Ignore Dupes (optional)
+     * @param filename Filename (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call contentAddCarPostCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
+    public com.squareup.okhttp.Call contentAddCarPostCall(String body, String ignoreDupes, String filename, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = body;
         
         // create path and map variables
         String localVarPath = "/content/add-car";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (ignoreDupes != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("ignore-dupes", ignoreDupes));
+        if (filename != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("filename", filename));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -324,7 +332,7 @@ public class ContentApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            
+            "*/*"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -346,9 +354,13 @@ public class ContentApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call contentAddCarPostValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call contentAddCarPostValidateBeforeCall(String body, String ignoreDupes, String filename, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'body' is set
+        if (body == null) {
+            throw new ApiException("Missing the required parameter 'body' when calling contentAddCarPost(Async)");
+        }
         
-        com.squareup.okhttp.Call call = contentAddCarPostCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = contentAddCarPostCall(body, ignoreDupes, filename, progressListener, progressRequestListener);
         return call;
 
         
@@ -358,36 +370,45 @@ public class ContentApi {
     }
 
     /**
-     * Upload content via a car file
-     * This endpoint uploads content via a car file
-     * @return String
+     * Add Car object
+     * This endpoint is used to add a car object to the network. The object can be a file or a directory.
+     * @param body Car (required)
+     * @param ignoreDupes Ignore Dupes (optional)
+     * @param filename Filename (optional)
+     * @return UtilContentAddResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public String contentAddCarPost() throws ApiException {
-        ApiResponse<String> resp = contentAddCarPostWithHttpInfo();
+    public UtilContentAddResponse contentAddCarPost(String body, String ignoreDupes, String filename) throws ApiException {
+        ApiResponse<UtilContentAddResponse> resp = contentAddCarPostWithHttpInfo(body, ignoreDupes, filename);
         return resp.getData();
     }
 
     /**
-     * Upload content via a car file
-     * This endpoint uploads content via a car file
-     * @return ApiResponse&lt;String&gt;
+     * Add Car object
+     * This endpoint is used to add a car object to the network. The object can be a file or a directory.
+     * @param body Car (required)
+     * @param ignoreDupes Ignore Dupes (optional)
+     * @param filename Filename (optional)
+     * @return ApiResponse&lt;UtilContentAddResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<String> contentAddCarPostWithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = contentAddCarPostValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<String>(){}.getType();
+    public ApiResponse<UtilContentAddResponse> contentAddCarPostWithHttpInfo(String body, String ignoreDupes, String filename) throws ApiException {
+        com.squareup.okhttp.Call call = contentAddCarPostValidateBeforeCall(body, ignoreDupes, filename, null, null);
+        Type localVarReturnType = new TypeToken<UtilContentAddResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
-     * Upload content via a car file (asynchronously)
-     * This endpoint uploads content via a car file
+     * Add Car object (asynchronously)
+     * This endpoint is used to add a car object to the network. The object can be a file or a directory.
+     * @param body Car (required)
+     * @param ignoreDupes Ignore Dupes (optional)
+     * @param filename Filename (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call contentAddCarPostAsync(final ApiCallback<String> callback) throws ApiException {
+    public com.squareup.okhttp.Call contentAddCarPostAsync(String body, String ignoreDupes, String filename, final ApiCallback<UtilContentAddResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -408,8 +429,8 @@ public class ContentApi {
             };
         }
 
-        com.squareup.okhttp.Call call = contentAddCarPostValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        com.squareup.okhttp.Call call = contentAddCarPostValidateBeforeCall(body, ignoreDupes, filename, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<UtilContentAddResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -545,12 +566,19 @@ public class ContentApi {
     }
     /**
      * Build call for contentAddPost
+     * @param data  (required)
+     * @param filename  (required)
+     * @param coluuid Collection UUID (optional)
+     * @param replication Replication value (optional)
+     * @param ignoreDupes Ignore Dupes true/false (optional)
+     * @param lazyProvide Lazy Provide true/false (optional)
+     * @param dir Directory (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call contentAddPostCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call contentAddPostCall(File data, String filename, String coluuid, Integer replication, String ignoreDupes, String lazyProvide, String dir, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -558,10 +586,24 @@ public class ContentApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (coluuid != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("coluuid", coluuid));
+        if (replication != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("replication", replication));
+        if (ignoreDupes != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("ignore-dupes", ignoreDupes));
+        if (lazyProvide != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("lazy-provide", lazyProvide));
+        if (dir != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("dir", dir));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+        if (data != null)
+        localVarFormParams.put("data", data);
+        if (filename != null)
+        localVarFormParams.put("filename", filename);
 
         final String[] localVarAccepts = {
             "application/json"
@@ -570,7 +612,7 @@ public class ContentApi {
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
 
         final String[] localVarContentTypes = {
-            
+            "multipart/form-data"
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -592,9 +634,17 @@ public class ContentApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call contentAddPostValidateBeforeCall(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call contentAddPostValidateBeforeCall(File data, String filename, String coluuid, Integer replication, String ignoreDupes, String lazyProvide, String dir, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        // verify the required parameter 'data' is set
+        if (data == null) {
+            throw new ApiException("Missing the required parameter 'data' when calling contentAddPost(Async)");
+        }
+        // verify the required parameter 'filename' is set
+        if (filename == null) {
+            throw new ApiException("Missing the required parameter 'filename' when calling contentAddPost(Async)");
+        }
         
-        com.squareup.okhttp.Call call = contentAddPostCall(progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = contentAddPostCall(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, progressListener, progressRequestListener);
         return call;
 
         
@@ -604,36 +654,57 @@ public class ContentApi {
     }
 
     /**
-     * Upload a file
-     * This endpoint uploads a file.
-     * @return String
+     * Add new content
+     * This endpoint is used to upload new content.
+     * @param data  (required)
+     * @param filename  (required)
+     * @param coluuid Collection UUID (optional)
+     * @param replication Replication value (optional)
+     * @param ignoreDupes Ignore Dupes true/false (optional)
+     * @param lazyProvide Lazy Provide true/false (optional)
+     * @param dir Directory (optional)
+     * @return UtilContentAddResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public String contentAddPost() throws ApiException {
-        ApiResponse<String> resp = contentAddPostWithHttpInfo();
+    public UtilContentAddResponse contentAddPost(File data, String filename, String coluuid, Integer replication, String ignoreDupes, String lazyProvide, String dir) throws ApiException {
+        ApiResponse<UtilContentAddResponse> resp = contentAddPostWithHttpInfo(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir);
         return resp.getData();
     }
 
     /**
-     * Upload a file
-     * This endpoint uploads a file.
-     * @return ApiResponse&lt;String&gt;
+     * Add new content
+     * This endpoint is used to upload new content.
+     * @param data  (required)
+     * @param filename  (required)
+     * @param coluuid Collection UUID (optional)
+     * @param replication Replication value (optional)
+     * @param ignoreDupes Ignore Dupes true/false (optional)
+     * @param lazyProvide Lazy Provide true/false (optional)
+     * @param dir Directory (optional)
+     * @return ApiResponse&lt;UtilContentAddResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<String> contentAddPostWithHttpInfo() throws ApiException {
-        com.squareup.okhttp.Call call = contentAddPostValidateBeforeCall(null, null);
-        Type localVarReturnType = new TypeToken<String>(){}.getType();
+    public ApiResponse<UtilContentAddResponse> contentAddPostWithHttpInfo(File data, String filename, String coluuid, Integer replication, String ignoreDupes, String lazyProvide, String dir) throws ApiException {
+        com.squareup.okhttp.Call call = contentAddPostValidateBeforeCall(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, null, null);
+        Type localVarReturnType = new TypeToken<UtilContentAddResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
-     * Upload a file (asynchronously)
-     * This endpoint uploads a file.
+     * Add new content (asynchronously)
+     * This endpoint is used to upload new content.
+     * @param data  (required)
+     * @param filename  (required)
+     * @param coluuid Collection UUID (optional)
+     * @param replication Replication value (optional)
+     * @param ignoreDupes Ignore Dupes true/false (optional)
+     * @param lazyProvide Lazy Provide true/false (optional)
+     * @param dir Directory (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call contentAddPostAsync(final ApiCallback<String> callback) throws ApiException {
+    public com.squareup.okhttp.Call contentAddPostAsync(File data, String filename, String coluuid, Integer replication, String ignoreDupes, String lazyProvide, String dir, final ApiCallback<UtilContentAddResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -654,8 +725,8 @@ public class ContentApi {
             };
         }
 
-        com.squareup.okhttp.Call call = contentAddPostValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<String>(){}.getType();
+        com.squareup.okhttp.Call call = contentAddPostValidateBeforeCall(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<UtilContentAddResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -1825,130 +1896,6 @@ public class ContentApi {
         return call;
     }
     /**
-     * Build call for contentImportdealPost
-     * @param body Import a deal (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call contentImportdealPostCall(MainImportDealBody body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = body;
-        
-        // create path and map variables
-        String localVarPath = "/content/importdeal";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            "*/*"
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
-        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-    
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call contentImportdealPostValidateBeforeCall(MainImportDealBody body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        // verify the required parameter 'body' is set
-        if (body == null) {
-            throw new ApiException("Missing the required parameter 'body' when calling contentImportdealPost(Async)");
-        }
-        
-        com.squareup.okhttp.Call call = contentImportdealPostCall(body, progressListener, progressRequestListener);
-        return call;
-
-        
-        
-        
-        
-    }
-
-    /**
-     * Import a deal
-     * This endpoint imports a deal into the shuttle.
-     * @param body Import a deal (required)
-     * @return String
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public String contentImportdealPost(MainImportDealBody body) throws ApiException {
-        ApiResponse<String> resp = contentImportdealPostWithHttpInfo(body);
-        return resp.getData();
-    }
-
-    /**
-     * Import a deal
-     * This endpoint imports a deal into the shuttle.
-     * @param body Import a deal (required)
-     * @return ApiResponse&lt;String&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<String> contentImportdealPostWithHttpInfo(MainImportDealBody body) throws ApiException {
-        com.squareup.okhttp.Call call = contentImportdealPostValidateBeforeCall(body, null, null);
-        Type localVarReturnType = new TypeToken<String>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     * Import a deal (asynchronously)
-     * This endpoint imports a deal into the shuttle.
-     * @param body Import a deal (required)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call contentImportdealPostAsync(MainImportDealBody body, final ApiCallback<String> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = contentImportdealPostValidateBeforeCall(body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<String>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
      * Build call for contentListGet
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
@@ -2060,131 +2007,6 @@ public class ContentApi {
         }
 
         com.squareup.okhttp.Call call = contentListGetValidateBeforeCall(progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<String>(){}.getType();
-        apiClient.executeAsync(call, localVarReturnType, callback);
-        return call;
-    }
-    /**
-     * Build call for contentReadContGet
-     * @param cont CID (required)
-     * @param progressListener Progress listener
-     * @param progressRequestListener Progress request listener
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     */
-    public com.squareup.okhttp.Call contentReadContGetCall(String cont, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        Object localVarPostBody = null;
-        
-        // create path and map variables
-        String localVarPath = "/content/read/{cont}"
-            .replaceAll("\\{" + "cont" + "\\}", apiClient.escapeString(cont.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        if(progressListener != null) {
-            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
-                @Override
-                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
-                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
-                    return originalResponse.newBuilder()
-                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
-                    .build();
-                }
-            });
-        }
-
-        String[] localVarAuthNames = new String[] { "bearerAuth" };
-        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
-    }
-    
-    @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call contentReadContGetValidateBeforeCall(String cont, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
-        // verify the required parameter 'cont' is set
-        if (cont == null) {
-            throw new ApiException("Missing the required parameter 'cont' when calling contentReadContGet(Async)");
-        }
-        
-        com.squareup.okhttp.Call call = contentReadContGetCall(cont, progressListener, progressRequestListener);
-        return call;
-
-        
-        
-        
-        
-    }
-
-    /**
-     * Read content
-     * This endpoint reads content from the blockstore
-     * @param cont CID (required)
-     * @return String
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public String contentReadContGet(String cont) throws ApiException {
-        ApiResponse<String> resp = contentReadContGetWithHttpInfo(cont);
-        return resp.getData();
-    }
-
-    /**
-     * Read content
-     * This endpoint reads content from the blockstore
-     * @param cont CID (required)
-     * @return ApiResponse&lt;String&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     */
-    public ApiResponse<String> contentReadContGetWithHttpInfo(String cont) throws ApiException {
-        com.squareup.okhttp.Call call = contentReadContGetValidateBeforeCall(cont, null, null);
-        Type localVarReturnType = new TypeToken<String>(){}.getType();
-        return apiClient.execute(call, localVarReturnType);
-    }
-
-    /**
-     * Read content (asynchronously)
-     * This endpoint reads content from the blockstore
-     * @param cont CID (required)
-     * @param callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     */
-    public com.squareup.okhttp.Call contentReadContGetAsync(String cont, final ApiCallback<String> callback) throws ApiException {
-
-        ProgressResponseBody.ProgressListener progressListener = null;
-        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
-
-        if (callback != null) {
-            progressListener = new ProgressResponseBody.ProgressListener() {
-                @Override
-                public void update(long bytesRead, long contentLength, boolean done) {
-                    callback.onDownloadProgress(bytesRead, contentLength, done);
-                }
-            };
-
-            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
-                @Override
-                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
-                    callback.onUploadProgress(bytesWritten, contentLength, done);
-                }
-            };
-        }
-
-        com.squareup.okhttp.Call call = contentReadContGetValidateBeforeCall(cont, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

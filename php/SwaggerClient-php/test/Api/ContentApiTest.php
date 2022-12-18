@@ -93,7 +93,7 @@ class ContentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for contentAddCarPost
      *
-     * Upload content via a car file.
+     * Add Car object.
      *
      */
     public function testContentAddCarPost()
@@ -113,7 +113,7 @@ class ContentApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for contentAddPost
      *
-     * Upload a file.
+     * Add new content.
      *
      */
     public function testContentAddPost()
@@ -211,32 +211,12 @@ class ContentApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test case for contentImportdealPost
-     *
-     * Import a deal.
-     *
-     */
-    public function testContentImportdealPost()
-    {
-    }
-
-    /**
      * Test case for contentListGet
      *
      * List all pinned content.
      *
      */
     public function testContentListGet()
-    {
-    }
-
-    /**
-     * Test case for contentReadContGet
-     *
-     * Read content.
-     *
-     */
-    public function testContentReadContGet()
     {
     }
 

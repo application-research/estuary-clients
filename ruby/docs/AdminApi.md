@@ -33,7 +33,7 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::AdminApi.new
-body = [true] # Array<BOOLEAN> | Peer ids
+body = ['body_example'] # Array<String> | Peer ids
 
 
 begin
@@ -49,7 +49,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**Array&lt;BOOLEAN&gt;**](BOOLEAN.md)| Peer ids | 
+ **body** | [**Array&lt;String&gt;**](String.md)| Peer ids | 
 
 ### Return type
 
@@ -115,7 +115,7 @@ This endpoint does not need any parameter.
 
 
 # **admin_peering_peers_post**
-> String admin_peering_peers_post
+> String admin_peering_peers_post(body)
 
 Add peers on Peering Service
 
@@ -134,10 +134,12 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::AdminApi.new
+body = [SwaggerClient::PeeringPeeringPeer.new] # Array<PeeringPeeringPeer> | Peering Peer array
+
 
 begin
   #Add peers on Peering Service
-  result = api_instance.admin_peering_peers_post
+  result = api_instance.admin_peering_peers_post(body)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling AdminApi->admin_peering_peers_post: #{e}"
@@ -145,7 +147,10 @@ end
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**Array&lt;PeeringPeeringPeer&gt;**](PeeringPeeringPeer.md)| Peering Peer array | 
 
 ### Return type
 
@@ -157,7 +162,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 

@@ -2,7 +2,7 @@
 
 Estuary API
 - API version: 0.0.0
-  - Build date: 2022-12-14T06:22:37.307Z[GMT]
+  - Build date: 2022-12-18T07:30:24.245Z[GMT]
 
 This is the API for the Estuary application.
 
@@ -92,7 +92,7 @@ public class AdminApiExample {
         //bearerAuth.setApiKeyPrefix("Token");
 
         AdminApi apiInstance = new AdminApi();
-        List<Boolean> body = Arrays.asList(true); // List<Boolean> | Peer ids
+        List<String> body = Arrays.asList("body_example"); // List<String> | Peer ids
         try {
             String result = apiInstance.adminPeeringPeersDelete(body);
             System.out.println(result);
@@ -151,8 +151,9 @@ public class AdminApiExample {
         //bearerAuth.setApiKeyPrefix("Token");
 
         AdminApi apiInstance = new AdminApi();
+        List<PeeringPeeringPeer> body = Arrays.asList(new PeeringPeeringPeer()); // List<PeeringPeeringPeer> | Peering Peer array
         try {
-            String result = apiInstance.adminPeeringPeersPost();
+            String result = apiInstance.adminPeeringPeersPost(body);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AdminApi#adminPeeringPeersPost");
@@ -334,9 +335,9 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**collectionsPost**](docs/CollectionsApi.md#collectionsPost) | **POST** /collections/ | Create a new collection
 *ContentApi* | [**adminInvitesCodePost**](docs/ContentApi.md#adminInvitesCodePost) | **POST** /admin/invites/{code} | Create an Estuary invite
 *ContentApi* | [**adminInvitesGet**](docs/ContentApi.md#adminInvitesGet) | **GET** /admin/invites | Get Estuary invites
-*ContentApi* | [**contentAddCarPost**](docs/ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Upload content via a car file
+*ContentApi* | [**contentAddCarPost**](docs/ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Add Car object
 *ContentApi* | [**contentAddIpfsPost**](docs/ContentApi.md#contentAddIpfsPost) | **POST** /content/add-ipfs | Add IPFS object
-*ContentApi* | [**contentAddPost**](docs/ContentApi.md#contentAddPost) | **POST** /content/add | Upload a file
+*ContentApi* | [**contentAddPost**](docs/ContentApi.md#contentAddPost) | **POST** /content/add | Add new content
 *ContentApi* | [**contentAggregatedContentGet**](docs/ContentApi.md#contentAggregatedContentGet) | **GET** /content/aggregated/{content} | Get aggregated content stats
 *ContentApi* | [**contentAllDealsGet**](docs/ContentApi.md#contentAllDealsGet) | **GET** /content/all-deals | Get all deals for a user
 *ContentApi* | [**contentBwUsageContentGet**](docs/ContentApi.md#contentBwUsageContentGet) | **GET** /content/bw-usage/{content} | Get content bandwidth
@@ -346,9 +347,7 @@ Class | Method | HTTP request | Description
 *ContentApi* | [**contentEnsureReplicationDatacidGet**](docs/ContentApi.md#contentEnsureReplicationDatacidGet) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
 *ContentApi* | [**contentFailuresContentGet**](docs/ContentApi.md#contentFailuresContentGet) | **GET** /content/failures/{content} | List all failures for a content
 *ContentApi* | [**contentIdGet**](docs/ContentApi.md#contentIdGet) | **GET** /content/{id} | Content
-*ContentApi* | [**contentImportdealPost**](docs/ContentApi.md#contentImportdealPost) | **POST** /content/importdeal | Import a deal
 *ContentApi* | [**contentListGet**](docs/ContentApi.md#contentListGet) | **GET** /content/list | List all pinned content
-*ContentApi* | [**contentReadContGet**](docs/ContentApi.md#contentReadContGet) | **GET** /content/read/{cont} | Read content
 *ContentApi* | [**contentStagingZonesGet**](docs/ContentApi.md#contentStagingZonesGet) | **GET** /content/staging-zones | Get staging zone for user, excluding its contents
 *ContentApi* | [**contentStagingZonesStagingZoneContentsGet**](docs/ContentApi.md#contentStagingZonesStagingZoneContentsGet) | **GET** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
 *ContentApi* | [**contentStagingZonesStagingZoneGet**](docs/ContentApi.md#contentStagingZonesStagingZoneGet) | **GET** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
@@ -376,7 +375,6 @@ Class | Method | HTTP request | Description
 *MinerApi* | [**minerUnsuspendMinerPut**](docs/MinerApi.md#minerUnsuspendMinerPut) | **PUT** /miner/unsuspend/{miner} | Unuspend Miner
 *MinerApi* | [**publicMinersDealsMinerGet**](docs/MinerApi.md#publicMinersDealsMinerGet) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *MinerApi* | [**publicMinersStatsMinerGet**](docs/MinerApi.md#publicMinersStatsMinerGet) | **GET** /public/miners/stats/{miner} | Get miner stats
-*NetApi* | [**netAddrsGet**](docs/NetApi.md#netAddrsGet) | **GET** /net/addrs | Net Addrs
 *NetApi* | [**publicMinersFailuresMinerGet**](docs/NetApi.md#publicMinersFailuresMinerGet) | **GET** /public/miners/failures/{miner} | Get all miners
 *NetApi* | [**publicMinersGet**](docs/NetApi.md#publicMinersGet) | **GET** /public/miners | Get all miners
 *NetApi* | [**publicNetAddrsGet**](docs/NetApi.md#publicNetAddrsGet) | **GET** /public/net/addrs | Net Addrs
@@ -420,10 +418,11 @@ Class | Method | HTTP request | Description
  - [CollectionsCidType](docs/CollectionsCidType.md)
  - [CollectionsCollection](docs/CollectionsCollection.md)
  - [CollectionsCollectionListResponse](docs/CollectionsCollectionListResponse.md)
- - [MainImportDealBody](docs/MainImportDealBody.md)
+ - [ContentAddBody](docs/ContentAddBody.md)
  - [MinerClaimMinerBody](docs/MinerClaimMinerBody.md)
  - [MinerMinerSetInfoParams](docs/MinerMinerSetInfoParams.md)
  - [MinerSuspendMinerBody](docs/MinerSuspendMinerBody.md)
+ - [PeeringPeeringPeer](docs/PeeringPeeringPeer.md)
  - [TypesIpfsListPinStatusResponse](docs/TypesIpfsListPinStatusResponse.md)
  - [TypesIpfsPin](docs/TypesIpfsPin.md)
  - [TypesIpfsPinStatusResponse](docs/TypesIpfsPinStatusResponse.md)

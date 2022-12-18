@@ -11,7 +11,7 @@ void main() {
     //
     // This endpoint can be used to remove a Peer from the Peering Service
     //
-    //Future<String> adminPeeringPeersDelete(List<bool> body) async
+    //Future<String> adminPeeringPeersDelete(List<String> body) async
     test('test adminPeeringPeersDelete', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // This endpoint can be used to add a Peer from the Peering Service
     //
-    //Future<String> adminPeeringPeersPost() async
+    //Future<String> adminPeeringPeersPost(List<PeeringPeeringPeer> body) async
     test('test adminPeeringPeersPost', () async {
       // TODO
     });

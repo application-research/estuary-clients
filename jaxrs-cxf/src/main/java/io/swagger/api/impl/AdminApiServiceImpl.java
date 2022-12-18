@@ -1,6 +1,7 @@
 package io.swagger.api.impl;
 
 import io.swagger.api.*;
+import io.swagger.model.PeeringPeeringPeer;
 import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
@@ -28,7 +29,7 @@ public class AdminApiServiceImpl implements AdminApi {
      * This endpoint can be used to remove a Peer from the Peering Service
      *
      */
-    public String adminPeeringPeersDelete(List<Boolean> body) {
+    public String adminPeeringPeersDelete(List<String> body) {
         // TODO: Implement...
         
         return null;
@@ -52,7 +53,7 @@ public class AdminApiServiceImpl implements AdminApi {
      * This endpoint can be used to add a Peer from the Peering Service
      *
      */
-    public String adminPeeringPeersPost() {
+    public String adminPeeringPeersPost(List<PeeringPeeringPeer> body) {
         // TODO: Implement...
         
         return null;

@@ -863,23 +863,18 @@
     }
   }
 };
-            defs["main.importDealBody"] = {
+            defs["content_add_body"] = {
+  "required" : [ "data" ],
   "type" : "object",
   "properties" : {
-    "coluuid" : {
-      "type" : "string"
+    "data" : {
+      "type" : "string",
+      "description" : "File to upload",
+      "format" : "binary"
     },
-    "dealIDs" : {
-      "type" : "array",
-      "items" : {
-        "type" : "integer"
-      }
-    },
-    "dir" : {
-      "type" : "string"
-    },
-    "name" : {
-      "type" : "string"
+    "filename" : {
+      "type" : "string",
+      "description" : "Filename to use for upload"
     }
   }
 };
@@ -909,6 +904,23 @@
   "type" : "object",
   "properties" : {
     "reason" : {
+      "type" : "string"
+    }
+  }
+};
+            defs["peering.PeeringPeer"] = {
+  "type" : "object",
+  "properties" : {
+    "Addrs" : {
+      "type" : "array",
+      "items" : {
+        "type" : "string"
+      }
+    },
+    "Connected" : {
+      "type" : "boolean"
+    },
+    "ID" : {
       "type" : "string"
     }
   }
@@ -1233,14 +1245,8 @@
                     <li data-group="Content" data-name="contentIdGet" class="">
                       <a href="#api-Content-contentIdGet">contentIdGet</a>
                     </li>
-                    <li data-group="Content" data-name="contentImportdealPost" class="">
-                      <a href="#api-Content-contentImportdealPost">contentImportdealPost</a>
-                    </li>
                     <li data-group="Content" data-name="contentListGet" class="">
                       <a href="#api-Content-contentListGet">contentListGet</a>
-                    </li>
-                    <li data-group="Content" data-name="contentReadContGet" class="">
-                      <a href="#api-Content-contentReadContGet">contentReadContGet</a>
                     </li>
                     <li data-group="Content" data-name="contentStagingZonesGet" class="">
                       <a href="#api-Content-contentStagingZonesGet">contentStagingZonesGet</a>
@@ -1328,9 +1334,6 @@
                       <a href="#api-Miner-publicMinersStatsMinerGet">publicMinersStatsMinerGet</a>
                     </li>
                   <li class="nav-header" data-group="Net"><a href="#api-Net">API Methods - Net</a></li>
-                    <li data-group="Net" data-name="netAddrsGet" class="">
-                      <a href="#api-Net-netAddrsGet">netAddrsGet</a>
-                    </li>
                     <li data-group="Net" data-name="publicMinersFailuresMinerGet" class="">
                       <a href="#api-Net-publicMinersFailuresMinerGet">publicMinersFailuresMinerGet</a>
                     </li>
@@ -1489,7 +1492,7 @@ public class AdminApiExample {
         //bearerAuth.setApiKeyPrefix("Token");
 
         AdminApi apiInstance = new AdminApi();
-        array[Boolean] body = ; // array[Boolean] | Peer ids
+        array[String] body = ; // array[String] | Peer ids
         try {
             'String' result = apiInstance.adminPeeringPeersDelete(body);
             System.out.println(result);
@@ -1508,7 +1511,7 @@ public class AdminApiExample {
 
     public static void main(String[] args) {
         AdminApi apiInstance = new AdminApi();
-        array[Boolean] body = ; // array[Boolean] | Peer ids
+        array[String] body = ; // array[String] | Peer ids
         try {
             'String' result = apiInstance.adminPeeringPeersDelete(body);
             System.out.println(result);
@@ -1529,7 +1532,7 @@ public class AdminApiExample {
 [apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"Authorization"];
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
-array[Boolean] *body = ; // Peer ids
+array[String] *body = ; // Peer ids
 
 AdminApi *apiInstance = [[AdminApi alloc] init];
 
@@ -1557,7 +1560,7 @@ bearerAuth.apiKey = "YOUR API KEY"
 //bearerAuth.apiKeyPrefix['Authorization'] = "Token"
 
 var api = new EstuaryApi.AdminApi()
-var body = ; // {{array[Boolean]}} Peer ids
+var body = ; // {{array[String]}} Peer ids
 
 var callback = function(error, data, response) {
   if (error) {
@@ -1593,7 +1596,7 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new AdminApi();
-            var body = new array[Boolean](); // array[Boolean] | Peer ids
+            var body = new array[String](); // array[String] | Peer ids
 
             try
             {
@@ -1621,7 +1624,7 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorizatio
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 $api_instance = new Swagger\Client\ApiAdminApi();
-$body = ; // array[Boolean] | Peer ids
+$body = ; // array[String] | Peer ids
 
 try {
     $result = $api_instance->adminPeeringPeersDelete($body);
@@ -1643,7 +1646,7 @@ $WWW::SwaggerClient::Configuration::api_key->{'Authorization'} = 'YOUR_API_KEY';
 #$WWW::SwaggerClient::Configuration::api_key_prefix->{'Authorization'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::AdminApi->new();
-my $body = [WWW::SwaggerClient::Object::array[Boolean]->new()]; # array[Boolean] | Peer ids
+my $body = [WWW::SwaggerClient::Object::array[String]->new()]; # array[String] | Peer ids
 
 eval { 
     my $result = $api_instance->adminPeeringPeersDelete(body => $body);
@@ -1668,7 +1671,7 @@ swagger_client.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = swagger_client.AdminApi()
-body =  # array[Boolean] | Peer ids
+body =  # array[String] | Peer ids
 
 try: 
     # Remove peers on Peering Service
@@ -1702,7 +1705,7 @@ except ApiException as e:
       "schema" : {
         "type" : "array",
         "items" : {
-          "type" : "boolean"
+          "type" : "string"
         }
       }
     }
@@ -2312,6 +2315,7 @@ except ApiException as e:
                            <pre class="prettyprint"><code class="language-bsh">curl -X POST\
 -H "Authorization: [[apiKey]]"\
 -H "Accept: application/json"\
+-H "Content-Type: */*"\
 "//api.estuary.tech//admin/peering/peers"</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Admin-adminPeeringPeersPost-0-java">
@@ -2335,8 +2339,9 @@ public class AdminApiExample {
         //bearerAuth.setApiKeyPrefix("Token");
 
         AdminApi apiInstance = new AdminApi();
+        array[peering.PeeringPeer] body = ; // array[peering.PeeringPeer] | Peering Peer array
         try {
-            'String' result = apiInstance.adminPeeringPeersPost();
+            'String' result = apiInstance.adminPeeringPeersPost(body);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AdminApi#adminPeeringPeersPost");
@@ -2353,8 +2358,9 @@ public class AdminApiExample {
 
     public static void main(String[] args) {
         AdminApi apiInstance = new AdminApi();
+        array[peering.PeeringPeer] body = ; // array[peering.PeeringPeer] | Peering Peer array
         try {
-            'String' result = apiInstance.adminPeeringPeersPost();
+            'String' result = apiInstance.adminPeeringPeersPost(body);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling AdminApi#adminPeeringPeersPost");
@@ -2373,12 +2379,13 @@ public class AdminApiExample {
 [apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"Authorization"];
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
+array[peering.PeeringPeer] *body = ; // Peering Peer array
 
 AdminApi *apiInstance = [[AdminApi alloc] init];
 
 // Add peers on Peering Service
-[apiInstance adminPeeringPeersPostWithCompletionHandler: 
-              ^('String' output, NSError* error) {
+[apiInstance adminPeeringPeersPostWith:body
+              completionHandler: ^('String' output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -2400,6 +2407,8 @@ bearerAuth.apiKey = "YOUR API KEY"
 //bearerAuth.apiKeyPrefix['Authorization'] = "Token"
 
 var api = new EstuaryApi.AdminApi()
+var body = ; // {{array[peering.PeeringPeer]}} Peering Peer array
+
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -2407,7 +2416,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.adminPeeringPeersPost(callback);
+api.adminPeeringPeersPost(body, callback);
 </code></pre>
                             </div>
 
@@ -2434,11 +2443,12 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new AdminApi();
+            var body = new array[peering.PeeringPeer](); // array[peering.PeeringPeer] | Peering Peer array
 
             try
             {
                 // Add peers on Peering Service
-                'String' result = apiInstance.adminPeeringPeersPost();
+                'String' result = apiInstance.adminPeeringPeersPost(body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -2461,9 +2471,10 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorizatio
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 $api_instance = new Swagger\Client\ApiAdminApi();
+$body = ; // array[peering.PeeringPeer] | Peering Peer array
 
 try {
-    $result = $api_instance->adminPeeringPeersPost();
+    $result = $api_instance->adminPeeringPeersPost($body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AdminApi->adminPeeringPeersPost: ', $e->getMessage(), PHP_EOL;
@@ -2482,9 +2493,10 @@ $WWW::SwaggerClient::Configuration::api_key->{'Authorization'} = 'YOUR_API_KEY';
 #$WWW::SwaggerClient::Configuration::api_key_prefix->{'Authorization'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::AdminApi->new();
+my $body = [WWW::SwaggerClient::Object::array[peering.PeeringPeer]->new()]; # array[peering.PeeringPeer] | Peering Peer array
 
 eval { 
-    my $result = $api_instance->adminPeeringPeersPost();
+    my $result = $api_instance->adminPeeringPeersPost(body => $body);
     print Dumper($result);
 };
 if ($@) {
@@ -2506,10 +2518,11 @@ swagger_client.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = swagger_client.AdminApi()
+body =  # array[peering.PeeringPeer] | Peering Peer array
 
 try: 
     # Add peers on Peering Service
-    api_response = api_instance.admin_peering_peers_post()
+    api_response = api_instance.admin_peering_peers_post(body)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling AdminApi->adminPeeringPeersPost: %s\n" % e)</code></pre>
@@ -2520,6 +2533,53 @@ except ApiException as e:
 
 
 
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">body <span style="color:red;">*</span></td>
+                                <td>
+                                
+                                
+                                <script>
+                                $(document).ready(function() {
+                                  var schemaWrapper = {
+  "description" : "Peering Peer array",
+  "content" : {
+    "*/*" : {
+      "schema" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/peering.PeeringPeer"
+        }
+      }
+    }
+  },
+  "required" : true
+};
+                                  var schema = schemaWrapper.content["*/*"].schema;
+                                  if (schema.$ref != null) {
+                                    schema = defsParser.$refs.get(schema.$ref);
+                                  } else {
+                                    schemaWrapper.components = {};
+                                    schemaWrapper.components.schemas = Object.assign({}, defs);
+                                    $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                      console.log(err);
+                                    });
+                                  }
+                                
+                                  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+                                  var result = $('#d2e199_adminPeeringPeersPost_body');
+                                  result.empty();
+                                  result.append(view.render());
+                                });
+                                </script>
+                                <div id="d2e199_adminPeeringPeersPost_body"></div>
+                                </td>
+                                </tr>
+                            </table>
 
 
 
@@ -10563,12 +10623,12 @@ except ApiException as e:
                       <article id="api-Content-contentAddCarPost-0" data-group="User" data-name="contentAddCarPost" data-version="0">
                         <div class="pull-left">
                           <h1>contentAddCarPost</h1>
-                          <p>Upload content via a car file</p>
+                          <p>Add Car object</p>
                         </div>
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
                         <p></p>
-                        <p class="marked">This endpoint uploads content via a car file</p>
+                        <p class="marked">This endpoint is used to add a car object to the network. The object can be a file or a directory.</p>
                         <p></p>
                         <br />
                         <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/content/add-car</span></code></pre>
@@ -10594,7 +10654,8 @@ except ApiException as e:
                            <pre class="prettyprint"><code class="language-bsh">curl -X POST\
 -H "Authorization: [[apiKey]]"\
 -H "Accept: application/json"\
-"//api.estuary.tech//content/add-car"</code></pre>
+-H "Content-Type: */*"\
+"//api.estuary.tech//content/add-car?ignore-dupes=&filename="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Content-contentAddCarPost-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -10617,8 +10678,11 @@ public class ContentApiExample {
         //bearerAuth.setApiKeyPrefix("Token");
 
         ContentApi apiInstance = new ContentApi();
+        String body = ; // String | Car
+        String ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
+        String filename = filename_example; // String | Filename
         try {
-            'String' result = apiInstance.contentAddCarPost();
+            util.ContentAddResponse result = apiInstance.contentAddCarPost(body, ignoreDupes, filename);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ContentApi#contentAddCarPost");
@@ -10635,8 +10699,11 @@ public class ContentApiExample {
 
     public static void main(String[] args) {
         ContentApi apiInstance = new ContentApi();
+        String body = ; // String | Car
+        String ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
+        String filename = filename_example; // String | Filename
         try {
-            'String' result = apiInstance.contentAddCarPost();
+            util.ContentAddResponse result = apiInstance.contentAddCarPost(body, ignoreDupes, filename);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ContentApi#contentAddCarPost");
@@ -10655,12 +10722,17 @@ public class ContentApiExample {
 [apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"Authorization"];
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
+String *body = ; // Car
+String *ignoreDupes = ignoreDupes_example; // Ignore Dupes (optional)
+String *filename = filename_example; // Filename (optional)
 
 ContentApi *apiInstance = [[ContentApi alloc] init];
 
-// Upload content via a car file
-[apiInstance contentAddCarPostWithCompletionHandler: 
-              ^('String' output, NSError* error) {
+// Add Car object
+[apiInstance contentAddCarPostWith:body
+    ignoreDupes:ignoreDupes
+    filename:filename
+              completionHandler: ^(util.ContentAddResponse output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -10682,6 +10754,11 @@ bearerAuth.apiKey = "YOUR API KEY"
 //bearerAuth.apiKeyPrefix['Authorization'] = "Token"
 
 var api = new EstuaryApi.ContentApi()
+var body = ; // {{String}} Car
+var opts = { 
+  'ignoreDupes': ignoreDupes_example // {{String}} Ignore Dupes
+  'filename': filename_example // {{String}} Filename
+};
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -10689,7 +10766,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.contentAddCarPost(callback);
+api.contentAddCarPost(body, opts, callback);
 </code></pre>
                             </div>
 
@@ -10716,11 +10793,14 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new ContentApi();
+            var body = new String(); // String | Car
+            var ignoreDupes = ignoreDupes_example;  // String | Ignore Dupes (optional) 
+            var filename = filename_example;  // String | Filename (optional) 
 
             try
             {
-                // Upload content via a car file
-                'String' result = apiInstance.contentAddCarPost();
+                // Add Car object
+                util.ContentAddResponse result = apiInstance.contentAddCarPost(body, ignoreDupes, filename);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -10743,9 +10823,12 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorizatio
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 $api_instance = new Swagger\Client\ApiContentApi();
+$body = ; // String | Car
+$ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
+$filename = filename_example; // String | Filename
 
 try {
-    $result = $api_instance->contentAddCarPost();
+    $result = $api_instance->contentAddCarPost($body, $ignoreDupes, $filename);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContentApi->contentAddCarPost: ', $e->getMessage(), PHP_EOL;
@@ -10764,9 +10847,12 @@ $WWW::SwaggerClient::Configuration::api_key->{'Authorization'} = 'YOUR_API_KEY';
 #$WWW::SwaggerClient::Configuration::api_key_prefix->{'Authorization'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::ContentApi->new();
+my $body = WWW::SwaggerClient::Object::String->new(); # String | Car
+my $ignoreDupes = ignoreDupes_example; # String | Ignore Dupes
+my $filename = filename_example; # String | Filename
 
 eval { 
-    my $result = $api_instance->contentAddCarPost();
+    my $result = $api_instance->contentAddCarPost(body => $body, ignoreDupes => $ignoreDupes, filename => $filename);
     print Dumper($result);
 };
 if ($@) {
@@ -10788,10 +10874,13 @@ swagger_client.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = swagger_client.ContentApi()
+body =  # String | Car
+ignoreDupes = ignoreDupes_example # String | Ignore Dupes (optional)
+filename = filename_example # String | Filename (optional)
 
 try: 
-    # Upload content via a car file
-    api_response = api_instance.content_add_car_post()
+    # Add Car object
+    api_response = api_instance.content_add_car_post(body, ignoreDupes=ignoreDupes, filename=filename)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->contentAddCarPost: %s\n" % e)</code></pre>
@@ -10802,8 +10891,97 @@ except ApiException as e:
 
 
 
+                            <div class="methodsubtabletitle">Body parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">body <span style="color:red;">*</span></td>
+                                <td>
+                                
+                                
+                                <script>
+                                $(document).ready(function() {
+                                  var schemaWrapper = {
+  "description" : "Car",
+  "content" : {
+    "*/*" : {
+      "schema" : {
+        "type" : "string"
+      }
+    }
+  },
+  "required" : true
+};
+                                  var schema = schemaWrapper.content["*/*"].schema;
+                                  if (schema.$ref != null) {
+                                    schema = defsParser.$refs.get(schema.$ref);
+                                  } else {
+                                    schemaWrapper.components = {};
+                                    schemaWrapper.components.schemas = Object.assign({}, defs);
+                                    $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                      console.log(err);
+                                    });
+                                  }
+                                
+                                  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
+                                  var result = $('#d2e199_contentAddCarPost_body');
+                                  result.empty();
+                                  result.append(view.render());
+                                });
+                                </script>
+                                <div id="d2e199_contentAddCarPost_body"></div>
+                                </td>
+                                </tr>
+                            </table>
 
 
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">ignore-dupes</td>
+                                <td>
+                                
+                                
+                                    <div id="d2e199_contentAddCarPost_ignoreDupes">
+                                        <div class="json-schema-view">
+                                            <div class="primitive">
+                                                <span class="type">
+                                                    String
+                                                </span>
+                                
+                                                    <div class="inner description">
+                                                        Ignore Dupes
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr><td style="width:150px;">filename</td>
+                                <td>
+                                
+                                
+                                    <div id="d2e199_contentAddCarPost_filename">
+                                        <div class="json-schema-view">
+                                            <div class="primitive">
+                                                <span class="type">
+                                                    String
+                                                </span>
+                                
+                                                    <div class="inner description">
+                                                        Filename
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                </tr>
+                            </table>
 
                           <h2>Responses</h2>
                             <h3> Status: 200 - OK </h3>
@@ -10825,8 +11003,7 @@ except ApiException as e:
   "content" : {
     "application/json" : {
       "schema" : {
-        "type" : "string",
-        "x-content-type" : "application/json"
+        "$ref" : "#/components/schemas/util.ContentAddResponse"
       }
     }
   }
@@ -11443,12 +11620,12 @@ except ApiException as e:
                       <article id="api-Content-contentAddPost-0" data-group="User" data-name="contentAddPost" data-version="0">
                         <div class="pull-left">
                           <h1>contentAddPost</h1>
-                          <p>Upload a file</p>
+                          <p>Add new content</p>
                         </div>
                         <div class="pull-right"></div>
                         <div class="clearfix"></div>
                         <p></p>
-                        <p class="marked">This endpoint uploads a file.</p>
+                        <p class="marked">This endpoint is used to upload new content.</p>
                         <p></p>
                         <br />
                         <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/content/add</span></code></pre>
@@ -11474,7 +11651,8 @@ except ApiException as e:
                            <pre class="prettyprint"><code class="language-bsh">curl -X POST\
 -H "Authorization: [[apiKey]]"\
 -H "Accept: application/json"\
-"//api.estuary.tech//content/add"</code></pre>
+-H "Content-Type: multipart/form-data"\
+"//api.estuary.tech//content/add?coluuid=&replication=&ignore-dupes=&lazy-provide=&dir="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Content-contentAddPost-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -11497,8 +11675,15 @@ public class ContentApiExample {
         //bearerAuth.setApiKeyPrefix("Token");
 
         ContentApi apiInstance = new ContentApi();
+        byte[] data = data_example; // byte[] | 
+        String filename = filename_example; // String | 
+        String coluuid = coluuid_example; // String | Collection UUID
+        Integer replication = 56; // Integer | Replication value
+        String ignoreDupes = ignoreDupes_example; // String | Ignore Dupes true/false
+        String lazyProvide = lazyProvide_example; // String | Lazy Provide true/false
+        String dir = dir_example; // String | Directory
         try {
-            'String' result = apiInstance.contentAddPost();
+            util.ContentAddResponse result = apiInstance.contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ContentApi#contentAddPost");
@@ -11515,8 +11700,15 @@ public class ContentApiExample {
 
     public static void main(String[] args) {
         ContentApi apiInstance = new ContentApi();
+        byte[] data = data_example; // byte[] | 
+        String filename = filename_example; // String | 
+        String coluuid = coluuid_example; // String | Collection UUID
+        Integer replication = 56; // Integer | Replication value
+        String ignoreDupes = ignoreDupes_example; // String | Ignore Dupes true/false
+        String lazyProvide = lazyProvide_example; // String | Lazy Provide true/false
+        String dir = dir_example; // String | Directory
         try {
-            'String' result = apiInstance.contentAddPost();
+            util.ContentAddResponse result = apiInstance.contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ContentApi#contentAddPost");
@@ -11535,12 +11727,25 @@ public class ContentApiExample {
 [apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"Authorization"];
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
+byte[] *data = data_example; // 
+String *filename = filename_example; // 
+String *coluuid = coluuid_example; // Collection UUID (optional)
+Integer *replication = 56; // Replication value (optional)
+String *ignoreDupes = ignoreDupes_example; // Ignore Dupes true/false (optional)
+String *lazyProvide = lazyProvide_example; // Lazy Provide true/false (optional)
+String *dir = dir_example; // Directory (optional)
 
 ContentApi *apiInstance = [[ContentApi alloc] init];
 
-// Upload a file
-[apiInstance contentAddPostWithCompletionHandler: 
-              ^('String' output, NSError* error) {
+// Add new content
+[apiInstance contentAddPostWith:data
+    filename:filename
+    coluuid:coluuid
+    replication:replication
+    ignoreDupes:ignoreDupes
+    lazyProvide:lazyProvide
+    dir:dir
+              completionHandler: ^(util.ContentAddResponse output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -11562,6 +11767,15 @@ bearerAuth.apiKey = "YOUR API KEY"
 //bearerAuth.apiKeyPrefix['Authorization'] = "Token"
 
 var api = new EstuaryApi.ContentApi()
+var data = data_example; // {{byte[]}} 
+var filename = filename_example; // {{String}} 
+var opts = { 
+  'coluuid': coluuid_example // {{String}} Collection UUID
+  'replication': 56 // {{Integer}} Replication value
+  'ignoreDupes': ignoreDupes_example // {{String}} Ignore Dupes true/false
+  'lazyProvide': lazyProvide_example // {{String}} Lazy Provide true/false
+  'dir': dir_example // {{String}} Directory
+};
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -11569,7 +11783,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.contentAddPost(callback);
+api.contentAddPost(datafilename, opts, callback);
 </code></pre>
                             </div>
 
@@ -11596,11 +11810,18 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new ContentApi();
+            var data = data_example;  // byte[] | 
+            var filename = filename_example;  // String | 
+            var coluuid = coluuid_example;  // String | Collection UUID (optional) 
+            var replication = 56;  // Integer | Replication value (optional) 
+            var ignoreDupes = ignoreDupes_example;  // String | Ignore Dupes true/false (optional) 
+            var lazyProvide = lazyProvide_example;  // String | Lazy Provide true/false (optional) 
+            var dir = dir_example;  // String | Directory (optional) 
 
             try
             {
-                // Upload a file
-                'String' result = apiInstance.contentAddPost();
+                // Add new content
+                util.ContentAddResponse result = apiInstance.contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -11623,9 +11844,16 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorizatio
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 $api_instance = new Swagger\Client\ApiContentApi();
+$data = data_example; // byte[] | 
+$filename = filename_example; // String | 
+$coluuid = coluuid_example; // String | Collection UUID
+$replication = 56; // Integer | Replication value
+$ignoreDupes = ignoreDupes_example; // String | Ignore Dupes true/false
+$lazyProvide = lazyProvide_example; // String | Lazy Provide true/false
+$dir = dir_example; // String | Directory
 
 try {
-    $result = $api_instance->contentAddPost();
+    $result = $api_instance->contentAddPost($data, $filename, $coluuid, $replication, $ignoreDupes, $lazyProvide, $dir);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContentApi->contentAddPost: ', $e->getMessage(), PHP_EOL;
@@ -11644,9 +11872,16 @@ $WWW::SwaggerClient::Configuration::api_key->{'Authorization'} = 'YOUR_API_KEY';
 #$WWW::SwaggerClient::Configuration::api_key_prefix->{'Authorization'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::ContentApi->new();
+my $data = data_example; # byte[] | 
+my $filename = filename_example; # String | 
+my $coluuid = coluuid_example; # String | Collection UUID
+my $replication = 56; # Integer | Replication value
+my $ignoreDupes = ignoreDupes_example; # String | Ignore Dupes true/false
+my $lazyProvide = lazyProvide_example; # String | Lazy Provide true/false
+my $dir = dir_example; # String | Directory
 
 eval { 
-    my $result = $api_instance->contentAddPost();
+    my $result = $api_instance->contentAddPost(data => $data, filename => $filename, coluuid => $coluuid, replication => $replication, ignoreDupes => $ignoreDupes, lazyProvide => $lazyProvide, dir => $dir);
     print Dumper($result);
 };
 if ($@) {
@@ -11668,10 +11903,17 @@ swagger_client.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = swagger_client.ContentApi()
+data = data_example # byte[] | 
+filename = filename_example # String | 
+coluuid = coluuid_example # String | Collection UUID (optional)
+replication = 56 # Integer | Replication value (optional)
+ignoreDupes = ignoreDupes_example # String | Ignore Dupes true/false (optional)
+lazyProvide = lazyProvide_example # String | Lazy Provide true/false (optional)
+dir = dir_example # String | Directory (optional)
 
 try: 
-    # Upload a file
-    api_response = api_instance.content_add_post()
+    # Add new content
+    api_response = api_instance.content_add_post(data, filename, coluuid=coluuid, replication=replication, ignoreDupes=ignoreDupes, lazyProvide=lazyProvide, dir=dir)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->contentAddPost: %s\n" % e)</code></pre>
@@ -11683,7 +11925,157 @@ except ApiException as e:
 
 
 
+                            <div class="methodsubtabletitle">Form parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                  <tr><td style="width:150px;">data*</td>
+                                  <td>
+                                  
+                                  
+                                      <div id="d2e199_contentAddPost_data">
+                                          <div class="json-schema-view">
+                                              <div class="primitive">
+                                                  <span class="type">
+                                                      byte[]
+                                                  </span>
+                                                      <span class="format">
+                                                          (binary)
+                                                      </span>
+                                  
+                                              </div>
+                                                  <div class="inner required">
+                                                      Required
+                                                  </div>
+                                          </div>
+                                      </div>
+                                  </td>
+                                  </tr>
+                                  <tr><td style="width:150px;">filename*</td>
+                                  <td>
+                                  
+                                  
+                                      <div id="d2e199_contentAddPost_filename">
+                                          <div class="json-schema-view">
+                                              <div class="primitive">
+                                                  <span class="type">
+                                                      String
+                                                  </span>
+                                  
+                                              </div>
+                                                  <div class="inner required">
+                                                      Required
+                                                  </div>
+                                          </div>
+                                      </div>
+                                  </td>
+                                  </tr>
+                            </table>
 
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">coluuid</td>
+                                <td>
+                                
+                                
+                                    <div id="d2e199_contentAddPost_coluuid">
+                                        <div class="json-schema-view">
+                                            <div class="primitive">
+                                                <span class="type">
+                                                    String
+                                                </span>
+                                
+                                                    <div class="inner description">
+                                                        Collection UUID
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr><td style="width:150px;">replication</td>
+                                <td>
+                                
+                                
+                                    <div id="d2e199_contentAddPost_replication">
+                                        <div class="json-schema-view">
+                                            <div class="primitive">
+                                                <span class="type">
+                                                    Integer
+                                                </span>
+                                
+                                                    <div class="inner description">
+                                                        Replication value
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr><td style="width:150px;">ignore-dupes</td>
+                                <td>
+                                
+                                
+                                    <div id="d2e199_contentAddPost_ignoreDupes">
+                                        <div class="json-schema-view">
+                                            <div class="primitive">
+                                                <span class="type">
+                                                    String
+                                                </span>
+                                
+                                                    <div class="inner description">
+                                                        Ignore Dupes true/false
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr><td style="width:150px;">lazy-provide</td>
+                                <td>
+                                
+                                
+                                    <div id="d2e199_contentAddPost_lazyProvide">
+                                        <div class="json-schema-view">
+                                            <div class="primitive">
+                                                <span class="type">
+                                                    String
+                                                </span>
+                                
+                                                    <div class="inner description">
+                                                        Lazy Provide true/false
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr><td style="width:150px;">dir</td>
+                                <td>
+                                
+                                
+                                    <div id="d2e199_contentAddPost_dir">
+                                        <div class="json-schema-view">
+                                            <div class="primitive">
+                                                <span class="type">
+                                                    String
+                                                </span>
+                                
+                                                    <div class="inner description">
+                                                        Directory
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                </tr>
+                            </table>
 
                           <h2>Responses</h2>
                             <h3> Status: 200 - OK </h3>
@@ -11705,8 +12097,7 @@ except ApiException as e:
   "content" : {
     "application/json" : {
       "schema" : {
-        "type" : "string",
-        "x-content-type" : "application/json"
+        "$ref" : "#/components/schemas/util.ContentAddResponse"
       }
     }
   }
@@ -15902,455 +16293,6 @@ except ApiException as e:
                         </article>
                       </div>
                       <hr>
-                    <div id="api-Content-contentImportdealPost">
-                      <article id="api-Content-contentImportdealPost-0" data-group="User" data-name="contentImportdealPost" data-version="0">
-                        <div class="pull-left">
-                          <h1>contentImportdealPost</h1>
-                          <p>Import a deal</p>
-                        </div>
-                        <div class="pull-right"></div>
-                        <div class="clearfix"></div>
-                        <p></p>
-                        <p class="marked">This endpoint imports a deal into the shuttle.</p>
-                        <p></p>
-                        <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/content/importdeal</span></code></pre>
-                        <p>
-                          <h3>Usage and SDK Samples</h3>
-                        </p>
-                        <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Content-contentImportdealPost-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Content-contentImportdealPost-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Content-contentImportdealPost-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Content-contentImportdealPost-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Content-contentImportdealPost-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Content-contentImportdealPost-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Content-contentImportdealPost-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Content-contentImportdealPost-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Content-contentImportdealPost-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Content-contentImportdealPost-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Content-contentImportdealPost-0-python">Python</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Content-contentImportdealPost-0-curl">
-                           <pre class="prettyprint"><code class="language-bsh">curl -X POST\
--H "Authorization: [[apiKey]]"\
--H "Accept: application/json"\
--H "Content-Type: */*"\
-"//api.estuary.tech//content/importdeal"</code></pre>
-                          </div>
-                          <div class="tab-pane" id="examples-Content-contentImportdealPost-0-java">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
-import io.swagger.client.auth.*;
-import io.swagger.client.model.*;
-import io.swagger.client.api.ContentApi;
-
-import java.io.File;
-import java.util.*;
-
-public class ContentApiExample {
-
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-        // Configure API key authorization: bearerAuth
-        ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //bearerAuth.setApiKeyPrefix("Token");
-
-        ContentApi apiInstance = new ContentApi();
-        Main.importDealBody body = ; // Main.importDealBody | Import a deal
-        try {
-            'String' result = apiInstance.contentImportdealPost(body);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ContentApi#contentImportdealPost");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Content-contentImportdealPost-0-android">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.ContentApi;
-
-public class ContentApiExample {
-
-    public static void main(String[] args) {
-        ContentApi apiInstance = new ContentApi();
-        Main.importDealBody body = ; // Main.importDealBody | Import a deal
-        try {
-            'String' result = apiInstance.contentImportdealPost(body);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ContentApi#contentImportdealPost");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-Content-contentImportdealPost-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-Content-contentImportdealPost-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
-// Configure API key authorization: (authentication scheme: bearerAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"Authorization"];
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
-Main.importDealBody *body = ; // Import a deal
-
-ContentApi *apiInstance = [[ContentApi alloc] init];
-
-// Import a deal
-[apiInstance contentImportdealPostWith:body
-              completionHandler: ^('String' output, NSError* error) {
-                            if (output) {
-                                NSLog(@"%@", output);
-                            }
-                            if (error) {
-                                NSLog(@"Error: %@", error);
-                            }
-                        }];
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Content-contentImportdealPost-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var EstuaryApi = require('estuary_api');
-var defaultClient = EstuaryApi.ApiClient.instance;
-
-// Configure API key authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
-bearerAuth.apiKey = "YOUR API KEY"
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix['Authorization'] = "Token"
-
-var api = new EstuaryApi.ContentApi()
-var body = ; // {{Main.importDealBody}} Import a deal
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.contentImportdealPost(body, callback);
-</code></pre>
-                            </div>
-
-                            <!--<div class="tab-pane" id="examples-Content-contentImportdealPost-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                            <div class="tab-pane" id="examples-Content-contentImportdealPost-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using estuary-client.Api;
-using estuary-client.Client;
-using estuary-client.Model;
-
-namespace Example
-{
-    public class contentImportdealPostExample
-    {
-        public void main()
-        {
-
-            // Configure API key authorization: bearerAuth
-            Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
-
-            var apiInstance = new ContentApi();
-            var body = new Main.importDealBody(); // Main.importDealBody | Import a deal
-
-            try
-            {
-                // Import a deal
-                'String' result = apiInstance.contentImportdealPost(body);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling ContentApi.contentImportdealPost: " + e.Message );
-            }
-        }
-    }
-}
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Content-contentImportdealPost-0-php">
-                              <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure API key authorization: bearerAuth
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
-
-$api_instance = new Swagger\Client\ApiContentApi();
-$body = ; // Main.importDealBody | Import a deal
-
-try {
-    $result = $api_instance->contentImportdealPost($body);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling ContentApi->contentImportdealPost: ', $e->getMessage(), PHP_EOL;
-}
-?></code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Content-contentImportdealPost-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
-use WWW::SwaggerClient::ContentApi;
-
-# Configure API key authorization: bearerAuth
-$WWW::SwaggerClient::Configuration::api_key->{'Authorization'} = 'YOUR_API_KEY';
-# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'Authorization'} = "Bearer";
-
-my $api_instance = WWW::SwaggerClient::ContentApi->new();
-my $body = WWW::SwaggerClient::Object::Main.importDealBody->new(); # Main.importDealBody | Import a deal
-
-eval { 
-    my $result = $api_instance->contentImportdealPost(body => $body);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling ContentApi->contentImportdealPost: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Content-contentImportdealPost-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import swagger_client
-from swagger_client.rest import ApiException
-from pprint import pprint
-
-# Configure API key authorization: bearerAuth
-swagger_client.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['Authorization'] = 'Bearer'
-
-# create an instance of the API class
-api_instance = swagger_client.ContentApi()
-body =  # Main.importDealBody | Import a deal
-
-try: 
-    # Import a deal
-    api_response = api_instance.content_importdeal_post(body)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ContentApi->contentImportdealPost: %s\n" % e)</code></pre>
-                            </div>
-                          </div>
-
-                          <h2>Parameters</h2>
-
-
-
-                            <div class="methodsubtabletitle">Body parameters</div>
-                            <table id="methodsubtable">
-                              <tr>
-                                <th width="150px">Name</th>
-                                <th>Description</th>
-                              </tr>
-                                <tr><td style="width:150px;">body <span style="color:red;">*</span></td>
-                                <td>
-                                
-                                
-                                <script>
-                                $(document).ready(function() {
-                                  var schemaWrapper = {
-  "description" : "Import a deal",
-  "content" : {
-    "*/*" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/main.importDealBody"
-      }
-    }
-  },
-  "required" : true
-};
-                                  var schema = schemaWrapper.content["*/*"].schema;
-                                  if (schema.$ref != null) {
-                                    schema = defsParser.$refs.get(schema.$ref);
-                                  } else {
-                                    schemaWrapper.components = {};
-                                    schemaWrapper.components.schemas = Object.assign({}, defs);
-                                    $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                      console.log(err);
-                                    });
-                                  }
-                                
-                                  var view = new JSONSchemaView(schema,2,{isBodyParam: true});
-                                  var result = $('#d2e199_contentImportdealPost_body');
-                                  result.empty();
-                                  result.append(view.render());
-                                });
-                                </script>
-                                <div id="d2e199_contentImportdealPost_body"></div>
-                                </td>
-                                </tr>
-                            </table>
-
-
-
-                          <h2>Responses</h2>
-                            <h3> Status: 200 - OK </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-contentImportdealPost-200-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-contentImportdealPost-200-schema">
-                                  <div id='responses-contentImportdealPost-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "OK",
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "type" : "string",
-        "x-content-type" : "application/json"
-      }
-    }
-  }
-};
-                                        var schema = schemaWrapper.content["application/json"].schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.components = {};
-                                          schemaWrapper.components.schemas = Object.assign({}, defs);
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-contentImportdealPost-200-schema-data').val(stringify(schema));
-                                        var result = $('#responses-contentImportdealPost-200-schema-200');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-contentImportdealPost-200-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                            <h3> Status: 400 - Bad Request </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-contentImportdealPost-400-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-contentImportdealPost-400-schema">
-                                  <div id='responses-contentImportdealPost-400-schema-400' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "Bad Request",
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/util.HttpError"
-      }
-    }
-  }
-};
-                                        var schema = schemaWrapper.content["application/json"].schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.components = {};
-                                          schemaWrapper.components.schemas = Object.assign({}, defs);
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-contentImportdealPost-400-schema-data').val(stringify(schema));
-                                        var result = $('#responses-contentImportdealPost-400-schema-400');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-contentImportdealPost-400-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                            <h3> Status: 500 - Internal Server Error </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-contentImportdealPost-500-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-contentImportdealPost-500-schema">
-                                  <div id='responses-contentImportdealPost-500-schema-500' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "Internal Server Error",
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/util.HttpError"
-      }
-    }
-  }
-};
-                                        var schema = schemaWrapper.content["application/json"].schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.components = {};
-                                          schemaWrapper.components.schemas = Object.assign({}, defs);
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-contentImportdealPost-500-schema-data').val(stringify(schema));
-                                        var result = $('#responses-contentImportdealPost-500-schema-500');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-contentImportdealPost-500-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                        </article>
-                      </div>
-                      <hr>
                     <div id="api-Content-contentListGet">
                       <article id="api-Content-contentListGet-0" data-group="User" data-name="contentListGet" data-version="0">
                         <div class="pull-left">
@@ -16740,439 +16682,6 @@ except ApiException as e:
                                     </script>
                                   </div>
                                   <input id='responses-contentListGet-500-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                        </article>
-                      </div>
-                      <hr>
-                    <div id="api-Content-contentReadContGet">
-                      <article id="api-Content-contentReadContGet-0" data-group="User" data-name="contentReadContGet" data-version="0">
-                        <div class="pull-left">
-                          <h1>contentReadContGet</h1>
-                          <p>Read content</p>
-                        </div>
-                        <div class="pull-right"></div>
-                        <div class="clearfix"></div>
-                        <p></p>
-                        <p class="marked">This endpoint reads content from the blockstore</p>
-                        <p></p>
-                        <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/content/read/{cont}</span></code></pre>
-                        <p>
-                          <h3>Usage and SDK Samples</h3>
-                        </p>
-                        <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Content-contentReadContGet-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Content-contentReadContGet-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Content-contentReadContGet-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Content-contentReadContGet-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Content-contentReadContGet-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Content-contentReadContGet-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Content-contentReadContGet-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Content-contentReadContGet-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Content-contentReadContGet-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Content-contentReadContGet-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Content-contentReadContGet-0-python">Python</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Content-contentReadContGet-0-curl">
-                           <pre class="prettyprint"><code class="language-bsh">curl -X GET\
--H "Authorization: [[apiKey]]"\
--H "Accept: application/json"\
-"//api.estuary.tech//content/read/{cont}"</code></pre>
-                          </div>
-                          <div class="tab-pane" id="examples-Content-contentReadContGet-0-java">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
-import io.swagger.client.auth.*;
-import io.swagger.client.model.*;
-import io.swagger.client.api.ContentApi;
-
-import java.io.File;
-import java.util.*;
-
-public class ContentApiExample {
-
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-        // Configure API key authorization: bearerAuth
-        ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //bearerAuth.setApiKeyPrefix("Token");
-
-        ContentApi apiInstance = new ContentApi();
-        String cont = cont_example; // String | CID
-        try {
-            'String' result = apiInstance.contentReadContGet(cont);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ContentApi#contentReadContGet");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Content-contentReadContGet-0-android">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.ContentApi;
-
-public class ContentApiExample {
-
-    public static void main(String[] args) {
-        ContentApi apiInstance = new ContentApi();
-        String cont = cont_example; // String | CID
-        try {
-            'String' result = apiInstance.contentReadContGet(cont);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling ContentApi#contentReadContGet");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-Content-contentReadContGet-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-Content-contentReadContGet-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
-// Configure API key authorization: (authentication scheme: bearerAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"Authorization"];
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
-String *cont = cont_example; // CID
-
-ContentApi *apiInstance = [[ContentApi alloc] init];
-
-// Read content
-[apiInstance contentReadContGetWith:cont
-              completionHandler: ^('String' output, NSError* error) {
-                            if (output) {
-                                NSLog(@"%@", output);
-                            }
-                            if (error) {
-                                NSLog(@"Error: %@", error);
-                            }
-                        }];
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Content-contentReadContGet-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var EstuaryApi = require('estuary_api');
-var defaultClient = EstuaryApi.ApiClient.instance;
-
-// Configure API key authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
-bearerAuth.apiKey = "YOUR API KEY"
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix['Authorization'] = "Token"
-
-var api = new EstuaryApi.ContentApi()
-var cont = cont_example; // {{String}} CID
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.contentReadContGet(cont, callback);
-</code></pre>
-                            </div>
-
-                            <!--<div class="tab-pane" id="examples-Content-contentReadContGet-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                            <div class="tab-pane" id="examples-Content-contentReadContGet-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using estuary-client.Api;
-using estuary-client.Client;
-using estuary-client.Model;
-
-namespace Example
-{
-    public class contentReadContGetExample
-    {
-        public void main()
-        {
-
-            // Configure API key authorization: bearerAuth
-            Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
-
-            var apiInstance = new ContentApi();
-            var cont = cont_example;  // String | CID
-
-            try
-            {
-                // Read content
-                'String' result = apiInstance.contentReadContGet(cont);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling ContentApi.contentReadContGet: " + e.Message );
-            }
-        }
-    }
-}
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Content-contentReadContGet-0-php">
-                              <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure API key authorization: bearerAuth
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
-
-$api_instance = new Swagger\Client\ApiContentApi();
-$cont = cont_example; // String | CID
-
-try {
-    $result = $api_instance->contentReadContGet($cont);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling ContentApi->contentReadContGet: ', $e->getMessage(), PHP_EOL;
-}
-?></code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Content-contentReadContGet-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
-use WWW::SwaggerClient::ContentApi;
-
-# Configure API key authorization: bearerAuth
-$WWW::SwaggerClient::Configuration::api_key->{'Authorization'} = 'YOUR_API_KEY';
-# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'Authorization'} = "Bearer";
-
-my $api_instance = WWW::SwaggerClient::ContentApi->new();
-my $cont = cont_example; # String | CID
-
-eval { 
-    my $result = $api_instance->contentReadContGet(cont => $cont);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling ContentApi->contentReadContGet: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Content-contentReadContGet-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import swagger_client
-from swagger_client.rest import ApiException
-from pprint import pprint
-
-# Configure API key authorization: bearerAuth
-swagger_client.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['Authorization'] = 'Bearer'
-
-# create an instance of the API class
-api_instance = swagger_client.ContentApi()
-cont = cont_example # String | CID
-
-try: 
-    # Read content
-    api_response = api_instance.content_read_cont_get(cont)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling ContentApi->contentReadContGet: %s\n" % e)</code></pre>
-                            </div>
-                          </div>
-
-                          <h2>Parameters</h2>
-
-                            <div class="methodsubtabletitle">Path parameters</div>
-                            <table id="methodsubtable">
-                                <tr>
-                                  <th width="150px">Name</th>
-                                  <th>Description</th>
-                                </tr>
-                                  <tr><td style="width:150px;">cont*</td>
-                                  <td>
-                                  
-                                  
-                                      <div id="d2e199_contentReadContGet_cont">
-                                          <div class="json-schema-view">
-                                              <div class="primitive">
-                                                  <span class="type">
-                                                      String
-                                                  </span>
-                                  
-                                                      <div class="inner description">
-                                                          CID
-                                                      </div>
-                                              </div>
-                                                  <div class="inner required">
-                                                      Required
-                                                  </div>
-                                          </div>
-                                      </div>
-                                  </td>
-                                  </tr>
-                            </table>
-
-
-
-
-
-                          <h2>Responses</h2>
-                            <h3> Status: 200 - OK </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-contentReadContGet-200-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-contentReadContGet-200-schema">
-                                  <div id='responses-contentReadContGet-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "OK",
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "type" : "string",
-        "x-content-type" : "application/json"
-      }
-    }
-  }
-};
-                                        var schema = schemaWrapper.content["application/json"].schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.components = {};
-                                          schemaWrapper.components.schemas = Object.assign({}, defs);
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-contentReadContGet-200-schema-data').val(stringify(schema));
-                                        var result = $('#responses-contentReadContGet-200-schema-200');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-contentReadContGet-200-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                            <h3> Status: 400 - Bad Request </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-contentReadContGet-400-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-contentReadContGet-400-schema">
-                                  <div id='responses-contentReadContGet-400-schema-400' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "Bad Request",
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/util.HttpError"
-      }
-    }
-  }
-};
-                                        var schema = schemaWrapper.content["application/json"].schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.components = {};
-                                          schemaWrapper.components.schemas = Object.assign({}, defs);
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-contentReadContGet-400-schema-data').val(stringify(schema));
-                                        var result = $('#responses-contentReadContGet-400-schema-400');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-contentReadContGet-400-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                            <h3> Status: 500 - Internal Server Error </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-contentReadContGet-500-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-contentReadContGet-500-schema">
-                                  <div id='responses-contentReadContGet-500-schema-500' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "Internal Server Error",
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/util.HttpError"
-      }
-    }
-  }
-};
-                                        var schema = schemaWrapper.content["application/json"].schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.components = {};
-                                          schemaWrapper.components.schemas = Object.assign({}, defs);
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-contentReadContGet-500-schema-data').val(stringify(schema));
-                                        var result = $('#responses-contentReadContGet-500-schema-500');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-contentReadContGet-500-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
 
@@ -29028,401 +28537,6 @@ except ApiException as e:
                   </section>
                 <section id="api-Net">
                   <h1>Net</h1>
-                    <div id="api-Net-netAddrsGet">
-                      <article id="api-Net-netAddrsGet-0" data-group="User" data-name="netAddrsGet" data-version="0">
-                        <div class="pull-left">
-                          <h1>netAddrsGet</h1>
-                          <p>Net Addrs</p>
-                        </div>
-                        <div class="pull-right"></div>
-                        <div class="clearfix"></div>
-                        <p></p>
-                        <p class="marked">This endpoint is used to get net addrs</p>
-                        <p></p>
-                        <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/net/addrs</span></code></pre>
-                        <p>
-                          <h3>Usage and SDK Samples</h3>
-                        </p>
-                        <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Net-netAddrsGet-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Net-netAddrsGet-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Net-netAddrsGet-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Net-netAddrsGet-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Net-netAddrsGet-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Net-netAddrsGet-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Net-netAddrsGet-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Net-netAddrsGet-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Net-netAddrsGet-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Net-netAddrsGet-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Net-netAddrsGet-0-python">Python</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Net-netAddrsGet-0-curl">
-                           <pre class="prettyprint"><code class="language-bsh">curl -X GET\
--H "Authorization: [[apiKey]]"\
--H "Accept: application/json"\
-"//api.estuary.tech//net/addrs"</code></pre>
-                          </div>
-                          <div class="tab-pane" id="examples-Net-netAddrsGet-0-java">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
-import io.swagger.client.auth.*;
-import io.swagger.client.model.*;
-import io.swagger.client.api.NetApi;
-
-import java.io.File;
-import java.util.*;
-
-public class NetApiExample {
-
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-        // Configure API key authorization: bearerAuth
-        ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //bearerAuth.setApiKeyPrefix("Token");
-
-        NetApi apiInstance = new NetApi();
-        try {
-            'String' result = apiInstance.netAddrsGet();
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling NetApi#netAddrsGet");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Net-netAddrsGet-0-android">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.NetApi;
-
-public class NetApiExample {
-
-    public static void main(String[] args) {
-        NetApi apiInstance = new NetApi();
-        try {
-            'String' result = apiInstance.netAddrsGet();
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling NetApi#netAddrsGet");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-Net-netAddrsGet-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-Net-netAddrsGet-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
-// Configure API key authorization: (authentication scheme: bearerAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"Authorization"];
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
-
-NetApi *apiInstance = [[NetApi alloc] init];
-
-// Net Addrs
-[apiInstance netAddrsGetWithCompletionHandler: 
-              ^('String' output, NSError* error) {
-                            if (output) {
-                                NSLog(@"%@", output);
-                            }
-                            if (error) {
-                                NSLog(@"Error: %@", error);
-                            }
-                        }];
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Net-netAddrsGet-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var EstuaryApi = require('estuary_api');
-var defaultClient = EstuaryApi.ApiClient.instance;
-
-// Configure API key authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
-bearerAuth.apiKey = "YOUR API KEY"
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix['Authorization'] = "Token"
-
-var api = new EstuaryApi.NetApi()
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.netAddrsGet(callback);
-</code></pre>
-                            </div>
-
-                            <!--<div class="tab-pane" id="examples-Net-netAddrsGet-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                            <div class="tab-pane" id="examples-Net-netAddrsGet-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using estuary-client.Api;
-using estuary-client.Client;
-using estuary-client.Model;
-
-namespace Example
-{
-    public class netAddrsGetExample
-    {
-        public void main()
-        {
-
-            // Configure API key authorization: bearerAuth
-            Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
-
-            var apiInstance = new NetApi();
-
-            try
-            {
-                // Net Addrs
-                'String' result = apiInstance.netAddrsGet();
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling NetApi.netAddrsGet: " + e.Message );
-            }
-        }
-    }
-}
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Net-netAddrsGet-0-php">
-                              <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure API key authorization: bearerAuth
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
-
-$api_instance = new Swagger\Client\ApiNetApi();
-
-try {
-    $result = $api_instance->netAddrsGet();
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling NetApi->netAddrsGet: ', $e->getMessage(), PHP_EOL;
-}
-?></code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Net-netAddrsGet-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
-use WWW::SwaggerClient::NetApi;
-
-# Configure API key authorization: bearerAuth
-$WWW::SwaggerClient::Configuration::api_key->{'Authorization'} = 'YOUR_API_KEY';
-# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'Authorization'} = "Bearer";
-
-my $api_instance = WWW::SwaggerClient::NetApi->new();
-
-eval { 
-    my $result = $api_instance->netAddrsGet();
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling NetApi->netAddrsGet: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Net-netAddrsGet-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import swagger_client
-from swagger_client.rest import ApiException
-from pprint import pprint
-
-# Configure API key authorization: bearerAuth
-swagger_client.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['Authorization'] = 'Bearer'
-
-# create an instance of the API class
-api_instance = swagger_client.NetApi()
-
-try: 
-    # Net Addrs
-    api_response = api_instance.net_addrs_get()
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling NetApi->netAddrsGet: %s\n" % e)</code></pre>
-                            </div>
-                          </div>
-
-                          <h2>Parameters</h2>
-
-
-
-
-
-
-                          <h2>Responses</h2>
-                            <h3> Status: 200 - OK </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-netAddrsGet-200-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-netAddrsGet-200-schema">
-                                  <div id='responses-netAddrsGet-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "OK",
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "type" : "string",
-        "x-content-type" : "application/json"
-      }
-    }
-  }
-};
-                                        var schema = schemaWrapper.content["application/json"].schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.components = {};
-                                          schemaWrapper.components.schemas = Object.assign({}, defs);
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-netAddrsGet-200-schema-data').val(stringify(schema));
-                                        var result = $('#responses-netAddrsGet-200-schema-200');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-netAddrsGet-200-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                            <h3> Status: 400 - Bad Request </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-netAddrsGet-400-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-netAddrsGet-400-schema">
-                                  <div id='responses-netAddrsGet-400-schema-400' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "Bad Request",
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/util.HttpError"
-      }
-    }
-  }
-};
-                                        var schema = schemaWrapper.content["application/json"].schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.components = {};
-                                          schemaWrapper.components.schemas = Object.assign({}, defs);
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-netAddrsGet-400-schema-data').val(stringify(schema));
-                                        var result = $('#responses-netAddrsGet-400-schema-400');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-netAddrsGet-400-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                            <h3> Status: 500 - Internal Server Error </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-netAddrsGet-500-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-netAddrsGet-500-schema">
-                                  <div id='responses-netAddrsGet-500-schema-500' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "Internal Server Error",
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/util.HttpError"
-      }
-    }
-  }
-};
-                                        var schema = schemaWrapper.content["application/json"].schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.components = {};
-                                          schemaWrapper.components.schemas = Object.assign({}, defs);
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-netAddrsGet-500-schema-data').val(stringify(schema));
-                                        var result = $('#responses-netAddrsGet-500-schema-500');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-netAddrsGet-500-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                        </article>
-                      </div>
-                      <hr>
                     <div id="api-Net-publicMinersFailuresMinerGet">
                       <article id="api-Net-publicMinersFailuresMinerGet-0" data-group="User" data-name="publicMinersFailuresMinerGet" data-version="0">
                         <div class="pull-left">

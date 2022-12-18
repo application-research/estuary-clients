@@ -629,34 +629,26 @@ class Decoders {
                 return .failure(.typeMismatch(expected: "CollectionsCollectionListResponse", actual: "\(source)"))
             }
         }
-        // Decoder for [MainImportDealBody]
-        Decoders.addDecoder(clazz: [MainImportDealBody].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[MainImportDealBody]> in
-            return Decoders.decode(clazz: [MainImportDealBody].self, source: source)
+        // Decoder for [ContentAddBody]
+        Decoders.addDecoder(clazz: [ContentAddBody].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[ContentAddBody]> in
+            return Decoders.decode(clazz: [ContentAddBody].self, source: source)
         }
 
-        // Decoder for MainImportDealBody
-        Decoders.addDecoder(clazz: MainImportDealBody.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<MainImportDealBody> in
+        // Decoder for ContentAddBody
+        Decoders.addDecoder(clazz: ContentAddBody.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<ContentAddBody> in
             if let sourceDictionary = source as? [AnyHashable: Any] {
-                let _result = instance == nil ? MainImportDealBody() : instance as! MainImportDealBody
-                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["coluuid"] as AnyObject?) {
-                case let .success(value): _result.coluuid = value
+                let _result = instance == nil ? ContentAddBody() : instance as! ContentAddBody
+                switch Decoders.decodeOptional(clazz: Data.self, source: sourceDictionary["data"] as AnyObject?) {
+                case let .success(value): _result.data = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: [Int32].self, source: sourceDictionary["dealIDs"] as AnyObject?) {
-                case let .success(value): _result.dealIDs = value
-                case let .failure(error): break
-                }
-                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["dir"] as AnyObject?) {
-                case let .success(value): _result.dir = value
-                case let .failure(error): break
-                }
-                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["name"] as AnyObject?) {
-                case let .success(value): _result.name = value
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["filename"] as AnyObject?) {
+                case let .success(value): _result.filename = value
                 case let .failure(error): break
                 }
                 return .success(_result)
             } else {
-                return .failure(.typeMismatch(expected: "MainImportDealBody", actual: "\(source)"))
+                return .failure(.typeMismatch(expected: "ContentAddBody", actual: "\(source)"))
             }
         }
         // Decoder for [MinerClaimMinerBody]
@@ -719,6 +711,32 @@ class Decoders {
                 return .success(_result)
             } else {
                 return .failure(.typeMismatch(expected: "MinerSuspendMinerBody", actual: "\(source)"))
+            }
+        }
+        // Decoder for [PeeringPeeringPeer]
+        Decoders.addDecoder(clazz: [PeeringPeeringPeer].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[PeeringPeeringPeer]> in
+            return Decoders.decode(clazz: [PeeringPeeringPeer].self, source: source)
+        }
+
+        // Decoder for PeeringPeeringPeer
+        Decoders.addDecoder(clazz: PeeringPeeringPeer.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<PeeringPeeringPeer> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? PeeringPeeringPeer() : instance as! PeeringPeeringPeer
+                switch Decoders.decodeOptional(clazz: [String].self, source: sourceDictionary["Addrs"] as AnyObject?) {
+                case let .success(value): _result.addrs = value
+                case let .failure(error): break
+                }
+                switch Decoders.decodeOptional(clazz: Bool.self, source: sourceDictionary["Connected"] as AnyObject?) {
+                case let .success(value): _result.connected = value
+                case let .failure(error): break
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["ID"] as AnyObject?) {
+                case let .success(value): _result.ID = value
+                case let .failure(error): break
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "PeeringPeeringPeer", actual: "\(source)"))
             }
         }
         // Decoder for [TypesIpfsListPinStatusResponse]

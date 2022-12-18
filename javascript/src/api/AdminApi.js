@@ -13,6 +13,7 @@
  *
  */
 import {ApiClient} from "../ApiClient";
+import {PeeringPeeringPeer} from '../model/PeeringPeeringPeer';
 import {UtilHttpError} from '../model/UtilHttpError';
 
 /**
@@ -45,7 +46,7 @@ export class AdminApi {
     /**
      * Remove peers on Peering Service
      * This endpoint can be used to remove a Peer from the Peering Service
-     * @param {Array.<Boolean>} body Peer ids
+     * @param {Array.<String>} body Peer ids
      * @param {module:api/AdminApi~adminPeeringPeersDeleteCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
@@ -134,12 +135,17 @@ export class AdminApi {
     /**
      * Add peers on Peering Service
      * This endpoint can be used to add a Peer from the Peering Service
+     * @param {Array.<module:model/PeeringPeeringPeer>} body Peering Peer array
      * @param {module:api/AdminApi~adminPeeringPeersPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
-    adminPeeringPeersPost(callback) {
+    adminPeeringPeersPost(body, callback) {
       
-      let postBody = null;
+      let postBody = body;
+      // verify the required parameter 'body' is set
+      if (body === undefined || body === null) {
+        throw new Error("Missing the required parameter 'body' when calling adminPeeringPeersPost");
+      }
 
       let pathParams = {
         
@@ -155,7 +161,7 @@ export class AdminApi {
       };
 
       let authNames = ['bearerAuth'];
-      let contentTypes = [];
+      let contentTypes = ['*/*'];
       let accepts = ['application/json'];
       let returnType = 'String';
 

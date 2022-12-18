@@ -6,9 +6,9 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AdminInvitesCodePost**](ContentApi.md#AdminInvitesCodePost) | **Post** /admin/invites/{code} | Create an Estuary invite
 [**AdminInvitesGet**](ContentApi.md#AdminInvitesGet) | **Get** /admin/invites | Get Estuary invites
-[**ContentAddCarPost**](ContentApi.md#ContentAddCarPost) | **Post** /content/add-car | Upload content via a car file
+[**ContentAddCarPost**](ContentApi.md#ContentAddCarPost) | **Post** /content/add-car | Add Car object
 [**ContentAddIpfsPost**](ContentApi.md#ContentAddIpfsPost) | **Post** /content/add-ipfs | Add IPFS object
-[**ContentAddPost**](ContentApi.md#ContentAddPost) | **Post** /content/add | Upload a file
+[**ContentAddPost**](ContentApi.md#ContentAddPost) | **Post** /content/add | Add new content
 [**ContentAggregatedContentGet**](ContentApi.md#ContentAggregatedContentGet) | **Get** /content/aggregated/{content} | Get aggregated content stats
 [**ContentAllDealsGet**](ContentApi.md#ContentAllDealsGet) | **Get** /content/all-deals | Get all deals for a user
 [**ContentBwUsageContentGet**](ContentApi.md#ContentBwUsageContentGet) | **Get** /content/bw-usage/{content} | Get content bandwidth
@@ -18,9 +18,7 @@ Method | HTTP request | Description
 [**ContentEnsureReplicationDatacidGet**](ContentApi.md#ContentEnsureReplicationDatacidGet) | **Get** /content/ensure-replication/{datacid} | Ensure Replication
 [**ContentFailuresContentGet**](ContentApi.md#ContentFailuresContentGet) | **Get** /content/failures/{content} | List all failures for a content
 [**ContentIdGet**](ContentApi.md#ContentIdGet) | **Get** /content/{id} | Content
-[**ContentImportdealPost**](ContentApi.md#ContentImportdealPost) | **Post** /content/importdeal | Import a deal
 [**ContentListGet**](ContentApi.md#ContentListGet) | **Get** /content/list | List all pinned content
-[**ContentReadContGet**](ContentApi.md#ContentReadContGet) | **Get** /content/read/{cont} | Read content
 [**ContentStagingZonesGet**](ContentApi.md#ContentStagingZonesGet) | **Get** /content/staging-zones | Get staging zone for user, excluding its contents
 [**ContentStagingZonesStagingZoneContentsGet**](ContentApi.md#ContentStagingZonesStagingZoneContentsGet) | **Get** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
 [**ContentStagingZonesStagingZoneGet**](ContentApi.md#ContentStagingZonesStagingZoneGet) | **Get** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
@@ -80,17 +78,30 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ContentAddCarPost**
-> string ContentAddCarPost(ctx, )
-Upload content via a car file
+> UtilContentAddResponse ContentAddCarPost(ctx, body, optional)
+Add Car object
 
-This endpoint uploads content via a car file
+This endpoint is used to add a car object to the network. The object can be a file or a directory.
 
 ### Required Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **body** | [**string**](string.md)| Car | 
+ **optional** | ***ContentApiContentAddCarPostOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a ContentApiContentAddCarPostOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **ignoreDupes** | **optional.**| Ignore Dupes | 
+ **filename** | **optional.**| Filename | 
 
 ### Return type
 
-**string**
+[**UtilContentAddResponse**](util.ContentAddResponse.md)
 
 ### Authorization
 
@@ -98,7 +109,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -140,17 +151,35 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ContentAddPost**
-> string ContentAddPost(ctx, )
-Upload a file
+> UtilContentAddResponse ContentAddPost(ctx, data, filename, optional)
+Add new content
 
-This endpoint uploads a file.
+This endpoint is used to upload new content.
 
 ### Required Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **data** | ***os.File*****os.File**|  | 
+  **filename** | **string**|  | 
+ **optional** | ***ContentApiContentAddPostOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a ContentApiContentAddPostOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **coluuid** | **optional.**| Collection UUID | 
+ **replication** | **optional.**| Replication value | 
+ **ignoreDupes** | **optional.**| Ignore Dupes true/false | 
+ **lazyProvide** | **optional.**| Lazy Provide true/false | 
+ **dir** | **optional.**| Directory | 
 
 ### Return type
 
-**string**
+[**UtilContentAddResponse**](util.ContentAddResponse.md)
 
 ### Authorization
 
@@ -158,7 +187,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: multipart/form-data
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
@@ -433,34 +462,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **ContentImportdealPost**
-> string ContentImportdealPost(ctx, body)
-Import a deal
-
-This endpoint imports a deal into the shuttle.
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**MainImportDealBody**](MainImportDealBody.md)| Import a deal | 
-
-### Return type
-
-**string**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: */*
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **ContentListGet**
 > string ContentListGet(ctx, )
 List all pinned content
@@ -469,34 +470,6 @@ This endpoint lists all content
 
 ### Required Parameters
 This endpoint does not need any parameter.
-
-### Return type
-
-**string**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **ContentReadContGet**
-> string ContentReadContGet(ctx, cont)
-Read content
-
-This endpoint reads content from the blockstore
-
-### Required Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **cont** | **string**| CID | 
 
 ### Return type
 

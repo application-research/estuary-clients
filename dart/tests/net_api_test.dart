@@ -7,15 +7,6 @@ void main() {
   var instance = new NetApi();
 
   group('tests for NetApi', () {
-    // Net Addrs
-    //
-    // This endpoint is used to get net addrs
-    //
-    //Future<String> netAddrsGet() async
-    test('test netAddrsGet', () async {
-      // TODO
-    });
-
     // Get all miners
     //
     // This endpoint returns all miners

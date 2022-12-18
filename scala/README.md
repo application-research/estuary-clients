@@ -87,9 +87,9 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**collectionsPost**](CollectionsApi.md#collectionsPost) | **POST** /collections/ | Create a new collection
 *ContentApi* | [**adminInvitesCodePost**](ContentApi.md#adminInvitesCodePost) | **POST** /admin/invites/{code} | Create an Estuary invite
 *ContentApi* | [**adminInvitesGet**](ContentApi.md#adminInvitesGet) | **GET** /admin/invites | Get Estuary invites
-*ContentApi* | [**contentAddCarPost**](ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Upload content via a car file
+*ContentApi* | [**contentAddCarPost**](ContentApi.md#contentAddCarPost) | **POST** /content/add-car | Add Car object
 *ContentApi* | [**contentAddIpfsPost**](ContentApi.md#contentAddIpfsPost) | **POST** /content/add-ipfs | Add IPFS object
-*ContentApi* | [**contentAddPost**](ContentApi.md#contentAddPost) | **POST** /content/add | Upload a file
+*ContentApi* | [**contentAddPost**](ContentApi.md#contentAddPost) | **POST** /content/add | Add new content
 *ContentApi* | [**contentAggregatedContentGet**](ContentApi.md#contentAggregatedContentGet) | **GET** /content/aggregated/{content} | Get aggregated content stats
 *ContentApi* | [**contentAllDealsGet**](ContentApi.md#contentAllDealsGet) | **GET** /content/all-deals | Get all deals for a user
 *ContentApi* | [**contentBwUsageContentGet**](ContentApi.md#contentBwUsageContentGet) | **GET** /content/bw-usage/{content} | Get content bandwidth
@@ -99,9 +99,7 @@ Class | Method | HTTP request | Description
 *ContentApi* | [**contentEnsureReplicationDatacidGet**](ContentApi.md#contentEnsureReplicationDatacidGet) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
 *ContentApi* | [**contentFailuresContentGet**](ContentApi.md#contentFailuresContentGet) | **GET** /content/failures/{content} | List all failures for a content
 *ContentApi* | [**contentIdGet**](ContentApi.md#contentIdGet) | **GET** /content/{id} | Content
-*ContentApi* | [**contentImportdealPost**](ContentApi.md#contentImportdealPost) | **POST** /content/importdeal | Import a deal
 *ContentApi* | [**contentListGet**](ContentApi.md#contentListGet) | **GET** /content/list | List all pinned content
-*ContentApi* | [**contentReadContGet**](ContentApi.md#contentReadContGet) | **GET** /content/read/{cont} | Read content
 *ContentApi* | [**contentStagingZonesGet**](ContentApi.md#contentStagingZonesGet) | **GET** /content/staging-zones | Get staging zone for user, excluding its contents
 *ContentApi* | [**contentStagingZonesStagingZoneContentsGet**](ContentApi.md#contentStagingZonesStagingZoneContentsGet) | **GET** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
 *ContentApi* | [**contentStagingZonesStagingZoneGet**](ContentApi.md#contentStagingZonesStagingZoneGet) | **GET** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
@@ -129,7 +127,6 @@ Class | Method | HTTP request | Description
 *MinerApi* | [**minerUnsuspendMinerPut**](MinerApi.md#minerUnsuspendMinerPut) | **PUT** /miner/unsuspend/{miner} | Unuspend Miner
 *MinerApi* | [**publicMinersDealsMinerGet**](MinerApi.md#publicMinersDealsMinerGet) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *MinerApi* | [**publicMinersStatsMinerGet**](MinerApi.md#publicMinersStatsMinerGet) | **GET** /public/miners/stats/{miner} | Get miner stats
-*NetApi* | [**netAddrsGet**](NetApi.md#netAddrsGet) | **GET** /net/addrs | Net Addrs
 *NetApi* | [**publicMinersFailuresMinerGet**](NetApi.md#publicMinersFailuresMinerGet) | **GET** /public/miners/failures/{miner} | Get all miners
 *NetApi* | [**publicMinersGet**](NetApi.md#publicMinersGet) | **GET** /public/miners | Get all miners
 *NetApi* | [**publicNetAddrsGet**](NetApi.md#publicNetAddrsGet) | **GET** /public/net/addrs | Net Addrs
@@ -168,6 +165,7 @@ Class | Method | HTTP request | Description
  - [ClaimResponse](ClaimResponse.md)
  - [Collection](Collection.md)
  - [CollectionListResponse](CollectionListResponse.md)
+ - [ContentAddBody](ContentAddBody.md)
  - [ContentAddResponse](ContentAddResponse.md)
  - [ContentCreateBody](ContentCreateBody.md)
  - [CreateCollectionBody](CreateCollectionBody.md)
@@ -177,12 +175,12 @@ Class | Method | HTTP request | Description
  - [EstimateDealBody](EstimateDealBody.md)
  - [GetApiKeysResp](GetApiKeysResp.md)
  - [HttpError](HttpError.md)
- - [ImportDealBody](ImportDealBody.md)
  - [IpfsListPinStatusResponse](IpfsListPinStatusResponse.md)
  - [IpfsPin](IpfsPin.md)
  - [IpfsPinStatusResponse](IpfsPinStatusResponse.md)
  - [MinerSetInfoParams](MinerSetInfoParams.md)
  - [ModelContentType](ModelContentType.md)
+ - [PeeringPeer](PeeringPeer.md)
  - [PinningStatus](PinningStatus.md)
  - [PublicNodeInfo](PublicNodeInfo.md)
  - [SuspendMinerBody](SuspendMinerBody.md)

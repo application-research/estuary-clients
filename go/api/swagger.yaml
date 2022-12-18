@@ -165,6 +165,15 @@ paths:
       - admin
       summary: Add peers on Peering Service
       description: This endpoint can be used to add a Peer from the Peering Service
+      requestBody:
+        description: Peering Peer array
+        content:
+          '*/*':
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/peering.PeeringPeer'
+        required: true
       responses:
         "200":
           description: OK
@@ -185,6 +194,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/util.HttpError'
+      x-codegen-request-body-name: req
     delete:
       tags:
       - admin
@@ -197,7 +207,7 @@ paths:
             schema:
               type: array
               items:
-                type: boolean
+                type: string
         required: true
       responses:
         "200":
@@ -731,16 +741,62 @@ paths:
     post:
       tags:
       - content
-      summary: Upload a file
-      description: This endpoint uploads a file.
+      summary: Add new content
+      description: This endpoint is used to upload new content.
+      parameters:
+      - name: coluuid
+        in: query
+        description: Collection UUID
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: replication
+        in: query
+        description: Replication value
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: ignore-dupes
+        in: query
+        description: Ignore Dupes true/false
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: lazy-provide
+        in: query
+        description: Lazy Provide true/false
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: dir
+        in: query
+        description: Directory
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/content_add_body'
+        required: true
       responses:
         "200":
           description: OK
           content:
             application/json:
               schema:
-                type: string
-                x-content-type: application/json
+                $ref: '#/components/schemas/util.ContentAddResponse'
         "400":
           description: Bad Request
           content:
@@ -757,16 +813,40 @@ paths:
     post:
       tags:
       - content
-      summary: Upload content via a car file
-      description: This endpoint uploads content via a car file
+      summary: Add Car object
+      description: This endpoint is used to add a car object to the network. The object
+        can be a file or a directory.
+      parameters:
+      - name: ignore-dupes
+        in: query
+        description: Ignore Dupes
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: filename
+        in: query
+        description: Filename
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      requestBody:
+        description: Car
+        content:
+          '*/*':
+            schema:
+              type: string
+        required: true
       responses:
         "200":
           description: OK
           content:
             application/json:
               schema:
-                type: string
-                x-content-type: application/json
+                $ref: '#/components/schemas/util.ContentAddResponse'
         "400":
           description: Bad Request
           content:
@@ -779,6 +859,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/util.HttpError'
+      x-codegen-request-body-name: body
   /content/add-ipfs:
     post:
       tags:
@@ -1144,81 +1225,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/util.HttpError'
-  /content/importdeal:
-    post:
-      tags:
-      - content
-      summary: Import a deal
-      description: This endpoint imports a deal into the shuttle.
-      requestBody:
-        description: Import a deal
-        content:
-          '*/*':
-            schema:
-              $ref: '#/components/schemas/main.importDealBody'
-        required: true
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: string
-                x-content-type: application/json
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/util.HttpError'
-        "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/util.HttpError'
-      x-codegen-request-body-name: body
   /content/list:
     get:
       tags:
       - content
       summary: List all pinned content
       description: This endpoint lists all content
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: string
-                x-content-type: application/json
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/util.HttpError'
-        "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/util.HttpError'
-  /content/read/{cont}:
-    get:
-      tags:
-      - content
-      summary: Read content
-      description: This endpoint reads content from the blockstore
-      parameters:
-      - name: cont
-        in: path
-        description: CID
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
       responses:
         "200":
           description: OK
@@ -2058,32 +2070,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/api.emptyResp'
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/util.HttpError'
-        "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/util.HttpError'
-  /net/addrs:
-    get:
-      tags:
-      - net
-      summary: Net Addrs
-      description: This endpoint is used to get net addrs
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: string
-                x-content-type: application/json
         "400":
           description: Bad Request
           content:
@@ -2947,19 +2933,6 @@ components:
         cid:
           cid: {}
         updatedAt: updatedAt
-    main.importDealBody:
-      type: object
-      properties:
-        coluuid:
-          type: string
-        dealIDs:
-          type: array
-          items:
-            type: integer
-        dir:
-          type: string
-        name:
-          type: string
     miner.ClaimMinerBody:
       type: object
       properties:
@@ -2978,6 +2951,17 @@ components:
       type: object
       properties:
         reason:
+          type: string
+    peering.PeeringPeer:
+      type: object
+      properties:
+        Addrs:
+          type: array
+          items:
+            type: string
+        Connected:
+          type: boolean
+        ID:
           type: string
     types.IpfsListPinStatusResponse:
       type: object
@@ -3104,6 +3088,14 @@ components:
             type: string
         retrieval_url:
           type: string
+      example:
+        retrieval_url: retrieval_url
+        estuaryId: 0
+        estuary_retrieval_url: estuary_retrieval_url
+        providers:
+        - providers
+        - providers
+        cid: cid
     util.ContentCreateBody:
       type: object
       properties:
@@ -3228,6 +3220,18 @@ components:
         pubKey:
           type: string
           description: Autoretrieve's public key
+    content_add_body:
+      required:
+      - data
+      type: object
+      properties:
+        data:
+          type: string
+          description: File to upload
+          format: binary
+        filename:
+          type: string
+          description: Filename to use for upload
   securitySchemes:
     bearerAuth:
       type: apiKey

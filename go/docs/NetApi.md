@@ -4,35 +4,10 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**NetAddrsGet**](NetApi.md#NetAddrsGet) | **Get** /net/addrs | Net Addrs
 [**PublicMinersFailuresMinerGet**](NetApi.md#PublicMinersFailuresMinerGet) | **Get** /public/miners/failures/{miner} | Get all miners
 [**PublicMinersGet**](NetApi.md#PublicMinersGet) | **Get** /public/miners | Get all miners
 [**PublicNetAddrsGet**](NetApi.md#PublicNetAddrsGet) | **Get** /public/net/addrs | Net Addrs
 [**PublicNetPeersGet**](NetApi.md#PublicNetPeersGet) | **Get** /public/net/peers | Net Peers
-
-# **NetAddrsGet**
-> string NetAddrsGet(ctx, )
-Net Addrs
-
-This endpoint is used to get net addrs
-
-### Required Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-**string**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PublicMinersFailuresMinerGet**
 > string PublicMinersFailuresMinerGet(ctx, miner)

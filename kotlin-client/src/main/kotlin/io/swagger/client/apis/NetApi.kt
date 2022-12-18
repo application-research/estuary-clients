@@ -18,30 +18,6 @@ import estuary-client.infrastructure.*
 class NetApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(basePath) {
 
     /**
-     * Net Addrs
-     * This endpoint is used to get net addrs
-     * @return kotlin.String
-     */
-    @Suppress("UNCHECKED_CAST")
-    fun netAddrsGet(): kotlin.String {
-        
-        val localVariableConfig = RequestConfig(
-                RequestMethod.GET,
-                "/net/addrs"
-        )
-        val response = request<kotlin.String>(
-                localVariableConfig
-        )
-
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as kotlin.String
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-        }
-    }
-    /**
      * Get all miners
      * This endpoint returns all miners
      * @param miner Filter by miner 

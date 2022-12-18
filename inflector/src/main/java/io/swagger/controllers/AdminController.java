@@ -10,9 +10,10 @@ import java.util.List;
 
 import io.swagger.model.*;
 
+import io.swagger.model.PeeringPeeringPeer;
 import io.swagger.model.UtilHttpError;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-12-14T06:22:38.566Z[GMT]")public class AdminController  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-12-18T07:30:23.308Z[GMT]")public class AdminController  {
   /** 
    * Uncomment and implement as you see fit.  These operations will map
    * Directly to operation calls from the routing logic.  Because the inflector
@@ -47,7 +48,7 @@ import io.swagger.model.UtilHttpError;
   */
 
   /*
-    public ResponseContext adminPeeringPeersDELETE(RequestContext request , List<Boolean> body 
+    public ResponseContext adminPeeringPeersDELETE(RequestContext request , List<String> body 
 ) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
@@ -60,7 +61,8 @@ import io.swagger.model.UtilHttpError;
   */
 
   /*
-    public ResponseContext adminPeeringPeersPOST(RequestContext request ) {
+    public ResponseContext adminPeeringPeersPOST(RequestContext request , List<PeeringPeeringPeer> body 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

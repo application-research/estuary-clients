@@ -24,7 +24,7 @@ This endpoint can be used to remove a Peer from the Peering Service
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**[]bool**](bool.md)| Peer ids | 
+  **body** | [**[]string**](string.md)| Peer ids | 
 
 ### Return type
 
@@ -66,13 +66,17 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AdminPeeringPeersPost**
-> string AdminPeeringPeersPost(ctx, )
+> string AdminPeeringPeersPost(ctx, body)
 Add peers on Peering Service
 
 This endpoint can be used to add a Peer from the Peering Service
 
 ### Required Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **body** | [**[]PeeringPeeringPeer**](peering.PeeringPeer.md)| Peering Peer array | 
 
 ### Return type
 
@@ -84,7 +88,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

@@ -33,6 +33,7 @@ import estuary-client.Paths
 import estuary-client.infrastructure.ApiPrincipal
 
 
+import io.swagger.server.models.PeeringPeeringPeer
 import io.swagger.server.models.UtilHttpError
 
 @KtorExperimentalLocationsAPI

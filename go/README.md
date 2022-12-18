@@ -43,9 +43,9 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**CollectionsPost**](docs/CollectionsApi.md#collectionspost) | **Post** /collections/ | Create a new collection
 *ContentApi* | [**AdminInvitesCodePost**](docs/ContentApi.md#admininvitescodepost) | **Post** /admin/invites/{code} | Create an Estuary invite
 *ContentApi* | [**AdminInvitesGet**](docs/ContentApi.md#admininvitesget) | **Get** /admin/invites | Get Estuary invites
-*ContentApi* | [**ContentAddCarPost**](docs/ContentApi.md#contentaddcarpost) | **Post** /content/add-car | Upload content via a car file
+*ContentApi* | [**ContentAddCarPost**](docs/ContentApi.md#contentaddcarpost) | **Post** /content/add-car | Add Car object
 *ContentApi* | [**ContentAddIpfsPost**](docs/ContentApi.md#contentaddipfspost) | **Post** /content/add-ipfs | Add IPFS object
-*ContentApi* | [**ContentAddPost**](docs/ContentApi.md#contentaddpost) | **Post** /content/add | Upload a file
+*ContentApi* | [**ContentAddPost**](docs/ContentApi.md#contentaddpost) | **Post** /content/add | Add new content
 *ContentApi* | [**ContentAggregatedContentGet**](docs/ContentApi.md#contentaggregatedcontentget) | **Get** /content/aggregated/{content} | Get aggregated content stats
 *ContentApi* | [**ContentAllDealsGet**](docs/ContentApi.md#contentalldealsget) | **Get** /content/all-deals | Get all deals for a user
 *ContentApi* | [**ContentBwUsageContentGet**](docs/ContentApi.md#contentbwusagecontentget) | **Get** /content/bw-usage/{content} | Get content bandwidth
@@ -55,9 +55,7 @@ Class | Method | HTTP request | Description
 *ContentApi* | [**ContentEnsureReplicationDatacidGet**](docs/ContentApi.md#contentensurereplicationdatacidget) | **Get** /content/ensure-replication/{datacid} | Ensure Replication
 *ContentApi* | [**ContentFailuresContentGet**](docs/ContentApi.md#contentfailurescontentget) | **Get** /content/failures/{content} | List all failures for a content
 *ContentApi* | [**ContentIdGet**](docs/ContentApi.md#contentidget) | **Get** /content/{id} | Content
-*ContentApi* | [**ContentImportdealPost**](docs/ContentApi.md#contentimportdealpost) | **Post** /content/importdeal | Import a deal
 *ContentApi* | [**ContentListGet**](docs/ContentApi.md#contentlistget) | **Get** /content/list | List all pinned content
-*ContentApi* | [**ContentReadContGet**](docs/ContentApi.md#contentreadcontget) | **Get** /content/read/{cont} | Read content
 *ContentApi* | [**ContentStagingZonesGet**](docs/ContentApi.md#contentstagingzonesget) | **Get** /content/staging-zones | Get staging zone for user, excluding its contents
 *ContentApi* | [**ContentStagingZonesStagingZoneContentsGet**](docs/ContentApi.md#contentstagingzonesstagingzonecontentsget) | **Get** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
 *ContentApi* | [**ContentStagingZonesStagingZoneGet**](docs/ContentApi.md#contentstagingzonesstagingzoneget) | **Get** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
@@ -85,7 +83,6 @@ Class | Method | HTTP request | Description
 *MinerApi* | [**MinerUnsuspendMinerPut**](docs/MinerApi.md#minerunsuspendminerput) | **Put** /miner/unsuspend/{miner} | Unuspend Miner
 *MinerApi* | [**PublicMinersDealsMinerGet**](docs/MinerApi.md#publicminersdealsminerget) | **Get** /public/miners/deals/{miner} | Get all miners deals
 *MinerApi* | [**PublicMinersStatsMinerGet**](docs/MinerApi.md#publicminersstatsminerget) | **Get** /public/miners/stats/{miner} | Get miner stats
-*NetApi* | [**NetAddrsGet**](docs/NetApi.md#netaddrsget) | **Get** /net/addrs | Net Addrs
 *NetApi* | [**PublicMinersFailuresMinerGet**](docs/NetApi.md#publicminersfailuresminerget) | **Get** /public/miners/failures/{miner} | Get all miners
 *NetApi* | [**PublicMinersGet**](docs/NetApi.md#publicminersget) | **Get** /public/miners | Get all miners
 *NetApi* | [**PublicNetAddrsGet**](docs/NetApi.md#publicnetaddrsget) | **Get** /public/net/addrs | Net Addrs
@@ -129,10 +126,11 @@ Class | Method | HTTP request | Description
  - [CollectionsCidType](docs/CollectionsCidType.md)
  - [CollectionsCollection](docs/CollectionsCollection.md)
  - [CollectionsCollectionListResponse](docs/CollectionsCollectionListResponse.md)
- - [MainImportDealBody](docs/MainImportDealBody.md)
+ - [ContentAddBody](docs/ContentAddBody.md)
  - [MinerClaimMinerBody](docs/MinerClaimMinerBody.md)
  - [MinerMinerSetInfoParams](docs/MinerMinerSetInfoParams.md)
  - [MinerSuspendMinerBody](docs/MinerSuspendMinerBody.md)
+ - [PeeringPeeringPeer](docs/PeeringPeeringPeer.md)
  - [TypesIpfsListPinStatusResponse](docs/TypesIpfsListPinStatusResponse.md)
  - [TypesIpfsPin](docs/TypesIpfsPin.md)
  - [TypesIpfsPinStatusResponse](docs/TypesIpfsPinStatusResponse.md)

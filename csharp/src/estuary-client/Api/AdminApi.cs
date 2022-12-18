@@ -32,7 +32,7 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Peer ids</param>
         /// <returns>string</returns>
-        string AdminPeeringPeersDelete (List<bool?> body);
+        string AdminPeeringPeersDelete (List<string> body);
 
         /// <summary>
         /// Remove peers on Peering Service
@@ -43,7 +43,7 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Peer ids</param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> AdminPeeringPeersDeleteWithHttpInfo (List<bool?> body);
+        ApiResponse<string> AdminPeeringPeersDeleteWithHttpInfo (List<string> body);
         /// <summary>
         /// List all Peering peers
         /// </summary>
@@ -70,8 +70,9 @@ namespace estuary-client.Api
         /// This endpoint can be used to add a Peer from the Peering Service
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Peering Peer array</param>
         /// <returns>string</returns>
-        string AdminPeeringPeersPost ();
+        string AdminPeeringPeersPost (List<PeeringPeeringPeer> body);
 
         /// <summary>
         /// Add peers on Peering Service
@@ -80,8 +81,9 @@ namespace estuary-client.Api
         /// This endpoint can be used to add a Peer from the Peering Service
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Peering Peer array</param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> AdminPeeringPeersPostWithHttpInfo ();
+        ApiResponse<string> AdminPeeringPeersPostWithHttpInfo (List<PeeringPeeringPeer> body);
         /// <summary>
         /// Start Peering
         /// </summary>
@@ -188,7 +190,7 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Peer ids</param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> AdminPeeringPeersDeleteAsync (List<bool?> body);
+        System.Threading.Tasks.Task<string> AdminPeeringPeersDeleteAsync (List<string> body);
 
         /// <summary>
         /// Remove peers on Peering Service
@@ -199,7 +201,7 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Peer ids</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> AdminPeeringPeersDeleteAsyncWithHttpInfo (List<bool?> body);
+        System.Threading.Tasks.Task<ApiResponse<string>> AdminPeeringPeersDeleteAsyncWithHttpInfo (List<string> body);
         /// <summary>
         /// List all Peering peers
         /// </summary>
@@ -226,8 +228,9 @@ namespace estuary-client.Api
         /// This endpoint can be used to add a Peer from the Peering Service
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Peering Peer array</param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> AdminPeeringPeersPostAsync ();
+        System.Threading.Tasks.Task<string> AdminPeeringPeersPostAsync (List<PeeringPeeringPeer> body);
 
         /// <summary>
         /// Add peers on Peering Service
@@ -236,8 +239,9 @@ namespace estuary-client.Api
         /// This endpoint can be used to add a Peer from the Peering Service
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Peering Peer array</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> AdminPeeringPeersPostAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<string>> AdminPeeringPeersPostAsyncWithHttpInfo (List<PeeringPeeringPeer> body);
         /// <summary>
         /// Start Peering
         /// </summary>
@@ -450,7 +454,7 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Peer ids</param>
         /// <returns>string</returns>
-        public string AdminPeeringPeersDelete (List<bool?> body)
+        public string AdminPeeringPeersDelete (List<string> body)
         {
              ApiResponse<string> localVarResponse = AdminPeeringPeersDeleteWithHttpInfo(body);
              return localVarResponse.Data;
@@ -462,7 +466,7 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Peer ids</param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > AdminPeeringPeersDeleteWithHttpInfo (List<bool?> body)
+        public ApiResponse< string > AdminPeeringPeersDeleteWithHttpInfo (List<string> body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -528,7 +532,7 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Peer ids</param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> AdminPeeringPeersDeleteAsync (List<bool?> body)
+        public async System.Threading.Tasks.Task<string> AdminPeeringPeersDeleteAsync (List<string> body)
         {
              ApiResponse<string> localVarResponse = await AdminPeeringPeersDeleteAsyncWithHttpInfo(body);
              return localVarResponse.Data;
@@ -541,7 +545,7 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Peer ids</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> AdminPeeringPeersDeleteAsyncWithHttpInfo (List<bool?> body)
+        public async System.Threading.Tasks.Task<ApiResponse<string>> AdminPeeringPeersDeleteAsyncWithHttpInfo (List<string> body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -734,10 +738,11 @@ namespace estuary-client.Api
         /// Add peers on Peering Service This endpoint can be used to add a Peer from the Peering Service
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Peering Peer array</param>
         /// <returns>string</returns>
-        public string AdminPeeringPeersPost ()
+        public string AdminPeeringPeersPost (List<PeeringPeeringPeer> body)
         {
-             ApiResponse<string> localVarResponse = AdminPeeringPeersPostWithHttpInfo();
+             ApiResponse<string> localVarResponse = AdminPeeringPeersPostWithHttpInfo(body);
              return localVarResponse.Data;
         }
 
@@ -745,9 +750,13 @@ namespace estuary-client.Api
         /// Add peers on Peering Service This endpoint can be used to add a Peer from the Peering Service
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Peering Peer array</param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > AdminPeeringPeersPostWithHttpInfo ()
+        public ApiResponse< string > AdminPeeringPeersPostWithHttpInfo (List<PeeringPeeringPeer> body)
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling AdminApi->AdminPeeringPeersPost");
 
             var localVarPath = "/admin/peering/peers";
             var localVarPathParams = new Dictionary<String, String>();
@@ -759,6 +768,7 @@ namespace estuary-client.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "*/*"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -770,6 +780,14 @@ namespace estuary-client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
             // authentication (bearerAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
             {
@@ -798,10 +816,11 @@ namespace estuary-client.Api
         /// Add peers on Peering Service This endpoint can be used to add a Peer from the Peering Service
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Peering Peer array</param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> AdminPeeringPeersPostAsync ()
+        public async System.Threading.Tasks.Task<string> AdminPeeringPeersPostAsync (List<PeeringPeeringPeer> body)
         {
-             ApiResponse<string> localVarResponse = await AdminPeeringPeersPostAsyncWithHttpInfo();
+             ApiResponse<string> localVarResponse = await AdminPeeringPeersPostAsyncWithHttpInfo(body);
              return localVarResponse.Data;
 
         }
@@ -810,9 +829,13 @@ namespace estuary-client.Api
         /// Add peers on Peering Service This endpoint can be used to add a Peer from the Peering Service
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Peering Peer array</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> AdminPeeringPeersPostAsyncWithHttpInfo ()
+        public async System.Threading.Tasks.Task<ApiResponse<string>> AdminPeeringPeersPostAsyncWithHttpInfo (List<PeeringPeeringPeer> body)
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling AdminApi->AdminPeeringPeersPost");
 
             var localVarPath = "/admin/peering/peers";
             var localVarPathParams = new Dictionary<String, String>();
@@ -824,6 +847,7 @@ namespace estuary-client.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "*/*"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -835,6 +859,14 @@ namespace estuary-client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
             // authentication (bearerAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
             {

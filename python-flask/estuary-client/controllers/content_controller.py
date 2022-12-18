@@ -1,8 +1,8 @@
 import connexion
 import six
 
-from estuary-client.models.main_import_deal_body import MainImportDealBody  # noqa: E501
 from estuary-client.models.types_ipfs_pin import TypesIpfsPin  # noqa: E501
+from estuary-client.models.util_content_add_response import UtilContentAddResponse  # noqa: E501
 from estuary-client.models.util_content_create_body import UtilContentCreateBody  # noqa: E501
 from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
 from estuary-client import util
@@ -32,14 +32,22 @@ def admin_invites_get():  # noqa: E501
     return 'do some magic!'
 
 
-def content_add_car_post():  # noqa: E501
-    """Upload content via a car file
+def content_add_car_post(body, ignore_dupes=None, filename=None):  # noqa: E501
+    """Add Car object
 
-    This endpoint uploads content via a car file # noqa: E501
+    This endpoint is used to add a car object to the network. The object can be a file or a directory. # noqa: E501
 
+    :param body: Car
+    :type body: dict | bytes
+    :param ignore_dupes: Ignore Dupes
+    :type ignore_dupes: str
+    :param filename: Filename
+    :type filename: str
 
-    :rtype: str
+    :rtype: UtilContentAddResponse
     """
+    if connexion.request.is_json:
+        body = str.from_dict(connexion.request.get_json())  # noqa: E501
     return 'do some magic!'
 
 
@@ -60,13 +68,27 @@ def content_add_ipfs_post(body, ignore_dupes=None):  # noqa: E501
     return 'do some magic!'
 
 
-def content_add_post():  # noqa: E501
-    """Upload a file
+def content_add_post(data, filename, coluuid=None, replication=None, ignore_dupes=None, lazy_provide=None, dir=None):  # noqa: E501
+    """Add new content
 
-    This endpoint uploads a file. # noqa: E501
+    This endpoint is used to upload new content. # noqa: E501
 
+    :param data: 
+    :type data: strstr
+    :param filename: 
+    :type filename: str
+    :param coluuid: Collection UUID
+    :type coluuid: str
+    :param replication: Replication value
+    :type replication: int
+    :param ignore_dupes: Ignore Dupes true/false
+    :type ignore_dupes: str
+    :param lazy_provide: Lazy Provide true/false
+    :type lazy_provide: str
+    :param dir: Directory
+    :type dir: str
 
-    :rtype: str
+    :rtype: UtilContentAddResponse
     """
     return 'do some magic!'
 
@@ -200,39 +222,11 @@ def content_id_get(id):  # noqa: E501
     return 'do some magic!'
 
 
-def content_importdeal_post(body):  # noqa: E501
-    """Import a deal
-
-    This endpoint imports a deal into the shuttle. # noqa: E501
-
-    :param body: Import a deal
-    :type body: dict | bytes
-
-    :rtype: str
-    """
-    if connexion.request.is_json:
-        body = MainImportDealBody.from_dict(connexion.request.get_json())  # noqa: E501
-    return 'do some magic!'
-
-
 def content_list_get():  # noqa: E501
     """List all pinned content
 
     This endpoint lists all content # noqa: E501
 
-
-    :rtype: str
-    """
-    return 'do some magic!'
-
-
-def content_read_cont_get(cont):  # noqa: E501
-    """Read content
-
-    This endpoint reads content from the blockstore # noqa: E501
-
-    :param cont: CID
-    :type cont: str
 
     :rtype: str
     """

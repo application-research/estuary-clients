@@ -636,33 +636,39 @@ class ContentApi
     /**
      * Operation contentAddCarPost
      *
-     * Upload content via a car file
+     * Add Car object
      *
+     * @param  string $body Car (required)
+     * @param  string $ignore_dupes Ignore Dupes (optional)
+     * @param  string $filename Filename (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return string
+     * @return \Swagger\Client\Model\UtilContentAddResponse
      */
-    public function contentAddCarPost()
+    public function contentAddCarPost($body, $ignore_dupes = null, $filename = null)
     {
-        list($response) = $this->contentAddCarPostWithHttpInfo();
+        list($response) = $this->contentAddCarPostWithHttpInfo($body, $ignore_dupes, $filename);
         return $response;
     }
 
     /**
      * Operation contentAddCarPostWithHttpInfo
      *
-     * Upload content via a car file
+     * Add Car object
      *
+     * @param  string $body Car (required)
+     * @param  string $ignore_dupes Ignore Dupes (optional)
+     * @param  string $filename Filename (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\UtilContentAddResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function contentAddCarPostWithHttpInfo()
+    public function contentAddCarPostWithHttpInfo($body, $ignore_dupes = null, $filename = null)
     {
-        $returnType = 'string';
-        $request = $this->contentAddCarPostRequest();
+        $returnType = '\Swagger\Client\Model\UtilContentAddResponse';
+        $request = $this->contentAddCarPostRequest($body, $ignore_dupes, $filename);
 
         try {
             $options = $this->createHttpClientOption();
@@ -713,7 +719,7 @@ class ContentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'string',
+                        '\Swagger\Client\Model\UtilContentAddResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -742,15 +748,18 @@ class ContentApi
     /**
      * Operation contentAddCarPostAsync
      *
-     * Upload content via a car file
+     * Add Car object
      *
+     * @param  string $body Car (required)
+     * @param  string $ignore_dupes Ignore Dupes (optional)
+     * @param  string $filename Filename (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function contentAddCarPostAsync()
+    public function contentAddCarPostAsync($body, $ignore_dupes = null, $filename = null)
     {
-        return $this->contentAddCarPostAsyncWithHttpInfo()
+        return $this->contentAddCarPostAsyncWithHttpInfo($body, $ignore_dupes, $filename)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -761,16 +770,19 @@ class ContentApi
     /**
      * Operation contentAddCarPostAsyncWithHttpInfo
      *
-     * Upload content via a car file
+     * Add Car object
      *
+     * @param  string $body Car (required)
+     * @param  string $ignore_dupes Ignore Dupes (optional)
+     * @param  string $filename Filename (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function contentAddCarPostAsyncWithHttpInfo()
+    public function contentAddCarPostAsyncWithHttpInfo($body, $ignore_dupes = null, $filename = null)
     {
-        $returnType = 'string';
-        $request = $this->contentAddCarPostRequest();
+        $returnType = '\Swagger\Client\Model\UtilContentAddResponse';
+        $request = $this->contentAddCarPostRequest($body, $ignore_dupes, $filename);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -812,12 +824,21 @@ class ContentApi
     /**
      * Create request for operation 'contentAddCarPost'
      *
+     * @param  string $body Car (required)
+     * @param  string $ignore_dupes Ignore Dupes (optional)
+     * @param  string $filename Filename (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function contentAddCarPostRequest()
+    protected function contentAddCarPostRequest($body, $ignore_dupes = null, $filename = null)
     {
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling contentAddCarPost'
+            );
+        }
 
         $resourcePath = '/content/add-car';
         $formParams = [];
@@ -826,10 +847,21 @@ class ContentApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($ignore_dupes !== null) {
+            $queryParams['ignore-dupes'] = ObjectSerializer::toQueryValue($ignore_dupes, null);
+        }
+        // query params
+        if ($filename !== null) {
+            $queryParams['filename'] = ObjectSerializer::toQueryValue($filename, null);
+        }
 
 
         // body params
         $_tempBody = null;
+        if (isset($body)) {
+            $_tempBody = $body;
+        }
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -838,7 +870,7 @@ class ContentApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                []
+                ['*/*']
             );
         }
 
@@ -1187,33 +1219,47 @@ class ContentApi
     /**
      * Operation contentAddPost
      *
-     * Upload a file
+     * Add new content
      *
+     * @param  string $data data (required)
+     * @param  string $filename filename (required)
+     * @param  string $coluuid Collection UUID (optional)
+     * @param  int $replication Replication value (optional)
+     * @param  string $ignore_dupes Ignore Dupes true/false (optional)
+     * @param  string $lazy_provide Lazy Provide true/false (optional)
+     * @param  string $dir Directory (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return string
+     * @return \Swagger\Client\Model\UtilContentAddResponse
      */
-    public function contentAddPost()
+    public function contentAddPost($data, $filename, $coluuid = null, $replication = null, $ignore_dupes = null, $lazy_provide = null, $dir = null)
     {
-        list($response) = $this->contentAddPostWithHttpInfo();
+        list($response) = $this->contentAddPostWithHttpInfo($data, $filename, $coluuid, $replication, $ignore_dupes, $lazy_provide, $dir);
         return $response;
     }
 
     /**
      * Operation contentAddPostWithHttpInfo
      *
-     * Upload a file
+     * Add new content
      *
+     * @param  string $data (required)
+     * @param  string $filename (required)
+     * @param  string $coluuid Collection UUID (optional)
+     * @param  int $replication Replication value (optional)
+     * @param  string $ignore_dupes Ignore Dupes true/false (optional)
+     * @param  string $lazy_provide Lazy Provide true/false (optional)
+     * @param  string $dir Directory (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\UtilContentAddResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function contentAddPostWithHttpInfo()
+    public function contentAddPostWithHttpInfo($data, $filename, $coluuid = null, $replication = null, $ignore_dupes = null, $lazy_provide = null, $dir = null)
     {
-        $returnType = 'string';
-        $request = $this->contentAddPostRequest();
+        $returnType = '\Swagger\Client\Model\UtilContentAddResponse';
+        $request = $this->contentAddPostRequest($data, $filename, $coluuid, $replication, $ignore_dupes, $lazy_provide, $dir);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1264,7 +1310,7 @@ class ContentApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'string',
+                        '\Swagger\Client\Model\UtilContentAddResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1293,15 +1339,22 @@ class ContentApi
     /**
      * Operation contentAddPostAsync
      *
-     * Upload a file
+     * Add new content
      *
+     * @param  string $data (required)
+     * @param  string $filename (required)
+     * @param  string $coluuid Collection UUID (optional)
+     * @param  int $replication Replication value (optional)
+     * @param  string $ignore_dupes Ignore Dupes true/false (optional)
+     * @param  string $lazy_provide Lazy Provide true/false (optional)
+     * @param  string $dir Directory (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function contentAddPostAsync()
+    public function contentAddPostAsync($data, $filename, $coluuid = null, $replication = null, $ignore_dupes = null, $lazy_provide = null, $dir = null)
     {
-        return $this->contentAddPostAsyncWithHttpInfo()
+        return $this->contentAddPostAsyncWithHttpInfo($data, $filename, $coluuid, $replication, $ignore_dupes, $lazy_provide, $dir)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1312,16 +1365,23 @@ class ContentApi
     /**
      * Operation contentAddPostAsyncWithHttpInfo
      *
-     * Upload a file
+     * Add new content
      *
+     * @param  string $data (required)
+     * @param  string $filename (required)
+     * @param  string $coluuid Collection UUID (optional)
+     * @param  int $replication Replication value (optional)
+     * @param  string $ignore_dupes Ignore Dupes true/false (optional)
+     * @param  string $lazy_provide Lazy Provide true/false (optional)
+     * @param  string $dir Directory (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function contentAddPostAsyncWithHttpInfo()
+    public function contentAddPostAsyncWithHttpInfo($data, $filename, $coluuid = null, $replication = null, $ignore_dupes = null, $lazy_provide = null, $dir = null)
     {
-        $returnType = 'string';
-        $request = $this->contentAddPostRequest();
+        $returnType = '\Swagger\Client\Model\UtilContentAddResponse';
+        $request = $this->contentAddPostRequest($data, $filename, $coluuid, $replication, $ignore_dupes, $lazy_provide, $dir);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1363,12 +1423,31 @@ class ContentApi
     /**
      * Create request for operation 'contentAddPost'
      *
+     * @param  string $data (required)
+     * @param  string $filename (required)
+     * @param  string $coluuid Collection UUID (optional)
+     * @param  int $replication Replication value (optional)
+     * @param  string $ignore_dupes Ignore Dupes true/false (optional)
+     * @param  string $lazy_provide Lazy Provide true/false (optional)
+     * @param  string $dir Directory (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function contentAddPostRequest()
+    protected function contentAddPostRequest($data, $filename, $coluuid = null, $replication = null, $ignore_dupes = null, $lazy_provide = null, $dir = null)
     {
+        // verify the required parameter 'data' is set
+        if ($data === null || (is_array($data) && count($data) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $data when calling contentAddPost'
+            );
+        }
+        // verify the required parameter 'filename' is set
+        if ($filename === null || (is_array($filename) && count($filename) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $filename when calling contentAddPost'
+            );
+        }
 
         $resourcePath = '/content/add';
         $formParams = [];
@@ -1377,8 +1456,37 @@ class ContentApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($coluuid !== null) {
+            $queryParams['coluuid'] = ObjectSerializer::toQueryValue($coluuid, null);
+        }
+        // query params
+        if ($replication !== null) {
+            $queryParams['replication'] = ObjectSerializer::toQueryValue($replication, null);
+        }
+        // query params
+        if ($ignore_dupes !== null) {
+            $queryParams['ignore-dupes'] = ObjectSerializer::toQueryValue($ignore_dupes, null);
+        }
+        // query params
+        if ($lazy_provide !== null) {
+            $queryParams['lazy-provide'] = ObjectSerializer::toQueryValue($lazy_provide, null);
+        }
+        // query params
+        if ($dir !== null) {
+            $queryParams['dir'] = ObjectSerializer::toQueryValue($dir, null);
+        }
 
 
+        // form params
+        if ($data !== null) {
+            $multipart = true;
+            $formParams['data'] = \GuzzleHttp\Psr7\try_fopen(ObjectSerializer::toFormValue($data), 'rb');
+        }
+        // form params
+        if ($filename !== null) {
+            $formParams['filename'] = ObjectSerializer::toFormValue($filename);
+        }
         // body params
         $_tempBody = null;
 
@@ -1389,7 +1497,7 @@ class ContentApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                []
+                ['multipart/form-data']
             );
         }
 
@@ -4036,284 +4144,6 @@ class ContentApi
     }
 
     /**
-     * Operation contentImportdealPost
-     *
-     * Import a deal
-     *
-     * @param  \Swagger\Client\Model\MainImportDealBody $body Import a deal (required)
-     *
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return string
-     */
-    public function contentImportdealPost($body)
-    {
-        list($response) = $this->contentImportdealPostWithHttpInfo($body);
-        return $response;
-    }
-
-    /**
-     * Operation contentImportdealPostWithHttpInfo
-     *
-     * Import a deal
-     *
-     * @param  \Swagger\Client\Model\MainImportDealBody $body Import a deal (required)
-     *
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of string, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function contentImportdealPostWithHttpInfo($body)
-    {
-        $returnType = 'string';
-        $request = $this->contentImportdealPostRequest($body);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'string',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Swagger\Client\Model\UtilHttpError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Swagger\Client\Model\UtilHttpError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation contentImportdealPostAsync
-     *
-     * Import a deal
-     *
-     * @param  \Swagger\Client\Model\MainImportDealBody $body Import a deal (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function contentImportdealPostAsync($body)
-    {
-        return $this->contentImportdealPostAsyncWithHttpInfo($body)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation contentImportdealPostAsyncWithHttpInfo
-     *
-     * Import a deal
-     *
-     * @param  \Swagger\Client\Model\MainImportDealBody $body Import a deal (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function contentImportdealPostAsyncWithHttpInfo($body)
-    {
-        $returnType = 'string';
-        $request = $this->contentImportdealPostRequest($body);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'contentImportdealPost'
-     *
-     * @param  \Swagger\Client\Model\MainImportDealBody $body Import a deal (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function contentImportdealPostRequest($body)
-    {
-        // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $body when calling contentImportdealPost'
-            );
-        }
-
-        $resourcePath = '/content/importdeal';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-
-        // body params
-        $_tempBody = null;
-        if (isset($body)) {
-            $_tempBody = $body;
-        }
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                ['*/*']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-            // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($httpBody);
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation contentListGet
      *
      * List all pinned content
@@ -4507,289 +4337,6 @@ class ContentApi
         $multipart = false;
 
 
-
-        // body params
-        $_tempBody = null;
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                []
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-            // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($httpBody);
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-        // this endpoint requires API key authentication
-        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
-        if ($apiKey !== null) {
-            $headers['Authorization'] = $apiKey;
-        }
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
-     * Operation contentReadContGet
-     *
-     * Read content
-     *
-     * @param  string $cont CID (required)
-     *
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return string
-     */
-    public function contentReadContGet($cont)
-    {
-        list($response) = $this->contentReadContGetWithHttpInfo($cont);
-        return $response;
-    }
-
-    /**
-     * Operation contentReadContGetWithHttpInfo
-     *
-     * Read content
-     *
-     * @param  string $cont CID (required)
-     *
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of string, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function contentReadContGetWithHttpInfo($cont)
-    {
-        $returnType = 'string';
-        $request = $this->contentReadContGetRequest($cont);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if (!in_array($returnType, ['string','integer','bool'])) {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        'string',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Swagger\Client\Model\UtilHttpError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 500:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Swagger\Client\Model\UtilHttpError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation contentReadContGetAsync
-     *
-     * Read content
-     *
-     * @param  string $cont CID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function contentReadContGetAsync($cont)
-    {
-        return $this->contentReadContGetAsyncWithHttpInfo($cont)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation contentReadContGetAsyncWithHttpInfo
-     *
-     * Read content
-     *
-     * @param  string $cont CID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function contentReadContGetAsyncWithHttpInfo($cont)
-    {
-        $returnType = 'string';
-        $request = $this->contentReadContGetRequest($cont);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'contentReadContGet'
-     *
-     * @param  string $cont CID (required)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function contentReadContGetRequest($cont)
-    {
-        // verify the required parameter 'cont' is set
-        if ($cont === null || (is_array($cont) && count($cont) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $cont when calling contentReadContGet'
-            );
-        }
-
-        $resourcePath = '/content/read/{cont}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-
-        // path params
-        if ($cont !== null) {
-            $resourcePath = str_replace(
-                '{' . 'cont' . '}',
-                ObjectSerializer::toPathValue($cont),
-                $resourcePath
-            );
-        }
 
         // body params
         $_tempBody = null;

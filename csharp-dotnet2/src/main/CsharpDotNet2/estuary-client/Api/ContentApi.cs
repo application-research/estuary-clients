@@ -23,10 +23,13 @@ namespace IO.Swagger.Api
         /// <returns>string</returns>
         string AdminInvitesGet ();
         /// <summary>
-        /// Upload content via a car file This endpoint uploads content via a car file
+        /// Add Car object This endpoint is used to add a car object to the network. The object can be a file or a directory.
         /// </summary>
-        /// <returns>string</returns>
-        string ContentAddCarPost ();
+        /// <param name="body">Car</param>
+        /// <param name="ignoreDupes">Ignore Dupes</param>
+        /// <param name="filename">Filename</param>
+        /// <returns>UtilContentAddResponse</returns>
+        UtilContentAddResponse ContentAddCarPost (string body, string ignoreDupes, string filename);
         /// <summary>
         /// Add IPFS object This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
         /// </summary>
@@ -35,10 +38,17 @@ namespace IO.Swagger.Api
         /// <returns>string</returns>
         string ContentAddIpfsPost (TypesIpfsPin body, string ignoreDupes);
         /// <summary>
-        /// Upload a file This endpoint uploads a file.
+        /// Add new content This endpoint is used to upload new content.
         /// </summary>
-        /// <returns>string</returns>
-        string ContentAddPost ();
+        /// <param name="data"></param>
+        /// <param name="filename"></param>
+        /// <param name="coluuid">Collection UUID</param>
+        /// <param name="replication">Replication value</param>
+        /// <param name="ignoreDupes">Ignore Dupes true/false</param>
+        /// <param name="lazyProvide">Lazy Provide true/false</param>
+        /// <param name="dir">Directory</param>
+        /// <returns>UtilContentAddResponse</returns>
+        UtilContentAddResponse ContentAddPost (byte[] data, string filename, string coluuid, int? replication, string ignoreDupes, string lazyProvide, string dir);
         /// <summary>
         /// Get aggregated content stats This endpoint returns aggregated content stats
         /// </summary>
@@ -99,22 +109,10 @@ namespace IO.Swagger.Api
         /// <returns>string</returns>
         string ContentIdGet (int? id);
         /// <summary>
-        /// Import a deal This endpoint imports a deal into the shuttle.
-        /// </summary>
-        /// <param name="body">Import a deal</param>
-        /// <returns>string</returns>
-        string ContentImportdealPost (MainImportDealBody body);
-        /// <summary>
         /// List all pinned content This endpoint lists all content
         /// </summary>
         /// <returns>string</returns>
         string ContentListGet ();
-        /// <summary>
-        /// Read content This endpoint reads content from the blockstore
-        /// </summary>
-        /// <param name="cont">CID</param>
-        /// <returns>string</returns>
-        string ContentReadContGet (string cont);
         /// <summary>
         /// Get staging zone for user, excluding its contents This endpoint is used to get staging zone for user, excluding its contents.
         /// </summary>
@@ -269,11 +267,16 @@ namespace IO.Swagger.Api
         }
     
         /// <summary>
-        /// Upload content via a car file This endpoint uploads content via a car file
+        /// Add Car object This endpoint is used to add a car object to the network. The object can be a file or a directory.
         /// </summary>
-        /// <returns>string</returns>
-        public string ContentAddCarPost ()
+        /// <param name="body">Car</param>
+        /// <param name="ignoreDupes">Ignore Dupes</param>
+        /// <param name="filename">Filename</param>
+        /// <returns>UtilContentAddResponse</returns>
+        public UtilContentAddResponse ContentAddCarPost (string body, string ignoreDupes, string filename)
         {
+            // verify the required parameter 'body' is set
+            if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling ContentAddCarPost");
     
             var path = "/content/add-car";
             path = path.Replace("{format}", "json");
@@ -284,7 +287,10 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                    
+             if (ignoreDupes != null) queryParams.Add("ignore-dupes", ApiClient.ParameterToString(ignoreDupes)); // query parameter
+ if (filename != null) queryParams.Add("filename", ApiClient.ParameterToString(filename)); // query parameter
+                        postBody = ApiClient.Serialize(body); // http body (model) parameter
+
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     
@@ -296,7 +302,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling ContentAddCarPost: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
+            return (UtilContentAddResponse) ApiClient.Deserialize(response.Content, typeof(UtilContentAddResponse), response.Headers);
         }
     
         /// <summary>
@@ -337,11 +343,22 @@ namespace IO.Swagger.Api
         }
     
         /// <summary>
-        /// Upload a file This endpoint uploads a file.
+        /// Add new content This endpoint is used to upload new content.
         /// </summary>
-        /// <returns>string</returns>
-        public string ContentAddPost ()
+        /// <param name="data"></param>
+        /// <param name="filename"></param>
+        /// <param name="coluuid">Collection UUID</param>
+        /// <param name="replication">Replication value</param>
+        /// <param name="ignoreDupes">Ignore Dupes true/false</param>
+        /// <param name="lazyProvide">Lazy Provide true/false</param>
+        /// <param name="dir">Directory</param>
+        /// <returns>UtilContentAddResponse</returns>
+        public UtilContentAddResponse ContentAddPost (byte[] data, string filename, string coluuid, int? replication, string ignoreDupes, string lazyProvide, string dir)
         {
+            // verify the required parameter 'data' is set
+            if (data == null) throw new ApiException(400, "Missing required parameter 'data' when calling ContentAddPost");
+            // verify the required parameter 'filename' is set
+            if (filename == null) throw new ApiException(400, "Missing required parameter 'filename' when calling ContentAddPost");
     
             var path = "/content/add";
             path = path.Replace("{format}", "json");
@@ -352,7 +369,14 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                    
+             if (coluuid != null) queryParams.Add("coluuid", ApiClient.ParameterToString(coluuid)); // query parameter
+ if (replication != null) queryParams.Add("replication", ApiClient.ParameterToString(replication)); // query parameter
+ if (ignoreDupes != null) queryParams.Add("ignore-dupes", ApiClient.ParameterToString(ignoreDupes)); // query parameter
+ if (lazyProvide != null) queryParams.Add("lazy-provide", ApiClient.ParameterToString(lazyProvide)); // query parameter
+ if (dir != null) queryParams.Add("dir", ApiClient.ParameterToString(dir)); // query parameter
+                        if (data != null) fileParams.Add("data", ApiClient.ParameterToFile("data", data));
+if (filename != null) formParams.Add("filename", ApiClient.ParameterToString(filename)); // form parameter
+
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };
     
@@ -364,7 +388,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling ContentAddPost: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
+            return (UtilContentAddResponse) ApiClient.Deserialize(response.Content, typeof(UtilContentAddResponse), response.Headers);
         }
     
         /// <summary>
@@ -697,41 +721,6 @@ namespace IO.Swagger.Api
         }
     
         /// <summary>
-        /// Import a deal This endpoint imports a deal into the shuttle.
-        /// </summary>
-        /// <param name="body">Import a deal</param>
-        /// <returns>string</returns>
-        public string ContentImportdealPost (MainImportDealBody body)
-        {
-            // verify the required parameter 'body' is set
-            if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling ContentImportdealPost");
-    
-            var path = "/content/importdeal";
-            path = path.Replace("{format}", "json");
-                
-            var queryParams = new Dictionary<String, String>();
-            var headerParams = new Dictionary<String, String>();
-            var formParams = new Dictionary<String, String>();
-            var fileParams = new Dictionary<String, FileParameter>();
-            String postBody = null;
-    
-                                    postBody = ApiClient.Serialize(body); // http body (model) parameter
-
-            // authentication setting, if any
-            String[] authSettings = new String[] { "bearerAuth" };
-    
-            // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
-    
-            if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ContentImportdealPost: " + response.Content, response.Content);
-            else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ContentImportdealPost: " + response.ErrorMessage, response.ErrorMessage);
-    
-            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
-        }
-    
-        /// <summary>
         /// List all pinned content This endpoint lists all content
         /// </summary>
         /// <returns>string</returns>
@@ -758,41 +747,6 @@ namespace IO.Swagger.Api
                 throw new ApiException ((int)response.StatusCode, "Error calling ContentListGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling ContentListGet: " + response.ErrorMessage, response.ErrorMessage);
-    
-            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
-        }
-    
-        /// <summary>
-        /// Read content This endpoint reads content from the blockstore
-        /// </summary>
-        /// <param name="cont">CID</param>
-        /// <returns>string</returns>
-        public string ContentReadContGet (string cont)
-        {
-            // verify the required parameter 'cont' is set
-            if (cont == null) throw new ApiException(400, "Missing required parameter 'cont' when calling ContentReadContGet");
-    
-            var path = "/content/read/{cont}";
-            path = path.Replace("{format}", "json");
-            path = path.Replace("{" + "cont" + "}", ApiClient.ParameterToString(cont));
-    
-            var queryParams = new Dictionary<String, String>();
-            var headerParams = new Dictionary<String, String>();
-            var formParams = new Dictionary<String, String>();
-            var fileParams = new Dictionary<String, FileParameter>();
-            String postBody = null;
-    
-                                    
-            // authentication setting, if any
-            String[] authSettings = new String[] { "bearerAuth" };
-    
-            // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
-    
-            if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling ContentReadContGet: " + response.Content, response.Content);
-            else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling ContentReadContGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }

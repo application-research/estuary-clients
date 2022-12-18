@@ -240,9 +240,7 @@
   <li><a href="#contentEnsureReplicationDatacidGet"><code><span class="http-method">get</span> /content/ensure-replication/{datacid}</code></a></li>
   <li><a href="#contentFailuresContentGet"><code><span class="http-method">get</span> /content/failures/{content}</code></a></li>
   <li><a href="#contentIdGet"><code><span class="http-method">get</span> /content/{id}</code></a></li>
-  <li><a href="#contentImportdealPost"><code><span class="http-method">post</span> /content/importdeal</code></a></li>
   <li><a href="#contentListGet"><code><span class="http-method">get</span> /content/list</code></a></li>
-  <li><a href="#contentReadContGet"><code><span class="http-method">get</span> /content/read/{cont}</code></a></li>
   <li><a href="#contentStagingZonesGet"><code><span class="http-method">get</span> /content/staging-zones</code></a></li>
   <li><a href="#contentStagingZonesStagingZoneContentsGet"><code><span class="http-method">get</span> /content/staging-zones/{staging_zone}/contents</code></a></li>
   <li><a href="#contentStagingZonesStagingZoneGet"><code><span class="http-method">get</span> /content/staging-zones/{staging_zone}</code></a></li>
@@ -285,7 +283,6 @@
   </ul>
   <h4><a href="#Net">Net</a></h4>
   <ul>
-  <li><a href="#netAddrsGet"><code><span class="http-method">get</span> /net/addrs</code></a></li>
   <li><a href="#publicMinersFailuresMinerGet"><code><span class="http-method">get</span> /public/miners/failures/{miner}</code></a></li>
   <li><a href="#publicMinersGet"><code><span class="http-method">get</span> /public/miners</code></a></li>
   <li><a href="#publicNetAddrsGet"><code><span class="http-method">get</span> /public/net/addrs</code></a></li>
@@ -339,7 +336,7 @@
 
     <h3 class="field-label">Request body</h3>
     <div class="field-items">
-      <div class="param">body <a href="#boolean">boolean</a> (required)</div>
+      <div class="param">body <a href="#string">string</a> (required)</div>
       
             <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Peer ids </div>
                 </div>  <!-- field-items -->
@@ -430,7 +427,18 @@
     <div class="method-notes">This endpoint can be used to add a Peer from the Peering Service</div>
 
 
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>*/*</code></li>
+    </ul>
 
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#peering.PeeringPeer">peering.PeeringPeer</a> (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Peering Peer array </div>
+                </div>  <!-- field-items -->
 
 
 
@@ -1411,26 +1419,50 @@
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
     <pre class="post"><code class="huge"><span class="http-method">post</span> /content/add-car</code></pre></div>
-    <div class="method-summary">Upload content via a car file (<span class="nickname">contentAddCarPost</span>)</div>
-    <div class="method-notes">This endpoint uploads content via a car file</div>
+    <div class="method-summary">Add Car object (<span class="nickname">contentAddCarPost</span>)</div>
+    <div class="method-notes">This endpoint is used to add a car object to the network. The object can be a file or a directory.</div>
 
 
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>*/*</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#string">string</a> (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Car </div>
+                </div>  <!-- field-items -->
 
 
-
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">ignore-dupes (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Ignore Dupes </div>      <div class="param">filename (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Filename </div>    </div>  <!-- field-items -->
 
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
+      <a href="#util.ContentAddResponse">util.ContentAddResponse</a>
       
-      String
     </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>""</code></pre>
+    <pre class="example"><code>{
+  "retrieval_url" : "retrieval_url",
+  "estuaryId" : 0,
+  "estuary_retrieval_url" : "estuary_retrieval_url",
+  "providers" : [ "providers", "providers" ],
+  "cid" : "cid"
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -1442,7 +1474,7 @@
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     OK
-        <a href="#String">String</a>
+        <a href="#util.ContentAddResponse">util.ContentAddResponse</a>
     <h4 class="field-label">400</h4>
     Bad Request
         <a href="#util.HttpError">util.HttpError</a>
@@ -1515,26 +1547,57 @@
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
     <pre class="post"><code class="huge"><span class="http-method">post</span> /content/add</code></pre></div>
-    <div class="method-summary">Upload a file (<span class="nickname">contentAddPost</span>)</div>
-    <div class="method-notes">This endpoint uploads a file.</div>
+    <div class="method-summary">Add new content (<span class="nickname">contentAddPost</span>)</div>
+    <div class="method-notes">This endpoint is used to upload new content.</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>multipart/form-data</code></li>
+    </ul>
 
 
 
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">coluuid (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Collection UUID </div>      <div class="param">replication (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Replication value </div>      <div class="param">ignore-dupes (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Ignore Dupes true/false </div>      <div class="param">lazy-provide (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Lazy Provide true/false </div>      <div class="param">dir (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Directory </div>    </div>  <!-- field-items -->
 
-
-
+    <h3 class="field-label">Form parameters</h3>
+    <div class="field-items">
+      <div class="param">data (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash;  format: binary</div>      <div class="param">filename (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Form Parameter</span> &mdash;  </div>    </div>  <!-- field-items -->
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
+      <a href="#util.ContentAddResponse">util.ContentAddResponse</a>
       
-      String
     </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>""</code></pre>
+    <pre class="example"><code>{
+  "retrieval_url" : "retrieval_url",
+  "estuaryId" : 0,
+  "estuary_retrieval_url" : "estuary_retrieval_url",
+  "providers" : [ "providers", "providers" ],
+  "cid" : "cid"
+}</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -1546,7 +1609,7 @@
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     OK
-        <a href="#String">String</a>
+        <a href="#util.ContentAddResponse">util.ContentAddResponse</a>
     <h4 class="field-label">400</h4>
     Bad Request
         <a href="#util.HttpError">util.HttpError</a>
@@ -2015,61 +2078,6 @@
         <a href="#util.HttpError">util.HttpError</a>
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="contentImportdealPost"></a>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /content/importdeal</code></pre></div>
-    <div class="method-summary">Import a deal (<span class="nickname">contentImportdealPost</span>)</div>
-    <div class="method-notes">This endpoint imports a deal into the shuttle.</div>
-
-
-    <h3 class="field-label">Consumes</h3>
-    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
-    <ul>
-      <li><code>*/*</code></li>
-    </ul>
-
-    <h3 class="field-label">Request body</h3>
-    <div class="field-items">
-      <div class="param">body <a href="#main.importDealBody">main.importDealBody</a> (required)</div>
-      
-            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Import a deal </div>
-                </div>  <!-- field-items -->
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      
-      String
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>""</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    OK
-        <a href="#String">String</a>
-    <h4 class="field-label">400</h4>
-    Bad Request
-        <a href="#util.HttpError">util.HttpError</a>
-    <h4 class="field-label">500</h4>
-    Internal Server Error
-        <a href="#util.HttpError">util.HttpError</a>
-  </div> <!-- method -->
-  <hr/>
   <div class="method"><a name="contentListGet"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
@@ -2077,55 +2085,6 @@
     <div class="method-summary">List all pinned content (<span class="nickname">contentListGet</span>)</div>
     <div class="method-notes">This endpoint lists all content</div>
 
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      
-      String
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>""</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    OK
-        <a href="#String">String</a>
-    <h4 class="field-label">400</h4>
-    Bad Request
-        <a href="#util.HttpError">util.HttpError</a>
-    <h4 class="field-label">500</h4>
-    Internal Server Error
-        <a href="#util.HttpError">util.HttpError</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="contentReadContGet"></a>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /content/read/{cont}</code></pre></div>
-    <div class="method-summary">Read content (<span class="nickname">contentReadContGet</span>)</div>
-    <div class="method-notes">This endpoint reads content from the blockstore</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">cont (required)</div>
-      
-            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; CID </div>    </div>  <!-- field-items -->
 
 
 
@@ -3549,50 +3508,6 @@
   </div> <!-- method -->
   <hr/>
   <h1><a name="Net">Net</a></h1>
-  <div class="method"><a name="netAddrsGet"></a>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /net/addrs</code></pre></div>
-    <div class="method-summary">Net Addrs (<span class="nickname">netAddrsGet</span>)</div>
-    <div class="method-notes">This endpoint is used to get net addrs</div>
-
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      
-      String
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>""</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    OK
-        <a href="#String">String</a>
-    <h4 class="field-label">400</h4>
-    Bad Request
-        <a href="#util.HttpError">util.HttpError</a>
-    <h4 class="field-label">500</h4>
-    Internal Server Error
-        <a href="#util.HttpError">util.HttpError</a>
-  </div> <!-- method -->
-  <hr/>
   <div class="method"><a name="publicMinersFailuresMinerGet"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
@@ -4853,10 +4768,11 @@
     <li><a href="#collections.CidType"><code>collections.CidType</code></a></li>
     <li><a href="#collections.Collection"><code>collections.Collection</code></a></li>
     <li><a href="#collections.CollectionListResponse"><code>collections.CollectionListResponse</code></a></li>
-    <li><a href="#main.importDealBody"><code>main.importDealBody</code></a></li>
+    <li><a href="#content_add_body"><code>content_add_body</code></a></li>
     <li><a href="#miner.ClaimMinerBody"><code>miner.ClaimMinerBody</code></a></li>
     <li><a href="#miner.MinerSetInfoParams"><code>miner.MinerSetInfoParams</code></a></li>
     <li><a href="#miner.SuspendMinerBody"><code>miner.SuspendMinerBody</code></a></li>
+    <li><a href="#peering.PeeringPeer"><code>peering.PeeringPeer</code></a></li>
     <li><a href="#types.IpfsListPinStatusResponse"><code>types.IpfsListPinStatusResponse</code></a></li>
     <li><a href="#types.IpfsPin"><code>types.IpfsPin</code></a></li>
     <li><a href="#types.IpfsPinStatusResponse"><code>types.IpfsPinStatusResponse</code></a></li>
@@ -4995,13 +4911,11 @@
     </div>  <!-- field-items -->
   </div>
   <div class="model">
-    <h3><a name="main.importDealBody"><code>main.importDealBody</code></a> <a class="up" href="#__Models">Up</a></h3>
+    <h3><a name="content_add_body"><code>content_add_body</code></a> <a class="up" href="#__Models">Up</a></h3>
     
     <div class="field-items">
-      <div class="param">coluuid (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-<div class="param">dealIDs (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">array[Integer]</a></span>  </div>
-<div class="param">dir (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+      <div class="param">data </div><div class="param-desc"><span class="param-type"><a href="#binary">byte[]</a></span> File to upload format: binary</div>
+<div class="param">filename (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Filename to use for upload </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -5025,6 +4939,15 @@
     
     <div class="field-items">
       <div class="param">reason (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="peering.PeeringPeer"><code>peering.PeeringPeer</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">Addrs (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
+<div class="param">Connected (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+<div class="param">ID (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">

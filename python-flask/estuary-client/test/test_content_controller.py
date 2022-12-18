@@ -5,8 +5,8 @@ from __future__ import absolute_import
 from flask import json
 from six import BytesIO
 
-from estuary-client.models.main_import_deal_body import MainImportDealBody  # noqa: E501
 from estuary-client.models.types_ipfs_pin import TypesIpfsPin  # noqa: E501
+from estuary-client.models.util_content_add_response import UtilContentAddResponse  # noqa: E501
 from estuary-client.models.util_content_create_body import UtilContentCreateBody  # noqa: E501
 from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
 from estuary-client.test import BaseTestCase
@@ -40,11 +40,17 @@ class TestContentController(BaseTestCase):
     def test_content_add_car_post(self):
         """Test case for content_add_car_post
 
-        Upload content via a car file
+        Add Car object
         """
+        body = 'body_example'
+        query_string = [('ignore_dupes', 'ignore_dupes_example'),
+                        ('filename', 'filename_example')]
         response = self.client.open(
             '/content/add-car',
-            method='POST')
+            method='POST',
+            data=json.dumps(body),
+            content_type='*/*',
+            query_string=query_string)
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
@@ -67,11 +73,21 @@ class TestContentController(BaseTestCase):
     def test_content_add_post(self):
         """Test case for content_add_post
 
-        Upload a file
+        Add new content
         """
+        query_string = [('coluuid', 'coluuid_example'),
+                        ('replication', 56),
+                        ('ignore_dupes', 'ignore_dupes_example'),
+                        ('lazy_provide', 'lazy_provide_example'),
+                        ('dir', 'dir_example')]
+        data = dict(data='data_example',
+                    filename='filename_example')
         response = self.client.open(
             '/content/add',
-            method='POST')
+            method='POST',
+            data=data,
+            content_type='multipart/form-data',
+            query_string=query_string)
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
@@ -189,20 +205,6 @@ class TestContentController(BaseTestCase):
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
-    def test_content_importdeal_post(self):
-        """Test case for content_importdeal_post
-
-        Import a deal
-        """
-        body = MainImportDealBody()
-        response = self.client.open(
-            '/content/importdeal',
-            method='POST',
-            data=json.dumps(body),
-            content_type='*/*')
-        self.assert200(response,
-                       'Response body is : ' + response.data.decode('utf-8'))
-
     def test_content_list_get(self):
         """Test case for content_list_get
 
@@ -210,17 +212,6 @@ class TestContentController(BaseTestCase):
         """
         response = self.client.open(
             '/content/list',
-            method='GET')
-        self.assert200(response,
-                       'Response body is : ' + response.data.decode('utf-8'))
-
-    def test_content_read_cont_get(self):
-        """Test case for content_read_cont_get
-
-        Read content
-        """
-        response = self.client.open(
-            '/content/read/{cont}'.format(cont='cont_example'),
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))

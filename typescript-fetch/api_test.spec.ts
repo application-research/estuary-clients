@@ -22,14 +22,15 @@ describe("AdminApi", () => {
   });
 
   test("adminPeeringPeersDelete", () => {
-    const body: Array<boolean> = undefined
+    const body: Array<string> = undefined
     return expect(instance.adminPeeringPeersDelete(body, {})).resolves.toBe(null)
   })
   test("adminPeeringPeersGet", () => {
     return expect(instance.adminPeeringPeersGet({})).resolves.toBe(null)
   })
   test("adminPeeringPeersPost", () => {
-    return expect(instance.adminPeeringPeersPost({})).resolves.toBe(null)
+    const body: Array<api.PeeringPeeringPeer> = undefined
+    return expect(instance.adminPeeringPeersPost(body, {})).resolves.toBe(null)
   })
   test("adminPeeringStartPost", () => {
     return expect(instance.adminPeeringStartPost({})).resolves.toBe(null)
@@ -127,7 +128,10 @@ describe("ContentApi", () => {
     return expect(instance.adminInvitesGet({})).resolves.toBe(null)
   })
   test("contentAddCarPost", () => {
-    return expect(instance.contentAddCarPost({})).resolves.toBe(null)
+    const body: string = undefined
+    const ignoreDupes: string = "ignoreDupes_example"
+    const filename: string = "filename_example"
+    return expect(instance.contentAddCarPost(body, ignoreDupes, filename, {})).resolves.toBe(null)
   })
   test("contentAddIpfsPost", () => {
     const body: api.TypesIpfsPin = undefined
@@ -135,7 +139,14 @@ describe("ContentApi", () => {
     return expect(instance.contentAddIpfsPost(body, ignoreDupes, {})).resolves.toBe(null)
   })
   test("contentAddPost", () => {
-    return expect(instance.contentAddPost({})).resolves.toBe(null)
+    const data: Blob = "data_example"
+    const filename: string = "filename_example"
+    const coluuid: string = "coluuid_example"
+    const replication: number = 56
+    const ignoreDupes: string = "ignoreDupes_example"
+    const lazyProvide: string = "lazyProvide_example"
+    const dir: string = "dir_example"
+    return expect(instance.contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, {})).resolves.toBe(null)
   })
   test("contentAggregatedContentGet", () => {
     const content: string = "content_example"
@@ -178,16 +189,8 @@ describe("ContentApi", () => {
     const id: number = 56
     return expect(instance.contentIdGet(id, {})).resolves.toBe(null)
   })
-  test("contentImportdealPost", () => {
-    const body: api.MainImportDealBody = undefined
-    return expect(instance.contentImportdealPost(body, {})).resolves.toBe(null)
-  })
   test("contentListGet", () => {
     return expect(instance.contentListGet({})).resolves.toBe(null)
-  })
-  test("contentReadContGet", () => {
-    const cont: string = "cont_example"
-    return expect(instance.contentReadContGet(cont, {})).resolves.toBe(null)
   })
   test("contentStagingZonesGet", () => {
     return expect(instance.contentStagingZonesGet({})).resolves.toBe(null)
@@ -339,9 +342,6 @@ describe("NetApi", () => {
     instance = new api.NetApi(config)
   });
 
-  test("netAddrsGet", () => {
-    return expect(instance.netAddrsGet({})).resolves.toBe(null)
-  })
   test("publicMinersFailuresMinerGet", () => {
     const miner: string = "miner_example"
     return expect(instance.publicMinersFailuresMinerGet(miner, {})).resolves.toBe(null)

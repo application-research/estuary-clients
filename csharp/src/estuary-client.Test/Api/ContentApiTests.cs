@@ -90,8 +90,11 @@ namespace estuary-client.Test
         public void ContentAddCarPostTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //var response = instance.ContentAddCarPost();
-            //Assert.IsInstanceOf<string> (response, "response is string");
+            //string body = null;
+            //string ignoreDupes = null;
+            //string filename = null;
+            //var response = instance.ContentAddCarPost(body, ignoreDupes, filename);
+            //Assert.IsInstanceOf<UtilContentAddResponse> (response, "response is UtilContentAddResponse");
         }
         /// <summary>
         /// Test ContentAddIpfsPost
@@ -112,8 +115,15 @@ namespace estuary-client.Test
         public void ContentAddPostTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //var response = instance.ContentAddPost();
-            //Assert.IsInstanceOf<string> (response, "response is string");
+            //byte[] data = null;
+            //string filename = null;
+            //string coluuid = null;
+            //int? replication = null;
+            //string ignoreDupes = null;
+            //string lazyProvide = null;
+            //string dir = null;
+            //var response = instance.ContentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir);
+            //Assert.IsInstanceOf<UtilContentAddResponse> (response, "response is UtilContentAddResponse");
         }
         /// <summary>
         /// Test ContentAggregatedContentGet
@@ -220,17 +230,6 @@ namespace estuary-client.Test
             //Assert.IsInstanceOf<string> (response, "response is string");
         }
         /// <summary>
-        /// Test ContentImportdealPost
-        /// </summary>
-        [Test]
-        public void ContentImportdealPostTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //MainImportDealBody body = null;
-            //var response = instance.ContentImportdealPost(body);
-            //Assert.IsInstanceOf<string> (response, "response is string");
-        }
-        /// <summary>
         /// Test ContentListGet
         /// </summary>
         [Test]
@@ -238,17 +237,6 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //var response = instance.ContentListGet();
-            //Assert.IsInstanceOf<string> (response, "response is string");
-        }
-        /// <summary>
-        /// Test ContentReadContGet
-        /// </summary>
-        [Test]
-        public void ContentReadContGetTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //string cont = null;
-            //var response = instance.ContentReadContGet(cont);
             //Assert.IsInstanceOf<string> (response, "response is string");
         }
         /// <summary>

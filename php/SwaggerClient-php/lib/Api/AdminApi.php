@@ -91,7 +91,7 @@ class AdminApi
      *
      * Remove peers on Peering Service
      *
-     * @param  bool[] $body Peer ids (required)
+     * @param  string[] $body Peer ids (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -108,7 +108,7 @@ class AdminApi
      *
      * Remove peers on Peering Service
      *
-     * @param  bool[] $body Peer ids (required)
+     * @param  string[] $body Peer ids (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -199,7 +199,7 @@ class AdminApi
      *
      * Remove peers on Peering Service
      *
-     * @param  bool[] $body Peer ids (required)
+     * @param  string[] $body Peer ids (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -219,7 +219,7 @@ class AdminApi
      *
      * Remove peers on Peering Service
      *
-     * @param  bool[] $body Peer ids (required)
+     * @param  string[] $body Peer ids (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -269,7 +269,7 @@ class AdminApi
     /**
      * Create request for operation 'adminPeeringPeersDelete'
      *
-     * @param  bool[] $body Peer ids (required)
+     * @param  string[] $body Peer ids (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -633,14 +633,15 @@ class AdminApi
      *
      * Add peers on Peering Service
      *
+     * @param  \Swagger\Client\Model\PeeringPeeringPeer[] $body Peering Peer array (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string
      */
-    public function adminPeeringPeersPost()
+    public function adminPeeringPeersPost($body)
     {
-        list($response) = $this->adminPeeringPeersPostWithHttpInfo();
+        list($response) = $this->adminPeeringPeersPostWithHttpInfo($body);
         return $response;
     }
 
@@ -649,15 +650,16 @@ class AdminApi
      *
      * Add peers on Peering Service
      *
+     * @param  \Swagger\Client\Model\PeeringPeeringPeer[] $body Peering Peer array (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function adminPeeringPeersPostWithHttpInfo()
+    public function adminPeeringPeersPostWithHttpInfo($body)
     {
         $returnType = 'string';
-        $request = $this->adminPeeringPeersPostRequest();
+        $request = $this->adminPeeringPeersPostRequest($body);
 
         try {
             $options = $this->createHttpClientOption();
@@ -739,13 +741,14 @@ class AdminApi
      *
      * Add peers on Peering Service
      *
+     * @param  \Swagger\Client\Model\PeeringPeeringPeer[] $body Peering Peer array (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function adminPeeringPeersPostAsync()
+    public function adminPeeringPeersPostAsync($body)
     {
-        return $this->adminPeeringPeersPostAsyncWithHttpInfo()
+        return $this->adminPeeringPeersPostAsyncWithHttpInfo($body)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -758,14 +761,15 @@ class AdminApi
      *
      * Add peers on Peering Service
      *
+     * @param  \Swagger\Client\Model\PeeringPeeringPeer[] $body Peering Peer array (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function adminPeeringPeersPostAsyncWithHttpInfo()
+    public function adminPeeringPeersPostAsyncWithHttpInfo($body)
     {
         $returnType = 'string';
-        $request = $this->adminPeeringPeersPostRequest();
+        $request = $this->adminPeeringPeersPostRequest($body);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -807,12 +811,19 @@ class AdminApi
     /**
      * Create request for operation 'adminPeeringPeersPost'
      *
+     * @param  \Swagger\Client\Model\PeeringPeeringPeer[] $body Peering Peer array (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function adminPeeringPeersPostRequest()
+    protected function adminPeeringPeersPostRequest($body)
     {
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling adminPeeringPeersPost'
+            );
+        }
 
         $resourcePath = '/admin/peering/peers';
         $formParams = [];
@@ -825,6 +836,9 @@ class AdminApi
 
         // body params
         $_tempBody = null;
+        if (isset($body)) {
+            $_tempBody = $body;
+        }
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -833,7 +847,7 @@ class AdminApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
-                []
+                ['*/*']
             );
         }
 

@@ -16,6 +16,7 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
+import { PeeringPeeringPeer } from '../models';
 import { UtilHttpError } from '../models';
 /**
  * AdminApi - axios parameter creator
@@ -26,11 +27,11 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * This endpoint can be used to remove a Peer from the Peering Service
          * @summary Remove peers on Peering Service
-         * @param {Array<boolean>} body Peer ids
+         * @param {Array<string>} body Peer ids
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersDelete: async (body: Array<boolean>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        adminPeeringPeersDelete: async (body: Array<string>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling adminPeeringPeersDelete.');
@@ -119,10 +120,15 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
         /**
          * This endpoint can be used to add a Peer from the Peering Service
          * @summary Add peers on Peering Service
+         * @param {Array<PeeringPeeringPeer>} body Peering Peer array
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        adminPeeringPeersPost: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        adminPeeringPeersPost: async (body: Array<PeeringPeeringPeer>, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling adminPeeringPeersPost.');
+            }
             const localVarPath = `/admin/peering/peers`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, 'https://example.com');
@@ -142,6 +148,8 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
                 localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
             }
 
+            localVarHeaderParameter['Content-Type'] = '*/*';
+
             const query = new URLSearchParams(localVarUrlObj.search);
             for (const key in localVarQueryParameter) {
                 query.set(key, localVarQueryParameter[key]);
@@ -152,6 +160,8 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
             localVarUrlObj.search = (new URLSearchParams(query)).toString();
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            const needsSerialization = (typeof body !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.data =  needsSerialization ? JSON.stringify(body !== undefined ? body : {}) : (body || "");
 
             return {
                 url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
@@ -380,11 +390,11 @@ export const AdminApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint can be used to remove a Peer from the Peering Service
          * @summary Remove peers on Peering Service
-         * @param {Array<boolean>} body Peer ids
+         * @param {Array<string>} body Peer ids
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async adminPeeringPeersDelete(body: Array<boolean>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
+        async adminPeeringPeersDelete(body: Array<string>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
             const localVarAxiosArgs = await AdminApiAxiosParamCreator(configuration).adminPeeringPeersDelete(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -407,11 +417,12 @@ export const AdminApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint can be used to add a Peer from the Peering Service
          * @summary Add peers on Peering Service
+         * @param {Array<PeeringPeeringPeer>} body Peering Peer array
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async adminPeeringPeersPost(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
-            const localVarAxiosArgs = await AdminApiAxiosParamCreator(configuration).adminPeeringPeersPost(options);
+        async adminPeeringPeersPost(body: Array<PeeringPeeringPeer>, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
+            const localVarAxiosArgs = await AdminApiAxiosParamCreator(configuration).adminPeeringPeersPost(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -494,11 +505,11 @@ export const AdminApiFactory = function (configuration?: Configuration, basePath
         /**
          * This endpoint can be used to remove a Peer from the Peering Service
          * @summary Remove peers on Peering Service
-         * @param {Array<boolean>} body Peer ids
+         * @param {Array<string>} body Peer ids
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async adminPeeringPeersDelete(body: Array<boolean>, options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
+        async adminPeeringPeersDelete(body: Array<string>, options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
             return AdminApiFp(configuration).adminPeeringPeersDelete(body, options).then((request) => request(axios, basePath));
         },
         /**
@@ -513,11 +524,12 @@ export const AdminApiFactory = function (configuration?: Configuration, basePath
         /**
          * This endpoint can be used to add a Peer from the Peering Service
          * @summary Add peers on Peering Service
+         * @param {Array<PeeringPeeringPeer>} body Peering Peer array
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async adminPeeringPeersPost(options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
-            return AdminApiFp(configuration).adminPeeringPeersPost(options).then((request) => request(axios, basePath));
+        async adminPeeringPeersPost(body: Array<PeeringPeeringPeer>, options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
+            return AdminApiFp(configuration).adminPeeringPeersPost(body, options).then((request) => request(axios, basePath));
         },
         /**
          * This endpoint can be used to start the Peering Service
@@ -577,12 +589,12 @@ export class AdminApi extends BaseAPI {
     /**
      * This endpoint can be used to remove a Peer from the Peering Service
      * @summary Remove peers on Peering Service
-     * @param {Array<boolean>} body Peer ids
+     * @param {Array<string>} body Peer ids
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AdminApi
      */
-    public async adminPeeringPeersDelete(body: Array<boolean>, options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
+    public async adminPeeringPeersDelete(body: Array<string>, options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
         return AdminApiFp(this.configuration).adminPeeringPeersDelete(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -598,12 +610,13 @@ export class AdminApi extends BaseAPI {
     /**
      * This endpoint can be used to add a Peer from the Peering Service
      * @summary Add peers on Peering Service
+     * @param {Array<PeeringPeeringPeer>} body Peering Peer array
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof AdminApi
      */
-    public async adminPeeringPeersPost(options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
-        return AdminApiFp(this.configuration).adminPeeringPeersPost(options).then((request) => request(this.axios, this.basePath));
+    public async adminPeeringPeersPost(body: Array<PeeringPeeringPeer>, options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
+        return AdminApiFp(this.configuration).adminPeeringPeersPost(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * This endpoint can be used to start the Peering Service

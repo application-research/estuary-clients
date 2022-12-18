@@ -14,7 +14,6 @@ import io.swagger.api.impl.DealApiServiceImpl;
 import io.swagger.api.impl.DealsApiServiceImpl;
 import io.swagger.api.impl.GetApiServiceImpl;
 import io.swagger.api.impl.MinerApiServiceImpl;
-import io.swagger.api.impl.NetApiServiceImpl;
 import io.swagger.api.impl.PinningApiServiceImpl;
 import io.swagger.api.impl.PublicApiServiceImpl;
 import io.swagger.api.impl.UserApiServiceImpl;
@@ -34,7 +33,6 @@ public class RestApplication extends Application {
         resources.add(DealsApiServiceImpl.class);
         resources.add(GetApiServiceImpl.class);
         resources.add(MinerApiServiceImpl.class);
-        resources.add(NetApiServiceImpl.class);
         resources.add(PinningApiServiceImpl.class);
         resources.add(PublicApiServiceImpl.class);
         resources.add(UserApiServiceImpl.class);

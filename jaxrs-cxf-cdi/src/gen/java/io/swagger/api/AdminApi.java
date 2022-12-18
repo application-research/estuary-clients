@@ -1,5 +1,6 @@
 package io.swagger.api;
 
+import io.swagger.model.PeeringPeeringPeer;
 import io.swagger.model.UtilHttpError;
 import io.swagger.api.AdminApiService;
 
@@ -32,7 +33,7 @@ import javax.validation.constraints.*;
 
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-12-14T06:22:39.301Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2022-12-18T07:30:26.140Z[GMT]")
 public class AdminApi  {
 
   @Context SecurityContext securityContext;
@@ -109,7 +110,7 @@ public class AdminApi  {
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response adminPeeringPeersDelete(
-@Parameter(description = "Peer ids" ,required=true) List<Boolean> body
+@Parameter(description = "Peer ids" ,required=true) List<String> body
 ) {
         return delegate.adminPeeringPeersDelete(body, securityContext);
     }
@@ -130,7 +131,7 @@ public class AdminApi  {
 
     @POST
     @Path("/peering/peers")
-    
+    @Consumes({ "*/*" })
     @Produces({ "application/json" })
     @Operation(summary = "Add peers on Peering Service", description = "This endpoint can be used to add a Peer from the Peering Service", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "admin" })
@@ -138,8 +139,10 @@ public class AdminApi  {
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response adminPeeringPeersPost() {
-        return delegate.adminPeeringPeersPost(securityContext);
+    public Response adminPeeringPeersPost(
+@Parameter(description = "Peering Peer array" ,required=true) List<PeeringPeeringPeer> body
+) {
+        return delegate.adminPeeringPeersPost(body, securityContext);
     }
 
     @POST

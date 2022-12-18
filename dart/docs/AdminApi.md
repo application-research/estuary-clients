@@ -34,7 +34,7 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new AdminApi();
-var body = [new List&lt;bool&gt;()]; // List<bool> | Peer ids
+var body = [new List&lt;String&gt;()]; // List<String> | Peer ids
 
 try {
     var result = api_instance.adminPeeringPeersDelete(body);
@@ -48,7 +48,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**List&lt;bool&gt;**](bool.md)| Peer ids | 
+ **body** | [**List&lt;String&gt;**](String.md)| Peer ids | 
 
 ### Return type
 
@@ -109,7 +109,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **adminPeeringPeersPost**
-> String adminPeeringPeersPost()
+> String adminPeeringPeersPost(body)
 
 Add peers on Peering Service
 
@@ -124,9 +124,10 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new AdminApi();
+var body = [new List&lt;PeeringPeeringPeer&gt;()]; // List<PeeringPeeringPeer> | Peering Peer array
 
 try {
-    var result = api_instance.adminPeeringPeersPost();
+    var result = api_instance.adminPeeringPeersPost(body);
     print(result);
 } catch (e) {
     print("Exception when calling AdminApi->adminPeeringPeersPost: $e\n");
@@ -134,7 +135,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**List&lt;PeeringPeeringPeer&gt;**](PeeringPeeringPeer.md)| Peering Peer array | 
 
 ### Return type
 
@@ -146,7 +150,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

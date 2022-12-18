@@ -1,5 +1,6 @@
 package io.swagger.api;
 
+import io.swagger.model.PeeringPeeringPeer;
 import io.swagger.model.UtilHttpError;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.Operation;
@@ -32,7 +33,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-14T06:22:42.275Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2022-12-18T07:30:27.009Z[GMT]")
 @RestController
 public class AdminApiController implements AdminApi {
 
@@ -104,7 +105,7 @@ public class AdminApiController implements AdminApi {
         return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<String> adminPeeringPeersDelete(@Parameter(in = ParameterIn.DEFAULT, description = "Peer ids", required=true, schema=@Schema()) @Valid @RequestBody List<Boolean> body) {
+    public ResponseEntity<String> adminPeeringPeersDelete(@Parameter(in = ParameterIn.DEFAULT, description = "Peer ids", required=true, schema=@Schema()) @Valid @RequestBody List<String> body) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
@@ -132,7 +133,7 @@ public class AdminApiController implements AdminApi {
         return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<String> adminPeeringPeersPost() {
+    public ResponseEntity<String> adminPeeringPeersPost(@Parameter(in = ParameterIn.DEFAULT, description = "Peering Peer array", required=true, schema=@Schema()) @Valid @RequestBody List<PeeringPeeringPeer> body) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {

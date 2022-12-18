@@ -122,41 +122,55 @@ module SwaggerClient
       end
       return data, status_code, headers
     end
-    # Upload content via a car file
-    # This endpoint uploads content via a car file
+    # Add Car object
+    # This endpoint is used to add a car object to the network. The object can be a file or a directory.
+    # @param body Car
     # @param [Hash] opts the optional parameters
-    # @return [String]
-    def content_add_car_post(opts = {})
-      data, _status_code, _headers = content_add_car_post_with_http_info(opts)
+    # @option opts [String] :ignore_dupes Ignore Dupes
+    # @option opts [String] :filename Filename
+    # @return [UtilContentAddResponse]
+    def content_add_car_post(body, opts = {})
+      data, _status_code, _headers = content_add_car_post_with_http_info(body, opts)
       data
     end
 
-    # Upload content via a car file
-    # This endpoint uploads content via a car file
+    # Add Car object
+    # This endpoint is used to add a car object to the network. The object can be a file or a directory.
+    # @param body Car
     # @param [Hash] opts the optional parameters
-    # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
-    def content_add_car_post_with_http_info(opts = {})
+    # @option opts [String] :ignore_dupes Ignore Dupes
+    # @option opts [String] :filename Filename
+    # @return [Array<(UtilContentAddResponse, Integer, Hash)>] UtilContentAddResponse data, response status code and response headers
+    def content_add_car_post_with_http_info(body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ContentApi.content_add_car_post ...'
+      end
+      # verify the required parameter 'body' is set
+      if @api_client.config.client_side_validation && body.nil?
+        fail ArgumentError, "Missing the required parameter 'body' when calling ContentApi.content_add_car_post"
       end
       # resource path
       local_var_path = '/content/add-car'
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'ignore-dupes'] = opts[:'ignore_dupes'] if !opts[:'ignore_dupes'].nil?
+      query_params[:'filename'] = opts[:'filename'] if !opts[:'filename'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['*/*'])
 
       # form parameters
       form_params = opts[:form_params] || {}
 
       # http body (model)
-      post_body = opts[:body] 
+      post_body = opts[:body] || @api_client.object_to_http_body(body) 
 
-      return_type = opts[:return_type] || 'String' 
+      return_type = opts[:return_type] || 'UtilContentAddResponse' 
 
       auth_names = opts[:auth_names] || ['bearerAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
@@ -233,41 +247,72 @@ module SwaggerClient
       end
       return data, status_code, headers
     end
-    # Upload a file
-    # This endpoint uploads a file.
+    # Add new content
+    # This endpoint is used to upload new content.
+    # @param data 
+    # @param filename 
     # @param [Hash] opts the optional parameters
-    # @return [String]
-    def content_add_post(opts = {})
-      data, _status_code, _headers = content_add_post_with_http_info(opts)
+    # @option opts [String] :coluuid Collection UUID
+    # @option opts [Integer] :replication Replication value
+    # @option opts [String] :ignore_dupes Ignore Dupes true/false
+    # @option opts [String] :lazy_provide Lazy Provide true/false
+    # @option opts [String] :dir Directory
+    # @return [UtilContentAddResponse]
+    def content_add_post(data, filename, opts = {})
+      data, _status_code, _headers = content_add_post_with_http_info(data, filename, opts)
       data
     end
 
-    # Upload a file
-    # This endpoint uploads a file.
+    # Add new content
+    # This endpoint is used to upload new content.
+    # @param data 
+    # @param filename 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
-    def content_add_post_with_http_info(opts = {})
+    # @option opts [String] :coluuid Collection UUID
+    # @option opts [Integer] :replication Replication value
+    # @option opts [String] :ignore_dupes Ignore Dupes true/false
+    # @option opts [String] :lazy_provide Lazy Provide true/false
+    # @option opts [String] :dir Directory
+    # @return [Array<(UtilContentAddResponse, Integer, Hash)>] UtilContentAddResponse data, response status code and response headers
+    def content_add_post_with_http_info(data, filename, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: ContentApi.content_add_post ...'
+      end
+      # verify the required parameter 'data' is set
+      if @api_client.config.client_side_validation && data.nil?
+        fail ArgumentError, "Missing the required parameter 'data' when calling ContentApi.content_add_post"
+      end
+      # verify the required parameter 'filename' is set
+      if @api_client.config.client_side_validation && filename.nil?
+        fail ArgumentError, "Missing the required parameter 'filename' when calling ContentApi.content_add_post"
       end
       # resource path
       local_var_path = '/content/add'
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'coluuid'] = opts[:'coluuid'] if !opts[:'coluuid'].nil?
+      query_params[:'replication'] = opts[:'replication'] if !opts[:'replication'].nil?
+      query_params[:'ignore-dupes'] = opts[:'ignore_dupes'] if !opts[:'ignore_dupes'].nil?
+      query_params[:'lazy-provide'] = opts[:'lazy_provide'] if !opts[:'lazy_provide'].nil?
+      query_params[:'dir'] = opts[:'dir'] if !opts[:'dir'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
       # HTTP header 'Accept' (if needed)
       header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['multipart/form-data'])
 
       # form parameters
       form_params = opts[:form_params] || {}
+      form_params['data'] = data
+      form_params['filename'] = filename
 
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] || 'String' 
+      return_type = opts[:return_type] || 'UtilContentAddResponse' 
 
       auth_names = opts[:auth_names] || ['bearerAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
@@ -815,64 +860,6 @@ module SwaggerClient
       end
       return data, status_code, headers
     end
-    # Import a deal
-    # This endpoint imports a deal into the shuttle.
-    # @param body Import a deal
-    # @param [Hash] opts the optional parameters
-    # @return [String]
-    def content_importdeal_post(body, opts = {})
-      data, _status_code, _headers = content_importdeal_post_with_http_info(body, opts)
-      data
-    end
-
-    # Import a deal
-    # This endpoint imports a deal into the shuttle.
-    # @param body Import a deal
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
-    def content_importdeal_post_with_http_info(body, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ContentApi.content_importdeal_post ...'
-      end
-      # verify the required parameter 'body' is set
-      if @api_client.config.client_side_validation && body.nil?
-        fail ArgumentError, "Missing the required parameter 'body' when calling ContentApi.content_importdeal_post"
-      end
-      # resource path
-      local_var_path = '/content/importdeal'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['*/*'])
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:body] || @api_client.object_to_http_body(body) 
-
-      return_type = opts[:return_type] || 'String' 
-
-      auth_names = opts[:auth_names] || ['bearerAuth']
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type)
-
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ContentApi#content_importdeal_post\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
     # List all pinned content
     # This endpoint lists all content
     # @param [Hash] opts the optional parameters
@@ -920,62 +907,6 @@ module SwaggerClient
 
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: ContentApi#content_list_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-    # Read content
-    # This endpoint reads content from the blockstore
-    # @param cont CID
-    # @param [Hash] opts the optional parameters
-    # @return [String]
-    def content_read_cont_get(cont, opts = {})
-      data, _status_code, _headers = content_read_cont_get_with_http_info(cont, opts)
-      data
-    end
-
-    # Read content
-    # This endpoint reads content from the blockstore
-    # @param cont CID
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
-    def content_read_cont_get_with_http_info(cont, opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: ContentApi.content_read_cont_get ...'
-      end
-      # verify the required parameter 'cont' is set
-      if @api_client.config.client_side_validation && cont.nil?
-        fail ArgumentError, "Missing the required parameter 'cont' when calling ContentApi.content_read_cont_get"
-      end
-      # resource path
-      local_var_path = '/content/read/{cont}'.sub('{' + 'cont' + '}', cont.to_s)
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:body] 
-
-      return_type = opts[:return_type] || 'String' 
-
-      auth_names = opts[:auth_names] || ['bearerAuth']
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type)
-
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: ContentApi#content_read_cont_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

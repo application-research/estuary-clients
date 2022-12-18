@@ -12,8 +12,9 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
-import io.swagger.model.MainImportDealBody;
+import java.io.File;
 import io.swagger.model.TypesIpfsPin;
+import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 
@@ -30,29 +31,30 @@ import javax.ws.rs.*;
 import javax.inject.Inject;
 
 import javax.validation.constraints.*;
+import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 @Path("/content")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-12-14T06:22:39.433Z[GMT]")public class ContentApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-12-18T07:30:24.829Z[GMT]")public class ContentApi  {
 
     @Inject ContentApiService service;
 
     @POST
     @Path("/add-car")
-    
+    @Consumes({ "*/*" })
     @Produces({ "application/json" })
-    @Operation(summary = "Upload content via a car file", description = "This endpoint uploads content via a car file", security = {
+    @Operation(summary = "Add Car object", description = "This endpoint is used to add a car object to the network. The object can be a file or a directory.", security = {
         @SecurityRequirement(name = "bearerAuth")
     }, tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilContentAddResponse.class))),
         
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response contentAddCarPost(@Context SecurityContext securityContext)
+    public Response contentAddCarPost(@Parameter(description = "Car" ,required=true) String body,  @QueryParam("ignore-dupes") String ignoreDupes,  @QueryParam("filename") String filename,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return service.contentAddCarPost(securityContext);
+        return service.contentAddCarPost(body,ignoreDupes,filename,securityContext);
     }
     @POST
     @Path("/add-ipfs")
@@ -73,20 +75,20 @@ import javax.validation.constraints.*;
     }
     @POST
     @Path("/add")
-    
+    @Consumes({ "multipart/form-data" })
     @Produces({ "application/json" })
-    @Operation(summary = "Upload a file", description = "This endpoint uploads a file.", security = {
+    @Operation(summary = "Add new content", description = "This endpoint is used to upload new content.", security = {
         @SecurityRequirement(name = "bearerAuth")
     }, tags={ "content" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilContentAddResponse.class))),
         
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response contentAddPost(@Context SecurityContext securityContext)
+    public Response contentAddPost(MultipartFormDataInput input,  @QueryParam("coluuid") String coluuid,  @QueryParam("replication") Integer replication,  @QueryParam("ignore-dupes") String ignoreDupes,  @QueryParam("lazy-provide") String lazyProvide,  @QueryParam("dir") String dir,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return service.contentAddPost(securityContext);
+        return service.contentAddPost(input,coluuid,replication,ignoreDupes,lazyProvide,dir,securityContext);
     }
     @GET
     @Path("/aggregated/{content}")
@@ -241,23 +243,6 @@ import javax.validation.constraints.*;
     throws NotFoundException {
         return service.contentIdGet(id,securityContext);
     }
-    @POST
-    @Path("/importdeal")
-    @Consumes({ "*/*" })
-    @Produces({ "application/json" })
-    @Operation(summary = "Import a deal", description = "This endpoint imports a deal into the shuttle.", security = {
-        @SecurityRequirement(name = "bearerAuth")
-    }, tags={ "content" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
-        
-        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
-        
-        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response contentImportdealPost(@Parameter(description = "Import a deal" ,required=true) MainImportDealBody body,@Context SecurityContext securityContext)
-    throws NotFoundException {
-        return service.contentImportdealPost(body,securityContext);
-    }
     @GET
     @Path("/list")
     
@@ -274,23 +259,6 @@ import javax.validation.constraints.*;
     public Response contentListGet(@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.contentListGet(securityContext);
-    }
-    @GET
-    @Path("/read/{cont}")
-    
-    @Produces({ "application/json" })
-    @Operation(summary = "Read content", description = "This endpoint reads content from the blockstore", security = {
-        @SecurityRequirement(name = "bearerAuth")
-    }, tags={ "content" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
-        
-        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
-        
-        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response contentReadContGet( @PathParam("cont") String cont,@Context SecurityContext securityContext)
-    throws NotFoundException {
-        return service.contentReadContGet(cont,securityContext);
     }
     @GET
     @Path("/staging-zones")

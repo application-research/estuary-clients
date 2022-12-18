@@ -12,17 +12,6 @@ from estuary-client.test import BaseTestCase
 class TestNetController(BaseTestCase):
     """NetController integration test stubs"""
 
-    def test_net_addrs_get(self):
-        """Test case for net_addrs_get
-
-        Net Addrs
-        """
-        response = self.client.open(
-            '/net/addrs',
-            method='GET')
-        self.assert200(response,
-                       'Response body is : ' + response.data.decode('utf-8'))
-
     def test_public_miners_failures_miner_get(self):
         """Test case for public_miners_failures_miner_get
 

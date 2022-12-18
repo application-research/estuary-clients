@@ -17,6 +17,7 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
+import { PeeringPeeringPeer } from '../model/peeringPeeringPeer';
 import { UtilHttpError } from '../model/utilHttpError';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -62,10 +63,10 @@ export class AdminService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public adminPeeringPeersDelete(body: Array<boolean>, observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public adminPeeringPeersDelete(body: Array<boolean>, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public adminPeeringPeersDelete(body: Array<boolean>, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
-    public adminPeeringPeersDelete(body: Array<boolean>, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public adminPeeringPeersDelete(body: Array<string>, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public adminPeeringPeersDelete(body: Array<string>, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public adminPeeringPeersDelete(body: Array<string>, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public adminPeeringPeersDelete(body: Array<string>, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling adminPeeringPeersDelete.');
@@ -151,13 +152,18 @@ export class AdminService {
     /**
      * Add peers on Peering Service
      * This endpoint can be used to add a Peer from the Peering Service
+     * @param body Peering Peer array
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public adminPeeringPeersPost(observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public adminPeeringPeersPost(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public adminPeeringPeersPost(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
-    public adminPeeringPeersPost(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public adminPeeringPeersPost(body: Array<PeeringPeeringPeer>, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public adminPeeringPeersPost(body: Array<PeeringPeeringPeer>, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public adminPeeringPeersPost(body: Array<PeeringPeeringPeer>, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public adminPeeringPeersPost(body: Array<PeeringPeeringPeer>, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        if (body === null || body === undefined) {
+            throw new Error('Required parameter body was null or undefined when calling adminPeeringPeersPost.');
+        }
 
         let headers = this.defaultHeaders;
 
@@ -177,10 +183,16 @@ export class AdminService {
 
         // to determine the Content-Type header
         const consumes: string[] = [
+            '*/*'
         ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected != undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
 
         return this.httpClient.request<string>('post',`${this.basePath}/admin/peering/peers`,
             {
+                body: body,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,

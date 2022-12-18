@@ -78,10 +78,10 @@
       });
       describe('adminPeeringPeersPost', function() {
         it('should call adminPeeringPeersPost successfully', function(done) {
-          // TODO: uncomment adminPeeringPeersPost call and complete the assertions
+          // TODO: uncomment, update parameter values for adminPeeringPeersPost call and complete the assertions
           /*
 
-          instance.adminPeeringPeersPost(function(error, data, response) {
+          instance.adminPeeringPeersPost(body, function(error, data, response) {
             if (error) {
               done(error);
               return;

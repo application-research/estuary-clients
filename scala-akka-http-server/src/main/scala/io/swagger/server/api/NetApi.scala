@@ -14,21 +14,6 @@ class NetApi(
   import netMarshaller._
 
   lazy val route: Route =
-    path() { () => 
-      get {
-        parameters() { () =>
-          
-            formFields() { () =>
-              
-                
-                  netService.netAddrsGet()
-               
-             
-            }
-         
-        }
-      }
-    } ~
     path() { (miner) => 
       get {
         parameters() { () =>
@@ -93,20 +78,6 @@ class NetApi(
 
 trait NetApiService {
 
-  def netAddrsGet200(responseString: String): Route =
-    complete((200, responseString))
-  def netAddrsGet400(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
-    complete((400, responseutil.HttpError))
-  def netAddrsGet500(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
-    complete((500, responseutil.HttpError))
-  /**
-   * Code: 200, Message: OK, DataType: String
-   * Code: 400, Message: Bad Request, DataType: util.HttpError
-   * Code: 500, Message: Internal Server Error, DataType: util.HttpError
-   */
-  def netAddrsGet()
-      (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
-
   def publicMinersFailuresMinerGet200(responseString: String): Route =
     complete((200, responseString))
   def publicMinersFailuresMinerGet400(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
@@ -160,10 +131,6 @@ trait NetApiService {
 }
 
 trait NetApiMarshaller {
-
-  implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
-
-  implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 

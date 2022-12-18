@@ -10,12 +10,13 @@ import java.util.List;
 
 import io.swagger.model.*;
 
-import io.swagger.model.MainImportDealBody;
+import java.io.File;
 import io.swagger.model.TypesIpfsPin;
+import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-12-14T06:22:38.566Z[GMT]")public class ContentController  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-12-18T07:30:23.308Z[GMT]")public class ContentController  {
   /** 
    * Uncomment and implement as you see fit.  These operations will map
    * Directly to operation calls from the routing logic.  Because the inflector
@@ -23,7 +24,10 @@ import io.swagger.model.UtilHttpError;
    **/
 
   /*
-    public ResponseContext contentAddCarPOST(RequestContext request ) {
+    public ResponseContext contentAddCarPOST(RequestContext request , String body 
+, String ignoreDupes 
+, String filename 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -37,7 +41,14 @@ import io.swagger.model.UtilHttpError;
   */
 
   /*
-    public ResponseContext contentAddPOST(RequestContext request ) {
+    public ResponseContext contentAddPOST(RequestContext request ,  FormDataContentDisposition fileDetail
+,  String filename
+, String coluuid 
+, Integer replication 
+, String ignoreDupes 
+, String lazyProvide 
+, String dir 
+) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */
@@ -111,21 +122,7 @@ import io.swagger.model.UtilHttpError;
   */
 
   /*
-    public ResponseContext contentImportdealPOST(RequestContext request , MainImportDealBody body 
-) {
-        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
-    }
-  */
-
-  /*
     public ResponseContext contentListGET(RequestContext request ) {
-        return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
-    }
-  */
-
-  /*
-    public ResponseContext contentReadContGET(RequestContext request , String cont 
-) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
   */

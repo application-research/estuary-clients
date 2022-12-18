@@ -106,13 +106,16 @@ class ContentApi {
       return null;
     }
   }
-  /// Upload content via a car file
+  /// Add Car object
   ///
-  /// This endpoint uploads content via a car file
-  Future<String> contentAddCarPost() async {
-    Object postBody = null;
+  /// This endpoint is used to add a car object to the network. The object can be a file or a directory.
+  Future<UtilContentAddResponse> contentAddCarPost(String body, { String ignoreDupes, String filename }) async {
+    Object postBody = body;
 
     // verify required params are set
+    if(body == null) {
+     throw new ApiException(400, "Missing required param: body");
+    }
 
     // create path and map variables
     String path = "/content/add-car".replaceAll("{format}","json");
@@ -121,8 +124,14 @@ class ContentApi {
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if(ignoreDupes != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "ignore-dupes", ignoreDupes));
+    }
+    if(filename != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "filename", filename));
+    }
     
-    List<String> contentTypes = [];
+    List<String> contentTypes = ["*/*"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
     List<String> authNames = ["bearerAuth"];
@@ -149,7 +158,7 @@ class ContentApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          apiClient.deserialize(response.body, 'String') as String ;
+          apiClient.deserialize(response.body, 'UtilContentAddResponse') as UtilContentAddResponse ;
     } else {
       return null;
     }
@@ -208,13 +217,19 @@ class ContentApi {
       return null;
     }
   }
-  /// Upload a file
+  /// Add new content
   ///
-  /// This endpoint uploads a file.
-  Future<String> contentAddPost() async {
+  /// This endpoint is used to upload new content.
+  Future<UtilContentAddResponse> contentAddPost(String data, String filename, { String coluuid, int replication, String ignoreDupes, String lazyProvide, String dir }) async {
     Object postBody = null;
 
     // verify required params are set
+    if(data == null) {
+     throw new ApiException(400, "Missing required param: data");
+    }
+    if(filename == null) {
+     throw new ApiException(400, "Missing required param: filename");
+    }
 
     // create path and map variables
     String path = "/content/add".replaceAll("{format}","json");
@@ -223,8 +238,23 @@ class ContentApi {
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if(coluuid != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "coluuid", coluuid));
+    }
+    if(replication != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "replication", replication));
+    }
+    if(ignoreDupes != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "ignore-dupes", ignoreDupes));
+    }
+    if(lazyProvide != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "lazy-provide", lazyProvide));
+    }
+    if(dir != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "dir", dir));
+    }
     
-    List<String> contentTypes = [];
+    List<String> contentTypes = ["multipart/form-data"];
 
     String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
     List<String> authNames = ["bearerAuth"];
@@ -232,11 +262,23 @@ class ContentApi {
     if(contentType.startsWith("multipart/form-data")) {
       bool hasFields = false;
       MultipartRequest mp = new MultipartRequest(null, null);
+      if (data != null) {
+        hasFields = true;
+        mp.fields['data'] = data.field;
+        mp.files.add(data);
+      }
+      if (filename != null) {
+        hasFields = true;
+        mp.fields['filename'] = parameterToString(filename);
+      }
       if(hasFields)
         postBody = mp;
     }
     else {
-          }
+      
+if (filename != null)
+        formParams['filename'] = parameterToString(filename);
+    }
 
     var response = await apiClient.invokeAPI(path,
                                              'POST',
@@ -251,7 +293,7 @@ class ContentApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          apiClient.deserialize(response.body, 'String') as String ;
+          apiClient.deserialize(response.body, 'UtilContentAddResponse') as UtilContentAddResponse ;
     } else {
       return null;
     }
@@ -735,57 +777,6 @@ class ContentApi {
       return null;
     }
   }
-  /// Import a deal
-  ///
-  /// This endpoint imports a deal into the shuttle.
-  Future<String> contentImportdealPost(MainImportDealBody body) async {
-    Object postBody = body;
-
-    // verify required params are set
-    if(body == null) {
-     throw new ApiException(400, "Missing required param: body");
-    }
-
-    // create path and map variables
-    String path = "/content/importdeal".replaceAll("{format}","json");
-
-    // query params
-    List<QueryParam> queryParams = [];
-    Map<String, String> headerParams = {};
-    Map<String, String> formParams = {};
-    
-    List<String> contentTypes = ["*/*"];
-
-    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = ["bearerAuth"];
-
-    if(contentType.startsWith("multipart/form-data")) {
-      bool hasFields = false;
-      MultipartRequest mp = new MultipartRequest(null, null);
-      if(hasFields)
-        postBody = mp;
-    }
-    else {
-          }
-
-    var response = await apiClient.invokeAPI(path,
-                                             'POST',
-                                             queryParams,
-                                             postBody,
-                                             headerParams,
-                                             formParams,
-                                             contentType,
-                                             authNames);
-
-    if(response.statusCode >= 400) {
-      throw new ApiException(response.statusCode, response.body);
-    } else if(response.body != null) {
-      return
-          apiClient.deserialize(response.body, 'String') as String ;
-    } else {
-      return null;
-    }
-  }
   /// List all pinned content
   ///
   /// This endpoint lists all content
@@ -796,57 +787,6 @@ class ContentApi {
 
     // create path and map variables
     String path = "/content/list".replaceAll("{format}","json");
-
-    // query params
-    List<QueryParam> queryParams = [];
-    Map<String, String> headerParams = {};
-    Map<String, String> formParams = {};
-    
-    List<String> contentTypes = [];
-
-    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = ["bearerAuth"];
-
-    if(contentType.startsWith("multipart/form-data")) {
-      bool hasFields = false;
-      MultipartRequest mp = new MultipartRequest(null, null);
-      if(hasFields)
-        postBody = mp;
-    }
-    else {
-          }
-
-    var response = await apiClient.invokeAPI(path,
-                                             'GET',
-                                             queryParams,
-                                             postBody,
-                                             headerParams,
-                                             formParams,
-                                             contentType,
-                                             authNames);
-
-    if(response.statusCode >= 400) {
-      throw new ApiException(response.statusCode, response.body);
-    } else if(response.body != null) {
-      return
-          apiClient.deserialize(response.body, 'String') as String ;
-    } else {
-      return null;
-    }
-  }
-  /// Read content
-  ///
-  /// This endpoint reads content from the blockstore
-  Future<String> contentReadContGet(String cont) async {
-    Object postBody = null;
-
-    // verify required params are set
-    if(cont == null) {
-     throw new ApiException(400, "Missing required param: cont");
-    }
-
-    // create path and map variables
-    String path = "/content/read/{cont}".replaceAll("{format}","json").replaceAll("{" + "cont" + "}", cont.toString());
 
     // query params
     List<QueryParam> queryParams = [];

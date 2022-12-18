@@ -64,24 +64,30 @@ namespace estuary-client.Api
         /// <returns>ApiResponse of string</returns>
         ApiResponse<string> AdminInvitesGetWithHttpInfo ();
         /// <summary>
-        /// Upload content via a car file
+        /// Add Car object
         /// </summary>
         /// <remarks>
-        /// This endpoint uploads content via a car file
+        /// This endpoint is used to add a car object to the network. The object can be a file or a directory.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>string</returns>
-        string ContentAddCarPost ();
+        /// <param name="body">Car</param>
+        /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
+        /// <param name="filename">Filename (optional)</param>
+        /// <returns>UtilContentAddResponse</returns>
+        UtilContentAddResponse ContentAddCarPost (string body, string ignoreDupes = null, string filename = null);
 
         /// <summary>
-        /// Upload content via a car file
+        /// Add Car object
         /// </summary>
         /// <remarks>
-        /// This endpoint uploads content via a car file
+        /// This endpoint is used to add a car object to the network. The object can be a file or a directory.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> ContentAddCarPostWithHttpInfo ();
+        /// <param name="body">Car</param>
+        /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
+        /// <param name="filename">Filename (optional)</param>
+        /// <returns>ApiResponse of UtilContentAddResponse</returns>
+        ApiResponse<UtilContentAddResponse> ContentAddCarPostWithHttpInfo (string body, string ignoreDupes = null, string filename = null);
         /// <summary>
         /// Add IPFS object
         /// </summary>
@@ -106,24 +112,38 @@ namespace estuary-client.Api
         /// <returns>ApiResponse of string</returns>
         ApiResponse<string> ContentAddIpfsPostWithHttpInfo (TypesIpfsPin body, string ignoreDupes = null);
         /// <summary>
-        /// Upload a file
+        /// Add new content
         /// </summary>
         /// <remarks>
-        /// This endpoint uploads a file.
+        /// This endpoint is used to upload new content.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>string</returns>
-        string ContentAddPost ();
+        /// <param name="data"></param>
+        /// <param name="filename"></param>
+        /// <param name="coluuid">Collection UUID (optional)</param>
+        /// <param name="replication">Replication value (optional)</param>
+        /// <param name="ignoreDupes">Ignore Dupes true/false (optional)</param>
+        /// <param name="lazyProvide">Lazy Provide true/false (optional)</param>
+        /// <param name="dir">Directory (optional)</param>
+        /// <returns>UtilContentAddResponse</returns>
+        UtilContentAddResponse ContentAddPost (byte[] data, string filename, string coluuid = null, int? replication = null, string ignoreDupes = null, string lazyProvide = null, string dir = null);
 
         /// <summary>
-        /// Upload a file
+        /// Add new content
         /// </summary>
         /// <remarks>
-        /// This endpoint uploads a file.
+        /// This endpoint is used to upload new content.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> ContentAddPostWithHttpInfo ();
+        /// <param name="data"></param>
+        /// <param name="filename"></param>
+        /// <param name="coluuid">Collection UUID (optional)</param>
+        /// <param name="replication">Replication value (optional)</param>
+        /// <param name="ignoreDupes">Ignore Dupes true/false (optional)</param>
+        /// <param name="lazyProvide">Lazy Provide true/false (optional)</param>
+        /// <param name="dir">Directory (optional)</param>
+        /// <returns>ApiResponse of UtilContentAddResponse</returns>
+        ApiResponse<UtilContentAddResponse> ContentAddPostWithHttpInfo (byte[] data, string filename, string coluuid = null, int? replication = null, string ignoreDupes = null, string lazyProvide = null, string dir = null);
         /// <summary>
         /// Get aggregated content stats
         /// </summary>
@@ -324,27 +344,6 @@ namespace estuary-client.Api
         /// <returns>ApiResponse of string</returns>
         ApiResponse<string> ContentIdGetWithHttpInfo (int? id);
         /// <summary>
-        /// Import a deal
-        /// </summary>
-        /// <remarks>
-        /// This endpoint imports a deal into the shuttle.
-        /// </remarks>
-        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Import a deal</param>
-        /// <returns>string</returns>
-        string ContentImportdealPost (MainImportDealBody body);
-
-        /// <summary>
-        /// Import a deal
-        /// </summary>
-        /// <remarks>
-        /// This endpoint imports a deal into the shuttle.
-        /// </remarks>
-        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Import a deal</param>
-        /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> ContentImportdealPostWithHttpInfo (MainImportDealBody body);
-        /// <summary>
         /// List all pinned content
         /// </summary>
         /// <remarks>
@@ -363,27 +362,6 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of string</returns>
         ApiResponse<string> ContentListGetWithHttpInfo ();
-        /// <summary>
-        /// Read content
-        /// </summary>
-        /// <remarks>
-        /// This endpoint reads content from the blockstore
-        /// </remarks>
-        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cont">CID</param>
-        /// <returns>string</returns>
-        string ContentReadContGet (string cont);
-
-        /// <summary>
-        /// Read content
-        /// </summary>
-        /// <remarks>
-        /// This endpoint reads content from the blockstore
-        /// </remarks>
-        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cont">CID</param>
-        /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> ContentReadContGetWithHttpInfo (string cont);
         /// <summary>
         /// Get staging zone for user, excluding its contents
         /// </summary>
@@ -536,24 +514,30 @@ namespace estuary-client.Api
         /// <returns>Task of ApiResponse (string)</returns>
         System.Threading.Tasks.Task<ApiResponse<string>> AdminInvitesGetAsyncWithHttpInfo ();
         /// <summary>
-        /// Upload content via a car file
+        /// Add Car object
         /// </summary>
         /// <remarks>
-        /// This endpoint uploads content via a car file
+        /// This endpoint is used to add a car object to the network. The object can be a file or a directory.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> ContentAddCarPostAsync ();
+        /// <param name="body">Car</param>
+        /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
+        /// <param name="filename">Filename (optional)</param>
+        /// <returns>Task of UtilContentAddResponse</returns>
+        System.Threading.Tasks.Task<UtilContentAddResponse> ContentAddCarPostAsync (string body, string ignoreDupes = null, string filename = null);
 
         /// <summary>
-        /// Upload content via a car file
+        /// Add Car object
         /// </summary>
         /// <remarks>
-        /// This endpoint uploads content via a car file
+        /// This endpoint is used to add a car object to the network. The object can be a file or a directory.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> ContentAddCarPostAsyncWithHttpInfo ();
+        /// <param name="body">Car</param>
+        /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
+        /// <param name="filename">Filename (optional)</param>
+        /// <returns>Task of ApiResponse (UtilContentAddResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UtilContentAddResponse>> ContentAddCarPostAsyncWithHttpInfo (string body, string ignoreDupes = null, string filename = null);
         /// <summary>
         /// Add IPFS object
         /// </summary>
@@ -578,24 +562,38 @@ namespace estuary-client.Api
         /// <returns>Task of ApiResponse (string)</returns>
         System.Threading.Tasks.Task<ApiResponse<string>> ContentAddIpfsPostAsyncWithHttpInfo (TypesIpfsPin body, string ignoreDupes = null);
         /// <summary>
-        /// Upload a file
+        /// Add new content
         /// </summary>
         /// <remarks>
-        /// This endpoint uploads a file.
+        /// This endpoint is used to upload new content.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> ContentAddPostAsync ();
+        /// <param name="data"></param>
+        /// <param name="filename"></param>
+        /// <param name="coluuid">Collection UUID (optional)</param>
+        /// <param name="replication">Replication value (optional)</param>
+        /// <param name="ignoreDupes">Ignore Dupes true/false (optional)</param>
+        /// <param name="lazyProvide">Lazy Provide true/false (optional)</param>
+        /// <param name="dir">Directory (optional)</param>
+        /// <returns>Task of UtilContentAddResponse</returns>
+        System.Threading.Tasks.Task<UtilContentAddResponse> ContentAddPostAsync (byte[] data, string filename, string coluuid = null, int? replication = null, string ignoreDupes = null, string lazyProvide = null, string dir = null);
 
         /// <summary>
-        /// Upload a file
+        /// Add new content
         /// </summary>
         /// <remarks>
-        /// This endpoint uploads a file.
+        /// This endpoint is used to upload new content.
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> ContentAddPostAsyncWithHttpInfo ();
+        /// <param name="data"></param>
+        /// <param name="filename"></param>
+        /// <param name="coluuid">Collection UUID (optional)</param>
+        /// <param name="replication">Replication value (optional)</param>
+        /// <param name="ignoreDupes">Ignore Dupes true/false (optional)</param>
+        /// <param name="lazyProvide">Lazy Provide true/false (optional)</param>
+        /// <param name="dir">Directory (optional)</param>
+        /// <returns>Task of ApiResponse (UtilContentAddResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UtilContentAddResponse>> ContentAddPostAsyncWithHttpInfo (byte[] data, string filename, string coluuid = null, int? replication = null, string ignoreDupes = null, string lazyProvide = null, string dir = null);
         /// <summary>
         /// Get aggregated content stats
         /// </summary>
@@ -796,27 +794,6 @@ namespace estuary-client.Api
         /// <returns>Task of ApiResponse (string)</returns>
         System.Threading.Tasks.Task<ApiResponse<string>> ContentIdGetAsyncWithHttpInfo (int? id);
         /// <summary>
-        /// Import a deal
-        /// </summary>
-        /// <remarks>
-        /// This endpoint imports a deal into the shuttle.
-        /// </remarks>
-        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Import a deal</param>
-        /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> ContentImportdealPostAsync (MainImportDealBody body);
-
-        /// <summary>
-        /// Import a deal
-        /// </summary>
-        /// <remarks>
-        /// This endpoint imports a deal into the shuttle.
-        /// </remarks>
-        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Import a deal</param>
-        /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> ContentImportdealPostAsyncWithHttpInfo (MainImportDealBody body);
-        /// <summary>
         /// List all pinned content
         /// </summary>
         /// <remarks>
@@ -835,27 +812,6 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (string)</returns>
         System.Threading.Tasks.Task<ApiResponse<string>> ContentListGetAsyncWithHttpInfo ();
-        /// <summary>
-        /// Read content
-        /// </summary>
-        /// <remarks>
-        /// This endpoint reads content from the blockstore
-        /// </remarks>
-        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cont">CID</param>
-        /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> ContentReadContGetAsync (string cont);
-
-        /// <summary>
-        /// Read content
-        /// </summary>
-        /// <remarks>
-        /// This endpoint reads content from the blockstore
-        /// </remarks>
-        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cont">CID</param>
-        /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> ContentReadContGetAsyncWithHttpInfo (string cont);
         /// <summary>
         /// Get staging zone for user, excluding its contents
         /// </summary>
@@ -1347,23 +1303,32 @@ namespace estuary-client.Api
         }
 
         /// <summary>
-        /// Upload content via a car file This endpoint uploads content via a car file
+        /// Add Car object This endpoint is used to add a car object to the network. The object can be a file or a directory.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>string</returns>
-        public string ContentAddCarPost ()
+        /// <param name="body">Car</param>
+        /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
+        /// <param name="filename">Filename (optional)</param>
+        /// <returns>UtilContentAddResponse</returns>
+        public UtilContentAddResponse ContentAddCarPost (string body, string ignoreDupes = null, string filename = null)
         {
-             ApiResponse<string> localVarResponse = ContentAddCarPostWithHttpInfo();
+             ApiResponse<UtilContentAddResponse> localVarResponse = ContentAddCarPostWithHttpInfo(body, ignoreDupes, filename);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Upload content via a car file This endpoint uploads content via a car file
+        /// Add Car object This endpoint is used to add a car object to the network. The object can be a file or a directory.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > ContentAddCarPostWithHttpInfo ()
+        /// <param name="body">Car</param>
+        /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
+        /// <param name="filename">Filename (optional)</param>
+        /// <returns>ApiResponse of UtilContentAddResponse</returns>
+        public ApiResponse< UtilContentAddResponse > ContentAddCarPostWithHttpInfo (string body, string ignoreDupes = null, string filename = null)
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling ContentApi->ContentAddCarPost");
 
             var localVarPath = "/content/add-car";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1375,6 +1340,7 @@ namespace estuary-client.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "*/*"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -1386,6 +1352,16 @@ namespace estuary-client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (ignoreDupes != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "ignore-dupes", ignoreDupes)); // query parameter
+            if (filename != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "filename", filename)); // query parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
             // authentication (bearerAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
             {
@@ -1405,30 +1381,39 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<string>(localVarStatusCode,
+            return new ApiResponse<UtilContentAddResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (UtilContentAddResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UtilContentAddResponse)));
         }
 
         /// <summary>
-        /// Upload content via a car file This endpoint uploads content via a car file
+        /// Add Car object This endpoint is used to add a car object to the network. The object can be a file or a directory.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> ContentAddCarPostAsync ()
+        /// <param name="body">Car</param>
+        /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
+        /// <param name="filename">Filename (optional)</param>
+        /// <returns>Task of UtilContentAddResponse</returns>
+        public async System.Threading.Tasks.Task<UtilContentAddResponse> ContentAddCarPostAsync (string body, string ignoreDupes = null, string filename = null)
         {
-             ApiResponse<string> localVarResponse = await ContentAddCarPostAsyncWithHttpInfo();
+             ApiResponse<UtilContentAddResponse> localVarResponse = await ContentAddCarPostAsyncWithHttpInfo(body, ignoreDupes, filename);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Upload content via a car file This endpoint uploads content via a car file
+        /// Add Car object This endpoint is used to add a car object to the network. The object can be a file or a directory.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> ContentAddCarPostAsyncWithHttpInfo ()
+        /// <param name="body">Car</param>
+        /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
+        /// <param name="filename">Filename (optional)</param>
+        /// <returns>Task of ApiResponse (UtilContentAddResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<UtilContentAddResponse>> ContentAddCarPostAsyncWithHttpInfo (string body, string ignoreDupes = null, string filename = null)
         {
+            // verify the required parameter 'body' is set
+            if (body == null)
+                throw new ApiException(400, "Missing required parameter 'body' when calling ContentApi->ContentAddCarPost");
 
             var localVarPath = "/content/add-car";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1440,6 +1425,7 @@ namespace estuary-client.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "*/*"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -1451,6 +1437,16 @@ namespace estuary-client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (ignoreDupes != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "ignore-dupes", ignoreDupes)); // query parameter
+            if (filename != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "filename", filename)); // query parameter
+            if (body != null && body.GetType() != typeof(byte[]))
+            {
+                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
+            }
+            else
+            {
+                localVarPostBody = body; // byte array
+            }
             // authentication (bearerAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
             {
@@ -1470,9 +1466,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<string>(localVarStatusCode,
+            return new ApiResponse<UtilContentAddResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (UtilContentAddResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UtilContentAddResponse)));
         }
 
         /// <summary>
@@ -1639,23 +1635,43 @@ namespace estuary-client.Api
         }
 
         /// <summary>
-        /// Upload a file This endpoint uploads a file.
+        /// Add new content This endpoint is used to upload new content.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>string</returns>
-        public string ContentAddPost ()
+        /// <param name="data"></param>
+        /// <param name="filename"></param>
+        /// <param name="coluuid">Collection UUID (optional)</param>
+        /// <param name="replication">Replication value (optional)</param>
+        /// <param name="ignoreDupes">Ignore Dupes true/false (optional)</param>
+        /// <param name="lazyProvide">Lazy Provide true/false (optional)</param>
+        /// <param name="dir">Directory (optional)</param>
+        /// <returns>UtilContentAddResponse</returns>
+        public UtilContentAddResponse ContentAddPost (byte[] data, string filename, string coluuid = null, int? replication = null, string ignoreDupes = null, string lazyProvide = null, string dir = null)
         {
-             ApiResponse<string> localVarResponse = ContentAddPostWithHttpInfo();
+             ApiResponse<UtilContentAddResponse> localVarResponse = ContentAddPostWithHttpInfo(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Upload a file This endpoint uploads a file.
+        /// Add new content This endpoint is used to upload new content.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > ContentAddPostWithHttpInfo ()
+        /// <param name="data"></param>
+        /// <param name="filename"></param>
+        /// <param name="coluuid">Collection UUID (optional)</param>
+        /// <param name="replication">Replication value (optional)</param>
+        /// <param name="ignoreDupes">Ignore Dupes true/false (optional)</param>
+        /// <param name="lazyProvide">Lazy Provide true/false (optional)</param>
+        /// <param name="dir">Directory (optional)</param>
+        /// <returns>ApiResponse of UtilContentAddResponse</returns>
+        public ApiResponse< UtilContentAddResponse > ContentAddPostWithHttpInfo (byte[] data, string filename, string coluuid = null, int? replication = null, string ignoreDupes = null, string lazyProvide = null, string dir = null)
         {
+            // verify the required parameter 'data' is set
+            if (data == null)
+                throw new ApiException(400, "Missing required parameter 'data' when calling ContentApi->ContentAddPost");
+            // verify the required parameter 'filename' is set
+            if (filename == null)
+                throw new ApiException(400, "Missing required parameter 'filename' when calling ContentApi->ContentAddPost");
 
             var localVarPath = "/content/add";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1667,6 +1683,7 @@ namespace estuary-client.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "multipart/form-data"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -1678,6 +1695,13 @@ namespace estuary-client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (coluuid != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "coluuid", coluuid)); // query parameter
+            if (replication != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "replication", replication)); // query parameter
+            if (ignoreDupes != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "ignore-dupes", ignoreDupes)); // query parameter
+            if (lazyProvide != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "lazy-provide", lazyProvide)); // query parameter
+            if (dir != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "dir", dir)); // query parameter
+            if (data != null) localVarFileParams.Add("data", this.Configuration.ApiClient.ParameterToFile("data", data));
+            if (filename != null) localVarFormParams.Add("filename", this.Configuration.ApiClient.ParameterToString(filename)); // form parameter
             // authentication (bearerAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
             {
@@ -1697,30 +1721,50 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<string>(localVarStatusCode,
+            return new ApiResponse<UtilContentAddResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (UtilContentAddResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UtilContentAddResponse)));
         }
 
         /// <summary>
-        /// Upload a file This endpoint uploads a file.
+        /// Add new content This endpoint is used to upload new content.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> ContentAddPostAsync ()
+        /// <param name="data"></param>
+        /// <param name="filename"></param>
+        /// <param name="coluuid">Collection UUID (optional)</param>
+        /// <param name="replication">Replication value (optional)</param>
+        /// <param name="ignoreDupes">Ignore Dupes true/false (optional)</param>
+        /// <param name="lazyProvide">Lazy Provide true/false (optional)</param>
+        /// <param name="dir">Directory (optional)</param>
+        /// <returns>Task of UtilContentAddResponse</returns>
+        public async System.Threading.Tasks.Task<UtilContentAddResponse> ContentAddPostAsync (byte[] data, string filename, string coluuid = null, int? replication = null, string ignoreDupes = null, string lazyProvide = null, string dir = null)
         {
-             ApiResponse<string> localVarResponse = await ContentAddPostAsyncWithHttpInfo();
+             ApiResponse<UtilContentAddResponse> localVarResponse = await ContentAddPostAsyncWithHttpInfo(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Upload a file This endpoint uploads a file.
+        /// Add new content This endpoint is used to upload new content.
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> ContentAddPostAsyncWithHttpInfo ()
+        /// <param name="data"></param>
+        /// <param name="filename"></param>
+        /// <param name="coluuid">Collection UUID (optional)</param>
+        /// <param name="replication">Replication value (optional)</param>
+        /// <param name="ignoreDupes">Ignore Dupes true/false (optional)</param>
+        /// <param name="lazyProvide">Lazy Provide true/false (optional)</param>
+        /// <param name="dir">Directory (optional)</param>
+        /// <returns>Task of ApiResponse (UtilContentAddResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<UtilContentAddResponse>> ContentAddPostAsyncWithHttpInfo (byte[] data, string filename, string coluuid = null, int? replication = null, string ignoreDupes = null, string lazyProvide = null, string dir = null)
         {
+            // verify the required parameter 'data' is set
+            if (data == null)
+                throw new ApiException(400, "Missing required parameter 'data' when calling ContentApi->ContentAddPost");
+            // verify the required parameter 'filename' is set
+            if (filename == null)
+                throw new ApiException(400, "Missing required parameter 'filename' when calling ContentApi->ContentAddPost");
 
             var localVarPath = "/content/add";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1732,6 +1776,7 @@ namespace estuary-client.Api
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
+                "multipart/form-data"
             };
             String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
 
@@ -1743,6 +1788,13 @@ namespace estuary-client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (coluuid != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "coluuid", coluuid)); // query parameter
+            if (replication != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "replication", replication)); // query parameter
+            if (ignoreDupes != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "ignore-dupes", ignoreDupes)); // query parameter
+            if (lazyProvide != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "lazy-provide", lazyProvide)); // query parameter
+            if (dir != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "dir", dir)); // query parameter
+            if (data != null) localVarFileParams.Add("data", this.Configuration.ApiClient.ParameterToFile("data", data));
+            if (filename != null) localVarFormParams.Add("filename", this.Configuration.ApiClient.ParameterToString(filename)); // form parameter
             // authentication (bearerAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
             {
@@ -1762,9 +1814,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<string>(localVarStatusCode,
+            return new ApiResponse<UtilContentAddResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+                (UtilContentAddResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UtilContentAddResponse)));
         }
 
         /// <summary>
@@ -3095,163 +3147,6 @@ namespace estuary-client.Api
         }
 
         /// <summary>
-        /// Import a deal This endpoint imports a deal into the shuttle.
-        /// </summary>
-        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Import a deal</param>
-        /// <returns>string</returns>
-        public string ContentImportdealPost (MainImportDealBody body)
-        {
-             ApiResponse<string> localVarResponse = ContentImportdealPostWithHttpInfo(body);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Import a deal This endpoint imports a deal into the shuttle.
-        /// </summary>
-        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Import a deal</param>
-        /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > ContentImportdealPostWithHttpInfo (MainImportDealBody body)
-        {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling ContentApi->ContentImportdealPost");
-
-            var localVarPath = "/content/importdeal";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "*/*"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (body != null && body.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = body; // byte array
-            }
-            // authentication (bearerAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
-            {
-                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ContentImportdealPost", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<string>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
-        }
-
-        /// <summary>
-        /// Import a deal This endpoint imports a deal into the shuttle.
-        /// </summary>
-        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Import a deal</param>
-        /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> ContentImportdealPostAsync (MainImportDealBody body)
-        {
-             ApiResponse<string> localVarResponse = await ContentImportdealPostAsyncWithHttpInfo(body);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Import a deal This endpoint imports a deal into the shuttle.
-        /// </summary>
-        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Import a deal</param>
-        /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> ContentImportdealPostAsyncWithHttpInfo (MainImportDealBody body)
-        {
-            // verify the required parameter 'body' is set
-            if (body == null)
-                throw new ApiException(400, "Missing required parameter 'body' when calling ContentApi->ContentImportdealPost");
-
-            var localVarPath = "/content/importdeal";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "*/*"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (body != null && body.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = body; // byte array
-            }
-            // authentication (bearerAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
-            {
-                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ContentImportdealPost", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<string>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
-        }
-
-        /// <summary>
         /// List all pinned content This endpoint lists all content
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
@@ -3372,147 +3267,6 @@ namespace estuary-client.Api
             if (ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("ContentListGet", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<string>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
-        }
-
-        /// <summary>
-        /// Read content This endpoint reads content from the blockstore
-        /// </summary>
-        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cont">CID</param>
-        /// <returns>string</returns>
-        public string ContentReadContGet (string cont)
-        {
-             ApiResponse<string> localVarResponse = ContentReadContGetWithHttpInfo(cont);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Read content This endpoint reads content from the blockstore
-        /// </summary>
-        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cont">CID</param>
-        /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > ContentReadContGetWithHttpInfo (string cont)
-        {
-            // verify the required parameter 'cont' is set
-            if (cont == null)
-                throw new ApiException(400, "Missing required parameter 'cont' when calling ContentApi->ContentReadContGet");
-
-            var localVarPath = "/content/read/{cont}";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (cont != null) localVarPathParams.Add("cont", this.Configuration.ApiClient.ParameterToString(cont)); // path parameter
-            // authentication (bearerAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
-            {
-                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ContentReadContGet", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<string>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
-        }
-
-        /// <summary>
-        /// Read content This endpoint reads content from the blockstore
-        /// </summary>
-        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cont">CID</param>
-        /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> ContentReadContGetAsync (string cont)
-        {
-             ApiResponse<string> localVarResponse = await ContentReadContGetAsyncWithHttpInfo(cont);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Read content This endpoint reads content from the blockstore
-        /// </summary>
-        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="cont">CID</param>
-        /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> ContentReadContGetAsyncWithHttpInfo (string cont)
-        {
-            // verify the required parameter 'cont' is set
-            if (cont == null)
-                throw new ApiException(400, "Missing required parameter 'cont' when calling ContentApi->ContentReadContGet");
-
-            var localVarPath = "/content/read/{cont}";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "application/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (cont != null) localVarPathParams.Add("cont", this.Configuration.ApiClient.ParameterToString(cont)); // path parameter
-            // authentication (bearerAuth) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
-            {
-                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ContentReadContGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 

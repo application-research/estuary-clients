@@ -5,6 +5,7 @@
  */
 package io.swagger.api;
 
+import io.swagger.model.PeeringPeeringPeer;
 import io.swagger.model.UtilHttpError;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.micronaut.http.*;
@@ -23,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-12-14T06:22:39.266Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-12-18T07:30:24.869Z[GMT]")
 @Controller
 public interface AdminApi {
 
@@ -84,7 +85,7 @@ public interface AdminApi {
     @ApiResponse(responseCode = "400", description = "Bad Request")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
     @Delete(value = "/admin/peering/peers", produces = { "application/json" }, consumes = {"*/*"})
-    default Single<HttpResponse<String>> adminPeeringPeersDelete(@Parameter(description = "Peer ids") @Valid @Body List<Boolean> body
+    default Single<HttpResponse<String>> adminPeeringPeersDelete(@Parameter(description = "Peer ids") @Valid @Body List<String> body
 ) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
@@ -108,8 +109,9 @@ public interface AdminApi {
     @ApiResponse(responseCode = "200", description = "OK")
     @ApiResponse(responseCode = "400", description = "Bad Request")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
-    @Post(value = "/admin/peering/peers", produces = { "application/json" })
-    default Single<HttpResponse<String>> adminPeeringPeersPost() {
+    @Post(value = "/admin/peering/peers", produces = { "application/json" }, consumes = {"*/*"})
+    default Single<HttpResponse<String>> adminPeeringPeersPost(@Parameter(description = "Peering Peer array") @Valid @Body List<PeeringPeeringPeer> body
+) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });

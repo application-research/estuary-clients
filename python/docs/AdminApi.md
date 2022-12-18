@@ -36,7 +36,7 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = estuary_client.AdminApi(estuary_client.ApiClient(configuration))
-body = [True] # list[bool] | Peer ids
+body = ['body_example'] # list[str] | Peer ids
 
 try:
     # Remove peers on Peering Service
@@ -50,7 +50,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**list[bool]**](bool.md)| Peer ids | 
+ **body** | [**list[str]**](str.md)| Peer ids | 
 
 ### Return type
 
@@ -118,7 +118,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **admin_peering_peers_post**
-> str admin_peering_peers_post()
+> str admin_peering_peers_post(body)
 
 Add peers on Peering Service
 
@@ -140,17 +140,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = estuary_client.AdminApi(estuary_client.ApiClient(configuration))
+body = [estuary_client.PeeringPeeringPeer()] # list[PeeringPeeringPeer] | Peering Peer array
 
 try:
     # Add peers on Peering Service
-    api_response = api_instance.admin_peering_peers_post()
+    api_response = api_instance.admin_peering_peers_post(body)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling AdminApi->admin_peering_peers_post: %s\n" % e)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**list[PeeringPeeringPeer]**](PeeringPeeringPeer.md)| Peering Peer array | 
 
 ### Return type
 
@@ -162,7 +166,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

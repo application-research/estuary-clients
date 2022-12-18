@@ -24,6 +24,7 @@
 
 package io.swagger.api;
 
+import io.swagger.model.PeeringPeeringPeer;
 import io.swagger.model.UtilHttpError;
 import org.junit.Test;
 import org.junit.Before;
@@ -79,7 +80,7 @@ public class AdminApiTest {
      */
     @Test
     public void adminPeeringPeersDeleteTest() {
-        List<Boolean> body = null;
+        List<String> body = null;
         //String response = api.adminPeeringPeersDelete(body);
         //assertNotNull(response);
         // TODO: test validations
@@ -112,7 +113,8 @@ public class AdminApiTest {
      */
     @Test
     public void adminPeeringPeersPostTest() {
-        //String response = api.adminPeeringPeersPost();
+        List<PeeringPeeringPeer> body = null;
+        //String response = api.adminPeeringPeersPost(body);
         //assertNotNull(response);
         // TODO: test validations
         

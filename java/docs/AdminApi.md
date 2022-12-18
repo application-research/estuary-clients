@@ -39,7 +39,7 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 AdminApi apiInstance = new AdminApi();
-List<Boolean> body = Arrays.asList(true); // List<Boolean> | Peer ids
+List<String> body = Arrays.asList("body_example"); // List<String> | Peer ids
 try {
     String result = apiInstance.adminPeeringPeersDelete(body);
     System.out.println(result);
@@ -53,7 +53,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**List&lt;Boolean&gt;**](Boolean.md)| Peer ids |
+ **body** | [**List&lt;String&gt;**](String.md)| Peer ids |
 
 ### Return type
 
@@ -121,7 +121,7 @@ This endpoint does not need any parameter.
 
 <a name="adminPeeringPeersPost"></a>
 # **adminPeeringPeersPost**
-> String adminPeeringPeersPost()
+> String adminPeeringPeersPost(body)
 
 Add peers on Peering Service
 
@@ -145,8 +145,9 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 AdminApi apiInstance = new AdminApi();
+List<PeeringPeeringPeer> body = Arrays.asList(new PeeringPeeringPeer()); // List<PeeringPeeringPeer> | Peering Peer array
 try {
-    String result = apiInstance.adminPeeringPeersPost();
+    String result = apiInstance.adminPeeringPeersPost(body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling AdminApi#adminPeeringPeersPost");
@@ -155,7 +156,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**List&lt;PeeringPeeringPeer&gt;**](PeeringPeeringPeer.md)| Peering Peer array |
 
 ### Return type
 
@@ -167,7 +171,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 <a name="adminPeeringStartPost"></a>

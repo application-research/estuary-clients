@@ -49,7 +49,7 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new AdminApi();
-var body = [new List&lt;bool&gt;()]; // List<bool> | Peer ids
+var body = [new List&lt;String&gt;()]; // List<String> | Peer ids
 
 try {
     var result = api_instance.adminPeeringPeersDelete(body);
@@ -86,9 +86,9 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**collectionsPost**](docs//CollectionsApi.md#collectionspost) | **POST** /collections/ | Create a new collection
 *ContentApi* | [**adminInvitesCodePost**](docs//ContentApi.md#admininvitescodepost) | **POST** /admin/invites/{code} | Create an Estuary invite
 *ContentApi* | [**adminInvitesGet**](docs//ContentApi.md#admininvitesget) | **GET** /admin/invites | Get Estuary invites
-*ContentApi* | [**contentAddCarPost**](docs//ContentApi.md#contentaddcarpost) | **POST** /content/add-car | Upload content via a car file
+*ContentApi* | [**contentAddCarPost**](docs//ContentApi.md#contentaddcarpost) | **POST** /content/add-car | Add Car object
 *ContentApi* | [**contentAddIpfsPost**](docs//ContentApi.md#contentaddipfspost) | **POST** /content/add-ipfs | Add IPFS object
-*ContentApi* | [**contentAddPost**](docs//ContentApi.md#contentaddpost) | **POST** /content/add | Upload a file
+*ContentApi* | [**contentAddPost**](docs//ContentApi.md#contentaddpost) | **POST** /content/add | Add new content
 *ContentApi* | [**contentAggregatedContentGet**](docs//ContentApi.md#contentaggregatedcontentget) | **GET** /content/aggregated/{content} | Get aggregated content stats
 *ContentApi* | [**contentAllDealsGet**](docs//ContentApi.md#contentalldealsget) | **GET** /content/all-deals | Get all deals for a user
 *ContentApi* | [**contentBwUsageContentGet**](docs//ContentApi.md#contentbwusagecontentget) | **GET** /content/bw-usage/{content} | Get content bandwidth
@@ -98,9 +98,7 @@ Class | Method | HTTP request | Description
 *ContentApi* | [**contentEnsureReplicationDatacidGet**](docs//ContentApi.md#contentensurereplicationdatacidget) | **GET** /content/ensure-replication/{datacid} | Ensure Replication
 *ContentApi* | [**contentFailuresContentGet**](docs//ContentApi.md#contentfailurescontentget) | **GET** /content/failures/{content} | List all failures for a content
 *ContentApi* | [**contentIdGet**](docs//ContentApi.md#contentidget) | **GET** /content/{id} | Content
-*ContentApi* | [**contentImportdealPost**](docs//ContentApi.md#contentimportdealpost) | **POST** /content/importdeal | Import a deal
 *ContentApi* | [**contentListGet**](docs//ContentApi.md#contentlistget) | **GET** /content/list | List all pinned content
-*ContentApi* | [**contentReadContGet**](docs//ContentApi.md#contentreadcontget) | **GET** /content/read/{cont} | Read content
 *ContentApi* | [**contentStagingZonesGet**](docs//ContentApi.md#contentstagingzonesget) | **GET** /content/staging-zones | Get staging zone for user, excluding its contents
 *ContentApi* | [**contentStagingZonesStagingZoneContentsGet**](docs//ContentApi.md#contentstagingzonesstagingzonecontentsget) | **GET** /content/staging-zones/{staging_zone}/contents | Get contents for a staging zone
 *ContentApi* | [**contentStagingZonesStagingZoneGet**](docs//ContentApi.md#contentstagingzonesstagingzoneget) | **GET** /content/staging-zones/{staging_zone} | Get staging zone without its contents field populated
@@ -128,7 +126,6 @@ Class | Method | HTTP request | Description
 *MinerApi* | [**minerUnsuspendMinerPut**](docs//MinerApi.md#minerunsuspendminerput) | **PUT** /miner/unsuspend/{miner} | Unuspend Miner
 *MinerApi* | [**publicMinersDealsMinerGet**](docs//MinerApi.md#publicminersdealsminerget) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *MinerApi* | [**publicMinersStatsMinerGet**](docs//MinerApi.md#publicminersstatsminerget) | **GET** /public/miners/stats/{miner} | Get miner stats
-*NetApi* | [**netAddrsGet**](docs//NetApi.md#netaddrsget) | **GET** /net/addrs | Net Addrs
 *NetApi* | [**publicMinersFailuresMinerGet**](docs//NetApi.md#publicminersfailuresminerget) | **GET** /public/miners/failures/{miner} | Get all miners
 *NetApi* | [**publicMinersGet**](docs//NetApi.md#publicminersget) | **GET** /public/miners | Get all miners
 *NetApi* | [**publicNetAddrsGet**](docs//NetApi.md#publicnetaddrsget) | **GET** /public/net/addrs | Net Addrs
@@ -172,10 +169,11 @@ Class | Method | HTTP request | Description
  - [CollectionsCidType](docs//CollectionsCidType.md)
  - [CollectionsCollection](docs//CollectionsCollection.md)
  - [CollectionsCollectionListResponse](docs//CollectionsCollectionListResponse.md)
- - [MainImportDealBody](docs//MainImportDealBody.md)
+ - [ContentAddBody](docs//ContentAddBody.md)
  - [MinerClaimMinerBody](docs//MinerClaimMinerBody.md)
  - [MinerMinerSetInfoParams](docs//MinerMinerSetInfoParams.md)
  - [MinerSuspendMinerBody](docs//MinerSuspendMinerBody.md)
+ - [PeeringPeeringPeer](docs//PeeringPeeringPeer.md)
  - [TypesIpfsListPinStatusResponse](docs//TypesIpfsListPinStatusResponse.md)
  - [TypesIpfsPin](docs//TypesIpfsPin.md)
  - [TypesIpfsPinStatusResponse](docs//TypesIpfsPinStatusResponse.md)

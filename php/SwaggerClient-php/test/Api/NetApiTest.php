@@ -71,16 +71,6 @@ class NetApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test case for netAddrsGet
-     *
-     * Net Addrs.
-     *
-     */
-    public function testNetAddrsGet()
-    {
-    }
-
-    /**
      * Test case for publicMinersFailuresMinerGet
      *
      * Get all miners.

@@ -28,7 +28,7 @@ This endpoint can be used to remove a Peer from the Peering Service
 //import io.swagger.client.models.*;
 
 val apiInstance = AdminApi()
-val body : kotlin.Array<kotlin.Boolean> =  // kotlin.Array<kotlin.Boolean> | Peer ids
+val body : kotlin.Array<kotlin.String> =  // kotlin.Array<kotlin.String> | Peer ids
 try {
     val result : kotlin.String = apiInstance.adminPeeringPeersDelete(body)
     println(result)
@@ -45,7 +45,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**kotlin.Array&lt;kotlin.Boolean&gt;**](kotlin.Boolean.md)| Peer ids |
+ **body** | [**kotlin.Array&lt;kotlin.String&gt;**](kotlin.String.md)| Peer ids |
 
 ### Return type
 
@@ -105,7 +105,7 @@ This endpoint does not need any parameter.
 
 <a name="adminPeeringPeersPost"></a>
 # **adminPeeringPeersPost**
-> kotlin.String adminPeeringPeersPost()
+> kotlin.String adminPeeringPeersPost(body)
 
 Add peers on Peering Service
 
@@ -118,8 +118,9 @@ This endpoint can be used to add a Peer from the Peering Service
 //import io.swagger.client.models.*;
 
 val apiInstance = AdminApi()
+val body : kotlin.Array<PeeringPeeringPeer> =  // kotlin.Array<PeeringPeeringPeer> | Peering Peer array
 try {
-    val result : kotlin.String = apiInstance.adminPeeringPeersPost()
+    val result : kotlin.String = apiInstance.adminPeeringPeersPost(body)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling AdminApi#adminPeeringPeersPost")
@@ -131,7 +132,10 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**kotlin.Array&lt;PeeringPeeringPeer&gt;**](PeeringPeeringPeer.md)| Peering Peer array |
 
 ### Return type
 
@@ -143,7 +147,7 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: */*
  - **Accept**: application/json
 
 <a name="adminPeeringStartPost"></a>

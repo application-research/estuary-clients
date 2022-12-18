@@ -5,8 +5,9 @@
  */
 package io.swagger.api;
 
-import io.swagger.model.MainImportDealBody;
+import java.io.File;
 import io.swagger.model.TypesIpfsPin;
+import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,17 +27,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-12-14T06:22:39.266Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-12-18T07:30:24.869Z[GMT]")
 @Controller
 public interface ContentApi {
 
 
-    @Operation(summary = "Upload content via a car file", operationId = "contentAddCarPost", description = "This endpoint uploads content via a car file" , tags = {"content"})
+    @Operation(summary = "Add Car object", operationId = "contentAddCarPost", description = "This endpoint is used to add a car object to the network. The object can be a file or a directory." , tags = {"content"})
     @ApiResponse(responseCode = "200", description = "OK")
     @ApiResponse(responseCode = "400", description = "Bad Request")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
-    @Post(value = "/content/add-car", produces = { "application/json" })
-    default Single<HttpResponse<String>> contentAddCarPost() {
+    @Post(value = "/content/add-car", produces = { "application/json" }, consumes = {"*/*"})
+    default Single<HttpResponse<UtilContentAddResponse>> contentAddCarPost(@Parameter(description = "Car") @Valid @Body String body
+,@Nullable @Parameter(description = "Ignore Dupes") @Valid @QueryValue(value = "ignore-dupes") String ignoreDupes
+,@Nullable @Parameter(description = "Filename") @Valid @QueryValue(value = "filename") String filename
+) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -57,12 +61,19 @@ public interface ContentApi {
     }
 
 
-    @Operation(summary = "Upload a file", operationId = "contentAddPost", description = "This endpoint uploads a file." , tags = {"content"})
+    @Operation(summary = "Add new content", operationId = "contentAddPost", description = "This endpoint is used to upload new content." , tags = {"content"})
     @ApiResponse(responseCode = "200", description = "OK")
     @ApiResponse(responseCode = "400", description = "Bad Request")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
-    @Post(value = "/content/add", produces = { "application/json" })
-    default Single<HttpResponse<String>> contentAddPost() {
+    @Post(value = "/content/add", produces = { "application/json" }, consumes = {"multipart/form-data"})
+    default Single<HttpResponse<UtilContentAddResponse>> contentAddPost(@Parameter(description = "file detail") @Valid MultipartFile data
+,@Parameter(description = "") @QueryValue(value = "filename")  String filename
+,@Nullable @Parameter(description = "Collection UUID") @Valid @QueryValue(value = "coluuid") String coluuid
+,@Nullable @Parameter(description = "Replication value") @Valid @QueryValue(value = "replication") Integer replication
+,@Nullable @Parameter(description = "Ignore Dupes true/false") @Valid @QueryValue(value = "ignore-dupes") String ignoreDupes
+,@Nullable @Parameter(description = "Lazy Provide true/false") @Valid @QueryValue(value = "lazy-provide") String lazyProvide
+,@Nullable @Parameter(description = "Directory") @Valid @QueryValue(value = "dir") String dir
+) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });
@@ -191,38 +202,12 @@ public interface ContentApi {
     }
 
 
-    @Operation(summary = "Import a deal", operationId = "contentImportdealPost", description = "This endpoint imports a deal into the shuttle." , tags = {"content"})
-    @ApiResponse(responseCode = "200", description = "OK")
-    @ApiResponse(responseCode = "400", description = "Bad Request")
-    @ApiResponse(responseCode = "500", description = "Internal Server Error")
-    @Post(value = "/content/importdeal", produces = { "application/json" }, consumes = {"*/*"})
-    default Single<HttpResponse<String>> contentImportdealPost(@Parameter(description = "Import a deal") @Valid @Body MainImportDealBody body
-) {
-        return Single.fromCallable(() -> {
-            throw new UnsupportedOperationException();
-        });
-    }
-
-
     @Operation(summary = "List all pinned content", operationId = "contentListGet", description = "This endpoint lists all content" , tags = {"content"})
     @ApiResponse(responseCode = "200", description = "OK")
     @ApiResponse(responseCode = "400", description = "Bad Request")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
     @Get(value = "/content/list", produces = { "application/json" })
     default Single<HttpResponse<String>> contentListGet() {
-        return Single.fromCallable(() -> {
-            throw new UnsupportedOperationException();
-        });
-    }
-
-
-    @Operation(summary = "Read content", operationId = "contentReadContGet", description = "This endpoint reads content from the blockstore" , tags = {"content"})
-    @ApiResponse(responseCode = "200", description = "OK")
-    @ApiResponse(responseCode = "400", description = "Bad Request")
-    @ApiResponse(responseCode = "500", description = "Internal Server Error")
-    @Get(value = "/content/read/{cont}", produces = { "application/json" })
-    default Single<HttpResponse<String>> contentReadContGet(@Parameter(description = "CID") @PathVariable("cont") String cont
-) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });

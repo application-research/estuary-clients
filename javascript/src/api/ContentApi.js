@@ -13,8 +13,8 @@
  *
  */
 import {ApiClient} from "../ApiClient";
-import {MainImportDealBody} from '../model/MainImportDealBody';
 import {TypesIpfsPin} from '../model/TypesIpfsPin';
+import {UtilContentAddResponse} from '../model/UtilContentAddResponse';
 import {UtilContentCreateBody} from '../model/UtilContentCreateBody';
 import {UtilHttpError} from '../model/UtilHttpError';
 
@@ -130,25 +130,33 @@ export class ContentApi {
      * Callback function to receive the result of the contentAddCarPost operation.
      * @callback moduleapi/ContentApi~contentAddCarPostCallback
      * @param {String} error Error message, if any.
-     * @param {'String'{ data The data returned by the service call.
+     * @param {module:model/UtilContentAddResponse{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Upload content via a car file
-     * This endpoint uploads content via a car file
+     * Add Car object
+     * This endpoint is used to add a car object to the network. The object can be a file or a directory.
+     * @param {String} body Car
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.ignoreDupes Ignore Dupes
+     * @param {String} opts.filename Filename
      * @param {module:api/ContentApi~contentAddCarPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
-    contentAddCarPost(callback) {
-      
-      let postBody = null;
+    contentAddCarPost(body, opts, callback) {
+      opts = opts || {};
+      let postBody = body;
+      // verify the required parameter 'body' is set
+      if (body === undefined || body === null) {
+        throw new Error("Missing the required parameter 'body' when calling contentAddCarPost");
+      }
 
       let pathParams = {
         
       };
       let queryParams = {
-        
+        'ignore-dupes': opts['ignoreDupes'],'filename': opts['filename']
       };
       let headerParams = {
         
@@ -158,9 +166,9 @@ export class ContentApi {
       };
 
       let authNames = ['bearerAuth'];
-      let contentTypes = [];
+      let contentTypes = ['*/*'];
       let accepts = ['application/json'];
-      let returnType = 'String';
+      let returnType = UtilContentAddResponse;
 
       return this.apiClient.callApi(
         '/content/add-car', 'POST',
@@ -221,37 +229,53 @@ export class ContentApi {
      * Callback function to receive the result of the contentAddPost operation.
      * @callback moduleapi/ContentApi~contentAddPostCallback
      * @param {String} error Error message, if any.
-     * @param {'String'{ data The data returned by the service call.
+     * @param {module:model/UtilContentAddResponse{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Upload a file
-     * This endpoint uploads a file.
+     * Add new content
+     * This endpoint is used to upload new content.
+     * @param {Blob} data 
+     * @param {String} filename 
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.coluuid Collection UUID
+     * @param {Number} opts.replication Replication value
+     * @param {String} opts.ignoreDupes Ignore Dupes true/false
+     * @param {String} opts.lazyProvide Lazy Provide true/false
+     * @param {String} opts.dir Directory
      * @param {module:api/ContentApi~contentAddPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
-    contentAddPost(callback) {
-      
+    contentAddPost(data, filename, opts, callback) {
+      opts = opts || {};
       let postBody = null;
+      // verify the required parameter 'data' is set
+      if (data === undefined || data === null) {
+        throw new Error("Missing the required parameter 'data' when calling contentAddPost");
+      }
+      // verify the required parameter 'filename' is set
+      if (filename === undefined || filename === null) {
+        throw new Error("Missing the required parameter 'filename' when calling contentAddPost");
+      }
 
       let pathParams = {
         
       };
       let queryParams = {
-        
+        'coluuid': opts['coluuid'],'replication': opts['replication'],'ignore-dupes': opts['ignoreDupes'],'lazy-provide': opts['lazyProvide'],'dir': opts['dir']
       };
       let headerParams = {
         
       };
       let formParams = {
-        
+        'data': data,'filename': filename
       };
 
       let authNames = ['bearerAuth'];
-      let contentTypes = [];
+      let contentTypes = ['multipart/form-data'];
       let accepts = ['application/json'];
-      let returnType = 'String';
+      let returnType = UtilContentAddResponse;
 
       return this.apiClient.callApi(
         '/content/add', 'POST',
@@ -698,53 +722,6 @@ export class ContentApi {
       );
     }
     /**
-     * Callback function to receive the result of the contentImportdealPost operation.
-     * @callback moduleapi/ContentApi~contentImportdealPostCallback
-     * @param {String} error Error message, if any.
-     * @param {'String'{ data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Import a deal
-     * This endpoint imports a deal into the shuttle.
-     * @param {module:model/MainImportDealBody} body Import a deal
-     * @param {module:api/ContentApi~contentImportdealPostCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
-     */
-    contentImportdealPost(body, callback) {
-      
-      let postBody = body;
-      // verify the required parameter 'body' is set
-      if (body === undefined || body === null) {
-        throw new Error("Missing the required parameter 'body' when calling contentImportdealPost");
-      }
-
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
-
-      let authNames = ['bearerAuth'];
-      let contentTypes = ['*/*'];
-      let accepts = ['application/json'];
-      let returnType = 'String';
-
-      return this.apiClient.callApi(
-        '/content/importdeal', 'POST',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-    /**
      * Callback function to receive the result of the contentListGet operation.
      * @callback moduleapi/ContentApi~contentListGetCallback
      * @param {String} error Error message, if any.
@@ -782,53 +759,6 @@ export class ContentApi {
 
       return this.apiClient.callApi(
         '/content/list', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-    /**
-     * Callback function to receive the result of the contentReadContGet operation.
-     * @callback moduleapi/ContentApi~contentReadContGetCallback
-     * @param {String} error Error message, if any.
-     * @param {'String'{ data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Read content
-     * This endpoint reads content from the blockstore
-     * @param {String} cont CID
-     * @param {module:api/ContentApi~contentReadContGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
-     */
-    contentReadContGet(cont, callback) {
-      
-      let postBody = null;
-      // verify the required parameter 'cont' is set
-      if (cont === undefined || cont === null) {
-        throw new Error("Missing the required parameter 'cont' when calling contentReadContGet");
-      }
-
-      let pathParams = {
-        'cont': cont
-      };
-      let queryParams = {
-        
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
-
-      let authNames = ['bearerAuth'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = 'String';
-
-      return this.apiClient.callApi(
-        '/content/read/{cont}', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

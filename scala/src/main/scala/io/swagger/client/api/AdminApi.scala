@@ -13,6 +13,7 @@ package io.swagger.client.api
 
 import java.text.SimpleDateFormat
 
+import io.swagger.client.model.peering.PeeringPeer
 import io.swagger.client.model.util.HttpError
 import io.swagger.client.{ApiInvoker, ApiException}
 
@@ -85,7 +86,7 @@ class AdminApi(
    * @param body Peer ids 
    * @return String
    */
-  def adminPeeringPeersDelete(body: List[Boolean]): Option[String] = {
+  def adminPeeringPeersDelete(body: List[String]): Option[String] = {
     val await = Try(Await.result(adminPeeringPeersDeleteAsync(body), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -100,7 +101,7 @@ class AdminApi(
    * @param body Peer ids 
    * @return Future(String)
    */
-  def adminPeeringPeersDeleteAsync(body: List[Boolean]): Future[String] = {
+  def adminPeeringPeersDeleteAsync(body: List[String]): Future[String] = {
       helper.adminPeeringPeersDelete(body)
   }
 
@@ -132,10 +133,11 @@ class AdminApi(
    * Add peers on Peering Service
    * This endpoint can be used to add a Peer from the Peering Service
    *
+   * @param body Peering Peer array 
    * @return String
    */
-  def adminPeeringPeersPost(): Option[String] = {
-    val await = Try(Await.result(adminPeeringPeersPostAsync(), Duration.Inf))
+  def adminPeeringPeersPost(body: List[peering.PeeringPeer]): Option[String] = {
+    val await = Try(Await.result(adminPeeringPeersPostAsync(body), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -146,10 +148,11 @@ class AdminApi(
    * Add peers on Peering Service asynchronously
    * This endpoint can be used to add a Peer from the Peering Service
    *
+   * @param body Peering Peer array 
    * @return Future(String)
    */
-  def adminPeeringPeersPostAsync(): Future[String] = {
-      helper.adminPeeringPeersPost()
+  def adminPeeringPeersPostAsync(body: List[peering.PeeringPeer]): Future[String] = {
+      helper.adminPeeringPeersPost(body)
   }
 
   /**
@@ -276,7 +279,7 @@ class AdminApi(
 
 class AdminApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
-  def adminPeeringPeersDelete(body: List[Boolean])(implicit reader: ClientResponseReader[String], writer: RequestWriter[List[Boolean]]): Future[String] = {
+  def adminPeeringPeersDelete(body: List[String])(implicit reader: ClientResponseReader[String], writer: RequestWriter[List[String]]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/admin/peering/peers"))
 
@@ -307,7 +310,7 @@ class AdminApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
     }
   }
 
-  def adminPeeringPeersPost()(implicit reader: ClientResponseReader[String]): Future[String] = {
+  def adminPeeringPeersPost(body: List[peering.PeeringPeer])(implicit reader: ClientResponseReader[String], writer: RequestWriter[List[peering.PeeringPeer]]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/admin/peering/peers"))
 
@@ -315,8 +318,9 @@ class AdminApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
     val queryParams = new mutable.HashMap[String, String]
     val headerParams = new mutable.HashMap[String, String]
 
+    if (body == null) throw new Exception("Missing required parameter 'body' when calling AdminApi->adminPeeringPeersPost")
 
-    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, "")
+    val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(body))
     resFuture flatMap { resp =>
       process(reader.read(resp))
     }

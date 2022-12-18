@@ -110,10 +110,16 @@ AdminApi <- R6::R6Class(
       }
 
     }
-    admin_peering_peers_post = function(...){
+    admin_peering_peers_post = function(body, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
+
+      if (!missing(`body`)) {
+        body <- `body`$toJSONString()
+      } else {
+        body <- NULL
+      }
 
       urlPath <- "/admin/peering/peers"
       resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
