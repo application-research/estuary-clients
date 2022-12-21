@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**DealsStatusDealGet**](DealsApi.md#DealsStatusDealGet) | **Get** /deals/status/{deal} | Get Deal Status
 [**PublicDealsFailuresGet**](DealsApi.md#PublicDealsFailuresGet) | **Get** /public/deals/failures | Get storage failures
 [**PublicMinersStorageQueryMinerGet**](DealsApi.md#PublicMinersStorageQueryMinerGet) | **Get** /public/miners/storage/query/{miner} | Query Ask
+[**StorageProvidersStorageQueryCidGet**](DealsApi.md#StorageProvidersStorageQueryCidGet) | **Get** /storage-providers/storage/query/{cid} | Query Ask
 
 # **DealEstimatePost**
 > string DealEstimatePost(ctx, body)
@@ -356,6 +357,34 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **miner** | **string**| CID | 
+
+### Return type
+
+**string**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **StorageProvidersStorageQueryCidGet**
+> string StorageProvidersStorageQueryCidGet(ctx, cid)
+Query Ask
+
+This endpoint returns the ask for a given CID
+
+### Required Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
+  **cid** | **string**| CID | 
 
 ### Return type
 

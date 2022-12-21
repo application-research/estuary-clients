@@ -199,4 +199,14 @@ class DealsApiTest extends \PHPUnit_Framework_TestCase
     public function testPublicMinersStorageQueryMinerGet()
     {
     }
+
+    /**
+     * Test case for storageProvidersStorageQueryCidGet
+     *
+     * Query Ask.
+     *
+     */
+    public function testStorageProvidersStorageQueryCidGet()
+    {
+    }
 }

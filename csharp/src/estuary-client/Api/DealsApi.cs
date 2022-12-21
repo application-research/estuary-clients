@@ -294,6 +294,27 @@ namespace estuary-client.Api
         /// <param name="miner">CID</param>
         /// <returns>ApiResponse of string</returns>
         ApiResponse<string> PublicMinersStorageQueryMinerGetWithHttpInfo (string miner);
+        /// <summary>
+        /// Query Ask
+        /// </summary>
+        /// <remarks>
+        /// This endpoint returns the ask for a given CID
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cid">CID</param>
+        /// <returns>string</returns>
+        string StorageProvidersStorageQueryCidGet (string cid);
+
+        /// <summary>
+        /// Query Ask
+        /// </summary>
+        /// <remarks>
+        /// This endpoint returns the ask for a given CID
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cid">CID</param>
+        /// <returns>ApiResponse of string</returns>
+        ApiResponse<string> StorageProvidersStorageQueryCidGetWithHttpInfo (string cid);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -567,6 +588,27 @@ namespace estuary-client.Api
         /// <param name="miner">CID</param>
         /// <returns>Task of ApiResponse (string)</returns>
         System.Threading.Tasks.Task<ApiResponse<string>> PublicMinersStorageQueryMinerGetAsyncWithHttpInfo (string miner);
+        /// <summary>
+        /// Query Ask
+        /// </summary>
+        /// <remarks>
+        /// This endpoint returns the ask for a given CID
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cid">CID</param>
+        /// <returns>Task of string</returns>
+        System.Threading.Tasks.Task<string> StorageProvidersStorageQueryCidGetAsync (string cid);
+
+        /// <summary>
+        /// Query Ask
+        /// </summary>
+        /// <remarks>
+        /// This endpoint returns the ask for a given CID
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cid">CID</param>
+        /// <returns>Task of ApiResponse (string)</returns>
+        System.Threading.Tasks.Task<ApiResponse<string>> StorageProvidersStorageQueryCidGetAsyncWithHttpInfo (string cid);
         #endregion Asynchronous Operations
     }
 
@@ -2539,6 +2581,147 @@ namespace estuary-client.Api
             if (ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("PublicMinersStorageQueryMinerGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<string>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+        }
+
+        /// <summary>
+        /// Query Ask This endpoint returns the ask for a given CID
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cid">CID</param>
+        /// <returns>string</returns>
+        public string StorageProvidersStorageQueryCidGet (string cid)
+        {
+             ApiResponse<string> localVarResponse = StorageProvidersStorageQueryCidGetWithHttpInfo(cid);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Query Ask This endpoint returns the ask for a given CID
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cid">CID</param>
+        /// <returns>ApiResponse of string</returns>
+        public ApiResponse< string > StorageProvidersStorageQueryCidGetWithHttpInfo (string cid)
+        {
+            // verify the required parameter 'cid' is set
+            if (cid == null)
+                throw new ApiException(400, "Missing required parameter 'cid' when calling DealsApi->StorageProvidersStorageQueryCidGet");
+
+            var localVarPath = "/storage-providers/storage/query/{cid}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (cid != null) localVarPathParams.Add("cid", this.Configuration.ApiClient.ParameterToString(cid)); // path parameter
+            // authentication (bearerAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("StorageProvidersStorageQueryCidGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<string>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (string) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(string)));
+        }
+
+        /// <summary>
+        /// Query Ask This endpoint returns the ask for a given CID
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cid">CID</param>
+        /// <returns>Task of string</returns>
+        public async System.Threading.Tasks.Task<string> StorageProvidersStorageQueryCidGetAsync (string cid)
+        {
+             ApiResponse<string> localVarResponse = await StorageProvidersStorageQueryCidGetAsyncWithHttpInfo(cid);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Query Ask This endpoint returns the ask for a given CID
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cid">CID</param>
+        /// <returns>Task of ApiResponse (string)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<string>> StorageProvidersStorageQueryCidGetAsyncWithHttpInfo (string cid)
+        {
+            // verify the required parameter 'cid' is set
+            if (cid == null)
+                throw new ApiException(400, "Missing required parameter 'cid' when calling DealsApi->StorageProvidersStorageQueryCidGet");
+
+            var localVarPath = "/storage-providers/storage/query/{cid}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (cid != null) localVarPathParams.Add("cid", this.Configuration.ApiClient.ParameterToString(cid)); // path parameter
+            // authentication (bearerAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("StorageProvidersStorageQueryCidGet", localVarResponse);
                 if (exception != null) throw exception;
             }
 

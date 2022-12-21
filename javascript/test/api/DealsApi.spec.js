@@ -307,6 +307,27 @@
           done();
         });
       });
+      describe('storageProvidersStorageQueryCidGet', function() {
+        it('should call storageProvidersStorageQueryCidGet successfully', function(done) {
+          // TODO: uncomment, update parameter values for storageProvidersStorageQueryCidGet call and complete the assertions
+          /*
+
+          instance.storageProvidersStorageQueryCidGet(cid, function(error, data, response) {
+            if (error) {
+              done(error);
+              return;
+            }
+            // TODO: update response assertions
+            expect(data).to.be.a(&#x27;string&#x27;);
+            // expect(data).to.be(null);
+
+            done();
+          });
+          */
+          // TODO: uncomment and complete method invocation above, then delete this line and the next:
+          done();
+        });
+      });
     });
   });
 

@@ -10,15 +10,15 @@ import java.util.List;
 
 import io.swagger.model.*;
 
-import io.swagger.model.ApiClaimMsgResponse;
-import io.swagger.model.ApiClaimResponse;
-import io.swagger.model.ApiEmptyResp;
+import io.swagger.model.GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse;
+import io.swagger.model.GithubComApplicationResearchEstuaryApiV1ClaimResponse;
+import java.util.Map;
 import io.swagger.model.MinerClaimMinerBody;
 import io.swagger.model.MinerMinerSetInfoParams;
 import io.swagger.model.MinerSuspendMinerBody;
 import io.swagger.model.UtilHttpError;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-12-18T07:30:23.308Z[GMT]")public class MinerController  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-12-21T01:22:08.779Z[GMT]")public class MinerController  {
   /** 
    * Uncomment and implement as you see fit.  These operations will map
    * Directly to operation calls from the routing logic.  Because the inflector

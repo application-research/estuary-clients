@@ -204,6 +204,17 @@ namespace estuary-client.Test
             //var response = instance.PublicMinersStorageQueryMinerGet(miner);
             //Assert.IsInstanceOf<string> (response, "response is string");
         }
+        /// <summary>
+        /// Test StorageProvidersStorageQueryCidGet
+        /// </summary>
+        [Test]
+        public void StorageProvidersStorageQueryCidGetTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string cid = null;
+            //var response = instance.StorageProvidersStorageQueryCidGet(cid);
+            //Assert.IsInstanceOf<string> (response, "response is string");
+        }
     }
 
 }

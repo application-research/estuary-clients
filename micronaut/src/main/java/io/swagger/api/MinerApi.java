@@ -5,9 +5,9 @@
  */
 package io.swagger.api;
 
-import io.swagger.model.ApiClaimMsgResponse;
-import io.swagger.model.ApiClaimResponse;
-import io.swagger.model.ApiEmptyResp;
+import io.swagger.model.GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse;
+import io.swagger.model.GithubComApplicationResearchEstuaryApiV1ClaimResponse;
+import java.util.Map;
 import io.swagger.model.MinerClaimMinerBody;
 import io.swagger.model.MinerMinerSetInfoParams;
 import io.swagger.model.MinerSuspendMinerBody;
@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-12-18T07:30:24.869Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-12-21T01:22:09.878Z[GMT]")
 @Controller
 public interface MinerApi {
 
@@ -39,7 +39,7 @@ public interface MinerApi {
     @ApiResponse(responseCode = "400", description = "Bad Request")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
     @Get(value = "/miner/claim/{miner}", produces = { "application/json" })
-    default Single<HttpResponse<ApiClaimMsgResponse>> minerClaimMinerGet(@Parameter(description = "Miner claim message") @PathVariable("miner") String miner
+    default Single<HttpResponse<GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse>> minerClaimMinerGet(@Parameter(description = "Miner claim message") @PathVariable("miner") String miner
 ) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
@@ -52,7 +52,7 @@ public interface MinerApi {
     @ApiResponse(responseCode = "400", description = "Bad Request")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
     @Post(value = "/miner/claim", produces = { "application/json" }, consumes = {"*/*"})
-    default Single<HttpResponse<ApiClaimResponse>> minerClaimPost(@Parameter(description = "Claim Miner Body") @Valid @Body MinerClaimMinerBody body
+    default Single<HttpResponse<GithubComApplicationResearchEstuaryApiV1ClaimResponse>> minerClaimPost(@Parameter(description = "Claim Miner Body") @Valid @Body MinerClaimMinerBody body
 ) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
@@ -65,7 +65,7 @@ public interface MinerApi {
     @ApiResponse(responseCode = "400", description = "Bad Request")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
     @Put(value = "/miner/set-info/{miner}", produces = { "application/json" }, consumes = {"*/*"})
-    default Single<HttpResponse<ApiEmptyResp>> minerSetInfoMinerPut(@Parameter(description = "Miner set info params") @Valid @Body MinerMinerSetInfoParams body
+    default Single<HttpResponse<Map<String, String>>> minerSetInfoMinerPut(@Parameter(description = "Miner set info params") @Valid @Body MinerMinerSetInfoParams body
 ,@Parameter(description = "Miner to set info for") @PathVariable("miner") String miner
 ) {
         return Single.fromCallable(() -> {
@@ -79,7 +79,7 @@ public interface MinerApi {
     @ApiResponse(responseCode = "400", description = "Bad Request")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
     @Post(value = "/miner/suspend/{miner}", produces = { "application/json" }, consumes = {"*/*"})
-    default Single<HttpResponse<ApiEmptyResp>> minerSuspendMinerPost(@Parameter(description = "Suspend Miner Body") @Valid @Body MinerSuspendMinerBody body
+    default Single<HttpResponse<Map<String, String>>> minerSuspendMinerPost(@Parameter(description = "Suspend Miner Body") @Valid @Body MinerSuspendMinerBody body
 ,@Parameter(description = "Miner to suspend") @PathVariable("miner") String miner
 ) {
         return Single.fromCallable(() -> {
@@ -93,7 +93,7 @@ public interface MinerApi {
     @ApiResponse(responseCode = "400", description = "Bad Request")
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
     @Put(value = "/miner/unsuspend/{miner}", produces = { "application/json" })
-    default Single<HttpResponse<ApiEmptyResp>> minerUnsuspendMinerPut(@Parameter(description = "Miner to unsuspend") @PathVariable("miner") String miner
+    default Single<HttpResponse<Map<String, String>>> minerUnsuspendMinerPut(@Parameter(description = "Miner to unsuspend") @PathVariable("miner") String miner
 ) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();

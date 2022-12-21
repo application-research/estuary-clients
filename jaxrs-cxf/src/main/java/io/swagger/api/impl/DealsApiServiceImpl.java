@@ -180,5 +180,17 @@ public class DealsApiServiceImpl implements DealsApi {
         return null;
     }
     
+    /**
+     * Query Ask
+     *
+     * This endpoint returns the ask for a given CID
+     *
+     */
+    public String storageProvidersStorageQueryCidGet(String cid) {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
 }
 

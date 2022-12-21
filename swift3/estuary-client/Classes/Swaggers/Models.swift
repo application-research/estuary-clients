@@ -327,42 +327,6 @@ class Decoders {
                 return .failure(.typeMismatch(expected: "ApiChannelIDParam", actual: "\(source)"))
             }
         }
-        // Decoder for [ApiClaimMsgResponse]
-        Decoders.addDecoder(clazz: [ApiClaimMsgResponse].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[ApiClaimMsgResponse]> in
-            return Decoders.decode(clazz: [ApiClaimMsgResponse].self, source: source)
-        }
-
-        // Decoder for ApiClaimMsgResponse
-        Decoders.addDecoder(clazz: ApiClaimMsgResponse.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<ApiClaimMsgResponse> in
-            if let sourceDictionary = source as? [AnyHashable: Any] {
-                let _result = instance == nil ? ApiClaimMsgResponse() : instance as! ApiClaimMsgResponse
-                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["hexmsg"] as AnyObject?) {
-                case let .success(value): _result.hexmsg = value
-                case let .failure(error): break
-                }
-                return .success(_result)
-            } else {
-                return .failure(.typeMismatch(expected: "ApiClaimMsgResponse", actual: "\(source)"))
-            }
-        }
-        // Decoder for [ApiClaimResponse]
-        Decoders.addDecoder(clazz: [ApiClaimResponse].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[ApiClaimResponse]> in
-            return Decoders.decode(clazz: [ApiClaimResponse].self, source: source)
-        }
-
-        // Decoder for ApiClaimResponse
-        Decoders.addDecoder(clazz: ApiClaimResponse.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<ApiClaimResponse> in
-            if let sourceDictionary = source as? [AnyHashable: Any] {
-                let _result = instance == nil ? ApiClaimResponse() : instance as! ApiClaimResponse
-                switch Decoders.decodeOptional(clazz: Bool.self, source: sourceDictionary["success"] as AnyObject?) {
-                case let .success(value): _result.success = value
-                case let .failure(error): break
-                }
-                return .success(_result)
-            } else {
-                return .failure(.typeMismatch(expected: "ApiClaimResponse", actual: "\(source)"))
-            }
-        }
         // Decoder for [ApiCreateCollectionBody]
         Decoders.addDecoder(clazz: [ApiCreateCollectionBody].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[ApiCreateCollectionBody]> in
             return Decoders.decode(clazz: [ApiCreateCollectionBody].self, source: source)
@@ -405,20 +369,6 @@ class Decoders {
                 return .success(_result)
             } else {
                 return .failure(.typeMismatch(expected: "ApiDeleteContentFromCollectionBody", actual: "\(source)"))
-            }
-        }
-        // Decoder for [ApiEmptyResp]
-        Decoders.addDecoder(clazz: [ApiEmptyResp].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[ApiEmptyResp]> in
-            return Decoders.decode(clazz: [ApiEmptyResp].self, source: source)
-        }
-
-        // Decoder for ApiEmptyResp
-        Decoders.addDecoder(clazz: ApiEmptyResp.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<ApiEmptyResp> in
-            if let sourceDictionary = source as? [AnyHashable: Any] {
-                let _result = instance == nil ? ApiEmptyResp() : instance as! ApiEmptyResp
-                return .success(_result)
-            } else {
-                return .failure(.typeMismatch(expected: "ApiEmptyResp", actual: "\(source)"))
             }
         }
         // Decoder for [ApiEstimateDealBody]
@@ -497,6 +447,40 @@ class Decoders {
                 return .success(_result)
             } else {
                 return .failure(.typeMismatch(expected: "ApiPublicNodeInfo", actual: "\(source)"))
+            }
+        }
+        // Decoder for [ApiStorageProviderResp]
+        Decoders.addDecoder(clazz: [ApiStorageProviderResp].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[ApiStorageProviderResp]> in
+            return Decoders.decode(clazz: [ApiStorageProviderResp].self, source: source)
+        }
+
+        // Decoder for ApiStorageProviderResp
+        Decoders.addDecoder(clazz: ApiStorageProviderResp.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<ApiStorageProviderResp> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? ApiStorageProviderResp() : instance as! ApiStorageProviderResp
+                switch Decoders.decodeOptional(clazz: AddressAddress.self, source: sourceDictionary["addr"] as AnyObject?) {
+                case let .success(value): _result.addr = value
+                case let .failure(error): break
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["name"] as AnyObject?) {
+                case let .success(value): _result.name = value
+                case let .failure(error): break
+                }
+                switch Decoders.decodeOptional(clazz: Bool.self, source: sourceDictionary["suspended"] as AnyObject?) {
+                case let .success(value): _result.suspended = value
+                case let .failure(error): break
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["suspendedReason"] as AnyObject?) {
+                case let .success(value): _result.suspendedReason = value
+                case let .failure(error): break
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["version"] as AnyObject?) {
+                case let .success(value): _result.version = value
+                case let .failure(error): break
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "ApiStorageProviderResp", actual: "\(source)"))
             }
         }
         // Decoder for [AutoretrieveInitBody]
@@ -649,6 +633,78 @@ class Decoders {
                 return .success(_result)
             } else {
                 return .failure(.typeMismatch(expected: "ContentAddBody", actual: "\(source)"))
+            }
+        }
+        // Decoder for [GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse]
+        Decoders.addDecoder(clazz: [GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse]> in
+            return Decoders.decode(clazz: [GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse].self, source: source)
+        }
+
+        // Decoder for GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse
+        Decoders.addDecoder(clazz: GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse() : instance as! GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["hexmsg"] as AnyObject?) {
+                case let .success(value): _result.hexmsg = value
+                case let .failure(error): break
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse", actual: "\(source)"))
+            }
+        }
+        // Decoder for [GithubComApplicationResearchEstuaryApiV1ClaimResponse]
+        Decoders.addDecoder(clazz: [GithubComApplicationResearchEstuaryApiV1ClaimResponse].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[GithubComApplicationResearchEstuaryApiV1ClaimResponse]> in
+            return Decoders.decode(clazz: [GithubComApplicationResearchEstuaryApiV1ClaimResponse].self, source: source)
+        }
+
+        // Decoder for GithubComApplicationResearchEstuaryApiV1ClaimResponse
+        Decoders.addDecoder(clazz: GithubComApplicationResearchEstuaryApiV1ClaimResponse.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<GithubComApplicationResearchEstuaryApiV1ClaimResponse> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? GithubComApplicationResearchEstuaryApiV1ClaimResponse() : instance as! GithubComApplicationResearchEstuaryApiV1ClaimResponse
+                switch Decoders.decodeOptional(clazz: Bool.self, source: sourceDictionary["success"] as AnyObject?) {
+                case let .success(value): _result.success = value
+                case let .failure(error): break
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "GithubComApplicationResearchEstuaryApiV1ClaimResponse", actual: "\(source)"))
+            }
+        }
+        // Decoder for [GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse]
+        Decoders.addDecoder(clazz: [GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse]> in
+            return Decoders.decode(clazz: [GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse].self, source: source)
+        }
+
+        // Decoder for GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse
+        Decoders.addDecoder(clazz: GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse() : instance as! GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["hexmsg"] as AnyObject?) {
+                case let .success(value): _result.hexmsg = value
+                case let .failure(error): break
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse", actual: "\(source)"))
+            }
+        }
+        // Decoder for [GithubComApplicationResearchEstuaryApiV2ClaimResponse]
+        Decoders.addDecoder(clazz: [GithubComApplicationResearchEstuaryApiV2ClaimResponse].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[GithubComApplicationResearchEstuaryApiV2ClaimResponse]> in
+            return Decoders.decode(clazz: [GithubComApplicationResearchEstuaryApiV2ClaimResponse].self, source: source)
+        }
+
+        // Decoder for GithubComApplicationResearchEstuaryApiV2ClaimResponse
+        Decoders.addDecoder(clazz: GithubComApplicationResearchEstuaryApiV2ClaimResponse.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<GithubComApplicationResearchEstuaryApiV2ClaimResponse> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? GithubComApplicationResearchEstuaryApiV2ClaimResponse() : instance as! GithubComApplicationResearchEstuaryApiV2ClaimResponse
+                switch Decoders.decodeOptional(clazz: Bool.self, source: sourceDictionary["success"] as AnyObject?) {
+                case let .success(value): _result.success = value
+                case let .failure(error): break
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "GithubComApplicationResearchEstuaryApiV2ClaimResponse", actual: "\(source)"))
             }
         }
         // Decoder for [MinerClaimMinerBody]

@@ -1,9 +1,9 @@
 package io.swagger.api.impl;
 
 import io.swagger.api.*;
-import io.swagger.model.ApiClaimMsgResponse;
-import io.swagger.model.ApiClaimResponse;
-import io.swagger.model.ApiEmptyResp;
+import io.swagger.model.GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse;
+import io.swagger.model.GithubComApplicationResearchEstuaryApiV1ClaimResponse;
+import java.util.Map;
 import io.swagger.model.MinerClaimMinerBody;
 import io.swagger.model.MinerMinerSetInfoParams;
 import io.swagger.model.MinerSuspendMinerBody;
@@ -34,7 +34,7 @@ public class MinerApiServiceImpl implements MinerApi {
      * This endpoint lets a user get the message in order to claim a miner
      *
      */
-    public ApiClaimMsgResponse minerClaimMinerGet(String miner) {
+    public GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse minerClaimMinerGet(String miner) {
         // TODO: Implement...
         
         return null;
@@ -46,7 +46,7 @@ public class MinerApiServiceImpl implements MinerApi {
      * This endpoint lets a user claim a miner
      *
      */
-    public ApiClaimResponse minerClaimPost(MinerClaimMinerBody body) {
+    public GithubComApplicationResearchEstuaryApiV1ClaimResponse minerClaimPost(MinerClaimMinerBody body) {
         // TODO: Implement...
         
         return null;
@@ -58,7 +58,7 @@ public class MinerApiServiceImpl implements MinerApi {
      * This endpoint lets a user set miner info.
      *
      */
-    public ApiEmptyResp minerSetInfoMinerPut(MinerMinerSetInfoParams body, String miner) {
+    public Map<String, String> minerSetInfoMinerPut(MinerMinerSetInfoParams body, String miner) {
         // TODO: Implement...
         
         return null;
@@ -70,7 +70,7 @@ public class MinerApiServiceImpl implements MinerApi {
      * This endpoint lets a user suspend a miner.
      *
      */
-    public ApiEmptyResp minerSuspendMinerPost(MinerSuspendMinerBody body, String miner) {
+    public Map<String, String> minerSuspendMinerPost(MinerSuspendMinerBody body, String miner) {
         // TODO: Implement...
         
         return null;
@@ -82,7 +82,7 @@ public class MinerApiServiceImpl implements MinerApi {
      * This endpoint lets a user unsuspend a miner.
      *
      */
-    public ApiEmptyResp minerUnsuspendMinerPut(String miner) {
+    public Map<String, String> minerUnsuspendMinerPut(String miner) {
         // TODO: Implement...
         
         return null;

@@ -119,6 +119,13 @@ class TestDealsApi(unittest.TestCase):
         """
         pass
 
+    def test_storage_providers_storage_query_cid_get(self):
+        """Test case for storage_providers_storage_query_cid_get
+
+        Query Ask  # noqa: E501
+        """
+        pass
+
 
 if __name__ == '__main__':
     unittest.main()

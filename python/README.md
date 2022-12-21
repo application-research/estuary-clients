@@ -199,6 +199,7 @@ Class | Method | HTTP request | Description
 *DealsApi* | [**deals_status_deal_get**](docs/DealsApi.md#deals_status_deal_get) | **GET** /deals/status/{deal} | Get Deal Status
 *DealsApi* | [**public_deals_failures_get**](docs/DealsApi.md#public_deals_failures_get) | **GET** /public/deals/failures | Get storage failures
 *DealsApi* | [**public_miners_storage_query_miner_get**](docs/DealsApi.md#public_miners_storage_query_miner_get) | **GET** /public/miners/storage/query/{miner} | Query Ask
+*DealsApi* | [**storage_providers_storage_query_cid_get**](docs/DealsApi.md#storage_providers_storage_query_cid_get) | **GET** /storage-providers/storage/query/{cid} | Query Ask
 *DefaultApi* | [**viewer_get**](docs/DefaultApi.md#viewer_get) | **GET** /viewer | Fetch viewer details
 *MetricsApi* | [**public_metrics_deals_on_chain_get**](docs/MetricsApi.md#public_metrics_deals_on_chain_get) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 *MinerApi* | [**miner_claim_miner_get**](docs/MinerApi.md#miner_claim_miner_get) | **GET** /miner/claim/{miner} | Get Claim Miner Message
@@ -228,25 +229,36 @@ Class | Method | HTTP request | Description
 *PublicApi* | [**public_net_addrs_get**](docs/PublicApi.md#public_net_addrs_get) | **GET** /public/net/addrs | Net Addrs
 *PublicApi* | [**public_net_peers_get**](docs/PublicApi.md#public_net_peers_get) | **GET** /public/net/peers | Net Peers
 *PublicApi* | [**public_stats_get**](docs/PublicApi.md#public_stats_get) | **GET** /public/stats | Public stats
+*SpApi* | [**storage_providers_claim_post**](docs/SpApi.md#storage_providers_claim_post) | **POST** /storage-providers/claim | Claim Storage Provider
+*SpApi* | [**storage_providers_claim_sp_get**](docs/SpApi.md#storage_providers_claim_sp_get) | **GET** /storage-providers/claim/{sp} | Get Claim Storage Provider
+*SpApi* | [**storage_providers_deals_sp_get**](docs/SpApi.md#storage_providers_deals_sp_get) | **GET** /storage-providers/deals/{sp} | Get all storage providers deals
+*SpApi* | [**storage_providers_failures_sp_get**](docs/SpApi.md#storage_providers_failures_sp_get) | **GET** /storage-providers/failures/{sp} | Get all storage providers
+*SpApi* | [**storage_providers_get**](docs/SpApi.md#storage_providers_get) | **GET** /storage-providers | Get all storage providers
+*SpApi* | [**storage_providers_set_info_sp_put**](docs/SpApi.md#storage_providers_set_info_sp_put) | **PUT** /storage-providers/set-info/{sp} | Set Storage Provider Info
+*SpApi* | [**storage_providers_stats_sp_get**](docs/SpApi.md#storage_providers_stats_sp_get) | **GET** /storage-providers/stats/{sp} | Get storage provider stats
+*SpApi* | [**storage_providers_suspend_sp_post**](docs/SpApi.md#storage_providers_suspend_sp_post) | **POST** /storage-providers/suspend/{sp} | Suspend Storage Provider
+*SpApi* | [**storage_providers_unsuspend_sp_put**](docs/SpApi.md#storage_providers_unsuspend_sp_put) | **PUT** /storage-providers/unsuspend/{sp} | Unuspend Storage Provider
 
 ## Documentation For Models
 
  - [AddressAddress](docs/AddressAddress.md)
  - [ApiChannelIDParam](docs/ApiChannelIDParam.md)
- - [ApiClaimMsgResponse](docs/ApiClaimMsgResponse.md)
- - [ApiClaimResponse](docs/ApiClaimResponse.md)
  - [ApiCreateCollectionBody](docs/ApiCreateCollectionBody.md)
  - [ApiDeleteContentFromCollectionBody](docs/ApiDeleteContentFromCollectionBody.md)
- - [ApiEmptyResp](docs/ApiEmptyResp.md)
  - [ApiEstimateDealBody](docs/ApiEstimateDealBody.md)
  - [ApiGetApiKeysResp](docs/ApiGetApiKeysResp.md)
  - [ApiPublicNodeInfo](docs/ApiPublicNodeInfo.md)
+ - [ApiStorageProviderResp](docs/ApiStorageProviderResp.md)
  - [AutoretrieveInitBody](docs/AutoretrieveInitBody.md)
  - [CidCid](docs/CidCid.md)
  - [CollectionsCidType](docs/CollectionsCidType.md)
  - [CollectionsCollection](docs/CollectionsCollection.md)
  - [CollectionsCollectionListResponse](docs/CollectionsCollectionListResponse.md)
  - [ContentAddBody](docs/ContentAddBody.md)
+ - [GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse](docs/GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse.md)
+ - [GithubComApplicationResearchEstuaryApiV1ClaimResponse](docs/GithubComApplicationResearchEstuaryApiV1ClaimResponse.md)
+ - [GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse](docs/GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse.md)
+ - [GithubComApplicationResearchEstuaryApiV2ClaimResponse](docs/GithubComApplicationResearchEstuaryApiV2ClaimResponse.md)
  - [MinerClaimMinerBody](docs/MinerClaimMinerBody.md)
  - [MinerMinerSetInfoParams](docs/MinerMinerSetInfoParams.md)
  - [MinerSuspendMinerBody](docs/MinerSuspendMinerBody.md)

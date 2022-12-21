@@ -21,5 +21,6 @@ export * from './apis/miner-api';
 export * from './apis/net-api';
 export * from './apis/pinning-api';
 export * from './apis/public-api';
+export * from './apis/sp-api';
 export * from './apis/user-api';
 

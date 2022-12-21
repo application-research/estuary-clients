@@ -149,6 +149,7 @@ Class | Method | HTTP request | Description
 *EstuaryClient.DealsApi* | [**dealsStatusDealGet**](docs/DealsApi.md#dealsStatusDealGet) | **GET** /deals/status/{deal} | Get Deal Status
 *EstuaryClient.DealsApi* | [**publicDealsFailuresGet**](docs/DealsApi.md#publicDealsFailuresGet) | **GET** /public/deals/failures | Get storage failures
 *EstuaryClient.DealsApi* | [**publicMinersStorageQueryMinerGet**](docs/DealsApi.md#publicMinersStorageQueryMinerGet) | **GET** /public/miners/storage/query/{miner} | Query Ask
+*EstuaryClient.DealsApi* | [**storageProvidersStorageQueryCidGet**](docs/DealsApi.md#storageProvidersStorageQueryCidGet) | **GET** /storage-providers/storage/query/{cid} | Query Ask
 *EstuaryClient.DefaultApi* | [**viewerGet**](docs/DefaultApi.md#viewerGet) | **GET** /viewer | Fetch viewer details
 *EstuaryClient.MetricsApi* | [**publicMetricsDealsOnChainGet**](docs/MetricsApi.md#publicMetricsDealsOnChainGet) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 *EstuaryClient.MinerApi* | [**minerClaimMinerGet**](docs/MinerApi.md#minerClaimMinerGet) | **GET** /miner/claim/{miner} | Get Claim Miner Message
@@ -178,6 +179,15 @@ Class | Method | HTTP request | Description
 *EstuaryClient.PublicApi* | [**publicNetAddrsGet**](docs/PublicApi.md#publicNetAddrsGet) | **GET** /public/net/addrs | Net Addrs
 *EstuaryClient.PublicApi* | [**publicNetPeersGet**](docs/PublicApi.md#publicNetPeersGet) | **GET** /public/net/peers | Net Peers
 *EstuaryClient.PublicApi* | [**publicStatsGet**](docs/PublicApi.md#publicStatsGet) | **GET** /public/stats | Public stats
+*EstuaryClient.SpApi* | [**storageProvidersClaimPost**](docs/SpApi.md#storageProvidersClaimPost) | **POST** /storage-providers/claim | Claim Storage Provider
+*EstuaryClient.SpApi* | [**storageProvidersClaimSpGet**](docs/SpApi.md#storageProvidersClaimSpGet) | **GET** /storage-providers/claim/{sp} | Get Claim Storage Provider
+*EstuaryClient.SpApi* | [**storageProvidersDealsSpGet**](docs/SpApi.md#storageProvidersDealsSpGet) | **GET** /storage-providers/deals/{sp} | Get all storage providers deals
+*EstuaryClient.SpApi* | [**storageProvidersFailuresSpGet**](docs/SpApi.md#storageProvidersFailuresSpGet) | **GET** /storage-providers/failures/{sp} | Get all storage providers
+*EstuaryClient.SpApi* | [**storageProvidersGet**](docs/SpApi.md#storageProvidersGet) | **GET** /storage-providers | Get all storage providers
+*EstuaryClient.SpApi* | [**storageProvidersSetInfoSpPut**](docs/SpApi.md#storageProvidersSetInfoSpPut) | **PUT** /storage-providers/set-info/{sp} | Set Storage Provider Info
+*EstuaryClient.SpApi* | [**storageProvidersStatsSpGet**](docs/SpApi.md#storageProvidersStatsSpGet) | **GET** /storage-providers/stats/{sp} | Get storage provider stats
+*EstuaryClient.SpApi* | [**storageProvidersSuspendSpPost**](docs/SpApi.md#storageProvidersSuspendSpPost) | **POST** /storage-providers/suspend/{sp} | Suspend Storage Provider
+*EstuaryClient.SpApi* | [**storageProvidersUnsuspendSpPut**](docs/SpApi.md#storageProvidersUnsuspendSpPut) | **PUT** /storage-providers/unsuspend/{sp} | Unuspend Storage Provider
 *EstuaryClient.UserApi* | [**userApiKeysGet**](docs/UserApi.md#userApiKeysGet) | **GET** /user/api-keys | Get API keys for a user
 *EstuaryClient.UserApi* | [**userApiKeysKeyOrHashDelete**](docs/UserApi.md#userApiKeysKeyOrHashDelete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 *EstuaryClient.UserApi* | [**userApiKeysPost**](docs/UserApi.md#userApiKeysPost) | **POST** /user/api-keys | Create API keys for a user
@@ -188,20 +198,22 @@ Class | Method | HTTP request | Description
 
  - [EstuaryClient.AddressAddress](docs/AddressAddress.md)
  - [EstuaryClient.ApiChannelIDParam](docs/ApiChannelIDParam.md)
- - [EstuaryClient.ApiClaimMsgResponse](docs/ApiClaimMsgResponse.md)
- - [EstuaryClient.ApiClaimResponse](docs/ApiClaimResponse.md)
  - [EstuaryClient.ApiCreateCollectionBody](docs/ApiCreateCollectionBody.md)
  - [EstuaryClient.ApiDeleteContentFromCollectionBody](docs/ApiDeleteContentFromCollectionBody.md)
- - [EstuaryClient.ApiEmptyResp](docs/ApiEmptyResp.md)
  - [EstuaryClient.ApiEstimateDealBody](docs/ApiEstimateDealBody.md)
  - [EstuaryClient.ApiGetApiKeysResp](docs/ApiGetApiKeysResp.md)
  - [EstuaryClient.ApiPublicNodeInfo](docs/ApiPublicNodeInfo.md)
+ - [EstuaryClient.ApiStorageProviderResp](docs/ApiStorageProviderResp.md)
  - [EstuaryClient.AutoretrieveInitBody](docs/AutoretrieveInitBody.md)
  - [EstuaryClient.CidCid](docs/CidCid.md)
  - [EstuaryClient.CollectionsCidType](docs/CollectionsCidType.md)
  - [EstuaryClient.CollectionsCollection](docs/CollectionsCollection.md)
  - [EstuaryClient.CollectionsCollectionListResponse](docs/CollectionsCollectionListResponse.md)
  - [EstuaryClient.ContentAddBody](docs/ContentAddBody.md)
+ - [EstuaryClient.GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse](docs/GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse.md)
+ - [EstuaryClient.GithubComApplicationResearchEstuaryApiV1ClaimResponse](docs/GithubComApplicationResearchEstuaryApiV1ClaimResponse.md)
+ - [EstuaryClient.GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse](docs/GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse.md)
+ - [EstuaryClient.GithubComApplicationResearchEstuaryApiV2ClaimResponse](docs/GithubComApplicationResearchEstuaryApiV2ClaimResponse.md)
  - [EstuaryClient.MinerClaimMinerBody](docs/MinerClaimMinerBody.md)
  - [EstuaryClient.MinerMinerSetInfoParams](docs/MinerMinerSetInfoParams.md)
  - [EstuaryClient.MinerSuspendMinerBody](docs/MinerSuspendMinerBody.md)

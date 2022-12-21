@@ -15,7 +15,7 @@ open class MinerAPI: APIBase {
      - parameter miner: (path) Miner claim message 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func minerClaimMinerGet(miner: String, completion: @escaping ((_ data: ApiClaimMsgResponse?, _ error: ErrorResponse?) -> Void)) {
+    open class func minerClaimMinerGet(miner: String, completion: @escaping ((_ data: GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse?, _ error: ErrorResponse?) -> Void)) {
         minerClaimMinerGetWithRequestBuilder(miner: miner).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -33,9 +33,9 @@ open class MinerAPI: APIBase {
   "hexmsg" : "hexmsg"
 }}]
      - parameter miner: (path) Miner claim message 
-     - returns: RequestBuilder<ApiClaimMsgResponse> 
+     - returns: RequestBuilder<GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse> 
      */
-    open class func minerClaimMinerGetWithRequestBuilder(miner: String) -> RequestBuilder<ApiClaimMsgResponse> {
+    open class func minerClaimMinerGetWithRequestBuilder(miner: String) -> RequestBuilder<GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse> {
         var path = "/miner/claim/{miner}"
         let minerPreEscape = "\(miner)"
         let minerPostEscape = minerPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -45,7 +45,7 @@ open class MinerAPI: APIBase {
 
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<ApiClaimMsgResponse>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -55,7 +55,7 @@ open class MinerAPI: APIBase {
      - parameter body: (body) Claim Miner Body 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func minerClaimPost(body: MinerClaimMinerBody, completion: @escaping ((_ data: ApiClaimResponse?, _ error: ErrorResponse?) -> Void)) {
+    open class func minerClaimPost(body: MinerClaimMinerBody, completion: @escaping ((_ data: GithubComApplicationResearchEstuaryApiV1ClaimResponse?, _ error: ErrorResponse?) -> Void)) {
         minerClaimPostWithRequestBuilder(body: body).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -73,16 +73,16 @@ open class MinerAPI: APIBase {
   "success" : true
 }}]
      - parameter body: (body) Claim Miner Body 
-     - returns: RequestBuilder<ApiClaimResponse> 
+     - returns: RequestBuilder<GithubComApplicationResearchEstuaryApiV1ClaimResponse> 
      */
-    open class func minerClaimPostWithRequestBuilder(body: MinerClaimMinerBody) -> RequestBuilder<ApiClaimResponse> {
+    open class func minerClaimPostWithRequestBuilder(body: MinerClaimMinerBody) -> RequestBuilder<GithubComApplicationResearchEstuaryApiV1ClaimResponse> {
         let path = "/miner/claim"
         let URLString = estuary-clientAPI.basePath + path
         let parameters = body.encodeToJSON()
 
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<ApiClaimResponse>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<GithubComApplicationResearchEstuaryApiV1ClaimResponse>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
@@ -93,7 +93,7 @@ open class MinerAPI: APIBase {
      - parameter miner: (path) Miner to set info for 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func minerSetInfoMinerPut(body: MinerMinerSetInfoParams, miner: String, completion: @escaping ((_ data: ApiEmptyResp?, _ error: ErrorResponse?) -> Void)) {
+    open class func minerSetInfoMinerPut(body: MinerMinerSetInfoParams, miner: String, completion: @escaping ((_ data: [String:String]?, _ error: ErrorResponse?) -> Void)) {
         minerSetInfoMinerPutWithRequestBuilder(body: body, miner: miner).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -107,12 +107,14 @@ open class MinerAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={ }}]
+     - examples: [{contentType=application/json, example={
+  "key" : ""
+}}]
      - parameter body: (body) Miner set info params 
      - parameter miner: (path) Miner to set info for 
-     - returns: RequestBuilder<ApiEmptyResp> 
+     - returns: RequestBuilder<[String:String]> 
      */
-    open class func minerSetInfoMinerPutWithRequestBuilder(body: MinerMinerSetInfoParams, miner: String) -> RequestBuilder<ApiEmptyResp> {
+    open class func minerSetInfoMinerPutWithRequestBuilder(body: MinerMinerSetInfoParams, miner: String) -> RequestBuilder<[String:String]> {
         var path = "/miner/set-info/{miner}"
         let minerPreEscape = "\(miner)"
         let minerPostEscape = minerPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -122,7 +124,7 @@ open class MinerAPI: APIBase {
 
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<ApiEmptyResp>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<[String:String]>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
@@ -133,7 +135,7 @@ open class MinerAPI: APIBase {
      - parameter miner: (path) Miner to suspend 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func minerSuspendMinerPost(body: MinerSuspendMinerBody, miner: String, completion: @escaping ((_ data: ApiEmptyResp?, _ error: ErrorResponse?) -> Void)) {
+    open class func minerSuspendMinerPost(body: MinerSuspendMinerBody, miner: String, completion: @escaping ((_ data: [String:String]?, _ error: ErrorResponse?) -> Void)) {
         minerSuspendMinerPostWithRequestBuilder(body: body, miner: miner).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -147,12 +149,14 @@ open class MinerAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={ }}]
+     - examples: [{contentType=application/json, example={
+  "key" : ""
+}}]
      - parameter body: (body) Suspend Miner Body 
      - parameter miner: (path) Miner to suspend 
-     - returns: RequestBuilder<ApiEmptyResp> 
+     - returns: RequestBuilder<[String:String]> 
      */
-    open class func minerSuspendMinerPostWithRequestBuilder(body: MinerSuspendMinerBody, miner: String) -> RequestBuilder<ApiEmptyResp> {
+    open class func minerSuspendMinerPostWithRequestBuilder(body: MinerSuspendMinerBody, miner: String) -> RequestBuilder<[String:String]> {
         var path = "/miner/suspend/{miner}"
         let minerPreEscape = "\(miner)"
         let minerPostEscape = minerPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -162,7 +166,7 @@ open class MinerAPI: APIBase {
 
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<ApiEmptyResp>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<[String:String]>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
@@ -172,7 +176,7 @@ open class MinerAPI: APIBase {
      - parameter miner: (path) Miner to unsuspend 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func minerUnsuspendMinerPut(miner: String, completion: @escaping ((_ data: ApiEmptyResp?, _ error: ErrorResponse?) -> Void)) {
+    open class func minerUnsuspendMinerPut(miner: String, completion: @escaping ((_ data: [String:String]?, _ error: ErrorResponse?) -> Void)) {
         minerUnsuspendMinerPutWithRequestBuilder(miner: miner).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -186,11 +190,13 @@ open class MinerAPI: APIBase {
      - API Key:
        - type: apiKey Authorization 
        - name: bearerAuth
-     - examples: [{contentType=application/json, example={ }}]
+     - examples: [{contentType=application/json, example={
+  "key" : ""
+}}]
      - parameter miner: (path) Miner to unsuspend 
-     - returns: RequestBuilder<ApiEmptyResp> 
+     - returns: RequestBuilder<[String:String]> 
      */
-    open class func minerUnsuspendMinerPutWithRequestBuilder(miner: String) -> RequestBuilder<ApiEmptyResp> {
+    open class func minerUnsuspendMinerPutWithRequestBuilder(miner: String) -> RequestBuilder<[String:String]> {
         var path = "/miner/unsuspend/{miner}"
         let minerPreEscape = "\(miner)"
         let minerPostEscape = minerPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -200,7 +206,7 @@ open class MinerAPI: APIBase {
 
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<ApiEmptyResp>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<[String:String]>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "PUT", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }

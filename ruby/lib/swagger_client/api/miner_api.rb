@@ -20,7 +20,7 @@ module SwaggerClient
     # This endpoint lets a user get the message in order to claim a miner
     # @param miner Miner claim message
     # @param [Hash] opts the optional parameters
-    # @return [ApiClaimMsgResponse]
+    # @return [GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse]
     def miner_claim_miner_get(miner, opts = {})
       data, _status_code, _headers = miner_claim_miner_get_with_http_info(miner, opts)
       data
@@ -30,7 +30,7 @@ module SwaggerClient
     # This endpoint lets a user get the message in order to claim a miner
     # @param miner Miner claim message
     # @param [Hash] opts the optional parameters
-    # @return [Array<(ApiClaimMsgResponse, Integer, Hash)>] ApiClaimMsgResponse data, response status code and response headers
+    # @return [Array<(GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse, Integer, Hash)>] GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse data, response status code and response headers
     def miner_claim_miner_get_with_http_info(miner, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MinerApi.miner_claim_miner_get ...'
@@ -56,7 +56,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] || 'ApiClaimMsgResponse' 
+      return_type = opts[:return_type] || 'GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse' 
 
       auth_names = opts[:auth_names] || ['bearerAuth']
       data, status_code, headers = @api_client.call_api(:GET, local_var_path,
@@ -76,7 +76,7 @@ module SwaggerClient
     # This endpoint lets a user claim a miner
     # @param body Claim Miner Body
     # @param [Hash] opts the optional parameters
-    # @return [ApiClaimResponse]
+    # @return [GithubComApplicationResearchEstuaryApiV1ClaimResponse]
     def miner_claim_post(body, opts = {})
       data, _status_code, _headers = miner_claim_post_with_http_info(body, opts)
       data
@@ -86,7 +86,7 @@ module SwaggerClient
     # This endpoint lets a user claim a miner
     # @param body Claim Miner Body
     # @param [Hash] opts the optional parameters
-    # @return [Array<(ApiClaimResponse, Integer, Hash)>] ApiClaimResponse data, response status code and response headers
+    # @return [Array<(GithubComApplicationResearchEstuaryApiV1ClaimResponse, Integer, Hash)>] GithubComApplicationResearchEstuaryApiV1ClaimResponse data, response status code and response headers
     def miner_claim_post_with_http_info(body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MinerApi.miner_claim_post ...'
@@ -114,7 +114,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] || @api_client.object_to_http_body(body) 
 
-      return_type = opts[:return_type] || 'ApiClaimResponse' 
+      return_type = opts[:return_type] || 'GithubComApplicationResearchEstuaryApiV1ClaimResponse' 
 
       auth_names = opts[:auth_names] || ['bearerAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
@@ -135,7 +135,7 @@ module SwaggerClient
     # @param body Miner set info params
     # @param miner Miner to set info for
     # @param [Hash] opts the optional parameters
-    # @return [ApiEmptyResp]
+    # @return [Hash<String, String>]
     def miner_set_info_miner_put(body, miner, opts = {})
       data, _status_code, _headers = miner_set_info_miner_put_with_http_info(body, miner, opts)
       data
@@ -146,7 +146,7 @@ module SwaggerClient
     # @param body Miner set info params
     # @param miner Miner to set info for
     # @param [Hash] opts the optional parameters
-    # @return [Array<(ApiEmptyResp, Integer, Hash)>] ApiEmptyResp data, response status code and response headers
+    # @return [Array<(Hash<String, String>, Integer, Hash)>] Hash<String, String> data, response status code and response headers
     def miner_set_info_miner_put_with_http_info(body, miner, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MinerApi.miner_set_info_miner_put ...'
@@ -178,7 +178,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] || @api_client.object_to_http_body(body) 
 
-      return_type = opts[:return_type] || 'ApiEmptyResp' 
+      return_type = opts[:return_type] || 'Hash<String, String>' 
 
       auth_names = opts[:auth_names] || ['bearerAuth']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
@@ -199,7 +199,7 @@ module SwaggerClient
     # @param body Suspend Miner Body
     # @param miner Miner to suspend
     # @param [Hash] opts the optional parameters
-    # @return [ApiEmptyResp]
+    # @return [Hash<String, String>]
     def miner_suspend_miner_post(body, miner, opts = {})
       data, _status_code, _headers = miner_suspend_miner_post_with_http_info(body, miner, opts)
       data
@@ -210,7 +210,7 @@ module SwaggerClient
     # @param body Suspend Miner Body
     # @param miner Miner to suspend
     # @param [Hash] opts the optional parameters
-    # @return [Array<(ApiEmptyResp, Integer, Hash)>] ApiEmptyResp data, response status code and response headers
+    # @return [Array<(Hash<String, String>, Integer, Hash)>] Hash<String, String> data, response status code and response headers
     def miner_suspend_miner_post_with_http_info(body, miner, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MinerApi.miner_suspend_miner_post ...'
@@ -242,7 +242,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] || @api_client.object_to_http_body(body) 
 
-      return_type = opts[:return_type] || 'ApiEmptyResp' 
+      return_type = opts[:return_type] || 'Hash<String, String>' 
 
       auth_names = opts[:auth_names] || ['bearerAuth']
       data, status_code, headers = @api_client.call_api(:POST, local_var_path,
@@ -262,7 +262,7 @@ module SwaggerClient
     # This endpoint lets a user unsuspend a miner.
     # @param miner Miner to unsuspend
     # @param [Hash] opts the optional parameters
-    # @return [ApiEmptyResp]
+    # @return [Hash<String, String>]
     def miner_unsuspend_miner_put(miner, opts = {})
       data, _status_code, _headers = miner_unsuspend_miner_put_with_http_info(miner, opts)
       data
@@ -272,7 +272,7 @@ module SwaggerClient
     # This endpoint lets a user unsuspend a miner.
     # @param miner Miner to unsuspend
     # @param [Hash] opts the optional parameters
-    # @return [Array<(ApiEmptyResp, Integer, Hash)>] ApiEmptyResp data, response status code and response headers
+    # @return [Array<(Hash<String, String>, Integer, Hash)>] Hash<String, String> data, response status code and response headers
     def miner_unsuspend_miner_put_with_http_info(miner, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: MinerApi.miner_unsuspend_miner_put ...'
@@ -298,7 +298,7 @@ module SwaggerClient
       # http body (model)
       post_body = opts[:body] 
 
-      return_type = opts[:return_type] || 'ApiEmptyResp' 
+      return_type = opts[:return_type] || 'Hash<String, String>' 
 
       auth_names = opts[:auth_names] || ['bearerAuth']
       data, status_code, headers = @api_client.call_api(:PUT, local_var_path,

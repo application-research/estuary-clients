@@ -45,7 +45,7 @@
               return;
             }
             // TODO: update response assertions
-            expect(data).to.be.a(EstuaryClient.ApiClaimMsgResponse);
+            expect(data).to.be.a(EstuaryClient.GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse);
 
             done();
           });
@@ -65,7 +65,7 @@
               return;
             }
             // TODO: update response assertions
-            expect(data).to.be.a(EstuaryClient.ApiClaimResponse);
+            expect(data).to.be.a(EstuaryClient.GithubComApplicationResearchEstuaryApiV1ClaimResponse);
 
             done();
           });
@@ -85,7 +85,14 @@
               return;
             }
             // TODO: update response assertions
-            expect(data).to.be.a(EstuaryClient.ApiEmptyResp);
+            let dataCtr = data;
+            expect(dataCtr).to.be.an(Object);
+            expect(dataCtr).to.not.be.empty();
+            for (let p in dataCtr) {
+              let data = dataCtr[p];
+              expect(data).to.be.a(&#x27;string&#x27;);
+              // expect(data).to.be(null);
+            }
 
             done();
           });
@@ -105,7 +112,14 @@
               return;
             }
             // TODO: update response assertions
-            expect(data).to.be.a(EstuaryClient.ApiEmptyResp);
+            let dataCtr = data;
+            expect(dataCtr).to.be.an(Object);
+            expect(dataCtr).to.not.be.empty();
+            for (let p in dataCtr) {
+              let data = dataCtr[p];
+              expect(data).to.be.a(&#x27;string&#x27;);
+              // expect(data).to.be(null);
+            }
 
             done();
           });
@@ -125,7 +139,14 @@
               return;
             }
             // TODO: update response assertions
-            expect(data).to.be.a(EstuaryClient.ApiEmptyResp);
+            let dataCtr = data;
+            expect(dataCtr).to.be.an(Object);
+            expect(dataCtr).to.not.be.empty();
+            for (let p in dataCtr) {
+              let data = dataCtr[p];
+              expect(data).to.be.a(&#x27;string&#x27;);
+              // expect(data).to.be(null);
+            }
 
             done();
           });

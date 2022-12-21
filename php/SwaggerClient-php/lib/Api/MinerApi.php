@@ -95,7 +95,7 @@ class MinerApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\ApiClaimMsgResponse
+     * @return \Swagger\Client\Model\GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse
      */
     public function minerClaimMinerGet($miner)
     {
@@ -112,11 +112,11 @@ class MinerApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\ApiClaimMsgResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function minerClaimMinerGetWithHttpInfo($miner)
     {
-        $returnType = '\Swagger\Client\Model\ApiClaimMsgResponse';
+        $returnType = '\Swagger\Client\Model\GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse';
         $request = $this->minerClaimMinerGetRequest($miner);
 
         try {
@@ -168,7 +168,7 @@ class MinerApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\ApiClaimMsgResponse',
+                        '\Swagger\Client\Model\GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -226,7 +226,7 @@ class MinerApi
      */
     public function minerClaimMinerGetAsyncWithHttpInfo($miner)
     {
-        $returnType = '\Swagger\Client\Model\ApiClaimMsgResponse';
+        $returnType = '\Swagger\Client\Model\GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse';
         $request = $this->minerClaimMinerGetRequest($miner);
 
         return $this->client
@@ -378,7 +378,7 @@ class MinerApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\ApiClaimResponse
+     * @return \Swagger\Client\Model\GithubComApplicationResearchEstuaryApiV1ClaimResponse
      */
     public function minerClaimPost($body)
     {
@@ -395,11 +395,11 @@ class MinerApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\ApiClaimResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\GithubComApplicationResearchEstuaryApiV1ClaimResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function minerClaimPostWithHttpInfo($body)
     {
-        $returnType = '\Swagger\Client\Model\ApiClaimResponse';
+        $returnType = '\Swagger\Client\Model\GithubComApplicationResearchEstuaryApiV1ClaimResponse';
         $request = $this->minerClaimPostRequest($body);
 
         try {
@@ -451,7 +451,7 @@ class MinerApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\ApiClaimResponse',
+                        '\Swagger\Client\Model\GithubComApplicationResearchEstuaryApiV1ClaimResponse',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -509,7 +509,7 @@ class MinerApi
      */
     public function minerClaimPostAsyncWithHttpInfo($body)
     {
-        $returnType = '\Swagger\Client\Model\ApiClaimResponse';
+        $returnType = '\Swagger\Client\Model\GithubComApplicationResearchEstuaryApiV1ClaimResponse';
         $request = $this->minerClaimPostRequest($body);
 
         return $this->client
@@ -657,7 +657,7 @@ class MinerApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\ApiEmptyResp
+     * @return map[string,string]
      */
     public function minerSetInfoMinerPut($body, $miner)
     {
@@ -675,11 +675,11 @@ class MinerApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\ApiEmptyResp, HTTP status code, HTTP response headers (array of strings)
+     * @return array of map[string,string], HTTP status code, HTTP response headers (array of strings)
      */
     public function minerSetInfoMinerPutWithHttpInfo($body, $miner)
     {
-        $returnType = '\Swagger\Client\Model\ApiEmptyResp';
+        $returnType = 'map[string,string]';
         $request = $this->minerSetInfoMinerPutRequest($body, $miner);
 
         try {
@@ -731,7 +731,7 @@ class MinerApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\ApiEmptyResp',
+                        'map[string,string]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -791,7 +791,7 @@ class MinerApi
      */
     public function minerSetInfoMinerPutAsyncWithHttpInfo($body, $miner)
     {
-        $returnType = '\Swagger\Client\Model\ApiEmptyResp';
+        $returnType = 'map[string,string]';
         $request = $this->minerSetInfoMinerPutRequest($body, $miner);
 
         return $this->client
@@ -954,7 +954,7 @@ class MinerApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\ApiEmptyResp
+     * @return map[string,string]
      */
     public function minerSuspendMinerPost($body, $miner)
     {
@@ -972,11 +972,11 @@ class MinerApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\ApiEmptyResp, HTTP status code, HTTP response headers (array of strings)
+     * @return array of map[string,string], HTTP status code, HTTP response headers (array of strings)
      */
     public function minerSuspendMinerPostWithHttpInfo($body, $miner)
     {
-        $returnType = '\Swagger\Client\Model\ApiEmptyResp';
+        $returnType = 'map[string,string]';
         $request = $this->minerSuspendMinerPostRequest($body, $miner);
 
         try {
@@ -1028,7 +1028,7 @@ class MinerApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\ApiEmptyResp',
+                        'map[string,string]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1088,7 +1088,7 @@ class MinerApi
      */
     public function minerSuspendMinerPostAsyncWithHttpInfo($body, $miner)
     {
-        $returnType = '\Swagger\Client\Model\ApiEmptyResp';
+        $returnType = 'map[string,string]';
         $request = $this->minerSuspendMinerPostRequest($body, $miner);
 
         return $this->client
@@ -1250,7 +1250,7 @@ class MinerApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\ApiEmptyResp
+     * @return map[string,string]
      */
     public function minerUnsuspendMinerPut($miner)
     {
@@ -1267,11 +1267,11 @@ class MinerApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\ApiEmptyResp, HTTP status code, HTTP response headers (array of strings)
+     * @return array of map[string,string], HTTP status code, HTTP response headers (array of strings)
      */
     public function minerUnsuspendMinerPutWithHttpInfo($miner)
     {
-        $returnType = '\Swagger\Client\Model\ApiEmptyResp';
+        $returnType = 'map[string,string]';
         $request = $this->minerUnsuspendMinerPutRequest($miner);
 
         try {
@@ -1323,7 +1323,7 @@ class MinerApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\ApiEmptyResp',
+                        'map[string,string]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1381,7 +1381,7 @@ class MinerApi
      */
     public function minerUnsuspendMinerPutAsyncWithHttpInfo($miner)
     {
-        $returnType = '\Swagger\Client\Model\ApiEmptyResp';
+        $returnType = 'map[string,string]';
         $request = $this->minerUnsuspendMinerPutRequest($miner);
 
         return $this->client

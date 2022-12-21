@@ -40,13 +40,13 @@ namespace estuary-client.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("MinerClaimMinerGet")]
-        [SwaggerResponse(statusCode: 200, type: typeof(ApiClaimMsgResponse), description: "OK")]
+        [SwaggerResponse(statusCode: 200, type: typeof(GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse), description: "OK")]
         [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult MinerClaimMinerGet([FromRoute][Required]string miner)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(ApiClaimMsgResponse));
+            // return StatusCode(200, default(GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse));
 
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(400, default(UtilHttpError));
@@ -57,8 +57,8 @@ namespace estuary-client.Controllers
             exampleJson = "{\n  \"hexmsg\" : \"hexmsg\"\n}";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<ApiClaimMsgResponse>(exampleJson)
-                        : default(ApiClaimMsgResponse);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse>(exampleJson)
+                        : default(GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
 
@@ -75,13 +75,13 @@ namespace estuary-client.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("MinerClaimPost")]
-        [SwaggerResponse(statusCode: 200, type: typeof(ApiClaimResponse), description: "OK")]
+        [SwaggerResponse(statusCode: 200, type: typeof(GithubComApplicationResearchEstuaryApiV1ClaimResponse), description: "OK")]
         [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult MinerClaimPost([FromBody]MinerClaimMinerBody body)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(ApiClaimResponse));
+            // return StatusCode(200, default(GithubComApplicationResearchEstuaryApiV1ClaimResponse));
 
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(400, default(UtilHttpError));
@@ -92,8 +92,8 @@ namespace estuary-client.Controllers
             exampleJson = "{\n  \"success\" : true\n}";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<ApiClaimResponse>(exampleJson)
-                        : default(ApiClaimResponse);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<GithubComApplicationResearchEstuaryApiV1ClaimResponse>(exampleJson)
+                        : default(GithubComApplicationResearchEstuaryApiV1ClaimResponse);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
 
@@ -111,13 +111,13 @@ namespace estuary-client.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("MinerSetInfoMinerPut")]
-        [SwaggerResponse(statusCode: 200, type: typeof(ApiEmptyResp), description: "OK")]
+        [SwaggerResponse(statusCode: 200, type: typeof(Dictionary<string, string>), description: "OK")]
         [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult MinerSetInfoMinerPut([FromBody]MinerMinerSetInfoParams body, [FromRoute][Required]string miner)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(ApiEmptyResp));
+            // return StatusCode(200, default(Dictionary<string, string>));
 
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(400, default(UtilHttpError));
@@ -125,11 +125,11 @@ namespace estuary-client.Controllers
             //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(500, default(UtilHttpError));
             string exampleJson = null;
-            exampleJson = "{ }";
+            exampleJson = "{\n  \"key\" : \"\"\n}";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<ApiEmptyResp>(exampleJson)
-                        : default(ApiEmptyResp);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<Dictionary<string, string>>(exampleJson)
+                        : default(Dictionary<string, string>);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
 
@@ -147,13 +147,13 @@ namespace estuary-client.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("MinerSuspendMinerPost")]
-        [SwaggerResponse(statusCode: 200, type: typeof(ApiEmptyResp), description: "OK")]
+        [SwaggerResponse(statusCode: 200, type: typeof(Dictionary<string, string>), description: "OK")]
         [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult MinerSuspendMinerPost([FromBody]MinerSuspendMinerBody body, [FromRoute][Required]string miner)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(ApiEmptyResp));
+            // return StatusCode(200, default(Dictionary<string, string>));
 
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(400, default(UtilHttpError));
@@ -161,11 +161,11 @@ namespace estuary-client.Controllers
             //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(500, default(UtilHttpError));
             string exampleJson = null;
-            exampleJson = "{ }";
+            exampleJson = "{\n  \"key\" : \"\"\n}";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<ApiEmptyResp>(exampleJson)
-                        : default(ApiEmptyResp);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<Dictionary<string, string>>(exampleJson)
+                        : default(Dictionary<string, string>);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
 
@@ -182,13 +182,13 @@ namespace estuary-client.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("MinerUnsuspendMinerPut")]
-        [SwaggerResponse(statusCode: 200, type: typeof(ApiEmptyResp), description: "OK")]
+        [SwaggerResponse(statusCode: 200, type: typeof(Dictionary<string, string>), description: "OK")]
         [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult MinerUnsuspendMinerPut([FromRoute][Required]string miner)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(ApiEmptyResp));
+            // return StatusCode(200, default(Dictionary<string, string>));
 
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(400, default(UtilHttpError));
@@ -196,11 +196,11 @@ namespace estuary-client.Controllers
             //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(500, default(UtilHttpError));
             string exampleJson = null;
-            exampleJson = "{ }";
+            exampleJson = "{\n  \"key\" : \"\"\n}";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<ApiEmptyResp>(exampleJson)
-                        : default(ApiEmptyResp);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<Dictionary<string, string>>(exampleJson)
+                        : default(Dictionary<string, string>);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
 

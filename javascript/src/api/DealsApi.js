@@ -642,5 +642,52 @@ export class DealsApi {
         authNames, contentTypes, accepts, returnType, callback
       );
     }
+    /**
+     * Callback function to receive the result of the storageProvidersStorageQueryCidGet operation.
+     * @callback moduleapi/DealsApi~storageProvidersStorageQueryCidGetCallback
+     * @param {String} error Error message, if any.
+     * @param {'String'{ data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Query Ask
+     * This endpoint returns the ask for a given CID
+     * @param {String} cid CID
+     * @param {module:api/DealsApi~storageProvidersStorageQueryCidGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
+     */
+    storageProvidersStorageQueryCidGet(cid, callback) {
+      
+      let postBody = null;
+      // verify the required parameter 'cid' is set
+      if (cid === undefined || cid === null) {
+        throw new Error("Missing the required parameter 'cid' when calling storageProvidersStorageQueryCidGet");
+      }
+
+      let pathParams = {
+        'cid': cid
+      };
+      let queryParams = {
+        
+      };
+      let headerParams = {
+        
+      };
+      let formParams = {
+        
+      };
+
+      let authNames = ['bearerAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = 'String';
+
+      return this.apiClient.callApi(
+        '/storage-providers/storage/query/{cid}', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
 
 }

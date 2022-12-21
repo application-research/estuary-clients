@@ -1916,7 +1916,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/api.claimResponse'
+                $ref: '#/components/schemas/github_com_application-research_estuary_api_v1.claimResponse'
         "400":
           description: Bad Request
           content:
@@ -1951,7 +1951,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/api.claimMsgResponse'
+                $ref: '#/components/schemas/github_com_application-research_estuary_api_v1.claimMsgResponse'
         "400":
           description: Bad Request
           content:
@@ -1992,7 +1992,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/api.emptyResp'
+                type: object
+                additionalProperties:
+                  type: string
+                x-content-type: application/json
         "400":
           description: Bad Request
           content:
@@ -2034,7 +2037,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/api.emptyResp'
+                type: object
+                additionalProperties:
+                  type: string
+                x-content-type: application/json
         "400":
           description: Bad Request
           content:
@@ -2069,7 +2075,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/api.emptyResp'
+                type: object
+                additionalProperties:
+                  type: string
+                x-content-type: application/json
         "400":
           description: Bad Request
           content:
@@ -2595,6 +2604,365 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/util.HttpError'
+  /storage-providers:
+    get:
+      tags:
+      - sp
+      summary: Get all storage providers
+      description: This endpoint returns all storage providers
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/api.storageProviderResp'
+                x-content-type: application/json
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+  /storage-providers/claim:
+    post:
+      tags:
+      - sp
+      summary: Claim Storage Provider
+      description: This endpoint lets a user claim a storage provider
+      requestBody:
+        description: Claim Storage Provider Body
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/miner.ClaimMinerBody'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/github_com_application-research_estuary_api_v2.claimResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-codegen-request-body-name: req
+  /storage-providers/claim/{sp}:
+    get:
+      tags:
+      - sp
+      summary: Get Claim Storage Provider
+      description: This endpoint lets a user get the message in order to claim a storage
+        provider
+      parameters:
+      - name: sp
+        in: path
+        description: Storage Provider claim message
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/github_com_application-research_estuary_api_v2.claimMsgResponse'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+  /storage-providers/deals/{sp}:
+    get:
+      tags:
+      - sp
+      summary: Get all storage providers deals
+      description: This endpoint returns all storage providers deals
+      parameters:
+      - name: sp
+        in: path
+        description: Filter by storage provider
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: ignore-failed
+        in: query
+        description: Ignore Failed
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+  /storage-providers/failures/{sp}:
+    get:
+      tags:
+      - sp
+      summary: Get all storage providers
+      description: This endpoint returns all storage providers
+      parameters:
+      - name: sp
+        in: path
+        description: Filter by storage provider
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+  /storage-providers/set-info/{sp}:
+    put:
+      tags:
+      - sp
+      summary: Set Storage Provider Info
+      description: This endpoint lets a user set storage provider info.
+      parameters:
+      - name: sp
+        in: path
+        description: Storage Provider to set info for
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: Storage Provider set info params
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/miner.MinerSetInfoParams'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content: {}
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-codegen-request-body-name: params
+  /storage-providers/stats/{sp}:
+    get:
+      tags:
+      - sp
+      summary: Get storage provider stats
+      description: This endpoint returns storage provider stats
+      parameters:
+      - name: sp
+        in: path
+        description: Filter by storage provider
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+  /storage-providers/storage/query/{cid}:
+    get:
+      tags:
+      - deals
+      summary: Query Ask
+      description: This endpoint returns the ask for a given CID
+      parameters:
+      - name: cid
+        in: path
+        description: CID
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+                x-content-type: application/json
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+  /storage-providers/suspend/{sp}:
+    post:
+      tags:
+      - sp
+      summary: Suspend Storage Provider
+      description: This endpoint lets a user suspend a storage provider.
+      parameters:
+      - name: sp
+        in: path
+        description: Storage Provider to suspend
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        description: Suspend Storage Provider Body
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/miner.SuspendMinerBody'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+                x-content-type: application/json
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+      x-codegen-request-body-name: req
+  /storage-providers/unsuspend/{sp}:
+    put:
+      tags:
+      - sp
+      summary: Unuspend Storage Provider
+      description: This endpoint lets a user unsuspend a Storage Provider.
+      parameters:
+      - name: sp
+        in: path
+        description: Storage Provider to unsuspend
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content: {}
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
   /user/api-keys:
     get:
       tags:
@@ -2808,20 +3176,6 @@ components:
           type: string
         responder:
           type: string
-    api.claimMsgResponse:
-      type: object
-      properties:
-        hexmsg:
-          type: string
-      example:
-        hexmsg: hexmsg
-    api.claimResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-      example:
-        success: true
     api.createCollectionBody:
       type: object
       properties:
@@ -2836,8 +3190,6 @@ components:
           type: string
         value:
           type: string
-    api.emptyResp:
-      type: object
     api.estimateDealBody:
       type: object
       properties:
@@ -2872,6 +3224,25 @@ components:
           $ref: '#/components/schemas/address.Address'
       example:
         primaryAddress: {}
+    api.storageProviderResp:
+      type: object
+      properties:
+        addr:
+          $ref: '#/components/schemas/address.Address'
+        name:
+          type: string
+        suspended:
+          type: boolean
+        suspendedReason:
+          type: string
+        version:
+          type: string
+      example:
+        name: name
+        suspendedReason: suspendedReason
+        addr: {}
+        version: version
+        suspended: true
     cid.Cid:
       type: object
     collections.CidType:
@@ -2933,6 +3304,34 @@ components:
         cid:
           cid: {}
         updatedAt: updatedAt
+    github_com_application-research_estuary_api_v1.claimMsgResponse:
+      type: object
+      properties:
+        hexmsg:
+          type: string
+      example:
+        hexmsg: hexmsg
+    github_com_application-research_estuary_api_v1.claimResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+      example:
+        success: true
+    github_com_application-research_estuary_api_v2.claimMsgResponse:
+      type: object
+      properties:
+        hexmsg:
+          type: string
+      example:
+        hexmsg: hexmsg
+    github_com_application-research_estuary_api_v2.claimResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+      example:
+        success: true
     miner.ClaimMinerBody:
       type: object
       properties:

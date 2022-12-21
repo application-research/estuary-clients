@@ -419,6 +419,13 @@ var routes = Routes{
 	},
 
 	Route{
+		"StorageProvidersStorageQueryCidGet",
+		strings.ToUpper("Get"),
+		"/storage-providers/storage/query/{cid}",
+		StorageProvidersStorageQueryCidGet,
+	},
+
+	Route{
 		"ViewerGet",
 		strings.ToUpper("Get"),
 		"/viewer",
@@ -619,6 +626,69 @@ var routes = Routes{
 		strings.ToUpper("Get"),
 		"/public/stats",
 		PublicStatsGet,
+	},
+
+	Route{
+		"StorageProvidersClaimPost",
+		strings.ToUpper("Post"),
+		"/storage-providers/claim",
+		StorageProvidersClaimPost,
+	},
+
+	Route{
+		"StorageProvidersClaimSpGet",
+		strings.ToUpper("Get"),
+		"/storage-providers/claim/{sp}",
+		StorageProvidersClaimSpGet,
+	},
+
+	Route{
+		"StorageProvidersDealsSpGet",
+		strings.ToUpper("Get"),
+		"/storage-providers/deals/{sp}",
+		StorageProvidersDealsSpGet,
+	},
+
+	Route{
+		"StorageProvidersFailuresSpGet",
+		strings.ToUpper("Get"),
+		"/storage-providers/failures/{sp}",
+		StorageProvidersFailuresSpGet,
+	},
+
+	Route{
+		"StorageProvidersGet",
+		strings.ToUpper("Get"),
+		"/storage-providers",
+		StorageProvidersGet,
+	},
+
+	Route{
+		"StorageProvidersSetInfoSpPut",
+		strings.ToUpper("Put"),
+		"/storage-providers/set-info/{sp}",
+		StorageProvidersSetInfoSpPut,
+	},
+
+	Route{
+		"StorageProvidersStatsSpGet",
+		strings.ToUpper("Get"),
+		"/storage-providers/stats/{sp}",
+		StorageProvidersStatsSpGet,
+	},
+
+	Route{
+		"StorageProvidersSuspendSpPost",
+		strings.ToUpper("Post"),
+		"/storage-providers/suspend/{sp}",
+		StorageProvidersSuspendSpPost,
+	},
+
+	Route{
+		"StorageProvidersUnsuspendSpPut",
+		strings.ToUpper("Put"),
+		"/storage-providers/unsuspend/{sp}",
+		StorageProvidersUnsuspendSpPut,
 	},
 
 	Route{

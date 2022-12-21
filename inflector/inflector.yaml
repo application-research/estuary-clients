@@ -6,20 +6,22 @@ modelMappings:
   DefinitionFromSwaggerSpecification: fully.qualified.path.to.Model
   AddressAddress : io.swagger.model.AddressAddress
 ApiChannelIDParam : io.swagger.model.ApiChannelIDParam
-ApiClaimMsgResponse : io.swagger.model.ApiClaimMsgResponse
-ApiClaimResponse : io.swagger.model.ApiClaimResponse
 ApiCreateCollectionBody : io.swagger.model.ApiCreateCollectionBody
 ApiDeleteContentFromCollectionBody : io.swagger.model.ApiDeleteContentFromCollectionBody
-ApiEmptyResp : io.swagger.model.ApiEmptyResp
 ApiEstimateDealBody : io.swagger.model.ApiEstimateDealBody
 ApiGetApiKeysResp : io.swagger.model.ApiGetApiKeysResp
 ApiPublicNodeInfo : io.swagger.model.ApiPublicNodeInfo
+ApiStorageProviderResp : io.swagger.model.ApiStorageProviderResp
 AutoretrieveInitBody : io.swagger.model.AutoretrieveInitBody
 CidCid : io.swagger.model.CidCid
 CollectionsCidType : io.swagger.model.CollectionsCidType
 CollectionsCollection : io.swagger.model.CollectionsCollection
 CollectionsCollectionListResponse : io.swagger.model.CollectionsCollectionListResponse
 ContentAddBody : io.swagger.model.ContentAddBody
+GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse : io.swagger.model.GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse
+GithubComApplicationResearchEstuaryApiV1ClaimResponse : io.swagger.model.GithubComApplicationResearchEstuaryApiV1ClaimResponse
+GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse : io.swagger.model.GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse
+GithubComApplicationResearchEstuaryApiV2ClaimResponse : io.swagger.model.GithubComApplicationResearchEstuaryApiV2ClaimResponse
 MinerClaimMinerBody : io.swagger.model.MinerClaimMinerBody
 MinerMinerSetInfoParams : io.swagger.model.MinerMinerSetInfoParams
 MinerSuspendMinerBody : io.swagger.model.MinerSuspendMinerBody

@@ -17,6 +17,7 @@ Method | HTTP request | Description
 [**dealsStatusDealGet**](DealsApi.md#dealsStatusDealGet) | **GET** /deals/status/{deal} | Get Deal Status
 [**publicDealsFailuresGet**](DealsApi.md#publicDealsFailuresGet) | **GET** /public/deals/failures | Get storage failures
 [**publicMinersStorageQueryMinerGet**](DealsApi.md#publicMinersStorageQueryMinerGet) | **GET** /public/miners/storage/query/{miner} | Query Ask
+[**storageProvidersStorageQueryCidGet**](DealsApi.md#storageProvidersStorageQueryCidGet) | **GET** /storage-providers/storage/query/{cid} | Query Ask
 
 <a name="dealEstimatePost"></a>
 # **dealEstimatePost**
@@ -607,6 +608,53 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **miner** | **kotlin.String**| CID |
+
+### Return type
+
+**kotlin.String**
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="storageProvidersStorageQueryCidGet"></a>
+# **storageProvidersStorageQueryCidGet**
+> kotlin.String storageProvidersStorageQueryCidGet(cid)
+
+Query Ask
+
+This endpoint returns the ask for a given CID
+
+### Example
+```kotlin
+// Import classes:
+//import estuary-client.infrastructure.*
+//import io.swagger.client.models.*;
+
+val apiInstance = DealsApi()
+val cid : kotlin.String = cid_example // kotlin.String | CID
+try {
+    val result : kotlin.String = apiInstance.storageProvidersStorageQueryCidGet(cid)
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling DealsApi#storageProvidersStorageQueryCidGet")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling DealsApi#storageProvidersStorageQueryCidGet")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cid** | **kotlin.String**| CID |
 
 ### Return type
 

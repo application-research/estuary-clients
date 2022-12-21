@@ -18,7 +18,7 @@ Method | HTTP request | Description
 [**publicMinersStatsMinerGet**](MinerApi.md#publicMinersStatsMinerGet) | **GET** /public/miners/stats/{miner} | Get miner stats
 
 # **minerClaimMinerGet**
-> ApiClaimMsgResponse minerClaimMinerGet(miner)
+> GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse minerClaimMinerGet(miner)
 
 Get Claim Miner Message
 
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiClaimMsgResponse**](ApiClaimMsgResponse.md)
+[**GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse**](GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse.md)
 
 ### Authorization
 
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **minerClaimPost**
-> ApiClaimResponse minerClaimPost(body)
+> GithubComApplicationResearchEstuaryApiV1ClaimResponse minerClaimPost(body)
 
 Claim Miner
 
@@ -98,7 +98,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiClaimResponse**](ApiClaimResponse.md)
+[**GithubComApplicationResearchEstuaryApiV1ClaimResponse**](GithubComApplicationResearchEstuaryApiV1ClaimResponse.md)
 
 ### Authorization
 
@@ -112,7 +112,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **minerSetInfoMinerPut**
-> ApiEmptyResp minerSetInfoMinerPut(body, miner)
+> Map<String, String> minerSetInfoMinerPut(body, miner)
 
 Set Miner Info
 
@@ -147,7 +147,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiEmptyResp**](ApiEmptyResp.md)
+**Map<String, String>**
 
 ### Authorization
 
@@ -161,7 +161,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **minerSuspendMinerPost**
-> ApiEmptyResp minerSuspendMinerPost(body, miner)
+> Map<String, String> minerSuspendMinerPost(body, miner)
 
 Suspend Miner
 
@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiEmptyResp**](ApiEmptyResp.md)
+**Map<String, String>**
 
 ### Authorization
 
@@ -210,7 +210,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **minerUnsuspendMinerPut**
-> ApiEmptyResp minerUnsuspendMinerPut(miner)
+> Map<String, String> minerUnsuspendMinerPut(miner)
 
 Unuspend Miner
 
@@ -243,7 +243,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiEmptyResp**](ApiEmptyResp.md)
+**Map<String, String>**
 
 ### Authorization
 

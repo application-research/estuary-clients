@@ -17,9 +17,8 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { ApiClaimMsgResponse } from '../model/apiClaimMsgResponse';
-import { ApiClaimResponse } from '../model/apiClaimResponse';
-import { ApiEmptyResp } from '../model/apiEmptyResp';
+import { GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse } from '../model/githubComApplicationResearchEstuaryApiV1ClaimMsgResponse';
+import { GithubComApplicationResearchEstuaryApiV1ClaimResponse } from '../model/githubComApplicationResearchEstuaryApiV1ClaimResponse';
 import { MinerClaimMinerBody } from '../model/minerClaimMinerBody';
 import { MinerMinerSetInfoParams } from '../model/minerMinerSetInfoParams';
 import { MinerSuspendMinerBody } from '../model/minerSuspendMinerBody';
@@ -68,9 +67,9 @@ export class MinerService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public minerClaimMinerGet(miner: string, observe?: 'body', reportProgress?: boolean): Observable<ApiClaimMsgResponse>;
-    public minerClaimMinerGet(miner: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ApiClaimMsgResponse>>;
-    public minerClaimMinerGet(miner: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ApiClaimMsgResponse>>;
+    public minerClaimMinerGet(miner: string, observe?: 'body', reportProgress?: boolean): Observable<GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse>;
+    public minerClaimMinerGet(miner: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse>>;
+    public minerClaimMinerGet(miner: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse>>;
     public minerClaimMinerGet(miner: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (miner === null || miner === undefined) {
@@ -97,7 +96,7 @@ export class MinerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<ApiClaimMsgResponse>('get',`${this.basePath}/miner/claim/${encodeURIComponent(String(miner))}`,
+        return this.httpClient.request<GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse>('get',`${this.basePath}/miner/claim/${encodeURIComponent(String(miner))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -114,9 +113,9 @@ export class MinerService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public minerClaimPost(body: MinerClaimMinerBody, observe?: 'body', reportProgress?: boolean): Observable<ApiClaimResponse>;
-    public minerClaimPost(body: MinerClaimMinerBody, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ApiClaimResponse>>;
-    public minerClaimPost(body: MinerClaimMinerBody, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ApiClaimResponse>>;
+    public minerClaimPost(body: MinerClaimMinerBody, observe?: 'body', reportProgress?: boolean): Observable<GithubComApplicationResearchEstuaryApiV1ClaimResponse>;
+    public minerClaimPost(body: MinerClaimMinerBody, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<GithubComApplicationResearchEstuaryApiV1ClaimResponse>>;
+    public minerClaimPost(body: MinerClaimMinerBody, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<GithubComApplicationResearchEstuaryApiV1ClaimResponse>>;
     public minerClaimPost(body: MinerClaimMinerBody, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
@@ -148,7 +147,7 @@ export class MinerService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<ApiClaimResponse>('post',`${this.basePath}/miner/claim`,
+        return this.httpClient.request<GithubComApplicationResearchEstuaryApiV1ClaimResponse>('post',`${this.basePath}/miner/claim`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -167,9 +166,9 @@ export class MinerService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public minerSetInfoMinerPut(body: MinerMinerSetInfoParams, miner: string, observe?: 'body', reportProgress?: boolean): Observable<ApiEmptyResp>;
-    public minerSetInfoMinerPut(body: MinerMinerSetInfoParams, miner: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ApiEmptyResp>>;
-    public minerSetInfoMinerPut(body: MinerMinerSetInfoParams, miner: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ApiEmptyResp>>;
+    public minerSetInfoMinerPut(body: MinerMinerSetInfoParams, miner: string, observe?: 'body', reportProgress?: boolean): Observable<{ [key: string]: string; }>;
+    public minerSetInfoMinerPut(body: MinerMinerSetInfoParams, miner: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<{ [key: string]: string; }>>;
+    public minerSetInfoMinerPut(body: MinerMinerSetInfoParams, miner: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<{ [key: string]: string; }>>;
     public minerSetInfoMinerPut(body: MinerMinerSetInfoParams, miner: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
@@ -205,7 +204,7 @@ export class MinerService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<ApiEmptyResp>('put',`${this.basePath}/miner/set-info/${encodeURIComponent(String(miner))}`,
+        return this.httpClient.request<{ [key: string]: string; }>('put',`${this.basePath}/miner/set-info/${encodeURIComponent(String(miner))}`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -224,9 +223,9 @@ export class MinerService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public minerSuspendMinerPost(body: MinerSuspendMinerBody, miner: string, observe?: 'body', reportProgress?: boolean): Observable<ApiEmptyResp>;
-    public minerSuspendMinerPost(body: MinerSuspendMinerBody, miner: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ApiEmptyResp>>;
-    public minerSuspendMinerPost(body: MinerSuspendMinerBody, miner: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ApiEmptyResp>>;
+    public minerSuspendMinerPost(body: MinerSuspendMinerBody, miner: string, observe?: 'body', reportProgress?: boolean): Observable<{ [key: string]: string; }>;
+    public minerSuspendMinerPost(body: MinerSuspendMinerBody, miner: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<{ [key: string]: string; }>>;
+    public minerSuspendMinerPost(body: MinerSuspendMinerBody, miner: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<{ [key: string]: string; }>>;
     public minerSuspendMinerPost(body: MinerSuspendMinerBody, miner: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
@@ -262,7 +261,7 @@ export class MinerService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<ApiEmptyResp>('post',`${this.basePath}/miner/suspend/${encodeURIComponent(String(miner))}`,
+        return this.httpClient.request<{ [key: string]: string; }>('post',`${this.basePath}/miner/suspend/${encodeURIComponent(String(miner))}`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -280,9 +279,9 @@ export class MinerService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public minerUnsuspendMinerPut(miner: string, observe?: 'body', reportProgress?: boolean): Observable<ApiEmptyResp>;
-    public minerUnsuspendMinerPut(miner: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ApiEmptyResp>>;
-    public minerUnsuspendMinerPut(miner: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ApiEmptyResp>>;
+    public minerUnsuspendMinerPut(miner: string, observe?: 'body', reportProgress?: boolean): Observable<{ [key: string]: string; }>;
+    public minerUnsuspendMinerPut(miner: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<{ [key: string]: string; }>>;
+    public minerUnsuspendMinerPut(miner: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<{ [key: string]: string; }>>;
     public minerUnsuspendMinerPut(miner: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (miner === null || miner === undefined) {
@@ -309,7 +308,7 @@ export class MinerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<ApiEmptyResp>('put',`${this.basePath}/miner/unsuspend/${encodeURIComponent(String(miner))}`,
+        return this.httpClient.request<{ [key: string]: string; }>('put',`${this.basePath}/miner/unsuspend/${encodeURIComponent(String(miner))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

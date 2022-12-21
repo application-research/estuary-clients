@@ -10,7 +10,7 @@ class MinerApi {
   /// Get Claim Miner Message
   ///
   /// This endpoint lets a user get the message in order to claim a miner
-  Future<ApiClaimMsgResponse> minerClaimMinerGet(String miner) async {
+  Future<GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse> minerClaimMinerGet(String miner) async {
     Object postBody = null;
 
     // verify required params are set
@@ -53,7 +53,7 @@ class MinerApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          apiClient.deserialize(response.body, 'ApiClaimMsgResponse') as ApiClaimMsgResponse ;
+          apiClient.deserialize(response.body, 'GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse') as GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse ;
     } else {
       return null;
     }
@@ -61,7 +61,7 @@ class MinerApi {
   /// Claim Miner
   ///
   /// This endpoint lets a user claim a miner
-  Future<ApiClaimResponse> minerClaimPost(MinerClaimMinerBody body) async {
+  Future<GithubComApplicationResearchEstuaryApiV1ClaimResponse> minerClaimPost(MinerClaimMinerBody body) async {
     Object postBody = body;
 
     // verify required params are set
@@ -104,7 +104,7 @@ class MinerApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          apiClient.deserialize(response.body, 'ApiClaimResponse') as ApiClaimResponse ;
+          apiClient.deserialize(response.body, 'GithubComApplicationResearchEstuaryApiV1ClaimResponse') as GithubComApplicationResearchEstuaryApiV1ClaimResponse ;
     } else {
       return null;
     }
@@ -112,7 +112,7 @@ class MinerApi {
   /// Set Miner Info
   ///
   /// This endpoint lets a user set miner info.
-  Future<ApiEmptyResp> minerSetInfoMinerPut(MinerMinerSetInfoParams body, String miner) async {
+  Future<Map<String, String>> minerSetInfoMinerPut(MinerMinerSetInfoParams body, String miner) async {
     Object postBody = body;
 
     // verify required params are set
@@ -158,7 +158,7 @@ class MinerApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          apiClient.deserialize(response.body, 'ApiEmptyResp') as ApiEmptyResp ;
+          new Map<String, String>.from(apiClient.deserialize(response.body, 'Map<String, String>')) ;
     } else {
       return null;
     }
@@ -166,7 +166,7 @@ class MinerApi {
   /// Suspend Miner
   ///
   /// This endpoint lets a user suspend a miner.
-  Future<ApiEmptyResp> minerSuspendMinerPost(MinerSuspendMinerBody body, String miner) async {
+  Future<Map<String, String>> minerSuspendMinerPost(MinerSuspendMinerBody body, String miner) async {
     Object postBody = body;
 
     // verify required params are set
@@ -212,7 +212,7 @@ class MinerApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          apiClient.deserialize(response.body, 'ApiEmptyResp') as ApiEmptyResp ;
+          new Map<String, String>.from(apiClient.deserialize(response.body, 'Map<String, String>')) ;
     } else {
       return null;
     }
@@ -220,7 +220,7 @@ class MinerApi {
   /// Unuspend Miner
   ///
   /// This endpoint lets a user unsuspend a miner.
-  Future<ApiEmptyResp> minerUnsuspendMinerPut(String miner) async {
+  Future<Map<String, String>> minerUnsuspendMinerPut(String miner) async {
     Object postBody = null;
 
     // verify required params are set
@@ -263,7 +263,7 @@ class MinerApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          apiClient.deserialize(response.body, 'ApiEmptyResp') as ApiEmptyResp ;
+          new Map<String, String>.from(apiClient.deserialize(response.body, 'Map<String, String>')) ;
     } else {
       return null;
     }

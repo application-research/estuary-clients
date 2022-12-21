@@ -5,9 +5,8 @@ from __future__ import absolute_import
 from flask import json
 from six import BytesIO
 
-from estuary-client.models.api_claim_msg_response import ApiClaimMsgResponse  # noqa: E501
-from estuary-client.models.api_claim_response import ApiClaimResponse  # noqa: E501
-from estuary-client.models.api_empty_resp import ApiEmptyResp  # noqa: E501
+from estuary-client.models.github_com_application_research_estuary_api_v1_claim_msg_response import GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse  # noqa: E501
+from estuary-client.models.github_com_application_research_estuary_api_v1_claim_response import GithubComApplicationResearchEstuaryApiV1ClaimResponse  # noqa: E501
 from estuary-client.models.miner_claim_miner_body import MinerClaimMinerBody  # noqa: E501
 from estuary-client.models.miner_miner_set_info_params import MinerMinerSetInfoParams  # noqa: E501
 from estuary-client.models.miner_suspend_miner_body import MinerSuspendMinerBody  # noqa: E501

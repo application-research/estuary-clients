@@ -13,7 +13,7 @@ Method | HTTP request | Description
 [**publicMinersStatsMinerGet**](MinerApi.md#publicminersstatsminerget) | **GET** /public/miners/stats/{miner} | Get miner stats
 
 # **minerClaimMinerGet**
-> \Swagger\Client\Model\ApiClaimMsgResponse minerClaimMinerGet($miner)
+> \Swagger\Client\Model\GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse minerClaimMinerGet($miner)
 
 Get Claim Miner Message
 
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\ApiClaimMsgResponse**](../Model/ApiClaimMsgResponse.md)
+[**\Swagger\Client\Model\GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse**](../Model/GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse.md)
 
 ### Authorization
 
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **minerClaimPost**
-> \Swagger\Client\Model\ApiClaimResponse minerClaimPost($body)
+> \Swagger\Client\Model\GithubComApplicationResearchEstuaryApiV1ClaimResponse minerClaimPost($body)
 
 Claim Miner
 
@@ -107,7 +107,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\ApiClaimResponse**](../Model/ApiClaimResponse.md)
+[**\Swagger\Client\Model\GithubComApplicationResearchEstuaryApiV1ClaimResponse**](../Model/GithubComApplicationResearchEstuaryApiV1ClaimResponse.md)
 
 ### Authorization
 
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **minerSetInfoMinerPut**
-> \Swagger\Client\Model\ApiEmptyResp minerSetInfoMinerPut($body, $miner)
+> map[string,string] minerSetInfoMinerPut($body, $miner)
 
 Set Miner Info
 
@@ -163,7 +163,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\ApiEmptyResp**](../Model/ApiEmptyResp.md)
+**map[string,string]**
 
 ### Authorization
 
@@ -177,7 +177,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **minerSuspendMinerPost**
-> \Swagger\Client\Model\ApiEmptyResp minerSuspendMinerPost($body, $miner)
+> map[string,string] minerSuspendMinerPost($body, $miner)
 
 Suspend Miner
 
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\ApiEmptyResp**](../Model/ApiEmptyResp.md)
+**map[string,string]**
 
 ### Authorization
 
@@ -233,7 +233,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **minerUnsuspendMinerPut**
-> \Swagger\Client\Model\ApiEmptyResp minerUnsuspendMinerPut($miner)
+> map[string,string] minerUnsuspendMinerPut($miner)
 
 Unuspend Miner
 
@@ -273,7 +273,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\ApiEmptyResp**](../Model/ApiEmptyResp.md)
+**map[string,string]**
 
 ### Authorization
 

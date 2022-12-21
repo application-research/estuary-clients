@@ -32,7 +32,7 @@ import javax.validation.constraints.*;
 @Path("/autoretrieve")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-12-18T07:30:24.685Z[GMT]")public class AutoretrieveApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2022-12-21T01:22:10.980Z[GMT]")public class AutoretrieveApi  {
 
    private AutoretrieveApiService delegate;
 

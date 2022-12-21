@@ -1,8 +1,8 @@
 package io.swagger.api;
 
-import io.swagger.model.ApiClaimMsgResponse;
-import io.swagger.model.ApiClaimResponse;
-import io.swagger.model.ApiEmptyResp;
+import io.swagger.model.GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse;
+import io.swagger.model.GithubComApplicationResearchEstuaryApiV1ClaimResponse;
+import java.util.Map;
 import io.swagger.model.MinerClaimMinerBody;
 import io.swagger.model.MinerMinerSetInfoParams;
 import io.swagger.model.MinerSuspendMinerBody;

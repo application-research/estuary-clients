@@ -71,7 +71,7 @@ namespace estuary-client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string miner = null;
             //var response = instance.MinerClaimMinerGet(miner);
-            //Assert.IsInstanceOf<ApiClaimMsgResponse> (response, "response is ApiClaimMsgResponse");
+            //Assert.IsInstanceOf<GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse> (response, "response is GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse");
         }
         /// <summary>
         /// Test MinerClaimPost
@@ -82,7 +82,7 @@ namespace estuary-client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //MinerClaimMinerBody body = null;
             //var response = instance.MinerClaimPost(body);
-            //Assert.IsInstanceOf<ApiClaimResponse> (response, "response is ApiClaimResponse");
+            //Assert.IsInstanceOf<GithubComApplicationResearchEstuaryApiV1ClaimResponse> (response, "response is GithubComApplicationResearchEstuaryApiV1ClaimResponse");
         }
         /// <summary>
         /// Test MinerSetInfoMinerPut
@@ -94,7 +94,7 @@ namespace estuary-client.Test
             //MinerMinerSetInfoParams body = null;
             //string miner = null;
             //var response = instance.MinerSetInfoMinerPut(body, miner);
-            //Assert.IsInstanceOf<ApiEmptyResp> (response, "response is ApiEmptyResp");
+            //Assert.IsInstanceOf<Dictionary<string, string>> (response, "response is Dictionary<string, string>");
         }
         /// <summary>
         /// Test MinerSuspendMinerPost
@@ -106,7 +106,7 @@ namespace estuary-client.Test
             //MinerSuspendMinerBody body = null;
             //string miner = null;
             //var response = instance.MinerSuspendMinerPost(body, miner);
-            //Assert.IsInstanceOf<ApiEmptyResp> (response, "response is ApiEmptyResp");
+            //Assert.IsInstanceOf<Dictionary<string, string>> (response, "response is Dictionary<string, string>");
         }
         /// <summary>
         /// Test MinerUnsuspendMinerPut
@@ -117,7 +117,7 @@ namespace estuary-client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string miner = null;
             //var response = instance.MinerUnsuspendMinerPut(miner);
-            //Assert.IsInstanceOf<ApiEmptyResp> (response, "response is ApiEmptyResp");
+            //Assert.IsInstanceOf<Dictionary<string, string>> (response, "response is Dictionary<string, string>");
         }
         /// <summary>
         /// Test PublicMinersDealsMinerGet

@@ -3,9 +3,9 @@ package io.swagger.api.impl;
 import io.swagger.api.*;
 import io.swagger.model.*;
 
-import io.swagger.model.ApiClaimMsgResponse;
-import io.swagger.model.ApiClaimResponse;
-import io.swagger.model.ApiEmptyResp;
+import io.swagger.model.GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse;
+import io.swagger.model.GithubComApplicationResearchEstuaryApiV1ClaimResponse;
+import java.util.Map;
 import io.swagger.model.MinerClaimMinerBody;
 import io.swagger.model.MinerMinerSetInfoParams;
 import io.swagger.model.MinerSuspendMinerBody;
@@ -21,7 +21,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-12-18T07:30:24.829Z[GMT]")public class MinerApiServiceImpl implements MinerApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-12-21T01:22:09.414Z[GMT]")public class MinerApiServiceImpl implements MinerApiService {
       public Response minerClaimMinerGet(String miner,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!

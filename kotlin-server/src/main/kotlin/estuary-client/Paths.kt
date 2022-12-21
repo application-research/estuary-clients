@@ -408,6 +408,13 @@ object Paths {
     @Location("/public/miners/storage/query/{miner}") class publicMinersStorageQueryMinerGet(val miner: kotlin.String)
 
     /**
+     * Query Ask
+     * This endpoint returns the ask for a given CID
+     * @param cid CID 
+     */
+    @Location("/storage-providers/storage/query/{cid}") class storageProvidersStorageQueryCidGet(val cid: kotlin.String)
+
+    /**
      * Fetch viewer details
      * This endpoint fetches viewer details such as username, permissions, address, owned miners, user settings etc.
      */
@@ -602,6 +609,71 @@ object Paths {
      * This endpoint is used to get public stats.
      */
     @Location("/public/stats") class publicStatsGet()
+
+    /**
+     * Claim Storage Provider
+     * This endpoint lets a user claim a storage provider
+     * @param body Claim Storage Provider Body 
+     */
+    @Location("/storage-providers/claim") class storageProvidersClaimPost(val body: MinerClaimMinerBody)
+
+    /**
+     * Get Claim Storage Provider
+     * This endpoint lets a user get the message in order to claim a storage provider
+     * @param sp Storage Provider claim message 
+     */
+    @Location("/storage-providers/claim/{sp}") class storageProvidersClaimSpGet(val sp: kotlin.String)
+
+    /**
+     * Get all storage providers deals
+     * This endpoint returns all storage providers deals
+     * @param sp Filter by storage provider 
+     * @param ignoreFailed Ignore Failed (optional)
+     */
+    @Location("/storage-providers/deals/{sp}") class storageProvidersDealsSpGet(val sp: kotlin.String, val ignoreFailed: kotlin.String)
+
+    /**
+     * Get all storage providers
+     * This endpoint returns all storage providers
+     * @param sp Filter by storage provider 
+     */
+    @Location("/storage-providers/failures/{sp}") class storageProvidersFailuresSpGet(val sp: kotlin.String)
+
+    /**
+     * Get all storage providers
+     * This endpoint returns all storage providers
+     */
+    @Location("/storage-providers") class storageProvidersGet()
+
+    /**
+     * Set Storage Provider Info
+     * This endpoint lets a user set storage provider info.
+     * @param body Storage Provider set info params 
+     * @param sp Storage Provider to set info for 
+     */
+    @Location("/storage-providers/set-info/{sp}") class storageProvidersSetInfoSpPut(val body: MinerMinerSetInfoParams, val sp: kotlin.String)
+
+    /**
+     * Get storage provider stats
+     * This endpoint returns storage provider stats
+     * @param sp Filter by storage provider 
+     */
+    @Location("/storage-providers/stats/{sp}") class storageProvidersStatsSpGet(val sp: kotlin.String)
+
+    /**
+     * Suspend Storage Provider
+     * This endpoint lets a user suspend a storage provider.
+     * @param body Suspend Storage Provider Body 
+     * @param sp Storage Provider to suspend 
+     */
+    @Location("/storage-providers/suspend/{sp}") class storageProvidersSuspendSpPost(val body: MinerSuspendMinerBody, val sp: kotlin.String)
+
+    /**
+     * Unuspend Storage Provider
+     * This endpoint lets a user unsuspend a Storage Provider.
+     * @param sp Storage Provider to unsuspend 
+     */
+    @Location("/storage-providers/unsuspend/{sp}") class storageProvidersUnsuspendSpPut(val sp: kotlin.String)
 
     /**
      * Get API keys for a user

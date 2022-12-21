@@ -227,4 +227,19 @@ public class DealsApiTest {
 
         // TODO: test validations
     }
+    /**
+     * Query Ask
+     *
+     * This endpoint returns the ask for a given CID
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void storageProvidersStorageQueryCidGetTest() throws Exception {
+        String cid = null;
+        String response = api.storageProvidersStorageQueryCidGet(cid);
+
+        // TODO: test validations
+    }
 }

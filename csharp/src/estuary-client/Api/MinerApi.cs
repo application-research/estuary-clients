@@ -31,8 +31,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner claim message</param>
-        /// <returns>ApiClaimMsgResponse</returns>
-        ApiClaimMsgResponse MinerClaimMinerGet (string miner);
+        /// <returns>GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse</returns>
+        GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse MinerClaimMinerGet (string miner);
 
         /// <summary>
         /// Get Claim Miner Message
@@ -42,8 +42,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner claim message</param>
-        /// <returns>ApiResponse of ApiClaimMsgResponse</returns>
-        ApiResponse<ApiClaimMsgResponse> MinerClaimMinerGetWithHttpInfo (string miner);
+        /// <returns>ApiResponse of GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse</returns>
+        ApiResponse<GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse> MinerClaimMinerGetWithHttpInfo (string miner);
         /// <summary>
         /// Claim Miner
         /// </summary>
@@ -52,8 +52,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Claim Miner Body</param>
-        /// <returns>ApiClaimResponse</returns>
-        ApiClaimResponse MinerClaimPost (MinerClaimMinerBody body);
+        /// <returns>GithubComApplicationResearchEstuaryApiV1ClaimResponse</returns>
+        GithubComApplicationResearchEstuaryApiV1ClaimResponse MinerClaimPost (MinerClaimMinerBody body);
 
         /// <summary>
         /// Claim Miner
@@ -63,8 +63,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Claim Miner Body</param>
-        /// <returns>ApiResponse of ApiClaimResponse</returns>
-        ApiResponse<ApiClaimResponse> MinerClaimPostWithHttpInfo (MinerClaimMinerBody body);
+        /// <returns>ApiResponse of GithubComApplicationResearchEstuaryApiV1ClaimResponse</returns>
+        ApiResponse<GithubComApplicationResearchEstuaryApiV1ClaimResponse> MinerClaimPostWithHttpInfo (MinerClaimMinerBody body);
         /// <summary>
         /// Set Miner Info
         /// </summary>
@@ -74,8 +74,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Miner set info params</param>
         /// <param name="miner">Miner to set info for</param>
-        /// <returns>ApiEmptyResp</returns>
-        ApiEmptyResp MinerSetInfoMinerPut (MinerMinerSetInfoParams body, string miner);
+        /// <returns>Dictionary&lt;string, string&gt;</returns>
+        Dictionary<string, string> MinerSetInfoMinerPut (MinerMinerSetInfoParams body, string miner);
 
         /// <summary>
         /// Set Miner Info
@@ -86,8 +86,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Miner set info params</param>
         /// <param name="miner">Miner to set info for</param>
-        /// <returns>ApiResponse of ApiEmptyResp</returns>
-        ApiResponse<ApiEmptyResp> MinerSetInfoMinerPutWithHttpInfo (MinerMinerSetInfoParams body, string miner);
+        /// <returns>ApiResponse of Dictionary&lt;string, string&gt;</returns>
+        ApiResponse<Dictionary<string, string>> MinerSetInfoMinerPutWithHttpInfo (MinerMinerSetInfoParams body, string miner);
         /// <summary>
         /// Suspend Miner
         /// </summary>
@@ -97,8 +97,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Suspend Miner Body</param>
         /// <param name="miner">Miner to suspend</param>
-        /// <returns>ApiEmptyResp</returns>
-        ApiEmptyResp MinerSuspendMinerPost (MinerSuspendMinerBody body, string miner);
+        /// <returns>Dictionary&lt;string, string&gt;</returns>
+        Dictionary<string, string> MinerSuspendMinerPost (MinerSuspendMinerBody body, string miner);
 
         /// <summary>
         /// Suspend Miner
@@ -109,8 +109,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Suspend Miner Body</param>
         /// <param name="miner">Miner to suspend</param>
-        /// <returns>ApiResponse of ApiEmptyResp</returns>
-        ApiResponse<ApiEmptyResp> MinerSuspendMinerPostWithHttpInfo (MinerSuspendMinerBody body, string miner);
+        /// <returns>ApiResponse of Dictionary&lt;string, string&gt;</returns>
+        ApiResponse<Dictionary<string, string>> MinerSuspendMinerPostWithHttpInfo (MinerSuspendMinerBody body, string miner);
         /// <summary>
         /// Unuspend Miner
         /// </summary>
@@ -119,8 +119,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner to unsuspend</param>
-        /// <returns>ApiEmptyResp</returns>
-        ApiEmptyResp MinerUnsuspendMinerPut (string miner);
+        /// <returns>Dictionary&lt;string, string&gt;</returns>
+        Dictionary<string, string> MinerUnsuspendMinerPut (string miner);
 
         /// <summary>
         /// Unuspend Miner
@@ -130,8 +130,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner to unsuspend</param>
-        /// <returns>ApiResponse of ApiEmptyResp</returns>
-        ApiResponse<ApiEmptyResp> MinerUnsuspendMinerPutWithHttpInfo (string miner);
+        /// <returns>ApiResponse of Dictionary&lt;string, string&gt;</returns>
+        ApiResponse<Dictionary<string, string>> MinerUnsuspendMinerPutWithHttpInfo (string miner);
         /// <summary>
         /// Get all miners deals
         /// </summary>
@@ -186,8 +186,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner claim message</param>
-        /// <returns>Task of ApiClaimMsgResponse</returns>
-        System.Threading.Tasks.Task<ApiClaimMsgResponse> MinerClaimMinerGetAsync (string miner);
+        /// <returns>Task of GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse</returns>
+        System.Threading.Tasks.Task<GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse> MinerClaimMinerGetAsync (string miner);
 
         /// <summary>
         /// Get Claim Miner Message
@@ -197,8 +197,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner claim message</param>
-        /// <returns>Task of ApiResponse (ApiClaimMsgResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ApiClaimMsgResponse>> MinerClaimMinerGetAsyncWithHttpInfo (string miner);
+        /// <returns>Task of ApiResponse (GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse>> MinerClaimMinerGetAsyncWithHttpInfo (string miner);
         /// <summary>
         /// Claim Miner
         /// </summary>
@@ -207,8 +207,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Claim Miner Body</param>
-        /// <returns>Task of ApiClaimResponse</returns>
-        System.Threading.Tasks.Task<ApiClaimResponse> MinerClaimPostAsync (MinerClaimMinerBody body);
+        /// <returns>Task of GithubComApplicationResearchEstuaryApiV1ClaimResponse</returns>
+        System.Threading.Tasks.Task<GithubComApplicationResearchEstuaryApiV1ClaimResponse> MinerClaimPostAsync (MinerClaimMinerBody body);
 
         /// <summary>
         /// Claim Miner
@@ -218,8 +218,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Claim Miner Body</param>
-        /// <returns>Task of ApiResponse (ApiClaimResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ApiClaimResponse>> MinerClaimPostAsyncWithHttpInfo (MinerClaimMinerBody body);
+        /// <returns>Task of ApiResponse (GithubComApplicationResearchEstuaryApiV1ClaimResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GithubComApplicationResearchEstuaryApiV1ClaimResponse>> MinerClaimPostAsyncWithHttpInfo (MinerClaimMinerBody body);
         /// <summary>
         /// Set Miner Info
         /// </summary>
@@ -229,8 +229,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Miner set info params</param>
         /// <param name="miner">Miner to set info for</param>
-        /// <returns>Task of ApiEmptyResp</returns>
-        System.Threading.Tasks.Task<ApiEmptyResp> MinerSetInfoMinerPutAsync (MinerMinerSetInfoParams body, string miner);
+        /// <returns>Task of Dictionary&lt;string, string&gt;</returns>
+        System.Threading.Tasks.Task<Dictionary<string, string>> MinerSetInfoMinerPutAsync (MinerMinerSetInfoParams body, string miner);
 
         /// <summary>
         /// Set Miner Info
@@ -241,8 +241,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Miner set info params</param>
         /// <param name="miner">Miner to set info for</param>
-        /// <returns>Task of ApiResponse (ApiEmptyResp)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ApiEmptyResp>> MinerSetInfoMinerPutAsyncWithHttpInfo (MinerMinerSetInfoParams body, string miner);
+        /// <returns>Task of ApiResponse (Dictionary&lt;string, string&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, string>>> MinerSetInfoMinerPutAsyncWithHttpInfo (MinerMinerSetInfoParams body, string miner);
         /// <summary>
         /// Suspend Miner
         /// </summary>
@@ -252,8 +252,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Suspend Miner Body</param>
         /// <param name="miner">Miner to suspend</param>
-        /// <returns>Task of ApiEmptyResp</returns>
-        System.Threading.Tasks.Task<ApiEmptyResp> MinerSuspendMinerPostAsync (MinerSuspendMinerBody body, string miner);
+        /// <returns>Task of Dictionary&lt;string, string&gt;</returns>
+        System.Threading.Tasks.Task<Dictionary<string, string>> MinerSuspendMinerPostAsync (MinerSuspendMinerBody body, string miner);
 
         /// <summary>
         /// Suspend Miner
@@ -264,8 +264,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Suspend Miner Body</param>
         /// <param name="miner">Miner to suspend</param>
-        /// <returns>Task of ApiResponse (ApiEmptyResp)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ApiEmptyResp>> MinerSuspendMinerPostAsyncWithHttpInfo (MinerSuspendMinerBody body, string miner);
+        /// <returns>Task of ApiResponse (Dictionary&lt;string, string&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, string>>> MinerSuspendMinerPostAsyncWithHttpInfo (MinerSuspendMinerBody body, string miner);
         /// <summary>
         /// Unuspend Miner
         /// </summary>
@@ -274,8 +274,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner to unsuspend</param>
-        /// <returns>Task of ApiEmptyResp</returns>
-        System.Threading.Tasks.Task<ApiEmptyResp> MinerUnsuspendMinerPutAsync (string miner);
+        /// <returns>Task of Dictionary&lt;string, string&gt;</returns>
+        System.Threading.Tasks.Task<Dictionary<string, string>> MinerUnsuspendMinerPutAsync (string miner);
 
         /// <summary>
         /// Unuspend Miner
@@ -285,8 +285,8 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner to unsuspend</param>
-        /// <returns>Task of ApiResponse (ApiEmptyResp)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ApiEmptyResp>> MinerUnsuspendMinerPutAsyncWithHttpInfo (string miner);
+        /// <returns>Task of ApiResponse (Dictionary&lt;string, string&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, string>>> MinerUnsuspendMinerPutAsyncWithHttpInfo (string miner);
         /// <summary>
         /// Get all miners deals
         /// </summary>
@@ -447,10 +447,10 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner claim message</param>
-        /// <returns>ApiClaimMsgResponse</returns>
-        public ApiClaimMsgResponse MinerClaimMinerGet (string miner)
+        /// <returns>GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse</returns>
+        public GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse MinerClaimMinerGet (string miner)
         {
-             ApiResponse<ApiClaimMsgResponse> localVarResponse = MinerClaimMinerGetWithHttpInfo(miner);
+             ApiResponse<GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse> localVarResponse = MinerClaimMinerGetWithHttpInfo(miner);
              return localVarResponse.Data;
         }
 
@@ -459,8 +459,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner claim message</param>
-        /// <returns>ApiResponse of ApiClaimMsgResponse</returns>
-        public ApiResponse< ApiClaimMsgResponse > MinerClaimMinerGetWithHttpInfo (string miner)
+        /// <returns>ApiResponse of GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse</returns>
+        public ApiResponse< GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse > MinerClaimMinerGetWithHttpInfo (string miner)
         {
             // verify the required parameter 'miner' is set
             if (miner == null)
@@ -507,9 +507,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<ApiClaimMsgResponse>(localVarStatusCode,
+            return new ApiResponse<GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (ApiClaimMsgResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiClaimMsgResponse)));
+                (GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse)));
         }
 
         /// <summary>
@@ -517,10 +517,10 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner claim message</param>
-        /// <returns>Task of ApiClaimMsgResponse</returns>
-        public async System.Threading.Tasks.Task<ApiClaimMsgResponse> MinerClaimMinerGetAsync (string miner)
+        /// <returns>Task of GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse</returns>
+        public async System.Threading.Tasks.Task<GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse> MinerClaimMinerGetAsync (string miner)
         {
-             ApiResponse<ApiClaimMsgResponse> localVarResponse = await MinerClaimMinerGetAsyncWithHttpInfo(miner);
+             ApiResponse<GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse> localVarResponse = await MinerClaimMinerGetAsyncWithHttpInfo(miner);
              return localVarResponse.Data;
 
         }
@@ -530,8 +530,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner claim message</param>
-        /// <returns>Task of ApiResponse (ApiClaimMsgResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ApiClaimMsgResponse>> MinerClaimMinerGetAsyncWithHttpInfo (string miner)
+        /// <returns>Task of ApiResponse (GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse>> MinerClaimMinerGetAsyncWithHttpInfo (string miner)
         {
             // verify the required parameter 'miner' is set
             if (miner == null)
@@ -578,9 +578,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<ApiClaimMsgResponse>(localVarStatusCode,
+            return new ApiResponse<GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (ApiClaimMsgResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiClaimMsgResponse)));
+                (GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse)));
         }
 
         /// <summary>
@@ -588,10 +588,10 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Claim Miner Body</param>
-        /// <returns>ApiClaimResponse</returns>
-        public ApiClaimResponse MinerClaimPost (MinerClaimMinerBody body)
+        /// <returns>GithubComApplicationResearchEstuaryApiV1ClaimResponse</returns>
+        public GithubComApplicationResearchEstuaryApiV1ClaimResponse MinerClaimPost (MinerClaimMinerBody body)
         {
-             ApiResponse<ApiClaimResponse> localVarResponse = MinerClaimPostWithHttpInfo(body);
+             ApiResponse<GithubComApplicationResearchEstuaryApiV1ClaimResponse> localVarResponse = MinerClaimPostWithHttpInfo(body);
              return localVarResponse.Data;
         }
 
@@ -600,8 +600,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Claim Miner Body</param>
-        /// <returns>ApiResponse of ApiClaimResponse</returns>
-        public ApiResponse< ApiClaimResponse > MinerClaimPostWithHttpInfo (MinerClaimMinerBody body)
+        /// <returns>ApiResponse of GithubComApplicationResearchEstuaryApiV1ClaimResponse</returns>
+        public ApiResponse< GithubComApplicationResearchEstuaryApiV1ClaimResponse > MinerClaimPostWithHttpInfo (MinerClaimMinerBody body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -656,9 +656,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<ApiClaimResponse>(localVarStatusCode,
+            return new ApiResponse<GithubComApplicationResearchEstuaryApiV1ClaimResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (ApiClaimResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiClaimResponse)));
+                (GithubComApplicationResearchEstuaryApiV1ClaimResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GithubComApplicationResearchEstuaryApiV1ClaimResponse)));
         }
 
         /// <summary>
@@ -666,10 +666,10 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Claim Miner Body</param>
-        /// <returns>Task of ApiClaimResponse</returns>
-        public async System.Threading.Tasks.Task<ApiClaimResponse> MinerClaimPostAsync (MinerClaimMinerBody body)
+        /// <returns>Task of GithubComApplicationResearchEstuaryApiV1ClaimResponse</returns>
+        public async System.Threading.Tasks.Task<GithubComApplicationResearchEstuaryApiV1ClaimResponse> MinerClaimPostAsync (MinerClaimMinerBody body)
         {
-             ApiResponse<ApiClaimResponse> localVarResponse = await MinerClaimPostAsyncWithHttpInfo(body);
+             ApiResponse<GithubComApplicationResearchEstuaryApiV1ClaimResponse> localVarResponse = await MinerClaimPostAsyncWithHttpInfo(body);
              return localVarResponse.Data;
 
         }
@@ -679,8 +679,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Claim Miner Body</param>
-        /// <returns>Task of ApiResponse (ApiClaimResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ApiClaimResponse>> MinerClaimPostAsyncWithHttpInfo (MinerClaimMinerBody body)
+        /// <returns>Task of ApiResponse (GithubComApplicationResearchEstuaryApiV1ClaimResponse)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<GithubComApplicationResearchEstuaryApiV1ClaimResponse>> MinerClaimPostAsyncWithHttpInfo (MinerClaimMinerBody body)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -735,9 +735,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<ApiClaimResponse>(localVarStatusCode,
+            return new ApiResponse<GithubComApplicationResearchEstuaryApiV1ClaimResponse>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (ApiClaimResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiClaimResponse)));
+                (GithubComApplicationResearchEstuaryApiV1ClaimResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(GithubComApplicationResearchEstuaryApiV1ClaimResponse)));
         }
 
         /// <summary>
@@ -746,10 +746,10 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Miner set info params</param>
         /// <param name="miner">Miner to set info for</param>
-        /// <returns>ApiEmptyResp</returns>
-        public ApiEmptyResp MinerSetInfoMinerPut (MinerMinerSetInfoParams body, string miner)
+        /// <returns>Dictionary&lt;string, string&gt;</returns>
+        public Dictionary<string, string> MinerSetInfoMinerPut (MinerMinerSetInfoParams body, string miner)
         {
-             ApiResponse<ApiEmptyResp> localVarResponse = MinerSetInfoMinerPutWithHttpInfo(body, miner);
+             ApiResponse<Dictionary<string, string>> localVarResponse = MinerSetInfoMinerPutWithHttpInfo(body, miner);
              return localVarResponse.Data;
         }
 
@@ -759,8 +759,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Miner set info params</param>
         /// <param name="miner">Miner to set info for</param>
-        /// <returns>ApiResponse of ApiEmptyResp</returns>
-        public ApiResponse< ApiEmptyResp > MinerSetInfoMinerPutWithHttpInfo (MinerMinerSetInfoParams body, string miner)
+        /// <returns>ApiResponse of Dictionary&lt;string, string&gt;</returns>
+        public ApiResponse< Dictionary<string, string> > MinerSetInfoMinerPutWithHttpInfo (MinerMinerSetInfoParams body, string miner)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -819,9 +819,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<ApiEmptyResp>(localVarStatusCode,
+            return new ApiResponse<Dictionary<string, string>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (ApiEmptyResp) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiEmptyResp)));
+                (Dictionary<string, string>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, string>)));
         }
 
         /// <summary>
@@ -830,10 +830,10 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Miner set info params</param>
         /// <param name="miner">Miner to set info for</param>
-        /// <returns>Task of ApiEmptyResp</returns>
-        public async System.Threading.Tasks.Task<ApiEmptyResp> MinerSetInfoMinerPutAsync (MinerMinerSetInfoParams body, string miner)
+        /// <returns>Task of Dictionary&lt;string, string&gt;</returns>
+        public async System.Threading.Tasks.Task<Dictionary<string, string>> MinerSetInfoMinerPutAsync (MinerMinerSetInfoParams body, string miner)
         {
-             ApiResponse<ApiEmptyResp> localVarResponse = await MinerSetInfoMinerPutAsyncWithHttpInfo(body, miner);
+             ApiResponse<Dictionary<string, string>> localVarResponse = await MinerSetInfoMinerPutAsyncWithHttpInfo(body, miner);
              return localVarResponse.Data;
 
         }
@@ -844,8 +844,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Miner set info params</param>
         /// <param name="miner">Miner to set info for</param>
-        /// <returns>Task of ApiResponse (ApiEmptyResp)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ApiEmptyResp>> MinerSetInfoMinerPutAsyncWithHttpInfo (MinerMinerSetInfoParams body, string miner)
+        /// <returns>Task of ApiResponse (Dictionary&lt;string, string&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, string>>> MinerSetInfoMinerPutAsyncWithHttpInfo (MinerMinerSetInfoParams body, string miner)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -904,9 +904,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<ApiEmptyResp>(localVarStatusCode,
+            return new ApiResponse<Dictionary<string, string>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (ApiEmptyResp) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiEmptyResp)));
+                (Dictionary<string, string>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, string>)));
         }
 
         /// <summary>
@@ -915,10 +915,10 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Suspend Miner Body</param>
         /// <param name="miner">Miner to suspend</param>
-        /// <returns>ApiEmptyResp</returns>
-        public ApiEmptyResp MinerSuspendMinerPost (MinerSuspendMinerBody body, string miner)
+        /// <returns>Dictionary&lt;string, string&gt;</returns>
+        public Dictionary<string, string> MinerSuspendMinerPost (MinerSuspendMinerBody body, string miner)
         {
-             ApiResponse<ApiEmptyResp> localVarResponse = MinerSuspendMinerPostWithHttpInfo(body, miner);
+             ApiResponse<Dictionary<string, string>> localVarResponse = MinerSuspendMinerPostWithHttpInfo(body, miner);
              return localVarResponse.Data;
         }
 
@@ -928,8 +928,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Suspend Miner Body</param>
         /// <param name="miner">Miner to suspend</param>
-        /// <returns>ApiResponse of ApiEmptyResp</returns>
-        public ApiResponse< ApiEmptyResp > MinerSuspendMinerPostWithHttpInfo (MinerSuspendMinerBody body, string miner)
+        /// <returns>ApiResponse of Dictionary&lt;string, string&gt;</returns>
+        public ApiResponse< Dictionary<string, string> > MinerSuspendMinerPostWithHttpInfo (MinerSuspendMinerBody body, string miner)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -988,9 +988,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<ApiEmptyResp>(localVarStatusCode,
+            return new ApiResponse<Dictionary<string, string>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (ApiEmptyResp) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiEmptyResp)));
+                (Dictionary<string, string>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, string>)));
         }
 
         /// <summary>
@@ -999,10 +999,10 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Suspend Miner Body</param>
         /// <param name="miner">Miner to suspend</param>
-        /// <returns>Task of ApiEmptyResp</returns>
-        public async System.Threading.Tasks.Task<ApiEmptyResp> MinerSuspendMinerPostAsync (MinerSuspendMinerBody body, string miner)
+        /// <returns>Task of Dictionary&lt;string, string&gt;</returns>
+        public async System.Threading.Tasks.Task<Dictionary<string, string>> MinerSuspendMinerPostAsync (MinerSuspendMinerBody body, string miner)
         {
-             ApiResponse<ApiEmptyResp> localVarResponse = await MinerSuspendMinerPostAsyncWithHttpInfo(body, miner);
+             ApiResponse<Dictionary<string, string>> localVarResponse = await MinerSuspendMinerPostAsyncWithHttpInfo(body, miner);
              return localVarResponse.Data;
 
         }
@@ -1013,8 +1013,8 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Suspend Miner Body</param>
         /// <param name="miner">Miner to suspend</param>
-        /// <returns>Task of ApiResponse (ApiEmptyResp)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ApiEmptyResp>> MinerSuspendMinerPostAsyncWithHttpInfo (MinerSuspendMinerBody body, string miner)
+        /// <returns>Task of ApiResponse (Dictionary&lt;string, string&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, string>>> MinerSuspendMinerPostAsyncWithHttpInfo (MinerSuspendMinerBody body, string miner)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1073,9 +1073,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<ApiEmptyResp>(localVarStatusCode,
+            return new ApiResponse<Dictionary<string, string>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (ApiEmptyResp) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiEmptyResp)));
+                (Dictionary<string, string>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, string>)));
         }
 
         /// <summary>
@@ -1083,10 +1083,10 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner to unsuspend</param>
-        /// <returns>ApiEmptyResp</returns>
-        public ApiEmptyResp MinerUnsuspendMinerPut (string miner)
+        /// <returns>Dictionary&lt;string, string&gt;</returns>
+        public Dictionary<string, string> MinerUnsuspendMinerPut (string miner)
         {
-             ApiResponse<ApiEmptyResp> localVarResponse = MinerUnsuspendMinerPutWithHttpInfo(miner);
+             ApiResponse<Dictionary<string, string>> localVarResponse = MinerUnsuspendMinerPutWithHttpInfo(miner);
              return localVarResponse.Data;
         }
 
@@ -1095,8 +1095,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner to unsuspend</param>
-        /// <returns>ApiResponse of ApiEmptyResp</returns>
-        public ApiResponse< ApiEmptyResp > MinerUnsuspendMinerPutWithHttpInfo (string miner)
+        /// <returns>ApiResponse of Dictionary&lt;string, string&gt;</returns>
+        public ApiResponse< Dictionary<string, string> > MinerUnsuspendMinerPutWithHttpInfo (string miner)
         {
             // verify the required parameter 'miner' is set
             if (miner == null)
@@ -1143,9 +1143,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<ApiEmptyResp>(localVarStatusCode,
+            return new ApiResponse<Dictionary<string, string>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (ApiEmptyResp) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiEmptyResp)));
+                (Dictionary<string, string>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, string>)));
         }
 
         /// <summary>
@@ -1153,10 +1153,10 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner to unsuspend</param>
-        /// <returns>Task of ApiEmptyResp</returns>
-        public async System.Threading.Tasks.Task<ApiEmptyResp> MinerUnsuspendMinerPutAsync (string miner)
+        /// <returns>Task of Dictionary&lt;string, string&gt;</returns>
+        public async System.Threading.Tasks.Task<Dictionary<string, string>> MinerUnsuspendMinerPutAsync (string miner)
         {
-             ApiResponse<ApiEmptyResp> localVarResponse = await MinerUnsuspendMinerPutAsyncWithHttpInfo(miner);
+             ApiResponse<Dictionary<string, string>> localVarResponse = await MinerUnsuspendMinerPutAsyncWithHttpInfo(miner);
              return localVarResponse.Data;
 
         }
@@ -1166,8 +1166,8 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="miner">Miner to unsuspend</param>
-        /// <returns>Task of ApiResponse (ApiEmptyResp)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ApiEmptyResp>> MinerUnsuspendMinerPutAsyncWithHttpInfo (string miner)
+        /// <returns>Task of ApiResponse (Dictionary&lt;string, string&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, string>>> MinerUnsuspendMinerPutAsyncWithHttpInfo (string miner)
         {
             // verify the required parameter 'miner' is set
             if (miner == null)
@@ -1214,9 +1214,9 @@ namespace estuary-client.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<ApiEmptyResp>(localVarStatusCode,
+            return new ApiResponse<Dictionary<string, string>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (ApiEmptyResp) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiEmptyResp)));
+                (Dictionary<string, string>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, string>)));
         }
 
         /// <summary>

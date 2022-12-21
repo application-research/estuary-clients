@@ -11,7 +11,7 @@ void main() {
     //
     // This endpoint lets a user get the message in order to claim a miner
     //
-    //Future<ApiClaimMsgResponse> minerClaimMinerGet(String miner) async
+    //Future<GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse> minerClaimMinerGet(String miner) async
     test('test minerClaimMinerGet', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // This endpoint lets a user claim a miner
     //
-    //Future<ApiClaimResponse> minerClaimPost(MinerClaimMinerBody body) async
+    //Future<GithubComApplicationResearchEstuaryApiV1ClaimResponse> minerClaimPost(MinerClaimMinerBody body) async
     test('test minerClaimPost', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // This endpoint lets a user set miner info.
     //
-    //Future<ApiEmptyResp> minerSetInfoMinerPut(MinerMinerSetInfoParams body, String miner) async
+    //Future<Map<String, String>> minerSetInfoMinerPut(MinerMinerSetInfoParams body, String miner) async
     test('test minerSetInfoMinerPut', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // This endpoint lets a user suspend a miner.
     //
-    //Future<ApiEmptyResp> minerSuspendMinerPost(MinerSuspendMinerBody body, String miner) async
+    //Future<Map<String, String>> minerSuspendMinerPost(MinerSuspendMinerBody body, String miner) async
     test('test minerSuspendMinerPost', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // This endpoint lets a user unsuspend a miner.
     //
-    //Future<ApiEmptyResp> minerUnsuspendMinerPut(String miner) async
+    //Future<Map<String, String>> minerUnsuspendMinerPut(String miner) async
     test('test minerUnsuspendMinerPut', () async {
       // TODO
     });

@@ -346,4 +346,29 @@ class DealsApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(base
             ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
         }
     }
+    /**
+     * Query Ask
+     * This endpoint returns the ask for a given CID
+     * @param cid CID 
+     * @return kotlin.String
+     */
+    @Suppress("UNCHECKED_CAST")
+    fun storageProvidersStorageQueryCidGet(cid: kotlin.String): kotlin.String {
+        
+        val localVariableConfig = RequestConfig(
+                RequestMethod.GET,
+                "/storage-providers/storage/query/{cid}".replace("{" + "cid" + "}", "$cid")
+        )
+        val response = request<kotlin.String>(
+                localVariableConfig
+        )
+
+        return when (response.responseType) {
+            ResponseType.Success -> (response as Success<*>).data as kotlin.String
+            ResponseType.Informational -> TODO()
+            ResponseType.Redirection -> TODO()
+            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+        }
+    }
 }

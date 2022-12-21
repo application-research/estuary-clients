@@ -6,7 +6,7 @@
  * This endpoint lets a user get the message in order to claim a miner
  *
  * miner String Miner claim message
- * returns api.claimMsgResponse
+ * returns github_com_application-research_estuary_api_v1.claimMsgResponse
  **/
 exports.minerClaimMinerGET = function(miner) {
   return new Promise(function(resolve, reject) {
@@ -28,7 +28,7 @@ exports.minerClaimMinerGET = function(miner) {
  * This endpoint lets a user claim a miner
  *
  * body Miner.ClaimMinerBody Claim Miner Body
- * returns api.claimResponse
+ * returns github_com_application-research_estuary_api_v1.claimResponse
  **/
 exports.minerClaimPOST = function(body) {
   return new Promise(function(resolve, reject) {
@@ -51,12 +51,14 @@ exports.minerClaimPOST = function(body) {
  *
  * body Miner.MinerSetInfoParams Miner set info params
  * miner String Miner to set info for
- * returns api.emptyResp
+ * returns Map
  **/
 exports.minerSet_infoMinerPUT = function(body,miner) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = { };
+    examples['application/json'] = {
+  "key" : ""
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -72,12 +74,14 @@ exports.minerSet_infoMinerPUT = function(body,miner) {
  *
  * body Miner.SuspendMinerBody Suspend Miner Body
  * miner String Miner to suspend
- * returns api.emptyResp
+ * returns Map
  **/
 exports.minerSuspendMinerPOST = function(body,miner) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = { };
+    examples['application/json'] = {
+  "key" : ""
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -92,12 +96,14 @@ exports.minerSuspendMinerPOST = function(body,miner) {
  * This endpoint lets a user unsuspend a miner.
  *
  * miner String Miner to unsuspend
- * returns api.emptyResp
+ * returns Map
  **/
 exports.minerUnsuspendMinerPUT = function(miner) {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = { };
+    examples['application/json'] = {
+  "key" : ""
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {

@@ -271,6 +271,7 @@ Class | Method | HTTP request | Description
 *DealsApi* | [**dealsStatusDealGet**](docs/Api/DealsApi.md#dealsstatusdealget) | **GET** /deals/status/{deal} | Get Deal Status
 *DealsApi* | [**publicDealsFailuresGet**](docs/Api/DealsApi.md#publicdealsfailuresget) | **GET** /public/deals/failures | Get storage failures
 *DealsApi* | [**publicMinersStorageQueryMinerGet**](docs/Api/DealsApi.md#publicminersstoragequeryminerget) | **GET** /public/miners/storage/query/{miner} | Query Ask
+*DealsApi* | [**storageProvidersStorageQueryCidGet**](docs/Api/DealsApi.md#storageprovidersstoragequerycidget) | **GET** /storage-providers/storage/query/{cid} | Query Ask
 *DefaultApi* | [**viewerGet**](docs/Api/DefaultApi.md#viewerget) | **GET** /viewer | Fetch viewer details
 *MetricsApi* | [**publicMetricsDealsOnChainGet**](docs/Api/MetricsApi.md#publicmetricsdealsonchainget) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 *MinerApi* | [**minerClaimMinerGet**](docs/Api/MinerApi.md#minerclaimminerget) | **GET** /miner/claim/{miner} | Get Claim Miner Message
@@ -300,6 +301,15 @@ Class | Method | HTTP request | Description
 *PublicApi* | [**publicNetAddrsGet**](docs/Api/PublicApi.md#publicnetaddrsget) | **GET** /public/net/addrs | Net Addrs
 *PublicApi* | [**publicNetPeersGet**](docs/Api/PublicApi.md#publicnetpeersget) | **GET** /public/net/peers | Net Peers
 *PublicApi* | [**publicStatsGet**](docs/Api/PublicApi.md#publicstatsget) | **GET** /public/stats | Public stats
+*SpApi* | [**storageProvidersClaimPost**](docs/Api/SpApi.md#storageprovidersclaimpost) | **POST** /storage-providers/claim | Claim Storage Provider
+*SpApi* | [**storageProvidersClaimSpGet**](docs/Api/SpApi.md#storageprovidersclaimspget) | **GET** /storage-providers/claim/{sp} | Get Claim Storage Provider
+*SpApi* | [**storageProvidersDealsSpGet**](docs/Api/SpApi.md#storageprovidersdealsspget) | **GET** /storage-providers/deals/{sp} | Get all storage providers deals
+*SpApi* | [**storageProvidersFailuresSpGet**](docs/Api/SpApi.md#storageprovidersfailuresspget) | **GET** /storage-providers/failures/{sp} | Get all storage providers
+*SpApi* | [**storageProvidersGet**](docs/Api/SpApi.md#storageprovidersget) | **GET** /storage-providers | Get all storage providers
+*SpApi* | [**storageProvidersSetInfoSpPut**](docs/Api/SpApi.md#storageproviderssetinfospput) | **PUT** /storage-providers/set-info/{sp} | Set Storage Provider Info
+*SpApi* | [**storageProvidersStatsSpGet**](docs/Api/SpApi.md#storageprovidersstatsspget) | **GET** /storage-providers/stats/{sp} | Get storage provider stats
+*SpApi* | [**storageProvidersSuspendSpPost**](docs/Api/SpApi.md#storageproviderssuspendsppost) | **POST** /storage-providers/suspend/{sp} | Suspend Storage Provider
+*SpApi* | [**storageProvidersUnsuspendSpPut**](docs/Api/SpApi.md#storageprovidersunsuspendspput) | **PUT** /storage-providers/unsuspend/{sp} | Unuspend Storage Provider
 *UserApi* | [**userApiKeysGet**](docs/Api/UserApi.md#userapikeysget) | **GET** /user/api-keys | Get API keys for a user
 *UserApi* | [**userApiKeysKeyOrHashDelete**](docs/Api/UserApi.md#userapikeyskeyorhashdelete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 *UserApi* | [**userApiKeysPost**](docs/Api/UserApi.md#userapikeyspost) | **POST** /user/api-keys | Create API keys for a user
@@ -310,20 +320,22 @@ Class | Method | HTTP request | Description
 
  - [AddressAddress](docs/Model/AddressAddress.md)
  - [ApiChannelIDParam](docs/Model/ApiChannelIDParam.md)
- - [ApiClaimMsgResponse](docs/Model/ApiClaimMsgResponse.md)
- - [ApiClaimResponse](docs/Model/ApiClaimResponse.md)
  - [ApiCreateCollectionBody](docs/Model/ApiCreateCollectionBody.md)
  - [ApiDeleteContentFromCollectionBody](docs/Model/ApiDeleteContentFromCollectionBody.md)
- - [ApiEmptyResp](docs/Model/ApiEmptyResp.md)
  - [ApiEstimateDealBody](docs/Model/ApiEstimateDealBody.md)
  - [ApiGetApiKeysResp](docs/Model/ApiGetApiKeysResp.md)
  - [ApiPublicNodeInfo](docs/Model/ApiPublicNodeInfo.md)
+ - [ApiStorageProviderResp](docs/Model/ApiStorageProviderResp.md)
  - [AutoretrieveInitBody](docs/Model/AutoretrieveInitBody.md)
  - [CidCid](docs/Model/CidCid.md)
  - [CollectionsCidType](docs/Model/CollectionsCidType.md)
  - [CollectionsCollection](docs/Model/CollectionsCollection.md)
  - [CollectionsCollectionListResponse](docs/Model/CollectionsCollectionListResponse.md)
  - [ContentAddBody](docs/Model/ContentAddBody.md)
+ - [GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse](docs/Model/GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse.md)
+ - [GithubComApplicationResearchEstuaryApiV1ClaimResponse](docs/Model/GithubComApplicationResearchEstuaryApiV1ClaimResponse.md)
+ - [GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse](docs/Model/GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse.md)
+ - [GithubComApplicationResearchEstuaryApiV2ClaimResponse](docs/Model/GithubComApplicationResearchEstuaryApiV2ClaimResponse.md)
  - [MinerClaimMinerBody](docs/Model/MinerClaimMinerBody.md)
  - [MinerMinerSetInfoParams](docs/Model/MinerMinerSetInfoParams.md)
  - [MinerSuspendMinerBody](docs/Model/MinerSuspendMinerBody.md)

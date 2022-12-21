@@ -88,6 +88,12 @@ namespace IO.Swagger.Api
         /// <param name="miner">CID</param>
         /// <returns>string</returns>
         string PublicMinersStorageQueryMinerGet (string miner);
+        /// <summary>
+        /// Query Ask This endpoint returns the ask for a given CID
+        /// </summary>
+        /// <param name="cid">CID</param>
+        /// <returns>string</returns>
+        string StorageProvidersStorageQueryCidGet (string cid);
     }
   
     /// <summary>
@@ -590,6 +596,41 @@ path = path.Replace("{" + "propcid" + "}", ApiClient.ParameterToString(propcid))
                 throw new ApiException ((int)response.StatusCode, "Error calling PublicMinersStorageQueryMinerGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PublicMinersStorageQueryMinerGet: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
+        }
+    
+        /// <summary>
+        /// Query Ask This endpoint returns the ask for a given CID
+        /// </summary>
+        /// <param name="cid">CID</param>
+        /// <returns>string</returns>
+        public string StorageProvidersStorageQueryCidGet (string cid)
+        {
+            // verify the required parameter 'cid' is set
+            if (cid == null) throw new ApiException(400, "Missing required parameter 'cid' when calling StorageProvidersStorageQueryCidGet");
+    
+            var path = "/storage-providers/storage/query/{cid}";
+            path = path.Replace("{format}", "json");
+            path = path.Replace("{" + "cid" + "}", ApiClient.ParameterToString(cid));
+    
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+                                    
+            // authentication setting, if any
+            String[] authSettings = new String[] { "bearerAuth" };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling StorageProvidersStorageQueryCidGet: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling StorageProvidersStorageQueryCidGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }

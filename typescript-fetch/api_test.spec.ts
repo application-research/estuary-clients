@@ -273,6 +273,10 @@ describe("DealsApi", () => {
     const miner: string = "miner_example"
     return expect(instance.publicMinersStorageQueryMinerGet(miner, {})).resolves.toBe(null)
   })
+  test("storageProvidersStorageQueryCidGet", () => {
+    const cid: string = "cid_example"
+    return expect(instance.storageProvidersStorageQueryCidGet(cid, {})).resolves.toBe(null)
+  })
 })
 
 describe("DefaultApi", () => {
@@ -429,6 +433,52 @@ describe("PublicApi", () => {
   })
   test("publicStatsGet", () => {
     return expect(instance.publicStatsGet({})).resolves.toBe(null)
+  })
+})
+
+describe("SpApi", () => {
+  let instance: api.SpApi
+  beforeEach(function() {
+    instance = new api.SpApi(config)
+  });
+
+  test("storageProvidersClaimPost", () => {
+    const body: api.MinerClaimMinerBody = undefined
+    return expect(instance.storageProvidersClaimPost(body, {})).resolves.toBe(null)
+  })
+  test("storageProvidersClaimSpGet", () => {
+    const sp: string = "sp_example"
+    return expect(instance.storageProvidersClaimSpGet(sp, {})).resolves.toBe(null)
+  })
+  test("storageProvidersDealsSpGet", () => {
+    const sp: string = "sp_example"
+    const ignoreFailed: string = "ignoreFailed_example"
+    return expect(instance.storageProvidersDealsSpGet(sp, ignoreFailed, {})).resolves.toBe(null)
+  })
+  test("storageProvidersFailuresSpGet", () => {
+    const sp: string = "sp_example"
+    return expect(instance.storageProvidersFailuresSpGet(sp, {})).resolves.toBe(null)
+  })
+  test("storageProvidersGet", () => {
+    return expect(instance.storageProvidersGet({})).resolves.toBe(null)
+  })
+  test("storageProvidersSetInfoSpPut", () => {
+    const body: api.MinerMinerSetInfoParams = undefined
+    const sp: string = "sp_example"
+    return expect(instance.storageProvidersSetInfoSpPut(body, sp, {})).resolves.toBe(null)
+  })
+  test("storageProvidersStatsSpGet", () => {
+    const sp: string = "sp_example"
+    return expect(instance.storageProvidersStatsSpGet(sp, {})).resolves.toBe(null)
+  })
+  test("storageProvidersSuspendSpPost", () => {
+    const body: api.MinerSuspendMinerBody = undefined
+    const sp: string = "sp_example"
+    return expect(instance.storageProvidersSuspendSpPost(body, sp, {})).resolves.toBe(null)
+  })
+  test("storageProvidersUnsuspendSpPut", () => {
+    const sp: string = "sp_example"
+    return expect(instance.storageProvidersUnsuspendSpPut(sp, {})).resolves.toBe(null)
   })
 })
 

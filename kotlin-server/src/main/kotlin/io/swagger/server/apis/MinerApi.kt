@@ -33,9 +33,8 @@ import estuary-client.Paths
 import estuary-client.infrastructure.ApiPrincipal
 
 
-import io.swagger.server.models.ApiclaimMsgResponse
-import io.swagger.server.models.ApiclaimResponse
-import io.swagger.server.models.ApiemptyResp
+import io.swagger.server.models.GithubComApplicationResearchEstuaryApiV1claimMsgResponse
+import io.swagger.server.models.GithubComApplicationResearchEstuaryApiV1claimResponse
 import io.swagger.server.models.MinerClaimMinerBody
 import io.swagger.server.models.MinerMinerSetInfoParams
 import io.swagger.server.models.MinerSuspendMinerBody
@@ -83,7 +82,9 @@ fun Route.MinerApi() {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
             val exampleContentType = "application/json"
-            val exampleContentString = """{ }"""
+            val exampleContentString = """{
+  "key" : ""
+}"""
             
             when(exampleContentType) {
                 "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
@@ -97,7 +98,9 @@ fun Route.MinerApi() {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
             val exampleContentType = "application/json"
-            val exampleContentString = """{ }"""
+            val exampleContentString = """{
+  "key" : ""
+}"""
             
             when(exampleContentType) {
                 "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
@@ -111,7 +114,9 @@ fun Route.MinerApi() {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
             val exampleContentType = "application/json"
-            val exampleContentString = """{ }"""
+            val exampleContentString = """{
+  "key" : ""
+}"""
             
             when(exampleContentType) {
                 "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))

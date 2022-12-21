@@ -30,15 +30,15 @@ MinerApiService Get Claim Miner Message
 This endpoint lets a user get the message in order to claim a miner
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param miner Miner claim message
-@return ApiClaimMsgResponse
+@return GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse
 */
-func (a *MinerApiService) MinerClaimMinerGet(ctx context.Context, miner string) (ApiClaimMsgResponse, *http.Response, error) {
+func (a *MinerApiService) MinerClaimMinerGet(ctx context.Context, miner string) (GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue ApiClaimMsgResponse
+		localVarReturnValue GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse
 	)
 
 	// create path and map variables
@@ -109,7 +109,7 @@ func (a *MinerApiService) MinerClaimMinerGet(ctx context.Context, miner string) 
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v ApiClaimMsgResponse
+			var v GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -148,15 +148,15 @@ MinerApiService Claim Miner
 This endpoint lets a user claim a miner
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body Claim Miner Body
-@return ApiClaimResponse
+@return GithubComApplicationResearchEstuaryApiV1ClaimResponse
 */
-func (a *MinerApiService) MinerClaimPost(ctx context.Context, body MinerClaimMinerBody) (ApiClaimResponse, *http.Response, error) {
+func (a *MinerApiService) MinerClaimPost(ctx context.Context, body MinerClaimMinerBody) (GithubComApplicationResearchEstuaryApiV1ClaimResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue ApiClaimResponse
+		localVarReturnValue GithubComApplicationResearchEstuaryApiV1ClaimResponse
 	)
 
 	// create path and map variables
@@ -228,7 +228,7 @@ func (a *MinerApiService) MinerClaimPost(ctx context.Context, body MinerClaimMin
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v ApiClaimResponse
+			var v GithubComApplicationResearchEstuaryApiV1ClaimResponse
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -268,15 +268,15 @@ This endpoint lets a user set miner info.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body Miner set info params
  * @param miner Miner to set info for
-@return ApiEmptyResp
+@return map[string]string
 */
-func (a *MinerApiService) MinerSetInfoMinerPut(ctx context.Context, body MinerMinerSetInfoParams, miner string) (ApiEmptyResp, *http.Response, error) {
+func (a *MinerApiService) MinerSetInfoMinerPut(ctx context.Context, body MinerMinerSetInfoParams, miner string) (map[string]string, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue ApiEmptyResp
+		localVarReturnValue map[string]string
 	)
 
 	// create path and map variables
@@ -349,7 +349,7 @@ func (a *MinerApiService) MinerSetInfoMinerPut(ctx context.Context, body MinerMi
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v ApiEmptyResp
+			var v map[string]string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -389,15 +389,15 @@ This endpoint lets a user suspend a miner.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body Suspend Miner Body
  * @param miner Miner to suspend
-@return ApiEmptyResp
+@return map[string]string
 */
-func (a *MinerApiService) MinerSuspendMinerPost(ctx context.Context, body MinerSuspendMinerBody, miner string) (ApiEmptyResp, *http.Response, error) {
+func (a *MinerApiService) MinerSuspendMinerPost(ctx context.Context, body MinerSuspendMinerBody, miner string) (map[string]string, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue ApiEmptyResp
+		localVarReturnValue map[string]string
 	)
 
 	// create path and map variables
@@ -470,7 +470,7 @@ func (a *MinerApiService) MinerSuspendMinerPost(ctx context.Context, body MinerS
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v ApiEmptyResp
+			var v map[string]string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -509,15 +509,15 @@ MinerApiService Unuspend Miner
 This endpoint lets a user unsuspend a miner.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param miner Miner to unsuspend
-@return ApiEmptyResp
+@return map[string]string
 */
-func (a *MinerApiService) MinerUnsuspendMinerPut(ctx context.Context, miner string) (ApiEmptyResp, *http.Response, error) {
+func (a *MinerApiService) MinerUnsuspendMinerPut(ctx context.Context, miner string) (map[string]string, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Put")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue ApiEmptyResp
+		localVarReturnValue map[string]string
 	)
 
 	// create path and map variables
@@ -588,7 +588,7 @@ func (a *MinerApiService) MinerUnsuspendMinerPut(ctx context.Context, miner stri
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v ApiEmptyResp
+			var v map[string]string
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()

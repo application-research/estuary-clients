@@ -112,32 +112,6 @@ export interface ApiChannelIDParam {
 /**
  * 
  * @export
- * @interface ApiClaimMsgResponse
- */
-export interface ApiClaimMsgResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof ApiClaimMsgResponse
-     */
-    hexmsg?: string;
-}
-/**
- * 
- * @export
- * @interface ApiClaimResponse
- */
-export interface ApiClaimResponse {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof ApiClaimResponse
-     */
-    success?: boolean;
-}
-/**
- * 
- * @export
  * @interface ApiCreateCollectionBody
  */
 export interface ApiCreateCollectionBody {
@@ -172,13 +146,6 @@ export interface ApiDeleteContentFromCollectionBody {
      * @memberof ApiDeleteContentFromCollectionBody
      */
     value?: string;
-}
-/**
- * 
- * @export
- * @interface ApiEmptyResp
- */
-export interface ApiEmptyResp {
 }
 /**
  * 
@@ -254,6 +221,43 @@ export interface ApiPublicNodeInfo {
      * @memberof ApiPublicNodeInfo
      */
     primaryAddress?: AddressAddress;
+}
+/**
+ * 
+ * @export
+ * @interface ApiStorageProviderResp
+ */
+export interface ApiStorageProviderResp {
+    /**
+     * 
+     * @type {AddressAddress}
+     * @memberof ApiStorageProviderResp
+     */
+    addr?: AddressAddress;
+    /**
+     * 
+     * @type {string}
+     * @memberof ApiStorageProviderResp
+     */
+    name?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof ApiStorageProviderResp
+     */
+    suspended?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof ApiStorageProviderResp
+     */
+    suspendedReason?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ApiStorageProviderResp
+     */
+    version?: string;
 }
 /**
  * 
@@ -406,6 +410,58 @@ export interface ContentAddBody {
      * @memberof ContentAddBody
      */
     filename?: string;
+}
+/**
+ * 
+ * @export
+ * @interface GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse
+ */
+export interface GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse
+     */
+    hexmsg?: string;
+}
+/**
+ * 
+ * @export
+ * @interface GithubComApplicationResearchEstuaryApiV1ClaimResponse
+ */
+export interface GithubComApplicationResearchEstuaryApiV1ClaimResponse {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GithubComApplicationResearchEstuaryApiV1ClaimResponse
+     */
+    success?: boolean;
+}
+/**
+ * 
+ * @export
+ * @interface GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse
+ */
+export interface GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse {
+    /**
+     * 
+     * @type {string}
+     * @memberof GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse
+     */
+    hexmsg?: string;
+}
+/**
+ * 
+ * @export
+ * @interface GithubComApplicationResearchEstuaryApiV2ClaimResponse
+ */
+export interface GithubComApplicationResearchEstuaryApiV2ClaimResponse {
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GithubComApplicationResearchEstuaryApiV2ClaimResponse
+     */
+    success?: boolean;
 }
 /**
  * 
@@ -4679,6 +4735,43 @@ export const DealsApiFetchParamCreator = function (configuration?: Configuration
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * This endpoint returns the ask for a given CID
+         * @summary Query Ask
+         * @param {string} cid CID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        storageProvidersStorageQueryCidGet(cid: string, options: any = {}): FetchArgs {
+            // verify required parameter 'cid' is not null or undefined
+            if (cid === null || cid === undefined) {
+                throw new RequiredError('cid','Required parameter cid was null or undefined when calling storageProvidersStorageQueryCidGet.');
+            }
+            const localVarPath = `/storage-providers/storage/query/{cid}`
+                .replace(`{${"cid"}}`, encodeURIComponent(String(cid)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+					? configuration.apiKey("Authorization")
+					: configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -4934,6 +5027,25 @@ export const DealsApiFp = function(configuration?: Configuration) {
                 });
             };
         },
+        /**
+         * This endpoint returns the ask for a given CID
+         * @summary Query Ask
+         * @param {string} cid CID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        storageProvidersStorageQueryCidGet(cid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+            const localVarFetchArgs = DealsApiFetchParamCreator(configuration).storageProvidersStorageQueryCidGet(cid, options);
+            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
     }
 };
 
@@ -5071,6 +5183,16 @@ export const DealsApiFactory = function (configuration?: Configuration, fetch?: 
          */
         publicMinersStorageQueryMinerGet(miner: string, options?: any) {
             return DealsApiFp(configuration).publicMinersStorageQueryMinerGet(miner, options)(fetch, basePath);
+        },
+        /**
+         * This endpoint returns the ask for a given CID
+         * @summary Query Ask
+         * @param {string} cid CID
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        storageProvidersStorageQueryCidGet(cid: string, options?: any) {
+            return DealsApiFp(configuration).storageProvidersStorageQueryCidGet(cid, options)(fetch, basePath);
         },
     };
 };
@@ -5235,6 +5357,18 @@ export class DealsApi extends BaseAPI {
      */
     public publicMinersStorageQueryMinerGet(miner: string, options?: any) {
         return DealsApiFp(this.configuration).publicMinersStorageQueryMinerGet(miner, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * This endpoint returns the ask for a given CID
+     * @summary Query Ask
+     * @param {string} cid CID
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DealsApi
+     */
+    public storageProvidersStorageQueryCidGet(cid: string, options?: any) {
+        return DealsApiFp(this.configuration).storageProvidersStorageQueryCidGet(cid, options)(this.fetch, this.basePath);
     }
 
 }
@@ -5753,7 +5887,7 @@ export const MinerApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        minerClaimMinerGet(miner: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ApiClaimMsgResponse> {
+        minerClaimMinerGet(miner: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse> {
             const localVarFetchArgs = MinerApiFetchParamCreator(configuration).minerClaimMinerGet(miner, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -5772,7 +5906,7 @@ export const MinerApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        minerClaimPost(body: MinerClaimMinerBody, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ApiClaimResponse> {
+        minerClaimPost(body: MinerClaimMinerBody, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<GithubComApplicationResearchEstuaryApiV1ClaimResponse> {
             const localVarFetchArgs = MinerApiFetchParamCreator(configuration).minerClaimPost(body, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -5792,7 +5926,7 @@ export const MinerApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        minerSetInfoMinerPut(body: MinerMinerSetInfoParams, miner: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ApiEmptyResp> {
+        minerSetInfoMinerPut(body: MinerMinerSetInfoParams, miner: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<{ [key: string]: string; }> {
             const localVarFetchArgs = MinerApiFetchParamCreator(configuration).minerSetInfoMinerPut(body, miner, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -5812,7 +5946,7 @@ export const MinerApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        minerSuspendMinerPost(body: MinerSuspendMinerBody, miner: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ApiEmptyResp> {
+        minerSuspendMinerPost(body: MinerSuspendMinerBody, miner: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<{ [key: string]: string; }> {
             const localVarFetchArgs = MinerApiFetchParamCreator(configuration).minerSuspendMinerPost(body, miner, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -5831,7 +5965,7 @@ export const MinerApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        minerUnsuspendMinerPut(miner: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<ApiEmptyResp> {
+        minerUnsuspendMinerPut(miner: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<{ [key: string]: string; }> {
             const localVarFetchArgs = MinerApiFetchParamCreator(configuration).minerUnsuspendMinerPut(miner, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -7657,6 +7791,769 @@ export class PublicApi extends BaseAPI {
      */
     public publicStatsGet(options?: any) {
         return PublicApiFp(this.configuration).publicStatsGet(options)(this.fetch, this.basePath);
+    }
+
+}
+/**
+ * SpApi - fetch parameter creator
+ * @export
+ */
+export const SpApiFetchParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * This endpoint lets a user claim a storage provider
+         * @summary Claim Storage Provider
+         * @param {MinerClaimMinerBody} body Claim Storage Provider Body
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        storageProvidersClaimPost(body: MinerClaimMinerBody, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling storageProvidersClaimPost.');
+            }
+            const localVarPath = `/storage-providers/claim`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+					? configuration.apiKey("Authorization")
+					: configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            localVarHeaderParameter['Content-Type'] = '*/*';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"MinerClaimMinerBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * This endpoint lets a user get the message in order to claim a storage provider
+         * @summary Get Claim Storage Provider
+         * @param {string} sp Storage Provider claim message
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        storageProvidersClaimSpGet(sp: string, options: any = {}): FetchArgs {
+            // verify required parameter 'sp' is not null or undefined
+            if (sp === null || sp === undefined) {
+                throw new RequiredError('sp','Required parameter sp was null or undefined when calling storageProvidersClaimSpGet.');
+            }
+            const localVarPath = `/storage-providers/claim/{sp}`
+                .replace(`{${"sp"}}`, encodeURIComponent(String(sp)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+					? configuration.apiKey("Authorization")
+					: configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * This endpoint returns all storage providers deals
+         * @summary Get all storage providers deals
+         * @param {string} sp Filter by storage provider
+         * @param {string} [ignoreFailed] Ignore Failed
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        storageProvidersDealsSpGet(sp: string, ignoreFailed?: string, options: any = {}): FetchArgs {
+            // verify required parameter 'sp' is not null or undefined
+            if (sp === null || sp === undefined) {
+                throw new RequiredError('sp','Required parameter sp was null or undefined when calling storageProvidersDealsSpGet.');
+            }
+            const localVarPath = `/storage-providers/deals/{sp}`
+                .replace(`{${"sp"}}`, encodeURIComponent(String(sp)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+					? configuration.apiKey("Authorization")
+					: configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            if (ignoreFailed !== undefined) {
+                localVarQueryParameter['ignore-failed'] = ignoreFailed;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * This endpoint returns all storage providers
+         * @summary Get all storage providers
+         * @param {string} sp Filter by storage provider
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        storageProvidersFailuresSpGet(sp: string, options: any = {}): FetchArgs {
+            // verify required parameter 'sp' is not null or undefined
+            if (sp === null || sp === undefined) {
+                throw new RequiredError('sp','Required parameter sp was null or undefined when calling storageProvidersFailuresSpGet.');
+            }
+            const localVarPath = `/storage-providers/failures/{sp}`
+                .replace(`{${"sp"}}`, encodeURIComponent(String(sp)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+					? configuration.apiKey("Authorization")
+					: configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * This endpoint returns all storage providers
+         * @summary Get all storage providers
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        storageProvidersGet(options: any = {}): FetchArgs {
+            const localVarPath = `/storage-providers`;
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+					? configuration.apiKey("Authorization")
+					: configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * This endpoint lets a user set storage provider info.
+         * @summary Set Storage Provider Info
+         * @param {MinerMinerSetInfoParams} body Storage Provider set info params
+         * @param {string} sp Storage Provider to set info for
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        storageProvidersSetInfoSpPut(body: MinerMinerSetInfoParams, sp: string, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling storageProvidersSetInfoSpPut.');
+            }
+            // verify required parameter 'sp' is not null or undefined
+            if (sp === null || sp === undefined) {
+                throw new RequiredError('sp','Required parameter sp was null or undefined when calling storageProvidersSetInfoSpPut.');
+            }
+            const localVarPath = `/storage-providers/set-info/{sp}`
+                .replace(`{${"sp"}}`, encodeURIComponent(String(sp)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'PUT' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+					? configuration.apiKey("Authorization")
+					: configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            localVarHeaderParameter['Content-Type'] = '*/*';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"MinerMinerSetInfoParams" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * This endpoint returns storage provider stats
+         * @summary Get storage provider stats
+         * @param {string} sp Filter by storage provider
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        storageProvidersStatsSpGet(sp: string, options: any = {}): FetchArgs {
+            // verify required parameter 'sp' is not null or undefined
+            if (sp === null || sp === undefined) {
+                throw new RequiredError('sp','Required parameter sp was null or undefined when calling storageProvidersStatsSpGet.');
+            }
+            const localVarPath = `/storage-providers/stats/{sp}`
+                .replace(`{${"sp"}}`, encodeURIComponent(String(sp)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+					? configuration.apiKey("Authorization")
+					: configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * This endpoint lets a user suspend a storage provider.
+         * @summary Suspend Storage Provider
+         * @param {MinerSuspendMinerBody} body Suspend Storage Provider Body
+         * @param {string} sp Storage Provider to suspend
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        storageProvidersSuspendSpPost(body: MinerSuspendMinerBody, sp: string, options: any = {}): FetchArgs {
+            // verify required parameter 'body' is not null or undefined
+            if (body === null || body === undefined) {
+                throw new RequiredError('body','Required parameter body was null or undefined when calling storageProvidersSuspendSpPost.');
+            }
+            // verify required parameter 'sp' is not null or undefined
+            if (sp === null || sp === undefined) {
+                throw new RequiredError('sp','Required parameter sp was null or undefined when calling storageProvidersSuspendSpPost.');
+            }
+            const localVarPath = `/storage-providers/suspend/{sp}`
+                .replace(`{${"sp"}}`, encodeURIComponent(String(sp)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+					? configuration.apiKey("Authorization")
+					: configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            localVarHeaderParameter['Content-Type'] = '*/*';
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+            const needsSerialization = (<any>"MinerSuspendMinerBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * This endpoint lets a user unsuspend a Storage Provider.
+         * @summary Unuspend Storage Provider
+         * @param {string} sp Storage Provider to unsuspend
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        storageProvidersUnsuspendSpPut(sp: string, options: any = {}): FetchArgs {
+            // verify required parameter 'sp' is not null or undefined
+            if (sp === null || sp === undefined) {
+                throw new RequiredError('sp','Required parameter sp was null or undefined when calling storageProvidersUnsuspendSpPut.');
+            }
+            const localVarPath = `/storage-providers/unsuspend/{sp}`
+                .replace(`{${"sp"}}`, encodeURIComponent(String(sp)));
+            const localVarUrlObj = url.parse(localVarPath, true);
+            const localVarRequestOptions = Object.assign({ method: 'PUT' }, options);
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+					? configuration.apiKey("Authorization")
+					: configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+            delete localVarUrlObj.search;
+            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            return {
+                url: url.format(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * SpApi - functional programming interface
+ * @export
+ */
+export const SpApiFp = function(configuration?: Configuration) {
+    return {
+        /**
+         * This endpoint lets a user claim a storage provider
+         * @summary Claim Storage Provider
+         * @param {MinerClaimMinerBody} body Claim Storage Provider Body
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        storageProvidersClaimPost(body: MinerClaimMinerBody, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<GithubComApplicationResearchEstuaryApiV2ClaimResponse> {
+            const localVarFetchArgs = SpApiFetchParamCreator(configuration).storageProvidersClaimPost(body, options);
+            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * This endpoint lets a user get the message in order to claim a storage provider
+         * @summary Get Claim Storage Provider
+         * @param {string} sp Storage Provider claim message
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        storageProvidersClaimSpGet(sp: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse> {
+            const localVarFetchArgs = SpApiFetchParamCreator(configuration).storageProvidersClaimSpGet(sp, options);
+            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * This endpoint returns all storage providers deals
+         * @summary Get all storage providers deals
+         * @param {string} sp Filter by storage provider
+         * @param {string} [ignoreFailed] Ignore Failed
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        storageProvidersDealsSpGet(sp: string, ignoreFailed?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+            const localVarFetchArgs = SpApiFetchParamCreator(configuration).storageProvidersDealsSpGet(sp, ignoreFailed, options);
+            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * This endpoint returns all storage providers
+         * @summary Get all storage providers
+         * @param {string} sp Filter by storage provider
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        storageProvidersFailuresSpGet(sp: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+            const localVarFetchArgs = SpApiFetchParamCreator(configuration).storageProvidersFailuresSpGet(sp, options);
+            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * This endpoint returns all storage providers
+         * @summary Get all storage providers
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        storageProvidersGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Array<ApiStorageProviderResp>> {
+            const localVarFetchArgs = SpApiFetchParamCreator(configuration).storageProvidersGet(options);
+            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * This endpoint lets a user set storage provider info.
+         * @summary Set Storage Provider Info
+         * @param {MinerMinerSetInfoParams} body Storage Provider set info params
+         * @param {string} sp Storage Provider to set info for
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        storageProvidersSetInfoSpPut(body: MinerMinerSetInfoParams, sp: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+            const localVarFetchArgs = SpApiFetchParamCreator(configuration).storageProvidersSetInfoSpPut(body, sp, options);
+            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response;
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * This endpoint returns storage provider stats
+         * @summary Get storage provider stats
+         * @param {string} sp Filter by storage provider
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        storageProvidersStatsSpGet(sp: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+            const localVarFetchArgs = SpApiFetchParamCreator(configuration).storageProvidersStatsSpGet(sp, options);
+            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * This endpoint lets a user suspend a storage provider.
+         * @summary Suspend Storage Provider
+         * @param {MinerSuspendMinerBody} body Suspend Storage Provider Body
+         * @param {string} sp Storage Provider to suspend
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        storageProvidersSuspendSpPost(body: MinerSuspendMinerBody, sp: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<{ [key: string]: string; }> {
+            const localVarFetchArgs = SpApiFetchParamCreator(configuration).storageProvidersSuspendSpPost(body, sp, options);
+            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response.json();
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+        /**
+         * This endpoint lets a user unsuspend a Storage Provider.
+         * @summary Unuspend Storage Provider
+         * @param {string} sp Storage Provider to unsuspend
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        storageProvidersUnsuspendSpPut(sp: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<Response> {
+            const localVarFetchArgs = SpApiFetchParamCreator(configuration).storageProvidersUnsuspendSpPut(sp, options);
+            return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
+                return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
+                    if (response.status >= 200 && response.status < 300) {
+                        return response;
+                    } else {
+                        throw response;
+                    }
+                });
+            };
+        },
+    }
+};
+
+/**
+ * SpApi - factory interface
+ * @export
+ */
+export const SpApiFactory = function (configuration?: Configuration, fetch?: FetchAPI, basePath?: string) {
+    return {
+        /**
+         * This endpoint lets a user claim a storage provider
+         * @summary Claim Storage Provider
+         * @param {MinerClaimMinerBody} body Claim Storage Provider Body
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        storageProvidersClaimPost(body: MinerClaimMinerBody, options?: any) {
+            return SpApiFp(configuration).storageProvidersClaimPost(body, options)(fetch, basePath);
+        },
+        /**
+         * This endpoint lets a user get the message in order to claim a storage provider
+         * @summary Get Claim Storage Provider
+         * @param {string} sp Storage Provider claim message
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        storageProvidersClaimSpGet(sp: string, options?: any) {
+            return SpApiFp(configuration).storageProvidersClaimSpGet(sp, options)(fetch, basePath);
+        },
+        /**
+         * This endpoint returns all storage providers deals
+         * @summary Get all storage providers deals
+         * @param {string} sp Filter by storage provider
+         * @param {string} [ignoreFailed] Ignore Failed
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        storageProvidersDealsSpGet(sp: string, ignoreFailed?: string, options?: any) {
+            return SpApiFp(configuration).storageProvidersDealsSpGet(sp, ignoreFailed, options)(fetch, basePath);
+        },
+        /**
+         * This endpoint returns all storage providers
+         * @summary Get all storage providers
+         * @param {string} sp Filter by storage provider
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        storageProvidersFailuresSpGet(sp: string, options?: any) {
+            return SpApiFp(configuration).storageProvidersFailuresSpGet(sp, options)(fetch, basePath);
+        },
+        /**
+         * This endpoint returns all storage providers
+         * @summary Get all storage providers
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        storageProvidersGet(options?: any) {
+            return SpApiFp(configuration).storageProvidersGet(options)(fetch, basePath);
+        },
+        /**
+         * This endpoint lets a user set storage provider info.
+         * @summary Set Storage Provider Info
+         * @param {MinerMinerSetInfoParams} body Storage Provider set info params
+         * @param {string} sp Storage Provider to set info for
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        storageProvidersSetInfoSpPut(body: MinerMinerSetInfoParams, sp: string, options?: any) {
+            return SpApiFp(configuration).storageProvidersSetInfoSpPut(body, sp, options)(fetch, basePath);
+        },
+        /**
+         * This endpoint returns storage provider stats
+         * @summary Get storage provider stats
+         * @param {string} sp Filter by storage provider
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        storageProvidersStatsSpGet(sp: string, options?: any) {
+            return SpApiFp(configuration).storageProvidersStatsSpGet(sp, options)(fetch, basePath);
+        },
+        /**
+         * This endpoint lets a user suspend a storage provider.
+         * @summary Suspend Storage Provider
+         * @param {MinerSuspendMinerBody} body Suspend Storage Provider Body
+         * @param {string} sp Storage Provider to suspend
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        storageProvidersSuspendSpPost(body: MinerSuspendMinerBody, sp: string, options?: any) {
+            return SpApiFp(configuration).storageProvidersSuspendSpPost(body, sp, options)(fetch, basePath);
+        },
+        /**
+         * This endpoint lets a user unsuspend a Storage Provider.
+         * @summary Unuspend Storage Provider
+         * @param {string} sp Storage Provider to unsuspend
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        storageProvidersUnsuspendSpPut(sp: string, options?: any) {
+            return SpApiFp(configuration).storageProvidersUnsuspendSpPut(sp, options)(fetch, basePath);
+        },
+    };
+};
+
+/**
+ * SpApi - object-oriented interface
+ * @export
+ * @class SpApi
+ * @extends {BaseAPI}
+ */
+export class SpApi extends BaseAPI {
+    /**
+     * This endpoint lets a user claim a storage provider
+     * @summary Claim Storage Provider
+     * @param {MinerClaimMinerBody} body Claim Storage Provider Body
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SpApi
+     */
+    public storageProvidersClaimPost(body: MinerClaimMinerBody, options?: any) {
+        return SpApiFp(this.configuration).storageProvidersClaimPost(body, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * This endpoint lets a user get the message in order to claim a storage provider
+     * @summary Get Claim Storage Provider
+     * @param {string} sp Storage Provider claim message
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SpApi
+     */
+    public storageProvidersClaimSpGet(sp: string, options?: any) {
+        return SpApiFp(this.configuration).storageProvidersClaimSpGet(sp, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * This endpoint returns all storage providers deals
+     * @summary Get all storage providers deals
+     * @param {string} sp Filter by storage provider
+     * @param {string} [ignoreFailed] Ignore Failed
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SpApi
+     */
+    public storageProvidersDealsSpGet(sp: string, ignoreFailed?: string, options?: any) {
+        return SpApiFp(this.configuration).storageProvidersDealsSpGet(sp, ignoreFailed, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * This endpoint returns all storage providers
+     * @summary Get all storage providers
+     * @param {string} sp Filter by storage provider
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SpApi
+     */
+    public storageProvidersFailuresSpGet(sp: string, options?: any) {
+        return SpApiFp(this.configuration).storageProvidersFailuresSpGet(sp, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * This endpoint returns all storage providers
+     * @summary Get all storage providers
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SpApi
+     */
+    public storageProvidersGet(options?: any) {
+        return SpApiFp(this.configuration).storageProvidersGet(options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * This endpoint lets a user set storage provider info.
+     * @summary Set Storage Provider Info
+     * @param {MinerMinerSetInfoParams} body Storage Provider set info params
+     * @param {string} sp Storage Provider to set info for
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SpApi
+     */
+    public storageProvidersSetInfoSpPut(body: MinerMinerSetInfoParams, sp: string, options?: any) {
+        return SpApiFp(this.configuration).storageProvidersSetInfoSpPut(body, sp, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * This endpoint returns storage provider stats
+     * @summary Get storage provider stats
+     * @param {string} sp Filter by storage provider
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SpApi
+     */
+    public storageProvidersStatsSpGet(sp: string, options?: any) {
+        return SpApiFp(this.configuration).storageProvidersStatsSpGet(sp, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * This endpoint lets a user suspend a storage provider.
+     * @summary Suspend Storage Provider
+     * @param {MinerSuspendMinerBody} body Suspend Storage Provider Body
+     * @param {string} sp Storage Provider to suspend
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SpApi
+     */
+    public storageProvidersSuspendSpPost(body: MinerSuspendMinerBody, sp: string, options?: any) {
+        return SpApiFp(this.configuration).storageProvidersSuspendSpPost(body, sp, options)(this.fetch, this.basePath);
+    }
+
+    /**
+     * This endpoint lets a user unsuspend a Storage Provider.
+     * @summary Unuspend Storage Provider
+     * @param {string} sp Storage Provider to unsuspend
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof SpApi
+     */
+    public storageProvidersUnsuspendSpPut(sp: string, options?: any) {
+        return SpApiFp(this.configuration).storageProvidersUnsuspendSpPut(sp, options)(this.fetch, this.basePath);
     }
 
 }

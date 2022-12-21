@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 <a name="minerClaimMinerGet"></a>
 # **minerClaimMinerGet**
-> ApiClaimMsgResponse minerClaimMinerGet(miner)
+> GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse minerClaimMinerGet(miner)
 
 Get Claim Miner Message
 
@@ -40,7 +40,7 @@ bearerAuth.setApiKey("YOUR API KEY");
 MinerApi apiInstance = new MinerApi();
 String miner = "miner_example"; // String | Miner claim message
 try {
-    ApiClaimMsgResponse result = apiInstance.minerClaimMinerGet(miner);
+    GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse result = apiInstance.minerClaimMinerGet(miner);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MinerApi#minerClaimMinerGet");
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiClaimMsgResponse**](ApiClaimMsgResponse.md)
+[**GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse**](GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse.md)
 
 ### Authorization
 
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 <a name="minerClaimPost"></a>
 # **minerClaimPost**
-> ApiClaimResponse minerClaimPost(body)
+> GithubComApplicationResearchEstuaryApiV1ClaimResponse minerClaimPost(body)
 
 Claim Miner
 
@@ -95,7 +95,7 @@ bearerAuth.setApiKey("YOUR API KEY");
 MinerApi apiInstance = new MinerApi();
 MinerClaimMinerBody body = new MinerClaimMinerBody(); // MinerClaimMinerBody | Claim Miner Body
 try {
-    ApiClaimResponse result = apiInstance.minerClaimPost(body);
+    GithubComApplicationResearchEstuaryApiV1ClaimResponse result = apiInstance.minerClaimPost(body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MinerApi#minerClaimPost");
@@ -111,7 +111,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiClaimResponse**](ApiClaimResponse.md)
+[**GithubComApplicationResearchEstuaryApiV1ClaimResponse**](GithubComApplicationResearchEstuaryApiV1ClaimResponse.md)
 
 ### Authorization
 
@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
 
 <a name="minerSetInfoMinerPut"></a>
 # **minerSetInfoMinerPut**
-> ApiEmptyResp minerSetInfoMinerPut(body, miner)
+> Map&lt;String, String&gt; minerSetInfoMinerPut(body, miner)
 
 Set Miner Info
 
@@ -151,7 +151,7 @@ MinerApi apiInstance = new MinerApi();
 MinerMinerSetInfoParams body = new MinerMinerSetInfoParams(); // MinerMinerSetInfoParams | Miner set info params
 String miner = "miner_example"; // String | Miner to set info for
 try {
-    ApiEmptyResp result = apiInstance.minerSetInfoMinerPut(body, miner);
+    Map<String, String> result = apiInstance.minerSetInfoMinerPut(body, miner);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MinerApi#minerSetInfoMinerPut");
@@ -168,7 +168,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiEmptyResp**](ApiEmptyResp.md)
+**Map&lt;String, String&gt;**
 
 ### Authorization
 
@@ -181,7 +181,7 @@ Name | Type | Description  | Notes
 
 <a name="minerSuspendMinerPost"></a>
 # **minerSuspendMinerPost**
-> ApiEmptyResp minerSuspendMinerPost(body, miner)
+> Map&lt;String, String&gt; minerSuspendMinerPost(body, miner)
 
 Suspend Miner
 
@@ -208,7 +208,7 @@ MinerApi apiInstance = new MinerApi();
 MinerSuspendMinerBody body = new MinerSuspendMinerBody(); // MinerSuspendMinerBody | Suspend Miner Body
 String miner = "miner_example"; // String | Miner to suspend
 try {
-    ApiEmptyResp result = apiInstance.minerSuspendMinerPost(body, miner);
+    Map<String, String> result = apiInstance.minerSuspendMinerPost(body, miner);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MinerApi#minerSuspendMinerPost");
@@ -225,7 +225,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiEmptyResp**](ApiEmptyResp.md)
+**Map&lt;String, String&gt;**
 
 ### Authorization
 
@@ -238,7 +238,7 @@ Name | Type | Description  | Notes
 
 <a name="minerUnsuspendMinerPut"></a>
 # **minerUnsuspendMinerPut**
-> ApiEmptyResp minerUnsuspendMinerPut(miner)
+> Map&lt;String, String&gt; minerUnsuspendMinerPut(miner)
 
 Unuspend Miner
 
@@ -264,7 +264,7 @@ bearerAuth.setApiKey("YOUR API KEY");
 MinerApi apiInstance = new MinerApi();
 String miner = "miner_example"; // String | Miner to unsuspend
 try {
-    ApiEmptyResp result = apiInstance.minerUnsuspendMinerPut(miner);
+    Map<String, String> result = apiInstance.minerUnsuspendMinerPut(miner);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling MinerApi#minerUnsuspendMinerPut");
@@ -280,7 +280,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ApiEmptyResp**](ApiEmptyResp.md)
+**Map&lt;String, String&gt;**
 
 ### Authorization
 

@@ -15,3 +15,4 @@ from estuary_client.api.miner_api import MinerApi
 from estuary_client.api.net_api import NetApi
 from estuary_client.api.pinning_api import PinningApi
 from estuary_client.api.public_api import PublicApi
+from estuary_client.api.sp_api import SpApi
