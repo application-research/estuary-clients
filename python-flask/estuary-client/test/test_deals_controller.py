@@ -166,17 +166,6 @@ class TestDealsController(BaseTestCase):
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
-    def test_storage_providers_storage_query_cid_get(self):
-        """Test case for storage_providers_storage_query_cid_get
-
-        Query Ask
-        """
-        response = self.client.open(
-            '/storage-providers/storage/query/{cid}'.format(cid='cid_example'),
-            method='GET')
-        self.assert200(response,
-                       'Response body is : ' + response.data.decode('utf-8'))
-
 
 if __name__ == '__main__':
     import unittest

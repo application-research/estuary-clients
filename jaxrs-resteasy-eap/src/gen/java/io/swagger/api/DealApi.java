@@ -28,7 +28,7 @@ import javax.validation.constraints.*;
 @Path("/deal")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-12-21T01:22:11.593Z[GMT]")public interface DealApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2023-01-03T16:17:32.399Z[GMT]")public interface DealApi  {
    
     @POST
     @Path("/estimate")

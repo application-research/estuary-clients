@@ -17,7 +17,6 @@ Method | HTTP request | Description
 [**deals_status_deal_get**](DealsApi.md#deals_status_deal_get) | **GET** /deals/status/{deal} | Get Deal Status
 [**public_deals_failures_get**](DealsApi.md#public_deals_failures_get) | **GET** /public/deals/failures | Get storage failures
 [**public_miners_storage_query_miner_get**](DealsApi.md#public_miners_storage_query_miner_get) | **GET** /public/miners/storage/query/{miner} | Query Ask
-[**storage_providers_storage_query_cid_get**](DealsApi.md#storage_providers_storage_query_cid_get) | **GET** /storage-providers/storage/query/{cid} | Query Ask
 
 # **deal_estimate_post**
 > String deal_estimate_post(body)
@@ -681,59 +680,6 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **miner** | **String**| CID | 
-
-### Return type
-
-**String**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-
-# **storage_providers_storage_query_cid_get**
-> String storage_providers_storage_query_cid_get(cid)
-
-Query Ask
-
-This endpoint returns the ask for a given CID
-
-### Example
-```ruby
-# load the gem
-require 'swagger_client'
-# setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::DealsApi.new
-cid = 'cid_example' # String | CID
-
-
-begin
-  #Query Ask
-  result = api_instance.storage_providers_storage_query_cid_get(cid)
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling DealsApi->storage_providers_storage_query_cid_get: #{e}"
-end
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **cid** | **String**| CID | 
 
 ### Return type
 

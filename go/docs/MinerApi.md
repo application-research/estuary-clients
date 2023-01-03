@@ -13,7 +13,7 @@ Method | HTTP request | Description
 [**PublicMinersStatsMinerGet**](MinerApi.md#PublicMinersStatsMinerGet) | **Get** /public/miners/stats/{miner} | Get miner stats
 
 # **MinerClaimMinerGet**
-> GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse MinerClaimMinerGet(ctx, miner)
+> ApiClaimMsgResponse MinerClaimMinerGet(ctx, miner)
 Get Claim Miner Message
 
 This endpoint lets a user get the message in order to claim a miner
@@ -27,7 +27,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse**](github_com_application-research_estuary_api_v1.claimMsgResponse.md)
+[**ApiClaimMsgResponse**](api.claimMsgResponse.md)
 
 ### Authorization
 
@@ -41,7 +41,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **MinerClaimPost**
-> GithubComApplicationResearchEstuaryApiV1ClaimResponse MinerClaimPost(ctx, body)
+> ApiClaimResponse MinerClaimPost(ctx, body)
 Claim Miner
 
 This endpoint lets a user claim a miner
@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GithubComApplicationResearchEstuaryApiV1ClaimResponse**](github_com_application-research_estuary_api_v1.claimResponse.md)
+[**ApiClaimResponse**](api.claimResponse.md)
 
 ### Authorization
 
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **MinerSetInfoMinerPut**
-> map[string]string MinerSetInfoMinerPut(ctx, body, miner)
+> ApiEmptyResp MinerSetInfoMinerPut(ctx, body, miner)
 Set Miner Info
 
 This endpoint lets a user set miner info.
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]string**
+[**ApiEmptyResp**](api.emptyResp.md)
 
 ### Authorization
 
@@ -98,7 +98,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **MinerSuspendMinerPost**
-> map[string]string MinerSuspendMinerPost(ctx, body, miner)
+> ApiEmptyResp MinerSuspendMinerPost(ctx, body, miner)
 Suspend Miner
 
 This endpoint lets a user suspend a miner.
@@ -113,7 +113,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]string**
+[**ApiEmptyResp**](api.emptyResp.md)
 
 ### Authorization
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **MinerUnsuspendMinerPut**
-> map[string]string MinerUnsuspendMinerPut(ctx, miner)
+> ApiEmptyResp MinerUnsuspendMinerPut(ctx, miner)
 Unuspend Miner
 
 This endpoint lets a user unsuspend a miner.
@@ -141,7 +141,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string]string**
+[**ApiEmptyResp**](api.emptyResp.md)
 
 ### Authorization
 

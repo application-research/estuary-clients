@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
  * MinerClaimMinerBody
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2022-12-21T01:22:09.878Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2023-01-03T16:17:32.325Z[GMT]")
 public class MinerClaimMinerBody   {
   @JsonProperty("claim")
   private String claim = null;

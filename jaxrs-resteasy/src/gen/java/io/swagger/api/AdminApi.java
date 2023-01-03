@@ -32,7 +32,7 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 @Path("/admin")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2022-12-21T01:22:09.414Z[GMT]")public class AdminApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-03T16:17:31.923Z[GMT]")public class AdminApi  {
 
     @Inject AdminApiService service;
 

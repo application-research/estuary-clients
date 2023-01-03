@@ -42,18 +42,22 @@ class ApiClient {
           return new AddressAddress.fromJson(value);
         case 'ApiChannelIDParam':
           return new ApiChannelIDParam.fromJson(value);
+        case 'ApiClaimMsgResponse':
+          return new ApiClaimMsgResponse.fromJson(value);
+        case 'ApiClaimResponse':
+          return new ApiClaimResponse.fromJson(value);
         case 'ApiCreateCollectionBody':
           return new ApiCreateCollectionBody.fromJson(value);
         case 'ApiDeleteContentFromCollectionBody':
           return new ApiDeleteContentFromCollectionBody.fromJson(value);
+        case 'ApiEmptyResp':
+          return new ApiEmptyResp.fromJson(value);
         case 'ApiEstimateDealBody':
           return new ApiEstimateDealBody.fromJson(value);
         case 'ApiGetApiKeysResp':
           return new ApiGetApiKeysResp.fromJson(value);
         case 'ApiPublicNodeInfo':
           return new ApiPublicNodeInfo.fromJson(value);
-        case 'ApiStorageProviderResp':
-          return new ApiStorageProviderResp.fromJson(value);
         case 'AutoretrieveInitBody':
           return new AutoretrieveInitBody.fromJson(value);
         case 'CidCid':
@@ -66,14 +70,6 @@ class ApiClient {
           return new CollectionsCollectionListResponse.fromJson(value);
         case 'ContentAddBody':
           return new ContentAddBody.fromJson(value);
-        case 'GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse':
-          return new GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse.fromJson(value);
-        case 'GithubComApplicationResearchEstuaryApiV1ClaimResponse':
-          return new GithubComApplicationResearchEstuaryApiV1ClaimResponse.fromJson(value);
-        case 'GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse':
-          return new GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse.fromJson(value);
-        case 'GithubComApplicationResearchEstuaryApiV2ClaimResponse':
-          return new GithubComApplicationResearchEstuaryApiV2ClaimResponse.fromJson(value);
         case 'MinerClaimMinerBody':
           return new MinerClaimMinerBody.fromJson(value);
         case 'MinerMinerSetInfoParams':

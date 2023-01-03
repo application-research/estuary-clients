@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 <a name="minerClaimMinerGet"></a>
 # **minerClaimMinerGet**
-> GithubComApplicationResearchEstuaryApiV1claimMsgResponse minerClaimMinerGet(miner)
+> ApiclaimMsgResponse minerClaimMinerGet(miner)
 
 Get Claim Miner Message
 
@@ -29,7 +29,7 @@ This endpoint lets a user get the message in order to claim a miner
 val apiInstance = MinerApi()
 val miner : kotlin.String = miner_example // kotlin.String | Miner claim message
 try {
-    val result : GithubComApplicationResearchEstuaryApiV1claimMsgResponse = apiInstance.minerClaimMinerGet(miner)
+    val result : ApiclaimMsgResponse = apiInstance.minerClaimMinerGet(miner)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling MinerApi#minerClaimMinerGet")
@@ -48,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GithubComApplicationResearchEstuaryApiV1claimMsgResponse**](GithubComApplicationResearchEstuaryApiV1claimMsgResponse.md)
+[**ApiclaimMsgResponse**](ApiclaimMsgResponse.md)
 
 ### Authorization
 
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 <a name="minerClaimPost"></a>
 # **minerClaimPost**
-> GithubComApplicationResearchEstuaryApiV1claimResponse minerClaimPost(body)
+> ApiclaimResponse minerClaimPost(body)
 
 Claim Miner
 
@@ -76,7 +76,7 @@ This endpoint lets a user claim a miner
 val apiInstance = MinerApi()
 val body : MinerClaimMinerBody =  // MinerClaimMinerBody | Claim Miner Body
 try {
-    val result : GithubComApplicationResearchEstuaryApiV1claimResponse = apiInstance.minerClaimPost(body)
+    val result : ApiclaimResponse = apiInstance.minerClaimPost(body)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling MinerApi#minerClaimPost")
@@ -95,7 +95,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GithubComApplicationResearchEstuaryApiV1claimResponse**](GithubComApplicationResearchEstuaryApiV1claimResponse.md)
+[**ApiclaimResponse**](ApiclaimResponse.md)
 
 ### Authorization
 
@@ -108,7 +108,7 @@ Name | Type | Description  | Notes
 
 <a name="minerSetInfoMinerPut"></a>
 # **minerSetInfoMinerPut**
-> kotlin.collections.Map&lt;kotlin.String, kotlin.String&gt; minerSetInfoMinerPut(body, miner)
+> ApiemptyResp minerSetInfoMinerPut(body, miner)
 
 Set Miner Info
 
@@ -124,7 +124,7 @@ val apiInstance = MinerApi()
 val body : MinerMinerSetInfoParams =  // MinerMinerSetInfoParams | Miner set info params
 val miner : kotlin.String = miner_example // kotlin.String | Miner to set info for
 try {
-    val result : kotlin.collections.Map<kotlin.String, kotlin.String> = apiInstance.minerSetInfoMinerPut(body, miner)
+    val result : ApiemptyResp = apiInstance.minerSetInfoMinerPut(body, miner)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling MinerApi#minerSetInfoMinerPut")
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**kotlin.collections.Map&lt;kotlin.String, kotlin.String&gt;**
+[**ApiemptyResp**](ApiemptyResp.md)
 
 ### Authorization
 
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 <a name="minerSuspendMinerPost"></a>
 # **minerSuspendMinerPost**
-> kotlin.collections.Map&lt;kotlin.String, kotlin.String&gt; minerSuspendMinerPost(body, miner)
+> ApiemptyResp minerSuspendMinerPost(body, miner)
 
 Suspend Miner
 
@@ -173,7 +173,7 @@ val apiInstance = MinerApi()
 val body : MinerSuspendMinerBody =  // MinerSuspendMinerBody | Suspend Miner Body
 val miner : kotlin.String = miner_example // kotlin.String | Miner to suspend
 try {
-    val result : kotlin.collections.Map<kotlin.String, kotlin.String> = apiInstance.minerSuspendMinerPost(body, miner)
+    val result : ApiemptyResp = apiInstance.minerSuspendMinerPost(body, miner)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling MinerApi#minerSuspendMinerPost")
@@ -193,7 +193,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**kotlin.collections.Map&lt;kotlin.String, kotlin.String&gt;**
+[**ApiemptyResp**](ApiemptyResp.md)
 
 ### Authorization
 
@@ -206,7 +206,7 @@ Name | Type | Description  | Notes
 
 <a name="minerUnsuspendMinerPut"></a>
 # **minerUnsuspendMinerPut**
-> kotlin.collections.Map&lt;kotlin.String, kotlin.String&gt; minerUnsuspendMinerPut(miner)
+> ApiemptyResp minerUnsuspendMinerPut(miner)
 
 Unuspend Miner
 
@@ -221,7 +221,7 @@ This endpoint lets a user unsuspend a miner.
 val apiInstance = MinerApi()
 val miner : kotlin.String = miner_example // kotlin.String | Miner to unsuspend
 try {
-    val result : kotlin.collections.Map<kotlin.String, kotlin.String> = apiInstance.minerUnsuspendMinerPut(miner)
+    val result : ApiemptyResp = apiInstance.minerUnsuspendMinerPut(miner)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling MinerApi#minerUnsuspendMinerPut")
@@ -240,7 +240,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**kotlin.collections.Map&lt;kotlin.String, kotlin.String&gt;**
+[**ApiemptyResp**](ApiemptyResp.md)
 
 ### Authorization
 

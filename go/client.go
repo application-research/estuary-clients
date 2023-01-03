@@ -66,8 +66,6 @@ type APIClient struct {
 
 	PublicApi *PublicApiService
 
-	SpApi *SpApiService
-
 	UserApi *UserApiService
 }
 
@@ -98,7 +96,6 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.NetApi = (*NetApiService)(&c.common)
 	c.PinningApi = (*PinningApiService)(&c.common)
 	c.PublicApi = (*PublicApiService)(&c.common)
-	c.SpApi = (*SpApiService)(&c.common)
 	c.UserApi = (*UserApiService)(&c.common)
 
 	return c

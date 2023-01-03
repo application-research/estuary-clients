@@ -26,8 +26,9 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import io.swagger.client.model.GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse;
-import io.swagger.client.model.GithubComApplicationResearchEstuaryApiV1ClaimResponse;
+import io.swagger.client.model.ApiClaimMsgResponse;
+import io.swagger.client.model.ApiClaimResponse;
+import io.swagger.client.model.ApiEmptyResp;
 import io.swagger.client.model.MinerClaimMinerBody;
 import io.swagger.client.model.MinerMinerSetInfoParams;
 import io.swagger.client.model.MinerSuspendMinerBody;
@@ -128,11 +129,11 @@ public class MinerApi {
      * Get Claim Miner Message
      * This endpoint lets a user get the message in order to claim a miner
      * @param miner Miner claim message (required)
-     * @return GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse
+     * @return ApiClaimMsgResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse minerClaimMinerGet(String miner) throws ApiException {
-        ApiResponse<GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse> resp = minerClaimMinerGetWithHttpInfo(miner);
+    public ApiClaimMsgResponse minerClaimMinerGet(String miner) throws ApiException {
+        ApiResponse<ApiClaimMsgResponse> resp = minerClaimMinerGetWithHttpInfo(miner);
         return resp.getData();
     }
 
@@ -140,12 +141,12 @@ public class MinerApi {
      * Get Claim Miner Message
      * This endpoint lets a user get the message in order to claim a miner
      * @param miner Miner claim message (required)
-     * @return ApiResponse&lt;GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse&gt;
+     * @return ApiResponse&lt;ApiClaimMsgResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse> minerClaimMinerGetWithHttpInfo(String miner) throws ApiException {
+    public ApiResponse<ApiClaimMsgResponse> minerClaimMinerGetWithHttpInfo(String miner) throws ApiException {
         com.squareup.okhttp.Call call = minerClaimMinerGetValidateBeforeCall(miner, null, null);
-        Type localVarReturnType = new TypeToken<GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApiClaimMsgResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -157,7 +158,7 @@ public class MinerApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call minerClaimMinerGetAsync(String miner, final ApiCallback<GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call minerClaimMinerGetAsync(String miner, final ApiCallback<ApiClaimMsgResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -179,7 +180,7 @@ public class MinerApi {
         }
 
         com.squareup.okhttp.Call call = minerClaimMinerGetValidateBeforeCall(miner, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApiClaimMsgResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -252,11 +253,11 @@ public class MinerApi {
      * Claim Miner
      * This endpoint lets a user claim a miner
      * @param body Claim Miner Body (required)
-     * @return GithubComApplicationResearchEstuaryApiV1ClaimResponse
+     * @return ApiClaimResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public GithubComApplicationResearchEstuaryApiV1ClaimResponse minerClaimPost(MinerClaimMinerBody body) throws ApiException {
-        ApiResponse<GithubComApplicationResearchEstuaryApiV1ClaimResponse> resp = minerClaimPostWithHttpInfo(body);
+    public ApiClaimResponse minerClaimPost(MinerClaimMinerBody body) throws ApiException {
+        ApiResponse<ApiClaimResponse> resp = minerClaimPostWithHttpInfo(body);
         return resp.getData();
     }
 
@@ -264,12 +265,12 @@ public class MinerApi {
      * Claim Miner
      * This endpoint lets a user claim a miner
      * @param body Claim Miner Body (required)
-     * @return ApiResponse&lt;GithubComApplicationResearchEstuaryApiV1ClaimResponse&gt;
+     * @return ApiResponse&lt;ApiClaimResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<GithubComApplicationResearchEstuaryApiV1ClaimResponse> minerClaimPostWithHttpInfo(MinerClaimMinerBody body) throws ApiException {
+    public ApiResponse<ApiClaimResponse> minerClaimPostWithHttpInfo(MinerClaimMinerBody body) throws ApiException {
         com.squareup.okhttp.Call call = minerClaimPostValidateBeforeCall(body, null, null);
-        Type localVarReturnType = new TypeToken<GithubComApplicationResearchEstuaryApiV1ClaimResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApiClaimResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -281,7 +282,7 @@ public class MinerApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call minerClaimPostAsync(MinerClaimMinerBody body, final ApiCallback<GithubComApplicationResearchEstuaryApiV1ClaimResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call minerClaimPostAsync(MinerClaimMinerBody body, final ApiCallback<ApiClaimResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -303,7 +304,7 @@ public class MinerApi {
         }
 
         com.squareup.okhttp.Call call = minerClaimPostValidateBeforeCall(body, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<GithubComApplicationResearchEstuaryApiV1ClaimResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApiClaimResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -383,11 +384,11 @@ public class MinerApi {
      * This endpoint lets a user set miner info.
      * @param body Miner set info params (required)
      * @param miner Miner to set info for (required)
-     * @return Map&lt;String, String&gt;
+     * @return ApiEmptyResp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Map<String, String> minerSetInfoMinerPut(MinerMinerSetInfoParams body, String miner) throws ApiException {
-        ApiResponse<Map<String, String>> resp = minerSetInfoMinerPutWithHttpInfo(body, miner);
+    public ApiEmptyResp minerSetInfoMinerPut(MinerMinerSetInfoParams body, String miner) throws ApiException {
+        ApiResponse<ApiEmptyResp> resp = minerSetInfoMinerPutWithHttpInfo(body, miner);
         return resp.getData();
     }
 
@@ -396,12 +397,12 @@ public class MinerApi {
      * This endpoint lets a user set miner info.
      * @param body Miner set info params (required)
      * @param miner Miner to set info for (required)
-     * @return ApiResponse&lt;Map&lt;String, String&gt;&gt;
+     * @return ApiResponse&lt;ApiEmptyResp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Map<String, String>> minerSetInfoMinerPutWithHttpInfo(MinerMinerSetInfoParams body, String miner) throws ApiException {
+    public ApiResponse<ApiEmptyResp> minerSetInfoMinerPutWithHttpInfo(MinerMinerSetInfoParams body, String miner) throws ApiException {
         com.squareup.okhttp.Call call = minerSetInfoMinerPutValidateBeforeCall(body, miner, null, null);
-        Type localVarReturnType = new TypeToken<Map<String, String>>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApiEmptyResp>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -414,7 +415,7 @@ public class MinerApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call minerSetInfoMinerPutAsync(MinerMinerSetInfoParams body, String miner, final ApiCallback<Map<String, String>> callback) throws ApiException {
+    public com.squareup.okhttp.Call minerSetInfoMinerPutAsync(MinerMinerSetInfoParams body, String miner, final ApiCallback<ApiEmptyResp> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -436,7 +437,7 @@ public class MinerApi {
         }
 
         com.squareup.okhttp.Call call = minerSetInfoMinerPutValidateBeforeCall(body, miner, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Map<String, String>>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApiEmptyResp>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -516,11 +517,11 @@ public class MinerApi {
      * This endpoint lets a user suspend a miner.
      * @param body Suspend Miner Body (required)
      * @param miner Miner to suspend (required)
-     * @return Map&lt;String, String&gt;
+     * @return ApiEmptyResp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Map<String, String> minerSuspendMinerPost(MinerSuspendMinerBody body, String miner) throws ApiException {
-        ApiResponse<Map<String, String>> resp = minerSuspendMinerPostWithHttpInfo(body, miner);
+    public ApiEmptyResp minerSuspendMinerPost(MinerSuspendMinerBody body, String miner) throws ApiException {
+        ApiResponse<ApiEmptyResp> resp = minerSuspendMinerPostWithHttpInfo(body, miner);
         return resp.getData();
     }
 
@@ -529,12 +530,12 @@ public class MinerApi {
      * This endpoint lets a user suspend a miner.
      * @param body Suspend Miner Body (required)
      * @param miner Miner to suspend (required)
-     * @return ApiResponse&lt;Map&lt;String, String&gt;&gt;
+     * @return ApiResponse&lt;ApiEmptyResp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Map<String, String>> minerSuspendMinerPostWithHttpInfo(MinerSuspendMinerBody body, String miner) throws ApiException {
+    public ApiResponse<ApiEmptyResp> minerSuspendMinerPostWithHttpInfo(MinerSuspendMinerBody body, String miner) throws ApiException {
         com.squareup.okhttp.Call call = minerSuspendMinerPostValidateBeforeCall(body, miner, null, null);
-        Type localVarReturnType = new TypeToken<Map<String, String>>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApiEmptyResp>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -547,7 +548,7 @@ public class MinerApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call minerSuspendMinerPostAsync(MinerSuspendMinerBody body, String miner, final ApiCallback<Map<String, String>> callback) throws ApiException {
+    public com.squareup.okhttp.Call minerSuspendMinerPostAsync(MinerSuspendMinerBody body, String miner, final ApiCallback<ApiEmptyResp> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -569,7 +570,7 @@ public class MinerApi {
         }
 
         com.squareup.okhttp.Call call = minerSuspendMinerPostValidateBeforeCall(body, miner, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Map<String, String>>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApiEmptyResp>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -643,11 +644,11 @@ public class MinerApi {
      * Unuspend Miner
      * This endpoint lets a user unsuspend a miner.
      * @param miner Miner to unsuspend (required)
-     * @return Map&lt;String, String&gt;
+     * @return ApiEmptyResp
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Map<String, String> minerUnsuspendMinerPut(String miner) throws ApiException {
-        ApiResponse<Map<String, String>> resp = minerUnsuspendMinerPutWithHttpInfo(miner);
+    public ApiEmptyResp minerUnsuspendMinerPut(String miner) throws ApiException {
+        ApiResponse<ApiEmptyResp> resp = minerUnsuspendMinerPutWithHttpInfo(miner);
         return resp.getData();
     }
 
@@ -655,12 +656,12 @@ public class MinerApi {
      * Unuspend Miner
      * This endpoint lets a user unsuspend a miner.
      * @param miner Miner to unsuspend (required)
-     * @return ApiResponse&lt;Map&lt;String, String&gt;&gt;
+     * @return ApiResponse&lt;ApiEmptyResp&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Map<String, String>> minerUnsuspendMinerPutWithHttpInfo(String miner) throws ApiException {
+    public ApiResponse<ApiEmptyResp> minerUnsuspendMinerPutWithHttpInfo(String miner) throws ApiException {
         com.squareup.okhttp.Call call = minerUnsuspendMinerPutValidateBeforeCall(miner, null, null);
-        Type localVarReturnType = new TypeToken<Map<String, String>>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApiEmptyResp>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
@@ -672,7 +673,7 @@ public class MinerApi {
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call minerUnsuspendMinerPutAsync(String miner, final ApiCallback<Map<String, String>> callback) throws ApiException {
+    public com.squareup.okhttp.Call minerUnsuspendMinerPutAsync(String miner, final ApiCallback<ApiEmptyResp> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -694,7 +695,7 @@ public class MinerApi {
         }
 
         com.squareup.okhttp.Call call = minerUnsuspendMinerPutValidateBeforeCall(miner, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Map<String, String>>(){}.getType();
+        Type localVarReturnType = new TypeToken<ApiEmptyResp>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }

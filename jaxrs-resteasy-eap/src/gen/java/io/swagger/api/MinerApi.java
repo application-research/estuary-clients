@@ -11,9 +11,9 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
-import io.swagger.model.GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse;
-import io.swagger.model.GithubComApplicationResearchEstuaryApiV1ClaimResponse;
-import java.util.Map;
+import io.swagger.model.ApiClaimMsgResponse;
+import io.swagger.model.ApiClaimResponse;
+import io.swagger.model.ApiEmptyResp;
 import io.swagger.model.MinerClaimMinerBody;
 import io.swagger.model.MinerMinerSetInfoParams;
 import io.swagger.model.MinerSuspendMinerBody;
@@ -32,7 +32,7 @@ import javax.validation.constraints.*;
 @Path("/miner")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2022-12-21T01:22:11.593Z[GMT]")public interface MinerApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2023-01-03T16:17:32.399Z[GMT]")public interface MinerApi  {
    
     @GET
     @Path("/claim/{miner}")
@@ -41,7 +41,7 @@ import javax.validation.constraints.*;
     @Operation(summary = "Get Claim Miner Message", description = "This endpoint lets a user get the message in order to claim a miner", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "miner" })
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiClaimMsgResponse.class))),
                 @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
                 @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
          })
@@ -54,7 +54,7 @@ import javax.validation.constraints.*;
     @Operation(summary = "Claim Miner", description = "This endpoint lets a user claim a miner", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "miner" })
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = GithubComApplicationResearchEstuaryApiV1ClaimResponse.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiClaimResponse.class))),
                 @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
                 @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
          })
@@ -67,7 +67,7 @@ import javax.validation.constraints.*;
     @Operation(summary = "Set Miner Info", description = "This endpoint lets a user set miner info.", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "miner" })
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Map.class)))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiEmptyResp.class))),
                 @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
                 @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
          })
@@ -80,7 +80,7 @@ import javax.validation.constraints.*;
     @Operation(summary = "Suspend Miner", description = "This endpoint lets a user suspend a miner.", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "miner" })
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Map.class)))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiEmptyResp.class))),
                 @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
                 @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
          })
@@ -93,7 +93,7 @@ import javax.validation.constraints.*;
     @Operation(summary = "Unuspend Miner", description = "This endpoint lets a user unsuspend a miner.", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "miner" })
     @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Map.class)))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiEmptyResp.class))),
                 @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
                 @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
          })

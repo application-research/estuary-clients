@@ -36,7 +36,7 @@ describe 'MinerApi' do
   # This endpoint lets a user get the message in order to claim a miner
   # @param miner Miner claim message
   # @param [Hash] opts the optional parameters
-  # @return [GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse]
+  # @return [ApiClaimMsgResponse]
   describe 'miner_claim_miner_get test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -48,7 +48,7 @@ describe 'MinerApi' do
   # This endpoint lets a user claim a miner
   # @param body Claim Miner Body
   # @param [Hash] opts the optional parameters
-  # @return [GithubComApplicationResearchEstuaryApiV1ClaimResponse]
+  # @return [ApiClaimResponse]
   describe 'miner_claim_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -61,7 +61,7 @@ describe 'MinerApi' do
   # @param body Miner set info params
   # @param miner Miner to set info for
   # @param [Hash] opts the optional parameters
-  # @return [Hash<String, String>]
+  # @return [ApiEmptyResp]
   describe 'miner_set_info_miner_put test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -74,7 +74,7 @@ describe 'MinerApi' do
   # @param body Suspend Miner Body
   # @param miner Miner to suspend
   # @param [Hash] opts the optional parameters
-  # @return [Hash<String, String>]
+  # @return [ApiEmptyResp]
   describe 'miner_suspend_miner_post test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -86,7 +86,7 @@ describe 'MinerApi' do
   # This endpoint lets a user unsuspend a miner.
   # @param miner Miner to unsuspend
   # @param [Hash] opts the optional parameters
-  # @return [Hash<String, String>]
+  # @return [ApiEmptyResp]
   describe 'miner_unsuspend_miner_put test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

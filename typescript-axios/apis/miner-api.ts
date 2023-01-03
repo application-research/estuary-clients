@@ -16,8 +16,9 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
-import { GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse } from '../models';
-import { GithubComApplicationResearchEstuaryApiV1ClaimResponse } from '../models';
+import { ApiClaimMsgResponse } from '../models';
+import { ApiClaimResponse } from '../models';
+import { ApiEmptyResp } from '../models';
 import { MinerClaimMinerBody } from '../models';
 import { MinerMinerSetInfoParams } from '../models';
 import { MinerSuspendMinerBody } from '../models';
@@ -406,7 +407,7 @@ export const MinerApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async minerClaimMinerGet(miner: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse>>> {
+        async minerClaimMinerGet(miner: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ApiClaimMsgResponse>>> {
             const localVarAxiosArgs = await MinerApiAxiosParamCreator(configuration).minerClaimMinerGet(miner, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -420,7 +421,7 @@ export const MinerApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async minerClaimPost(body: MinerClaimMinerBody, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<GithubComApplicationResearchEstuaryApiV1ClaimResponse>>> {
+        async minerClaimPost(body: MinerClaimMinerBody, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ApiClaimResponse>>> {
             const localVarAxiosArgs = await MinerApiAxiosParamCreator(configuration).minerClaimPost(body, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -435,7 +436,7 @@ export const MinerApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async minerSetInfoMinerPut(body: MinerMinerSetInfoParams, miner: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<{ [key: string]: string; }>>> {
+        async minerSetInfoMinerPut(body: MinerMinerSetInfoParams, miner: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ApiEmptyResp>>> {
             const localVarAxiosArgs = await MinerApiAxiosParamCreator(configuration).minerSetInfoMinerPut(body, miner, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -450,7 +451,7 @@ export const MinerApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async minerSuspendMinerPost(body: MinerSuspendMinerBody, miner: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<{ [key: string]: string; }>>> {
+        async minerSuspendMinerPost(body: MinerSuspendMinerBody, miner: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ApiEmptyResp>>> {
             const localVarAxiosArgs = await MinerApiAxiosParamCreator(configuration).minerSuspendMinerPost(body, miner, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -464,7 +465,7 @@ export const MinerApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async minerUnsuspendMinerPut(miner: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<{ [key: string]: string; }>>> {
+        async minerUnsuspendMinerPut(miner: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ApiEmptyResp>>> {
             const localVarAxiosArgs = await MinerApiAxiosParamCreator(configuration).minerUnsuspendMinerPut(miner, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
@@ -516,7 +517,7 @@ export const MinerApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async minerClaimMinerGet(miner: string, options?: AxiosRequestConfig): Promise<AxiosResponse<GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse>> {
+        async minerClaimMinerGet(miner: string, options?: AxiosRequestConfig): Promise<AxiosResponse<ApiClaimMsgResponse>> {
             return MinerApiFp(configuration).minerClaimMinerGet(miner, options).then((request) => request(axios, basePath));
         },
         /**
@@ -526,7 +527,7 @@ export const MinerApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async minerClaimPost(body: MinerClaimMinerBody, options?: AxiosRequestConfig): Promise<AxiosResponse<GithubComApplicationResearchEstuaryApiV1ClaimResponse>> {
+        async minerClaimPost(body: MinerClaimMinerBody, options?: AxiosRequestConfig): Promise<AxiosResponse<ApiClaimResponse>> {
             return MinerApiFp(configuration).minerClaimPost(body, options).then((request) => request(axios, basePath));
         },
         /**
@@ -537,7 +538,7 @@ export const MinerApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async minerSetInfoMinerPut(body: MinerMinerSetInfoParams, miner: string, options?: AxiosRequestConfig): Promise<AxiosResponse<{ [key: string]: string; }>> {
+        async minerSetInfoMinerPut(body: MinerMinerSetInfoParams, miner: string, options?: AxiosRequestConfig): Promise<AxiosResponse<ApiEmptyResp>> {
             return MinerApiFp(configuration).minerSetInfoMinerPut(body, miner, options).then((request) => request(axios, basePath));
         },
         /**
@@ -548,7 +549,7 @@ export const MinerApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async minerSuspendMinerPost(body: MinerSuspendMinerBody, miner: string, options?: AxiosRequestConfig): Promise<AxiosResponse<{ [key: string]: string; }>> {
+        async minerSuspendMinerPost(body: MinerSuspendMinerBody, miner: string, options?: AxiosRequestConfig): Promise<AxiosResponse<ApiEmptyResp>> {
             return MinerApiFp(configuration).minerSuspendMinerPost(body, miner, options).then((request) => request(axios, basePath));
         },
         /**
@@ -558,7 +559,7 @@ export const MinerApiFactory = function (configuration?: Configuration, basePath
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async minerUnsuspendMinerPut(miner: string, options?: AxiosRequestConfig): Promise<AxiosResponse<{ [key: string]: string; }>> {
+        async minerUnsuspendMinerPut(miner: string, options?: AxiosRequestConfig): Promise<AxiosResponse<ApiEmptyResp>> {
             return MinerApiFp(configuration).minerUnsuspendMinerPut(miner, options).then((request) => request(axios, basePath));
         },
         /**
@@ -600,7 +601,7 @@ export class MinerApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof MinerApi
      */
-    public async minerClaimMinerGet(miner: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse>> {
+    public async minerClaimMinerGet(miner: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<ApiClaimMsgResponse>> {
         return MinerApiFp(this.configuration).minerClaimMinerGet(miner, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -611,7 +612,7 @@ export class MinerApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof MinerApi
      */
-    public async minerClaimPost(body: MinerClaimMinerBody, options?: AxiosRequestConfig) : Promise<AxiosResponse<GithubComApplicationResearchEstuaryApiV1ClaimResponse>> {
+    public async minerClaimPost(body: MinerClaimMinerBody, options?: AxiosRequestConfig) : Promise<AxiosResponse<ApiClaimResponse>> {
         return MinerApiFp(this.configuration).minerClaimPost(body, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -623,7 +624,7 @@ export class MinerApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof MinerApi
      */
-    public async minerSetInfoMinerPut(body: MinerMinerSetInfoParams, miner: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<{ [key: string]: string; }>> {
+    public async minerSetInfoMinerPut(body: MinerMinerSetInfoParams, miner: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<ApiEmptyResp>> {
         return MinerApiFp(this.configuration).minerSetInfoMinerPut(body, miner, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -635,7 +636,7 @@ export class MinerApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof MinerApi
      */
-    public async minerSuspendMinerPost(body: MinerSuspendMinerBody, miner: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<{ [key: string]: string; }>> {
+    public async minerSuspendMinerPost(body: MinerSuspendMinerBody, miner: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<ApiEmptyResp>> {
         return MinerApiFp(this.configuration).minerSuspendMinerPost(body, miner, options).then((request) => request(this.axios, this.basePath));
     }
     /**
@@ -646,7 +647,7 @@ export class MinerApi extends BaseAPI {
      * @throws {RequiredError}
      * @memberof MinerApi
      */
-    public async minerUnsuspendMinerPut(miner: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<{ [key: string]: string; }>> {
+    public async minerUnsuspendMinerPut(miner: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<ApiEmptyResp>> {
         return MinerApiFp(this.configuration).minerUnsuspendMinerPut(miner, options).then((request) => request(this.axios, this.basePath));
     }
     /**

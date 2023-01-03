@@ -11,8 +11,9 @@
  */
 package io.swagger.client.apis
 
-import io.swagger.client.models.GithubComApplicationResearchEstuaryApiV1claimMsgResponse
-import io.swagger.client.models.GithubComApplicationResearchEstuaryApiV1claimResponse
+import io.swagger.client.models.ApiclaimMsgResponse
+import io.swagger.client.models.ApiclaimResponse
+import io.swagger.client.models.ApiemptyResp
 import io.swagger.client.models.MinerClaimMinerBody
 import io.swagger.client.models.MinerMinerSetInfoParams
 import io.swagger.client.models.MinerSuspendMinerBody
@@ -26,21 +27,21 @@ class MinerApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(base
      * Get Claim Miner Message
      * This endpoint lets a user get the message in order to claim a miner
      * @param miner Miner claim message 
-     * @return GithubComApplicationResearchEstuaryApiV1claimMsgResponse
+     * @return ApiclaimMsgResponse
      */
     @Suppress("UNCHECKED_CAST")
-    fun minerClaimMinerGet(miner: kotlin.String): GithubComApplicationResearchEstuaryApiV1claimMsgResponse {
+    fun minerClaimMinerGet(miner: kotlin.String): ApiclaimMsgResponse {
         
         val localVariableConfig = RequestConfig(
                 RequestMethod.GET,
                 "/miner/claim/{miner}".replace("{" + "miner" + "}", "$miner")
         )
-        val response = request<GithubComApplicationResearchEstuaryApiV1claimMsgResponse>(
+        val response = request<ApiclaimMsgResponse>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as GithubComApplicationResearchEstuaryApiV1claimMsgResponse
+            ResponseType.Success -> (response as Success<*>).data as ApiclaimMsgResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -51,22 +52,22 @@ class MinerApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(base
      * Claim Miner
      * This endpoint lets a user claim a miner
      * @param body Claim Miner Body 
-     * @return GithubComApplicationResearchEstuaryApiV1claimResponse
+     * @return ApiclaimResponse
      */
     @Suppress("UNCHECKED_CAST")
-    fun minerClaimPost(body: MinerClaimMinerBody): GithubComApplicationResearchEstuaryApiV1claimResponse {
+    fun minerClaimPost(body: MinerClaimMinerBody): ApiclaimResponse {
         val localVariableBody: kotlin.Any? = body
         
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
                 "/miner/claim"
         )
-        val response = request<GithubComApplicationResearchEstuaryApiV1claimResponse>(
+        val response = request<ApiclaimResponse>(
                 localVariableConfig, localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as GithubComApplicationResearchEstuaryApiV1claimResponse
+            ResponseType.Success -> (response as Success<*>).data as ApiclaimResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -78,22 +79,22 @@ class MinerApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(base
      * This endpoint lets a user set miner info.
      * @param body Miner set info params 
      * @param miner Miner to set info for 
-     * @return kotlin.collections.Map<kotlin.String, kotlin.String>
+     * @return ApiemptyResp
      */
     @Suppress("UNCHECKED_CAST")
-    fun minerSetInfoMinerPut(body: MinerMinerSetInfoParams, miner: kotlin.String): kotlin.collections.Map<kotlin.String, kotlin.String> {
+    fun minerSetInfoMinerPut(body: MinerMinerSetInfoParams, miner: kotlin.String): ApiemptyResp {
         val localVariableBody: kotlin.Any? = body
         
         val localVariableConfig = RequestConfig(
                 RequestMethod.PUT,
                 "/miner/set-info/{miner}".replace("{" + "miner" + "}", "$miner")
         )
-        val response = request<kotlin.collections.Map<kotlin.String, kotlin.String>>(
+        val response = request<ApiemptyResp>(
                 localVariableConfig, localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as kotlin.collections.Map<kotlin.String, kotlin.String>
+            ResponseType.Success -> (response as Success<*>).data as ApiemptyResp
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -105,22 +106,22 @@ class MinerApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(base
      * This endpoint lets a user suspend a miner.
      * @param body Suspend Miner Body 
      * @param miner Miner to suspend 
-     * @return kotlin.collections.Map<kotlin.String, kotlin.String>
+     * @return ApiemptyResp
      */
     @Suppress("UNCHECKED_CAST")
-    fun minerSuspendMinerPost(body: MinerSuspendMinerBody, miner: kotlin.String): kotlin.collections.Map<kotlin.String, kotlin.String> {
+    fun minerSuspendMinerPost(body: MinerSuspendMinerBody, miner: kotlin.String): ApiemptyResp {
         val localVariableBody: kotlin.Any? = body
         
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
                 "/miner/suspend/{miner}".replace("{" + "miner" + "}", "$miner")
         )
-        val response = request<kotlin.collections.Map<kotlin.String, kotlin.String>>(
+        val response = request<ApiemptyResp>(
                 localVariableConfig, localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as kotlin.collections.Map<kotlin.String, kotlin.String>
+            ResponseType.Success -> (response as Success<*>).data as ApiemptyResp
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -131,21 +132,21 @@ class MinerApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(base
      * Unuspend Miner
      * This endpoint lets a user unsuspend a miner.
      * @param miner Miner to unsuspend 
-     * @return kotlin.collections.Map<kotlin.String, kotlin.String>
+     * @return ApiemptyResp
      */
     @Suppress("UNCHECKED_CAST")
-    fun minerUnsuspendMinerPut(miner: kotlin.String): kotlin.collections.Map<kotlin.String, kotlin.String> {
+    fun minerUnsuspendMinerPut(miner: kotlin.String): ApiemptyResp {
         
         val localVariableConfig = RequestConfig(
                 RequestMethod.PUT,
                 "/miner/unsuspend/{miner}".replace("{" + "miner" + "}", "$miner")
         )
-        val response = request<kotlin.collections.Map<kotlin.String, kotlin.String>>(
+        val response = request<ApiemptyResp>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as kotlin.collections.Map<kotlin.String, kotlin.String>
+            ResponseType.Success -> (response as Success<*>).data as ApiemptyResp
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")

@@ -259,23 +259,3 @@ exports.publicMinersStorageQueryMinerGET = function(miner) {
   });
 }
 
-
-/**
- * Query Ask
- * This endpoint returns the ask for a given CID
- *
- * cid String CID
- * returns String
- **/
-exports.storage_providersStorageQueryCidGET = function(cid) {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = "";
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
-  });
-}
-

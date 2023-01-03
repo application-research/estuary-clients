@@ -17,7 +17,6 @@ Method | HTTP request | Description
 [**deals_status_deal_get**](DealsApi.md#deals_status_deal_get) | **GET** /deals/status/{deal} | Get Deal Status
 [**public_deals_failures_get**](DealsApi.md#public_deals_failures_get) | **GET** /public/deals/failures | Get storage failures
 [**public_miners_storage_query_miner_get**](DealsApi.md#public_miners_storage_query_miner_get) | **GET** /public/miners/storage/query/{miner} | Query Ask
-[**storage_providers_storage_query_cid_get**](DealsApi.md#storage_providers_storage_query_cid_get) | **GET** /storage-providers/storage/query/{cid} | Query Ask
 
 # **deal_estimate_post**
 > str deal_estimate_post(body)
@@ -697,60 +696,6 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **miner** | **str**| CID | 
-
-### Return type
-
-**str**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **storage_providers_storage_query_cid_get**
-> str storage_providers_storage_query_cid_get(cid)
-
-Query Ask
-
-This endpoint returns the ask for a given CID
-
-### Example
-```python
-from __future__ import print_function
-import time
-import estuary_client
-from estuary_client.rest import ApiException
-from pprint import pprint
-
-# Configure API key authorization: bearerAuth
-configuration = estuary_client.Configuration()
-configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['Authorization'] = 'Bearer'
-
-# create an instance of the API class
-api_instance = estuary_client.DealsApi(estuary_client.ApiClient(configuration))
-cid = 'cid_example' # str | CID
-
-try:
-    # Query Ask
-    api_response = api_instance.storage_providers_storage_query_cid_get(cid)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DealsApi->storage_providers_storage_query_cid_get: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **cid** | **str**| CID | 
 
 ### Return type
 

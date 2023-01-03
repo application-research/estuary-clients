@@ -480,40 +480,5 @@ namespace estuary-client.Controllers
                         : default(string);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
-
-        /// <summary>
-        /// Query Ask
-        /// </summary>
-        /// <remarks>This endpoint returns the ask for a given CID</remarks>
-        /// <param name="cid">CID</param>
-        /// <response code="200">OK</response>
-        /// <response code="400">Bad Request</response>
-        /// <response code="500">Internal Server Error</response>
-        [HttpGet]
-        [Route("//api.estuary.tech//storage-providers/storage/query/{cid}")]
-        [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
-        [ValidateModelState]
-        [SwaggerOperation("StorageProvidersStorageQueryCidGet")]
-        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
-        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
-        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
-        public virtual IActionResult StorageProvidersStorageQueryCidGet([FromRoute][Required]string cid)
-        { 
-            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(string));
-
-            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(UtilHttpError));
-
-            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(500, default(UtilHttpError));
-            string exampleJson = null;
-            exampleJson = "\"\"";
-            
-                        var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<string>(exampleJson)
-                        : default(string);            //TODO: Change the data returned
-            return new ObjectResult(example);
-        }
     }
 }

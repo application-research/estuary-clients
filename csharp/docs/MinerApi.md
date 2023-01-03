@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 <a name="minerclaimminerget"></a>
 # **MinerClaimMinerGet**
-> GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse MinerClaimMinerGet (string miner)
+> ApiClaimMsgResponse MinerClaimMinerGet (string miner)
 
 Get Claim Miner Message
 
@@ -45,7 +45,7 @@ namespace Example
             try
             {
                 // Get Claim Miner Message
-                GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse result = apiInstance.MinerClaimMinerGet(miner);
+                ApiClaimMsgResponse result = apiInstance.MinerClaimMinerGet(miner);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse**](GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse.md)
+[**ApiClaimMsgResponse**](ApiClaimMsgResponse.md)
 
 ### Authorization
 
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="minerclaimpost"></a>
 # **MinerClaimPost**
-> GithubComApplicationResearchEstuaryApiV1ClaimResponse MinerClaimPost (MinerClaimMinerBody body)
+> ApiClaimResponse MinerClaimPost (MinerClaimMinerBody body)
 
 Claim Miner
 
@@ -110,7 +110,7 @@ namespace Example
             try
             {
                 // Claim Miner
-                GithubComApplicationResearchEstuaryApiV1ClaimResponse result = apiInstance.MinerClaimPost(body);
+                ApiClaimResponse result = apiInstance.MinerClaimPost(body);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -130,7 +130,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GithubComApplicationResearchEstuaryApiV1ClaimResponse**](GithubComApplicationResearchEstuaryApiV1ClaimResponse.md)
+[**ApiClaimResponse**](ApiClaimResponse.md)
 
 ### Authorization
 
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="minersetinfominerput"></a>
 # **MinerSetInfoMinerPut**
-> Dictionary<string, string> MinerSetInfoMinerPut (MinerMinerSetInfoParams body, string miner)
+> ApiEmptyResp MinerSetInfoMinerPut (MinerMinerSetInfoParams body, string miner)
 
 Set Miner Info
 
@@ -176,7 +176,7 @@ namespace Example
             try
             {
                 // Set Miner Info
-                Dictionary&lt;string, string&gt; result = apiInstance.MinerSetInfoMinerPut(body, miner);
+                ApiEmptyResp result = apiInstance.MinerSetInfoMinerPut(body, miner);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -197,7 +197,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Dictionary<string, string>**
+[**ApiEmptyResp**](ApiEmptyResp.md)
 
 ### Authorization
 
@@ -211,7 +211,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="minersuspendminerpost"></a>
 # **MinerSuspendMinerPost**
-> Dictionary<string, string> MinerSuspendMinerPost (MinerSuspendMinerBody body, string miner)
+> ApiEmptyResp MinerSuspendMinerPost (MinerSuspendMinerBody body, string miner)
 
 Suspend Miner
 
@@ -243,7 +243,7 @@ namespace Example
             try
             {
                 // Suspend Miner
-                Dictionary&lt;string, string&gt; result = apiInstance.MinerSuspendMinerPost(body, miner);
+                ApiEmptyResp result = apiInstance.MinerSuspendMinerPost(body, miner);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -264,7 +264,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Dictionary<string, string>**
+[**ApiEmptyResp**](ApiEmptyResp.md)
 
 ### Authorization
 
@@ -278,7 +278,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="minerunsuspendminerput"></a>
 # **MinerUnsuspendMinerPut**
-> Dictionary<string, string> MinerUnsuspendMinerPut (string miner)
+> ApiEmptyResp MinerUnsuspendMinerPut (string miner)
 
 Unuspend Miner
 
@@ -309,7 +309,7 @@ namespace Example
             try
             {
                 // Unuspend Miner
-                Dictionary&lt;string, string&gt; result = apiInstance.MinerUnsuspendMinerPut(miner);
+                ApiEmptyResp result = apiInstance.MinerUnsuspendMinerPut(miner);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -329,7 +329,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Dictionary<string, string>**
+[**ApiEmptyResp**](ApiEmptyResp.md)
 
 ### Authorization
 

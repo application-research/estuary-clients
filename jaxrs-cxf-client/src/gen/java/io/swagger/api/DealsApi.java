@@ -239,20 +239,4 @@ public interface DealsApi  {
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public String publicMinersStorageQueryMinerGet(@PathParam("miner") String miner);
-
-    /**
-     * Query Ask
-     *
-     * This endpoint returns the ask for a given CID
-     *
-     */
-    @GET
-    @Path("/storage-providers/storage/query/{cid}")
-    @Produces({ "application/json" })
-    @Operation(summary = "Query Ask", tags={  })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
-        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
-        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public String storageProvidersStorageQueryCidGet(@PathParam("cid") String cid);
 }

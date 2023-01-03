@@ -12,8 +12,9 @@
 
 package io.swagger.client.api;
 
-import io.swagger.client.model.GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse;
-import io.swagger.client.model.GithubComApplicationResearchEstuaryApiV1ClaimResponse;
+import io.swagger.client.model.ApiClaimMsgResponse;
+import io.swagger.client.model.ApiClaimResponse;
+import io.swagger.client.model.ApiEmptyResp;
 import io.swagger.client.model.MinerClaimMinerBody;
 import io.swagger.client.model.MinerMinerSetInfoParams;
 import io.swagger.client.model.MinerSuspendMinerBody;
@@ -47,7 +48,7 @@ public class MinerApiTest {
     @Test
     public void minerClaimMinerGetTest() throws Exception {
         String miner = null;
-        GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse response = api.minerClaimMinerGet(miner);
+        ApiClaimMsgResponse response = api.minerClaimMinerGet(miner);
 
         // TODO: test validations
     }
@@ -62,7 +63,7 @@ public class MinerApiTest {
     @Test
     public void minerClaimPostTest() throws Exception {
         MinerClaimMinerBody body = null;
-        GithubComApplicationResearchEstuaryApiV1ClaimResponse response = api.minerClaimPost(body);
+        ApiClaimResponse response = api.minerClaimPost(body);
 
         // TODO: test validations
     }
@@ -78,7 +79,7 @@ public class MinerApiTest {
     public void minerSetInfoMinerPutTest() throws Exception {
         MinerMinerSetInfoParams body = null;
         String miner = null;
-        Map<String, String> response = api.minerSetInfoMinerPut(body, miner);
+        ApiEmptyResp response = api.minerSetInfoMinerPut(body, miner);
 
         // TODO: test validations
     }
@@ -94,7 +95,7 @@ public class MinerApiTest {
     public void minerSuspendMinerPostTest() throws Exception {
         MinerSuspendMinerBody body = null;
         String miner = null;
-        Map<String, String> response = api.minerSuspendMinerPost(body, miner);
+        ApiEmptyResp response = api.minerSuspendMinerPost(body, miner);
 
         // TODO: test validations
     }
@@ -109,7 +110,7 @@ public class MinerApiTest {
     @Test
     public void minerUnsuspendMinerPutTest() throws Exception {
         String miner = null;
-        Map<String, String> response = api.minerUnsuspendMinerPut(miner);
+        ApiEmptyResp response = api.minerUnsuspendMinerPut(miner);
 
         // TODO: test validations
     }

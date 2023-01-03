@@ -14,7 +14,6 @@ import { MinerService } from './api/miner.service';
 import { NetService } from './api/net.service';
 import { PinningService } from './api/pinning.service';
 import { PublicService } from './api/public.service';
-import { SpService } from './api/sp.service';
 import { UserService } from './api/user.service';
 
 @NgModule({
@@ -33,7 +32,6 @@ import { UserService } from './api/user.service';
     NetService,
     PinningService,
     PublicService,
-    SpService,
     UserService ]
 })
 export class ApiModule {

@@ -178,16 +178,3 @@ def public_miners_storage_query_miner_get(miner):  # noqa: E501
     :rtype: str
     """
     return 'do some magic!'
-
-
-def storage_providers_storage_query_cid_get(cid):  # noqa: E501
-    """Query Ask
-
-    This endpoint returns the ask for a given CID # noqa: E501
-
-    :param cid: CID
-    :type cid: str
-
-    :rtype: str
-    """
-    return 'do some magic!'

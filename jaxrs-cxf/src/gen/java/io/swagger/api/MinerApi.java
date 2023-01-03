@@ -1,8 +1,8 @@
 package io.swagger.api;
 
-import io.swagger.model.GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse;
-import io.swagger.model.GithubComApplicationResearchEstuaryApiV1ClaimResponse;
-import java.util.Map;
+import io.swagger.model.ApiClaimMsgResponse;
+import io.swagger.model.ApiClaimResponse;
+import io.swagger.model.ApiEmptyResp;
 import io.swagger.model.MinerClaimMinerBody;
 import io.swagger.model.MinerMinerSetInfoParams;
 import io.swagger.model.MinerSuspendMinerBody;
@@ -46,10 +46,10 @@ public interface MinerApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Get Claim Miner Message", tags={ "miner" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiClaimMsgResponse.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse minerClaimMinerGet(@PathParam("miner") String miner);
+    public ApiClaimMsgResponse minerClaimMinerGet(@PathParam("miner") String miner);
 
     /**
      * Claim Miner
@@ -63,10 +63,10 @@ public interface MinerApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Claim Miner", tags={ "miner" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = GithubComApplicationResearchEstuaryApiV1ClaimResponse.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiClaimResponse.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public GithubComApplicationResearchEstuaryApiV1ClaimResponse minerClaimPost(@Valid MinerClaimMinerBody body);
+    public ApiClaimResponse minerClaimPost(@Valid MinerClaimMinerBody body);
 
     /**
      * Set Miner Info
@@ -80,10 +80,10 @@ public interface MinerApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Set Miner Info", tags={ "miner" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Map.class)))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiEmptyResp.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Map<String, String> minerSetInfoMinerPut(@Valid MinerMinerSetInfoParams body, @PathParam("miner") String miner);
+    public ApiEmptyResp minerSetInfoMinerPut(@Valid MinerMinerSetInfoParams body, @PathParam("miner") String miner);
 
     /**
      * Suspend Miner
@@ -97,10 +97,10 @@ public interface MinerApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Suspend Miner", tags={ "miner" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Map.class)))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiEmptyResp.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Map<String, String> minerSuspendMinerPost(@Valid MinerSuspendMinerBody body, @PathParam("miner") String miner);
+    public ApiEmptyResp minerSuspendMinerPost(@Valid MinerSuspendMinerBody body, @PathParam("miner") String miner);
 
     /**
      * Unuspend Miner
@@ -113,8 +113,8 @@ public interface MinerApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Unuspend Miner", tags={ "miner" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Map.class)))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiEmptyResp.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Map<String, String> minerUnsuspendMinerPut(@PathParam("miner") String miner);
+    public ApiEmptyResp minerUnsuspendMinerPut(@PathParam("miner") String miner);
 }

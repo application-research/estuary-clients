@@ -17,7 +17,6 @@ Method | HTTP request | Description
 [**dealsStatusDealGet**](DealsApi.md#dealsStatusDealGet) | **GET** /deals/status/{deal} | Get Deal Status
 [**publicDealsFailuresGet**](DealsApi.md#publicDealsFailuresGet) | **GET** /public/deals/failures | Get storage failures
 [**publicMinersStorageQueryMinerGet**](DealsApi.md#publicMinersStorageQueryMinerGet) | **GET** /public/miners/storage/query/{miner} | Query Ask
-[**storageProvidersStorageQueryCidGet**](DealsApi.md#storageProvidersStorageQueryCidGet) | **GET** /storage-providers/storage/query/{cid} | Query Ask
 
 <a name="dealEstimatePost"></a>
 # **dealEstimatePost**
@@ -644,56 +643,6 @@ apiInstance.publicMinersStorageQueryMinerGet(miner, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **miner** | **String**| CID | 
-
-### Return type
-
-**&#x27;String&#x27;**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="storageProvidersStorageQueryCidGet"></a>
-# **storageProvidersStorageQueryCidGet**
-> &#x27;String&#x27; storageProvidersStorageQueryCidGet(cid)
-
-Query Ask
-
-This endpoint returns the ask for a given CID
-
-### Example
-```javascript
-import {EstuaryClient} from 'estuary-client';
-let defaultClient = EstuaryClient.ApiClient.instance;
-
-// Configure API key authorization: bearerAuth
-let bearerAuth = defaultClient.authentications['bearerAuth'];
-bearerAuth.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix = 'Token';
-
-let apiInstance = new EstuaryClient.DealsApi();
-let cid = "cid_example"; // String | CID
-
-apiInstance.storageProvidersStorageQueryCidGet(cid, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-});
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **cid** | **String**| CID | 
 
 ### Return type
 

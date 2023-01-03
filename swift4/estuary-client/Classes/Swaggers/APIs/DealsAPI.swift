@@ -503,43 +503,4 @@ open class DealsAPI {
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
 
-    /**
-     Query Ask
-     - parameter cid: (path) CID 
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    open class func storageProvidersStorageQueryCidGet(cid: String, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
-        storageProvidersStorageQueryCidGetWithRequestBuilder(cid: cid).execute { (response, error) -> Void in
-            completion(response?.body, error)
-        }
-    }
-
-
-    /**
-     Query Ask
-     - GET /storage-providers/storage/query/{cid}
-     - This endpoint returns the ask for a given CID
-     - API Key:
-       - type: apiKey Authorization 
-       - name: bearerAuth
-     - examples: [{contentType=application/json, example=""}]
-     - parameter cid: (path) CID 
-
-     - returns: RequestBuilder<String> 
-     */
-    open class func storageProvidersStorageQueryCidGetWithRequestBuilder(cid: String) -> RequestBuilder<String> {
-        var path = "/storage-providers/storage/query/{cid}"
-        let cidPreEscape = "\(cid)"
-        let cidPostEscape = cidPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
-        path = path.replacingOccurrences(of: "{cid}", with: cidPostEscape, options: .literal, range: nil)
-        let URLString = estuary-clientAPI.basePath + path
-        let parameters: [String:Any]? = nil
-
-        let url = URLComponents(string: URLString)
-
-        let requestBuilder: RequestBuilder<String>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
-
-        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
-    }
-
 }

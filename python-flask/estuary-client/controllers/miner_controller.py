@@ -1,8 +1,9 @@
 import connexion
 import six
 
-from estuary-client.models.github_com_application_research_estuary_api_v1_claim_msg_response import GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse  # noqa: E501
-from estuary-client.models.github_com_application_research_estuary_api_v1_claim_response import GithubComApplicationResearchEstuaryApiV1ClaimResponse  # noqa: E501
+from estuary-client.models.api_claim_msg_response import ApiClaimMsgResponse  # noqa: E501
+from estuary-client.models.api_claim_response import ApiClaimResponse  # noqa: E501
+from estuary-client.models.api_empty_resp import ApiEmptyResp  # noqa: E501
 from estuary-client.models.miner_claim_miner_body import MinerClaimMinerBody  # noqa: E501
 from estuary-client.models.miner_miner_set_info_params import MinerMinerSetInfoParams  # noqa: E501
 from estuary-client.models.miner_suspend_miner_body import MinerSuspendMinerBody  # noqa: E501
@@ -18,7 +19,7 @@ def miner_claim_miner_get(miner):  # noqa: E501
     :param miner: Miner claim message
     :type miner: str
 
-    :rtype: GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse
+    :rtype: ApiClaimMsgResponse
     """
     return 'do some magic!'
 
@@ -31,7 +32,7 @@ def miner_claim_post(body):  # noqa: E501
     :param body: Claim Miner Body
     :type body: dict | bytes
 
-    :rtype: GithubComApplicationResearchEstuaryApiV1ClaimResponse
+    :rtype: ApiClaimResponse
     """
     if connexion.request.is_json:
         body = MinerClaimMinerBody.from_dict(connexion.request.get_json())  # noqa: E501
@@ -48,7 +49,7 @@ def miner_set_info_miner_put(body, miner):  # noqa: E501
     :param miner: Miner to set info for
     :type miner: str
 
-    :rtype: Dict[str, str]
+    :rtype: ApiEmptyResp
     """
     if connexion.request.is_json:
         body = MinerMinerSetInfoParams.from_dict(connexion.request.get_json())  # noqa: E501
@@ -65,7 +66,7 @@ def miner_suspend_miner_post(body, miner):  # noqa: E501
     :param miner: Miner to suspend
     :type miner: str
 
-    :rtype: Dict[str, str]
+    :rtype: ApiEmptyResp
     """
     if connexion.request.is_json:
         body = MinerSuspendMinerBody.from_dict(connexion.request.get_json())  # noqa: E501
@@ -80,7 +81,7 @@ def miner_unsuspend_miner_put(miner):  # noqa: E501
     :param miner: Miner to unsuspend
     :type miner: str
 
-    :rtype: Dict[str, str]
+    :rtype: ApiEmptyResp
     """
     return 'do some magic!'
 

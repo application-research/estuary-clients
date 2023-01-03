@@ -22,7 +22,7 @@ import javax.validation.Valid;
 
 @Path("/admin")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2022-12-21T01:22:11.666Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2023-01-03T16:17:33.106Z[GMT]")
 public class AdminApi {
 
     @POST

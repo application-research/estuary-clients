@@ -16,7 +16,7 @@ import io.swagger.model.CollectionsCollection;
 import io.swagger.model.CollectionsCollectionListResponse;
 import io.swagger.model.UtilHttpError;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2022-12-21T01:22:08.779Z[GMT]")public class CollectionsController  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2023-01-03T16:17:31.432Z[GMT]")public class CollectionsController  {
   /** 
    * Uncomment and implement as you see fit.  These operations will map
    * Directly to operation calls from the routing logic.  Because the inflector

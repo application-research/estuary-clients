@@ -117,7 +117,6 @@ Class | Method | HTTP request | Description
 *DealsApi* | [**dealsStatusDealGet**](docs//DealsApi.md#dealsstatusdealget) | **GET** /deals/status/{deal} | Get Deal Status
 *DealsApi* | [**publicDealsFailuresGet**](docs//DealsApi.md#publicdealsfailuresget) | **GET** /public/deals/failures | Get storage failures
 *DealsApi* | [**publicMinersStorageQueryMinerGet**](docs//DealsApi.md#publicminersstoragequeryminerget) | **GET** /public/miners/storage/query/{miner} | Query Ask
-*DealsApi* | [**storageProvidersStorageQueryCidGet**](docs//DealsApi.md#storageprovidersstoragequerycidget) | **GET** /storage-providers/storage/query/{cid} | Query Ask
 *DefaultApi* | [**viewerGet**](docs//DefaultApi.md#viewerget) | **GET** /viewer | Fetch viewer details
 *MetricsApi* | [**publicMetricsDealsOnChainGet**](docs//MetricsApi.md#publicmetricsdealsonchainget) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 *MinerApi* | [**minerClaimMinerGet**](docs//MinerApi.md#minerclaimminerget) | **GET** /miner/claim/{miner} | Get Claim Miner Message
@@ -147,15 +146,6 @@ Class | Method | HTTP request | Description
 *PublicApi* | [**publicNetAddrsGet**](docs//PublicApi.md#publicnetaddrsget) | **GET** /public/net/addrs | Net Addrs
 *PublicApi* | [**publicNetPeersGet**](docs//PublicApi.md#publicnetpeersget) | **GET** /public/net/peers | Net Peers
 *PublicApi* | [**publicStatsGet**](docs//PublicApi.md#publicstatsget) | **GET** /public/stats | Public stats
-*SpApi* | [**storageProvidersClaimPost**](docs//SpApi.md#storageprovidersclaimpost) | **POST** /storage-providers/claim | Claim Storage Provider
-*SpApi* | [**storageProvidersClaimSpGet**](docs//SpApi.md#storageprovidersclaimspget) | **GET** /storage-providers/claim/{sp} | Get Claim Storage Provider
-*SpApi* | [**storageProvidersDealsSpGet**](docs//SpApi.md#storageprovidersdealsspget) | **GET** /storage-providers/deals/{sp} | Get all storage providers deals
-*SpApi* | [**storageProvidersFailuresSpGet**](docs//SpApi.md#storageprovidersfailuresspget) | **GET** /storage-providers/failures/{sp} | Get all storage providers
-*SpApi* | [**storageProvidersGet**](docs//SpApi.md#storageprovidersget) | **GET** /storage-providers | Get all storage providers
-*SpApi* | [**storageProvidersSetInfoSpPut**](docs//SpApi.md#storageproviderssetinfospput) | **PUT** /storage-providers/set-info/{sp} | Set Storage Provider Info
-*SpApi* | [**storageProvidersStatsSpGet**](docs//SpApi.md#storageprovidersstatsspget) | **GET** /storage-providers/stats/{sp} | Get storage provider stats
-*SpApi* | [**storageProvidersSuspendSpPost**](docs//SpApi.md#storageproviderssuspendsppost) | **POST** /storage-providers/suspend/{sp} | Suspend Storage Provider
-*SpApi* | [**storageProvidersUnsuspendSpPut**](docs//SpApi.md#storageprovidersunsuspendspput) | **PUT** /storage-providers/unsuspend/{sp} | Unuspend Storage Provider
 *UserApi* | [**userApiKeysGet**](docs//UserApi.md#userapikeysget) | **GET** /user/api-keys | Get API keys for a user
 *UserApi* | [**userApiKeysKeyOrHashDelete**](docs//UserApi.md#userapikeyskeyorhashdelete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 *UserApi* | [**userApiKeysPost**](docs//UserApi.md#userapikeyspost) | **POST** /user/api-keys | Create API keys for a user
@@ -166,22 +156,20 @@ Class | Method | HTTP request | Description
 
  - [AddressAddress](docs//AddressAddress.md)
  - [ApiChannelIDParam](docs//ApiChannelIDParam.md)
+ - [ApiClaimMsgResponse](docs//ApiClaimMsgResponse.md)
+ - [ApiClaimResponse](docs//ApiClaimResponse.md)
  - [ApiCreateCollectionBody](docs//ApiCreateCollectionBody.md)
  - [ApiDeleteContentFromCollectionBody](docs//ApiDeleteContentFromCollectionBody.md)
+ - [ApiEmptyResp](docs//ApiEmptyResp.md)
  - [ApiEstimateDealBody](docs//ApiEstimateDealBody.md)
  - [ApiGetApiKeysResp](docs//ApiGetApiKeysResp.md)
  - [ApiPublicNodeInfo](docs//ApiPublicNodeInfo.md)
- - [ApiStorageProviderResp](docs//ApiStorageProviderResp.md)
  - [AutoretrieveInitBody](docs//AutoretrieveInitBody.md)
  - [CidCid](docs//CidCid.md)
  - [CollectionsCidType](docs//CollectionsCidType.md)
  - [CollectionsCollection](docs//CollectionsCollection.md)
  - [CollectionsCollectionListResponse](docs//CollectionsCollectionListResponse.md)
  - [ContentAddBody](docs//ContentAddBody.md)
- - [GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse](docs//GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse.md)
- - [GithubComApplicationResearchEstuaryApiV1ClaimResponse](docs//GithubComApplicationResearchEstuaryApiV1ClaimResponse.md)
- - [GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse](docs//GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse.md)
- - [GithubComApplicationResearchEstuaryApiV2ClaimResponse](docs//GithubComApplicationResearchEstuaryApiV2ClaimResponse.md)
  - [MinerClaimMinerBody](docs//MinerClaimMinerBody.md)
  - [MinerMinerSetInfoParams](docs//MinerMinerSetInfoParams.md)
  - [MinerSuspendMinerBody](docs//MinerSuspendMinerBody.md)

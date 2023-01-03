@@ -416,32 +416,6 @@ class DealsApi(
       helper.publicMinersStorageQueryMinerGet(miner)
   }
 
-  /**
-   * Query Ask
-   * This endpoint returns the ask for a given CID
-   *
-   * @param cid CID 
-   * @return String
-   */
-  def storageProvidersStorageQueryCidGet(cid: String): Option[String] = {
-    val await = Try(Await.result(storageProvidersStorageQueryCidGetAsync(cid), Duration.Inf))
-    await match {
-      case Success(i) => Some(await.get)
-      case Failure(t) => None
-    }
-  }
-
-  /**
-   * Query Ask asynchronously
-   * This endpoint returns the ask for a given CID
-   *
-   * @param cid CID 
-   * @return Future(String)
-   */
-  def storageProvidersStorageQueryCidGetAsync(cid: String): Future[String] = {
-      helper.storageProvidersStorageQueryCidGet(cid)
-  }
-
 }
 
 class DealsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
@@ -661,24 +635,6 @@ class DealsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
     val headerParams = new mutable.HashMap[String, String]
 
     if (miner == null) throw new Exception("Missing required parameter 'miner' when calling DealsApi->publicMinersStorageQueryMinerGet")
-
-
-    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
-    resFuture flatMap { resp =>
-      process(reader.read(resp))
-    }
-  }
-
-  def storageProvidersStorageQueryCidGet(cid: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
-    // create path and map variables
-    val path = (addFmt("/storage-providers/storage/query/{cid}")
-      replaceAll("\\{" + "cid" + "\\}", cid.toString))
-
-    // query params
-    val queryParams = new mutable.HashMap[String, String]
-    val headerParams = new mutable.HashMap[String, String]
-
-    if (cid == null) throw new Exception("Missing required parameter 'cid' when calling DealsApi->storageProvidersStorageQueryCidGet")
 
 
     val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")

@@ -1055,25 +1055,6 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::DealsApi.new
-cid = 'cid_example' # String | CID
-
-
-begin
-  #Query Ask
-  result = api_instance.storage_providers_storage_query_cid_get(cid)
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling DealsApi->storage_providers_storage_query_cid_get: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
 api_instance = SwaggerClient::DefaultApi.new
 
 begin
@@ -1606,177 +1587,6 @@ SwaggerClient.configure do |config|
   #config.api_key_prefix['Authorization'] = 'Bearer'
 end
 
-api_instance = SwaggerClient::SpApi.new
-body = SwaggerClient::MinerClaimMinerBody.new # MinerClaimMinerBody | Claim Storage Provider Body
-
-
-begin
-  #Claim Storage Provider
-  result = api_instance.storage_providers_claim_post(body)
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling SpApi->storage_providers_claim_post: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::SpApi.new
-sp = 'sp_example' # String | Storage Provider claim message
-
-
-begin
-  #Get Claim Storage Provider
-  result = api_instance.storage_providers_claim_sp_get(sp)
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling SpApi->storage_providers_claim_sp_get: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::SpApi.new
-sp = 'sp_example' # String | Filter by storage provider
-opts = { 
-  ignore_failed: 'ignore_failed_example' # String | Ignore Failed
-}
-
-begin
-  #Get all storage providers deals
-  result = api_instance.storage_providers_deals_sp_get(sp, opts)
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling SpApi->storage_providers_deals_sp_get: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::SpApi.new
-sp = 'sp_example' # String | Filter by storage provider
-
-
-begin
-  #Get all storage providers
-  result = api_instance.storage_providers_failures_sp_get(sp)
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling SpApi->storage_providers_failures_sp_get: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::SpApi.new
-
-begin
-  #Get all storage providers
-  result = api_instance.storage_providers_get
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling SpApi->storage_providers_get: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::SpApi.new
-body = SwaggerClient::MinerMinerSetInfoParams.new # MinerMinerSetInfoParams | Storage Provider set info params
-sp = 'sp_example' # String | Storage Provider to set info for
-
-
-begin
-  #Set Storage Provider Info
-  api_instance.storage_providers_set_info_sp_put(body, sp)
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling SpApi->storage_providers_set_info_sp_put: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::SpApi.new
-sp = 'sp_example' # String | Filter by storage provider
-
-
-begin
-  #Get storage provider stats
-  result = api_instance.storage_providers_stats_sp_get(sp)
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling SpApi->storage_providers_stats_sp_get: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::SpApi.new
-body = SwaggerClient::MinerSuspendMinerBody.new # MinerSuspendMinerBody | Suspend Storage Provider Body
-sp = 'sp_example' # String | Storage Provider to suspend
-
-
-begin
-  #Suspend Storage Provider
-  result = api_instance.storage_providers_suspend_sp_post(body, sp)
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling SpApi->storage_providers_suspend_sp_post: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::SpApi.new
-sp = 'sp_example' # String | Storage Provider to unsuspend
-
-
-begin
-  #Unuspend Storage Provider
-  api_instance.storage_providers_unsuspend_sp_put(sp)
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling SpApi->storage_providers_unsuspend_sp_put: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
 api_instance = SwaggerClient::UserApi.new
 
 begin
@@ -1920,7 +1730,6 @@ Class | Method | HTTP request | Description
 *SwaggerClient::DealsApi* | [**deals_status_deal_get**](docs/DealsApi.md#deals_status_deal_get) | **GET** /deals/status/{deal} | Get Deal Status
 *SwaggerClient::DealsApi* | [**public_deals_failures_get**](docs/DealsApi.md#public_deals_failures_get) | **GET** /public/deals/failures | Get storage failures
 *SwaggerClient::DealsApi* | [**public_miners_storage_query_miner_get**](docs/DealsApi.md#public_miners_storage_query_miner_get) | **GET** /public/miners/storage/query/{miner} | Query Ask
-*SwaggerClient::DealsApi* | [**storage_providers_storage_query_cid_get**](docs/DealsApi.md#storage_providers_storage_query_cid_get) | **GET** /storage-providers/storage/query/{cid} | Query Ask
 *SwaggerClient::DefaultApi* | [**viewer_get**](docs/DefaultApi.md#viewer_get) | **GET** /viewer | Fetch viewer details
 *SwaggerClient::MetricsApi* | [**public_metrics_deals_on_chain_get**](docs/MetricsApi.md#public_metrics_deals_on_chain_get) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 *SwaggerClient::MinerApi* | [**miner_claim_miner_get**](docs/MinerApi.md#miner_claim_miner_get) | **GET** /miner/claim/{miner} | Get Claim Miner Message
@@ -1950,15 +1759,6 @@ Class | Method | HTTP request | Description
 *SwaggerClient::PublicApi* | [**public_net_addrs_get**](docs/PublicApi.md#public_net_addrs_get) | **GET** /public/net/addrs | Net Addrs
 *SwaggerClient::PublicApi* | [**public_net_peers_get**](docs/PublicApi.md#public_net_peers_get) | **GET** /public/net/peers | Net Peers
 *SwaggerClient::PublicApi* | [**public_stats_get**](docs/PublicApi.md#public_stats_get) | **GET** /public/stats | Public stats
-*SwaggerClient::SpApi* | [**storage_providers_claim_post**](docs/SpApi.md#storage_providers_claim_post) | **POST** /storage-providers/claim | Claim Storage Provider
-*SwaggerClient::SpApi* | [**storage_providers_claim_sp_get**](docs/SpApi.md#storage_providers_claim_sp_get) | **GET** /storage-providers/claim/{sp} | Get Claim Storage Provider
-*SwaggerClient::SpApi* | [**storage_providers_deals_sp_get**](docs/SpApi.md#storage_providers_deals_sp_get) | **GET** /storage-providers/deals/{sp} | Get all storage providers deals
-*SwaggerClient::SpApi* | [**storage_providers_failures_sp_get**](docs/SpApi.md#storage_providers_failures_sp_get) | **GET** /storage-providers/failures/{sp} | Get all storage providers
-*SwaggerClient::SpApi* | [**storage_providers_get**](docs/SpApi.md#storage_providers_get) | **GET** /storage-providers | Get all storage providers
-*SwaggerClient::SpApi* | [**storage_providers_set_info_sp_put**](docs/SpApi.md#storage_providers_set_info_sp_put) | **PUT** /storage-providers/set-info/{sp} | Set Storage Provider Info
-*SwaggerClient::SpApi* | [**storage_providers_stats_sp_get**](docs/SpApi.md#storage_providers_stats_sp_get) | **GET** /storage-providers/stats/{sp} | Get storage provider stats
-*SwaggerClient::SpApi* | [**storage_providers_suspend_sp_post**](docs/SpApi.md#storage_providers_suspend_sp_post) | **POST** /storage-providers/suspend/{sp} | Suspend Storage Provider
-*SwaggerClient::SpApi* | [**storage_providers_unsuspend_sp_put**](docs/SpApi.md#storage_providers_unsuspend_sp_put) | **PUT** /storage-providers/unsuspend/{sp} | Unuspend Storage Provider
 *SwaggerClient::UserApi* | [**user_api_keys_get**](docs/UserApi.md#user_api_keys_get) | **GET** /user/api-keys | Get API keys for a user
 *SwaggerClient::UserApi* | [**user_api_keys_key_or_hash_delete**](docs/UserApi.md#user_api_keys_key_or_hash_delete) | **DELETE** /user/api-keys/{key_or_hash} | Revoke a User API Key.
 *SwaggerClient::UserApi* | [**user_api_keys_post**](docs/UserApi.md#user_api_keys_post) | **POST** /user/api-keys | Create API keys for a user
@@ -1969,22 +1769,20 @@ Class | Method | HTTP request | Description
 
  - [SwaggerClient::AddressAddress](docs/AddressAddress.md)
  - [SwaggerClient::ApiChannelIDParam](docs/ApiChannelIDParam.md)
+ - [SwaggerClient::ApiClaimMsgResponse](docs/ApiClaimMsgResponse.md)
+ - [SwaggerClient::ApiClaimResponse](docs/ApiClaimResponse.md)
  - [SwaggerClient::ApiCreateCollectionBody](docs/ApiCreateCollectionBody.md)
  - [SwaggerClient::ApiDeleteContentFromCollectionBody](docs/ApiDeleteContentFromCollectionBody.md)
+ - [SwaggerClient::ApiEmptyResp](docs/ApiEmptyResp.md)
  - [SwaggerClient::ApiEstimateDealBody](docs/ApiEstimateDealBody.md)
  - [SwaggerClient::ApiGetApiKeysResp](docs/ApiGetApiKeysResp.md)
  - [SwaggerClient::ApiPublicNodeInfo](docs/ApiPublicNodeInfo.md)
- - [SwaggerClient::ApiStorageProviderResp](docs/ApiStorageProviderResp.md)
  - [SwaggerClient::AutoretrieveInitBody](docs/AutoretrieveInitBody.md)
  - [SwaggerClient::CidCid](docs/CidCid.md)
  - [SwaggerClient::CollectionsCidType](docs/CollectionsCidType.md)
  - [SwaggerClient::CollectionsCollection](docs/CollectionsCollection.md)
  - [SwaggerClient::CollectionsCollectionListResponse](docs/CollectionsCollectionListResponse.md)
  - [SwaggerClient::ContentAddBody](docs/ContentAddBody.md)
- - [SwaggerClient::GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse](docs/GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse.md)
- - [SwaggerClient::GithubComApplicationResearchEstuaryApiV1ClaimResponse](docs/GithubComApplicationResearchEstuaryApiV1ClaimResponse.md)
- - [SwaggerClient::GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse](docs/GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse.md)
- - [SwaggerClient::GithubComApplicationResearchEstuaryApiV2ClaimResponse](docs/GithubComApplicationResearchEstuaryApiV2ClaimResponse.md)
  - [SwaggerClient::MinerClaimMinerBody](docs/MinerClaimMinerBody.md)
  - [SwaggerClient::MinerMinerSetInfoParams](docs/MinerMinerSetInfoParams.md)
  - [SwaggerClient::MinerSuspendMinerBody](docs/MinerSuspendMinerBody.md)

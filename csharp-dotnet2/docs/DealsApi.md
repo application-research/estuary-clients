@@ -17,7 +17,6 @@ Method | HTTP request | Description
 [**DealsStatusDealGet**](DealsApi.md#dealsstatusdealget) | **GET** /deals/status/{deal} | Get Deal Status
 [**PublicDealsFailuresGet**](DealsApi.md#publicdealsfailuresget) | **GET** /public/deals/failures | Get storage failures
 [**PublicMinersStorageQueryMinerGet**](DealsApi.md#publicminersstoragequeryminerget) | **GET** /public/miners/storage/query/{miner} | Query Ask
-[**StorageProvidersStorageQueryCidGet**](DealsApi.md#storageprovidersstoragequerycidget) | **GET** /storage-providers/storage/query/{cid} | Query Ask
 
 <a name="dealestimatepost"></a>
 # **DealEstimatePost**
@@ -866,73 +865,6 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **miner** | **string**| CID | 
-
-### Return type
-
-**string**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-<a name="storageprovidersstoragequerycidget"></a>
-# **StorageProvidersStorageQueryCidGet**
-> string StorageProvidersStorageQueryCidGet (string cid)
-
-Query Ask
-
-This endpoint returns the ask for a given CID
-
-### Example
-```csharp
-using System;
-using System.Diagnostics;
-using IO.Swagger.Api;
-using IO.Swagger.Client;
-using IO.Swagger.Model;
-
-namespace Example
-{
-    public class StorageProvidersStorageQueryCidGetExample
-    {
-        public void main()
-        {
-
-            // Configure API key authorization: bearerAuth
-            Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
-
-            var apiInstance = new DealsApi();
-            var cid = cid_example;  // string | CID
-
-            try
-            {
-                // Query Ask
-                string result = apiInstance.StorageProvidersStorageQueryCidGet(cid);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling DealsApi.StorageProvidersStorageQueryCidGet: " + e.Message );
-            }
-        }
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **cid** | **string**| CID | 
 
 ### Return type
 

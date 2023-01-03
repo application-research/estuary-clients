@@ -17,7 +17,6 @@ Method | HTTP request | Description
 [**dealsStatusDealGet**](DealsApi.md#dealsStatusDealGet) | **GET** /deals/status/{deal} | Get Deal Status
 [**publicDealsFailuresGet**](DealsApi.md#publicDealsFailuresGet) | **GET** /public/deals/failures | Get storage failures
 [**publicMinersStorageQueryMinerGet**](DealsApi.md#publicMinersStorageQueryMinerGet) | **GET** /public/miners/storage/query/{miner} | Query Ask
-[**storageProvidersStorageQueryCidGet**](DealsApi.md#storageProvidersStorageQueryCidGet) | **GET** /storage-providers/storage/query/{cid} | Query Ask
 
 <a name="dealEstimatePost"></a>
 # **dealEstimatePost**
@@ -712,61 +711,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **miner** | **String**| CID |
-
-### Return type
-
-**String**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="storageProvidersStorageQueryCidGet"></a>
-# **storageProvidersStorageQueryCidGet**
-> String storageProvidersStorageQueryCidGet(cid)
-
-Query Ask
-
-This endpoint returns the ask for a given CID
-
-### Example
-```java
-// Import classes:
-//import io.swagger.client.ApiClient;
-//import io.swagger.client.ApiException;
-//import io.swagger.client.Configuration;
-//import io.swagger.client.auth.*;
-//import io.swagger.client.api.DealsApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure API key authorization: bearerAuth
-ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
-bearerAuth.setApiKey("YOUR API KEY");
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.setApiKeyPrefix("Token");
-
-DealsApi apiInstance = new DealsApi();
-String cid = "cid_example"; // String | CID
-try {
-    String result = apiInstance.storageProvidersStorageQueryCidGet(cid);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling DealsApi#storageProvidersStorageQueryCidGet");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **cid** | **String**| CID |
 
 ### Return type
 

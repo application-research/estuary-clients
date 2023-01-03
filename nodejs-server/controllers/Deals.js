@@ -132,13 +132,3 @@ module.exports.publicMinersStorageQueryMinerGET = function publicMinersStorageQu
       utils.writeJson(res, response);
     });
 };
-
-module.exports.storage_providersStorageQueryCidGET = function storage_providersStorageQueryCidGET (req, res, next, cid) {
-  Deals.storage_providersStorageQueryCidGET(cid)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};

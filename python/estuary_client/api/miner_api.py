@@ -43,7 +43,7 @@ class MinerApi(object):
 
         :param async_req bool
         :param str miner: Miner claim message (required)
-        :return: GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse
+        :return: ApiClaimMsgResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -65,7 +65,7 @@ class MinerApi(object):
 
         :param async_req bool
         :param str miner: Miner claim message (required)
-        :return: GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse
+        :return: ApiClaimMsgResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -119,7 +119,7 @@ class MinerApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse',  # noqa: E501
+            response_type='ApiClaimMsgResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -138,7 +138,7 @@ class MinerApi(object):
 
         :param async_req bool
         :param MinerClaimMinerBody body: Claim Miner Body (required)
-        :return: GithubComApplicationResearchEstuaryApiV1ClaimResponse
+        :return: ApiClaimResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -160,7 +160,7 @@ class MinerApi(object):
 
         :param async_req bool
         :param MinerClaimMinerBody body: Claim Miner Body (required)
-        :return: GithubComApplicationResearchEstuaryApiV1ClaimResponse
+        :return: ApiClaimResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -218,7 +218,7 @@ class MinerApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='GithubComApplicationResearchEstuaryApiV1ClaimResponse',  # noqa: E501
+            response_type='ApiClaimResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -238,7 +238,7 @@ class MinerApi(object):
         :param async_req bool
         :param MinerMinerSetInfoParams body: Miner set info params (required)
         :param str miner: Miner to set info for (required)
-        :return: dict(str, str)
+        :return: ApiEmptyResp
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -261,7 +261,7 @@ class MinerApi(object):
         :param async_req bool
         :param MinerMinerSetInfoParams body: Miner set info params (required)
         :param str miner: Miner to set info for (required)
-        :return: dict(str, str)
+        :return: ApiEmptyResp
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -325,7 +325,7 @@ class MinerApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='dict(str, str)',  # noqa: E501
+            response_type='ApiEmptyResp',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -345,7 +345,7 @@ class MinerApi(object):
         :param async_req bool
         :param MinerSuspendMinerBody body: Suspend Miner Body (required)
         :param str miner: Miner to suspend (required)
-        :return: dict(str, str)
+        :return: ApiEmptyResp
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -368,7 +368,7 @@ class MinerApi(object):
         :param async_req bool
         :param MinerSuspendMinerBody body: Suspend Miner Body (required)
         :param str miner: Miner to suspend (required)
-        :return: dict(str, str)
+        :return: ApiEmptyResp
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -432,7 +432,7 @@ class MinerApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='dict(str, str)',  # noqa: E501
+            response_type='ApiEmptyResp',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -451,7 +451,7 @@ class MinerApi(object):
 
         :param async_req bool
         :param str miner: Miner to unsuspend (required)
-        :return: dict(str, str)
+        :return: ApiEmptyResp
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -473,7 +473,7 @@ class MinerApi(object):
 
         :param async_req bool
         :param str miner: Miner to unsuspend (required)
-        :return: dict(str, str)
+        :return: ApiEmptyResp
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -527,7 +527,7 @@ class MinerApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='dict(str, str)',  # noqa: E501
+            response_type='ApiEmptyResp',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

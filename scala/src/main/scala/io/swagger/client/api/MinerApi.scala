@@ -16,8 +16,9 @@ import java.text.SimpleDateFormat
 import io.swagger.client.model.ClaimMinerBody
 import io.swagger.client.model.MinerSetInfoParams
 import io.swagger.client.model.SuspendMinerBody
-import io.swagger.client.model.github_com_application-research_estuary_api_v1.claimMsgResponse
-import io.swagger.client.model.github_com_application-research_estuary_api_v1.claimResponse
+import io.swagger.client.model.api.claimMsgResponse
+import io.swagger.client.model.api.claimResponse
+import io.swagger.client.model.api.emptyResp
 import io.swagger.client.model.util.HttpError
 import io.swagger.client.{ApiInvoker, ApiException}
 
@@ -88,9 +89,9 @@ class MinerApi(
    * This endpoint lets a user get the message in order to claim a miner
    *
    * @param miner Miner claim message 
-   * @return github_com_application-research_estuary_api_v1.claimMsgResponse
+   * @return api.claimMsgResponse
    */
-  def minerClaimMinerGet(miner: String): Option[github_com_application-research_estuary_api_v1.claimMsgResponse] = {
+  def minerClaimMinerGet(miner: String): Option[api.claimMsgResponse] = {
     val await = Try(Await.result(minerClaimMinerGetAsync(miner), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -103,9 +104,9 @@ class MinerApi(
    * This endpoint lets a user get the message in order to claim a miner
    *
    * @param miner Miner claim message 
-   * @return Future(github_com_application-research_estuary_api_v1.claimMsgResponse)
+   * @return Future(api.claimMsgResponse)
    */
-  def minerClaimMinerGetAsync(miner: String): Future[github_com_application-research_estuary_api_v1.claimMsgResponse] = {
+  def minerClaimMinerGetAsync(miner: String): Future[api.claimMsgResponse] = {
       helper.minerClaimMinerGet(miner)
   }
 
@@ -114,9 +115,9 @@ class MinerApi(
    * This endpoint lets a user claim a miner
    *
    * @param body Claim Miner Body 
-   * @return github_com_application-research_estuary_api_v1.claimResponse
+   * @return api.claimResponse
    */
-  def minerClaimPost(body: ClaimMinerBody): Option[github_com_application-research_estuary_api_v1.claimResponse] = {
+  def minerClaimPost(body: ClaimMinerBody): Option[api.claimResponse] = {
     val await = Try(Await.result(minerClaimPostAsync(body), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -129,9 +130,9 @@ class MinerApi(
    * This endpoint lets a user claim a miner
    *
    * @param body Claim Miner Body 
-   * @return Future(github_com_application-research_estuary_api_v1.claimResponse)
+   * @return Future(api.claimResponse)
    */
-  def minerClaimPostAsync(body: ClaimMinerBody): Future[github_com_application-research_estuary_api_v1.claimResponse] = {
+  def minerClaimPostAsync(body: ClaimMinerBody): Future[api.claimResponse] = {
       helper.minerClaimPost(body)
   }
 
@@ -141,9 +142,9 @@ class MinerApi(
    *
    * @param body Miner set info params 
    * @param miner Miner to set info for 
-   * @return Map[String, String]
+   * @return api.emptyResp
    */
-  def minerSetInfoMinerPut(body: MinerSetInfoParams, miner: String): Option[Map[String, String]] = {
+  def minerSetInfoMinerPut(body: MinerSetInfoParams, miner: String): Option[api.emptyResp] = {
     val await = Try(Await.result(minerSetInfoMinerPutAsync(body, miner), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -157,9 +158,9 @@ class MinerApi(
    *
    * @param body Miner set info params 
    * @param miner Miner to set info for 
-   * @return Future(Map[String, String])
+   * @return Future(api.emptyResp)
    */
-  def minerSetInfoMinerPutAsync(body: MinerSetInfoParams, miner: String): Future[Map[String, String]] = {
+  def minerSetInfoMinerPutAsync(body: MinerSetInfoParams, miner: String): Future[api.emptyResp] = {
       helper.minerSetInfoMinerPut(body, miner)
   }
 
@@ -169,9 +170,9 @@ class MinerApi(
    *
    * @param body Suspend Miner Body 
    * @param miner Miner to suspend 
-   * @return Map[String, String]
+   * @return api.emptyResp
    */
-  def minerSuspendMinerPost(body: SuspendMinerBody, miner: String): Option[Map[String, String]] = {
+  def minerSuspendMinerPost(body: SuspendMinerBody, miner: String): Option[api.emptyResp] = {
     val await = Try(Await.result(minerSuspendMinerPostAsync(body, miner), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -185,9 +186,9 @@ class MinerApi(
    *
    * @param body Suspend Miner Body 
    * @param miner Miner to suspend 
-   * @return Future(Map[String, String])
+   * @return Future(api.emptyResp)
    */
-  def minerSuspendMinerPostAsync(body: SuspendMinerBody, miner: String): Future[Map[String, String]] = {
+  def minerSuspendMinerPostAsync(body: SuspendMinerBody, miner: String): Future[api.emptyResp] = {
       helper.minerSuspendMinerPost(body, miner)
   }
 
@@ -196,9 +197,9 @@ class MinerApi(
    * This endpoint lets a user unsuspend a miner.
    *
    * @param miner Miner to unsuspend 
-   * @return Map[String, String]
+   * @return api.emptyResp
    */
-  def minerUnsuspendMinerPut(miner: String): Option[Map[String, String]] = {
+  def minerUnsuspendMinerPut(miner: String): Option[api.emptyResp] = {
     val await = Try(Await.result(minerUnsuspendMinerPutAsync(miner), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
@@ -211,9 +212,9 @@ class MinerApi(
    * This endpoint lets a user unsuspend a miner.
    *
    * @param miner Miner to unsuspend 
-   * @return Future(Map[String, String])
+   * @return Future(api.emptyResp)
    */
-  def minerUnsuspendMinerPutAsync(miner: String): Future[Map[String, String]] = {
+  def minerUnsuspendMinerPutAsync(miner: String): Future[api.emptyResp] = {
       helper.minerUnsuspendMinerPut(miner)
   }
 
@@ -275,7 +276,7 @@ class MinerApi(
 
 class MinerApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
-  def minerClaimMinerGet(miner: String)(implicit reader: ClientResponseReader[github_com_application-research_estuary_api_v1.claimMsgResponse]): Future[github_com_application-research_estuary_api_v1.claimMsgResponse] = {
+  def minerClaimMinerGet(miner: String)(implicit reader: ClientResponseReader[api.claimMsgResponse]): Future[api.claimMsgResponse] = {
     // create path and map variables
     val path = (addFmt("/miner/claim/{miner}")
       replaceAll("\\{" + "miner" + "\\}", miner.toString))
@@ -293,7 +294,7 @@ class MinerApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
     }
   }
 
-  def minerClaimPost(body: ClaimMinerBody)(implicit reader: ClientResponseReader[github_com_application-research_estuary_api_v1.claimResponse], writer: RequestWriter[ClaimMinerBody]): Future[github_com_application-research_estuary_api_v1.claimResponse] = {
+  def minerClaimPost(body: ClaimMinerBody)(implicit reader: ClientResponseReader[api.claimResponse], writer: RequestWriter[ClaimMinerBody]): Future[api.claimResponse] = {
     // create path and map variables
     val path = (addFmt("/miner/claim"))
 
@@ -310,7 +311,7 @@ class MinerApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
   }
 
   def minerSetInfoMinerPut(body: MinerSetInfoParams,
-    miner: String)(implicit reader: ClientResponseReader[Map[String, String]], writer: RequestWriter[MinerSetInfoParams]): Future[Map[String, String]] = {
+    miner: String)(implicit reader: ClientResponseReader[api.emptyResp], writer: RequestWriter[MinerSetInfoParams]): Future[api.emptyResp] = {
     // create path and map variables
     val path = (addFmt("/miner/set-info/{miner}")
       replaceAll("\\{" + "miner" + "\\}", miner.toString))
@@ -330,7 +331,7 @@ class MinerApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
   }
 
   def minerSuspendMinerPost(body: SuspendMinerBody,
-    miner: String)(implicit reader: ClientResponseReader[Map[String, String]], writer: RequestWriter[SuspendMinerBody]): Future[Map[String, String]] = {
+    miner: String)(implicit reader: ClientResponseReader[api.emptyResp], writer: RequestWriter[SuspendMinerBody]): Future[api.emptyResp] = {
     // create path and map variables
     val path = (addFmt("/miner/suspend/{miner}")
       replaceAll("\\{" + "miner" + "\\}", miner.toString))
@@ -349,7 +350,7 @@ class MinerApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extend
     }
   }
 
-  def minerUnsuspendMinerPut(miner: String)(implicit reader: ClientResponseReader[Map[String, String]]): Future[Map[String, String]] = {
+  def minerUnsuspendMinerPut(miner: String)(implicit reader: ClientResponseReader[api.emptyResp]): Future[api.emptyResp] = {
     // create path and map variables
     val path = (addFmt("/miner/unsuspend/{miner}")
       replaceAll("\\{" + "miner" + "\\}", miner.toString))

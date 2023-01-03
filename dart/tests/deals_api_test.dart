@@ -124,14 +124,5 @@ void main() {
       // TODO
     });
 
-    // Query Ask
-    //
-    // This endpoint returns the ask for a given CID
-    //
-    //Future<String> storageProvidersStorageQueryCidGet(String cid) async
-    test('test storageProvidersStorageQueryCidGet', () async {
-      // TODO
-    });
-
   });
 }

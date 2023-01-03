@@ -15,22 +15,20 @@
 import {ApiClient} from './ApiClient';
 import {AddressAddress} from './model/AddressAddress';
 import {ApiChannelIDParam} from './model/ApiChannelIDParam';
+import {ApiClaimMsgResponse} from './model/ApiClaimMsgResponse';
+import {ApiClaimResponse} from './model/ApiClaimResponse';
 import {ApiCreateCollectionBody} from './model/ApiCreateCollectionBody';
 import {ApiDeleteContentFromCollectionBody} from './model/ApiDeleteContentFromCollectionBody';
+import {ApiEmptyResp} from './model/ApiEmptyResp';
 import {ApiEstimateDealBody} from './model/ApiEstimateDealBody';
 import {ApiGetApiKeysResp} from './model/ApiGetApiKeysResp';
 import {ApiPublicNodeInfo} from './model/ApiPublicNodeInfo';
-import {ApiStorageProviderResp} from './model/ApiStorageProviderResp';
 import {AutoretrieveInitBody} from './model/AutoretrieveInitBody';
 import {CidCid} from './model/CidCid';
 import {CollectionsCidType} from './model/CollectionsCidType';
 import {CollectionsCollection} from './model/CollectionsCollection';
 import {CollectionsCollectionListResponse} from './model/CollectionsCollectionListResponse';
 import {ContentAddBody} from './model/ContentAddBody';
-import {GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse} from './model/GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse';
-import {GithubComApplicationResearchEstuaryApiV1ClaimResponse} from './model/GithubComApplicationResearchEstuaryApiV1ClaimResponse';
-import {GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse} from './model/GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse';
-import {GithubComApplicationResearchEstuaryApiV2ClaimResponse} from './model/GithubComApplicationResearchEstuaryApiV2ClaimResponse';
 import {MinerClaimMinerBody} from './model/MinerClaimMinerBody';
 import {MinerMinerSetInfoParams} from './model/MinerMinerSetInfoParams';
 import {MinerSuspendMinerBody} from './model/MinerSuspendMinerBody';
@@ -57,7 +55,6 @@ import {MinerApi} from './api/MinerApi';
 import {NetApi} from './api/NetApi';
 import {PinningApi} from './api/PinningApi';
 import {PublicApi} from './api/PublicApi';
-import {SpApi} from './api/SpApi';
 import {UserApi} from './api/UserApi';
 
 /**
@@ -111,6 +108,18 @@ export {
     ApiChannelIDParam,
 
     /**
+     * The ApiClaimMsgResponse model constructor.
+     * @property {module:model/ApiClaimMsgResponse}
+     */
+    ApiClaimMsgResponse,
+
+    /**
+     * The ApiClaimResponse model constructor.
+     * @property {module:model/ApiClaimResponse}
+     */
+    ApiClaimResponse,
+
+    /**
      * The ApiCreateCollectionBody model constructor.
      * @property {module:model/ApiCreateCollectionBody}
      */
@@ -121,6 +130,12 @@ export {
      * @property {module:model/ApiDeleteContentFromCollectionBody}
      */
     ApiDeleteContentFromCollectionBody,
+
+    /**
+     * The ApiEmptyResp model constructor.
+     * @property {module:model/ApiEmptyResp}
+     */
+    ApiEmptyResp,
 
     /**
      * The ApiEstimateDealBody model constructor.
@@ -139,12 +154,6 @@ export {
      * @property {module:model/ApiPublicNodeInfo}
      */
     ApiPublicNodeInfo,
-
-    /**
-     * The ApiStorageProviderResp model constructor.
-     * @property {module:model/ApiStorageProviderResp}
-     */
-    ApiStorageProviderResp,
 
     /**
      * The AutoretrieveInitBody model constructor.
@@ -181,30 +190,6 @@ export {
      * @property {module:model/ContentAddBody}
      */
     ContentAddBody,
-
-    /**
-     * The GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse model constructor.
-     * @property {module:model/GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse}
-     */
-    GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse,
-
-    /**
-     * The GithubComApplicationResearchEstuaryApiV1ClaimResponse model constructor.
-     * @property {module:model/GithubComApplicationResearchEstuaryApiV1ClaimResponse}
-     */
-    GithubComApplicationResearchEstuaryApiV1ClaimResponse,
-
-    /**
-     * The GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse model constructor.
-     * @property {module:model/GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse}
-     */
-    GithubComApplicationResearchEstuaryApiV2ClaimMsgResponse,
-
-    /**
-     * The GithubComApplicationResearchEstuaryApiV2ClaimResponse model constructor.
-     * @property {module:model/GithubComApplicationResearchEstuaryApiV2ClaimResponse}
-     */
-    GithubComApplicationResearchEstuaryApiV2ClaimResponse,
 
     /**
      * The MinerClaimMinerBody model constructor.
@@ -361,12 +346,6 @@ export {
     * @property {module:api/PublicApi}
     */
     PublicApi,
-
-    /**
-    * The SpApi service constructor.
-    * @property {module:api/SpApi}
-    */
-    SpApi,
 
     /**
     * The UserApi service constructor.

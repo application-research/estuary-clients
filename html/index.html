@@ -262,7 +262,6 @@
   <li><a href="#dealsStatusDealGet"><code><span class="http-method">get</span> /deals/status/{deal}</code></a></li>
   <li><a href="#publicDealsFailuresGet"><code><span class="http-method">get</span> /public/deals/failures</code></a></li>
   <li><a href="#publicMinersStorageQueryMinerGet"><code><span class="http-method">get</span> /public/miners/storage/query/{miner}</code></a></li>
-  <li><a href="#storageProvidersStorageQueryCidGet"><code><span class="http-method">get</span> /storage-providers/storage/query/{cid}</code></a></li>
   </ul>
   <h4><a href="#Default">Default</a></h4>
   <ul>
@@ -310,18 +309,6 @@
   <li><a href="#publicNetAddrsGet"><code><span class="http-method">get</span> /public/net/addrs</code></a></li>
   <li><a href="#publicNetPeersGet"><code><span class="http-method">get</span> /public/net/peers</code></a></li>
   <li><a href="#publicStatsGet"><code><span class="http-method">get</span> /public/stats</code></a></li>
-  </ul>
-  <h4><a href="#Sp">Sp</a></h4>
-  <ul>
-  <li><a href="#storageProvidersClaimPost"><code><span class="http-method">post</span> /storage-providers/claim</code></a></li>
-  <li><a href="#storageProvidersClaimSpGet"><code><span class="http-method">get</span> /storage-providers/claim/{sp}</code></a></li>
-  <li><a href="#storageProvidersDealsSpGet"><code><span class="http-method">get</span> /storage-providers/deals/{sp}</code></a></li>
-  <li><a href="#storageProvidersFailuresSpGet"><code><span class="http-method">get</span> /storage-providers/failures/{sp}</code></a></li>
-  <li><a href="#storageProvidersGet"><code><span class="http-method">get</span> /storage-providers</code></a></li>
-  <li><a href="#storageProvidersSetInfoSpPut"><code><span class="http-method">put</span> /storage-providers/set-info/{sp}</code></a></li>
-  <li><a href="#storageProvidersStatsSpGet"><code><span class="http-method">get</span> /storage-providers/stats/{sp}</code></a></li>
-  <li><a href="#storageProvidersSuspendSpPost"><code><span class="http-method">post</span> /storage-providers/suspend/{sp}</code></a></li>
-  <li><a href="#storageProvidersUnsuspendSpPut"><code><span class="http-method">put</span> /storage-providers/unsuspend/{sp}</code></a></li>
   </ul>
   <h4><a href="#User">User</a></h4>
   <ul>
@@ -3032,55 +3019,6 @@
         <a href="#util.HttpError">util.HttpError</a>
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="storageProvidersStorageQueryCidGet"></a>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /storage-providers/storage/query/{cid}</code></pre></div>
-    <div class="method-summary">Query Ask (<span class="nickname">storageProvidersStorageQueryCidGet</span>)</div>
-    <div class="method-notes">This endpoint returns the ask for a given CID</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">cid (required)</div>
-      
-            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; CID </div>    </div>  <!-- field-items -->
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      
-      String
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>""</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    OK
-        <a href="#String">String</a>
-    <h4 class="field-label">400</h4>
-    Bad Request
-        <a href="#util.HttpError">util.HttpError</a>
-    <h4 class="field-label">500</h4>
-    Internal Server Error
-        <a href="#util.HttpError">util.HttpError</a>
-  </div> <!-- method -->
-  <hr/>
   <h1><a name="Default">Default</a></h1>
   <div class="method"><a name="viewerGet"></a>
     <div class="method-path">
@@ -3209,7 +3147,7 @@
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#github_com_application-research_estuary_api_v1.claimMsgResponse">github_com_application-research_estuary_api_v1.claimMsgResponse</a>
+      <a href="#api.claimMsgResponse">api.claimMsgResponse</a>
       
     </div>
 
@@ -3231,7 +3169,7 @@
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     OK
-        <a href="#github_com_application-research_estuary_api_v1.claimMsgResponse">github_com_application-research_estuary_api_v1.claimMsgResponse</a>
+        <a href="#api.claimMsgResponse">api.claimMsgResponse</a>
     <h4 class="field-label">400</h4>
     Bad Request
         <a href="#util.HttpError">util.HttpError</a>
@@ -3266,7 +3204,7 @@
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#github_com_application-research_estuary_api_v1.claimResponse">github_com_application-research_estuary_api_v1.claimResponse</a>
+      <a href="#api.claimResponse">api.claimResponse</a>
       
     </div>
 
@@ -3288,7 +3226,7 @@
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     OK
-        <a href="#github_com_application-research_estuary_api_v1.claimResponse">github_com_application-research_estuary_api_v1.claimResponse</a>
+        <a href="#api.claimResponse">api.claimResponse</a>
     <h4 class="field-label">400</h4>
     Bad Request
         <a href="#util.HttpError">util.HttpError</a>
@@ -3328,17 +3266,15 @@
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
+      <a href="#api.emptyResp">api.emptyResp</a>
       
-      map[String, String]
     </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "key" : ""
-}</code></pre>
+    <pre class="example"><code>{ }</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -3350,7 +3286,7 @@
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     OK
-        
+        <a href="#api.emptyResp">api.emptyResp</a>
     <h4 class="field-label">400</h4>
     Bad Request
         <a href="#util.HttpError">util.HttpError</a>
@@ -3390,17 +3326,15 @@
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
+      <a href="#api.emptyResp">api.emptyResp</a>
       
-      map[String, String]
     </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "key" : ""
-}</code></pre>
+    <pre class="example"><code>{ }</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -3412,7 +3346,7 @@
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     OK
-        
+        <a href="#api.emptyResp">api.emptyResp</a>
     <h4 class="field-label">400</h4>
     Bad Request
         <a href="#util.HttpError">util.HttpError</a>
@@ -3441,17 +3375,15 @@
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
+      <a href="#api.emptyResp">api.emptyResp</a>
       
-      map[String, String]
     </div>
 
     <!--Todo: process Response Object and its headers, schema, examples -->
 
     <h3 class="field-label">Example data</h3>
     <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "key" : ""
-}</code></pre>
+    <pre class="example"><code>{ }</code></pre>
 
     <h3 class="field-label">Produces</h3>
     This API call produces the following media types according to the <span class="header">Accept</span> request header;
@@ -3463,7 +3395,7 @@
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     OK
-        
+        <a href="#api.emptyResp">api.emptyResp</a>
     <h4 class="field-label">400</h4>
     Bad Request
         <a href="#util.HttpError">util.HttpError</a>
@@ -4561,478 +4493,6 @@
         <a href="#util.HttpError">util.HttpError</a>
   </div> <!-- method -->
   <hr/>
-  <h1><a name="Sp">Sp</a></h1>
-  <div class="method"><a name="storageProvidersClaimPost"></a>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /storage-providers/claim</code></pre></div>
-    <div class="method-summary">Claim Storage Provider (<span class="nickname">storageProvidersClaimPost</span>)</div>
-    <div class="method-notes">This endpoint lets a user claim a storage provider</div>
-
-
-    <h3 class="field-label">Consumes</h3>
-    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
-    <ul>
-      <li><code>*/*</code></li>
-    </ul>
-
-    <h3 class="field-label">Request body</h3>
-    <div class="field-items">
-      <div class="param">body <a href="#miner.ClaimMinerBody">miner.ClaimMinerBody</a> (required)</div>
-      
-            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Claim Storage Provider Body </div>
-                </div>  <!-- field-items -->
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#github_com_application-research_estuary_api_v2.claimResponse">github_com_application-research_estuary_api_v2.claimResponse</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "success" : true
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    OK
-        <a href="#github_com_application-research_estuary_api_v2.claimResponse">github_com_application-research_estuary_api_v2.claimResponse</a>
-    <h4 class="field-label">400</h4>
-    Bad Request
-        <a href="#util.HttpError">util.HttpError</a>
-    <h4 class="field-label">500</h4>
-    Internal Server Error
-        <a href="#util.HttpError">util.HttpError</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="storageProvidersClaimSpGet"></a>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /storage-providers/claim/{sp}</code></pre></div>
-    <div class="method-summary">Get Claim Storage Provider (<span class="nickname">storageProvidersClaimSpGet</span>)</div>
-    <div class="method-notes">This endpoint lets a user get the message in order to claim a storage provider</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">sp (required)</div>
-      
-            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Storage Provider claim message </div>    </div>  <!-- field-items -->
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      <a href="#github_com_application-research_estuary_api_v2.claimMsgResponse">github_com_application-research_estuary_api_v2.claimMsgResponse</a>
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "hexmsg" : "hexmsg"
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    OK
-        <a href="#github_com_application-research_estuary_api_v2.claimMsgResponse">github_com_application-research_estuary_api_v2.claimMsgResponse</a>
-    <h4 class="field-label">400</h4>
-    Bad Request
-        <a href="#util.HttpError">util.HttpError</a>
-    <h4 class="field-label">500</h4>
-    Internal Server Error
-        <a href="#util.HttpError">util.HttpError</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="storageProvidersDealsSpGet"></a>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /storage-providers/deals/{sp}</code></pre></div>
-    <div class="method-summary">Get all storage providers deals (<span class="nickname">storageProvidersDealsSpGet</span>)</div>
-    <div class="method-notes">This endpoint returns all storage providers deals</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">sp (required)</div>
-      
-            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Filter by storage provider </div>    </div>  <!-- field-items -->
-
-
-
-
-    <h3 class="field-label">Query parameters</h3>
-    <div class="field-items">
-      <div class="param">ignore-failed (optional)</div>
-      
-            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Ignore Failed </div>    </div>  <!-- field-items -->
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      
-      String
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>""</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    OK
-        <a href="#String">String</a>
-    <h4 class="field-label">400</h4>
-    Bad Request
-        <a href="#util.HttpError">util.HttpError</a>
-    <h4 class="field-label">500</h4>
-    Internal Server Error
-        <a href="#util.HttpError">util.HttpError</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="storageProvidersFailuresSpGet"></a>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /storage-providers/failures/{sp}</code></pre></div>
-    <div class="method-summary">Get all storage providers (<span class="nickname">storageProvidersFailuresSpGet</span>)</div>
-    <div class="method-notes">This endpoint returns all storage providers</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">sp (required)</div>
-      
-            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Filter by storage provider </div>    </div>  <!-- field-items -->
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      
-      String
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>""</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    OK
-        <a href="#String">String</a>
-    <h4 class="field-label">400</h4>
-    Bad Request
-        <a href="#util.HttpError">util.HttpError</a>
-    <h4 class="field-label">500</h4>
-    Internal Server Error
-        <a href="#util.HttpError">util.HttpError</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="storageProvidersGet"></a>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /storage-providers</code></pre></div>
-    <div class="method-summary">Get all storage providers (<span class="nickname">storageProvidersGet</span>)</div>
-    <div class="method-notes">This endpoint returns all storage providers</div>
-
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      array[<a href="#api.storageProviderResp">api.storageProviderResp</a>]
-      
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>[ {
-  "name" : "name",
-  "suspendedReason" : "suspendedReason",
-  "addr" : { },
-  "version" : "version",
-  "suspended" : true
-}, {
-  "name" : "name",
-  "suspendedReason" : "suspendedReason",
-  "addr" : { },
-  "version" : "version",
-  "suspended" : true
-} ]</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    OK
-        
-    <h4 class="field-label">400</h4>
-    Bad Request
-        <a href="#util.HttpError">util.HttpError</a>
-    <h4 class="field-label">500</h4>
-    Internal Server Error
-        <a href="#util.HttpError">util.HttpError</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="storageProvidersSetInfoSpPut"></a>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="put"><code class="huge"><span class="http-method">put</span> /storage-providers/set-info/{sp}</code></pre></div>
-    <div class="method-summary">Set Storage Provider Info (<span class="nickname">storageProvidersSetInfoSpPut</span>)</div>
-    <div class="method-notes">This endpoint lets a user set storage provider info.</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">sp (required)</div>
-      
-            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Storage Provider to set info for </div>    </div>  <!-- field-items -->
-
-    <h3 class="field-label">Consumes</h3>
-    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
-    <ul>
-      <li><code>*/*</code></li>
-    </ul>
-
-    <h3 class="field-label">Request body</h3>
-    <div class="field-items">
-      <div class="param">body <a href="#miner.MinerSetInfoParams">miner.MinerSetInfoParams</a> (required)</div>
-      
-            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Storage Provider set info params </div>
-                </div>  <!-- field-items -->
-
-
-
-
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    OK
-        <a href="#"></a>
-    <h4 class="field-label">400</h4>
-    Bad Request
-        <a href="#util.HttpError">util.HttpError</a>
-    <h4 class="field-label">500</h4>
-    Internal Server Error
-        <a href="#util.HttpError">util.HttpError</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="storageProvidersStatsSpGet"></a>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /storage-providers/stats/{sp}</code></pre></div>
-    <div class="method-summary">Get storage provider stats (<span class="nickname">storageProvidersStatsSpGet</span>)</div>
-    <div class="method-notes">This endpoint returns storage provider stats</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">sp (required)</div>
-      
-            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Filter by storage provider </div>    </div>  <!-- field-items -->
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      
-      String
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>""</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    OK
-        <a href="#String">String</a>
-    <h4 class="field-label">400</h4>
-    Bad Request
-        <a href="#util.HttpError">util.HttpError</a>
-    <h4 class="field-label">500</h4>
-    Internal Server Error
-        <a href="#util.HttpError">util.HttpError</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="storageProvidersSuspendSpPost"></a>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="post"><code class="huge"><span class="http-method">post</span> /storage-providers/suspend/{sp}</code></pre></div>
-    <div class="method-summary">Suspend Storage Provider (<span class="nickname">storageProvidersSuspendSpPost</span>)</div>
-    <div class="method-notes">This endpoint lets a user suspend a storage provider.</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">sp (required)</div>
-      
-            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Storage Provider to suspend </div>    </div>  <!-- field-items -->
-
-    <h3 class="field-label">Consumes</h3>
-    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
-    <ul>
-      <li><code>*/*</code></li>
-    </ul>
-
-    <h3 class="field-label">Request body</h3>
-    <div class="field-items">
-      <div class="param">body <a href="#miner.SuspendMinerBody">miner.SuspendMinerBody</a> (required)</div>
-      
-            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Suspend Storage Provider Body </div>
-                </div>  <!-- field-items -->
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      
-      map[String, String]
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>{
-  "key" : ""
-}</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    OK
-        
-    <h4 class="field-label">400</h4>
-    Bad Request
-        <a href="#util.HttpError">util.HttpError</a>
-    <h4 class="field-label">500</h4>
-    Internal Server Error
-        <a href="#util.HttpError">util.HttpError</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="storageProvidersUnsuspendSpPut"></a>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="put"><code class="huge"><span class="http-method">put</span> /storage-providers/unsuspend/{sp}</code></pre></div>
-    <div class="method-summary">Unuspend Storage Provider (<span class="nickname">storageProvidersUnsuspendSpPut</span>)</div>
-    <div class="method-notes">This endpoint lets a user unsuspend a Storage Provider.</div>
-
-    <h3 class="field-label">Path parameters</h3>
-    <div class="field-items">
-      <div class="param">sp (required)</div>
-      
-            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Storage Provider to unsuspend </div>    </div>  <!-- field-items -->
-
-
-
-
-
-
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    OK
-        <a href="#"></a>
-    <h4 class="field-label">400</h4>
-    Bad Request
-        <a href="#util.HttpError">util.HttpError</a>
-    <h4 class="field-label">500</h4>
-    Internal Server Error
-        <a href="#util.HttpError">util.HttpError</a>
-  </div> <!-- method -->
-  <hr/>
   <h1><a name="User">User</a></h1>
   <div class="method"><a name="userApiKeysGet"></a>
     <div class="method-path">
@@ -5295,22 +4755,20 @@
   <ol>
     <li><a href="#address.Address"><code>address.Address</code></a></li>
     <li><a href="#api.ChannelIDParam"><code>api.ChannelIDParam</code></a></li>
+    <li><a href="#api.claimMsgResponse"><code>api.claimMsgResponse</code></a></li>
+    <li><a href="#api.claimResponse"><code>api.claimResponse</code></a></li>
     <li><a href="#api.createCollectionBody"><code>api.createCollectionBody</code></a></li>
     <li><a href="#api.deleteContentFromCollectionBody"><code>api.deleteContentFromCollectionBody</code></a></li>
+    <li><a href="#api.emptyResp"><code>api.emptyResp</code></a></li>
     <li><a href="#api.estimateDealBody"><code>api.estimateDealBody</code></a></li>
     <li><a href="#api.getApiKeysResp"><code>api.getApiKeysResp</code></a></li>
     <li><a href="#api.publicNodeInfo"><code>api.publicNodeInfo</code></a></li>
-    <li><a href="#api.storageProviderResp"><code>api.storageProviderResp</code></a></li>
     <li><a href="#autoretrieve_init_body"><code>autoretrieve_init_body</code></a></li>
     <li><a href="#cid.Cid"><code>cid.Cid</code></a></li>
     <li><a href="#collections.CidType"><code>collections.CidType</code></a></li>
     <li><a href="#collections.Collection"><code>collections.Collection</code></a></li>
     <li><a href="#collections.CollectionListResponse"><code>collections.CollectionListResponse</code></a></li>
     <li><a href="#content_add_body"><code>content_add_body</code></a></li>
-    <li><a href="#github_com_application-research_estuary_api_v1.claimMsgResponse"><code>github_com_application-research_estuary_api_v1.claimMsgResponse</code></a></li>
-    <li><a href="#github_com_application-research_estuary_api_v1.claimResponse"><code>github_com_application-research_estuary_api_v1.claimResponse</code></a></li>
-    <li><a href="#github_com_application-research_estuary_api_v2.claimMsgResponse"><code>github_com_application-research_estuary_api_v2.claimMsgResponse</code></a></li>
-    <li><a href="#github_com_application-research_estuary_api_v2.claimResponse"><code>github_com_application-research_estuary_api_v2.claimResponse</code></a></li>
     <li><a href="#miner.ClaimMinerBody"><code>miner.ClaimMinerBody</code></a></li>
     <li><a href="#miner.MinerSetInfoParams"><code>miner.MinerSetInfoParams</code></a></li>
     <li><a href="#miner.SuspendMinerBody"><code>miner.SuspendMinerBody</code></a></li>
@@ -5344,6 +4802,20 @@
     </div>  <!-- field-items -->
   </div>
   <div class="model">
+    <h3><a name="api.claimMsgResponse"><code>api.claimMsgResponse</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">hexmsg (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="api.claimResponse"><code>api.claimResponse</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">success (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
     <h3><a name="api.createCollectionBody"><code>api.createCollectionBody</code></a> <a class="up" href="#__Models">Up</a></h3>
     
     <div class="field-items">
@@ -5358,6 +4830,12 @@
       <div class="param">by (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">value (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
     </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="api.emptyResp"><code>api.emptyResp</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+          </div>  <!-- field-items -->
   </div>
   <div class="model">
     <h3><a name="api.estimateDealBody"><code>api.estimateDealBody</code></a> <a class="up" href="#__Models">Up</a></h3>
@@ -5384,17 +4862,6 @@
     
     <div class="field-items">
       <div class="param">primaryAddress (optional)</div><div class="param-desc"><span class="param-type"><a href="#address.Address">address.Address</a></span>  </div>
-    </div>  <!-- field-items -->
-  </div>
-  <div class="model">
-    <h3><a name="api.storageProviderResp"><code>api.storageProviderResp</code></a> <a class="up" href="#__Models">Up</a></h3>
-    
-    <div class="field-items">
-      <div class="param">addr (optional)</div><div class="param-desc"><span class="param-type"><a href="#address.Address">address.Address</a></span>  </div>
-<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-<div class="param">suspended (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
-<div class="param">suspendedReason (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-<div class="param">version (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -5449,34 +4916,6 @@
     <div class="field-items">
       <div class="param">data </div><div class="param-desc"><span class="param-type"><a href="#binary">byte[]</a></span> File to upload format: binary</div>
 <div class="param">filename (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Filename to use for upload </div>
-    </div>  <!-- field-items -->
-  </div>
-  <div class="model">
-    <h3><a name="github_com_application-research_estuary_api_v1.claimMsgResponse"><code>github_com_application-research_estuary_api_v1.claimMsgResponse</code></a> <a class="up" href="#__Models">Up</a></h3>
-    
-    <div class="field-items">
-      <div class="param">hexmsg (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-    </div>  <!-- field-items -->
-  </div>
-  <div class="model">
-    <h3><a name="github_com_application-research_estuary_api_v1.claimResponse"><code>github_com_application-research_estuary_api_v1.claimResponse</code></a> <a class="up" href="#__Models">Up</a></h3>
-    
-    <div class="field-items">
-      <div class="param">success (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
-    </div>  <!-- field-items -->
-  </div>
-  <div class="model">
-    <h3><a name="github_com_application-research_estuary_api_v2.claimMsgResponse"><code>github_com_application-research_estuary_api_v2.claimMsgResponse</code></a> <a class="up" href="#__Models">Up</a></h3>
-    
-    <div class="field-items">
-      <div class="param">hexmsg (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-    </div>  <!-- field-items -->
-  </div>
-  <div class="model">
-    <h3><a name="github_com_application-research_estuary_api_v2.claimResponse"><code>github_com_application-research_estuary_api_v2.claimResponse</code></a> <a class="up" href="#__Models">Up</a></h3>
-    
-    <div class="field-items">
-      <div class="param">success (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">

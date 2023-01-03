@@ -71,7 +71,7 @@ MinerApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse$new()
+        returnObject <- ApiClaimMsgResponse$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -101,7 +101,7 @@ MinerApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- GithubComApplicationResearchEstuaryApiV1ClaimResponse$new()
+        returnObject <- ApiClaimResponse$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -135,7 +135,7 @@ MinerApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- Character$new()
+        returnObject <- ApiEmptyResp$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -169,7 +169,7 @@ MinerApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- Character$new()
+        returnObject <- ApiEmptyResp$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
@@ -197,7 +197,7 @@ MinerApi <- R6::R6Class(
                                  ...)
       
       if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
-        returnObject <- Character$new()
+        returnObject <- ApiEmptyResp$new()
         result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
         Response$new(returnObject, resp)
       } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {

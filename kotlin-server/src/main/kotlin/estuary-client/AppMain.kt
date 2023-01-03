@@ -38,7 +38,6 @@ import io.swagger.server.apis.MinerApi
 import io.swagger.server.apis.NetApi
 import io.swagger.server.apis.PinningApi
 import io.swagger.server.apis.PublicApi
-import io.swagger.server.apis.SpApi
 import io.swagger.server.apis.UserApi
 
 @KtorExperimentalAPI
@@ -90,7 +89,6 @@ fun Application.main() {
         NetApi()
         PinningApi()
         PublicApi()
-        SpApi()
         UserApi()
     }
 

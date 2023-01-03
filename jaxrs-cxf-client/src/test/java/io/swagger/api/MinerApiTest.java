@@ -24,8 +24,9 @@
 
 package io.swagger.api;
 
-import io.swagger.model.GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse;
-import io.swagger.model.GithubComApplicationResearchEstuaryApiV1ClaimResponse;
+import io.swagger.model.ApiClaimMsgResponse;
+import io.swagger.model.ApiClaimResponse;
+import io.swagger.model.ApiEmptyResp;
 import io.swagger.model.MinerClaimMinerBody;
 import io.swagger.model.MinerMinerSetInfoParams;
 import io.swagger.model.MinerSuspendMinerBody;
@@ -85,7 +86,7 @@ public class MinerApiTest {
     @Test
     public void minerClaimMinerGetTest() {
         String miner = null;
-        //GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse response = api.minerClaimMinerGet(miner);
+        //ApiClaimMsgResponse response = api.minerClaimMinerGet(miner);
         //assertNotNull(response);
         // TODO: test validations
         
@@ -102,7 +103,7 @@ public class MinerApiTest {
     @Test
     public void minerClaimPostTest() {
         MinerClaimMinerBody body = null;
-        //GithubComApplicationResearchEstuaryApiV1ClaimResponse response = api.minerClaimPost(body);
+        //ApiClaimResponse response = api.minerClaimPost(body);
         //assertNotNull(response);
         // TODO: test validations
         
@@ -120,7 +121,7 @@ public class MinerApiTest {
     public void minerSetInfoMinerPutTest() {
         MinerMinerSetInfoParams body = null;
         String miner = null;
-        //Map<String, String> response = api.minerSetInfoMinerPut(body, miner);
+        //ApiEmptyResp response = api.minerSetInfoMinerPut(body, miner);
         //assertNotNull(response);
         // TODO: test validations
         
@@ -138,7 +139,7 @@ public class MinerApiTest {
     public void minerSuspendMinerPostTest() {
         MinerSuspendMinerBody body = null;
         String miner = null;
-        //Map<String, String> response = api.minerSuspendMinerPost(body, miner);
+        //ApiEmptyResp response = api.minerSuspendMinerPost(body, miner);
         //assertNotNull(response);
         // TODO: test validations
         
@@ -155,7 +156,7 @@ public class MinerApiTest {
     @Test
     public void minerUnsuspendMinerPutTest() {
         String miner = null;
-        //Map<String, String> response = api.minerUnsuspendMinerPut(miner);
+        //ApiEmptyResp response = api.minerUnsuspendMinerPut(miner);
         //assertNotNull(response);
         // TODO: test validations
         

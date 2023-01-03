@@ -13,8 +13,9 @@
  *
  */
 import {ApiClient} from "../ApiClient";
-import {GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse} from '../model/GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse';
-import {GithubComApplicationResearchEstuaryApiV1ClaimResponse} from '../model/GithubComApplicationResearchEstuaryApiV1ClaimResponse';
+import {ApiClaimMsgResponse} from '../model/ApiClaimMsgResponse';
+import {ApiClaimResponse} from '../model/ApiClaimResponse';
+import {ApiEmptyResp} from '../model/ApiEmptyResp';
 import {MinerClaimMinerBody} from '../model/MinerClaimMinerBody';
 import {MinerMinerSetInfoParams} from '../model/MinerMinerSetInfoParams';
 import {MinerSuspendMinerBody} from '../model/MinerSuspendMinerBody';
@@ -43,7 +44,7 @@ export class MinerApi {
      * Callback function to receive the result of the minerClaimMinerGet operation.
      * @callback moduleapi/MinerApi~minerClaimMinerGetCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse{ data The data returned by the service call.
+     * @param {module:model/ApiClaimMsgResponse{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -78,7 +79,7 @@ export class MinerApi {
       let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse;
+      let returnType = ApiClaimMsgResponse;
 
       return this.apiClient.callApi(
         '/miner/claim/{miner}', 'GET',
@@ -90,7 +91,7 @@ export class MinerApi {
      * Callback function to receive the result of the minerClaimPost operation.
      * @callback moduleapi/MinerApi~minerClaimPostCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/GithubComApplicationResearchEstuaryApiV1ClaimResponse{ data The data returned by the service call.
+     * @param {module:model/ApiClaimResponse{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -125,7 +126,7 @@ export class MinerApi {
       let authNames = ['bearerAuth'];
       let contentTypes = ['*/*'];
       let accepts = ['application/json'];
-      let returnType = GithubComApplicationResearchEstuaryApiV1ClaimResponse;
+      let returnType = ApiClaimResponse;
 
       return this.apiClient.callApi(
         '/miner/claim', 'POST',
@@ -137,7 +138,7 @@ export class MinerApi {
      * Callback function to receive the result of the minerSetInfoMinerPut operation.
      * @callback moduleapi/MinerApi~minerSetInfoMinerPutCallback
      * @param {String} error Error message, if any.
-     * @param {Object.<String, {'String': 'String'}>{ data The data returned by the service call.
+     * @param {module:model/ApiEmptyResp{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -177,7 +178,7 @@ export class MinerApi {
       let authNames = ['bearerAuth'];
       let contentTypes = ['*/*'];
       let accepts = ['application/json'];
-      let returnType = {'String': 'String'};
+      let returnType = ApiEmptyResp;
 
       return this.apiClient.callApi(
         '/miner/set-info/{miner}', 'PUT',
@@ -189,7 +190,7 @@ export class MinerApi {
      * Callback function to receive the result of the minerSuspendMinerPost operation.
      * @callback moduleapi/MinerApi~minerSuspendMinerPostCallback
      * @param {String} error Error message, if any.
-     * @param {Object.<String, {'String': 'String'}>{ data The data returned by the service call.
+     * @param {module:model/ApiEmptyResp{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -229,7 +230,7 @@ export class MinerApi {
       let authNames = ['bearerAuth'];
       let contentTypes = ['*/*'];
       let accepts = ['application/json'];
-      let returnType = {'String': 'String'};
+      let returnType = ApiEmptyResp;
 
       return this.apiClient.callApi(
         '/miner/suspend/{miner}', 'POST',
@@ -241,7 +242,7 @@ export class MinerApi {
      * Callback function to receive the result of the minerUnsuspendMinerPut operation.
      * @callback moduleapi/MinerApi~minerUnsuspendMinerPutCallback
      * @param {String} error Error message, if any.
-     * @param {Object.<String, {'String': 'String'}>{ data The data returned by the service call.
+     * @param {module:model/ApiEmptyResp{ data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -276,7 +277,7 @@ export class MinerApi {
       let authNames = ['bearerAuth'];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = {'String': 'String'};
+      let returnType = ApiEmptyResp;
 
       return this.apiClient.callApi(
         '/miner/unsuspend/{miner}', 'PUT',

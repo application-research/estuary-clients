@@ -186,16 +186,4 @@ describe 'DealsApi' do
     end
   end
 
-  # unit tests for storage_providers_storage_query_cid_get
-  # Query Ask
-  # This endpoint returns the ask for a given CID
-  # @param cid CID
-  # @param [Hash] opts the optional parameters
-  # @return [String]
-  describe 'storage_providers_storage_query_cid_get test' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
 end

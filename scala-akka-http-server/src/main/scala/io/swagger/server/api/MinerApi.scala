@@ -8,8 +8,9 @@ import io.swagger.server.AkkaHttpHelper._
 import io.swagger.server.model.Miner.ClaimMinerBody
 import io.swagger.server.model.Miner.MinerSetInfoParams
 import io.swagger.server.model.Miner.SuspendMinerBody
-import io.swagger.server.model.github_com_application-research_estuary_api_v1.claimMsgResponse
-import io.swagger.server.model.github_com_application-research_estuary_api_v1.claimResponse
+import io.swagger.server.model.api.claimMsgResponse
+import io.swagger.server.model.api.claimResponse
+import io.swagger.server.model.api.emptyResp
 import io.swagger.server.model.util.HttpError
 
 class MinerApi(
@@ -128,75 +129,75 @@ class MinerApi(
 
 trait MinerApiService {
 
-  def minerClaimMinerGet200(responsegithub_com_application-research_estuary_api_v1.claimMsgResponse: github_com_application-research_estuary_api_v1.claimMsgResponse)(implicit toEntityMarshallergithub_com_application-research_estuary_api_v1.claimMsgResponse: ToEntityMarshaller[github_com_application-research_estuary_api_v1.claimMsgResponse]): Route =
-    complete((200, responsegithub_com_application-research_estuary_api_v1.claimMsgResponse))
+  def minerClaimMinerGet200(responseapi.claimMsgResponse: api.claimMsgResponse)(implicit toEntityMarshallerapi.claimMsgResponse: ToEntityMarshaller[api.claimMsgResponse]): Route =
+    complete((200, responseapi.claimMsgResponse))
   def minerClaimMinerGet400(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((400, responseutil.HttpError))
   def minerClaimMinerGet500(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((500, responseutil.HttpError))
   /**
-   * Code: 200, Message: OK, DataType: github_com_application-research_estuary_api_v1.claimMsgResponse
+   * Code: 200, Message: OK, DataType: api.claimMsgResponse
    * Code: 400, Message: Bad Request, DataType: util.HttpError
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
   def minerClaimMinerGet(miner: String)
-      (implicit toEntityMarshallergithub_com_application-research_estuary_api_v1.claimMsgResponse: ToEntityMarshaller[github_com_application-research_estuary_api_v1.claimMsgResponse], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
+      (implicit toEntityMarshallerapi.claimMsgResponse: ToEntityMarshaller[api.claimMsgResponse], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
-  def minerClaimPost200(responsegithub_com_application-research_estuary_api_v1.claimResponse: github_com_application-research_estuary_api_v1.claimResponse)(implicit toEntityMarshallergithub_com_application-research_estuary_api_v1.claimResponse: ToEntityMarshaller[github_com_application-research_estuary_api_v1.claimResponse]): Route =
-    complete((200, responsegithub_com_application-research_estuary_api_v1.claimResponse))
+  def minerClaimPost200(responseapi.claimResponse: api.claimResponse)(implicit toEntityMarshallerapi.claimResponse: ToEntityMarshaller[api.claimResponse]): Route =
+    complete((200, responseapi.claimResponse))
   def minerClaimPost400(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((400, responseutil.HttpError))
   def minerClaimPost500(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((500, responseutil.HttpError))
   /**
-   * Code: 200, Message: OK, DataType: github_com_application-research_estuary_api_v1.claimResponse
+   * Code: 200, Message: OK, DataType: api.claimResponse
    * Code: 400, Message: Bad Request, DataType: util.HttpError
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
   def minerClaimPost(body: Miner.ClaimMinerBody)
-      (implicit toEntityMarshallergithub_com_application-research_estuary_api_v1.claimResponse: ToEntityMarshaller[github_com_application-research_estuary_api_v1.claimResponse], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
+      (implicit toEntityMarshallerapi.claimResponse: ToEntityMarshaller[api.claimResponse], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
-  def minerSetInfoMinerPut200(responseMapmap: Map[String, String]): Route =
-    complete((200, responseMapmap))
+  def minerSetInfoMinerPut200(responseapi.emptyResp: api.emptyResp)(implicit toEntityMarshallerapi.emptyResp: ToEntityMarshaller[api.emptyResp]): Route =
+    complete((200, responseapi.emptyResp))
   def minerSetInfoMinerPut400(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((400, responseutil.HttpError))
   def minerSetInfoMinerPut500(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((500, responseutil.HttpError))
   /**
-   * Code: 200, Message: OK, DataType: Map[String, String]
+   * Code: 200, Message: OK, DataType: api.emptyResp
    * Code: 400, Message: Bad Request, DataType: util.HttpError
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
   def minerSetInfoMinerPut(body: Miner.MinerSetInfoParams, miner: String)
-      (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
+      (implicit toEntityMarshallerapi.emptyResp: ToEntityMarshaller[api.emptyResp], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
-  def minerSuspendMinerPost200(responseMapmap: Map[String, String]): Route =
-    complete((200, responseMapmap))
+  def minerSuspendMinerPost200(responseapi.emptyResp: api.emptyResp)(implicit toEntityMarshallerapi.emptyResp: ToEntityMarshaller[api.emptyResp]): Route =
+    complete((200, responseapi.emptyResp))
   def minerSuspendMinerPost400(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((400, responseutil.HttpError))
   def minerSuspendMinerPost500(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((500, responseutil.HttpError))
   /**
-   * Code: 200, Message: OK, DataType: Map[String, String]
+   * Code: 200, Message: OK, DataType: api.emptyResp
    * Code: 400, Message: Bad Request, DataType: util.HttpError
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
   def minerSuspendMinerPost(body: Miner.SuspendMinerBody, miner: String)
-      (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
+      (implicit toEntityMarshallerapi.emptyResp: ToEntityMarshaller[api.emptyResp], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
-  def minerUnsuspendMinerPut200(responseMapmap: Map[String, String]): Route =
-    complete((200, responseMapmap))
+  def minerUnsuspendMinerPut200(responseapi.emptyResp: api.emptyResp)(implicit toEntityMarshallerapi.emptyResp: ToEntityMarshaller[api.emptyResp]): Route =
+    complete((200, responseapi.emptyResp))
   def minerUnsuspendMinerPut400(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((400, responseutil.HttpError))
   def minerUnsuspendMinerPut500(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((500, responseutil.HttpError))
   /**
-   * Code: 200, Message: OK, DataType: Map[String, String]
+   * Code: 200, Message: OK, DataType: api.emptyResp
    * Code: 400, Message: Bad Request, DataType: util.HttpError
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
   def minerUnsuspendMinerPut(miner: String)
-      (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
+      (implicit toEntityMarshallerapi.emptyResp: ToEntityMarshaller[api.emptyResp], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
   def publicMinersDealsMinerGet200(responseString: String): Route =
     complete((200, responseString))
@@ -236,25 +237,31 @@ trait MinerApiMarshaller {
   implicit def fromRequestUnmarshallerMiner.MinerSetInfoParams: FromRequestUnmarshaller[Miner.MinerSetInfoParams]
 
 
-  implicit def toEntityMarshallergithub_com_application-research_estuary_api_v1.claimMsgResponse: ToEntityMarshaller[github_com_application-research_estuary_api_v1.claimMsgResponse]
+  implicit def toEntityMarshallerapi.claimMsgResponse: ToEntityMarshaller[api.claimMsgResponse]
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 
-  implicit def toEntityMarshallergithub_com_application-research_estuary_api_v1.claimResponse: ToEntityMarshaller[github_com_application-research_estuary_api_v1.claimResponse]
+  implicit def toEntityMarshallerapi.claimResponse: ToEntityMarshaller[api.claimResponse]
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 
-  implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
+  implicit def toEntityMarshallerapi.emptyResp: ToEntityMarshaller[api.emptyResp]
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 
+  implicit def toEntityMarshallerapi.emptyResp: ToEntityMarshaller[api.emptyResp]
+
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
+
+  implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
+
+  implicit def toEntityMarshallerapi.emptyResp: ToEntityMarshaller[api.emptyResp]
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 

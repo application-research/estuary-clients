@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 <a name="minerClaimMinerGet"></a>
 # **minerClaimMinerGet**
-> GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse minerClaimMinerGet(miner)
+> ApiClaimMsgResponse minerClaimMinerGet(miner)
 
 Get Claim Miner Message
 
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse**](GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse.md)
+[**ApiClaimMsgResponse**](ApiClaimMsgResponse.md)
 
 ### Authorization
 
@@ -64,7 +64,7 @@ Name | Type | Description  | Notes
 
 <a name="minerClaimPost"></a>
 # **minerClaimPost**
-> GithubComApplicationResearchEstuaryApiV1ClaimResponse minerClaimPost(body)
+> ApiClaimResponse minerClaimPost(body)
 
 Claim Miner
 
@@ -101,7 +101,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GithubComApplicationResearchEstuaryApiV1ClaimResponse**](GithubComApplicationResearchEstuaryApiV1ClaimResponse.md)
+[**ApiClaimResponse**](ApiClaimResponse.md)
 
 ### Authorization
 
@@ -114,7 +114,7 @@ Name | Type | Description  | Notes
 
 <a name="minerSetInfoMinerPut"></a>
 # **minerSetInfoMinerPut**
-> {&#x27;String&#x27;: &#x27;String&#x27;} minerSetInfoMinerPut(body, miner)
+> ApiEmptyResp minerSetInfoMinerPut(body, miner)
 
 Set Miner Info
 
@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**{&#x27;String&#x27;: &#x27;String&#x27;}**
+[**ApiEmptyResp**](ApiEmptyResp.md)
 
 ### Authorization
 
@@ -166,7 +166,7 @@ Name | Type | Description  | Notes
 
 <a name="minerSuspendMinerPost"></a>
 # **minerSuspendMinerPost**
-> {&#x27;String&#x27;: &#x27;String&#x27;} minerSuspendMinerPost(body, miner)
+> ApiEmptyResp minerSuspendMinerPost(body, miner)
 
 Suspend Miner
 
@@ -205,7 +205,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**{&#x27;String&#x27;: &#x27;String&#x27;}**
+[**ApiEmptyResp**](ApiEmptyResp.md)
 
 ### Authorization
 
@@ -218,7 +218,7 @@ Name | Type | Description  | Notes
 
 <a name="minerUnsuspendMinerPut"></a>
 # **minerUnsuspendMinerPut**
-> {&#x27;String&#x27;: &#x27;String&#x27;} minerUnsuspendMinerPut(miner)
+> ApiEmptyResp minerUnsuspendMinerPut(miner)
 
 Unuspend Miner
 
@@ -255,7 +255,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**{&#x27;String&#x27;: &#x27;String&#x27;}**
+[**ApiEmptyResp**](ApiEmptyResp.md)
 
 ### Authorization
 

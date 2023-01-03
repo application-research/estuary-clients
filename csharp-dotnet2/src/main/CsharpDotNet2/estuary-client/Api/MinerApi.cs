@@ -15,34 +15,34 @@ namespace IO.Swagger.Api
         /// Get Claim Miner Message This endpoint lets a user get the message in order to claim a miner
         /// </summary>
         /// <param name="miner">Miner claim message</param>
-        /// <returns>GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse</returns>
-        GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse MinerClaimMinerGet (string miner);
+        /// <returns>ApiClaimMsgResponse</returns>
+        ApiClaimMsgResponse MinerClaimMinerGet (string miner);
         /// <summary>
         /// Claim Miner This endpoint lets a user claim a miner
         /// </summary>
         /// <param name="body">Claim Miner Body</param>
-        /// <returns>GithubComApplicationResearchEstuaryApiV1ClaimResponse</returns>
-        GithubComApplicationResearchEstuaryApiV1ClaimResponse MinerClaimPost (MinerClaimMinerBody body);
+        /// <returns>ApiClaimResponse</returns>
+        ApiClaimResponse MinerClaimPost (MinerClaimMinerBody body);
         /// <summary>
         /// Set Miner Info This endpoint lets a user set miner info.
         /// </summary>
         /// <param name="body">Miner set info params</param>
         /// <param name="miner">Miner to set info for</param>
-        /// <returns>Dictionary&lt;string, string&gt;</returns>
-        Dictionary<string, string> MinerSetInfoMinerPut (MinerMinerSetInfoParams body, string miner);
+        /// <returns>ApiEmptyResp</returns>
+        ApiEmptyResp MinerSetInfoMinerPut (MinerMinerSetInfoParams body, string miner);
         /// <summary>
         /// Suspend Miner This endpoint lets a user suspend a miner.
         /// </summary>
         /// <param name="body">Suspend Miner Body</param>
         /// <param name="miner">Miner to suspend</param>
-        /// <returns>Dictionary&lt;string, string&gt;</returns>
-        Dictionary<string, string> MinerSuspendMinerPost (MinerSuspendMinerBody body, string miner);
+        /// <returns>ApiEmptyResp</returns>
+        ApiEmptyResp MinerSuspendMinerPost (MinerSuspendMinerBody body, string miner);
         /// <summary>
         /// Unuspend Miner This endpoint lets a user unsuspend a miner.
         /// </summary>
         /// <param name="miner">Miner to unsuspend</param>
-        /// <returns>Dictionary&lt;string, string&gt;</returns>
-        Dictionary<string, string> MinerUnsuspendMinerPut (string miner);
+        /// <returns>ApiEmptyResp</returns>
+        ApiEmptyResp MinerUnsuspendMinerPut (string miner);
         /// <summary>
         /// Get all miners deals This endpoint returns all miners deals
         /// </summary>
@@ -115,8 +115,8 @@ namespace IO.Swagger.Api
         /// Get Claim Miner Message This endpoint lets a user get the message in order to claim a miner
         /// </summary>
         /// <param name="miner">Miner claim message</param>
-        /// <returns>GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse</returns>
-        public GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse MinerClaimMinerGet (string miner)
+        /// <returns>ApiClaimMsgResponse</returns>
+        public ApiClaimMsgResponse MinerClaimMinerGet (string miner)
         {
             // verify the required parameter 'miner' is set
             if (miner == null) throw new ApiException(400, "Missing required parameter 'miner' when calling MinerClaimMinerGet");
@@ -143,15 +143,15 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling MinerClaimMinerGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse) ApiClient.Deserialize(response.Content, typeof(GithubComApplicationResearchEstuaryApiV1ClaimMsgResponse), response.Headers);
+            return (ApiClaimMsgResponse) ApiClient.Deserialize(response.Content, typeof(ApiClaimMsgResponse), response.Headers);
         }
     
         /// <summary>
         /// Claim Miner This endpoint lets a user claim a miner
         /// </summary>
         /// <param name="body">Claim Miner Body</param>
-        /// <returns>GithubComApplicationResearchEstuaryApiV1ClaimResponse</returns>
-        public GithubComApplicationResearchEstuaryApiV1ClaimResponse MinerClaimPost (MinerClaimMinerBody body)
+        /// <returns>ApiClaimResponse</returns>
+        public ApiClaimResponse MinerClaimPost (MinerClaimMinerBody body)
         {
             // verify the required parameter 'body' is set
             if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling MinerClaimPost");
@@ -178,7 +178,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling MinerClaimPost: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (GithubComApplicationResearchEstuaryApiV1ClaimResponse) ApiClient.Deserialize(response.Content, typeof(GithubComApplicationResearchEstuaryApiV1ClaimResponse), response.Headers);
+            return (ApiClaimResponse) ApiClient.Deserialize(response.Content, typeof(ApiClaimResponse), response.Headers);
         }
     
         /// <summary>
@@ -186,8 +186,8 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="body">Miner set info params</param>
         /// <param name="miner">Miner to set info for</param>
-        /// <returns>Dictionary&lt;string, string&gt;</returns>
-        public Dictionary<string, string> MinerSetInfoMinerPut (MinerMinerSetInfoParams body, string miner)
+        /// <returns>ApiEmptyResp</returns>
+        public ApiEmptyResp MinerSetInfoMinerPut (MinerMinerSetInfoParams body, string miner)
         {
             // verify the required parameter 'body' is set
             if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling MinerSetInfoMinerPut");
@@ -217,7 +217,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling MinerSetInfoMinerPut: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (Dictionary<string, string>) ApiClient.Deserialize(response.Content, typeof(Dictionary<string, string>), response.Headers);
+            return (ApiEmptyResp) ApiClient.Deserialize(response.Content, typeof(ApiEmptyResp), response.Headers);
         }
     
         /// <summary>
@@ -225,8 +225,8 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="body">Suspend Miner Body</param>
         /// <param name="miner">Miner to suspend</param>
-        /// <returns>Dictionary&lt;string, string&gt;</returns>
-        public Dictionary<string, string> MinerSuspendMinerPost (MinerSuspendMinerBody body, string miner)
+        /// <returns>ApiEmptyResp</returns>
+        public ApiEmptyResp MinerSuspendMinerPost (MinerSuspendMinerBody body, string miner)
         {
             // verify the required parameter 'body' is set
             if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling MinerSuspendMinerPost");
@@ -256,15 +256,15 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling MinerSuspendMinerPost: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (Dictionary<string, string>) ApiClient.Deserialize(response.Content, typeof(Dictionary<string, string>), response.Headers);
+            return (ApiEmptyResp) ApiClient.Deserialize(response.Content, typeof(ApiEmptyResp), response.Headers);
         }
     
         /// <summary>
         /// Unuspend Miner This endpoint lets a user unsuspend a miner.
         /// </summary>
         /// <param name="miner">Miner to unsuspend</param>
-        /// <returns>Dictionary&lt;string, string&gt;</returns>
-        public Dictionary<string, string> MinerUnsuspendMinerPut (string miner)
+        /// <returns>ApiEmptyResp</returns>
+        public ApiEmptyResp MinerUnsuspendMinerPut (string miner)
         {
             // verify the required parameter 'miner' is set
             if (miner == null) throw new ApiException(400, "Missing required parameter 'miner' when calling MinerUnsuspendMinerPut");
@@ -291,7 +291,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling MinerUnsuspendMinerPut: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (Dictionary<string, string>) ApiClient.Deserialize(response.Content, typeof(Dictionary<string, string>), response.Headers);
+            return (ApiEmptyResp) ApiClient.Deserialize(response.Content, typeof(ApiEmptyResp), response.Headers);
         }
     
         /// <summary>
