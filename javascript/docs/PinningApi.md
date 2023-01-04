@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
 
 <a name="pinningPinsPost"></a>
 # **pinningPinsPost**
-> TypesIpfsPinStatusResponse pinningPinsPost(body)
+> TypesIpfsPinStatusResponse pinningPinsPost(body, opts)
 
 Add and pin object
 
@@ -228,8 +228,11 @@ bearerAuth.apiKey = 'YOUR API KEY';
 
 let apiInstance = new EstuaryClient.PinningApi();
 let body = new EstuaryClient.TypesIpfsPin(); // TypesIpfsPin | Pin Body {cid:cid, name:name}
-
-apiInstance.pinningPinsPost(body, (error, data, response) => {
+let opts = { 
+  'ignoreDupes': "ignoreDupes_example", // String | Ignore Dupes
+  'overwrite': "overwrite_example" // String | Overwrite conflicting files in collections
+};
+apiInstance.pinningPinsPost(body, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -243,6 +246,8 @@ apiInstance.pinningPinsPost(body, (error, data, response) => {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
+ **ignoreDupes** | **String**| Ignore Dupes | [optional] 
+ **overwrite** | **String**| Overwrite conflicting files in collections | [optional] 
 
 ### Return type
 

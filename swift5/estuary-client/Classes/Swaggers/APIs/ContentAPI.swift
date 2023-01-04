@@ -138,10 +138,11 @@ open class ContentAPI {
 
      - parameter body: (body) IPFS Body 
      - parameter ignoreDupes: (query) Ignore Dupes (optional)
+     - parameter overwrite: (query) Overwrite conflicting files in collections (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes: String? = nil, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
-        contentAddIpfsPostWithRequestBuilder(body: body, ignoreDupes: ignoreDupes).execute { (response, error) -> Void in
+    open class func contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes: String? = nil, overwrite: String? = nil, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
+        contentAddIpfsPostWithRequestBuilder(body: body, ignoreDupes: ignoreDupes, overwrite: overwrite).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -157,16 +158,18 @@ open class ContentAPI {
      - examples: [{contentType=application/json, example=""}]
      - parameter body: (body) IPFS Body 
      - parameter ignoreDupes: (query) Ignore Dupes (optional)
+     - parameter overwrite: (query) Overwrite conflicting files in collections (optional)
 
      - returns: RequestBuilder<String> 
      */
-    open class func contentAddIpfsPostWithRequestBuilder(body: TypesIpfsPin, ignoreDupes: String? = nil) -> RequestBuilder<String> {
+    open class func contentAddIpfsPostWithRequestBuilder(body: TypesIpfsPin, ignoreDupes: String? = nil, overwrite: String? = nil) -> RequestBuilder<String> {
         let path = "/content/add-ipfs"
         let URLString = estuary-clientAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems([
-                        "ignore-dupes": ignoreDupes
+                        "ignore-dupes": ignoreDupes, 
+                        "overwrite": overwrite
         ])
 
 
@@ -182,12 +185,13 @@ open class ContentAPI {
      - parameter coluuid: (query) Collection UUID (optional)
      - parameter replication: (query) Replication value (optional)
      - parameter ignoreDupes: (query) Ignore Dupes true/false (optional)
+     - parameter overwrite: (query) Overwrite files with the same path on same collection (optional)
      - parameter lazyProvide: (query) Lazy Provide true/false (optional)
      - parameter dir: (query) Directory (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func contentAddPost(data: Data, filename: String, coluuid: String? = nil, replication: Int? = nil, ignoreDupes: String? = nil, lazyProvide: String? = nil, dir: String? = nil, completion: @escaping ((_ data: UtilContentAddResponse?,_ error: Error?) -> Void)) {
-        contentAddPostWithRequestBuilder(data: data, filename: filename, coluuid: coluuid, replication: replication, ignoreDupes: ignoreDupes, lazyProvide: lazyProvide, dir: dir).execute { (response, error) -> Void in
+    open class func contentAddPost(data: Data, filename: String, coluuid: String? = nil, replication: Int? = nil, ignoreDupes: String? = nil, overwrite: String? = nil, lazyProvide: String? = nil, dir: String? = nil, completion: @escaping ((_ data: UtilContentAddResponse?,_ error: Error?) -> Void)) {
+        contentAddPostWithRequestBuilder(data: data, filename: filename, coluuid: coluuid, replication: replication, ignoreDupes: ignoreDupes, overwrite: overwrite, lazyProvide: lazyProvide, dir: dir).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -212,12 +216,13 @@ open class ContentAPI {
      - parameter coluuid: (query) Collection UUID (optional)
      - parameter replication: (query) Replication value (optional)
      - parameter ignoreDupes: (query) Ignore Dupes true/false (optional)
+     - parameter overwrite: (query) Overwrite files with the same path on same collection (optional)
      - parameter lazyProvide: (query) Lazy Provide true/false (optional)
      - parameter dir: (query) Directory (optional)
 
      - returns: RequestBuilder<UtilContentAddResponse> 
      */
-    open class func contentAddPostWithRequestBuilder(data: Data, filename: String, coluuid: String? = nil, replication: Int? = nil, ignoreDupes: String? = nil, lazyProvide: String? = nil, dir: String? = nil) -> RequestBuilder<UtilContentAddResponse> {
+    open class func contentAddPostWithRequestBuilder(data: Data, filename: String, coluuid: String? = nil, replication: Int? = nil, ignoreDupes: String? = nil, overwrite: String? = nil, lazyProvide: String? = nil, dir: String? = nil) -> RequestBuilder<UtilContentAddResponse> {
         let path = "/content/add"
         let URLString = estuary-clientAPI.basePath + path
         let formParams: [String:Any?] = [
@@ -232,6 +237,7 @@ open class ContentAPI {
                         "coluuid": coluuid, 
                         "replication": replication?.encodeToJSON(), 
                         "ignore-dupes": ignoreDupes, 
+                        "overwrite": overwrite, 
                         "lazy-provide": lazyProvide, 
                         "dir": dir
         ])

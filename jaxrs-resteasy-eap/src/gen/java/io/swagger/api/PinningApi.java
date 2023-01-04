@@ -29,7 +29,7 @@ import javax.validation.constraints.*;
 @Path("/pinning")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2023-01-03T16:17:32.399Z[GMT]")public interface PinningApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2023-01-04T12:55:54.380Z[GMT]")public interface PinningApi  {
    
     @GET
     @Path("/pins")
@@ -92,6 +92,6 @@ import javax.validation.constraints.*;
         @ApiResponse(responseCode = "202", description = "Accepted", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TypesIpfsPinStatusResponse.class))),
                 @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
          })
-    Response pinningPinsPost(@Parameter(description = "Pin Body {cid:cid, name:name}" ,required=true) TypesIpfsPin body,@Context SecurityContext securityContext);
+    Response pinningPinsPost(@Parameter(description = "Pin Body {cid:cid, name:name}" ,required=true) TypesIpfsPin body, @QueryParam("ignore-dupes") String ignoreDupes, @QueryParam("overwrite") String overwrite,@Context SecurityContext securityContext);
 
 }

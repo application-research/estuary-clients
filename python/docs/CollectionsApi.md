@@ -234,7 +234,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_coluuid_post**
-> str collections_coluuid_post(body, coluuid, dir=dir)
+> str collections_coluuid_post(body, coluuid, dir=dir, overwrite=overwrite)
 
 Add contents to a collection
 
@@ -259,10 +259,11 @@ api_instance = estuary_client.CollectionsApi(estuary_client.ApiClient(configurat
 body = [56] # list[int] | Content IDs to add to collection
 coluuid = 'coluuid_example' # str | Collection UUID
 dir = 'dir_example' # str | Directory (optional)
+overwrite = 'overwrite_example' # str | Overwrite conflicting files (optional)
 
 try:
     # Add contents to a collection
-    api_response = api_instance.collections_coluuid_post(body, coluuid, dir=dir)
+    api_response = api_instance.collections_coluuid_post(body, coluuid, dir=dir, overwrite=overwrite)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CollectionsApi->collections_coluuid_post: %s\n" % e)
@@ -275,6 +276,7 @@ Name | Type | Description  | Notes
  **body** | [**list[int]**](int.md)| Content IDs to add to collection | 
  **coluuid** | **str**| Collection UUID | 
  **dir** | **str**| Directory | [optional] 
+ **overwrite** | **str**| Overwrite conflicting files | [optional] 
 
 ### Return type
 
@@ -292,7 +294,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collections_fs_add_post**
-> str collections_fs_add_post(coluuid, content, path)
+> str collections_fs_add_post(coluuid, content, dir=dir, overwrite=overwrite)
 
 Add a file to a collection
 
@@ -316,11 +318,12 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 api_instance = estuary_client.CollectionsApi(estuary_client.ApiClient(configuration))
 coluuid = 'coluuid_example' # str | Collection ID
 content = 'content_example' # str | Content
-path = 'path_example' # str | Path to file
+dir = 'dir_example' # str | Directory inside collection (optional)
+overwrite = 'overwrite_example' # str | Overwrite file if already exists in path (optional)
 
 try:
     # Add a file to a collection
-    api_response = api_instance.collections_fs_add_post(coluuid, content, path)
+    api_response = api_instance.collections_fs_add_post(coluuid, content, dir=dir, overwrite=overwrite)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CollectionsApi->collections_fs_add_post: %s\n" % e)
@@ -332,7 +335,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **coluuid** | **str**| Collection ID | 
  **content** | **str**| Content | 
- **path** | **str**| Path to file | 
+ **dir** | **str**| Directory inside collection | [optional] 
+ **overwrite** | **str**| Overwrite file if already exists in path | [optional] 
 
 ### Return type
 

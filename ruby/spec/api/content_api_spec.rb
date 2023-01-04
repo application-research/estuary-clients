@@ -74,6 +74,7 @@ describe 'ContentApi' do
   # @param body IPFS Body
   # @param [Hash] opts the optional parameters
   # @option opts [String] :ignore_dupes Ignore Dupes
+  # @option opts [String] :overwrite Overwrite conflicting files in collections
   # @return [String]
   describe 'content_add_ipfs_post test' do
     it 'should work' do
@@ -90,6 +91,7 @@ describe 'ContentApi' do
   # @option opts [String] :coluuid Collection UUID
   # @option opts [Integer] :replication Replication value
   # @option opts [String] :ignore_dupes Ignore Dupes true/false
+  # @option opts [String] :overwrite Overwrite files with the same path on same collection
   # @option opts [String] :lazy_provide Lazy Provide true/false
   # @option opts [String] :dir Directory
   # @return [UtilContentAddResponse]

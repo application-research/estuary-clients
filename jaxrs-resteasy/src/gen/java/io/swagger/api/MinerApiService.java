@@ -19,7 +19,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-03T16:17:31.923Z[GMT]")public interface MinerApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-04T12:55:51.407Z[GMT]")public interface MinerApiService {
       Response minerClaimMinerGet(String miner,SecurityContext securityContext)
       throws NotFoundException;
       Response minerClaimPost(MinerClaimMinerBody body,SecurityContext securityContext)

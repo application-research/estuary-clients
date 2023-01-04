@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsColuuidPost"></a>
 # **collectionsColuuidPost**
-> String collectionsColuuidPost(body, coluuid, dir)
+> String collectionsColuuidPost(body, coluuid, dir, overwrite)
 
 Add contents to a collection
 
@@ -266,8 +266,9 @@ CollectionsApi apiInstance = new CollectionsApi();
 List<Integer> body = Arrays.asList(56); // List<Integer> | Content IDs to add to collection
 String coluuid = "coluuid_example"; // String | Collection UUID
 String dir = "dir_example"; // String | Directory
+String overwrite = "overwrite_example"; // String | Overwrite conflicting files
 try {
-    String result = apiInstance.collectionsColuuidPost(body, coluuid, dir);
+    String result = apiInstance.collectionsColuuidPost(body, coluuid, dir, overwrite);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollectionsApi#collectionsColuuidPost");
@@ -282,6 +283,7 @@ Name | Type | Description  | Notes
  **body** | [**List&lt;Integer&gt;**](Integer.md)| Content IDs to add to collection |
  **coluuid** | **String**| Collection UUID |
  **dir** | **String**| Directory | [optional]
+ **overwrite** | **String**| Overwrite conflicting files | [optional]
 
 ### Return type
 
@@ -298,7 +300,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsFsAddPost"></a>
 # **collectionsFsAddPost**
-> String collectionsFsAddPost(coluuid, content, path)
+> String collectionsFsAddPost(coluuid, content, dir, overwrite)
 
 Add a file to a collection
 
@@ -324,9 +326,10 @@ bearerAuth.setApiKey("YOUR API KEY");
 CollectionsApi apiInstance = new CollectionsApi();
 String coluuid = "coluuid_example"; // String | Collection ID
 String content = "content_example"; // String | Content
-String path = "path_example"; // String | Path to file
+String dir = "dir_example"; // String | Directory inside collection
+String overwrite = "overwrite_example"; // String | Overwrite file if already exists in path
 try {
-    String result = apiInstance.collectionsFsAddPost(coluuid, content, path);
+    String result = apiInstance.collectionsFsAddPost(coluuid, content, dir, overwrite);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollectionsApi#collectionsFsAddPost");
@@ -340,7 +343,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **coluuid** | **String**| Collection ID |
  **content** | **String**| Content |
- **path** | **String**| Path to file |
+ **dir** | **String**| Directory inside collection | [optional]
+ **overwrite** | **String**| Overwrite file if already exists in path | [optional]
 
 ### Return type
 

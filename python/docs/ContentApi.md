@@ -188,7 +188,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_add_ipfs_post**
-> str content_add_ipfs_post(body, ignore_dupes=ignore_dupes)
+> str content_add_ipfs_post(body, ignore_dupes=ignore_dupes, overwrite=overwrite)
 
 Add IPFS object
 
@@ -212,10 +212,11 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 api_instance = estuary_client.ContentApi(estuary_client.ApiClient(configuration))
 body = estuary_client.TypesIpfsPin() # TypesIpfsPin | IPFS Body
 ignore_dupes = 'ignore_dupes_example' # str | Ignore Dupes (optional)
+overwrite = 'overwrite_example' # str | Overwrite conflicting files in collections (optional)
 
 try:
     # Add IPFS object
-    api_response = api_instance.content_add_ipfs_post(body, ignore_dupes=ignore_dupes)
+    api_response = api_instance.content_add_ipfs_post(body, ignore_dupes=ignore_dupes, overwrite=overwrite)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_add_ipfs_post: %s\n" % e)
@@ -227,6 +228,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| IPFS Body | 
  **ignore_dupes** | **str**| Ignore Dupes | [optional] 
+ **overwrite** | **str**| Overwrite conflicting files in collections | [optional] 
 
 ### Return type
 
@@ -244,7 +246,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **content_add_post**
-> UtilContentAddResponse content_add_post(data, filename, coluuid=coluuid, replication=replication, ignore_dupes=ignore_dupes, lazy_provide=lazy_provide, dir=dir)
+> UtilContentAddResponse content_add_post(data, filename, coluuid=coluuid, replication=replication, ignore_dupes=ignore_dupes, overwrite=overwrite, lazy_provide=lazy_provide, dir=dir)
 
 Add new content
 
@@ -271,12 +273,13 @@ filename = 'filename_example' # str |
 coluuid = 'coluuid_example' # str | Collection UUID (optional)
 replication = 56 # int | Replication value (optional)
 ignore_dupes = 'ignore_dupes_example' # str | Ignore Dupes true/false (optional)
+overwrite = 'overwrite_example' # str | Overwrite files with the same path on same collection (optional)
 lazy_provide = 'lazy_provide_example' # str | Lazy Provide true/false (optional)
 dir = 'dir_example' # str | Directory (optional)
 
 try:
     # Add new content
-    api_response = api_instance.content_add_post(data, filename, coluuid=coluuid, replication=replication, ignore_dupes=ignore_dupes, lazy_provide=lazy_provide, dir=dir)
+    api_response = api_instance.content_add_post(data, filename, coluuid=coluuid, replication=replication, ignore_dupes=ignore_dupes, overwrite=overwrite, lazy_provide=lazy_provide, dir=dir)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->content_add_post: %s\n" % e)
@@ -291,6 +294,7 @@ Name | Type | Description  | Notes
  **coluuid** | **str**| Collection UUID | [optional] 
  **replication** | **int**| Replication value | [optional] 
  **ignore_dupes** | **str**| Ignore Dupes true/false | [optional] 
+ **overwrite** | **str**| Overwrite files with the same path on same collection | [optional] 
  **lazy_provide** | **str**| Lazy Provide true/false | [optional] 
  **dir** | **str**| Directory | [optional] 
 

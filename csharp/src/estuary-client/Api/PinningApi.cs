@@ -115,8 +115,10 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Pin Body {cid:cid, name:name}</param>
+        /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
+        /// <param name="overwrite">Overwrite conflicting files in collections (optional)</param>
         /// <returns>TypesIpfsPinStatusResponse</returns>
-        TypesIpfsPinStatusResponse PinningPinsPost (TypesIpfsPin body);
+        TypesIpfsPinStatusResponse PinningPinsPost (TypesIpfsPin body, string ignoreDupes = null, string overwrite = null);
 
         /// <summary>
         /// Add and pin object
@@ -126,8 +128,10 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Pin Body {cid:cid, name:name}</param>
+        /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
+        /// <param name="overwrite">Overwrite conflicting files in collections (optional)</param>
         /// <returns>ApiResponse of TypesIpfsPinStatusResponse</returns>
-        ApiResponse<TypesIpfsPinStatusResponse> PinningPinsPostWithHttpInfo (TypesIpfsPin body);
+        ApiResponse<TypesIpfsPinStatusResponse> PinningPinsPostWithHttpInfo (TypesIpfsPin body, string ignoreDupes = null, string overwrite = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -222,8 +226,10 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Pin Body {cid:cid, name:name}</param>
+        /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
+        /// <param name="overwrite">Overwrite conflicting files in collections (optional)</param>
         /// <returns>Task of TypesIpfsPinStatusResponse</returns>
-        System.Threading.Tasks.Task<TypesIpfsPinStatusResponse> PinningPinsPostAsync (TypesIpfsPin body);
+        System.Threading.Tasks.Task<TypesIpfsPinStatusResponse> PinningPinsPostAsync (TypesIpfsPin body, string ignoreDupes = null, string overwrite = null);
 
         /// <summary>
         /// Add and pin object
@@ -233,8 +239,10 @@ namespace estuary-client.Api
         /// </remarks>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Pin Body {cid:cid, name:name}</param>
+        /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
+        /// <param name="overwrite">Overwrite conflicting files in collections (optional)</param>
         /// <returns>Task of ApiResponse (TypesIpfsPinStatusResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<TypesIpfsPinStatusResponse>> PinningPinsPostAsyncWithHttpInfo (TypesIpfsPin body);
+        System.Threading.Tasks.Task<ApiResponse<TypesIpfsPinStatusResponse>> PinningPinsPostAsyncWithHttpInfo (TypesIpfsPin body, string ignoreDupes = null, string overwrite = null);
         #endregion Asynchronous Operations
     }
 
@@ -929,10 +937,12 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Pin Body {cid:cid, name:name}</param>
+        /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
+        /// <param name="overwrite">Overwrite conflicting files in collections (optional)</param>
         /// <returns>TypesIpfsPinStatusResponse</returns>
-        public TypesIpfsPinStatusResponse PinningPinsPost (TypesIpfsPin body)
+        public TypesIpfsPinStatusResponse PinningPinsPost (TypesIpfsPin body, string ignoreDupes = null, string overwrite = null)
         {
-             ApiResponse<TypesIpfsPinStatusResponse> localVarResponse = PinningPinsPostWithHttpInfo(body);
+             ApiResponse<TypesIpfsPinStatusResponse> localVarResponse = PinningPinsPostWithHttpInfo(body, ignoreDupes, overwrite);
              return localVarResponse.Data;
         }
 
@@ -941,8 +951,10 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Pin Body {cid:cid, name:name}</param>
+        /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
+        /// <param name="overwrite">Overwrite conflicting files in collections (optional)</param>
         /// <returns>ApiResponse of TypesIpfsPinStatusResponse</returns>
-        public ApiResponse< TypesIpfsPinStatusResponse > PinningPinsPostWithHttpInfo (TypesIpfsPin body)
+        public ApiResponse< TypesIpfsPinStatusResponse > PinningPinsPostWithHttpInfo (TypesIpfsPin body, string ignoreDupes = null, string overwrite = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -970,6 +982,8 @@ namespace estuary-client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (ignoreDupes != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "ignore-dupes", ignoreDupes)); // query parameter
+            if (overwrite != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "overwrite", overwrite)); // query parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -1007,10 +1021,12 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Pin Body {cid:cid, name:name}</param>
+        /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
+        /// <param name="overwrite">Overwrite conflicting files in collections (optional)</param>
         /// <returns>Task of TypesIpfsPinStatusResponse</returns>
-        public async System.Threading.Tasks.Task<TypesIpfsPinStatusResponse> PinningPinsPostAsync (TypesIpfsPin body)
+        public async System.Threading.Tasks.Task<TypesIpfsPinStatusResponse> PinningPinsPostAsync (TypesIpfsPin body, string ignoreDupes = null, string overwrite = null)
         {
-             ApiResponse<TypesIpfsPinStatusResponse> localVarResponse = await PinningPinsPostAsyncWithHttpInfo(body);
+             ApiResponse<TypesIpfsPinStatusResponse> localVarResponse = await PinningPinsPostAsyncWithHttpInfo(body, ignoreDupes, overwrite);
              return localVarResponse.Data;
 
         }
@@ -1020,8 +1036,10 @@ namespace estuary-client.Api
         /// </summary>
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Pin Body {cid:cid, name:name}</param>
+        /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
+        /// <param name="overwrite">Overwrite conflicting files in collections (optional)</param>
         /// <returns>Task of ApiResponse (TypesIpfsPinStatusResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<TypesIpfsPinStatusResponse>> PinningPinsPostAsyncWithHttpInfo (TypesIpfsPin body)
+        public async System.Threading.Tasks.Task<ApiResponse<TypesIpfsPinStatusResponse>> PinningPinsPostAsyncWithHttpInfo (TypesIpfsPin body, string ignoreDupes = null, string overwrite = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1049,6 +1067,8 @@ namespace estuary-client.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
+            if (ignoreDupes != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "ignore-dupes", ignoreDupes)); // query parameter
+            if (overwrite != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "overwrite", overwrite)); // query parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter

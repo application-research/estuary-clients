@@ -1108,7 +1108,9 @@
     <div class="field-items">
       <div class="param">dir (optional)</div>
       
-            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Directory </div>    </div>  <!-- field-items -->
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Directory </div>      <div class="param">overwrite (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Overwrite conflicting files </div>    </div>  <!-- field-items -->
 
 
     <h3 class="field-label">Return type</h3>
@@ -1159,9 +1161,11 @@
       
             <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Collection ID </div>      <div class="param">content (required)</div>
       
-            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Content </div>      <div class="param">path (required)</div>
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Content </div>      <div class="param">dir (optional)</div>
       
-            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Path to file </div>    </div>  <!-- field-items -->
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Directory inside collection </div>      <div class="param">overwrite (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Overwrite file if already exists in path </div>    </div>  <!-- field-items -->
 
 
     <h3 class="field-label">Return type</h3>
@@ -1509,7 +1513,9 @@
     <div class="field-items">
       <div class="param">ignore-dupes (optional)</div>
       
-            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Ignore Dupes </div>    </div>  <!-- field-items -->
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Ignore Dupes </div>      <div class="param">overwrite (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Overwrite conflicting files in collections </div>    </div>  <!-- field-items -->
 
 
     <h3 class="field-label">Return type</h3>
@@ -1567,7 +1573,9 @@
       
             <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Replication value </div>      <div class="param">ignore-dupes (optional)</div>
       
-            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Ignore Dupes true/false </div>      <div class="param">lazy-provide (optional)</div>
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Ignore Dupes true/false </div>      <div class="param">overwrite (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Overwrite files with the same path on same collection </div>      <div class="param">lazy-provide (optional)</div>
       
             <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Lazy Provide true/false </div>      <div class="param">dir (optional)</div>
       
@@ -3948,6 +3956,13 @@
                 </div>  <!-- field-items -->
 
 
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">ignore-dupes (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Ignore Dupes </div>      <div class="param">overwrite (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Overwrite conflicting files in collections </div>    </div>  <!-- field-items -->
 
 
     <h3 class="field-label">Return type</h3>
@@ -5005,6 +5020,7 @@
 <div class="param">dir (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">location (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">overwrite (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
 <div class="param">root (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">type (optional)</div><div class="param-desc"><span class="param-type"><a href="#util.ContentType">util.ContentType</a></span>  </div>
     </div>  <!-- field-items -->

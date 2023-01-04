@@ -554,12 +554,14 @@ public class PinningApi {
     /**
      * Build call for pinningPinsPost
      * @param body Pin Body {cid:cid, name:name} (required)
+     * @param ignoreDupes Ignore Dupes (optional)
+     * @param overwrite Overwrite conflicting files in collections (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call pinningPinsPostCall(TypesIpfsPin body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call pinningPinsPostCall(TypesIpfsPin body, String ignoreDupes, String overwrite, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
         
         // create path and map variables
@@ -567,6 +569,10 @@ public class PinningApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (ignoreDupes != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("ignore-dupes", ignoreDupes));
+        if (overwrite != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("overwrite", overwrite));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -601,13 +607,13 @@ public class PinningApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call pinningPinsPostValidateBeforeCall(TypesIpfsPin body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call pinningPinsPostValidateBeforeCall(TypesIpfsPin body, String ignoreDupes, String overwrite, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling pinningPinsPost(Async)");
         }
         
-        com.squareup.okhttp.Call call = pinningPinsPostCall(body, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = pinningPinsPostCall(body, ignoreDupes, overwrite, progressListener, progressRequestListener);
         return call;
 
         
@@ -620,11 +626,13 @@ public class PinningApi {
      * Add and pin object
      * This endpoint adds a pin to the IPFS daemon.
      * @param body Pin Body {cid:cid, name:name} (required)
+     * @param ignoreDupes Ignore Dupes (optional)
+     * @param overwrite Overwrite conflicting files in collections (optional)
      * @return TypesIpfsPinStatusResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public TypesIpfsPinStatusResponse pinningPinsPost(TypesIpfsPin body) throws ApiException {
-        ApiResponse<TypesIpfsPinStatusResponse> resp = pinningPinsPostWithHttpInfo(body);
+    public TypesIpfsPinStatusResponse pinningPinsPost(TypesIpfsPin body, String ignoreDupes, String overwrite) throws ApiException {
+        ApiResponse<TypesIpfsPinStatusResponse> resp = pinningPinsPostWithHttpInfo(body, ignoreDupes, overwrite);
         return resp.getData();
     }
 
@@ -632,11 +640,13 @@ public class PinningApi {
      * Add and pin object
      * This endpoint adds a pin to the IPFS daemon.
      * @param body Pin Body {cid:cid, name:name} (required)
+     * @param ignoreDupes Ignore Dupes (optional)
+     * @param overwrite Overwrite conflicting files in collections (optional)
      * @return ApiResponse&lt;TypesIpfsPinStatusResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<TypesIpfsPinStatusResponse> pinningPinsPostWithHttpInfo(TypesIpfsPin body) throws ApiException {
-        com.squareup.okhttp.Call call = pinningPinsPostValidateBeforeCall(body, null, null);
+    public ApiResponse<TypesIpfsPinStatusResponse> pinningPinsPostWithHttpInfo(TypesIpfsPin body, String ignoreDupes, String overwrite) throws ApiException {
+        com.squareup.okhttp.Call call = pinningPinsPostValidateBeforeCall(body, ignoreDupes, overwrite, null, null);
         Type localVarReturnType = new TypeToken<TypesIpfsPinStatusResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -645,11 +655,13 @@ public class PinningApi {
      * Add and pin object (asynchronously)
      * This endpoint adds a pin to the IPFS daemon.
      * @param body Pin Body {cid:cid, name:name} (required)
+     * @param ignoreDupes Ignore Dupes (optional)
+     * @param overwrite Overwrite conflicting files in collections (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call pinningPinsPostAsync(TypesIpfsPin body, final ApiCallback<TypesIpfsPinStatusResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call pinningPinsPostAsync(TypesIpfsPin body, String ignoreDupes, String overwrite, final ApiCallback<TypesIpfsPinStatusResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -670,7 +682,7 @@ public class PinningApi {
             };
         }
 
-        com.squareup.okhttp.Call call = pinningPinsPostValidateBeforeCall(body, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = pinningPinsPostValidateBeforeCall(body, ignoreDupes, overwrite, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<TypesIpfsPinStatusResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

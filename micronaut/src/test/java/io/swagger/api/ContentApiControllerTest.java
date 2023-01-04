@@ -39,8 +39,9 @@ class ContentApiControllerTest {
     void contentAddIpfsPostTest() {
         TypesIpfsPin body = new TypesIpfsPin();
         String ignoreDupes = "ignoreDupes_example";
+        String overwrite = "overwrite_example";
         try {
-            api.contentAddIpfsPost(body, ignoreDupes).blockingGet();
+            api.contentAddIpfsPost(body, ignoreDupes, overwrite).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }
@@ -53,10 +54,11 @@ class ContentApiControllerTest {
         String coluuid = "coluuid_example";
         Integer replication = 56;
         String ignoreDupes = "ignoreDupes_example";
+        String overwrite = "overwrite_example";
         String lazyProvide = "lazyProvide_example";
         String dir = "dir_example";
         try {
-            api.contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir).blockingGet();
+            api.contentAddPost(data, filename, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }

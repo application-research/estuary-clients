@@ -268,13 +268,14 @@ export class CollectionsService {
      * @param body Content IDs to add to collection
      * @param coluuid Collection UUID
      * @param dir Directory
+     * @param overwrite Overwrite conflicting files
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public collectionsColuuidPost(body: Array<number>, coluuid: string, dir?: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public collectionsColuuidPost(body: Array<number>, coluuid: string, dir?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public collectionsColuuidPost(body: Array<number>, coluuid: string, dir?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
-    public collectionsColuuidPost(body: Array<number>, coluuid: string, dir?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public collectionsColuuidPost(body: Array<number>, coluuid: string, dir?: string, overwrite?: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public collectionsColuuidPost(body: Array<number>, coluuid: string, dir?: string, overwrite?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public collectionsColuuidPost(body: Array<number>, coluuid: string, dir?: string, overwrite?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public collectionsColuuidPost(body: Array<number>, coluuid: string, dir?: string, overwrite?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling collectionsColuuidPost.');
@@ -285,9 +286,13 @@ export class CollectionsService {
         }
 
 
+
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (dir !== undefined && dir !== null) {
             queryParameters = queryParameters.set('dir', <any>dir);
+        }
+        if (overwrite !== undefined && overwrite !== null) {
+            queryParameters = queryParameters.set('overwrite', <any>overwrite);
         }
 
         let headers = this.defaultHeaders;
@@ -332,14 +337,15 @@ export class CollectionsService {
      * This endpoint adds a file to a collection
      * @param coluuid Collection ID
      * @param content Content
-     * @param path Path to file
+     * @param dir Directory inside collection
+     * @param overwrite Overwrite file if already exists in path
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public collectionsFsAddPost(coluuid: string, content: string, path: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public collectionsFsAddPost(coluuid: string, content: string, path: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public collectionsFsAddPost(coluuid: string, content: string, path: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
-    public collectionsFsAddPost(coluuid: string, content: string, path: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public collectionsFsAddPost(coluuid: string, content: string, dir?: string, overwrite?: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public collectionsFsAddPost(coluuid: string, content: string, dir?: string, overwrite?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public collectionsFsAddPost(coluuid: string, content: string, dir?: string, overwrite?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public collectionsFsAddPost(coluuid: string, content: string, dir?: string, overwrite?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (coluuid === null || coluuid === undefined) {
             throw new Error('Required parameter coluuid was null or undefined when calling collectionsFsAddPost.');
@@ -349,9 +355,7 @@ export class CollectionsService {
             throw new Error('Required parameter content was null or undefined when calling collectionsFsAddPost.');
         }
 
-        if (path === null || path === undefined) {
-            throw new Error('Required parameter path was null or undefined when calling collectionsFsAddPost.');
-        }
+
 
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (coluuid !== undefined && coluuid !== null) {
@@ -360,8 +364,11 @@ export class CollectionsService {
         if (content !== undefined && content !== null) {
             queryParameters = queryParameters.set('content', <any>content);
         }
-        if (path !== undefined && path !== null) {
-            queryParameters = queryParameters.set('path', <any>path);
+        if (dir !== undefined && dir !== null) {
+            queryParameters = queryParameters.set('dir', <any>dir);
+        }
+        if (overwrite !== undefined && overwrite !== null) {
+            queryParameters = queryParameters.set('overwrite', <any>overwrite);
         }
 
         let headers = this.defaultHeaders;

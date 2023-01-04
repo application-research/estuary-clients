@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinningPinsPost**
-> TypesIpfsPinStatusResponse pinningPinsPost(body)
+> TypesIpfsPinStatusResponse pinningPinsPost(body, ignoreDupes, overwrite)
 
 Add and pin object
 
@@ -217,9 +217,11 @@ import 'package:swagger/api.dart';
 
 var api_instance = new PinningApi();
 var body = new TypesIpfsPin(); // TypesIpfsPin | Pin Body {cid:cid, name:name}
+var ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
+var overwrite = overwrite_example; // String | Overwrite conflicting files in collections
 
 try {
-    var result = api_instance.pinningPinsPost(body);
+    var result = api_instance.pinningPinsPost(body, ignoreDupes, overwrite);
     print(result);
 } catch (e) {
     print("Exception when calling PinningApi->pinningPinsPost: $e\n");
@@ -231,6 +233,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
+ **ignoreDupes** | **String**| Ignore Dupes | [optional] 
+ **overwrite** | **String**| Overwrite conflicting files in collections | [optional] 
 
 ### Return type
 

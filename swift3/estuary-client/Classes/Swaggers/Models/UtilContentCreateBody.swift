@@ -13,6 +13,7 @@ open class UtilContentCreateBody: JSONEncodable {
     public var dir: String?
     public var location: String?
     public var name: String?
+    public var overwrite: Bool?
     public var root: String?
     public var type: UtilContentType?
 
@@ -25,6 +26,7 @@ open class UtilContentCreateBody: JSONEncodable {
         nillableDictionary["dir"] = self.dir
         nillableDictionary["location"] = self.location
         nillableDictionary["name"] = self.name
+        nillableDictionary["overwrite"] = self.overwrite
         nillableDictionary["root"] = self.root
         nillableDictionary["type"] = self.type?.encodeToJSON()
 

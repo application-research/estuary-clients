@@ -7,5 +7,6 @@ Name | Type | Description | Notes
 **dir** | [**kotlin.String**](.md) |  |  [optional]
 **location** | [**kotlin.String**](.md) |  |  [optional]
 **name** | [**kotlin.String**](.md) |  |  [optional]
+**overwrite** | [**kotlin.Boolean**](.md) |  |  [optional]
 **root** | [**kotlin.String**](.md) |  |  [optional]
 **type** | [**UtilContentType**](UtilContentType.md) |  |  [optional]

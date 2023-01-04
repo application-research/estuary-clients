@@ -182,10 +182,11 @@ export const ContentApiAxiosParamCreator = function (configuration?: Configurati
          * @summary Add IPFS object
          * @param {TypesIpfsPin} body IPFS Body
          * @param {string} [ignoreDupes] Ignore Dupes
+         * @param {string} [overwrite] Overwrite conflicting files in collections
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddIpfsPost: async (body: TypesIpfsPin, ignoreDupes?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        contentAddIpfsPost: async (body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling contentAddIpfsPost.');
@@ -211,6 +212,10 @@ export const ContentApiAxiosParamCreator = function (configuration?: Configurati
 
             if (ignoreDupes !== undefined) {
                 localVarQueryParameter['ignore-dupes'] = ignoreDupes;
+            }
+
+            if (overwrite !== undefined) {
+                localVarQueryParameter['overwrite'] = overwrite;
             }
 
             localVarHeaderParameter['Content-Type'] = '*/*';
@@ -241,12 +246,13 @@ export const ContentApiAxiosParamCreator = function (configuration?: Configurati
          * @param {string} [coluuid] Collection UUID
          * @param {number} [replication] Replication value
          * @param {string} [ignoreDupes] Ignore Dupes true/false
+         * @param {string} [overwrite] Overwrite files with the same path on same collection
          * @param {string} [lazyProvide] Lazy Provide true/false
          * @param {string} [dir] Directory
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddPostForm: async (data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        contentAddPostForm: async (data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, overwrite?: string, lazyProvide?: string, dir?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'data' is not null or undefined
             if (data === null || data === undefined) {
                 throw new RequiredError('data','Required parameter data was null or undefined when calling contentAddPostForm.');
@@ -285,6 +291,10 @@ export const ContentApiAxiosParamCreator = function (configuration?: Configurati
 
             if (ignoreDupes !== undefined) {
                 localVarQueryParameter['ignore-dupes'] = ignoreDupes;
+            }
+
+            if (overwrite !== undefined) {
+                localVarQueryParameter['overwrite'] = overwrite;
             }
 
             if (lazyProvide !== undefined) {
@@ -1162,11 +1172,12 @@ export const ContentApiFp = function(configuration?: Configuration) {
          * @summary Add IPFS object
          * @param {TypesIpfsPin} body IPFS Body
          * @param {string} [ignoreDupes] Ignore Dupes
+         * @param {string} [overwrite] Overwrite conflicting files in collections
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
-            const localVarAxiosArgs = await ContentApiAxiosParamCreator(configuration).contentAddIpfsPost(body, ignoreDupes, options);
+        async contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
+            const localVarAxiosArgs = await ContentApiAxiosParamCreator(configuration).contentAddIpfsPost(body, ignoreDupes, overwrite, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -1180,13 +1191,14 @@ export const ContentApiFp = function(configuration?: Configuration) {
          * @param {string} [coluuid] Collection UUID
          * @param {number} [replication] Replication value
          * @param {string} [ignoreDupes] Ignore Dupes true/false
+         * @param {string} [overwrite] Overwrite files with the same path on same collection
          * @param {string} [lazyProvide] Lazy Provide true/false
          * @param {string} [dir] Directory
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async contentAddPostForm(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<UtilContentAddResponse>>> {
-            const localVarAxiosArgs = await ContentApiAxiosParamCreator(configuration).contentAddPostForm(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, options);
+        async contentAddPostForm(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, overwrite?: string, lazyProvide?: string, dir?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<UtilContentAddResponse>>> {
+            const localVarAxiosArgs = await ContentApiAxiosParamCreator(configuration).contentAddPostForm(data, filename, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -1453,11 +1465,12 @@ export const ContentApiFactory = function (configuration?: Configuration, basePa
          * @summary Add IPFS object
          * @param {TypesIpfsPin} body IPFS Body
          * @param {string} [ignoreDupes] Ignore Dupes
+         * @param {string} [overwrite] Overwrite conflicting files in collections
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
-            return ContentApiFp(configuration).contentAddIpfsPost(body, ignoreDupes, options).then((request) => request(axios, basePath));
+        async contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
+            return ContentApiFp(configuration).contentAddIpfsPost(body, ignoreDupes, overwrite, options).then((request) => request(axios, basePath));
         },
         /**
          * This endpoint is used to upload new content.
@@ -1467,13 +1480,14 @@ export const ContentApiFactory = function (configuration?: Configuration, basePa
          * @param {string} [coluuid] Collection UUID
          * @param {number} [replication] Replication value
          * @param {string} [ignoreDupes] Ignore Dupes true/false
+         * @param {string} [overwrite] Overwrite files with the same path on same collection
          * @param {string} [lazyProvide] Lazy Provide true/false
          * @param {string} [dir] Directory
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async contentAddPostForm(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<UtilContentAddResponse>> {
-            return ContentApiFp(configuration).contentAddPostForm(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, options).then((request) => request(axios, basePath));
+        async contentAddPostForm(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, overwrite?: string, lazyProvide?: string, dir?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<UtilContentAddResponse>> {
+            return ContentApiFp(configuration).contentAddPostForm(data, filename, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir, options).then((request) => request(axios, basePath));
         },
         /**
          * This endpoint returns aggregated content stats
@@ -1680,12 +1694,13 @@ export class ContentApi extends BaseAPI {
      * @summary Add IPFS object
      * @param {TypesIpfsPin} body IPFS Body
      * @param {string} [ignoreDupes] Ignore Dupes
+     * @param {string} [overwrite] Overwrite conflicting files in collections
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContentApi
      */
-    public async contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
-        return ContentApiFp(this.configuration).contentAddIpfsPost(body, ignoreDupes, options).then((request) => request(this.axios, this.basePath));
+    public async contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
+        return ContentApiFp(this.configuration).contentAddIpfsPost(body, ignoreDupes, overwrite, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * This endpoint is used to upload new content.
@@ -1695,14 +1710,15 @@ export class ContentApi extends BaseAPI {
      * @param {string} [coluuid] Collection UUID
      * @param {number} [replication] Replication value
      * @param {string} [ignoreDupes] Ignore Dupes true/false
+     * @param {string} [overwrite] Overwrite files with the same path on same collection
      * @param {string} [lazyProvide] Lazy Provide true/false
      * @param {string} [dir] Directory
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContentApi
      */
-    public async contentAddPostForm(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<UtilContentAddResponse>> {
-        return ContentApiFp(this.configuration).contentAddPostForm(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, options).then((request) => request(this.axios, this.basePath));
+    public async contentAddPostForm(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, overwrite?: string, lazyProvide?: string, dir?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<UtilContentAddResponse>> {
+        return ContentApiFp(this.configuration).contentAddPostForm(data, filename, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir, options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * This endpoint returns aggregated content stats

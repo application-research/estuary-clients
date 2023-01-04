@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 
 
 # **pinning_pins_post**
-> TypesIpfsPinStatusResponse pinning_pins_post(body)
+> TypesIpfsPinStatusResponse pinning_pins_post(body, opts)
 
 Add and pin object
 
@@ -239,11 +239,14 @@ end
 
 api_instance = SwaggerClient::PinningApi.new
 body = SwaggerClient::TypesIpfsPin.new # TypesIpfsPin | Pin Body {cid:cid, name:name}
-
+opts = { 
+  ignore_dupes: 'ignore_dupes_example' # String | Ignore Dupes
+  overwrite: 'overwrite_example' # String | Overwrite conflicting files in collections
+}
 
 begin
   #Add and pin object
-  result = api_instance.pinning_pins_post(body)
+  result = api_instance.pinning_pins_post(body, opts)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling PinningApi->pinning_pins_post: #{e}"
@@ -255,6 +258,8 @@ end
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
+ **ignore_dupes** | **String**| Ignore Dupes | [optional] 
+ **overwrite** | **String**| Overwrite conflicting files in collections | [optional] 
 
 ### Return type
 

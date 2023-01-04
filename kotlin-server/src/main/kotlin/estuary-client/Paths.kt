@@ -138,17 +138,19 @@ object Paths {
      * @param body Content IDs to add to collection 
      * @param coluuid Collection UUID 
      * @param dir Directory (optional)
+     * @param overwrite Overwrite conflicting files (optional)
      */
-    @Location("/collections/{coluuid}") class collectionsColuuidPost(val body: kotlin.Array<kotlin.Int>, val coluuid: kotlin.String, val dir: kotlin.String)
+    @Location("/collections/{coluuid}") class collectionsColuuidPost(val body: kotlin.Array<kotlin.Int>, val coluuid: kotlin.String, val dir: kotlin.String, val overwrite: kotlin.String)
 
     /**
      * Add a file to a collection
      * This endpoint adds a file to a collection
      * @param coluuid Collection ID 
      * @param content Content 
-     * @param path Path to file 
+     * @param dir Directory inside collection (optional)
+     * @param overwrite Overwrite file if already exists in path (optional)
      */
-    @Location("/collections/fs/add") class collectionsFsAddPost(val coluuid: kotlin.String, val content: kotlin.String, val path: kotlin.String)
+    @Location("/collections/fs/add") class collectionsFsAddPost(val coluuid: kotlin.String, val content: kotlin.String, val dir: kotlin.String, val overwrite: kotlin.String)
 
     /**
      * List all collections
@@ -190,8 +192,9 @@ object Paths {
      * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
      * @param body IPFS Body 
      * @param ignoreDupes Ignore Dupes (optional)
+     * @param overwrite Overwrite conflicting files in collections (optional)
      */
-    @Location("/content/add-ipfs") class contentAddIpfsPost(val body: TypesIpfsPin, val ignoreDupes: kotlin.String)
+    @Location("/content/add-ipfs") class contentAddIpfsPost(val body: TypesIpfsPin, val ignoreDupes: kotlin.String, val overwrite: kotlin.String)
 
     /**
      * Add new content
@@ -201,10 +204,11 @@ object Paths {
      * @param coluuid Collection UUID (optional)
      * @param replication Replication value (optional)
      * @param ignoreDupes Ignore Dupes true/false (optional)
+     * @param overwrite Overwrite files with the same path on same collection (optional)
      * @param lazyProvide Lazy Provide true/false (optional)
      * @param dir Directory (optional)
      */
-    @Location("/content/add") class contentAddPost(val &#x60;data&#x60;: kotlin.Array<kotlin.Byte>, val filename: kotlin.String, val coluuid: kotlin.String, val replication: kotlin.Int, val ignoreDupes: kotlin.String, val lazyProvide: kotlin.String, val dir: kotlin.String)
+    @Location("/content/add") class contentAddPost(val &#x60;data&#x60;: kotlin.Array<kotlin.Byte>, val filename: kotlin.String, val coluuid: kotlin.String, val replication: kotlin.Int, val ignoreDupes: kotlin.String, val overwrite: kotlin.String, val lazyProvide: kotlin.String, val dir: kotlin.String)
 
     /**
      * Get aggregated content stats
@@ -528,8 +532,10 @@ object Paths {
      * Add and pin object
      * This endpoint adds a pin to the IPFS daemon.
      * @param body Pin Body {cid:cid, name:name} 
+     * @param ignoreDupes Ignore Dupes (optional)
+     * @param overwrite Overwrite conflicting files in collections (optional)
      */
-    @Location("/pinning/pins") class pinningPinsPost(val body: TypesIpfsPin)
+    @Location("/pinning/pins") class pinningPinsPost(val body: TypesIpfsPin, val ignoreDupes: kotlin.String, val overwrite: kotlin.String)
 
     /**
      * Get Full Content by Cid

@@ -21,6 +21,8 @@ module SwaggerClient
 
     attr_accessor :name
 
+    attr_accessor :overwrite
+
     attr_accessor :root
 
     attr_accessor :type
@@ -32,6 +34,7 @@ module SwaggerClient
         :'dir' => :'dir',
         :'location' => :'location',
         :'name' => :'name',
+        :'overwrite' => :'overwrite',
         :'root' => :'root',
         :'type' => :'type'
       }
@@ -44,6 +47,7 @@ module SwaggerClient
         :'dir' => :'Object',
         :'location' => :'Object',
         :'name' => :'Object',
+        :'overwrite' => :'Object',
         :'root' => :'Object',
         :'type' => :'Object'
       }
@@ -86,6 +90,10 @@ module SwaggerClient
         self.name = attributes[:'name']
       end
 
+      if attributes.key?(:'overwrite')
+        self.overwrite = attributes[:'overwrite']
+      end
+
       if attributes.key?(:'root')
         self.root = attributes[:'root']
       end
@@ -117,6 +125,7 @@ module SwaggerClient
           dir == o.dir &&
           location == o.location &&
           name == o.name &&
+          overwrite == o.overwrite &&
           root == o.root &&
           type == o.type
     end
@@ -130,7 +139,7 @@ module SwaggerClient
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [coluuid, dir, location, name, root, type].hash
+      [coluuid, dir, location, name, overwrite, root, type].hash
     end
 
     # Builds the object from hash

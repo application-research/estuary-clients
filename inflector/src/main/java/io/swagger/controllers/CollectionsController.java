@@ -16,7 +16,7 @@ import io.swagger.model.CollectionsCollection;
 import io.swagger.model.CollectionsCollectionListResponse;
 import io.swagger.model.UtilHttpError;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2023-01-03T16:17:31.432Z[GMT]")public class CollectionsController  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2023-01-04T12:55:51.789Z[GMT]")public class CollectionsController  {
   /** 
    * Uncomment and implement as you see fit.  These operations will map
    * Directly to operation calls from the routing logic.  Because the inflector
@@ -57,6 +57,7 @@ import io.swagger.model.UtilHttpError;
     public ResponseContext collectionsColuuidPOST(RequestContext request , List<Integer> body 
 , String coluuid 
 , String dir 
+, String overwrite 
 ) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }
@@ -65,7 +66,8 @@ import io.swagger.model.UtilHttpError;
   /*
     public ResponseContext collectionsFsAddPOST(RequestContext request , String coluuid 
 , String content 
-, String path 
+, String dir 
+, String overwrite 
 ) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );
     }

@@ -34,7 +34,7 @@ import javax.validation.constraints.*;
 @Path("/collections")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-03T16:17:31.923Z[GMT]")public class CollectionsApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-04T12:55:51.407Z[GMT]")public class CollectionsApi  {
 
     @Inject CollectionsApiService service;
 
@@ -119,9 +119,9 @@ import javax.validation.constraints.*;
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response collectionsColuuidPost(@Parameter(description = "Content IDs to add to collection" ,required=true) List<Integer> body, @PathParam("coluuid") String coluuid,  @QueryParam("dir") String dir,@Context SecurityContext securityContext)
+    public Response collectionsColuuidPost(@Parameter(description = "Content IDs to add to collection" ,required=true) List<Integer> body, @PathParam("coluuid") String coluuid,  @QueryParam("dir") String dir,  @QueryParam("overwrite") String overwrite,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return service.collectionsColuuidPost(body,coluuid,dir,securityContext);
+        return service.collectionsColuuidPost(body,coluuid,dir,overwrite,securityContext);
     }
     @POST
     @Path("/fs/add")
@@ -136,9 +136,9 @@ import javax.validation.constraints.*;
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response collectionsFsAddPost( @NotNull  @QueryParam("coluuid") String coluuid, @NotNull  @QueryParam("content") String content, @NotNull  @QueryParam("path") String path,@Context SecurityContext securityContext)
+    public Response collectionsFsAddPost( @NotNull  @QueryParam("coluuid") String coluuid, @NotNull  @QueryParam("content") String content,  @QueryParam("dir") String dir,  @QueryParam("overwrite") String overwrite,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return service.collectionsFsAddPost(coluuid,content,path,securityContext);
+        return service.collectionsFsAddPost(coluuid,content,dir,overwrite,securityContext);
     }
     @GET
     @Path("/")

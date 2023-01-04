@@ -20,13 +20,13 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2023-01-03T16:17:33.077Z[GMT]")public abstract class CollectionsApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2023-01-04T12:55:53.153Z[GMT]")public abstract class CollectionsApiService {
     public abstract Response collectionsColuuidCommitPost(String coluuid,SecurityContext securityContext) throws NotFoundException;
     public abstract Response collectionsColuuidContentsDelete(ApiDeleteContentFromCollectionBody body,String coluuid,SecurityContext securityContext) throws NotFoundException;
     public abstract Response collectionsColuuidDelete(String coluuid,SecurityContext securityContext) throws NotFoundException;
     public abstract Response collectionsColuuidGet(String coluuid, String dir,SecurityContext securityContext) throws NotFoundException;
-    public abstract Response collectionsColuuidPost(List<Integer> body,String coluuid, String dir,SecurityContext securityContext) throws NotFoundException;
-    public abstract Response collectionsFsAddPost( @NotNull String coluuid, @NotNull String content, @NotNull String path,SecurityContext securityContext) throws NotFoundException;
+    public abstract Response collectionsColuuidPost(List<Integer> body,String coluuid, String dir, String overwrite,SecurityContext securityContext) throws NotFoundException;
+    public abstract Response collectionsFsAddPost( @NotNull String coluuid, @NotNull String content, String dir, String overwrite,SecurityContext securityContext) throws NotFoundException;
     public abstract Response collectionsGet(SecurityContext securityContext) throws NotFoundException;
     public abstract Response collectionsPost(ApiCreateCollectionBody body,SecurityContext securityContext) throws NotFoundException;
 }

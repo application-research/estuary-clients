@@ -207,6 +207,7 @@ api_instance = SwaggerClient::ContentApi.new
 body = SwaggerClient::TypesIpfsPin.new # TypesIpfsPin | IPFS Body
 opts = { 
   ignore_dupes: 'ignore_dupes_example' # String | Ignore Dupes
+  overwrite: 'overwrite_example' # String | Overwrite conflicting files in collections
 }
 
 begin
@@ -224,6 +225,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| IPFS Body | 
  **ignore_dupes** | **String**| Ignore Dupes | [optional] 
+ **overwrite** | **String**| Overwrite conflicting files in collections | [optional] 
 
 ### Return type
 
@@ -266,6 +268,7 @@ opts = {
   coluuid: 'coluuid_example' # String | Collection UUID
   replication: 56 # Integer | Replication value
   ignore_dupes: 'ignore_dupes_example' # String | Ignore Dupes true/false
+  overwrite: 'overwrite_example' # String | Overwrite files with the same path on same collection
   lazy_provide: 'lazy_provide_example' # String | Lazy Provide true/false
   dir: 'dir_example' # String | Directory
 }
@@ -288,6 +291,7 @@ Name | Type | Description  | Notes
  **coluuid** | **String**| Collection UUID | [optional] 
  **replication** | **Integer**| Replication value | [optional] 
  **ignore_dupes** | **String**| Ignore Dupes true/false | [optional] 
+ **overwrite** | **String**| Overwrite files with the same path on same collection | [optional] 
  **lazy_provide** | **String**| Lazy Provide true/false | [optional] 
  **dir** | **String**| Directory | [optional] 
 

@@ -121,8 +121,9 @@ namespace estuary-client.Api
         /// <param name="body">Content IDs to add to collection</param>
         /// <param name="coluuid">Collection UUID</param>
         /// <param name="dir">Directory (optional)</param>
+        /// <param name="overwrite">Overwrite conflicting files (optional)</param>
         /// <returns>string</returns>
-        string CollectionsColuuidPost (List<int?> body, string coluuid, string dir = null);
+        string CollectionsColuuidPost (List<int?> body, string coluuid, string dir = null, string overwrite = null);
 
         /// <summary>
         /// Add contents to a collection
@@ -134,8 +135,9 @@ namespace estuary-client.Api
         /// <param name="body">Content IDs to add to collection</param>
         /// <param name="coluuid">Collection UUID</param>
         /// <param name="dir">Directory (optional)</param>
+        /// <param name="overwrite">Overwrite conflicting files (optional)</param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> CollectionsColuuidPostWithHttpInfo (List<int?> body, string coluuid, string dir = null);
+        ApiResponse<string> CollectionsColuuidPostWithHttpInfo (List<int?> body, string coluuid, string dir = null, string overwrite = null);
         /// <summary>
         /// Add a file to a collection
         /// </summary>
@@ -145,9 +147,10 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="coluuid">Collection ID</param>
         /// <param name="content">Content</param>
-        /// <param name="path">Path to file</param>
+        /// <param name="dir">Directory inside collection (optional)</param>
+        /// <param name="overwrite">Overwrite file if already exists in path (optional)</param>
         /// <returns>string</returns>
-        string CollectionsFsAddPost (string coluuid, string content, string path);
+        string CollectionsFsAddPost (string coluuid, string content, string dir = null, string overwrite = null);
 
         /// <summary>
         /// Add a file to a collection
@@ -158,9 +161,10 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="coluuid">Collection ID</param>
         /// <param name="content">Content</param>
-        /// <param name="path">Path to file</param>
+        /// <param name="dir">Directory inside collection (optional)</param>
+        /// <param name="overwrite">Overwrite file if already exists in path (optional)</param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> CollectionsFsAddPostWithHttpInfo (string coluuid, string content, string path);
+        ApiResponse<string> CollectionsFsAddPostWithHttpInfo (string coluuid, string content, string dir = null, string overwrite = null);
         /// <summary>
         /// List all collections
         /// </summary>
@@ -301,8 +305,9 @@ namespace estuary-client.Api
         /// <param name="body">Content IDs to add to collection</param>
         /// <param name="coluuid">Collection UUID</param>
         /// <param name="dir">Directory (optional)</param>
+        /// <param name="overwrite">Overwrite conflicting files (optional)</param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> CollectionsColuuidPostAsync (List<int?> body, string coluuid, string dir = null);
+        System.Threading.Tasks.Task<string> CollectionsColuuidPostAsync (List<int?> body, string coluuid, string dir = null, string overwrite = null);
 
         /// <summary>
         /// Add contents to a collection
@@ -314,8 +319,9 @@ namespace estuary-client.Api
         /// <param name="body">Content IDs to add to collection</param>
         /// <param name="coluuid">Collection UUID</param>
         /// <param name="dir">Directory (optional)</param>
+        /// <param name="overwrite">Overwrite conflicting files (optional)</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> CollectionsColuuidPostAsyncWithHttpInfo (List<int?> body, string coluuid, string dir = null);
+        System.Threading.Tasks.Task<ApiResponse<string>> CollectionsColuuidPostAsyncWithHttpInfo (List<int?> body, string coluuid, string dir = null, string overwrite = null);
         /// <summary>
         /// Add a file to a collection
         /// </summary>
@@ -325,9 +331,10 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="coluuid">Collection ID</param>
         /// <param name="content">Content</param>
-        /// <param name="path">Path to file</param>
+        /// <param name="dir">Directory inside collection (optional)</param>
+        /// <param name="overwrite">Overwrite file if already exists in path (optional)</param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> CollectionsFsAddPostAsync (string coluuid, string content, string path);
+        System.Threading.Tasks.Task<string> CollectionsFsAddPostAsync (string coluuid, string content, string dir = null, string overwrite = null);
 
         /// <summary>
         /// Add a file to a collection
@@ -338,9 +345,10 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="coluuid">Collection ID</param>
         /// <param name="content">Content</param>
-        /// <param name="path">Path to file</param>
+        /// <param name="dir">Directory inside collection (optional)</param>
+        /// <param name="overwrite">Overwrite file if already exists in path (optional)</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> CollectionsFsAddPostAsyncWithHttpInfo (string coluuid, string content, string path);
+        System.Threading.Tasks.Task<ApiResponse<string>> CollectionsFsAddPostAsyncWithHttpInfo (string coluuid, string content, string dir = null, string overwrite = null);
         /// <summary>
         /// List all collections
         /// </summary>
@@ -1097,10 +1105,11 @@ namespace estuary-client.Api
         /// <param name="body">Content IDs to add to collection</param>
         /// <param name="coluuid">Collection UUID</param>
         /// <param name="dir">Directory (optional)</param>
+        /// <param name="overwrite">Overwrite conflicting files (optional)</param>
         /// <returns>string</returns>
-        public string CollectionsColuuidPost (List<int?> body, string coluuid, string dir = null)
+        public string CollectionsColuuidPost (List<int?> body, string coluuid, string dir = null, string overwrite = null)
         {
-             ApiResponse<string> localVarResponse = CollectionsColuuidPostWithHttpInfo(body, coluuid, dir);
+             ApiResponse<string> localVarResponse = CollectionsColuuidPostWithHttpInfo(body, coluuid, dir, overwrite);
              return localVarResponse.Data;
         }
 
@@ -1111,8 +1120,9 @@ namespace estuary-client.Api
         /// <param name="body">Content IDs to add to collection</param>
         /// <param name="coluuid">Collection UUID</param>
         /// <param name="dir">Directory (optional)</param>
+        /// <param name="overwrite">Overwrite conflicting files (optional)</param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > CollectionsColuuidPostWithHttpInfo (List<int?> body, string coluuid, string dir = null)
+        public ApiResponse< string > CollectionsColuuidPostWithHttpInfo (List<int?> body, string coluuid, string dir = null, string overwrite = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1145,6 +1155,7 @@ namespace estuary-client.Api
 
             if (coluuid != null) localVarPathParams.Add("coluuid", this.Configuration.ApiClient.ParameterToString(coluuid)); // path parameter
             if (dir != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "dir", dir)); // query parameter
+            if (overwrite != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "overwrite", overwrite)); // query parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -1184,10 +1195,11 @@ namespace estuary-client.Api
         /// <param name="body">Content IDs to add to collection</param>
         /// <param name="coluuid">Collection UUID</param>
         /// <param name="dir">Directory (optional)</param>
+        /// <param name="overwrite">Overwrite conflicting files (optional)</param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> CollectionsColuuidPostAsync (List<int?> body, string coluuid, string dir = null)
+        public async System.Threading.Tasks.Task<string> CollectionsColuuidPostAsync (List<int?> body, string coluuid, string dir = null, string overwrite = null)
         {
-             ApiResponse<string> localVarResponse = await CollectionsColuuidPostAsyncWithHttpInfo(body, coluuid, dir);
+             ApiResponse<string> localVarResponse = await CollectionsColuuidPostAsyncWithHttpInfo(body, coluuid, dir, overwrite);
              return localVarResponse.Data;
 
         }
@@ -1199,8 +1211,9 @@ namespace estuary-client.Api
         /// <param name="body">Content IDs to add to collection</param>
         /// <param name="coluuid">Collection UUID</param>
         /// <param name="dir">Directory (optional)</param>
+        /// <param name="overwrite">Overwrite conflicting files (optional)</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> CollectionsColuuidPostAsyncWithHttpInfo (List<int?> body, string coluuid, string dir = null)
+        public async System.Threading.Tasks.Task<ApiResponse<string>> CollectionsColuuidPostAsyncWithHttpInfo (List<int?> body, string coluuid, string dir = null, string overwrite = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1233,6 +1246,7 @@ namespace estuary-client.Api
 
             if (coluuid != null) localVarPathParams.Add("coluuid", this.Configuration.ApiClient.ParameterToString(coluuid)); // path parameter
             if (dir != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "dir", dir)); // query parameter
+            if (overwrite != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "overwrite", overwrite)); // query parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -1271,11 +1285,12 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="coluuid">Collection ID</param>
         /// <param name="content">Content</param>
-        /// <param name="path">Path to file</param>
+        /// <param name="dir">Directory inside collection (optional)</param>
+        /// <param name="overwrite">Overwrite file if already exists in path (optional)</param>
         /// <returns>string</returns>
-        public string CollectionsFsAddPost (string coluuid, string content, string path)
+        public string CollectionsFsAddPost (string coluuid, string content, string dir = null, string overwrite = null)
         {
-             ApiResponse<string> localVarResponse = CollectionsFsAddPostWithHttpInfo(coluuid, content, path);
+             ApiResponse<string> localVarResponse = CollectionsFsAddPostWithHttpInfo(coluuid, content, dir, overwrite);
              return localVarResponse.Data;
         }
 
@@ -1285,9 +1300,10 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="coluuid">Collection ID</param>
         /// <param name="content">Content</param>
-        /// <param name="path">Path to file</param>
+        /// <param name="dir">Directory inside collection (optional)</param>
+        /// <param name="overwrite">Overwrite file if already exists in path (optional)</param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > CollectionsFsAddPostWithHttpInfo (string coluuid, string content, string path)
+        public ApiResponse< string > CollectionsFsAddPostWithHttpInfo (string coluuid, string content, string dir = null, string overwrite = null)
         {
             // verify the required parameter 'coluuid' is set
             if (coluuid == null)
@@ -1295,9 +1311,6 @@ namespace estuary-client.Api
             // verify the required parameter 'content' is set
             if (content == null)
                 throw new ApiException(400, "Missing required parameter 'content' when calling CollectionsApi->CollectionsFsAddPost");
-            // verify the required parameter 'path' is set
-            if (path == null)
-                throw new ApiException(400, "Missing required parameter 'path' when calling CollectionsApi->CollectionsFsAddPost");
 
             var localVarPath = "/collections/fs/add";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1322,7 +1335,8 @@ namespace estuary-client.Api
 
             if (coluuid != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "coluuid", coluuid)); // query parameter
             if (content != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "content", content)); // query parameter
-            if (path != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "path", path)); // query parameter
+            if (dir != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "dir", dir)); // query parameter
+            if (overwrite != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "overwrite", overwrite)); // query parameter
             // authentication (bearerAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
             {
@@ -1353,11 +1367,12 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="coluuid">Collection ID</param>
         /// <param name="content">Content</param>
-        /// <param name="path">Path to file</param>
+        /// <param name="dir">Directory inside collection (optional)</param>
+        /// <param name="overwrite">Overwrite file if already exists in path (optional)</param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> CollectionsFsAddPostAsync (string coluuid, string content, string path)
+        public async System.Threading.Tasks.Task<string> CollectionsFsAddPostAsync (string coluuid, string content, string dir = null, string overwrite = null)
         {
-             ApiResponse<string> localVarResponse = await CollectionsFsAddPostAsyncWithHttpInfo(coluuid, content, path);
+             ApiResponse<string> localVarResponse = await CollectionsFsAddPostAsyncWithHttpInfo(coluuid, content, dir, overwrite);
              return localVarResponse.Data;
 
         }
@@ -1368,9 +1383,10 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="coluuid">Collection ID</param>
         /// <param name="content">Content</param>
-        /// <param name="path">Path to file</param>
+        /// <param name="dir">Directory inside collection (optional)</param>
+        /// <param name="overwrite">Overwrite file if already exists in path (optional)</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> CollectionsFsAddPostAsyncWithHttpInfo (string coluuid, string content, string path)
+        public async System.Threading.Tasks.Task<ApiResponse<string>> CollectionsFsAddPostAsyncWithHttpInfo (string coluuid, string content, string dir = null, string overwrite = null)
         {
             // verify the required parameter 'coluuid' is set
             if (coluuid == null)
@@ -1378,9 +1394,6 @@ namespace estuary-client.Api
             // verify the required parameter 'content' is set
             if (content == null)
                 throw new ApiException(400, "Missing required parameter 'content' when calling CollectionsApi->CollectionsFsAddPost");
-            // verify the required parameter 'path' is set
-            if (path == null)
-                throw new ApiException(400, "Missing required parameter 'path' when calling CollectionsApi->CollectionsFsAddPost");
 
             var localVarPath = "/collections/fs/add";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1405,7 +1418,8 @@ namespace estuary-client.Api
 
             if (coluuid != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "coluuid", coluuid)); // query parameter
             if (content != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "content", content)); // query parameter
-            if (path != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "path", path)); // query parameter
+            if (dir != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "dir", dir)); // query parameter
+            if (overwrite != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "overwrite", overwrite)); // query parameter
             // authentication (bearerAuth) required
             if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
             {

@@ -36,7 +36,7 @@ import javax.validation.constraints.*;
 
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2023-01-03T16:17:33.393Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2023-01-04T12:55:54.251Z[GMT]")
 public class ContentApi  {
 
   @Context SecurityContext securityContext;
@@ -78,8 +78,10 @@ public class ContentApi  {
 @Parameter(description = "IPFS Body" ,required=true) TypesIpfsPin body
 ,  
 @Parameter(description = "Ignore Dupes")  @QueryParam("ignore-dupes") String ignoreDupes
+,  
+@Parameter(description = "Overwrite conflicting files in collections")  @QueryParam("overwrite") String overwrite
 ) {
-        return delegate.contentAddIpfsPost(body, ignoreDupes, securityContext);
+        return delegate.contentAddIpfsPost(body, ignoreDupes, overwrite, securityContext);
     }
 
     @POST
@@ -99,11 +101,13 @@ public class ContentApi  {
 ,  
 @Parameter(description = "Ignore Dupes true/false")  @QueryParam("ignore-dupes") String ignoreDupes
 ,  
+@Parameter(description = "Overwrite files with the same path on same collection")  @QueryParam("overwrite") String overwrite
+,  
 @Parameter(description = "Lazy Provide true/false")  @QueryParam("lazy-provide") String lazyProvide
 ,  
 @Parameter(description = "Directory")  @QueryParam("dir") String dir
 ) {
-        return delegate.contentAddPost(dataInputStream, dataDetail, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, securityContext);
+        return delegate.contentAddPost(dataInputStream, dataDetail, filename, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir, securityContext);
     }
 
     @GET

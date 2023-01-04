@@ -151,7 +151,9 @@ public class PinningApiTest {
     @Test
     public void pinningPinsPostTest() {
         TypesIpfsPin body = null;
-        //TypesIpfsPinStatusResponse response = api.pinningPinsPost(body);
+        String ignoreDupes = null;
+        String overwrite = null;
+        //TypesIpfsPinStatusResponse response = api.pinningPinsPost(body, ignoreDupes, overwrite);
         //assertNotNull(response);
         // TODO: test validations
         

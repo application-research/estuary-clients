@@ -104,6 +104,13 @@ class UtilContentCreateBodyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "overwrite"
+     */
+    public function testPropertyOverwrite()
+    {
+    }
+
+    /**
      * Test attribute "root"
      */
     public function testPropertyRoot()

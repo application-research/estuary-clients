@@ -97,13 +97,15 @@ describe("CollectionsApi", () => {
     const body: Array<number> = undefined
     const coluuid: string = "coluuid_example"
     const dir: string = "dir_example"
-    return expect(instance.collectionsColuuidPost(body, coluuid, dir, {})).resolves.toBe(null)
+    const overwrite: string = "overwrite_example"
+    return expect(instance.collectionsColuuidPost(body, coluuid, dir, overwrite, {})).resolves.toBe(null)
   })
   test("collectionsFsAddPost", () => {
     const coluuid: string = "coluuid_example"
     const content: string = "content_example"
-    const path: string = "path_example"
-    return expect(instance.collectionsFsAddPost(coluuid, content, path, {})).resolves.toBe(null)
+    const dir: string = "dir_example"
+    const overwrite: string = "overwrite_example"
+    return expect(instance.collectionsFsAddPost(coluuid, content, dir, overwrite, {})).resolves.toBe(null)
   })
   test("collectionsGet", () => {
     return expect(instance.collectionsGet({})).resolves.toBe(null)
@@ -136,7 +138,8 @@ describe("ContentApi", () => {
   test("contentAddIpfsPost", () => {
     const body: api.TypesIpfsPin = undefined
     const ignoreDupes: string = "ignoreDupes_example"
-    return expect(instance.contentAddIpfsPost(body, ignoreDupes, {})).resolves.toBe(null)
+    const overwrite: string = "overwrite_example"
+    return expect(instance.contentAddIpfsPost(body, ignoreDupes, overwrite, {})).resolves.toBe(null)
   })
   test("contentAddPost", () => {
     const data: Blob = "data_example"
@@ -144,9 +147,10 @@ describe("ContentApi", () => {
     const coluuid: string = "coluuid_example"
     const replication: number = 56
     const ignoreDupes: string = "ignoreDupes_example"
+    const overwrite: string = "overwrite_example"
     const lazyProvide: string = "lazyProvide_example"
     const dir: string = "dir_example"
-    return expect(instance.contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, {})).resolves.toBe(null)
+    return expect(instance.contentAddPost(data, filename, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir, {})).resolves.toBe(null)
   })
   test("contentAggregatedContentGet", () => {
     const content: string = "content_example"
@@ -381,7 +385,9 @@ describe("PinningApi", () => {
   })
   test("pinningPinsPost", () => {
     const body: api.TypesIpfsPin = undefined
-    return expect(instance.pinningPinsPost(body, {})).resolves.toBe(null)
+    const ignoreDupes: string = "ignoreDupes_example"
+    const overwrite: string = "overwrite_example"
+    return expect(instance.pinningPinsPost(body, ignoreDupes, overwrite, {})).resolves.toBe(null)
   })
 })
 

@@ -134,6 +134,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
 
  **ignoreDupes** | **optional.**| Ignore Dupes | 
+ **overwrite** | **optional.**| Overwrite conflicting files in collections | 
 
 ### Return type
 
@@ -174,6 +175,7 @@ Name | Type | Description  | Notes
  **coluuid** | **optional.**| Collection UUID | 
  **replication** | **optional.**| Replication value | 
  **ignoreDupes** | **optional.**| Ignore Dupes true/false | 
+ **overwrite** | **optional.**| Overwrite files with the same path on same collection | 
  **lazyProvide** | **optional.**| Lazy Provide true/false | 
  **dir** | **optional.**| Directory | 
 

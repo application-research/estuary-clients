@@ -79,12 +79,12 @@ class PinningApi(
     } ~
     path() { () => 
       post {
-        parameters() { () =>
+        parameters("ignore-dupes".as[String].?, "overwrite".as[String].?) { (ignoreDupes, overwrite) =>
           
             formFields() { () =>
               
                 entity(as[Types.IpfsPin]){ body =>
-                  pinningService.pinningPinsPost(body = body)
+                  pinningService.pinningPinsPost(body = body, ignoreDupes = ignoreDupes, overwrite = overwrite)
                 }
              
             }
@@ -157,7 +157,7 @@ trait PinningApiService {
    * Code: 202, Message: Accepted, DataType: types.IpfsPinStatusResponse
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
-  def pinningPinsPost(body: Types.IpfsPin)
+  def pinningPinsPost(body: Types.IpfsPin, ignoreDupes: Option[String], overwrite: Option[String])
       (implicit toEntityMarshallertypes.IpfsPinStatusResponse: ToEntityMarshaller[types.IpfsPinStatusResponse], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
 }

@@ -211,7 +211,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collectionsColuuidPost**
-> String collectionsColuuidPost(body, coluuid, dir)
+> String collectionsColuuidPost(body, coluuid, dir, overwrite)
 
 Add contents to a collection
 
@@ -229,9 +229,10 @@ var api_instance = new CollectionsApi();
 var body = [new List&lt;int&gt;()]; // List<int> | Content IDs to add to collection
 var coluuid = coluuid_example; // String | Collection UUID
 var dir = dir_example; // String | Directory
+var overwrite = overwrite_example; // String | Overwrite conflicting files
 
 try {
-    var result = api_instance.collectionsColuuidPost(body, coluuid, dir);
+    var result = api_instance.collectionsColuuidPost(body, coluuid, dir, overwrite);
     print(result);
 } catch (e) {
     print("Exception when calling CollectionsApi->collectionsColuuidPost: $e\n");
@@ -245,6 +246,7 @@ Name | Type | Description  | Notes
  **body** | [**List&lt;int&gt;**](int.md)| Content IDs to add to collection | 
  **coluuid** | **String**| Collection UUID | 
  **dir** | **String**| Directory | [optional] 
+ **overwrite** | **String**| Overwrite conflicting files | [optional] 
 
 ### Return type
 
@@ -262,7 +264,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **collectionsFsAddPost**
-> String collectionsFsAddPost(coluuid, content, path)
+> String collectionsFsAddPost(coluuid, content, dir, overwrite)
 
 Add a file to a collection
 
@@ -279,10 +281,11 @@ import 'package:swagger/api.dart';
 var api_instance = new CollectionsApi();
 var coluuid = coluuid_example; // String | Collection ID
 var content = content_example; // String | Content
-var path = path_example; // String | Path to file
+var dir = dir_example; // String | Directory inside collection
+var overwrite = overwrite_example; // String | Overwrite file if already exists in path
 
 try {
-    var result = api_instance.collectionsFsAddPost(coluuid, content, path);
+    var result = api_instance.collectionsFsAddPost(coluuid, content, dir, overwrite);
     print(result);
 } catch (e) {
     print("Exception when calling CollectionsApi->collectionsFsAddPost: $e\n");
@@ -295,7 +298,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **coluuid** | **String**| Collection ID | 
  **content** | **String**| Content | 
- **path** | **String**| Path to file | 
+ **dir** | **String**| Directory inside collection | [optional] 
+ **overwrite** | **String**| Overwrite file if already exists in path | [optional] 
 
 ### Return type
 

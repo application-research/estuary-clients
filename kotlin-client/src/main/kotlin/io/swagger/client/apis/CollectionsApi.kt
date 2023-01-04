@@ -130,12 +130,13 @@ class CollectionsApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClien
      * @param body Content IDs to add to collection 
      * @param coluuid Collection UUID 
      * @param dir Directory (optional)
+     * @param overwrite Overwrite conflicting files (optional)
      * @return kotlin.String
      */
     @Suppress("UNCHECKED_CAST")
-    fun collectionsColuuidPost(body: kotlin.Array<kotlin.Int>, coluuid: kotlin.String, dir: kotlin.String? = null): kotlin.String {
+    fun collectionsColuuidPost(body: kotlin.Array<kotlin.Int>, coluuid: kotlin.String, dir: kotlin.String? = null, overwrite: kotlin.String? = null): kotlin.String {
         val localVariableBody: kotlin.Any? = body
-        val localVariableQuery: MultiValueMap = mapOf("dir" to listOf("$dir"))
+        val localVariableQuery: MultiValueMap = mapOf("dir" to listOf("$dir"), "overwrite" to listOf("$overwrite"))
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
                 "/collections/{coluuid}".replace("{" + "coluuid" + "}", "$coluuid"), query = localVariableQuery
@@ -157,12 +158,13 @@ class CollectionsApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClien
      * This endpoint adds a file to a collection
      * @param coluuid Collection ID 
      * @param content Content 
-     * @param path Path to file 
+     * @param dir Directory inside collection (optional)
+     * @param overwrite Overwrite file if already exists in path (optional)
      * @return kotlin.String
      */
     @Suppress("UNCHECKED_CAST")
-    fun collectionsFsAddPost(coluuid: kotlin.String, content: kotlin.String, path: kotlin.String): kotlin.String {
-        val localVariableQuery: MultiValueMap = mapOf("coluuid" to listOf("$coluuid"), "content" to listOf("$content"), "path" to listOf("$path"))
+    fun collectionsFsAddPost(coluuid: kotlin.String, content: kotlin.String, dir: kotlin.String? = null, overwrite: kotlin.String? = null): kotlin.String {
+        val localVariableQuery: MultiValueMap = mapOf("coluuid" to listOf("$coluuid"), "content" to listOf("$content"), "dir" to listOf("$dir"), "overwrite" to listOf("$overwrite"))
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
                 "/collections/fs/add", query = localVariableQuery

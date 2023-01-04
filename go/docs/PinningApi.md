@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PinningPinsPost**
-> TypesIpfsPinStatusResponse PinningPinsPost(ctx, body)
+> TypesIpfsPinStatusResponse PinningPinsPost(ctx, body, optional)
 Add and pin object
 
 This endpoint adds a pin to the IPFS daemon.
@@ -131,6 +131,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
+ **optional** | ***PinningApiPinningPinsPostOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a PinningApiPinningPinsPostOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+ **ignoreDupes** | **optional.**| Ignore Dupes | 
+ **overwrite** | **optional.**| Overwrite conflicting files in collections | 
 
 ### Return type
 

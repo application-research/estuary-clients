@@ -341,7 +341,8 @@ api_instance = SwaggerClient::CollectionsApi.new
 body = [56] # Array<Integer> | Content IDs to add to collection
 coluuid = 'coluuid_example' # String | Collection UUID
 opts = { 
-  dir: 'dir_example' # String | Directory
+  dir: 'dir_example', # String | Directory
+  overwrite: 'overwrite_example' # String | Overwrite conflicting files
 }
 
 begin
@@ -362,12 +363,14 @@ end
 api_instance = SwaggerClient::CollectionsApi.new
 coluuid = 'coluuid_example' # String | Collection ID
 content = 'content_example' # String | Content
-path = 'path_example' # String | Path to file
-
+opts = { 
+  dir: 'dir_example', # String | Directory inside collection
+  overwrite: 'overwrite_example' # String | Overwrite file if already exists in path
+}
 
 begin
   #Add a file to a collection
-  result = api_instance.collections_fs_add_post(coluuid, content, path)
+  result = api_instance.collections_fs_add_post(coluuid, content, opts)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling CollectionsApi->collections_fs_add_post: #{e}"
@@ -477,7 +480,8 @@ end
 api_instance = SwaggerClient::ContentApi.new
 body = SwaggerClient::TypesIpfsPin.new # TypesIpfsPin | IPFS Body
 opts = { 
-  ignore_dupes: 'ignore_dupes_example' # String | Ignore Dupes
+  ignore_dupes: 'ignore_dupes_example', # String | Ignore Dupes
+  overwrite: 'overwrite_example' # String | Overwrite conflicting files in collections
 }
 
 begin
@@ -502,6 +506,7 @@ opts = {
   coluuid: 'coluuid_example', # String | Collection UUID
   replication: 56, # Integer | Replication value
   ignore_dupes: 'ignore_dupes_example', # String | Ignore Dupes true/false
+  overwrite: 'overwrite_example', # String | Overwrite files with the same path on same collection
   lazy_provide: 'lazy_provide_example', # String | Lazy Provide true/false
   dir: 'dir_example' # String | Directory
 }
@@ -1372,11 +1377,14 @@ end
 
 api_instance = SwaggerClient::PinningApi.new
 body = SwaggerClient::TypesIpfsPin.new # TypesIpfsPin | Pin Body {cid:cid, name:name}
-
+opts = { 
+  ignore_dupes: 'ignore_dupes_example', # String | Ignore Dupes
+  overwrite: 'overwrite_example' # String | Overwrite conflicting files in collections
+}
 
 begin
   #Add and pin object
-  result = api_instance.pinning_pins_post(body)
+  result = api_instance.pinning_pins_post(body, opts)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling PinningApi->pinning_pins_post: #{e}"

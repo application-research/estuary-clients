@@ -84,6 +84,8 @@ describe 'PinningApi' do
   # This endpoint adds a pin to the IPFS daemon.
   # @param body Pin Body {cid:cid, name:name}
   # @param [Hash] opts the optional parameters
+  # @option opts [String] :ignore_dupes Ignore Dupes
+  # @option opts [String] :overwrite Overwrite conflicting files in collections
   # @return [TypesIpfsPinStatusResponse]
   describe 'pinning_pins_post test' do
     it 'should work' do

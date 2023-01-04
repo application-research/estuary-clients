@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
  * UtilContentCreateBody
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-03T16:17:32.784Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-04T12:55:54.653Z[GMT]")
 
 
 public class UtilContentCreateBody   {
@@ -28,6 +28,9 @@ public class UtilContentCreateBody   {
 
   @JsonProperty("name")
   private String name = null;
+
+  @JsonProperty("overwrite")
+  private Boolean overwrite = null;
 
   @JsonProperty("root")
   private String root = null;
@@ -111,6 +114,25 @@ public class UtilContentCreateBody   {
     this.name = name;
   }
 
+  public UtilContentCreateBody overwrite(Boolean overwrite) {
+    this.overwrite = overwrite;
+    return this;
+  }
+
+  /**
+   * Get overwrite
+   * @return overwrite
+   **/
+  @Schema(description = "")
+  
+    public Boolean isOverwrite() {
+    return overwrite;
+  }
+
+  public void setOverwrite(Boolean overwrite) {
+    this.overwrite = overwrite;
+  }
+
   public UtilContentCreateBody root(String root) {
     this.root = root;
     return this;
@@ -164,13 +186,14 @@ public class UtilContentCreateBody   {
         Objects.equals(this.dir, utilContentCreateBody.dir) &&
         Objects.equals(this.location, utilContentCreateBody.location) &&
         Objects.equals(this.name, utilContentCreateBody.name) &&
+        Objects.equals(this.overwrite, utilContentCreateBody.overwrite) &&
         Objects.equals(this.root, utilContentCreateBody.root) &&
         Objects.equals(this.type, utilContentCreateBody.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(coluuid, dir, location, name, root, type);
+    return Objects.hash(coluuid, dir, location, name, overwrite, root, type);
   }
 
   @Override
@@ -182,6 +205,7 @@ public class UtilContentCreateBody   {
     sb.append("    dir: ").append(toIndentedString(dir)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    overwrite: ").append(toIndentedString(overwrite)).append("\n");
     sb.append("    root: ").append(toIndentedString(root)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");

@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2023-01-03T16:17:32.325Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2023-01-04T12:55:53.483Z[GMT]")
 @Controller
 public interface CollectionsApi {
 
@@ -94,6 +94,7 @@ public interface CollectionsApi {
     default Single<HttpResponse<String>> collectionsColuuidPost(@Parameter(description = "Content IDs to add to collection") @Valid @Body List<Integer> body
 ,@Parameter(description = "Collection UUID") @PathVariable("coluuid") String coluuid
 ,@Nullable @Parameter(description = "Directory") @Valid @QueryValue(value = "dir") String dir
+,@Nullable @Parameter(description = "Overwrite conflicting files") @Valid @QueryValue(value = "overwrite") String overwrite
 ) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
@@ -108,7 +109,8 @@ public interface CollectionsApi {
     @Post(value = "/collections/fs/add", produces = { "application/json" })
     default Single<HttpResponse<String>> collectionsFsAddPost(@NotNull @Parameter(description = "Collection ID") @Valid @QueryValue(value = "coluuid") String coluuid
 ,@NotNull @Parameter(description = "Content") @Valid @QueryValue(value = "content") String content
-,@NotNull @Parameter(description = "Path to file") @Valid @QueryValue(value = "path") String path
+,@Nullable @Parameter(description = "Directory inside collection") @Valid @QueryValue(value = "dir") String dir
+,@Nullable @Parameter(description = "Overwrite file if already exists in path") @Valid @QueryValue(value = "overwrite") String overwrite
 ) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();

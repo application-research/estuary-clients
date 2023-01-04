@@ -252,16 +252,28 @@ export class PinningService {
      * Add and pin object
      * This endpoint adds a pin to the IPFS daemon.
      * @param body Pin Body {cid:cid, name:name}
+     * @param ignoreDupes Ignore Dupes
+     * @param overwrite Overwrite conflicting files in collections
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public pinningPinsPost(body: TypesIpfsPin, observe?: 'body', reportProgress?: boolean): Observable<TypesIpfsPinStatusResponse>;
-    public pinningPinsPost(body: TypesIpfsPin, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<TypesIpfsPinStatusResponse>>;
-    public pinningPinsPost(body: TypesIpfsPin, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<TypesIpfsPinStatusResponse>>;
-    public pinningPinsPost(body: TypesIpfsPin, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public pinningPinsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, observe?: 'body', reportProgress?: boolean): Observable<TypesIpfsPinStatusResponse>;
+    public pinningPinsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<TypesIpfsPinStatusResponse>>;
+    public pinningPinsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<TypesIpfsPinStatusResponse>>;
+    public pinningPinsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling pinningPinsPost.');
+        }
+
+
+
+        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
+        if (ignoreDupes !== undefined && ignoreDupes !== null) {
+            queryParameters = queryParameters.set('ignore-dupes', <any>ignoreDupes);
+        }
+        if (overwrite !== undefined && overwrite !== null) {
+            queryParameters = queryParameters.set('overwrite', <any>overwrite);
         }
 
         let headers = this.defaultHeaders;
@@ -292,6 +304,7 @@ export class PinningService {
         return this.httpClient.request<TypesIpfsPinStatusResponse>('post',`${this.basePath}/pinning/pins`,
             {
                 body: body,
+                params: queryParameters,
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
                 observe: observe,

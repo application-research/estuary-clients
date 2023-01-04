@@ -220,7 +220,7 @@ class CollectionsApi {
   /// Add contents to a collection
   ///
   /// This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
-  Future<String> collectionsColuuidPost(List<int> body, String coluuid, { String dir }) async {
+  Future<String> collectionsColuuidPost(List<int> body, String coluuid, { String dir, String overwrite }) async {
     Object postBody = body;
 
     // verify required params are set
@@ -240,6 +240,9 @@ class CollectionsApi {
     Map<String, String> formParams = {};
     if(dir != null) {
       queryParams.addAll(_convertParametersForCollectionFormat("", "dir", dir));
+    }
+    if(overwrite != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "overwrite", overwrite));
     }
     
     List<String> contentTypes = ["application/json"];
@@ -277,7 +280,7 @@ class CollectionsApi {
   /// Add a file to a collection
   ///
   /// This endpoint adds a file to a collection
-  Future<String> collectionsFsAddPost(String coluuid, String content, String path) async {
+  Future<String> collectionsFsAddPost(String coluuid, String content, { String dir, String overwrite }) async {
     Object postBody = null;
 
     // verify required params are set
@@ -286,9 +289,6 @@ class CollectionsApi {
     }
     if(content == null) {
      throw new ApiException(400, "Missing required param: content");
-    }
-    if(path == null) {
-     throw new ApiException(400, "Missing required param: path");
     }
 
     // create path and map variables
@@ -300,7 +300,12 @@ class CollectionsApi {
     Map<String, String> formParams = {};
       queryParams.addAll(_convertParametersForCollectionFormat("", "coluuid", coluuid));
       queryParams.addAll(_convertParametersForCollectionFormat("", "content", content));
-      queryParams.addAll(_convertParametersForCollectionFormat("", "path", path));
+    if(dir != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "dir", dir));
+    }
+    if(overwrite != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "overwrite", overwrite));
+    }
     
     List<String> contentTypes = [];
 

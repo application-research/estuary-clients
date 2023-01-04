@@ -47,7 +47,7 @@ void main() {
     //
     // This endpoint adds a pin to the IPFS daemon.
     //
-    //Future<TypesIpfsPinStatusResponse> pinningPinsPost(TypesIpfsPin body) async
+    //Future<TypesIpfsPinStatusResponse> pinningPinsPost(TypesIpfsPin body, { String ignoreDupes, String overwrite }) async
     test('test pinningPinsPost', () async {
       // TODO
     });

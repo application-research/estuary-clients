@@ -35,7 +35,7 @@ import javax.validation.constraints.*;
 @Path("/pinning")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2023-01-03T16:17:31.348Z[GMT]")public class PinningApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2023-01-04T12:55:53.653Z[GMT]")public class PinningApi  {
 
    private PinningApiService delegate;
 
@@ -126,8 +126,10 @@ import javax.validation.constraints.*;
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response pinningPinsPost(@Parameter(in = ParameterIn.DEFAULT, description = "Pin Body {cid:cid, name:name}" ,required=true) TypesIpfsPin body
 
+,@Parameter(in = ParameterIn.QUERY, description = "Ignore Dupes") @QueryParam("ignore-dupes") String ignoreDupes
+,@Parameter(in = ParameterIn.QUERY, description = "Overwrite conflicting files in collections") @QueryParam("overwrite") String overwrite
 ,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return delegate.pinningPinsPost(body,securityContext);
+        return delegate.pinningPinsPost(body,ignoreDupes,overwrite,securityContext);
     }
 }

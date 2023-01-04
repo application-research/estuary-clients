@@ -19,6 +19,7 @@ import io.swagger.client.models.UtilContentType
  * @param dir 
  * @param location 
  * @param name 
+ * @param overwrite 
  * @param root 
  * @param type 
  */
@@ -28,6 +29,7 @@ data class UtilContentCreateBody (
     val dir: kotlin.String? = null,
     val location: kotlin.String? = null,
     val name: kotlin.String? = null,
+    val overwrite: kotlin.Boolean? = null,
     val root: kotlin.String? = null,
     val type: UtilContentType? = null
 ) {

@@ -25,7 +25,7 @@ import javax.validation.Valid;
 
 @Path("/content")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2023-01-03T16:17:33.106Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2023-01-04T12:55:56.542Z[GMT]")
 public class ContentApi {
 
     @POST
@@ -62,6 +62,9 @@ public class ContentApi {
     public Response contentAddIpfsPost(@Valid TypesIpfsPin body,  @QueryParam("ignore-dupes") 
 
  @Parameter(description = "Ignore Dupes")  String ignoreDupes
+,  @QueryParam("overwrite") 
+
+ @Parameter(description = "Overwrite conflicting files in collections")  String overwrite
 ) {
         return Response.ok().entity("magic!").build();
     }
@@ -86,6 +89,9 @@ public class ContentApi {
 ,  @QueryParam("ignore-dupes") 
 
  @Parameter(description = "Ignore Dupes true/false")  String ignoreDupes
+,  @QueryParam("overwrite") 
+
+ @Parameter(description = "Overwrite files with the same path on same collection")  String overwrite
 ,  @QueryParam("lazy-provide") 
 
  @Parameter(description = "Lazy Provide true/false")  String lazyProvide

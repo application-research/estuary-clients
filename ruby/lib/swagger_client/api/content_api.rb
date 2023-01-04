@@ -191,6 +191,7 @@ module SwaggerClient
     # @param body IPFS Body
     # @param [Hash] opts the optional parameters
     # @option opts [String] :ignore_dupes Ignore Dupes
+    # @option opts [String] :overwrite Overwrite conflicting files in collections
     # @return [String]
     def content_add_ipfs_post(body, opts = {})
       data, _status_code, _headers = content_add_ipfs_post_with_http_info(body, opts)
@@ -202,6 +203,7 @@ module SwaggerClient
     # @param body IPFS Body
     # @param [Hash] opts the optional parameters
     # @option opts [String] :ignore_dupes Ignore Dupes
+    # @option opts [String] :overwrite Overwrite conflicting files in collections
     # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
     def content_add_ipfs_post_with_http_info(body, opts = {})
       if @api_client.config.debugging
@@ -217,6 +219,7 @@ module SwaggerClient
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'ignore-dupes'] = opts[:'ignore_dupes'] if !opts[:'ignore_dupes'].nil?
+      query_params[:'overwrite'] = opts[:'overwrite'] if !opts[:'overwrite'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -255,6 +258,7 @@ module SwaggerClient
     # @option opts [String] :coluuid Collection UUID
     # @option opts [Integer] :replication Replication value
     # @option opts [String] :ignore_dupes Ignore Dupes true/false
+    # @option opts [String] :overwrite Overwrite files with the same path on same collection
     # @option opts [String] :lazy_provide Lazy Provide true/false
     # @option opts [String] :dir Directory
     # @return [UtilContentAddResponse]
@@ -271,6 +275,7 @@ module SwaggerClient
     # @option opts [String] :coluuid Collection UUID
     # @option opts [Integer] :replication Replication value
     # @option opts [String] :ignore_dupes Ignore Dupes true/false
+    # @option opts [String] :overwrite Overwrite files with the same path on same collection
     # @option opts [String] :lazy_provide Lazy Provide true/false
     # @option opts [String] :dir Directory
     # @return [Array<(UtilContentAddResponse, Integer, Hash)>] UtilContentAddResponse data, response status code and response headers
@@ -294,6 +299,7 @@ module SwaggerClient
       query_params[:'coluuid'] = opts[:'coluuid'] if !opts[:'coluuid'].nil?
       query_params[:'replication'] = opts[:'replication'] if !opts[:'replication'].nil?
       query_params[:'ignore-dupes'] = opts[:'ignore_dupes'] if !opts[:'ignore_dupes'].nil?
+      query_params[:'overwrite'] = opts[:'overwrite'] if !opts[:'overwrite'].nil?
       query_params[:'lazy-provide'] = opts[:'lazy_provide'] if !opts[:'lazy_provide'].nil?
       query_params[:'dir'] = opts[:'dir'] if !opts[:'dir'].nil?
 

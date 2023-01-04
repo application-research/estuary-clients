@@ -279,7 +279,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="collectionscoluuidpost"></a>
 # **CollectionsColuuidPost**
-> string CollectionsColuuidPost (List<int?> body, string coluuid, string dir = null)
+> string CollectionsColuuidPost (List<int?> body, string coluuid, string dir = null, string overwrite = null)
 
 Add contents to a collection
 
@@ -308,11 +308,12 @@ namespace Example
             var body = new List<int?>(); // List<int?> | Content IDs to add to collection
             var coluuid = coluuid_example;  // string | Collection UUID
             var dir = dir_example;  // string | Directory (optional) 
+            var overwrite = overwrite_example;  // string | Overwrite conflicting files (optional) 
 
             try
             {
                 // Add contents to a collection
-                string result = apiInstance.CollectionsColuuidPost(body, coluuid, dir);
+                string result = apiInstance.CollectionsColuuidPost(body, coluuid, dir, overwrite);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -331,6 +332,7 @@ Name | Type | Description  | Notes
  **body** | [**List&lt;int?&gt;**](int?.md)| Content IDs to add to collection | 
  **coluuid** | **string**| Collection UUID | 
  **dir** | **string**| Directory | [optional] 
+ **overwrite** | **string**| Overwrite conflicting files | [optional] 
 
 ### Return type
 
@@ -348,7 +350,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="collectionsfsaddpost"></a>
 # **CollectionsFsAddPost**
-> string CollectionsFsAddPost (string coluuid, string content, string path)
+> string CollectionsFsAddPost (string coluuid, string content, string dir = null, string overwrite = null)
 
 Add a file to a collection
 
@@ -376,12 +378,13 @@ namespace Example
             var apiInstance = new CollectionsApi();
             var coluuid = coluuid_example;  // string | Collection ID
             var content = content_example;  // string | Content
-            var path = path_example;  // string | Path to file
+            var dir = dir_example;  // string | Directory inside collection (optional) 
+            var overwrite = overwrite_example;  // string | Overwrite file if already exists in path (optional) 
 
             try
             {
                 // Add a file to a collection
-                string result = apiInstance.CollectionsFsAddPost(coluuid, content, path);
+                string result = apiInstance.CollectionsFsAddPost(coluuid, content, dir, overwrite);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -399,7 +402,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **coluuid** | **string**| Collection ID | 
  **content** | **string**| Content | 
- **path** | **string**| Path to file | 
+ **dir** | **string**| Directory inside collection | [optional] 
+ **overwrite** | **string**| Overwrite file if already exists in path | [optional] 
 
 ### Return type
 

@@ -13,8 +13,8 @@ module.exports.pinningPinsGET = function pinningPinsGET (req, res, next) {
     });
 };
 
-module.exports.pinningPinsPOST = function pinningPinsPOST (req, res, next, body) {
-  Pinning.pinningPinsPOST(body)
+module.exports.pinningPinsPOST = function pinningPinsPOST (req, res, next, body, ignoreDupes, overwrite) {
+  Pinning.pinningPinsPOST(body, ignoreDupes, overwrite)
     .then(function (response) {
       utils.writeJson(res, response);
     })

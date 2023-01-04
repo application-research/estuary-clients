@@ -23,8 +23,8 @@ module.exports.adminInvitesGET = function adminInvitesGET (req, res, next) {
     });
 };
 
-module.exports.contentAddPOST = function contentAddPOST (req, res, next, coluuid, replication, ignoreDupes, lazyProvide, dir) {
-  Content.contentAddPOST(coluuid, replication, ignoreDupes, lazyProvide, dir)
+module.exports.contentAddPOST = function contentAddPOST (req, res, next, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir) {
+  Content.contentAddPOST(coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -43,8 +43,8 @@ module.exports.contentAdd_carPOST = function contentAdd_carPOST (req, res, next,
     });
 };
 
-module.exports.contentAdd_ipfsPOST = function contentAdd_ipfsPOST (req, res, next, body, ignoreDupes) {
-  Content.contentAdd_ipfsPOST(body, ignoreDupes)
+module.exports.contentAdd_ipfsPOST = function contentAdd_ipfsPOST (req, res, next, body, ignoreDupes, overwrite) {
+  Content.contentAdd_ipfsPOST(body, ignoreDupes, overwrite)
     .then(function (response) {
       utils.writeJson(res, response);
     })

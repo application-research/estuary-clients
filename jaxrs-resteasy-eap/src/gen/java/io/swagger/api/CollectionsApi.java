@@ -30,7 +30,7 @@ import javax.validation.constraints.*;
 @Path("/collections")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2023-01-03T16:17:32.399Z[GMT]")public interface CollectionsApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2023-01-04T12:55:54.380Z[GMT]")public interface CollectionsApi  {
    
     @POST
     @Path("/{coluuid}/commit")
@@ -95,7 +95,7 @@ import javax.validation.constraints.*;
                 @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
                 @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
          })
-    Response collectionsColuuidPost(@Parameter(description = "Content IDs to add to collection" ,required=true) List<Integer> body, @PathParam("coluuid") String coluuid, @QueryParam("dir") String dir,@Context SecurityContext securityContext);
+    Response collectionsColuuidPost(@Parameter(description = "Content IDs to add to collection" ,required=true) List<Integer> body, @PathParam("coluuid") String coluuid, @QueryParam("dir") String dir, @QueryParam("overwrite") String overwrite,@Context SecurityContext securityContext);
 
     @POST
     @Path("/fs/add")
@@ -108,7 +108,7 @@ import javax.validation.constraints.*;
                 @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
                 @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
          })
-    Response collectionsFsAddPost( @NotNull @QueryParam("coluuid") String coluuid, @NotNull @QueryParam("content") String content, @NotNull @QueryParam("path") String path,@Context SecurityContext securityContext);
+    Response collectionsFsAddPost( @NotNull @QueryParam("coluuid") String coluuid, @NotNull @QueryParam("content") String content, @QueryParam("dir") String dir, @QueryParam("overwrite") String overwrite,@Context SecurityContext securityContext);
 
     @GET
     @Path("/")

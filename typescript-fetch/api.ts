@@ -657,6 +657,12 @@ export interface UtilContentCreateBody {
     name?: string;
     /**
      * 
+     * @type {boolean}
+     * @memberof UtilContentCreateBody
+     */
+    overwrite?: boolean;
+    /**
+     * 
      * @type {string}
      * @memberof UtilContentCreateBody
      */
@@ -1887,10 +1893,11 @@ export const CollectionsApiFetchParamCreator = function (configuration?: Configu
          * @param {Array<number>} body Content IDs to add to collection
          * @param {string} coluuid Collection UUID
          * @param {string} [dir] Directory
+         * @param {string} [overwrite] Overwrite conflicting files
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsColuuidPost(body: Array<number>, coluuid: string, dir?: string, options: any = {}): FetchArgs {
+        collectionsColuuidPost(body: Array<number>, coluuid: string, dir?: string, overwrite?: string, options: any = {}): FetchArgs {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling collectionsColuuidPost.');
@@ -1918,6 +1925,10 @@ export const CollectionsApiFetchParamCreator = function (configuration?: Configu
                 localVarQueryParameter['dir'] = dir;
             }
 
+            if (overwrite !== undefined) {
+                localVarQueryParameter['overwrite'] = overwrite;
+            }
+
             localVarHeaderParameter['Content-Type'] = 'application/json';
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -1937,11 +1948,12 @@ export const CollectionsApiFetchParamCreator = function (configuration?: Configu
          * @summary Add a file to a collection
          * @param {string} coluuid Collection ID
          * @param {string} content Content
-         * @param {string} path Path to file
+         * @param {string} [dir] Directory inside collection
+         * @param {string} [overwrite] Overwrite file if already exists in path
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsFsAddPost(coluuid: string, content: string, path: string, options: any = {}): FetchArgs {
+        collectionsFsAddPost(coluuid: string, content: string, dir?: string, overwrite?: string, options: any = {}): FetchArgs {
             // verify required parameter 'coluuid' is not null or undefined
             if (coluuid === null || coluuid === undefined) {
                 throw new RequiredError('coluuid','Required parameter coluuid was null or undefined when calling collectionsFsAddPost.');
@@ -1949,10 +1961,6 @@ export const CollectionsApiFetchParamCreator = function (configuration?: Configu
             // verify required parameter 'content' is not null or undefined
             if (content === null || content === undefined) {
                 throw new RequiredError('content','Required parameter content was null or undefined when calling collectionsFsAddPost.');
-            }
-            // verify required parameter 'path' is not null or undefined
-            if (path === null || path === undefined) {
-                throw new RequiredError('path','Required parameter path was null or undefined when calling collectionsFsAddPost.');
             }
             const localVarPath = `/collections/fs/add`;
             const localVarUrlObj = url.parse(localVarPath, true);
@@ -1976,8 +1984,12 @@ export const CollectionsApiFetchParamCreator = function (configuration?: Configu
                 localVarQueryParameter['content'] = content;
             }
 
-            if (path !== undefined) {
-                localVarQueryParameter['path'] = path;
+            if (dir !== undefined) {
+                localVarQueryParameter['dir'] = dir;
+            }
+
+            if (overwrite !== undefined) {
+                localVarQueryParameter['overwrite'] = overwrite;
             }
 
             localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
@@ -2154,11 +2166,12 @@ export const CollectionsApiFp = function(configuration?: Configuration) {
          * @param {Array<number>} body Content IDs to add to collection
          * @param {string} coluuid Collection UUID
          * @param {string} [dir] Directory
+         * @param {string} [overwrite] Overwrite conflicting files
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsColuuidPost(body: Array<number>, coluuid: string, dir?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
-            const localVarFetchArgs = CollectionsApiFetchParamCreator(configuration).collectionsColuuidPost(body, coluuid, dir, options);
+        collectionsColuuidPost(body: Array<number>, coluuid: string, dir?: string, overwrite?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+            const localVarFetchArgs = CollectionsApiFetchParamCreator(configuration).collectionsColuuidPost(body, coluuid, dir, overwrite, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -2174,12 +2187,13 @@ export const CollectionsApiFp = function(configuration?: Configuration) {
          * @summary Add a file to a collection
          * @param {string} coluuid Collection ID
          * @param {string} content Content
-         * @param {string} path Path to file
+         * @param {string} [dir] Directory inside collection
+         * @param {string} [overwrite] Overwrite file if already exists in path
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsFsAddPost(coluuid: string, content: string, path: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
-            const localVarFetchArgs = CollectionsApiFetchParamCreator(configuration).collectionsFsAddPost(coluuid, content, path, options);
+        collectionsFsAddPost(coluuid: string, content: string, dir?: string, overwrite?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+            const localVarFetchArgs = CollectionsApiFetchParamCreator(configuration).collectionsFsAddPost(coluuid, content, dir, overwrite, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -2284,23 +2298,25 @@ export const CollectionsApiFactory = function (configuration?: Configuration, fe
          * @param {Array<number>} body Content IDs to add to collection
          * @param {string} coluuid Collection UUID
          * @param {string} [dir] Directory
+         * @param {string} [overwrite] Overwrite conflicting files
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsColuuidPost(body: Array<number>, coluuid: string, dir?: string, options?: any) {
-            return CollectionsApiFp(configuration).collectionsColuuidPost(body, coluuid, dir, options)(fetch, basePath);
+        collectionsColuuidPost(body: Array<number>, coluuid: string, dir?: string, overwrite?: string, options?: any) {
+            return CollectionsApiFp(configuration).collectionsColuuidPost(body, coluuid, dir, overwrite, options)(fetch, basePath);
         },
         /**
          * This endpoint adds a file to a collection
          * @summary Add a file to a collection
          * @param {string} coluuid Collection ID
          * @param {string} content Content
-         * @param {string} path Path to file
+         * @param {string} [dir] Directory inside collection
+         * @param {string} [overwrite] Overwrite file if already exists in path
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        collectionsFsAddPost(coluuid: string, content: string, path: string, options?: any) {
-            return CollectionsApiFp(configuration).collectionsFsAddPost(coluuid, content, path, options)(fetch, basePath);
+        collectionsFsAddPost(coluuid: string, content: string, dir?: string, overwrite?: string, options?: any) {
+            return CollectionsApiFp(configuration).collectionsFsAddPost(coluuid, content, dir, overwrite, options)(fetch, basePath);
         },
         /**
          * This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
@@ -2387,12 +2403,13 @@ export class CollectionsApi extends BaseAPI {
      * @param {Array<number>} body Content IDs to add to collection
      * @param {string} coluuid Collection UUID
      * @param {string} [dir] Directory
+     * @param {string} [overwrite] Overwrite conflicting files
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CollectionsApi
      */
-    public collectionsColuuidPost(body: Array<number>, coluuid: string, dir?: string, options?: any) {
-        return CollectionsApiFp(this.configuration).collectionsColuuidPost(body, coluuid, dir, options)(this.fetch, this.basePath);
+    public collectionsColuuidPost(body: Array<number>, coluuid: string, dir?: string, overwrite?: string, options?: any) {
+        return CollectionsApiFp(this.configuration).collectionsColuuidPost(body, coluuid, dir, overwrite, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -2400,13 +2417,14 @@ export class CollectionsApi extends BaseAPI {
      * @summary Add a file to a collection
      * @param {string} coluuid Collection ID
      * @param {string} content Content
-     * @param {string} path Path to file
+     * @param {string} [dir] Directory inside collection
+     * @param {string} [overwrite] Overwrite file if already exists in path
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof CollectionsApi
      */
-    public collectionsFsAddPost(coluuid: string, content: string, path: string, options?: any) {
-        return CollectionsApiFp(this.configuration).collectionsFsAddPost(coluuid, content, path, options)(this.fetch, this.basePath);
+    public collectionsFsAddPost(coluuid: string, content: string, dir?: string, overwrite?: string, options?: any) {
+        return CollectionsApiFp(this.configuration).collectionsFsAddPost(coluuid, content, dir, overwrite, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -2562,10 +2580,11 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
          * @summary Add IPFS object
          * @param {TypesIpfsPin} body IPFS Body
          * @param {string} [ignoreDupes] Ignore Dupes
+         * @param {string} [overwrite] Overwrite conflicting files in collections
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, options: any = {}): FetchArgs {
+        contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, options: any = {}): FetchArgs {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling contentAddIpfsPost.');
@@ -2586,6 +2605,10 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
 
             if (ignoreDupes !== undefined) {
                 localVarQueryParameter['ignore-dupes'] = ignoreDupes;
+            }
+
+            if (overwrite !== undefined) {
+                localVarQueryParameter['overwrite'] = overwrite;
             }
 
             localVarHeaderParameter['Content-Type'] = '*/*';
@@ -2610,12 +2633,13 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
          * @param {string} [coluuid] Collection UUID
          * @param {number} [replication] Replication value
          * @param {string} [ignoreDupes] Ignore Dupes true/false
+         * @param {string} [overwrite] Overwrite files with the same path on same collection
          * @param {string} [lazyProvide] Lazy Provide true/false
          * @param {string} [dir] Directory
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddPost(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, options: any = {}): FetchArgs {
+        contentAddPost(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, overwrite?: string, lazyProvide?: string, dir?: string, options: any = {}): FetchArgs {
             // verify required parameter 'data' is not null or undefined
             if (data === null || data === undefined) {
                 throw new RequiredError('data','Required parameter data was null or undefined when calling contentAddPost.');
@@ -2649,6 +2673,10 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
 
             if (ignoreDupes !== undefined) {
                 localVarQueryParameter['ignore-dupes'] = ignoreDupes;
+            }
+
+            if (overwrite !== undefined) {
+                localVarQueryParameter['overwrite'] = overwrite;
             }
 
             if (lazyProvide !== undefined) {
@@ -3370,11 +3398,12 @@ export const ContentApiFp = function(configuration?: Configuration) {
          * @summary Add IPFS object
          * @param {TypesIpfsPin} body IPFS Body
          * @param {string} [ignoreDupes] Ignore Dupes
+         * @param {string} [overwrite] Overwrite conflicting files in collections
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
-            const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentAddIpfsPost(body, ignoreDupes, options);
+        contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+            const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentAddIpfsPost(body, ignoreDupes, overwrite, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -3393,13 +3422,14 @@ export const ContentApiFp = function(configuration?: Configuration) {
          * @param {string} [coluuid] Collection UUID
          * @param {number} [replication] Replication value
          * @param {string} [ignoreDupes] Ignore Dupes true/false
+         * @param {string} [overwrite] Overwrite files with the same path on same collection
          * @param {string} [lazyProvide] Lazy Provide true/false
          * @param {string} [dir] Directory
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddPost(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<UtilContentAddResponse> {
-            const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, options);
+        contentAddPost(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, overwrite?: string, lazyProvide?: string, dir?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<UtilContentAddResponse> {
+            const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentAddPost(data, filename, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -3746,11 +3776,12 @@ export const ContentApiFactory = function (configuration?: Configuration, fetch?
          * @summary Add IPFS object
          * @param {TypesIpfsPin} body IPFS Body
          * @param {string} [ignoreDupes] Ignore Dupes
+         * @param {string} [overwrite] Overwrite conflicting files in collections
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, options?: any) {
-            return ContentApiFp(configuration).contentAddIpfsPost(body, ignoreDupes, options)(fetch, basePath);
+        contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, options?: any) {
+            return ContentApiFp(configuration).contentAddIpfsPost(body, ignoreDupes, overwrite, options)(fetch, basePath);
         },
         /**
          * This endpoint is used to upload new content.
@@ -3760,13 +3791,14 @@ export const ContentApiFactory = function (configuration?: Configuration, fetch?
          * @param {string} [coluuid] Collection UUID
          * @param {number} [replication] Replication value
          * @param {string} [ignoreDupes] Ignore Dupes true/false
+         * @param {string} [overwrite] Overwrite files with the same path on same collection
          * @param {string} [lazyProvide] Lazy Provide true/false
          * @param {string} [dir] Directory
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddPost(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, options?: any) {
-            return ContentApiFp(configuration).contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, options)(fetch, basePath);
+        contentAddPost(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, overwrite?: string, lazyProvide?: string, dir?: string, options?: any) {
+            return ContentApiFp(configuration).contentAddPost(data, filename, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir, options)(fetch, basePath);
         },
         /**
          * This endpoint returns aggregated content stats
@@ -3976,12 +4008,13 @@ export class ContentApi extends BaseAPI {
      * @summary Add IPFS object
      * @param {TypesIpfsPin} body IPFS Body
      * @param {string} [ignoreDupes] Ignore Dupes
+     * @param {string} [overwrite] Overwrite conflicting files in collections
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContentApi
      */
-    public contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, options?: any) {
-        return ContentApiFp(this.configuration).contentAddIpfsPost(body, ignoreDupes, options)(this.fetch, this.basePath);
+    public contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, options?: any) {
+        return ContentApiFp(this.configuration).contentAddIpfsPost(body, ignoreDupes, overwrite, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -3992,14 +4025,15 @@ export class ContentApi extends BaseAPI {
      * @param {string} [coluuid] Collection UUID
      * @param {number} [replication] Replication value
      * @param {string} [ignoreDupes] Ignore Dupes true/false
+     * @param {string} [overwrite] Overwrite files with the same path on same collection
      * @param {string} [lazyProvide] Lazy Provide true/false
      * @param {string} [dir] Directory
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContentApi
      */
-    public contentAddPost(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, options?: any) {
-        return ContentApiFp(this.configuration).contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, options)(this.fetch, this.basePath);
+    public contentAddPost(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, overwrite?: string, lazyProvide?: string, dir?: string, options?: any) {
+        return ContentApiFp(this.configuration).contentAddPost(data, filename, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir, options)(this.fetch, this.basePath);
     }
 
     /**
@@ -6543,10 +6577,12 @@ export const PinningApiFetchParamCreator = function (configuration?: Configurati
          * This endpoint adds a pin to the IPFS daemon.
          * @summary Add and pin object
          * @param {TypesIpfsPin} body Pin Body {cid:cid, name:name}
+         * @param {string} [ignoreDupes] Ignore Dupes
+         * @param {string} [overwrite] Overwrite conflicting files in collections
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinningPinsPost(body: TypesIpfsPin, options: any = {}): FetchArgs {
+        pinningPinsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, options: any = {}): FetchArgs {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling pinningPinsPost.');
@@ -6563,6 +6599,14 @@ export const PinningApiFetchParamCreator = function (configuration?: Configurati
 					? configuration.apiKey("Authorization")
 					: configuration.apiKey;
                 localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            if (ignoreDupes !== undefined) {
+                localVarQueryParameter['ignore-dupes'] = ignoreDupes;
+            }
+
+            if (overwrite !== undefined) {
+                localVarQueryParameter['overwrite'] = overwrite;
             }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -6668,11 +6712,13 @@ export const PinningApiFp = function(configuration?: Configuration) {
          * This endpoint adds a pin to the IPFS daemon.
          * @summary Add and pin object
          * @param {TypesIpfsPin} body Pin Body {cid:cid, name:name}
+         * @param {string} [ignoreDupes] Ignore Dupes
+         * @param {string} [overwrite] Overwrite conflicting files in collections
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinningPinsPost(body: TypesIpfsPin, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<TypesIpfsPinStatusResponse> {
-            const localVarFetchArgs = PinningApiFetchParamCreator(configuration).pinningPinsPost(body, options);
+        pinningPinsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<TypesIpfsPinStatusResponse> {
+            const localVarFetchArgs = PinningApiFetchParamCreator(configuration).pinningPinsPost(body, ignoreDupes, overwrite, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
                     if (response.status >= 200 && response.status < 300) {
@@ -6736,11 +6782,13 @@ export const PinningApiFactory = function (configuration?: Configuration, fetch?
          * This endpoint adds a pin to the IPFS daemon.
          * @summary Add and pin object
          * @param {TypesIpfsPin} body Pin Body {cid:cid, name:name}
+         * @param {string} [ignoreDupes] Ignore Dupes
+         * @param {string} [overwrite] Overwrite conflicting files in collections
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinningPinsPost(body: TypesIpfsPin, options?: any) {
-            return PinningApiFp(configuration).pinningPinsPost(body, options)(fetch, basePath);
+        pinningPinsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, options?: any) {
+            return PinningApiFp(configuration).pinningPinsPost(body, ignoreDupes, overwrite, options)(fetch, basePath);
         },
     };
 };
@@ -6804,12 +6852,14 @@ export class PinningApi extends BaseAPI {
      * This endpoint adds a pin to the IPFS daemon.
      * @summary Add and pin object
      * @param {TypesIpfsPin} body Pin Body {cid:cid, name:name}
+     * @param {string} [ignoreDupes] Ignore Dupes
+     * @param {string} [overwrite] Overwrite conflicting files in collections
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PinningApi
      */
-    public pinningPinsPost(body: TypesIpfsPin, options?: any) {
-        return PinningApiFp(this.configuration).pinningPinsPost(body, options)(this.fetch, this.basePath);
+    public pinningPinsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, options?: any) {
+        return PinningApiFp(this.configuration).pinningPinsPost(body, ignoreDupes, overwrite, options)(this.fetch, this.basePath);
     }
 
 }

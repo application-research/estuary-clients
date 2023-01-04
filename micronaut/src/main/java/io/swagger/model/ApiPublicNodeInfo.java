@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
  * ApiPublicNodeInfo
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2023-01-03T16:17:32.325Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2023-01-04T12:55:53.483Z[GMT]")
 public class ApiPublicNodeInfo   {
   @JsonProperty("primaryAddress")
   private AddressAddress primaryAddress = null;

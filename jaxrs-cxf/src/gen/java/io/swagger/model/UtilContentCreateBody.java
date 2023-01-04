@@ -30,6 +30,9 @@ public class UtilContentCreateBody   {
   private String name = null;
   
   @Schema(description = "")
+  private Boolean overwrite = null;
+  
+  @Schema(description = "")
   private String root = null;
   
   @Schema(description = "")
@@ -107,6 +110,24 @@ public class UtilContentCreateBody   {
   }
 
  /**
+   * Get overwrite
+   * @return overwrite
+  **/
+  @JsonProperty("overwrite")
+  public Boolean isOverwrite() {
+    return overwrite;
+  }
+
+  public void setOverwrite(Boolean overwrite) {
+    this.overwrite = overwrite;
+  }
+
+  public UtilContentCreateBody overwrite(Boolean overwrite) {
+    this.overwrite = overwrite;
+    return this;
+  }
+
+ /**
    * Get root
    * @return root
   **/
@@ -152,6 +173,7 @@ public class UtilContentCreateBody   {
     sb.append("    dir: ").append(toIndentedString(dir)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    overwrite: ").append(toIndentedString(overwrite)).append("\n");
     sb.append("    root: ").append(toIndentedString(root)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");

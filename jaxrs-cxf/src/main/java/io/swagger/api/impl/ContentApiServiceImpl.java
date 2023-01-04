@@ -68,7 +68,7 @@ public class ContentApiServiceImpl implements ContentApi {
      * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
      *
      */
-    public String contentAddIpfsPost(TypesIpfsPin body, String ignoreDupes) {
+    public String contentAddIpfsPost(TypesIpfsPin body, String ignoreDupes, String overwrite) {
         // TODO: Implement...
         
         return null;
@@ -80,7 +80,7 @@ public class ContentApiServiceImpl implements ContentApi {
      * This endpoint is used to upload new content.
      *
      */
-    public UtilContentAddResponse contentAddPost( Attachment dataDetail, String filename, String coluuid, Integer replication, String ignoreDupes, String lazyProvide, String dir) {
+    public UtilContentAddResponse contentAddPost( Attachment dataDetail, String filename, String coluuid, Integer replication, String ignoreDupes, String overwrite, String lazyProvide, String dir) {
         // TODO: Implement...
         
         return null;

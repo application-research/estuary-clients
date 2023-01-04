@@ -47,6 +47,8 @@ export class UtilContentCreateBody {
         obj.location = ApiClient.convertToType(data['location'], 'String');
       if (data.hasOwnProperty('name'))
         obj.name = ApiClient.convertToType(data['name'], 'String');
+      if (data.hasOwnProperty('overwrite'))
+        obj.overwrite = ApiClient.convertToType(data['overwrite'], 'Boolean');
       if (data.hasOwnProperty('root'))
         obj.root = ApiClient.convertToType(data['root'], 'String');
       if (data.hasOwnProperty('type'))
@@ -75,6 +77,11 @@ UtilContentCreateBody.prototype.location = undefined;
  * @member {String} name
  */
 UtilContentCreateBody.prototype.name = undefined;
+
+/**
+ * @member {Boolean} overwrite
+ */
+UtilContentCreateBody.prototype.overwrite = undefined;
 
 /**
  * @member {String} root

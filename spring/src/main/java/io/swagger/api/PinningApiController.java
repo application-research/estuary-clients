@@ -35,7 +35,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-03T16:17:32.784Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-04T12:55:54.653Z[GMT]")
 @RestController
 public class PinningApiController implements PinningApi {
 
@@ -98,7 +98,7 @@ public class PinningApiController implements PinningApi {
         return new ResponseEntity<TypesIpfsPinStatusResponse>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<TypesIpfsPinStatusResponse> pinningPinsPost(@Parameter(in = ParameterIn.DEFAULT, description = "Pin Body {cid:cid, name:name}", required=true, schema=@Schema()) @Valid @RequestBody TypesIpfsPin body) {
+    public ResponseEntity<TypesIpfsPinStatusResponse> pinningPinsPost(@Parameter(in = ParameterIn.DEFAULT, description = "Pin Body {cid:cid, name:name}", required=true, schema=@Schema()) @Valid @RequestBody TypesIpfsPin body,@Parameter(in = ParameterIn.QUERY, description = "Ignore Dupes" ,schema=@Schema()) @Valid @RequestParam(value = "ignore-dupes", required = false) String ignoreDupes,@Parameter(in = ParameterIn.QUERY, description = "Overwrite conflicting files in collections" ,schema=@Schema()) @Valid @RequestParam(value = "overwrite", required = false) String overwrite) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {

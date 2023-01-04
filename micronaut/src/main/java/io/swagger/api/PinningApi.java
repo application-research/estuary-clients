@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2023-01-03T16:17:32.325Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2023-01-04T12:55:53.483Z[GMT]")
 @Controller
 public interface PinningApi {
 
@@ -87,6 +87,8 @@ public interface PinningApi {
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
     @Post(value = "/pinning/pins", produces = { "application/json" }, consumes = {"application/json"})
     default Single<HttpResponse<TypesIpfsPinStatusResponse>> pinningPinsPost(@Parameter(description = "Pin Body {cid:cid, name:name}") @Valid @Body TypesIpfsPin body
+,@Nullable @Parameter(description = "Ignore Dupes") @Valid @QueryValue(value = "ignore-dupes") String ignoreDupes
+,@Nullable @Parameter(description = "Overwrite conflicting files in collections") @Valid @QueryValue(value = "overwrite") String overwrite
 ) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();

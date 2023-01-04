@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinning_pins_post**
-> TypesIpfsPinStatusResponse pinning_pins_post(body)
+> TypesIpfsPinStatusResponse pinning_pins_post(body, ignore_dupes=ignore_dupes, overwrite=overwrite)
 
 Add and pin object
 
@@ -247,10 +247,12 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = estuary_client.PinningApi(estuary_client.ApiClient(configuration))
 body = estuary_client.TypesIpfsPin() # TypesIpfsPin | Pin Body {cid:cid, name:name}
+ignore_dupes = 'ignore_dupes_example' # str | Ignore Dupes (optional)
+overwrite = 'overwrite_example' # str | Overwrite conflicting files in collections (optional)
 
 try:
     # Add and pin object
-    api_response = api_instance.pinning_pins_post(body)
+    api_response = api_instance.pinning_pins_post(body, ignore_dupes=ignore_dupes, overwrite=overwrite)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling PinningApi->pinning_pins_post: %s\n" % e)
@@ -261,6 +263,8 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
+ **ignore_dupes** | **str**| Ignore Dupes | [optional] 
+ **overwrite** | **str**| Overwrite conflicting files in collections | [optional] 
 
 ### Return type
 

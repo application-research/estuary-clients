@@ -254,6 +254,7 @@ body = [56] # Array<Integer> | Content IDs to add to collection
 coluuid = 'coluuid_example' # String | Collection UUID
 opts = { 
   dir: 'dir_example' # String | Directory
+  overwrite: 'overwrite_example' # String | Overwrite conflicting files
 }
 
 begin
@@ -272,6 +273,7 @@ Name | Type | Description  | Notes
  **body** | [**Array&lt;Integer&gt;**](Integer.md)| Content IDs to add to collection | 
  **coluuid** | **String**| Collection UUID | 
  **dir** | **String**| Directory | [optional] 
+ **overwrite** | **String**| Overwrite conflicting files | [optional] 
 
 ### Return type
 
@@ -289,7 +291,7 @@ Name | Type | Description  | Notes
 
 
 # **collections_fs_add_post**
-> String collections_fs_add_post(coluuid, content, path)
+> String collections_fs_add_post(coluuid, content, opts)
 
 Add a file to a collection
 
@@ -310,12 +312,14 @@ end
 api_instance = SwaggerClient::CollectionsApi.new
 coluuid = 'coluuid_example' # String | Collection ID
 content = 'content_example' # String | Content
-path = 'path_example' # String | Path to file
-
+opts = { 
+  dir: 'dir_example', # String | Directory inside collection
+  overwrite: 'overwrite_example' # String | Overwrite file if already exists in path
+}
 
 begin
   #Add a file to a collection
-  result = api_instance.collections_fs_add_post(coluuid, content, path)
+  result = api_instance.collections_fs_add_post(coluuid, content, opts)
   p result
 rescue SwaggerClient::ApiError => e
   puts "Exception when calling CollectionsApi->collections_fs_add_post: #{e}"
@@ -328,7 +332,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **coluuid** | **String**| Collection ID | 
  **content** | **String**| Content | 
- **path** | **String**| Path to file | 
+ **dir** | **String**| Directory inside collection | [optional] 
+ **overwrite** | **String**| Overwrite file if already exists in path | [optional] 
 
 ### Return type
 

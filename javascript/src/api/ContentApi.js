@@ -190,6 +190,7 @@ export class ContentApi {
      * @param {module:model/TypesIpfsPin} body IPFS Body
      * @param {Object} opts Optional parameters
      * @param {String} opts.ignoreDupes Ignore Dupes
+     * @param {String} opts.overwrite Overwrite conflicting files in collections
      * @param {module:api/ContentApi~contentAddIpfsPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
@@ -205,7 +206,7 @@ export class ContentApi {
         
       };
       let queryParams = {
-        'ignore-dupes': opts['ignoreDupes']
+        'ignore-dupes': opts['ignoreDupes'],'overwrite': opts['overwrite']
       };
       let headerParams = {
         
@@ -242,6 +243,7 @@ export class ContentApi {
      * @param {String} opts.coluuid Collection UUID
      * @param {Number} opts.replication Replication value
      * @param {String} opts.ignoreDupes Ignore Dupes true/false
+     * @param {String} opts.overwrite Overwrite files with the same path on same collection
      * @param {String} opts.lazyProvide Lazy Provide true/false
      * @param {String} opts.dir Directory
      * @param {module:api/ContentApi~contentAddPostCallback} callback The callback function, accepting three arguments: error, data, response
@@ -263,7 +265,7 @@ export class ContentApi {
         
       };
       let queryParams = {
-        'coluuid': opts['coluuid'],'replication': opts['replication'],'ignore-dupes': opts['ignoreDupes'],'lazy-provide': opts['lazyProvide'],'dir': opts['dir']
+        'coluuid': opts['coluuid'],'replication': opts['replication'],'ignore-dupes': opts['ignoreDupes'],'overwrite': opts['overwrite'],'lazy-provide': opts['lazyProvide'],'dir': opts['dir']
       };
       let headerParams = {
         

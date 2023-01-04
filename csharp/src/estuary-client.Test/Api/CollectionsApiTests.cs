@@ -118,7 +118,8 @@ namespace estuary-client.Test
             //List<int?> body = null;
             //string coluuid = null;
             //string dir = null;
-            //var response = instance.CollectionsColuuidPost(body, coluuid, dir);
+            //string overwrite = null;
+            //var response = instance.CollectionsColuuidPost(body, coluuid, dir, overwrite);
             //Assert.IsInstanceOf<string> (response, "response is string");
         }
         /// <summary>
@@ -130,8 +131,9 @@ namespace estuary-client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string coluuid = null;
             //string content = null;
-            //string path = null;
-            //var response = instance.CollectionsFsAddPost(coluuid, content, path);
+            //string dir = null;
+            //string overwrite = null;
+            //var response = instance.CollectionsFsAddPost(coluuid, content, dir, overwrite);
             //Assert.IsInstanceOf<string> (response, "response is string");
         }
         /// <summary>

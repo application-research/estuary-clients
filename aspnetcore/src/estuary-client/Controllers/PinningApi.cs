@@ -161,6 +161,8 @@ namespace estuary-client.Controllers
         /// </summary>
         /// <remarks>This endpoint adds a pin to the IPFS daemon.</remarks>
         /// <param name="body">Pin Body {cid:cid, name:name}</param>
+        /// <param name="ignoreDupes">Ignore Dupes</param>
+        /// <param name="overwrite">Overwrite conflicting files in collections</param>
         /// <response code="202">Accepted</response>
         /// <response code="500">Internal Server Error</response>
         [HttpPost]
@@ -170,7 +172,7 @@ namespace estuary-client.Controllers
         [SwaggerOperation("PinningPinsPost")]
         [SwaggerResponse(statusCode: 202, type: typeof(TypesIpfsPinStatusResponse), description: "Accepted")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
-        public virtual IActionResult PinningPinsPost([FromBody]TypesIpfsPin body)
+        public virtual IActionResult PinningPinsPost([FromBody]TypesIpfsPin body, [FromQuery]string ignoreDupes, [FromQuery]string overwrite)
         { 
             //TODO: Uncomment the next line to return response 202 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(202, default(TypesIpfsPinStatusResponse));

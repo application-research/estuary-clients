@@ -22,7 +22,7 @@ import javax.validation.Valid;
 /**
  * AutoretrieveInitBody
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2023-01-03T16:17:31.348Z[GMT]")public class AutoretrieveInitBody   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2023-01-04T12:55:53.653Z[GMT]")public class AutoretrieveInitBody   {
   @JsonProperty("addresses")
   private String addresses = null;
 

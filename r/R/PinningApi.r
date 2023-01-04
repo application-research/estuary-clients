@@ -159,10 +159,18 @@ PinningApi <- R6::R6Class(
       }
 
     }
-    pinning_pins_post = function(body, ...){
+    pinning_pins_post = function(body, ignore_dupes, overwrite, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
+
+      if (!missing(`ignore_dupes`)) {
+        queryParams['ignore-dupes'] <- ignore_dupes
+      }
+
+      if (!missing(`overwrite`)) {
+        queryParams['overwrite'] <- overwrite
+      }
 
       if (!missing(`body`)) {
         body <- `body`$toJSONString()

@@ -124,15 +124,17 @@ class PinningApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(ba
      * Add and pin object
      * This endpoint adds a pin to the IPFS daemon.
      * @param body Pin Body {cid:cid, name:name} 
+     * @param ignoreDupes Ignore Dupes (optional)
+     * @param overwrite Overwrite conflicting files in collections (optional)
      * @return TypesIpfsPinStatusResponse
      */
     @Suppress("UNCHECKED_CAST")
-    fun pinningPinsPost(body: TypesIpfsPin): TypesIpfsPinStatusResponse {
+    fun pinningPinsPost(body: TypesIpfsPin, ignoreDupes: kotlin.String? = null, overwrite: kotlin.String? = null): TypesIpfsPinStatusResponse {
         val localVariableBody: kotlin.Any? = body
-        
+        val localVariableQuery: MultiValueMap = mapOf("ignore-dupes" to listOf("$ignoreDupes"), "overwrite" to listOf("$overwrite"))
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
-                "/pinning/pins"
+                "/pinning/pins", query = localVariableQuery
         )
         val response = request<TypesIpfsPinStatusResponse>(
                 localVariableConfig, localVariableBody

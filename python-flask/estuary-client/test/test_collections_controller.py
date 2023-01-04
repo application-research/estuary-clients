@@ -71,7 +71,8 @@ class TestCollectionsController(BaseTestCase):
         Add contents to a collection
         """
         body = [56]
-        query_string = [('dir', 'dir_example')]
+        query_string = [('dir', 'dir_example'),
+                        ('overwrite', 'overwrite_example')]
         response = self.client.open(
             '/collections/{coluuid}'.format(coluuid='coluuid_example'),
             method='POST',
@@ -88,7 +89,8 @@ class TestCollectionsController(BaseTestCase):
         """
         query_string = [('coluuid', 'coluuid_example'),
                         ('content', 'content_example'),
-                        ('path', 'path_example')]
+                        ('dir', 'dir_example'),
+                        ('overwrite', 'overwrite_example')]
         response = self.client.open(
             '/collections/fs/add',
             method='POST',

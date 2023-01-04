@@ -47,7 +47,7 @@ void main() {
     //
     // This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
     //
-    //Future<String> collectionsColuuidPost(List<int> body, String coluuid, { String dir }) async
+    //Future<String> collectionsColuuidPost(List<int> body, String coluuid, { String dir, String overwrite }) async
     test('test collectionsColuuidPost', () async {
       // TODO
     });
@@ -56,7 +56,7 @@ void main() {
     //
     // This endpoint adds a file to a collection
     //
-    //Future<String> collectionsFsAddPost(String coluuid, String content, String path) async
+    //Future<String> collectionsFsAddPost(String coluuid, String content, { String dir, String overwrite }) async
     test('test collectionsFsAddPost', () async {
       // TODO
     });

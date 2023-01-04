@@ -36,7 +36,7 @@ import javax.validation.constraints.*;
 @Path("/content")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2023-01-03T16:17:31.348Z[GMT]")public class ContentApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2023-01-04T12:55:53.653Z[GMT]")public class ContentApi  {
 
    private ContentApiService delegate;
 
@@ -83,9 +83,10 @@ import javax.validation.constraints.*;
     public Response contentAddIpfsPost(@Parameter(in = ParameterIn.DEFAULT, description = "IPFS Body" ,required=true) TypesIpfsPin body
 
 ,@Parameter(in = ParameterIn.QUERY, description = "Ignore Dupes") @QueryParam("ignore-dupes") String ignoreDupes
+,@Parameter(in = ParameterIn.QUERY, description = "Overwrite conflicting files in collections") @QueryParam("overwrite") String overwrite
 ,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return delegate.contentAddIpfsPost(body,ignoreDupes,securityContext);
+        return delegate.contentAddIpfsPost(body,ignoreDupes,overwrite,securityContext);
     }
     @POST
     @Path("/add")
@@ -105,11 +106,12 @@ import javax.validation.constraints.*;
 ,@Parameter(in = ParameterIn.QUERY, description = "Collection UUID") @QueryParam("coluuid") String coluuid
 ,@Parameter(in = ParameterIn.QUERY, description = "Replication value") @QueryParam("replication") Integer replication
 ,@Parameter(in = ParameterIn.QUERY, description = "Ignore Dupes true/false") @QueryParam("ignore-dupes") String ignoreDupes
+,@Parameter(in = ParameterIn.QUERY, description = "Overwrite files with the same path on same collection") @QueryParam("overwrite") String overwrite
 ,@Parameter(in = ParameterIn.QUERY, description = "Lazy Provide true/false") @QueryParam("lazy-provide") String lazyProvide
 ,@Parameter(in = ParameterIn.QUERY, description = "Directory") @QueryParam("dir") String dir
 ,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return delegate.contentAddPost(dataInputStream, dataDetail,filename,coluuid,replication,ignoreDupes,lazyProvide,dir,securityContext);
+        return delegate.contentAddPost(dataInputStream, dataDetail,filename,coluuid,replication,ignoreDupes,overwrite,lazyProvide,dir,securityContext);
     }
     @GET
     @Path("/aggregated/{content}")

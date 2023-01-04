@@ -17,7 +17,7 @@ import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2023-01-03T16:17:33.077Z[GMT]")public class AdminApiServiceImpl extends AdminApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2023-01-04T12:55:53.153Z[GMT]")public class AdminApiServiceImpl extends AdminApiService {
     @Override
     public Response adminAutoretrieveInitPost(String addresses, String pubKey, SecurityContext securityContext) throws NotFoundException {
         // do some magic!

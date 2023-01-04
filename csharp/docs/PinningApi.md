@@ -269,7 +269,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="pinningpinspost"></a>
 # **PinningPinsPost**
-> TypesIpfsPinStatusResponse PinningPinsPost (TypesIpfsPin body)
+> TypesIpfsPinStatusResponse PinningPinsPost (TypesIpfsPin body, string ignoreDupes = null, string overwrite = null)
 
 Add and pin object
 
@@ -296,11 +296,13 @@ namespace Example
 
             var apiInstance = new PinningApi();
             var body = new TypesIpfsPin(); // TypesIpfsPin | Pin Body {cid:cid, name:name}
+            var ignoreDupes = ignoreDupes_example;  // string | Ignore Dupes (optional) 
+            var overwrite = overwrite_example;  // string | Overwrite conflicting files in collections (optional) 
 
             try
             {
                 // Add and pin object
-                TypesIpfsPinStatusResponse result = apiInstance.PinningPinsPost(body);
+                TypesIpfsPinStatusResponse result = apiInstance.PinningPinsPost(body, ignoreDupes, overwrite);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -317,6 +319,8 @@ namespace Example
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
+ **ignoreDupes** | **string**| Ignore Dupes | [optional] 
+ **overwrite** | **string**| Overwrite conflicting files in collections | [optional] 
 
 ### Return type
 

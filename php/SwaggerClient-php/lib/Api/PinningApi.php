@@ -1174,14 +1174,16 @@ class PinningApi
      * Add and pin object
      *
      * @param  \Swagger\Client\Model\TypesIpfsPin $body Pin Body {cid:cid, name:name} (required)
+     * @param  string $ignore_dupes Ignore Dupes (optional)
+     * @param  string $overwrite Overwrite conflicting files in collections (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\TypesIpfsPinStatusResponse
      */
-    public function pinningPinsPost($body)
+    public function pinningPinsPost($body, $ignore_dupes = null, $overwrite = null)
     {
-        list($response) = $this->pinningPinsPostWithHttpInfo($body);
+        list($response) = $this->pinningPinsPostWithHttpInfo($body, $ignore_dupes, $overwrite);
         return $response;
     }
 
@@ -1191,15 +1193,17 @@ class PinningApi
      * Add and pin object
      *
      * @param  \Swagger\Client\Model\TypesIpfsPin $body Pin Body {cid:cid, name:name} (required)
+     * @param  string $ignore_dupes Ignore Dupes (optional)
+     * @param  string $overwrite Overwrite conflicting files in collections (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\TypesIpfsPinStatusResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function pinningPinsPostWithHttpInfo($body)
+    public function pinningPinsPostWithHttpInfo($body, $ignore_dupes = null, $overwrite = null)
     {
         $returnType = '\Swagger\Client\Model\TypesIpfsPinStatusResponse';
-        $request = $this->pinningPinsPostRequest($body);
+        $request = $this->pinningPinsPostRequest($body, $ignore_dupes, $overwrite);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1274,13 +1278,15 @@ class PinningApi
      * Add and pin object
      *
      * @param  \Swagger\Client\Model\TypesIpfsPin $body Pin Body {cid:cid, name:name} (required)
+     * @param  string $ignore_dupes Ignore Dupes (optional)
+     * @param  string $overwrite Overwrite conflicting files in collections (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function pinningPinsPostAsync($body)
+    public function pinningPinsPostAsync($body, $ignore_dupes = null, $overwrite = null)
     {
-        return $this->pinningPinsPostAsyncWithHttpInfo($body)
+        return $this->pinningPinsPostAsyncWithHttpInfo($body, $ignore_dupes, $overwrite)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1294,14 +1300,16 @@ class PinningApi
      * Add and pin object
      *
      * @param  \Swagger\Client\Model\TypesIpfsPin $body Pin Body {cid:cid, name:name} (required)
+     * @param  string $ignore_dupes Ignore Dupes (optional)
+     * @param  string $overwrite Overwrite conflicting files in collections (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function pinningPinsPostAsyncWithHttpInfo($body)
+    public function pinningPinsPostAsyncWithHttpInfo($body, $ignore_dupes = null, $overwrite = null)
     {
         $returnType = '\Swagger\Client\Model\TypesIpfsPinStatusResponse';
-        $request = $this->pinningPinsPostRequest($body);
+        $request = $this->pinningPinsPostRequest($body, $ignore_dupes, $overwrite);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1344,11 +1352,13 @@ class PinningApi
      * Create request for operation 'pinningPinsPost'
      *
      * @param  \Swagger\Client\Model\TypesIpfsPin $body Pin Body {cid:cid, name:name} (required)
+     * @param  string $ignore_dupes Ignore Dupes (optional)
+     * @param  string $overwrite Overwrite conflicting files in collections (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function pinningPinsPostRequest($body)
+    protected function pinningPinsPostRequest($body, $ignore_dupes = null, $overwrite = null)
     {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
@@ -1364,6 +1374,14 @@ class PinningApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($ignore_dupes !== null) {
+            $queryParams['ignore-dupes'] = ObjectSerializer::toQueryValue($ignore_dupes, null);
+        }
+        // query params
+        if ($overwrite !== null) {
+            $queryParams['overwrite'] = ObjectSerializer::toQueryValue($overwrite, null);
+        }
 
 
         // body params

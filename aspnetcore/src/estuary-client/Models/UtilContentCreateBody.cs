@@ -55,6 +55,13 @@ namespace estuary-client.Models
         public string Name { get; set; }
 
         /// <summary>
+        /// Gets or Sets Overwrite
+        /// </summary>
+
+        [DataMember(Name="overwrite")]
+        public bool? Overwrite { get; set; }
+
+        /// <summary>
         /// Gets or Sets Root
         /// </summary>
 
@@ -80,6 +87,7 @@ namespace estuary-client.Models
             sb.Append("  Dir: ").Append(Dir).Append("\n");
             sb.Append("  Location: ").Append(Location).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Overwrite: ").Append(Overwrite).Append("\n");
             sb.Append("  Root: ").Append(Root).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");
@@ -139,6 +147,11 @@ namespace estuary-client.Models
                     Name.Equals(other.Name)
                 ) && 
                 (
+                    Overwrite == other.Overwrite ||
+                    Overwrite != null &&
+                    Overwrite.Equals(other.Overwrite)
+                ) && 
+                (
                     Root == other.Root ||
                     Root != null &&
                     Root.Equals(other.Root)
@@ -168,6 +181,8 @@ namespace estuary-client.Models
                     hashCode = hashCode * 59 + Location.GetHashCode();
                     if (Name != null)
                     hashCode = hashCode * 59 + Name.GetHashCode();
+                    if (Overwrite != null)
+                    hashCode = hashCode * 59 + Overwrite.GetHashCode();
                     if (Root != null)
                     hashCode = hashCode * 59 + Root.GetHashCode();
                     if (Type != null)

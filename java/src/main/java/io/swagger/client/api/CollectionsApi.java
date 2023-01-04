@@ -576,12 +576,13 @@ public class CollectionsApi {
      * @param body Content IDs to add to collection (required)
      * @param coluuid Collection UUID (required)
      * @param dir Directory (optional)
+     * @param overwrite Overwrite conflicting files (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call collectionsColuuidPostCall(List<Integer> body, String coluuid, String dir, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call collectionsColuuidPostCall(List<Integer> body, String coluuid, String dir, String overwrite, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
         
         // create path and map variables
@@ -592,6 +593,8 @@ public class CollectionsApi {
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (dir != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("dir", dir));
+        if (overwrite != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("overwrite", overwrite));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -626,7 +629,7 @@ public class CollectionsApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call collectionsColuuidPostValidateBeforeCall(List<Integer> body, String coluuid, String dir, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call collectionsColuuidPostValidateBeforeCall(List<Integer> body, String coluuid, String dir, String overwrite, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling collectionsColuuidPost(Async)");
@@ -636,7 +639,7 @@ public class CollectionsApi {
             throw new ApiException("Missing the required parameter 'coluuid' when calling collectionsColuuidPost(Async)");
         }
         
-        com.squareup.okhttp.Call call = collectionsColuuidPostCall(body, coluuid, dir, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = collectionsColuuidPostCall(body, coluuid, dir, overwrite, progressListener, progressRequestListener);
         return call;
 
         
@@ -651,11 +654,12 @@ public class CollectionsApi {
      * @param body Content IDs to add to collection (required)
      * @param coluuid Collection UUID (required)
      * @param dir Directory (optional)
+     * @param overwrite Overwrite conflicting files (optional)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public String collectionsColuuidPost(List<Integer> body, String coluuid, String dir) throws ApiException {
-        ApiResponse<String> resp = collectionsColuuidPostWithHttpInfo(body, coluuid, dir);
+    public String collectionsColuuidPost(List<Integer> body, String coluuid, String dir, String overwrite) throws ApiException {
+        ApiResponse<String> resp = collectionsColuuidPostWithHttpInfo(body, coluuid, dir, overwrite);
         return resp.getData();
     }
 
@@ -665,11 +669,12 @@ public class CollectionsApi {
      * @param body Content IDs to add to collection (required)
      * @param coluuid Collection UUID (required)
      * @param dir Directory (optional)
+     * @param overwrite Overwrite conflicting files (optional)
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<String> collectionsColuuidPostWithHttpInfo(List<Integer> body, String coluuid, String dir) throws ApiException {
-        com.squareup.okhttp.Call call = collectionsColuuidPostValidateBeforeCall(body, coluuid, dir, null, null);
+    public ApiResponse<String> collectionsColuuidPostWithHttpInfo(List<Integer> body, String coluuid, String dir, String overwrite) throws ApiException {
+        com.squareup.okhttp.Call call = collectionsColuuidPostValidateBeforeCall(body, coluuid, dir, overwrite, null, null);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -680,11 +685,12 @@ public class CollectionsApi {
      * @param body Content IDs to add to collection (required)
      * @param coluuid Collection UUID (required)
      * @param dir Directory (optional)
+     * @param overwrite Overwrite conflicting files (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call collectionsColuuidPostAsync(List<Integer> body, String coluuid, String dir, final ApiCallback<String> callback) throws ApiException {
+    public com.squareup.okhttp.Call collectionsColuuidPostAsync(List<Integer> body, String coluuid, String dir, String overwrite, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -705,7 +711,7 @@ public class CollectionsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = collectionsColuuidPostValidateBeforeCall(body, coluuid, dir, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = collectionsColuuidPostValidateBeforeCall(body, coluuid, dir, overwrite, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -714,13 +720,14 @@ public class CollectionsApi {
      * Build call for collectionsFsAddPost
      * @param coluuid Collection ID (required)
      * @param content Content (required)
-     * @param path Path to file (required)
+     * @param dir Directory inside collection (optional)
+     * @param overwrite Overwrite file if already exists in path (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call collectionsFsAddPostCall(String coluuid, String content, String path, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call collectionsFsAddPostCall(String coluuid, String content, String dir, String overwrite, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -732,8 +739,10 @@ public class CollectionsApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("coluuid", coluuid));
         if (content != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("content", content));
-        if (path != null)
-        localVarQueryParams.addAll(apiClient.parameterToPair("path", path));
+        if (dir != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("dir", dir));
+        if (overwrite != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("overwrite", overwrite));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -768,7 +777,7 @@ public class CollectionsApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call collectionsFsAddPostValidateBeforeCall(String coluuid, String content, String path, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call collectionsFsAddPostValidateBeforeCall(String coluuid, String content, String dir, String overwrite, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'coluuid' is set
         if (coluuid == null) {
             throw new ApiException("Missing the required parameter 'coluuid' when calling collectionsFsAddPost(Async)");
@@ -777,12 +786,8 @@ public class CollectionsApi {
         if (content == null) {
             throw new ApiException("Missing the required parameter 'content' when calling collectionsFsAddPost(Async)");
         }
-        // verify the required parameter 'path' is set
-        if (path == null) {
-            throw new ApiException("Missing the required parameter 'path' when calling collectionsFsAddPost(Async)");
-        }
         
-        com.squareup.okhttp.Call call = collectionsFsAddPostCall(coluuid, content, path, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = collectionsFsAddPostCall(coluuid, content, dir, overwrite, progressListener, progressRequestListener);
         return call;
 
         
@@ -796,12 +801,13 @@ public class CollectionsApi {
      * This endpoint adds a file to a collection
      * @param coluuid Collection ID (required)
      * @param content Content (required)
-     * @param path Path to file (required)
+     * @param dir Directory inside collection (optional)
+     * @param overwrite Overwrite file if already exists in path (optional)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public String collectionsFsAddPost(String coluuid, String content, String path) throws ApiException {
-        ApiResponse<String> resp = collectionsFsAddPostWithHttpInfo(coluuid, content, path);
+    public String collectionsFsAddPost(String coluuid, String content, String dir, String overwrite) throws ApiException {
+        ApiResponse<String> resp = collectionsFsAddPostWithHttpInfo(coluuid, content, dir, overwrite);
         return resp.getData();
     }
 
@@ -810,12 +816,13 @@ public class CollectionsApi {
      * This endpoint adds a file to a collection
      * @param coluuid Collection ID (required)
      * @param content Content (required)
-     * @param path Path to file (required)
+     * @param dir Directory inside collection (optional)
+     * @param overwrite Overwrite file if already exists in path (optional)
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<String> collectionsFsAddPostWithHttpInfo(String coluuid, String content, String path) throws ApiException {
-        com.squareup.okhttp.Call call = collectionsFsAddPostValidateBeforeCall(coluuid, content, path, null, null);
+    public ApiResponse<String> collectionsFsAddPostWithHttpInfo(String coluuid, String content, String dir, String overwrite) throws ApiException {
+        com.squareup.okhttp.Call call = collectionsFsAddPostValidateBeforeCall(coluuid, content, dir, overwrite, null, null);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -825,12 +832,13 @@ public class CollectionsApi {
      * This endpoint adds a file to a collection
      * @param coluuid Collection ID (required)
      * @param content Content (required)
-     * @param path Path to file (required)
+     * @param dir Directory inside collection (optional)
+     * @param overwrite Overwrite file if already exists in path (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call collectionsFsAddPostAsync(String coluuid, String content, String path, final ApiCallback<String> callback) throws ApiException {
+    public com.squareup.okhttp.Call collectionsFsAddPostAsync(String coluuid, String content, String dir, String overwrite, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -851,7 +859,7 @@ public class CollectionsApi {
             };
         }
 
-        com.squareup.okhttp.Call call = collectionsFsAddPostValidateBeforeCall(coluuid, content, path, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = collectionsFsAddPostValidateBeforeCall(coluuid, content, dir, overwrite, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

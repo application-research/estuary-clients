@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **pinningPinsPost**
-> \Swagger\Client\Model\TypesIpfsPinStatusResponse pinningPinsPost($body)
+> \Swagger\Client\Model\TypesIpfsPinStatusResponse pinningPinsPost($body, $ignore_dupes, $overwrite)
 
 Add and pin object
 
@@ -246,9 +246,11 @@ $apiInstance = new Swagger\Client\Api\PinningApi(
     $config
 );
 $body = new \Swagger\Client\Model\TypesIpfsPin(); // \Swagger\Client\Model\TypesIpfsPin | Pin Body {cid:cid, name:name}
+$ignore_dupes = "ignore_dupes_example"; // string | Ignore Dupes
+$overwrite = "overwrite_example"; // string | Overwrite conflicting files in collections
 
 try {
-    $result = $apiInstance->pinningPinsPost($body);
+    $result = $apiInstance->pinningPinsPost($body, $ignore_dupes, $overwrite);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PinningApi->pinningPinsPost: ', $e->getMessage(), PHP_EOL;
@@ -261,6 +263,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**\Swagger\Client\Model\TypesIpfsPin**](../Model/TypesIpfsPin.md)| Pin Body {cid:cid, name:name} |
+ **ignore_dupes** | **string**| Ignore Dupes | [optional]
+ **overwrite** | **string**| Overwrite conflicting files in collections | [optional]
 
 ### Return type
 

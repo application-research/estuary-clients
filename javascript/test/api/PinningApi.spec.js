@@ -116,8 +116,9 @@
         it('should call pinningPinsPost successfully', function(done) {
           // TODO: uncomment, update parameter values for pinningPinsPost call and complete the assertions
           /*
+          var opts = {};
 
-          instance.pinningPinsPost(body, function(error, data, response) {
+          instance.pinningPinsPost(body, opts, function(error, data, response) {
             if (error) {
               done(error);
               return;

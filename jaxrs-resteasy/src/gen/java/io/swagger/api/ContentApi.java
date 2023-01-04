@@ -35,7 +35,7 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 @Path("/content")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-03T16:17:31.923Z[GMT]")public class ContentApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-04T12:55:51.407Z[GMT]")public class ContentApi  {
 
     @Inject ContentApiService service;
 
@@ -69,9 +69,9 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response contentAddIpfsPost(@Parameter(description = "IPFS Body" ,required=true) TypesIpfsPin body,  @QueryParam("ignore-dupes") String ignoreDupes,@Context SecurityContext securityContext)
+    public Response contentAddIpfsPost(@Parameter(description = "IPFS Body" ,required=true) TypesIpfsPin body,  @QueryParam("ignore-dupes") String ignoreDupes,  @QueryParam("overwrite") String overwrite,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return service.contentAddIpfsPost(body,ignoreDupes,securityContext);
+        return service.contentAddIpfsPost(body,ignoreDupes,overwrite,securityContext);
     }
     @POST
     @Path("/add")
@@ -86,9 +86,9 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response contentAddPost(MultipartFormDataInput input,  @QueryParam("coluuid") String coluuid,  @QueryParam("replication") Integer replication,  @QueryParam("ignore-dupes") String ignoreDupes,  @QueryParam("lazy-provide") String lazyProvide,  @QueryParam("dir") String dir,@Context SecurityContext securityContext)
+    public Response contentAddPost(MultipartFormDataInput input,  @QueryParam("coluuid") String coluuid,  @QueryParam("replication") Integer replication,  @QueryParam("ignore-dupes") String ignoreDupes,  @QueryParam("overwrite") String overwrite,  @QueryParam("lazy-provide") String lazyProvide,  @QueryParam("dir") String dir,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return service.contentAddPost(input,coluuid,replication,ignoreDupes,lazyProvide,dir,securityContext);
+        return service.contentAddPost(input,coluuid,replication,ignoreDupes,overwrite,lazyProvide,dir,securityContext);
     }
     @GET
     @Path("/aggregated/{content}")

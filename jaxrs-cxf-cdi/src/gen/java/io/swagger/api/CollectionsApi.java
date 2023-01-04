@@ -36,7 +36,7 @@ import javax.validation.constraints.*;
 
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2023-01-03T16:17:33.393Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2023-01-04T12:55:54.251Z[GMT]")
 public class CollectionsApi  {
 
   @Context SecurityContext securityContext;
@@ -128,8 +128,10 @@ public class CollectionsApi  {
 @Parameter(description = "Collection UUID",required=true) @PathParam("coluuid") String coluuid
 ,  
 @Parameter(description = "Directory")  @QueryParam("dir") String dir
+,  
+@Parameter(description = "Overwrite conflicting files")  @QueryParam("overwrite") String overwrite
 ) {
-        return delegate.collectionsColuuidPost(body, coluuid, dir, securityContext);
+        return delegate.collectionsColuuidPost(body, coluuid, dir, overwrite, securityContext);
     }
 
     @POST
@@ -146,10 +148,12 @@ public class CollectionsApi  {
 @Parameter(description = "Collection ID",required=true)  @QueryParam("coluuid") String coluuid
 ,  @NotNull 
 @Parameter(description = "Content",required=true)  @QueryParam("content") String content
-,  @NotNull 
-@Parameter(description = "Path to file",required=true)  @QueryParam("path") String path
+,  
+@Parameter(description = "Directory inside collection")  @QueryParam("dir") String dir
+,  
+@Parameter(description = "Overwrite file if already exists in path")  @QueryParam("overwrite") String overwrite
 ) {
-        return delegate.collectionsFsAddPost(coluuid, content, path, securityContext);
+        return delegate.collectionsFsAddPost(coluuid, content, dir, overwrite, securityContext);
     }
 
     @GET

@@ -257,6 +257,7 @@ module SwaggerClient
     # @param coluuid Collection UUID
     # @param [Hash] opts the optional parameters
     # @option opts [String] :dir Directory
+    # @option opts [String] :overwrite Overwrite conflicting files
     # @return [String]
     def collections_coluuid_post(body, coluuid, opts = {})
       data, _status_code, _headers = collections_coluuid_post_with_http_info(body, coluuid, opts)
@@ -269,6 +270,7 @@ module SwaggerClient
     # @param coluuid Collection UUID
     # @param [Hash] opts the optional parameters
     # @option opts [String] :dir Directory
+    # @option opts [String] :overwrite Overwrite conflicting files
     # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
     def collections_coluuid_post_with_http_info(body, coluuid, opts = {})
       if @api_client.config.debugging
@@ -288,6 +290,7 @@ module SwaggerClient
       # query parameters
       query_params = opts[:query_params] || {}
       query_params[:'dir'] = opts[:'dir'] if !opts[:'dir'].nil?
+      query_params[:'overwrite'] = opts[:'overwrite'] if !opts[:'overwrite'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
@@ -322,11 +325,12 @@ module SwaggerClient
     # This endpoint adds a file to a collection
     # @param coluuid Collection ID
     # @param content Content
-    # @param path Path to file
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :dir Directory inside collection
+    # @option opts [String] :overwrite Overwrite file if already exists in path
     # @return [String]
-    def collections_fs_add_post(coluuid, content, path, opts = {})
-      data, _status_code, _headers = collections_fs_add_post_with_http_info(coluuid, content, path, opts)
+    def collections_fs_add_post(coluuid, content, opts = {})
+      data, _status_code, _headers = collections_fs_add_post_with_http_info(coluuid, content, opts)
       data
     end
 
@@ -334,10 +338,11 @@ module SwaggerClient
     # This endpoint adds a file to a collection
     # @param coluuid Collection ID
     # @param content Content
-    # @param path Path to file
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :dir Directory inside collection
+    # @option opts [String] :overwrite Overwrite file if already exists in path
     # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
-    def collections_fs_add_post_with_http_info(coluuid, content, path, opts = {})
+    def collections_fs_add_post_with_http_info(coluuid, content, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: CollectionsApi.collections_fs_add_post ...'
       end
@@ -349,10 +354,6 @@ module SwaggerClient
       if @api_client.config.client_side_validation && content.nil?
         fail ArgumentError, "Missing the required parameter 'content' when calling CollectionsApi.collections_fs_add_post"
       end
-      # verify the required parameter 'path' is set
-      if @api_client.config.client_side_validation && path.nil?
-        fail ArgumentError, "Missing the required parameter 'path' when calling CollectionsApi.collections_fs_add_post"
-      end
       # resource path
       local_var_path = '/collections/fs/add'
 
@@ -360,7 +361,8 @@ module SwaggerClient
       query_params = opts[:query_params] || {}
       query_params[:'coluuid'] = coluuid
       query_params[:'content'] = content
-      query_params[:'path'] = path
+      query_params[:'dir'] = opts[:'dir'] if !opts[:'dir'].nil?
+      query_params[:'overwrite'] = opts[:'overwrite'] if !opts[:'overwrite'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

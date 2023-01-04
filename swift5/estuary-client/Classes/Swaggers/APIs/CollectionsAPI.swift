@@ -201,10 +201,11 @@ open class CollectionsAPI {
      - parameter body: (body) Content IDs to add to collection 
      - parameter coluuid: (path) Collection UUID 
      - parameter dir: (query) Directory (optional)
+     - parameter overwrite: (query) Overwrite conflicting files (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func collectionsColuuidPost(body: [Int], coluuid: String, dir: String? = nil, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
-        collectionsColuuidPostWithRequestBuilder(body: body, coluuid: coluuid, dir: dir).execute { (response, error) -> Void in
+    open class func collectionsColuuidPost(body: [Int], coluuid: String, dir: String? = nil, overwrite: String? = nil, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
+        collectionsColuuidPostWithRequestBuilder(body: body, coluuid: coluuid, dir: dir, overwrite: overwrite).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -221,10 +222,11 @@ open class CollectionsAPI {
      - parameter body: (body) Content IDs to add to collection 
      - parameter coluuid: (path) Collection UUID 
      - parameter dir: (query) Directory (optional)
+     - parameter overwrite: (query) Overwrite conflicting files (optional)
 
      - returns: RequestBuilder<String> 
      */
-    open class func collectionsColuuidPostWithRequestBuilder(body: [Int], coluuid: String, dir: String? = nil) -> RequestBuilder<String> {
+    open class func collectionsColuuidPostWithRequestBuilder(body: [Int], coluuid: String, dir: String? = nil, overwrite: String? = nil) -> RequestBuilder<String> {
         var path = "/collections/{coluuid}"
         let coluuidPreEscape = "\(coluuid)"
         let coluuidPostEscape = coluuidPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -233,7 +235,8 @@ open class CollectionsAPI {
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
         var url = URLComponents(string: URLString)
         url?.queryItems = APIHelper.mapValuesToQueryItems([
-                        "dir": dir
+                        "dir": dir, 
+                        "overwrite": overwrite
         ])
 
 
@@ -246,11 +249,12 @@ open class CollectionsAPI {
 
      - parameter coluuid: (query) Collection ID 
      - parameter content: (query) Content 
-     - parameter path: (query) Path to file 
+     - parameter dir: (query) Directory inside collection (optional)
+     - parameter overwrite: (query) Overwrite file if already exists in path (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func collectionsFsAddPost(coluuid: String, content: String, path: String, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
-        collectionsFsAddPostWithRequestBuilder(coluuid: coluuid, content: content, path: path).execute { (response, error) -> Void in
+    open class func collectionsFsAddPost(coluuid: String, content: String, dir: String? = nil, overwrite: String? = nil, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
+        collectionsFsAddPostWithRequestBuilder(coluuid: coluuid, content: content, dir: dir, overwrite: overwrite).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -266,11 +270,12 @@ open class CollectionsAPI {
      - examples: [{contentType=application/json, example=""}]
      - parameter coluuid: (query) Collection ID 
      - parameter content: (query) Content 
-     - parameter path: (query) Path to file 
+     - parameter dir: (query) Directory inside collection (optional)
+     - parameter overwrite: (query) Overwrite file if already exists in path (optional)
 
      - returns: RequestBuilder<String> 
      */
-    open class func collectionsFsAddPostWithRequestBuilder(coluuid: String, content: String, path: String) -> RequestBuilder<String> {
+    open class func collectionsFsAddPostWithRequestBuilder(coluuid: String, content: String, dir: String? = nil, overwrite: String? = nil) -> RequestBuilder<String> {
         let path = "/collections/fs/add"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
@@ -278,7 +283,8 @@ open class CollectionsAPI {
         url?.queryItems = APIHelper.mapValuesToQueryItems([
                         "coluuid": coluuid, 
                         "content": content, 
-                        "path": path
+                        "dir": dir, 
+                        "overwrite": overwrite
         ])
 
 

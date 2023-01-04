@@ -98,6 +98,14 @@ namespace estuary-client.Test
             // TODO unit test for the property 'Name'
         }
         /// <summary>
+        /// Test the property 'Overwrite'
+        /// </summary>
+        [Test]
+        public void OverwriteTest()
+        {
+            // TODO unit test for the property 'Overwrite'
+        }
+        /// <summary>
         /// Test the property 'Root'
         /// </summary>
         [Test]

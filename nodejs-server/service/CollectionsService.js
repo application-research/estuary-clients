@@ -111,10 +111,11 @@ exports.collectionsColuuidGET = function(coluuid,dir) {
  *
  * body List Content IDs to add to collection
  * dir String Directory (optional)
+ * overwrite String Overwrite conflicting files (optional)
  * coluuid String Collection UUID
  * returns String
  **/
-exports.collectionsColuuidPOST = function(body,dir,coluuid) {
+exports.collectionsColuuidPOST = function(body,dir,overwrite,coluuid) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = "";
@@ -133,10 +134,11 @@ exports.collectionsColuuidPOST = function(body,dir,coluuid) {
  *
  * coluuid String Collection ID
  * content String Content
- * path String Path to file
+ * dir String Directory inside collection (optional)
+ * overwrite String Overwrite file if already exists in path (optional)
  * returns String
  **/
-exports.collectionsFsAddPOST = function(coluuid,content,path) {
+exports.collectionsFsAddPOST = function(coluuid,content,dir,overwrite) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = "";

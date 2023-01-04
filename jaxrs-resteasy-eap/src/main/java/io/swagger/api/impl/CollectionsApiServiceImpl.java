@@ -16,7 +16,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2023-01-03T16:17:32.399Z[GMT]")public class CollectionsApiServiceImpl implements CollectionsApi {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2023-01-04T12:55:54.380Z[GMT]")public class CollectionsApiServiceImpl implements CollectionsApi {
       public Response collectionsColuuidCommitPost(String coluuid,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
@@ -33,11 +33,11 @@ import javax.ws.rs.core.SecurityContext;
       // do some magic!
       return Response.ok().build();
   }
-      public Response collectionsColuuidPost(List<Integer> body,String coluuid,String dir,SecurityContext securityContext) {
+      public Response collectionsColuuidPost(List<Integer> body,String coluuid,String dir,String overwrite,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
-      public Response collectionsFsAddPost(String coluuid,String content,String path,SecurityContext securityContext) {
+      public Response collectionsFsAddPost(String coluuid,String content,String dir,String overwrite,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }

@@ -20,19 +20,19 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2023-01-03T16:17:33.393Z[GMT]")public class ContentApiServiceImpl implements ContentApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2023-01-04T12:55:54.251Z[GMT]")public class ContentApiServiceImpl implements ContentApiService {
       @Override
       public Response contentAddCarPost(String body, String ignoreDupes, String filename, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response contentAddIpfsPost(TypesIpfsPin body, String ignoreDupes, SecurityContext securityContext) {
+      public Response contentAddIpfsPost(TypesIpfsPin body, String ignoreDupes, String overwrite, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }
       @Override
-      public Response contentAddPost(InputStream dataInputStream, Attachment dataDetail, String filename, String coluuid, Integer replication, String ignoreDupes, String lazyProvide, String dir, SecurityContext securityContext) {
+      public Response contentAddPost(InputStream dataInputStream, Attachment dataDetail, String filename, String coluuid, Integer replication, String ignoreDupes, String overwrite, String lazyProvide, String dir, SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }

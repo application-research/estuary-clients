@@ -9,8 +9,8 @@ import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-03T16:17:31.923Z[GMT]")public class UtilContentCreateBody   {
-  private String coluuid = null;  private String dir = null;  private String location = null;  private String name = null;  private String root = null;  private UtilContentType type = null;
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-04T12:55:51.407Z[GMT]")public class UtilContentCreateBody   {
+  private String coluuid = null;  private String dir = null;  private String location = null;  private String name = null;  private Boolean overwrite = null;  private String root = null;  private UtilContentType type = null;
 
   /**
    **/
@@ -64,6 +64,18 @@ import io.swagger.v3.oas.annotations.media.Schema;
    **/
   
   @Schema(description = "")
+  @JsonProperty("overwrite")
+  public Boolean isOverwrite() {
+    return overwrite;
+  }
+  public void setOverwrite(Boolean overwrite) {
+    this.overwrite = overwrite;
+  }
+
+  /**
+   **/
+  
+  @Schema(description = "")
   @JsonProperty("root")
   public String getRoot() {
     return root;
@@ -98,13 +110,14 @@ import io.swagger.v3.oas.annotations.media.Schema;
         Objects.equals(dir, utilContentCreateBody.dir) &&
         Objects.equals(location, utilContentCreateBody.location) &&
         Objects.equals(name, utilContentCreateBody.name) &&
+        Objects.equals(overwrite, utilContentCreateBody.overwrite) &&
         Objects.equals(root, utilContentCreateBody.root) &&
         Objects.equals(type, utilContentCreateBody.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(coluuid, dir, location, name, root, type);
+    return Objects.hash(coluuid, dir, location, name, overwrite, root, type);
   }
 
   @Override
@@ -116,6 +129,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
     sb.append("    dir: ").append(toIndentedString(dir)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    overwrite: ").append(toIndentedString(overwrite)).append("\n");
     sb.append("    root: ").append(toIndentedString(root)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");

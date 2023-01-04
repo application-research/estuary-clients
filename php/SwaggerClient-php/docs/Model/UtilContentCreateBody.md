@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **dir** | **string** |  | [optional] 
 **location** | **string** |  | [optional] 
 **name** | **string** |  | [optional] 
+**overwrite** | **bool** |  | [optional] 
 **root** | **string** |  | [optional] 
 **type** | [**\Swagger\Client\Model\UtilContentType**](UtilContentType.md) |  | [optional] 
 

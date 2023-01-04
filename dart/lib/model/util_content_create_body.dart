@@ -10,6 +10,8 @@ class UtilContentCreateBody {
 
   String name = null;
 
+  bool overwrite = null;
+
   String root = null;
 
   UtilContentType type = null;
@@ -18,7 +20,7 @@ class UtilContentCreateBody {
 
   @override
   String toString() {
-    return 'UtilContentCreateBody[coluuid=$coluuid, dir=$dir, location=$location, name=$name, root=$root, type=$type, ]';
+    return 'UtilContentCreateBody[coluuid=$coluuid, dir=$dir, location=$location, name=$name, overwrite=$overwrite, root=$root, type=$type, ]';
   }
 
   UtilContentCreateBody.fromJson(Map<String, dynamic> json) {
@@ -27,6 +29,7 @@ class UtilContentCreateBody {
     dir = json['dir'];
     location = json['location'];
     name = json['name'];
+    overwrite = json['overwrite'];
     root = json['root'];
     type = new UtilContentType.fromJson(json['type']);
   }
@@ -37,6 +40,7 @@ class UtilContentCreateBody {
       'dir': dir,
       'location': location,
       'name': name,
+      'overwrite': overwrite,
       'root': root,
       'type': type
      };

@@ -43,16 +43,18 @@ namespace IO.Swagger.Api
         /// <param name="body">Content IDs to add to collection</param>
         /// <param name="coluuid">Collection UUID</param>
         /// <param name="dir">Directory</param>
+        /// <param name="overwrite">Overwrite conflicting files</param>
         /// <returns>string</returns>
-        string CollectionsColuuidPost (List<int?> body, string coluuid, string dir);
+        string CollectionsColuuidPost (List<int?> body, string coluuid, string dir, string overwrite);
         /// <summary>
         /// Add a file to a collection This endpoint adds a file to a collection
         /// </summary>
         /// <param name="coluuid">Collection ID</param>
         /// <param name="content">Content</param>
-        /// <param name="path">Path to file</param>
+        /// <param name="dir">Directory inside collection</param>
+        /// <param name="overwrite">Overwrite file if already exists in path</param>
         /// <returns>string</returns>
-        string CollectionsFsAddPost (string coluuid, string content, string path);
+        string CollectionsFsAddPost (string coluuid, string content, string dir, string overwrite);
         /// <summary>
         /// List all collections This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.
         /// </summary>
@@ -271,8 +273,9 @@ namespace IO.Swagger.Api
         /// <param name="body">Content IDs to add to collection</param>
         /// <param name="coluuid">Collection UUID</param>
         /// <param name="dir">Directory</param>
+        /// <param name="overwrite">Overwrite conflicting files</param>
         /// <returns>string</returns>
-        public string CollectionsColuuidPost (List<int?> body, string coluuid, string dir)
+        public string CollectionsColuuidPost (List<int?> body, string coluuid, string dir, string overwrite)
         {
             // verify the required parameter 'body' is set
             if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling CollectionsColuuidPost");
@@ -290,6 +293,7 @@ namespace IO.Swagger.Api
             String postBody = null;
     
              if (dir != null) queryParams.Add("dir", ApiClient.ParameterToString(dir)); // query parameter
+ if (overwrite != null) queryParams.Add("overwrite", ApiClient.ParameterToString(overwrite)); // query parameter
                         postBody = ApiClient.Serialize(body); // http body (model) parameter
 
             // authentication setting, if any
@@ -311,16 +315,15 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="coluuid">Collection ID</param>
         /// <param name="content">Content</param>
-        /// <param name="path">Path to file</param>
+        /// <param name="dir">Directory inside collection</param>
+        /// <param name="overwrite">Overwrite file if already exists in path</param>
         /// <returns>string</returns>
-        public string CollectionsFsAddPost (string coluuid, string content, string path)
+        public string CollectionsFsAddPost (string coluuid, string content, string dir, string overwrite)
         {
             // verify the required parameter 'coluuid' is set
             if (coluuid == null) throw new ApiException(400, "Missing required parameter 'coluuid' when calling CollectionsFsAddPost");
             // verify the required parameter 'content' is set
             if (content == null) throw new ApiException(400, "Missing required parameter 'content' when calling CollectionsFsAddPost");
-            // verify the required parameter 'path' is set
-            if (path == null) throw new ApiException(400, "Missing required parameter 'path' when calling CollectionsFsAddPost");
     
             var path = "/collections/fs/add";
             path = path.Replace("{format}", "json");
@@ -333,7 +336,8 @@ namespace IO.Swagger.Api
     
              if (coluuid != null) queryParams.Add("coluuid", ApiClient.ParameterToString(coluuid)); // query parameter
  if (content != null) queryParams.Add("content", ApiClient.ParameterToString(content)); // query parameter
- if (path != null) queryParams.Add("path", ApiClient.ParameterToString(path)); // query parameter
+ if (dir != null) queryParams.Add("dir", ApiClient.ParameterToString(dir)); // query parameter
+ if (overwrite != null) queryParams.Add("overwrite", ApiClient.ParameterToString(overwrite)); // query parameter
                         
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };

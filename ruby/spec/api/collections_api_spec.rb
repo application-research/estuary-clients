@@ -88,6 +88,7 @@ describe 'CollectionsApi' do
   # @param coluuid Collection UUID
   # @param [Hash] opts the optional parameters
   # @option opts [String] :dir Directory
+  # @option opts [String] :overwrite Overwrite conflicting files
   # @return [String]
   describe 'collections_coluuid_post test' do
     it 'should work' do
@@ -100,8 +101,9 @@ describe 'CollectionsApi' do
   # This endpoint adds a file to a collection
   # @param coluuid Collection ID
   # @param content Content
-  # @param path Path to file
   # @param [Hash] opts the optional parameters
+  # @option opts [String] :dir Directory inside collection
+  # @option opts [String] :overwrite Overwrite file if already exists in path
   # @return [String]
   describe 'collections_fs_add_post test' do
     it 'should work' do

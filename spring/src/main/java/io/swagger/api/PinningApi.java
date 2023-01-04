@@ -35,7 +35,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-03T16:17:32.784Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-04T12:55:54.653Z[GMT]")
 @Validated
 public interface PinningApi {
 
@@ -104,7 +104,7 @@ public interface PinningApi {
         produces = { "application/json" }, 
         consumes = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<TypesIpfsPinStatusResponse> pinningPinsPost(@Parameter(in = ParameterIn.DEFAULT, description = "Pin Body {cid:cid, name:name}", required=true, schema=@Schema()) @Valid @RequestBody TypesIpfsPin body);
+    ResponseEntity<TypesIpfsPinStatusResponse> pinningPinsPost(@Parameter(in = ParameterIn.DEFAULT, description = "Pin Body {cid:cid, name:name}", required=true, schema=@Schema()) @Valid @RequestBody TypesIpfsPin body, @Parameter(in = ParameterIn.QUERY, description = "Ignore Dupes" ,schema=@Schema()) @Valid @RequestParam(value = "ignore-dupes", required = false) String ignoreDupes, @Parameter(in = ParameterIn.QUERY, description = "Overwrite conflicting files in collections" ,schema=@Schema()) @Valid @RequestParam(value = "overwrite", required = false) String overwrite);
 
 }
 

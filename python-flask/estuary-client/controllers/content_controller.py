@@ -51,7 +51,7 @@ def content_add_car_post(body, ignore_dupes=None, filename=None):  # noqa: E501
     return 'do some magic!'
 
 
-def content_add_ipfs_post(body, ignore_dupes=None):  # noqa: E501
+def content_add_ipfs_post(body, ignore_dupes=None, overwrite=None):  # noqa: E501
     """Add IPFS object
 
     This endpoint is used to add an IPFS object to the network. The object can be a file or a directory. # noqa: E501
@@ -60,6 +60,8 @@ def content_add_ipfs_post(body, ignore_dupes=None):  # noqa: E501
     :type body: dict | bytes
     :param ignore_dupes: Ignore Dupes
     :type ignore_dupes: str
+    :param overwrite: Overwrite conflicting files in collections
+    :type overwrite: str
 
     :rtype: str
     """
@@ -68,7 +70,7 @@ def content_add_ipfs_post(body, ignore_dupes=None):  # noqa: E501
     return 'do some magic!'
 
 
-def content_add_post(data, filename, coluuid=None, replication=None, ignore_dupes=None, lazy_provide=None, dir=None):  # noqa: E501
+def content_add_post(data, filename, coluuid=None, replication=None, ignore_dupes=None, overwrite=None, lazy_provide=None, dir=None):  # noqa: E501
     """Add new content
 
     This endpoint is used to upload new content. # noqa: E501
@@ -83,6 +85,8 @@ def content_add_post(data, filename, coluuid=None, replication=None, ignore_dupe
     :type replication: int
     :param ignore_dupes: Ignore Dupes true/false
     :type ignore_dupes: str
+    :param overwrite: Overwrite files with the same path on same collection
+    :type overwrite: str
     :param lazy_provide: Lazy Provide true/false
     :type lazy_provide: str
     :param dir: Directory

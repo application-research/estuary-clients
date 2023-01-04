@@ -80,7 +80,7 @@ public class CollectionsApiServiceImpl implements CollectionsApi {
      * This endpoint adds already-pinned contents (that have ContentIDs) to a collection.
      *
      */
-    public String collectionsColuuidPost(List<Integer> body, String coluuid, String dir) {
+    public String collectionsColuuidPost(List<Integer> body, String coluuid, String dir, String overwrite) {
         // TODO: Implement...
         
         return null;
@@ -92,7 +92,7 @@ public class CollectionsApiServiceImpl implements CollectionsApi {
      * This endpoint adds a file to a collection
      *
      */
-    public String collectionsFsAddPost(String coluuid, String content, String path) {
+    public String collectionsFsAddPost(String coluuid, String content, String dir, String overwrite) {
         // TODO: Implement...
         
         return null;

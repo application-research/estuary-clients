@@ -178,13 +178,17 @@ CollectionsApi <- R6::R6Class(
       }
 
     }
-    collections_coluuid_post = function(body, coluuid, dir, ...){
+    collections_coluuid_post = function(body, coluuid, dir, overwrite, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
 
       if (!missing(`dir`)) {
         queryParams['dir'] <- dir
+      }
+
+      if (!missing(`overwrite`)) {
+        queryParams['overwrite'] <- overwrite
       }
 
       if (!missing(`body`)) {
@@ -216,7 +220,7 @@ CollectionsApi <- R6::R6Class(
       }
 
     }
-    collections_fs_add_post = function(coluuid, content, path, ...){
+    collections_fs_add_post = function(coluuid, content, dir, overwrite, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
@@ -229,8 +233,12 @@ CollectionsApi <- R6::R6Class(
         queryParams['content'] <- content
       }
 
-      if (!missing(`path`)) {
-        queryParams['path'] <- path
+      if (!missing(`dir`)) {
+        queryParams['dir'] <- dir
+      }
+
+      if (!missing(`overwrite`)) {
+        queryParams['overwrite'] <- overwrite
       }
 
       urlPath <- "/collections/fs/add"

@@ -168,10 +168,11 @@ class ContentApi(
    *
    * @param body IPFS Body 
    * @param ignoreDupes Ignore Dupes (optional)
+   * @param overwrite Overwrite conflicting files in collections (optional)
    * @return String
    */
-  def contentAddIpfsPost(body: IpfsPin, ignoreDupes: Option[String] = None): Option[String] = {
-    val await = Try(Await.result(contentAddIpfsPostAsync(body, ignoreDupes), Duration.Inf))
+  def contentAddIpfsPost(body: IpfsPin, ignoreDupes: Option[String] = None, overwrite: Option[String] = None): Option[String] = {
+    val await = Try(Await.result(contentAddIpfsPostAsync(body, ignoreDupes, overwrite), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -184,10 +185,11 @@ class ContentApi(
    *
    * @param body IPFS Body 
    * @param ignoreDupes Ignore Dupes (optional)
+   * @param overwrite Overwrite conflicting files in collections (optional)
    * @return Future(String)
    */
-  def contentAddIpfsPostAsync(body: IpfsPin, ignoreDupes: Option[String] = None): Future[String] = {
-      helper.contentAddIpfsPost(body, ignoreDupes)
+  def contentAddIpfsPostAsync(body: IpfsPin, ignoreDupes: Option[String] = None, overwrite: Option[String] = None): Future[String] = {
+      helper.contentAddIpfsPost(body, ignoreDupes, overwrite)
   }
 
   /**
@@ -199,12 +201,13 @@ class ContentApi(
    * @param coluuid Collection UUID (optional)
    * @param replication Replication value (optional)
    * @param ignoreDupes Ignore Dupes true/false (optional)
+   * @param overwrite Overwrite files with the same path on same collection (optional)
    * @param lazyProvide Lazy Provide true/false (optional)
    * @param dir Directory (optional)
    * @return util.ContentAddResponse
    */
-  def contentAddPost(data: Array[Byte], filename: String, coluuid: Option[String] = None, replication: Option[Integer] = None, ignoreDupes: Option[String] = None, lazyProvide: Option[String] = None, dir: Option[String] = None): Option[util.ContentAddResponse] = {
-    val await = Try(Await.result(contentAddPostAsync(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir), Duration.Inf))
+  def contentAddPost(data: Array[Byte], filename: String, coluuid: Option[String] = None, replication: Option[Integer] = None, ignoreDupes: Option[String] = None, overwrite: Option[String] = None, lazyProvide: Option[String] = None, dir: Option[String] = None): Option[util.ContentAddResponse] = {
+    val await = Try(Await.result(contentAddPostAsync(data, filename, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -220,12 +223,13 @@ class ContentApi(
    * @param coluuid Collection UUID (optional)
    * @param replication Replication value (optional)
    * @param ignoreDupes Ignore Dupes true/false (optional)
+   * @param overwrite Overwrite files with the same path on same collection (optional)
    * @param lazyProvide Lazy Provide true/false (optional)
    * @param dir Directory (optional)
    * @return Future(util.ContentAddResponse)
    */
-  def contentAddPostAsync(data: Array[Byte], filename: String, coluuid: Option[String] = None, replication: Option[Integer] = None, ignoreDupes: Option[String] = None, lazyProvide: Option[String] = None, dir: Option[String] = None): Future[util.ContentAddResponse] = {
-      helper.contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir)
+  def contentAddPostAsync(data: Array[Byte], filename: String, coluuid: Option[String] = None, replication: Option[Integer] = None, ignoreDupes: Option[String] = None, overwrite: Option[String] = None, lazyProvide: Option[String] = None, dir: Option[String] = None): Future[util.ContentAddResponse] = {
+      helper.contentAddPost(data, filename, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir)
   }
 
   /**
@@ -695,7 +699,8 @@ class ContentApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
   }
 
   def contentAddIpfsPost(body: IpfsPin,
-    ignoreDupes: Option[String] = None
+    ignoreDupes: Option[String] = None,
+    overwrite: Option[String] = None
     )(implicit reader: ClientResponseReader[String], writer: RequestWriter[IpfsPin]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/content/add-ipfs"))
@@ -707,6 +712,10 @@ class ContentApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     if (body == null) throw new Exception("Missing required parameter 'body' when calling ContentApi->contentAddIpfsPost")
     ignoreDupes match {
       case Some(param) => queryParams += "ignore-dupes" -> param.toString
+      case _ => queryParams
+    }
+    overwrite match {
+      case Some(param) => queryParams += "overwrite" -> param.toString
       case _ => queryParams
     }
 
@@ -721,6 +730,7 @@ class ContentApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     coluuid: Option[String] = None,
     replication: Option[Integer] = None,
     ignoreDupes: Option[String] = None,
+    overwrite: Option[String] = None,
     lazyProvide: Option[String] = None,
     dir: Option[String] = None
     )(implicit reader: ClientResponseReader[util.ContentAddResponse]): Future[util.ContentAddResponse] = {
@@ -745,6 +755,10 @@ class ContentApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
     ignoreDupes match {
       case Some(param) => queryParams += "ignore-dupes" -> param.toString
+      case _ => queryParams
+    }
+    overwrite match {
+      case Some(param) => queryParams += "overwrite" -> param.toString
       case _ => queryParams
     }
     lazyProvide match {

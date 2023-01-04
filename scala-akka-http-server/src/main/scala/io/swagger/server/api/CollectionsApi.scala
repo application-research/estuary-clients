@@ -80,12 +80,12 @@ class CollectionsApi(
     } ~
     path() { (coluuid) => 
       post {
-        parameters("dir".as[String].?) { (dir) =>
+        parameters("dir".as[String].?, "overwrite".as[String].?) { (dir, overwrite) =>
           
             formFields() { () =>
               
                 entity(as[List[Int]]){ body =>
-                  collectionsService.collectionsColuuidPost(body = body, coluuid = coluuid, dir = dir)
+                  collectionsService.collectionsColuuidPost(body = body, coluuid = coluuid, dir = dir, overwrite = overwrite)
                 }
              
             }
@@ -95,12 +95,12 @@ class CollectionsApi(
     } ~
     path() { () => 
       post {
-        parameters("coluuid".as[String], "content".as[String], "path".as[String]) { (coluuid, content, path) =>
+        parameters("coluuid".as[String], "content".as[String], "dir".as[String].?, "overwrite".as[String].?) { (coluuid, content, dir, overwrite) =>
           
             formFields() { () =>
               
                 
-                  collectionsService.collectionsFsAddPost(coluuid = coluuid, content = content, path = path)
+                  collectionsService.collectionsFsAddPost(coluuid = coluuid, content = content, dir = dir, overwrite = overwrite)
                
              
             }
@@ -209,7 +209,7 @@ trait CollectionsApiService {
    * Code: 400, Message: Bad Request, DataType: util.HttpError
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
-  def collectionsColuuidPost(body: List[Int], coluuid: String, dir: Option[String])
+  def collectionsColuuidPost(body: List[Int], coluuid: String, dir: Option[String], overwrite: Option[String])
       (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
   def collectionsFsAddPost200(responseString: String): Route =
@@ -223,7 +223,7 @@ trait CollectionsApiService {
    * Code: 400, Message: Bad Request, DataType: util.HttpError
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
-  def collectionsFsAddPost(coluuid: String, content: String, path: String)
+  def collectionsFsAddPost(coluuid: String, content: String, dir: Option[String], overwrite: Option[String])
       (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
   def collectionsGet200(responsecollections.Collectionarray: List[collections.Collection])(implicit toEntityMarshallercollections.Collectionarray: ToEntityMarshaller[List[collections.Collection]]): Route =

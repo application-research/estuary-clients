@@ -102,12 +102,13 @@ class ContentApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(ba
      * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
      * @param body IPFS Body 
      * @param ignoreDupes Ignore Dupes (optional)
+     * @param overwrite Overwrite conflicting files in collections (optional)
      * @return kotlin.String
      */
     @Suppress("UNCHECKED_CAST")
-    fun contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes: kotlin.String? = null): kotlin.String {
+    fun contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes: kotlin.String? = null, overwrite: kotlin.String? = null): kotlin.String {
         val localVariableBody: kotlin.Any? = body
-        val localVariableQuery: MultiValueMap = mapOf("ignore-dupes" to listOf("$ignoreDupes"))
+        val localVariableQuery: MultiValueMap = mapOf("ignore-dupes" to listOf("$ignoreDupes"), "overwrite" to listOf("$overwrite"))
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
                 "/content/add-ipfs", query = localVariableQuery
@@ -132,14 +133,15 @@ class ContentApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(ba
      * @param coluuid Collection UUID (optional)
      * @param replication Replication value (optional)
      * @param ignoreDupes Ignore Dupes true/false (optional)
+     * @param overwrite Overwrite files with the same path on same collection (optional)
      * @param lazyProvide Lazy Provide true/false (optional)
      * @param dir Directory (optional)
      * @return UtilContentAddResponse
      */
     @Suppress("UNCHECKED_CAST")
-    fun contentAddPost(&#x60;data&#x60;: kotlin.Array<kotlin.Byte>, filename: kotlin.String, coluuid: kotlin.String? = null, replication: kotlin.Int? = null, ignoreDupes: kotlin.String? = null, lazyProvide: kotlin.String? = null, dir: kotlin.String? = null): UtilContentAddResponse {
+    fun contentAddPost(&#x60;data&#x60;: kotlin.Array<kotlin.Byte>, filename: kotlin.String, coluuid: kotlin.String? = null, replication: kotlin.Int? = null, ignoreDupes: kotlin.String? = null, overwrite: kotlin.String? = null, lazyProvide: kotlin.String? = null, dir: kotlin.String? = null): UtilContentAddResponse {
         val localVariableBody: kotlin.Any? = mapOf("data" to "$&#x60;data&#x60;", "filename" to "$filename")
-        val localVariableQuery: MultiValueMap = mapOf("coluuid" to listOf("$coluuid"), "replication" to listOf("$replication"), "ignore-dupes" to listOf("$ignoreDupes"), "lazy-provide" to listOf("$lazyProvide"), "dir" to listOf("$dir"))
+        val localVariableQuery: MultiValueMap = mapOf("coluuid" to listOf("$coluuid"), "replication" to listOf("$replication"), "ignore-dupes" to listOf("$ignoreDupes"), "overwrite" to listOf("$overwrite"), "lazy-provide" to listOf("$lazyProvide"), "dir" to listOf("$dir"))
         val localVariableHeaders: kotlin.collections.Map<kotlin.String, kotlin.String> = mapOf("Content-Type" to "multipart/form-data")
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,

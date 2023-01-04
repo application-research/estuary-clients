@@ -41,6 +41,13 @@ namespace IO.Swagger.Model {
     public string Name { get; set; }
 
     /// <summary>
+    /// Gets or Sets Overwrite
+    /// </summary>
+    [DataMember(Name="overwrite", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "overwrite")]
+    public bool? Overwrite { get; set; }
+
+    /// <summary>
     /// Gets or Sets Root
     /// </summary>
     [DataMember(Name="root", EmitDefaultValue=false)]
@@ -66,6 +73,7 @@ namespace IO.Swagger.Model {
       sb.Append("  Dir: ").Append(Dir).Append("\n");
       sb.Append("  Location: ").Append(Location).Append("\n");
       sb.Append("  Name: ").Append(Name).Append("\n");
+      sb.Append("  Overwrite: ").Append(Overwrite).Append("\n");
       sb.Append("  Root: ").Append(Root).Append("\n");
       sb.Append("  Type: ").Append(Type).Append("\n");
       sb.Append("}\n");

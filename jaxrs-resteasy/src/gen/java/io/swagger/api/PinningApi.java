@@ -33,7 +33,7 @@ import javax.validation.constraints.*;
 @Path("/pinning")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-03T16:17:31.923Z[GMT]")public class PinningApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-04T12:55:51.407Z[GMT]")public class PinningApi  {
 
     @Inject PinningApiService service;
 
@@ -114,8 +114,8 @@ import javax.validation.constraints.*;
         @ApiResponse(responseCode = "202", description = "Accepted", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TypesIpfsPinStatusResponse.class))),
         
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response pinningPinsPost(@Parameter(description = "Pin Body {cid:cid, name:name}" ,required=true) TypesIpfsPin body,@Context SecurityContext securityContext)
+    public Response pinningPinsPost(@Parameter(description = "Pin Body {cid:cid, name:name}" ,required=true) TypesIpfsPin body,  @QueryParam("ignore-dupes") String ignoreDupes,  @QueryParam("overwrite") String overwrite,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return service.pinningPinsPost(body,securityContext);
+        return service.pinningPinsPost(body,ignoreDupes,overwrite,securityContext);
     }
 }

@@ -65,12 +65,12 @@ class ContentApi(
     } ~
     path() { () => 
       post {
-        parameters("ignore-dupes".as[String].?) { (ignoreDupes) =>
+        parameters("ignore-dupes".as[String].?, "overwrite".as[String].?) { (ignoreDupes, overwrite) =>
           
             formFields() { () =>
               
                 entity(as[Types.IpfsPin]){ body =>
-                  contentService.contentAddIpfsPost(body = body, ignoreDupes = ignoreDupes)
+                  contentService.contentAddIpfsPost(body = body, ignoreDupes = ignoreDupes, overwrite = overwrite)
                 }
              
             }
@@ -80,12 +80,12 @@ class ContentApi(
     } ~
     path() { () => 
       post {
-        parameters("coluuid".as[String].?, "replication".as[Int].?, "ignore-dupes".as[String].?, "lazy-provide".as[String].?, "dir".as[String].?) { (coluuid, replication, ignoreDupes, lazyProvide, dir) =>
+        parameters("coluuid".as[String].?, "replication".as[Int].?, "ignore-dupes".as[String].?, "overwrite".as[String].?, "lazy-provide".as[String].?, "dir".as[String].?) { (coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir) =>
           
             formFields("data".as[byte[]], "filename".as[String]) { (data, filename) =>
               
                 
-                  contentService.contentAddPost(data = data, filename = filename, coluuid = coluuid, replication = replication, ignoreDupes = ignoreDupes, lazyProvide = lazyProvide, dir = dir)
+                  contentService.contentAddPost(data = data, filename = filename, coluuid = coluuid, replication = replication, ignoreDupes = ignoreDupes, overwrite = overwrite, lazyProvide = lazyProvide, dir = dir)
                
              
             }
@@ -375,7 +375,7 @@ trait ContentApiService {
    * Code: 400, Message: Bad Request, DataType: util.HttpError
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
-  def contentAddIpfsPost(body: Types.IpfsPin, ignoreDupes: Option[String])
+  def contentAddIpfsPost(body: Types.IpfsPin, ignoreDupes: Option[String], overwrite: Option[String])
       (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
   def contentAddPost200(responseutil.ContentAddResponse: util.ContentAddResponse)(implicit toEntityMarshallerutil.ContentAddResponse: ToEntityMarshaller[util.ContentAddResponse]): Route =
@@ -389,7 +389,7 @@ trait ContentApiService {
    * Code: 400, Message: Bad Request, DataType: util.HttpError
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
-  def contentAddPost(data: String, filename: String, coluuid: Option[String], replication: Option[Int], ignoreDupes: Option[String], lazyProvide: Option[String], dir: Option[String])
+  def contentAddPost(data: String, filename: String, coluuid: Option[String], replication: Option[Int], ignoreDupes: Option[String], overwrite: Option[String], lazyProvide: Option[String], dir: Option[String])
       (implicit toEntityMarshallerutil.ContentAddResponse: ToEntityMarshaller[util.ContentAddResponse], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
   def contentAggregatedContentGet200(responseString: String): Route =

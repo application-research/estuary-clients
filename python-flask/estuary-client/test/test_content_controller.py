@@ -60,7 +60,8 @@ class TestContentController(BaseTestCase):
         Add IPFS object
         """
         body = TypesIpfsPin()
-        query_string = [('ignore_dupes', 'ignore_dupes_example')]
+        query_string = [('ignore_dupes', 'ignore_dupes_example'),
+                        ('overwrite', 'overwrite_example')]
         response = self.client.open(
             '/content/add-ipfs',
             method='POST',
@@ -78,6 +79,7 @@ class TestContentController(BaseTestCase):
         query_string = [('coluuid', 'coluuid_example'),
                         ('replication', 56),
                         ('ignore_dupes', 'ignore_dupes_example'),
+                        ('overwrite', 'overwrite_example'),
                         ('lazy_provide', 'lazy_provide_example'),
                         ('dir', 'dir_example')]
         data = dict(data='data_example',

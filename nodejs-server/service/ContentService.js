@@ -47,11 +47,12 @@ exports.adminInvitesGET = function() {
  * coluuid String Collection UUID (optional)
  * replication Integer Replication value (optional)
  * ignoreDupes String Ignore Dupes true/false (optional)
+ * overwrite String Overwrite files with the same path on same collection (optional)
  * lazyProvide String Lazy Provide true/false (optional)
  * dir String Directory (optional)
  * returns util.ContentAddResponse
  **/
-exports.contentAddPOST = function(coluuid,replication,ignoreDupes,lazyProvide,dir) {
+exports.contentAddPOST = function(coluuid,replication,ignoreDupes,overwrite,lazyProvide,dir) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = {
@@ -104,9 +105,10 @@ exports.contentAdd_carPOST = function(body,ignoreDupes,filename) {
  *
  * body Types.IpfsPin IPFS Body
  * ignoreDupes String Ignore Dupes (optional)
+ * overwrite String Overwrite conflicting files in collections (optional)
  * returns String
  **/
-exports.contentAdd_ipfsPOST = function(body,ignoreDupes) {
+exports.contentAdd_ipfsPOST = function(body,ignoreDupes,overwrite) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = "";

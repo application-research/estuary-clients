@@ -65,8 +65,10 @@ class PinningApiControllerTest {
     @Test
     void pinningPinsPostTest() {
         TypesIpfsPin body = new TypesIpfsPin();
+        String ignoreDupes = "ignoreDupes_example";
+        String overwrite = "overwrite_example";
         try {
-            api.pinningPinsPost(body).blockingGet();
+            api.pinningPinsPost(body, ignoreDupes, overwrite).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }

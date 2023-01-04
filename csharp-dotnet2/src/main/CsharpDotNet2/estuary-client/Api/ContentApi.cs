@@ -35,8 +35,9 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="body">IPFS Body</param>
         /// <param name="ignoreDupes">Ignore Dupes</param>
+        /// <param name="overwrite">Overwrite conflicting files in collections</param>
         /// <returns>string</returns>
-        string ContentAddIpfsPost (TypesIpfsPin body, string ignoreDupes);
+        string ContentAddIpfsPost (TypesIpfsPin body, string ignoreDupes, string overwrite);
         /// <summary>
         /// Add new content This endpoint is used to upload new content.
         /// </summary>
@@ -45,10 +46,11 @@ namespace IO.Swagger.Api
         /// <param name="coluuid">Collection UUID</param>
         /// <param name="replication">Replication value</param>
         /// <param name="ignoreDupes">Ignore Dupes true/false</param>
+        /// <param name="overwrite">Overwrite files with the same path on same collection</param>
         /// <param name="lazyProvide">Lazy Provide true/false</param>
         /// <param name="dir">Directory</param>
         /// <returns>UtilContentAddResponse</returns>
-        UtilContentAddResponse ContentAddPost (byte[] data, string filename, string coluuid, int? replication, string ignoreDupes, string lazyProvide, string dir);
+        UtilContentAddResponse ContentAddPost (byte[] data, string filename, string coluuid, int? replication, string ignoreDupes, string overwrite, string lazyProvide, string dir);
         /// <summary>
         /// Get aggregated content stats This endpoint returns aggregated content stats
         /// </summary>
@@ -310,8 +312,9 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="body">IPFS Body</param>
         /// <param name="ignoreDupes">Ignore Dupes</param>
+        /// <param name="overwrite">Overwrite conflicting files in collections</param>
         /// <returns>string</returns>
-        public string ContentAddIpfsPost (TypesIpfsPin body, string ignoreDupes)
+        public string ContentAddIpfsPost (TypesIpfsPin body, string ignoreDupes, string overwrite)
         {
             // verify the required parameter 'body' is set
             if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling ContentAddIpfsPost");
@@ -326,6 +329,7 @@ namespace IO.Swagger.Api
             String postBody = null;
     
              if (ignoreDupes != null) queryParams.Add("ignore-dupes", ApiClient.ParameterToString(ignoreDupes)); // query parameter
+ if (overwrite != null) queryParams.Add("overwrite", ApiClient.ParameterToString(overwrite)); // query parameter
                         postBody = ApiClient.Serialize(body); // http body (model) parameter
 
             // authentication setting, if any
@@ -350,10 +354,11 @@ namespace IO.Swagger.Api
         /// <param name="coluuid">Collection UUID</param>
         /// <param name="replication">Replication value</param>
         /// <param name="ignoreDupes">Ignore Dupes true/false</param>
+        /// <param name="overwrite">Overwrite files with the same path on same collection</param>
         /// <param name="lazyProvide">Lazy Provide true/false</param>
         /// <param name="dir">Directory</param>
         /// <returns>UtilContentAddResponse</returns>
-        public UtilContentAddResponse ContentAddPost (byte[] data, string filename, string coluuid, int? replication, string ignoreDupes, string lazyProvide, string dir)
+        public UtilContentAddResponse ContentAddPost (byte[] data, string filename, string coluuid, int? replication, string ignoreDupes, string overwrite, string lazyProvide, string dir)
         {
             // verify the required parameter 'data' is set
             if (data == null) throw new ApiException(400, "Missing required parameter 'data' when calling ContentAddPost");
@@ -372,6 +377,7 @@ namespace IO.Swagger.Api
              if (coluuid != null) queryParams.Add("coluuid", ApiClient.ParameterToString(coluuid)); // query parameter
  if (replication != null) queryParams.Add("replication", ApiClient.ParameterToString(replication)); // query parameter
  if (ignoreDupes != null) queryParams.Add("ignore-dupes", ApiClient.ParameterToString(ignoreDupes)); // query parameter
+ if (overwrite != null) queryParams.Add("overwrite", ApiClient.ParameterToString(overwrite)); // query parameter
  if (lazyProvide != null) queryParams.Add("lazy-provide", ApiClient.ParameterToString(lazyProvide)); // query parameter
  if (dir != null) queryParams.Add("dir", ApiClient.ParameterToString(dir)); // query parameter
                         if (data != null) fileParams.Add("data", ApiClient.ParameterToFile("data", data));

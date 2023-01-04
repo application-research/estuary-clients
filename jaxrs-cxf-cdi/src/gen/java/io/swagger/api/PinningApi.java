@@ -35,7 +35,7 @@ import javax.validation.constraints.*;
 
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2023-01-03T16:17:33.393Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2023-01-04T12:55:54.251Z[GMT]")
 public class PinningApi  {
 
   @Context SecurityContext securityContext;
@@ -117,7 +117,11 @@ public class PinningApi  {
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response pinningPinsPost(
 @Parameter(description = "Pin Body {cid:cid, name:name}" ,required=true) TypesIpfsPin body
+,  
+@Parameter(description = "Ignore Dupes")  @QueryParam("ignore-dupes") String ignoreDupes
+,  
+@Parameter(description = "Overwrite conflicting files in collections")  @QueryParam("overwrite") String overwrite
 ) {
-        return delegate.pinningPinsPost(body, securityContext);
+        return delegate.pinningPinsPost(body, ignoreDupes, overwrite, securityContext);
     }
 }

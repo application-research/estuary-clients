@@ -36,7 +36,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-03T16:17:32.784Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-04T12:55:54.653Z[GMT]")
 @Validated
 public interface ContentApi {
 
@@ -67,7 +67,7 @@ public interface ContentApi {
         produces = { "application/json" }, 
         consumes = { "*/*" }, 
         method = RequestMethod.POST)
-    ResponseEntity<String> contentAddIpfsPost(@Parameter(in = ParameterIn.DEFAULT, description = "IPFS Body", required=true, schema=@Schema()) @Valid @RequestBody TypesIpfsPin body, @Parameter(in = ParameterIn.QUERY, description = "Ignore Dupes" ,schema=@Schema()) @Valid @RequestParam(value = "ignore-dupes", required = false) String ignoreDupes);
+    ResponseEntity<String> contentAddIpfsPost(@Parameter(in = ParameterIn.DEFAULT, description = "IPFS Body", required=true, schema=@Schema()) @Valid @RequestBody TypesIpfsPin body, @Parameter(in = ParameterIn.QUERY, description = "Ignore Dupes" ,schema=@Schema()) @Valid @RequestParam(value = "ignore-dupes", required = false) String ignoreDupes, @Parameter(in = ParameterIn.QUERY, description = "Overwrite conflicting files in collections" ,schema=@Schema()) @Valid @RequestParam(value = "overwrite", required = false) String overwrite);
 
 
     @Operation(summary = "Add new content", description = "This endpoint is used to upload new content.", security = {
@@ -82,7 +82,7 @@ public interface ContentApi {
         produces = { "application/json" }, 
         consumes = { "multipart/form-data" }, 
         method = RequestMethod.POST)
-    ResponseEntity<UtilContentAddResponse> contentAddPost(@Parameter(description = "file detail") @Valid @RequestPart("file") MultipartFile data, @Parameter(in = ParameterIn.DEFAULT, description = "", required=true,schema=@Schema()) @RequestParam(value="filename", required=true)  String filename, @Parameter(in = ParameterIn.QUERY, description = "Collection UUID" ,schema=@Schema()) @Valid @RequestParam(value = "coluuid", required = false) String coluuid, @Parameter(in = ParameterIn.QUERY, description = "Replication value" ,schema=@Schema()) @Valid @RequestParam(value = "replication", required = false) Integer replication, @Parameter(in = ParameterIn.QUERY, description = "Ignore Dupes true/false" ,schema=@Schema()) @Valid @RequestParam(value = "ignore-dupes", required = false) String ignoreDupes, @Parameter(in = ParameterIn.QUERY, description = "Lazy Provide true/false" ,schema=@Schema()) @Valid @RequestParam(value = "lazy-provide", required = false) String lazyProvide, @Parameter(in = ParameterIn.QUERY, description = "Directory" ,schema=@Schema()) @Valid @RequestParam(value = "dir", required = false) String dir);
+    ResponseEntity<UtilContentAddResponse> contentAddPost(@Parameter(description = "file detail") @Valid @RequestPart("file") MultipartFile data, @Parameter(in = ParameterIn.DEFAULT, description = "", required=true,schema=@Schema()) @RequestParam(value="filename", required=true)  String filename, @Parameter(in = ParameterIn.QUERY, description = "Collection UUID" ,schema=@Schema()) @Valid @RequestParam(value = "coluuid", required = false) String coluuid, @Parameter(in = ParameterIn.QUERY, description = "Replication value" ,schema=@Schema()) @Valid @RequestParam(value = "replication", required = false) Integer replication, @Parameter(in = ParameterIn.QUERY, description = "Ignore Dupes true/false" ,schema=@Schema()) @Valid @RequestParam(value = "ignore-dupes", required = false) String ignoreDupes, @Parameter(in = ParameterIn.QUERY, description = "Overwrite files with the same path on same collection" ,schema=@Schema()) @Valid @RequestParam(value = "overwrite", required = false) String overwrite, @Parameter(in = ParameterIn.QUERY, description = "Lazy Provide true/false" ,schema=@Schema()) @Valid @RequestParam(value = "lazy-provide", required = false) String lazyProvide, @Parameter(in = ParameterIn.QUERY, description = "Directory" ,schema=@Schema()) @Valid @RequestParam(value = "dir", required = false) String dir);
 
 
     @Operation(summary = "Get aggregated content stats", description = "This endpoint returns aggregated content stats", security = {

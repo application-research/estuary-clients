@@ -18,6 +18,7 @@ public class UtilContentCreateBody   {
   private String dir = null;
   private String location = null;
   private String name = null;
+  private Boolean overwrite = null;
   private String root = null;
   private UtilContentType type = null;
 
@@ -95,6 +96,24 @@ public class UtilContentCreateBody   {
 
   /**
    **/
+  public UtilContentCreateBody overwrite(Boolean overwrite) {
+    this.overwrite = overwrite;
+    return this;
+  }
+
+  
+  
+  @Schema(description = "")
+  @JsonProperty("overwrite")
+  public Boolean isOverwrite() {
+    return overwrite;
+  }
+  public void setOverwrite(Boolean overwrite) {
+    this.overwrite = overwrite;
+  }
+
+  /**
+   **/
   public UtilContentCreateBody root(String root) {
     this.root = root;
     return this;
@@ -144,13 +163,14 @@ public class UtilContentCreateBody   {
         Objects.equals(dir, utilContentCreateBody.dir) &&
         Objects.equals(location, utilContentCreateBody.location) &&
         Objects.equals(name, utilContentCreateBody.name) &&
+        Objects.equals(overwrite, utilContentCreateBody.overwrite) &&
         Objects.equals(root, utilContentCreateBody.root) &&
         Objects.equals(type, utilContentCreateBody.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(coluuid, dir, location, name, root, type);
+    return Objects.hash(coluuid, dir, location, name, overwrite, root, type);
   }
 
   @Override
@@ -162,6 +182,7 @@ public class UtilContentCreateBody   {
     sb.append("    dir: ").append(toIndentedString(dir)).append("\n");
     sb.append("    location: ").append(toIndentedString(location)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    overwrite: ").append(toIndentedString(overwrite)).append("\n");
     sb.append("    root: ").append(toIndentedString(root)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");

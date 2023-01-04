@@ -36,7 +36,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-03T16:17:32.784Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-04T12:55:54.653Z[GMT]")
 @Validated
 public interface CollectionsApi {
 
@@ -109,7 +109,7 @@ public interface CollectionsApi {
         produces = { "application/json" }, 
         consumes = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<String> collectionsColuuidPost(@Parameter(in = ParameterIn.PATH, description = "Collection UUID", required=true, schema=@Schema()) @PathVariable("coluuid") String coluuid, @Parameter(in = ParameterIn.DEFAULT, description = "Content IDs to add to collection", required=true, schema=@Schema()) @Valid @RequestBody List<Integer> body, @Parameter(in = ParameterIn.QUERY, description = "Directory" ,schema=@Schema()) @Valid @RequestParam(value = "dir", required = false) String dir);
+    ResponseEntity<String> collectionsColuuidPost(@Parameter(in = ParameterIn.PATH, description = "Collection UUID", required=true, schema=@Schema()) @PathVariable("coluuid") String coluuid, @Parameter(in = ParameterIn.DEFAULT, description = "Content IDs to add to collection", required=true, schema=@Schema()) @Valid @RequestBody List<Integer> body, @Parameter(in = ParameterIn.QUERY, description = "Directory" ,schema=@Schema()) @Valid @RequestParam(value = "dir", required = false) String dir, @Parameter(in = ParameterIn.QUERY, description = "Overwrite conflicting files" ,schema=@Schema()) @Valid @RequestParam(value = "overwrite", required = false) String overwrite);
 
 
     @Operation(summary = "Add a file to a collection", description = "This endpoint adds a file to a collection", security = {
@@ -123,7 +123,7 @@ public interface CollectionsApi {
     @RequestMapping(value = "/collections/fs/add",
         produces = { "application/json" }, 
         method = RequestMethod.POST)
-    ResponseEntity<String> collectionsFsAddPost(@NotNull @Parameter(in = ParameterIn.QUERY, description = "Collection ID" ,required=true,schema=@Schema()) @Valid @RequestParam(value = "coluuid", required = true) String coluuid, @NotNull @Parameter(in = ParameterIn.QUERY, description = "Content" ,required=true,schema=@Schema()) @Valid @RequestParam(value = "content", required = true) String content, @NotNull @Parameter(in = ParameterIn.QUERY, description = "Path to file" ,required=true,schema=@Schema()) @Valid @RequestParam(value = "path", required = true) String path);
+    ResponseEntity<String> collectionsFsAddPost(@NotNull @Parameter(in = ParameterIn.QUERY, description = "Collection ID" ,required=true,schema=@Schema()) @Valid @RequestParam(value = "coluuid", required = true) String coluuid, @NotNull @Parameter(in = ParameterIn.QUERY, description = "Content" ,required=true,schema=@Schema()) @Valid @RequestParam(value = "content", required = true) String content, @Parameter(in = ParameterIn.QUERY, description = "Directory inside collection" ,schema=@Schema()) @Valid @RequestParam(value = "dir", required = false) String dir, @Parameter(in = ParameterIn.QUERY, description = "Overwrite file if already exists in path" ,schema=@Schema()) @Valid @RequestParam(value = "overwrite", required = false) String overwrite);
 
 
     @Operation(summary = "List all collections", description = "This endpoint is used to list all collections. Whenever a user logs on estuary, it will list all collections that the user has access to. This endpoint provides a way to list all collections to the user.", security = {

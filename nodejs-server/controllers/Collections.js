@@ -43,8 +43,8 @@ module.exports.collectionsColuuidGET = function collectionsColuuidGET (req, res,
     });
 };
 
-module.exports.collectionsColuuidPOST = function collectionsColuuidPOST (req, res, next, body, dir, coluuid) {
-  Collections.collectionsColuuidPOST(body, dir, coluuid)
+module.exports.collectionsColuuidPOST = function collectionsColuuidPOST (req, res, next, body, dir, overwrite, coluuid) {
+  Collections.collectionsColuuidPOST(body, dir, overwrite, coluuid)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -53,8 +53,8 @@ module.exports.collectionsColuuidPOST = function collectionsColuuidPOST (req, re
     });
 };
 
-module.exports.collectionsFsAddPOST = function collectionsFsAddPOST (req, res, next, coluuid, content, path) {
-  Collections.collectionsFsAddPOST(coluuid, content, path)
+module.exports.collectionsFsAddPOST = function collectionsFsAddPOST (req, res, next, coluuid, content, dir, overwrite) {
+  Collections.collectionsFsAddPOST(coluuid, content, dir, overwrite)
     .then(function (response) {
       utils.writeJson(res, response);
     })

@@ -241,7 +241,8 @@ let apiInstance = new EstuaryClient.CollectionsApi();
 let body = [3.4]; // [Number] | Content IDs to add to collection
 let coluuid = "coluuid_example"; // String | Collection UUID
 let opts = { 
-  'dir': "dir_example" // String | Directory
+  'dir': "dir_example", // String | Directory
+  'overwrite': "overwrite_example" // String | Overwrite conflicting files
 };
 apiInstance.collectionsColuuidPost(body, coluuid, opts, (error, data, response) => {
   if (error) {
@@ -259,6 +260,7 @@ Name | Type | Description  | Notes
  **body** | [**[Number]**](Number.md)| Content IDs to add to collection | 
  **coluuid** | **String**| Collection UUID | 
  **dir** | **String**| Directory | [optional] 
+ **overwrite** | **String**| Overwrite conflicting files | [optional] 
 
 ### Return type
 
@@ -275,7 +277,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsFsAddPost"></a>
 # **collectionsFsAddPost**
-> &#x27;String&#x27; collectionsFsAddPost(coluuid, content, path)
+> &#x27;String&#x27; collectionsFsAddPost(coluuid, content, opts)
 
 Add a file to a collection
 
@@ -295,9 +297,11 @@ bearerAuth.apiKey = 'YOUR API KEY';
 let apiInstance = new EstuaryClient.CollectionsApi();
 let coluuid = "coluuid_example"; // String | Collection ID
 let content = "content_example"; // String | Content
-let path = "path_example"; // String | Path to file
-
-apiInstance.collectionsFsAddPost(coluuid, content, path, (error, data, response) => {
+let opts = { 
+  'dir': "dir_example", // String | Directory inside collection
+  'overwrite': "overwrite_example" // String | Overwrite file if already exists in path
+};
+apiInstance.collectionsFsAddPost(coluuid, content, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
@@ -312,7 +316,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **coluuid** | **String**| Collection ID | 
  **content** | **String**| Content | 
- **path** | **String**| Path to file | 
+ **dir** | **String**| Directory inside collection | [optional] 
+ **overwrite** | **String**| Overwrite file if already exists in path | [optional] 
 
 ### Return type
 

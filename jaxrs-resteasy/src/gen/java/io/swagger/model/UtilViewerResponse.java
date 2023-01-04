@@ -10,7 +10,7 @@ import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-03T16:17:31.923Z[GMT]")public class UtilViewerResponse   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-04T12:55:51.407Z[GMT]")public class UtilViewerResponse   {
   private String address = null;  private String authExpiry = null;  private Integer id = null;  private List<String> miners = new ArrayList<String>();  private Integer perms = null;  private UtilUserSettings settings = null;  private String username = null;
 
   /**

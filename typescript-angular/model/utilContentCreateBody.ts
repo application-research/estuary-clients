@@ -16,6 +16,7 @@ export interface UtilContentCreateBody {
     dir?: string;
     location?: string;
     name?: string;
+    overwrite?: boolean;
     root?: string;
     type?: UtilContentType;
 }

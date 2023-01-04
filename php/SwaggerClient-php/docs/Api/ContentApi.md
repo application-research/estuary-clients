@@ -188,7 +188,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **contentAddIpfsPost**
-> string contentAddIpfsPost($body, $ignore_dupes)
+> string contentAddIpfsPost($body, $ignore_dupes, $overwrite)
 
 Add IPFS object
 
@@ -211,9 +211,10 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
 );
 $body = new \Swagger\Client\Model\TypesIpfsPin(); // \Swagger\Client\Model\TypesIpfsPin | IPFS Body
 $ignore_dupes = "ignore_dupes_example"; // string | Ignore Dupes
+$overwrite = "overwrite_example"; // string | Overwrite conflicting files in collections
 
 try {
-    $result = $apiInstance->contentAddIpfsPost($body, $ignore_dupes);
+    $result = $apiInstance->contentAddIpfsPost($body, $ignore_dupes, $overwrite);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContentApi->contentAddIpfsPost: ', $e->getMessage(), PHP_EOL;
@@ -227,6 +228,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**\Swagger\Client\Model\TypesIpfsPin**](../Model/TypesIpfsPin.md)| IPFS Body |
  **ignore_dupes** | **string**| Ignore Dupes | [optional]
+ **overwrite** | **string**| Overwrite conflicting files in collections | [optional]
 
 ### Return type
 
@@ -244,7 +246,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **contentAddPost**
-> \Swagger\Client\Model\UtilContentAddResponse contentAddPost($data, $filename, $coluuid, $replication, $ignore_dupes, $lazy_provide, $dir)
+> \Swagger\Client\Model\UtilContentAddResponse contentAddPost($data, $filename, $coluuid, $replication, $ignore_dupes, $overwrite, $lazy_provide, $dir)
 
 Add new content
 
@@ -270,11 +272,12 @@ $filename = "filename_example"; // string |
 $coluuid = "coluuid_example"; // string | Collection UUID
 $replication = 56; // int | Replication value
 $ignore_dupes = "ignore_dupes_example"; // string | Ignore Dupes true/false
+$overwrite = "overwrite_example"; // string | Overwrite files with the same path on same collection
 $lazy_provide = "lazy_provide_example"; // string | Lazy Provide true/false
 $dir = "dir_example"; // string | Directory
 
 try {
-    $result = $apiInstance->contentAddPost($data, $filename, $coluuid, $replication, $ignore_dupes, $lazy_provide, $dir);
+    $result = $apiInstance->contentAddPost($data, $filename, $coluuid, $replication, $ignore_dupes, $overwrite, $lazy_provide, $dir);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContentApi->contentAddPost: ', $e->getMessage(), PHP_EOL;
@@ -291,6 +294,7 @@ Name | Type | Description  | Notes
  **coluuid** | **string**| Collection UUID | [optional]
  **replication** | **int**| Replication value | [optional]
  **ignore_dupes** | **string**| Ignore Dupes true/false | [optional]
+ **overwrite** | **string**| Overwrite files with the same path on same collection | [optional]
  **lazy_provide** | **string**| Lazy Provide true/false | [optional]
  **dir** | **string**| Directory | [optional]
 

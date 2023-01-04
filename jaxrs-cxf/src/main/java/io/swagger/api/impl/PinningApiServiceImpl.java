@@ -79,7 +79,7 @@ public class PinningApiServiceImpl implements PinningApi {
      * This endpoint adds a pin to the IPFS daemon.
      *
      */
-    public TypesIpfsPinStatusResponse pinningPinsPost(TypesIpfsPin body) {
+    public TypesIpfsPinStatusResponse pinningPinsPost(TypesIpfsPin body, String ignoreDupes, String overwrite) {
         // TODO: Implement...
         
         return null;

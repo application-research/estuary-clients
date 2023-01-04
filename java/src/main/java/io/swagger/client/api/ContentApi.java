@@ -438,12 +438,13 @@ public class ContentApi {
      * Build call for contentAddIpfsPost
      * @param body IPFS Body (required)
      * @param ignoreDupes Ignore Dupes (optional)
+     * @param overwrite Overwrite conflicting files in collections (optional)
      * @param progressListener Progress listener
      * @param progressRequestListener Progress request listener
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call contentAddIpfsPostCall(TypesIpfsPin body, String ignoreDupes, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call contentAddIpfsPostCall(TypesIpfsPin body, String ignoreDupes, String overwrite, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = body;
         
         // create path and map variables
@@ -453,6 +454,8 @@ public class ContentApi {
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         if (ignoreDupes != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("ignore-dupes", ignoreDupes));
+        if (overwrite != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("overwrite", overwrite));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
@@ -487,13 +490,13 @@ public class ContentApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call contentAddIpfsPostValidateBeforeCall(TypesIpfsPin body, String ignoreDupes, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call contentAddIpfsPostValidateBeforeCall(TypesIpfsPin body, String ignoreDupes, String overwrite, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'body' is set
         if (body == null) {
             throw new ApiException("Missing the required parameter 'body' when calling contentAddIpfsPost(Async)");
         }
         
-        com.squareup.okhttp.Call call = contentAddIpfsPostCall(body, ignoreDupes, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = contentAddIpfsPostCall(body, ignoreDupes, overwrite, progressListener, progressRequestListener);
         return call;
 
         
@@ -507,11 +510,12 @@ public class ContentApi {
      * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
      * @param body IPFS Body (required)
      * @param ignoreDupes Ignore Dupes (optional)
+     * @param overwrite Overwrite conflicting files in collections (optional)
      * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public String contentAddIpfsPost(TypesIpfsPin body, String ignoreDupes) throws ApiException {
-        ApiResponse<String> resp = contentAddIpfsPostWithHttpInfo(body, ignoreDupes);
+    public String contentAddIpfsPost(TypesIpfsPin body, String ignoreDupes, String overwrite) throws ApiException {
+        ApiResponse<String> resp = contentAddIpfsPostWithHttpInfo(body, ignoreDupes, overwrite);
         return resp.getData();
     }
 
@@ -520,11 +524,12 @@ public class ContentApi {
      * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
      * @param body IPFS Body (required)
      * @param ignoreDupes Ignore Dupes (optional)
+     * @param overwrite Overwrite conflicting files in collections (optional)
      * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<String> contentAddIpfsPostWithHttpInfo(TypesIpfsPin body, String ignoreDupes) throws ApiException {
-        com.squareup.okhttp.Call call = contentAddIpfsPostValidateBeforeCall(body, ignoreDupes, null, null);
+    public ApiResponse<String> contentAddIpfsPostWithHttpInfo(TypesIpfsPin body, String ignoreDupes, String overwrite) throws ApiException {
+        com.squareup.okhttp.Call call = contentAddIpfsPostValidateBeforeCall(body, ignoreDupes, overwrite, null, null);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -534,11 +539,12 @@ public class ContentApi {
      * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
      * @param body IPFS Body (required)
      * @param ignoreDupes Ignore Dupes (optional)
+     * @param overwrite Overwrite conflicting files in collections (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call contentAddIpfsPostAsync(TypesIpfsPin body, String ignoreDupes, final ApiCallback<String> callback) throws ApiException {
+    public com.squareup.okhttp.Call contentAddIpfsPostAsync(TypesIpfsPin body, String ignoreDupes, String overwrite, final ApiCallback<String> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -559,7 +565,7 @@ public class ContentApi {
             };
         }
 
-        com.squareup.okhttp.Call call = contentAddIpfsPostValidateBeforeCall(body, ignoreDupes, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = contentAddIpfsPostValidateBeforeCall(body, ignoreDupes, overwrite, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<String>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
@@ -571,6 +577,7 @@ public class ContentApi {
      * @param coluuid Collection UUID (optional)
      * @param replication Replication value (optional)
      * @param ignoreDupes Ignore Dupes true/false (optional)
+     * @param overwrite Overwrite files with the same path on same collection (optional)
      * @param lazyProvide Lazy Provide true/false (optional)
      * @param dir Directory (optional)
      * @param progressListener Progress listener
@@ -578,7 +585,7 @@ public class ContentApi {
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      */
-    public com.squareup.okhttp.Call contentAddPostCall(File data, String filename, String coluuid, Integer replication, String ignoreDupes, String lazyProvide, String dir, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    public com.squareup.okhttp.Call contentAddPostCall(File data, String filename, String coluuid, Integer replication, String ignoreDupes, String overwrite, String lazyProvide, String dir, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // create path and map variables
@@ -592,6 +599,8 @@ public class ContentApi {
         localVarQueryParams.addAll(apiClient.parameterToPair("replication", replication));
         if (ignoreDupes != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("ignore-dupes", ignoreDupes));
+        if (overwrite != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("overwrite", overwrite));
         if (lazyProvide != null)
         localVarQueryParams.addAll(apiClient.parameterToPair("lazy-provide", lazyProvide));
         if (dir != null)
@@ -634,7 +643,7 @@ public class ContentApi {
     }
     
     @SuppressWarnings("rawtypes")
-    private com.squareup.okhttp.Call contentAddPostValidateBeforeCall(File data, String filename, String coluuid, Integer replication, String ignoreDupes, String lazyProvide, String dir, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    private com.squareup.okhttp.Call contentAddPostValidateBeforeCall(File data, String filename, String coluuid, Integer replication, String ignoreDupes, String overwrite, String lazyProvide, String dir, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         // verify the required parameter 'data' is set
         if (data == null) {
             throw new ApiException("Missing the required parameter 'data' when calling contentAddPost(Async)");
@@ -644,7 +653,7 @@ public class ContentApi {
             throw new ApiException("Missing the required parameter 'filename' when calling contentAddPost(Async)");
         }
         
-        com.squareup.okhttp.Call call = contentAddPostCall(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = contentAddPostCall(data, filename, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir, progressListener, progressRequestListener);
         return call;
 
         
@@ -661,13 +670,14 @@ public class ContentApi {
      * @param coluuid Collection UUID (optional)
      * @param replication Replication value (optional)
      * @param ignoreDupes Ignore Dupes true/false (optional)
+     * @param overwrite Overwrite files with the same path on same collection (optional)
      * @param lazyProvide Lazy Provide true/false (optional)
      * @param dir Directory (optional)
      * @return UtilContentAddResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public UtilContentAddResponse contentAddPost(File data, String filename, String coluuid, Integer replication, String ignoreDupes, String lazyProvide, String dir) throws ApiException {
-        ApiResponse<UtilContentAddResponse> resp = contentAddPostWithHttpInfo(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir);
+    public UtilContentAddResponse contentAddPost(File data, String filename, String coluuid, Integer replication, String ignoreDupes, String overwrite, String lazyProvide, String dir) throws ApiException {
+        ApiResponse<UtilContentAddResponse> resp = contentAddPostWithHttpInfo(data, filename, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir);
         return resp.getData();
     }
 
@@ -679,13 +689,14 @@ public class ContentApi {
      * @param coluuid Collection UUID (optional)
      * @param replication Replication value (optional)
      * @param ignoreDupes Ignore Dupes true/false (optional)
+     * @param overwrite Overwrite files with the same path on same collection (optional)
      * @param lazyProvide Lazy Provide true/false (optional)
      * @param dir Directory (optional)
      * @return ApiResponse&lt;UtilContentAddResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<UtilContentAddResponse> contentAddPostWithHttpInfo(File data, String filename, String coluuid, Integer replication, String ignoreDupes, String lazyProvide, String dir) throws ApiException {
-        com.squareup.okhttp.Call call = contentAddPostValidateBeforeCall(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, null, null);
+    public ApiResponse<UtilContentAddResponse> contentAddPostWithHttpInfo(File data, String filename, String coluuid, Integer replication, String ignoreDupes, String overwrite, String lazyProvide, String dir) throws ApiException {
+        com.squareup.okhttp.Call call = contentAddPostValidateBeforeCall(data, filename, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir, null, null);
         Type localVarReturnType = new TypeToken<UtilContentAddResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
@@ -698,13 +709,14 @@ public class ContentApi {
      * @param coluuid Collection UUID (optional)
      * @param replication Replication value (optional)
      * @param ignoreDupes Ignore Dupes true/false (optional)
+     * @param overwrite Overwrite files with the same path on same collection (optional)
      * @param lazyProvide Lazy Provide true/false (optional)
      * @param dir Directory (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call contentAddPostAsync(File data, String filename, String coluuid, Integer replication, String ignoreDupes, String lazyProvide, String dir, final ApiCallback<UtilContentAddResponse> callback) throws ApiException {
+    public com.squareup.okhttp.Call contentAddPostAsync(File data, String filename, String coluuid, Integer replication, String ignoreDupes, String overwrite, String lazyProvide, String dir, final ApiCallback<UtilContentAddResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -725,7 +737,7 @@ public class ContentApi {
             };
         }
 
-        com.squareup.okhttp.Call call = contentAddPostValidateBeforeCall(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir, progressListener, progressRequestListener);
+        com.squareup.okhttp.Call call = contentAddPostValidateBeforeCall(data, filename, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<UtilContentAddResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;

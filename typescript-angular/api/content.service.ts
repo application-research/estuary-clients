@@ -215,22 +215,27 @@ export class ContentService {
      * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
      * @param body IPFS Body
      * @param ignoreDupes Ignore Dupes
+     * @param overwrite Overwrite conflicting files in collections
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
-    public contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, observe?: 'body', reportProgress?: boolean): Observable<string>;
+    public contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
+    public contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
+    public contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling contentAddIpfsPost.');
         }
 
 
+
         let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
         if (ignoreDupes !== undefined && ignoreDupes !== null) {
             queryParameters = queryParameters.set('ignore-dupes', <any>ignoreDupes);
+        }
+        if (overwrite !== undefined && overwrite !== null) {
+            queryParameters = queryParameters.set('overwrite', <any>overwrite);
         }
 
         let headers = this.defaultHeaders;
@@ -278,15 +283,16 @@ export class ContentService {
      * @param coluuid Collection UUID
      * @param replication Replication value
      * @param ignoreDupes Ignore Dupes true/false
+     * @param overwrite Overwrite files with the same path on same collection
      * @param lazyProvide Lazy Provide true/false
      * @param dir Directory
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public contentAddPostForm(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, observe?: 'body', reportProgress?: boolean): Observable<UtilContentAddResponse>;
-    public contentAddPostForm(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<UtilContentAddResponse>>;
-    public contentAddPostForm(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<UtilContentAddResponse>>;
-    public contentAddPostForm(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, lazyProvide?: string, dir?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public contentAddPostForm(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, overwrite?: string, lazyProvide?: string, dir?: string, observe?: 'body', reportProgress?: boolean): Observable<UtilContentAddResponse>;
+    public contentAddPostForm(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, overwrite?: string, lazyProvide?: string, dir?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<UtilContentAddResponse>>;
+    public contentAddPostForm(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, overwrite?: string, lazyProvide?: string, dir?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<UtilContentAddResponse>>;
+    public contentAddPostForm(data: Blob, filename: string, coluuid?: string, replication?: number, ignoreDupes?: string, overwrite?: string, lazyProvide?: string, dir?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (data === null || data === undefined) {
             throw new Error('Required parameter data was null or undefined when calling contentAddPost.');
@@ -295,6 +301,7 @@ export class ContentService {
         if (filename === null || filename === undefined) {
             throw new Error('Required parameter filename was null or undefined when calling contentAddPost.');
         }
+
 
 
 
@@ -310,6 +317,9 @@ export class ContentService {
         }
         if (ignoreDupes !== undefined && ignoreDupes !== null) {
             queryParameters = queryParameters.set('ignore-dupes', <any>ignoreDupes);
+        }
+        if (overwrite !== undefined && overwrite !== null) {
+            queryParameters = queryParameters.set('overwrite', <any>overwrite);
         }
         if (lazyProvide !== undefined && lazyProvide !== null) {
             queryParameters = queryParameters.set('lazy-provide', <any>lazyProvide);

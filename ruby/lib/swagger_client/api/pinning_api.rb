@@ -246,6 +246,8 @@ module SwaggerClient
     # This endpoint adds a pin to the IPFS daemon.
     # @param body Pin Body {cid:cid, name:name}
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :ignore_dupes Ignore Dupes
+    # @option opts [String] :overwrite Overwrite conflicting files in collections
     # @return [TypesIpfsPinStatusResponse]
     def pinning_pins_post(body, opts = {})
       data, _status_code, _headers = pinning_pins_post_with_http_info(body, opts)
@@ -256,6 +258,8 @@ module SwaggerClient
     # This endpoint adds a pin to the IPFS daemon.
     # @param body Pin Body {cid:cid, name:name}
     # @param [Hash] opts the optional parameters
+    # @option opts [String] :ignore_dupes Ignore Dupes
+    # @option opts [String] :overwrite Overwrite conflicting files in collections
     # @return [Array<(TypesIpfsPinStatusResponse, Integer, Hash)>] TypesIpfsPinStatusResponse data, response status code and response headers
     def pinning_pins_post_with_http_info(body, opts = {})
       if @api_client.config.debugging
@@ -270,6 +274,8 @@ module SwaggerClient
 
       # query parameters
       query_params = opts[:query_params] || {}
+      query_params[:'ignore-dupes'] = opts[:'ignore_dupes'] if !opts[:'ignore_dupes'].nil?
+      query_params[:'overwrite'] = opts[:'overwrite'] if !opts[:'overwrite'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}

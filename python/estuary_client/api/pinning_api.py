@@ -427,6 +427,8 @@ class PinningApi(object):
 
         :param async_req bool
         :param TypesIpfsPin body: Pin Body {cid:cid, name:name} (required)
+        :param str ignore_dupes: Ignore Dupes
+        :param str overwrite: Overwrite conflicting files in collections
         :return: TypesIpfsPinStatusResponse
                  If the method is called asynchronously,
                  returns the request thread.
@@ -449,12 +451,14 @@ class PinningApi(object):
 
         :param async_req bool
         :param TypesIpfsPin body: Pin Body {cid:cid, name:name} (required)
+        :param str ignore_dupes: Ignore Dupes
+        :param str overwrite: Overwrite conflicting files in collections
         :return: TypesIpfsPinStatusResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body']  # noqa: E501
+        all_params = ['body', 'ignore_dupes', 'overwrite']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -479,6 +483,10 @@ class PinningApi(object):
         path_params = {}
 
         query_params = []
+        if 'ignore_dupes' in params:
+            query_params.append(('ignore-dupes', params['ignore_dupes']))  # noqa: E501
+        if 'overwrite' in params:
+            query_params.append(('overwrite', params['overwrite']))  # noqa: E501
 
         header_params = {}
 

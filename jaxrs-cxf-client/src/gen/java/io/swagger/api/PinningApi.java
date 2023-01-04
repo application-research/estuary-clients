@@ -108,5 +108,5 @@ public interface PinningApi  {
     @ApiResponses(value = { 
         @ApiResponse(responseCode = "202", description = "Accepted", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TypesIpfsPinStatusResponse.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public TypesIpfsPinStatusResponse pinningPinsPost(TypesIpfsPin body);
+    public TypesIpfsPinStatusResponse pinningPinsPost(TypesIpfsPin body, @QueryParam("ignore-dupes")String ignoreDupes, @QueryParam("overwrite")String overwrite);
 }

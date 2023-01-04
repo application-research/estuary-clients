@@ -166,7 +166,7 @@ class ContentApi {
   /// Add IPFS object
   ///
   /// This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
-  Future<String> contentAddIpfsPost(TypesIpfsPin body, { String ignoreDupes }) async {
+  Future<String> contentAddIpfsPost(TypesIpfsPin body, { String ignoreDupes, String overwrite }) async {
     Object postBody = body;
 
     // verify required params are set
@@ -183,6 +183,9 @@ class ContentApi {
     Map<String, String> formParams = {};
     if(ignoreDupes != null) {
       queryParams.addAll(_convertParametersForCollectionFormat("", "ignore-dupes", ignoreDupes));
+    }
+    if(overwrite != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "overwrite", overwrite));
     }
     
     List<String> contentTypes = ["*/*"];
@@ -220,7 +223,7 @@ class ContentApi {
   /// Add new content
   ///
   /// This endpoint is used to upload new content.
-  Future<UtilContentAddResponse> contentAddPost(String data, String filename, { String coluuid, int replication, String ignoreDupes, String lazyProvide, String dir }) async {
+  Future<UtilContentAddResponse> contentAddPost(String data, String filename, { String coluuid, int replication, String ignoreDupes, String overwrite, String lazyProvide, String dir }) async {
     Object postBody = null;
 
     // verify required params are set
@@ -246,6 +249,9 @@ class ContentApi {
     }
     if(ignoreDupes != null) {
       queryParams.addAll(_convertParametersForCollectionFormat("", "ignore-dupes", ignoreDupes));
+    }
+    if(overwrite != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "overwrite", overwrite));
     }
     if(lazyProvide != null) {
       queryParams.addAll(_convertParametersForCollectionFormat("", "lazy-provide", lazyProvide));

@@ -15,14 +15,16 @@ public struct UtilContentCreateBody: Codable {
     public var dir: String?
     public var location: String?
     public var name: String?
+    public var overwrite: Bool?
     public var root: String?
     public var type: UtilContentType?
 
-    public init(coluuid: String? = nil, dir: String? = nil, location: String? = nil, name: String? = nil, root: String? = nil, type: UtilContentType? = nil) {
+    public init(coluuid: String? = nil, dir: String? = nil, location: String? = nil, name: String? = nil, overwrite: Bool? = nil, root: String? = nil, type: UtilContentType? = nil) {
         self.coluuid = coluuid
         self.dir = dir
         self.location = location
         self.name = name
+        self.overwrite = overwrite
         self.root = root
         self.type = type
     }

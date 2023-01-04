@@ -156,6 +156,7 @@ Name | Type | Description  | Notes
 
 
  **dir** | **optional.**| Directory | 
+ **overwrite** | **optional.**| Overwrite conflicting files | 
 
 ### Return type
 
@@ -173,7 +174,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **CollectionsFsAddPost**
-> string CollectionsFsAddPost(ctx, coluuid, content, path)
+> string CollectionsFsAddPost(ctx, coluuid, content, optional)
 Add a file to a collection
 
 This endpoint adds a file to a collection
@@ -185,7 +186,16 @@ Name | Type | Description  | Notes
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
   **coluuid** | **string**| Collection ID | 
   **content** | **string**| Content | 
-  **path** | **string**| Path to file | 
+ **optional** | ***CollectionsApiCollectionsFsAddPostOpts** | optional parameters | nil if no parameters
+
+### Optional Parameters
+Optional parameters are passed through a pointer to a CollectionsApiCollectionsFsAddPostOpts struct
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+
+
+ **dir** | **optional.String**| Directory inside collection | 
+ **overwrite** | **optional.String**| Overwrite file if already exists in path | 
 
 ### Return type
 

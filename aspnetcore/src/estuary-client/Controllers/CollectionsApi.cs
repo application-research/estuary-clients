@@ -176,6 +176,7 @@ namespace estuary-client.Controllers
         /// <param name="body">Content IDs to add to collection</param>
         /// <param name="coluuid">Collection UUID</param>
         /// <param name="dir">Directory</param>
+        /// <param name="overwrite">Overwrite conflicting files</param>
         /// <response code="200">OK</response>
         /// <response code="400">Bad Request</response>
         /// <response code="500">Internal Server Error</response>
@@ -187,7 +188,7 @@ namespace estuary-client.Controllers
         [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
         [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
-        public virtual IActionResult CollectionsColuuidPost([FromBody]List<int?> body, [FromRoute][Required]string coluuid, [FromQuery]string dir)
+        public virtual IActionResult CollectionsColuuidPost([FromBody]List<int?> body, [FromRoute][Required]string coluuid, [FromQuery]string dir, [FromQuery]string overwrite)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(string));
@@ -212,7 +213,8 @@ namespace estuary-client.Controllers
         /// <remarks>This endpoint adds a file to a collection</remarks>
         /// <param name="coluuid">Collection ID</param>
         /// <param name="content">Content</param>
-        /// <param name="path">Path to file</param>
+        /// <param name="dir">Directory inside collection</param>
+        /// <param name="overwrite">Overwrite file if already exists in path</param>
         /// <response code="200">OK</response>
         /// <response code="400">Bad Request</response>
         /// <response code="500">Internal Server Error</response>
@@ -224,7 +226,7 @@ namespace estuary-client.Controllers
         [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
         [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
-        public virtual IActionResult CollectionsFsAddPost([FromQuery][Required()]string coluuid, [FromQuery][Required()]string content, [FromQuery][Required()]string path)
+        public virtual IActionResult CollectionsFsAddPost([FromQuery][Required()]string coluuid, [FromQuery][Required()]string content, [FromQuery]string dir, [FromQuery]string overwrite)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(string));

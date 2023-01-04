@@ -44,6 +44,12 @@ export interface UtilContentCreateBody {
     name?: string;
     /**
      * 
+     * @type {boolean}
+     * @memberof UtilContentCreateBody
+     */
+    overwrite?: boolean;
+    /**
+     * 
      * @type {string}
      * @memberof UtilContentCreateBody
      */

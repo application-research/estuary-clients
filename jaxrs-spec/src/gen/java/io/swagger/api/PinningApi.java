@@ -24,7 +24,7 @@ import javax.validation.Valid;
 
 @Path("/pinning")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2023-01-03T16:17:33.106Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2023-01-04T12:55:56.542Z[GMT]")
 public class PinningApi {
 
     @GET
@@ -98,6 +98,12 @@ public class PinningApi {
         @ApiResponse(responseCode = "202", description = "Accepted", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TypesIpfsPinStatusResponse.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
     })
-    public Response pinningPinsPost(@Valid TypesIpfsPin body) {
+    public Response pinningPinsPost(@Valid TypesIpfsPin body,  @QueryParam("ignore-dupes") 
+
+ @Parameter(description = "Ignore Dupes")  String ignoreDupes
+,  @QueryParam("overwrite") 
+
+ @Parameter(description = "Overwrite conflicting files in collections")  String overwrite
+) {
         return Response.ok().entity("magic!").build();
     }}

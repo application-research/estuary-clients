@@ -156,7 +156,8 @@ public class CollectionsApiTest {
         List<Integer> body = null;
         String coluuid = null;
         String dir = null;
-        //String response = api.collectionsColuuidPost(body, coluuid, dir);
+        String overwrite = null;
+        //String response = api.collectionsColuuidPost(body, coluuid, dir, overwrite);
         //assertNotNull(response);
         // TODO: test validations
         
@@ -174,8 +175,9 @@ public class CollectionsApiTest {
     public void collectionsFsAddPostTest() {
         String coluuid = null;
         String content = null;
-        String path = null;
-        //String response = api.collectionsFsAddPost(coluuid, content, path);
+        String dir = null;
+        String overwrite = null;
+        //String response = api.collectionsFsAddPost(coluuid, content, dir, overwrite);
         //assertNotNull(response);
         // TODO: test validations
         

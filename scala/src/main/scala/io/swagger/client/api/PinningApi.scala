@@ -190,10 +190,12 @@ class PinningApi(
    * This endpoint adds a pin to the IPFS daemon.
    *
    * @param body Pin Body {cid:cid, name:name} 
+   * @param ignoreDupes Ignore Dupes (optional)
+   * @param overwrite Overwrite conflicting files in collections (optional)
    * @return types.IpfsPinStatusResponse
    */
-  def pinningPinsPost(body: IpfsPin): Option[types.IpfsPinStatusResponse] = {
-    val await = Try(Await.result(pinningPinsPostAsync(body), Duration.Inf))
+  def pinningPinsPost(body: IpfsPin, ignoreDupes: Option[String] = None, overwrite: Option[String] = None): Option[types.IpfsPinStatusResponse] = {
+    val await = Try(Await.result(pinningPinsPostAsync(body, ignoreDupes, overwrite), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -205,10 +207,12 @@ class PinningApi(
    * This endpoint adds a pin to the IPFS daemon.
    *
    * @param body Pin Body {cid:cid, name:name} 
+   * @param ignoreDupes Ignore Dupes (optional)
+   * @param overwrite Overwrite conflicting files in collections (optional)
    * @return Future(types.IpfsPinStatusResponse)
    */
-  def pinningPinsPostAsync(body: IpfsPin): Future[types.IpfsPinStatusResponse] = {
-      helper.pinningPinsPost(body)
+  def pinningPinsPostAsync(body: IpfsPin, ignoreDupes: Option[String] = None, overwrite: Option[String] = None): Future[types.IpfsPinStatusResponse] = {
+      helper.pinningPinsPost(body, ignoreDupes, overwrite)
   }
 
 }
@@ -286,7 +290,10 @@ class PinningApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     }
   }
 
-  def pinningPinsPost(body: IpfsPin)(implicit reader: ClientResponseReader[types.IpfsPinStatusResponse], writer: RequestWriter[IpfsPin]): Future[types.IpfsPinStatusResponse] = {
+  def pinningPinsPost(body: IpfsPin,
+    ignoreDupes: Option[String] = None,
+    overwrite: Option[String] = None
+    )(implicit reader: ClientResponseReader[types.IpfsPinStatusResponse], writer: RequestWriter[IpfsPin]): Future[types.IpfsPinStatusResponse] = {
     // create path and map variables
     val path = (addFmt("/pinning/pins"))
 
@@ -295,6 +302,14 @@ class PinningApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exte
     val headerParams = new mutable.HashMap[String, String]
 
     if (body == null) throw new Exception("Missing required parameter 'body' when calling PinningApi->pinningPinsPost")
+    ignoreDupes match {
+      case Some(param) => queryParams += "ignore-dupes" -> param.toString
+      case _ => queryParams
+    }
+    overwrite match {
+      case Some(param) => queryParams += "overwrite" -> param.toString
+      case _ => queryParams
+    }
 
     val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(body))
     resFuture flatMap { resp =>

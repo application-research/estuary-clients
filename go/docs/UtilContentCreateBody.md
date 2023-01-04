@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **Dir** | **string** |  | [optional] [default to null]
 **Location** | **string** |  | [optional] [default to null]
 **Name** | **string** |  | [optional] [default to null]
+**Overwrite** | **bool** |  | [optional] [default to null]
 **Root** | **string** |  | [optional] [default to null]
 **Type_** | [***UtilContentType**](util.ContentType.md) |  | [optional] [default to null]
 

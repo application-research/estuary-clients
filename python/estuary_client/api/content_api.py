@@ -333,6 +333,7 @@ class ContentApi(object):
         :param async_req bool
         :param TypesIpfsPin body: IPFS Body (required)
         :param str ignore_dupes: Ignore Dupes
+        :param str overwrite: Overwrite conflicting files in collections
         :return: str
                  If the method is called asynchronously,
                  returns the request thread.
@@ -356,12 +357,13 @@ class ContentApi(object):
         :param async_req bool
         :param TypesIpfsPin body: IPFS Body (required)
         :param str ignore_dupes: Ignore Dupes
+        :param str overwrite: Overwrite conflicting files in collections
         :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body', 'ignore_dupes']  # noqa: E501
+        all_params = ['body', 'ignore_dupes', 'overwrite']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -388,6 +390,8 @@ class ContentApi(object):
         query_params = []
         if 'ignore_dupes' in params:
             query_params.append(('ignore-dupes', params['ignore_dupes']))  # noqa: E501
+        if 'overwrite' in params:
+            query_params.append(('overwrite', params['overwrite']))  # noqa: E501
 
         header_params = {}
 
@@ -439,6 +443,7 @@ class ContentApi(object):
         :param str coluuid: Collection UUID
         :param int replication: Replication value
         :param str ignore_dupes: Ignore Dupes true/false
+        :param str overwrite: Overwrite files with the same path on same collection
         :param str lazy_provide: Lazy Provide true/false
         :param str dir: Directory
         :return: UtilContentAddResponse
@@ -467,6 +472,7 @@ class ContentApi(object):
         :param str coluuid: Collection UUID
         :param int replication: Replication value
         :param str ignore_dupes: Ignore Dupes true/false
+        :param str overwrite: Overwrite files with the same path on same collection
         :param str lazy_provide: Lazy Provide true/false
         :param str dir: Directory
         :return: UtilContentAddResponse
@@ -474,7 +480,7 @@ class ContentApi(object):
                  returns the request thread.
         """
 
-        all_params = ['data', 'filename', 'coluuid', 'replication', 'ignore_dupes', 'lazy_provide', 'dir']  # noqa: E501
+        all_params = ['data', 'filename', 'coluuid', 'replication', 'ignore_dupes', 'overwrite', 'lazy_provide', 'dir']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -509,6 +515,8 @@ class ContentApi(object):
             query_params.append(('replication', params['replication']))  # noqa: E501
         if 'ignore_dupes' in params:
             query_params.append(('ignore-dupes', params['ignore_dupes']))  # noqa: E501
+        if 'overwrite' in params:
+            query_params.append(('overwrite', params['overwrite']))  # noqa: E501
         if 'lazy_provide' in params:
             query_params.append(('lazy-provide', params['lazy_provide']))  # noqa: E501
         if 'dir' in params:

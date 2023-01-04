@@ -38,7 +38,7 @@ void main() {
     //
     // This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
     //
-    //Future<String> contentAddIpfsPost(TypesIpfsPin body, { String ignoreDupes }) async
+    //Future<String> contentAddIpfsPost(TypesIpfsPin body, { String ignoreDupes, String overwrite }) async
     test('test contentAddIpfsPost', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // This endpoint is used to upload new content.
     //
-    //Future<UtilContentAddResponse> contentAddPost(String data, String filename, { String coluuid, int replication, String ignoreDupes, String lazyProvide, String dir }) async
+    //Future<UtilContentAddResponse> contentAddPost(String data, String filename, { String coluuid, int replication, String ignoreDupes, String overwrite, String lazyProvide, String dir }) async
     test('test contentAddPost', () async {
       // TODO
     });

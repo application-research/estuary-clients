@@ -518,11 +518,13 @@ This endpoint adds already-pinned contents (that have ContentIDs) to a collectio
  * @param coluuid Collection UUID
  * @param optional nil or *CollectionsApiCollectionsColuuidPostOpts - Optional Parameters:
      * @param "Dir" (optional.String) -  Directory
+     * @param "Overwrite" (optional.String) -  Overwrite conflicting files
 @return string
 */
 
 type CollectionsApiCollectionsColuuidPostOpts struct {
     Dir optional.String
+    Overwrite optional.String
 }
 
 func (a *CollectionsApiService) CollectionsColuuidPost(ctx context.Context, body []int32, coluuid string, localVarOptionals *CollectionsApiCollectionsColuuidPostOpts) (string, *http.Response, error) {
@@ -544,6 +546,9 @@ func (a *CollectionsApiService) CollectionsColuuidPost(ctx context.Context, body
 
 	if localVarOptionals != nil && localVarOptionals.Dir.IsSet() {
 		localVarQueryParams.Add("dir", parameterToString(localVarOptionals.Dir.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Overwrite.IsSet() {
+		localVarQueryParams.Add("overwrite", parameterToString(localVarOptionals.Overwrite.Value(), ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{"application/json"}
@@ -647,10 +652,18 @@ This endpoint adds a file to a collection
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param coluuid Collection ID
  * @param content Content
- * @param path Path to file
+ * @param optional nil or *CollectionsApiCollectionsFsAddPostOpts - Optional Parameters:
+     * @param "Dir" (optional.String) -  Directory inside collection
+     * @param "Overwrite" (optional.String) -  Overwrite file if already exists in path
 @return string
 */
-func (a *CollectionsApiService) CollectionsFsAddPost(ctx context.Context, coluuid string, content string, path string) (string, *http.Response, error) {
+
+type CollectionsApiCollectionsFsAddPostOpts struct {
+    Dir optional.String
+    Overwrite optional.String
+}
+
+func (a *CollectionsApiService) CollectionsFsAddPost(ctx context.Context, coluuid string, content string, localVarOptionals *CollectionsApiCollectionsFsAddPostOpts) (string, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -668,7 +681,12 @@ func (a *CollectionsApiService) CollectionsFsAddPost(ctx context.Context, coluui
 
 	localVarQueryParams.Add("coluuid", parameterToString(coluuid, ""))
 	localVarQueryParams.Add("content", parameterToString(content, ""))
-	localVarQueryParams.Add("path", parameterToString(path, ""))
+	if localVarOptionals != nil && localVarOptionals.Dir.IsSet() {
+		localVarQueryParams.Add("dir", parameterToString(localVarOptionals.Dir.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Overwrite.IsSet() {
+		localVarQueryParams.Add("overwrite", parameterToString(localVarOptionals.Overwrite.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{}
 

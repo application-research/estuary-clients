@@ -105,7 +105,9 @@ public class PinningApiTest {
     @Test
     public void pinningPinsPostTest() throws Exception {
         TypesIpfsPin body = null;
-        TypesIpfsPinStatusResponse response = api.pinningPinsPost(body);
+        String ignoreDupes = null;
+        String overwrite = null;
+        TypesIpfsPinStatusResponse response = api.pinningPinsPost(body, ignoreDupes, overwrite);
 
         // TODO: test validations
     }

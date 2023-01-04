@@ -182,13 +182,17 @@ ContentApi <- R6::R6Class(
       }
 
     }
-    content_add_ipfs_post = function(body, ignore_dupes, ...){
+    content_add_ipfs_post = function(body, ignore_dupes, overwrite, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
 
       if (!missing(`ignore_dupes`)) {
         queryParams['ignore-dupes'] <- ignore_dupes
+      }
+
+      if (!missing(`overwrite`)) {
+        queryParams['overwrite'] <- overwrite
       }
 
       if (!missing(`body`)) {
@@ -216,7 +220,7 @@ ContentApi <- R6::R6Class(
       }
 
     }
-    content_add_post = function(data, filename, coluuid, replication, ignore_dupes, lazy_provide, dir, ...){
+    content_add_post = function(data, filename, coluuid, replication, ignore_dupes, overwrite, lazy_provide, dir, ...){
       args <- list(...)
       queryParams <- list()
       headerParams <- character()
@@ -231,6 +235,10 @@ ContentApi <- R6::R6Class(
 
       if (!missing(`ignore_dupes`)) {
         queryParams['ignore-dupes'] <- ignore_dupes
+      }
+
+      if (!missing(`overwrite`)) {
+        queryParams['overwrite'] <- overwrite
       }
 
       if (!missing(`lazy_provide`)) {

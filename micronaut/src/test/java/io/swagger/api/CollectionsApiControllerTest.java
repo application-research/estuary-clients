@@ -70,8 +70,9 @@ class CollectionsApiControllerTest {
         List<Integer> body = Arrays.asList(56);
         String coluuid = "coluuid_example";
         String dir = "dir_example";
+        String overwrite = "overwrite_example";
         try {
-            api.collectionsColuuidPost(body, coluuid, dir).blockingGet();
+            api.collectionsColuuidPost(body, coluuid, dir, overwrite).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }
@@ -81,9 +82,10 @@ class CollectionsApiControllerTest {
     void collectionsFsAddPostTest() {
         String coluuid = "coluuid_example";
         String content = "content_example";
-        String path = "path_example";
+        String dir = "dir_example";
+        String overwrite = "overwrite_example";
         try {
-            api.collectionsFsAddPost(coluuid, content, path).blockingGet();
+            api.collectionsFsAddPost(coluuid, content, dir, overwrite).blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }

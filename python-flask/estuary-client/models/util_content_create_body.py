@@ -15,7 +15,7 @@ class UtilContentCreateBody(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, coluuid: str=None, dir: str=None, location: str=None, name: str=None, root: str=None, type: UtilContentType=None):  # noqa: E501
+    def __init__(self, coluuid: str=None, dir: str=None, location: str=None, name: str=None, overwrite: bool=None, root: str=None, type: UtilContentType=None):  # noqa: E501
         """UtilContentCreateBody - a model defined in Swagger
 
         :param coluuid: The coluuid of this UtilContentCreateBody.  # noqa: E501
@@ -26,6 +26,8 @@ class UtilContentCreateBody(Model):
         :type location: str
         :param name: The name of this UtilContentCreateBody.  # noqa: E501
         :type name: str
+        :param overwrite: The overwrite of this UtilContentCreateBody.  # noqa: E501
+        :type overwrite: bool
         :param root: The root of this UtilContentCreateBody.  # noqa: E501
         :type root: str
         :param type: The type of this UtilContentCreateBody.  # noqa: E501
@@ -36,6 +38,7 @@ class UtilContentCreateBody(Model):
             'dir': str,
             'location': str,
             'name': str,
+            'overwrite': bool,
             'root': str,
             'type': UtilContentType
         }
@@ -45,6 +48,7 @@ class UtilContentCreateBody(Model):
             'dir': 'dir',
             'location': 'location',
             'name': 'name',
+            'overwrite': 'overwrite',
             'root': 'root',
             'type': 'type'
         }
@@ -52,6 +56,7 @@ class UtilContentCreateBody(Model):
         self._dir = dir
         self._location = location
         self._name = name
+        self._overwrite = overwrite
         self._root = root
         self._type = type
 
@@ -149,6 +154,27 @@ class UtilContentCreateBody(Model):
         """
 
         self._name = name
+
+    @property
+    def overwrite(self) -> bool:
+        """Gets the overwrite of this UtilContentCreateBody.
+
+
+        :return: The overwrite of this UtilContentCreateBody.
+        :rtype: bool
+        """
+        return self._overwrite
+
+    @overwrite.setter
+    def overwrite(self, overwrite: bool):
+        """Sets the overwrite of this UtilContentCreateBody.
+
+
+        :param overwrite: The overwrite of this UtilContentCreateBody.
+        :type overwrite: bool
+        """
+
+        self._overwrite = overwrite
 
     @property
     def root(self) -> str:

@@ -63,6 +63,12 @@
         // expect(instance.name).to.be(expectedValueLiteral);
       });
 
+      it('should have the property overwrite (base name: "overwrite")', function() {
+        // TODO: update the code to test the property overwrite
+        expect(instance).to.have.property('overwrite');
+        // expect(instance.overwrite).to.be(expectedValueLiteral);
+      });
+
       it('should have the property root (base name: "root")', function() {
         // TODO: update the code to test the property root
         expect(instance).to.have.property('root');

@@ -19,10 +19,10 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2023-01-03T16:17:33.393Z[GMT]")public interface ContentApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2023-01-04T12:55:54.251Z[GMT]")public interface ContentApiService {
       public Response contentAddCarPost(String body, String ignoreDupes, String filename, SecurityContext securityContext);
-      public Response contentAddIpfsPost(TypesIpfsPin body, String ignoreDupes, SecurityContext securityContext);
-      public Response contentAddPost(InputStream dataInputStream, Attachment dataDetail, String filename, String coluuid, Integer replication, String ignoreDupes, String lazyProvide, String dir, SecurityContext securityContext);
+      public Response contentAddIpfsPost(TypesIpfsPin body, String ignoreDupes, String overwrite, SecurityContext securityContext);
+      public Response contentAddPost(InputStream dataInputStream, Attachment dataDetail, String filename, String coluuid, Integer replication, String ignoreDupes, String overwrite, String lazyProvide, String dir, SecurityContext securityContext);
       public Response contentAggregatedContentGet(String content, SecurityContext securityContext);
       public Response contentAllDealsGet(String begin, String duration, String all, SecurityContext securityContext);
       public Response contentBwUsageContentGet(String content, SecurityContext securityContext);

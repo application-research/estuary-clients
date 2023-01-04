@@ -12,7 +12,7 @@ import javax.validation.constraints.*;
  * ApiDeleteContentFromCollectionBody
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2023-01-03T16:17:32.325Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2023-01-04T12:55:53.483Z[GMT]")
 public class ApiDeleteContentFromCollectionBody   {
   @JsonProperty("by")
   private String by = null;

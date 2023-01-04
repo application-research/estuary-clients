@@ -192,7 +192,7 @@ Name | Type | Description  | Notes
 
 <a name="contentAddIpfsPost"></a>
 # **contentAddIpfsPost**
-> String contentAddIpfsPost(body, ignoreDupes)
+> String contentAddIpfsPost(body, ignoreDupes, overwrite)
 
 Add IPFS object
 
@@ -218,8 +218,9 @@ bearerAuth.setApiKey("YOUR API KEY");
 ContentApi apiInstance = new ContentApi();
 TypesIpfsPin body = new TypesIpfsPin(); // TypesIpfsPin | IPFS Body
 String ignoreDupes = "ignoreDupes_example"; // String | Ignore Dupes
+String overwrite = "overwrite_example"; // String | Overwrite conflicting files in collections
 try {
-    String result = apiInstance.contentAddIpfsPost(body, ignoreDupes);
+    String result = apiInstance.contentAddIpfsPost(body, ignoreDupes, overwrite);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentAddIpfsPost");
@@ -233,6 +234,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| IPFS Body |
  **ignoreDupes** | **String**| Ignore Dupes | [optional]
+ **overwrite** | **String**| Overwrite conflicting files in collections | [optional]
 
 ### Return type
 
@@ -249,7 +251,7 @@ Name | Type | Description  | Notes
 
 <a name="contentAddPost"></a>
 # **contentAddPost**
-> UtilContentAddResponse contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir)
+> UtilContentAddResponse contentAddPost(data, filename, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir)
 
 Add new content
 
@@ -278,10 +280,11 @@ String filename = "filename_example"; // String |
 String coluuid = "coluuid_example"; // String | Collection UUID
 Integer replication = 56; // Integer | Replication value
 String ignoreDupes = "ignoreDupes_example"; // String | Ignore Dupes true/false
+String overwrite = "overwrite_example"; // String | Overwrite files with the same path on same collection
 String lazyProvide = "lazyProvide_example"; // String | Lazy Provide true/false
 String dir = "dir_example"; // String | Directory
 try {
-    UtilContentAddResponse result = apiInstance.contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir);
+    UtilContentAddResponse result = apiInstance.contentAddPost(data, filename, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContentApi#contentAddPost");
@@ -298,6 +301,7 @@ Name | Type | Description  | Notes
  **coluuid** | **String**| Collection UUID | [optional]
  **replication** | **Integer**| Replication value | [optional]
  **ignoreDupes** | **String**| Ignore Dupes true/false | [optional]
+ **overwrite** | **String**| Overwrite files with the same path on same collection | [optional]
  **lazyProvide** | **String**| Lazy Provide true/false | [optional]
  **dir** | **String**| Directory | [optional]
 

@@ -150,8 +150,9 @@
         it('should call collectionsFsAddPost successfully', function(done) {
           // TODO: uncomment, update parameter values for collectionsFsAddPost call and complete the assertions
           /*
+          var opts = {};
 
-          instance.collectionsFsAddPost(coluuid, content, path, function(error, data, response) {
+          instance.collectionsFsAddPost(coluuid, content, opts, function(error, data, response) {
             if (error) {
               done(error);
               return;

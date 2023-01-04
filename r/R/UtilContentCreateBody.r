@@ -12,6 +12,7 @@
 #' @field dir 
 #' @field location 
 #' @field name 
+#' @field overwrite 
 #' @field root 
 #' @field type 
 #'
@@ -25,9 +26,10 @@ UtilContentCreateBody <- R6::R6Class(
     `dir` = NULL,
     `location` = NULL,
     `name` = NULL,
+    `overwrite` = NULL,
     `root` = NULL,
     `type` = NULL,
-    initialize = function(`coluuid`, `dir`, `location`, `name`, `root`, `type`){
+    initialize = function(`coluuid`, `dir`, `location`, `name`, `overwrite`, `root`, `type`){
       if (!missing(`coluuid`)) {
         stopifnot(is.character(`coluuid`), length(`coluuid`) == 1)
         self$`coluuid` <- `coluuid`
@@ -43,6 +45,9 @@ UtilContentCreateBody <- R6::R6Class(
       if (!missing(`name`)) {
         stopifnot(is.character(`name`), length(`name`) == 1)
         self$`name` <- `name`
+      }
+      if (!missing(`overwrite`)) {
+        self$`overwrite` <- `overwrite`
       }
       if (!missing(`root`)) {
         stopifnot(is.character(`root`), length(`root`) == 1)
@@ -67,6 +72,9 @@ UtilContentCreateBody <- R6::R6Class(
       if (!is.null(self$`name`)) {
         UtilContentCreateBodyObject[['name']] <- self$`name`
       }
+      if (!is.null(self$`overwrite`)) {
+        UtilContentCreateBodyObject[['overwrite']] <- self$`overwrite`
+      }
       if (!is.null(self$`root`)) {
         UtilContentCreateBodyObject[['root']] <- self$`root`
       }
@@ -90,6 +98,9 @@ UtilContentCreateBody <- R6::R6Class(
       if (!is.null(UtilContentCreateBodyObject$`name`)) {
         self$`name` <- UtilContentCreateBodyObject$`name`
       }
+      if (!is.null(UtilContentCreateBodyObject$`overwrite`)) {
+        self$`overwrite` <- UtilContentCreateBodyObject$`overwrite`
+      }
       if (!is.null(UtilContentCreateBodyObject$`root`)) {
         self$`root` <- UtilContentCreateBodyObject$`root`
       }
@@ -106,6 +117,7 @@ UtilContentCreateBody <- R6::R6Class(
            "dir": %s,
            "location": %s,
            "name": %s,
+           "overwrite": %s,
            "root": %s,
            "type": %s
         }',
@@ -113,6 +125,7 @@ UtilContentCreateBody <- R6::R6Class(
         self$`dir`,
         self$`location`,
         self$`name`,
+        self$`overwrite`,
         self$`root`,
         self$`type`$toJSON()
       )
@@ -123,6 +136,7 @@ UtilContentCreateBody <- R6::R6Class(
       self$`dir` <- UtilContentCreateBodyObject$`dir`
       self$`location` <- UtilContentCreateBodyObject$`location`
       self$`name` <- UtilContentCreateBodyObject$`name`
+      self$`overwrite` <- UtilContentCreateBodyObject$`overwrite`
       self$`root` <- UtilContentCreateBodyObject$`root`
       UtilContentTypeObject <- UtilContentType$new()
       self$`type` <- UtilContentTypeObject$fromJSON(jsonlite::toJSON(UtilContentCreateBodyObject$type, auto_unbox = TRUE))

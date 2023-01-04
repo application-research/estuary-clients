@@ -97,7 +97,7 @@ public interface ContentApi  {
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public String contentAddIpfsPost(@Valid TypesIpfsPin body, @QueryParam("ignore-dupes") String ignoreDupes);
+    public String contentAddIpfsPost(@Valid TypesIpfsPin body, @QueryParam("ignore-dupes") String ignoreDupes, @QueryParam("overwrite") String overwrite);
 
     /**
      * Add new content
@@ -114,7 +114,7 @@ public interface ContentApi  {
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilContentAddResponse.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public UtilContentAddResponse contentAddPost( @Multipart(value = "data" ) Attachment dataDetail, @Multipart(value = "filename")  String filename, @QueryParam("coluuid") String coluuid, @QueryParam("replication") Integer replication, @QueryParam("ignore-dupes") String ignoreDupes, @QueryParam("lazy-provide") String lazyProvide, @QueryParam("dir") String dir);
+    public UtilContentAddResponse contentAddPost( @Multipart(value = "data" ) Attachment dataDetail, @Multipart(value = "filename")  String filename, @QueryParam("coluuid") String coluuid, @QueryParam("replication") Integer replication, @QueryParam("ignore-dupes") String ignoreDupes, @QueryParam("overwrite") String overwrite, @QueryParam("lazy-provide") String lazyProvide, @QueryParam("dir") String dir);
 
     /**
      * Get aggregated content stats

@@ -236,11 +236,14 @@ export class PinningApi {
      * Add and pin object
      * This endpoint adds a pin to the IPFS daemon.
      * @param {module:model/TypesIpfsPin} body Pin Body {cid:cid, name:name}
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.ignoreDupes Ignore Dupes
+     * @param {String} opts.overwrite Overwrite conflicting files in collections
      * @param {module:api/PinningApi~pinningPinsPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
-    pinningPinsPost(body, callback) {
-      
+    pinningPinsPost(body, opts, callback) {
+      opts = opts || {};
       let postBody = body;
       // verify the required parameter 'body' is set
       if (body === undefined || body === null) {
@@ -251,7 +254,7 @@ export class PinningApi {
         
       };
       let queryParams = {
-        
+        'ignore-dupes': opts['ignoreDupes'],'overwrite': opts['overwrite']
       };
       let headerParams = {
         

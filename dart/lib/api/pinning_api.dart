@@ -214,7 +214,7 @@ class PinningApi {
   /// Add and pin object
   ///
   /// This endpoint adds a pin to the IPFS daemon.
-  Future<TypesIpfsPinStatusResponse> pinningPinsPost(TypesIpfsPin body) async {
+  Future<TypesIpfsPinStatusResponse> pinningPinsPost(TypesIpfsPin body, { String ignoreDupes, String overwrite }) async {
     Object postBody = body;
 
     // verify required params are set
@@ -229,6 +229,12 @@ class PinningApi {
     List<QueryParam> queryParams = [];
     Map<String, String> headerParams = {};
     Map<String, String> formParams = {};
+    if(ignoreDupes != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "ignore-dupes", ignoreDupes));
+    }
+    if(overwrite != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat("", "overwrite", overwrite));
+    }
     
     List<String> contentTypes = ["application/json"];
 

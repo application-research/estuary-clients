@@ -197,7 +197,8 @@ bearerAuth.apiKey = 'YOUR API KEY';
 let apiInstance = new EstuaryClient.ContentApi();
 let body = new EstuaryClient.TypesIpfsPin(); // TypesIpfsPin | IPFS Body
 let opts = { 
-  'ignoreDupes': "ignoreDupes_example" // String | Ignore Dupes
+  'ignoreDupes': "ignoreDupes_example", // String | Ignore Dupes
+  'overwrite': "overwrite_example" // String | Overwrite conflicting files in collections
 };
 apiInstance.contentAddIpfsPost(body, opts, (error, data, response) => {
   if (error) {
@@ -214,6 +215,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| IPFS Body | 
  **ignoreDupes** | **String**| Ignore Dupes | [optional] 
+ **overwrite** | **String**| Overwrite conflicting files in collections | [optional] 
 
 ### Return type
 
@@ -254,6 +256,7 @@ let opts = {
   'coluuid': "coluuid_example", // String | Collection UUID
   'replication': 56, // Number | Replication value
   'ignoreDupes': "ignoreDupes_example", // String | Ignore Dupes true/false
+  'overwrite': "overwrite_example", // String | Overwrite files with the same path on same collection
   'lazyProvide': "lazyProvide_example", // String | Lazy Provide true/false
   'dir': "dir_example" // String | Directory
 };
@@ -275,6 +278,7 @@ Name | Type | Description  | Notes
  **coluuid** | **String**| Collection UUID | [optional] 
  **replication** | **Number**| Replication value | [optional] 
  **ignoreDupes** | **String**| Ignore Dupes true/false | [optional] 
+ **overwrite** | **String**| Overwrite files with the same path on same collection | [optional] 
  **lazyProvide** | **String**| Lazy Provide true/false | [optional] 
  **dir** | **String**| Directory | [optional] 
 

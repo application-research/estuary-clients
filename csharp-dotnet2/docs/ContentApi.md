@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 
 <a name="contentaddipfspost"></a>
 # **ContentAddIpfsPost**
-> string ContentAddIpfsPost (TypesIpfsPin body, string ignoreDupes)
+> string ContentAddIpfsPost (TypesIpfsPin body, string ignoreDupes, string overwrite)
 
 Add IPFS object
 
@@ -257,11 +257,12 @@ namespace Example
             var apiInstance = new ContentApi();
             var body = new TypesIpfsPin(); // TypesIpfsPin | IPFS Body
             var ignoreDupes = ignoreDupes_example;  // string | Ignore Dupes (optional) 
+            var overwrite = overwrite_example;  // string | Overwrite conflicting files in collections (optional) 
 
             try
             {
                 // Add IPFS object
-                string result = apiInstance.ContentAddIpfsPost(body, ignoreDupes);
+                string result = apiInstance.ContentAddIpfsPost(body, ignoreDupes, overwrite);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -279,6 +280,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| IPFS Body | 
  **ignoreDupes** | **string**| Ignore Dupes | [optional] 
+ **overwrite** | **string**| Overwrite conflicting files in collections | [optional] 
 
 ### Return type
 
@@ -297,7 +299,7 @@ Name | Type | Description  | Notes
 
 <a name="contentaddpost"></a>
 # **ContentAddPost**
-> UtilContentAddResponse ContentAddPost (byte[] data, string filename, string coluuid, int? replication, string ignoreDupes, string lazyProvide, string dir)
+> UtilContentAddResponse ContentAddPost (byte[] data, string filename, string coluuid, int? replication, string ignoreDupes, string overwrite, string lazyProvide, string dir)
 
 Add new content
 
@@ -329,13 +331,14 @@ namespace Example
             var coluuid = coluuid_example;  // string | Collection UUID (optional) 
             var replication = 56;  // int? | Replication value (optional) 
             var ignoreDupes = ignoreDupes_example;  // string | Ignore Dupes true/false (optional) 
+            var overwrite = overwrite_example;  // string | Overwrite files with the same path on same collection (optional) 
             var lazyProvide = lazyProvide_example;  // string | Lazy Provide true/false (optional) 
             var dir = dir_example;  // string | Directory (optional) 
 
             try
             {
                 // Add new content
-                UtilContentAddResponse result = apiInstance.ContentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir);
+                UtilContentAddResponse result = apiInstance.ContentAddPost(data, filename, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -356,6 +359,7 @@ Name | Type | Description  | Notes
  **coluuid** | **string**| Collection UUID | [optional] 
  **replication** | **int?**| Replication value | [optional] 
  **ignoreDupes** | **string**| Ignore Dupes true/false | [optional] 
+ **overwrite** | **string**| Overwrite files with the same path on same collection | [optional] 
  **lazyProvide** | **string**| Lazy Provide true/false | [optional] 
  **dir** | **string**| Directory | [optional] 
 

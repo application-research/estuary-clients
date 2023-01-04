@@ -68,11 +68,14 @@ class TestPinningController(BaseTestCase):
         Add and pin object
         """
         body = TypesIpfsPin()
+        query_string = [('ignore_dupes', 'ignore_dupes_example'),
+                        ('overwrite', 'overwrite_example')]
         response = self.client.open(
             '/pinning/pins',
             method='POST',
             data=json.dumps(body),
-            content_type='application/json')
+            content_type='application/json',
+            query_string=query_string)
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 

@@ -25,7 +25,7 @@ import javax.validation.Valid;
 
 @Path("/collections")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2023-01-03T16:17:33.106Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2023-01-04T12:55:56.542Z[GMT]")
 public class CollectionsApi {
 
     @POST
@@ -113,6 +113,9 @@ public class CollectionsApi {
 ,  @QueryParam("dir") 
 
  @Parameter(description = "Directory")  String dir
+,  @QueryParam("overwrite") 
+
+ @Parameter(description = "Overwrite conflicting files")  String overwrite
 ) {
         return Response.ok().entity("magic!").build();
     }
@@ -132,9 +135,12 @@ public class CollectionsApi {
 , @NotNull  @QueryParam("content") 
 
  @Parameter(description = "Content")  String content
-, @NotNull  @QueryParam("path") 
+,  @QueryParam("dir") 
 
- @Parameter(description = "Path to file")  String path
+ @Parameter(description = "Directory inside collection")  String dir
+,  @QueryParam("overwrite") 
+
+ @Parameter(description = "Overwrite file if already exists in path")  String overwrite
 ) {
         return Response.ok().entity("magic!").build();
     }

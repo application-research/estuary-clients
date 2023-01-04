@@ -62,13 +62,17 @@ def pinning_pins_pinid_post(body, pinid):  # noqa: E501
     return 'do some magic!'
 
 
-def pinning_pins_post(body):  # noqa: E501
+def pinning_pins_post(body, ignore_dupes=None, overwrite=None):  # noqa: E501
     """Add and pin object
 
     This endpoint adds a pin to the IPFS daemon. # noqa: E501
 
     :param body: Pin Body {cid:cid, name:name}
     :type body: dict | bytes
+    :param ignore_dupes: Ignore Dupes
+    :type ignore_dupes: str
+    :param overwrite: Overwrite conflicting files in collections
+    :type overwrite: str
 
     :rtype: TypesIpfsPinStatusResponse
     """

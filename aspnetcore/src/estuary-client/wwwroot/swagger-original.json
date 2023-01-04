@@ -737,10 +737,20 @@
             "type" : "string"
           }
         }, {
-          "name" : "path",
+          "name" : "dir",
           "in" : "query",
-          "description" : "Path to file",
-          "required" : true,
+          "description" : "Directory inside collection",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "overwrite",
+          "in" : "query",
+          "description" : "Overwrite file if already exists in path",
+          "required" : false,
           "style" : "form",
           "explode" : true,
           "schema" : {
@@ -863,6 +873,16 @@
           "name" : "dir",
           "in" : "query",
           "description" : "Directory",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "overwrite",
+          "in" : "query",
+          "description" : "Overwrite conflicting files",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -1119,6 +1139,16 @@
             "type" : "string"
           }
         }, {
+          "name" : "overwrite",
+          "in" : "query",
+          "description" : "Overwrite files with the same path on same collection",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
           "name" : "lazy-provide",
           "in" : "query",
           "description" : "Lazy Provide true/false",
@@ -1264,6 +1294,16 @@
           "name" : "ignore-dupes",
           "in" : "query",
           "description" : "Ignore Dupes",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "overwrite",
+          "in" : "query",
+          "description" : "Overwrite conflicting files in collections",
           "required" : false,
           "style" : "form",
           "explode" : true,
@@ -3074,6 +3114,27 @@
         "tags" : [ "pinning" ],
         "summary" : "Add and pin object",
         "description" : "This endpoint adds a pin to the IPFS daemon.",
+        "parameters" : [ {
+          "name" : "ignore-dupes",
+          "in" : "query",
+          "description" : "Ignore Dupes",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "overwrite",
+          "in" : "query",
+          "description" : "Overwrite conflicting files in collections",
+          "required" : false,
+          "style" : "form",
+          "explode" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
         "requestBody" : {
           "description" : "Pin Body {cid:cid, name:name}",
           "content" : {
@@ -4477,6 +4538,9 @@
           },
           "name" : {
             "type" : "string"
+          },
+          "overwrite" : {
+            "type" : "boolean"
           },
           "root" : {
             "type" : "string"

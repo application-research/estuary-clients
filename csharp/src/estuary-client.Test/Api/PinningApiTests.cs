@@ -114,7 +114,9 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //TypesIpfsPin body = null;
-            //var response = instance.PinningPinsPost(body);
+            //string ignoreDupes = null;
+            //string overwrite = null;
+            //var response = instance.PinningPinsPost(body, ignoreDupes, overwrite);
             //Assert.IsInstanceOf<TypesIpfsPinStatusResponse> (response, "response is TypesIpfsPinStatusResponse");
         }
     }

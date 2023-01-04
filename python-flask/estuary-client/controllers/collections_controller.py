@@ -67,7 +67,7 @@ def collections_coluuid_get(coluuid, dir=None):  # noqa: E501
     return 'do some magic!'
 
 
-def collections_coluuid_post(body, coluuid, dir=None):  # noqa: E501
+def collections_coluuid_post(body, coluuid, dir=None, overwrite=None):  # noqa: E501
     """Add contents to a collection
 
     This endpoint adds already-pinned contents (that have ContentIDs) to a collection. # noqa: E501
@@ -78,13 +78,15 @@ def collections_coluuid_post(body, coluuid, dir=None):  # noqa: E501
     :type coluuid: str
     :param dir: Directory
     :type dir: str
+    :param overwrite: Overwrite conflicting files
+    :type overwrite: str
 
     :rtype: str
     """
     return 'do some magic!'
 
 
-def collections_fs_add_post(coluuid, content, path):  # noqa: E501
+def collections_fs_add_post(coluuid, content, dir=None, overwrite=None):  # noqa: E501
     """Add a file to a collection
 
     This endpoint adds a file to a collection # noqa: E501
@@ -93,8 +95,10 @@ def collections_fs_add_post(coluuid, content, path):  # noqa: E501
     :type coluuid: str
     :param content: Content
     :type content: str
-    :param path: Path to file
-    :type path: str
+    :param dir: Directory inside collection
+    :type dir: str
+    :param overwrite: Overwrite file if already exists in path
+    :type overwrite: str
 
     :rtype: str
     """

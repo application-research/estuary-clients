@@ -137,7 +137,8 @@ public class ContentApiTest {
     public void contentAddIpfsPostTest() {
         TypesIpfsPin body = null;
         String ignoreDupes = null;
-        //String response = api.contentAddIpfsPost(body, ignoreDupes);
+        String overwrite = null;
+        //String response = api.contentAddIpfsPost(body, ignoreDupes, overwrite);
         //assertNotNull(response);
         // TODO: test validations
         
@@ -158,9 +159,10 @@ public class ContentApiTest {
         String coluuid = null;
         Integer replication = null;
         String ignoreDupes = null;
+        String overwrite = null;
         String lazyProvide = null;
         String dir = null;
-        //UtilContentAddResponse response = api.contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir);
+        //UtilContentAddResponse response = api.contentAddPost(data, filename, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir);
         //assertNotNull(response);
         // TODO: test validations
         

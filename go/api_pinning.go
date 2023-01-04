@@ -16,6 +16,7 @@ import (
 	"net/url"
 	"strings"
 	"fmt"
+	"github.com/antihax/optional"
 )
 
 // Linger please
@@ -475,9 +476,18 @@ PinningApiService Add and pin object
 This endpoint adds a pin to the IPFS daemon.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body Pin Body {cid:cid, name:name}
+ * @param optional nil or *PinningApiPinningPinsPostOpts - Optional Parameters:
+     * @param "IgnoreDupes" (optional.String) -  Ignore Dupes
+     * @param "Overwrite" (optional.String) -  Overwrite conflicting files in collections
 @return TypesIpfsPinStatusResponse
 */
-func (a *PinningApiService) PinningPinsPost(ctx context.Context, body TypesIpfsPin) (TypesIpfsPinStatusResponse, *http.Response, error) {
+
+type PinningApiPinningPinsPostOpts struct {
+    IgnoreDupes optional.String
+    Overwrite optional.String
+}
+
+func (a *PinningApiService) PinningPinsPost(ctx context.Context, body TypesIpfsPin, localVarOptionals *PinningApiPinningPinsPostOpts) (TypesIpfsPinStatusResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
@@ -493,6 +503,12 @@ func (a *PinningApiService) PinningPinsPost(ctx context.Context, body TypesIpfsP
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
 
+	if localVarOptionals != nil && localVarOptionals.IgnoreDupes.IsSet() {
+		localVarQueryParams.Add("ignore-dupes", parameterToString(localVarOptionals.IgnoreDupes.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Overwrite.IsSet() {
+		localVarQueryParams.Add("overwrite", parameterToString(localVarOptionals.Overwrite.Value(), ""))
+	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{"application/json"}
 

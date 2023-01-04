@@ -212,10 +212,12 @@ open class PinningAPI: APIBase {
     /**
      Add and pin object
      - parameter body: (body) Pin Body {cid:cid, name:name} 
+     - parameter ignoreDupes: (query) Ignore Dupes (optional)
+     - parameter overwrite: (query) Overwrite conflicting files in collections (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func pinningPinsPost(body: TypesIpfsPin, completion: @escaping ((_ data: TypesIpfsPinStatusResponse?, _ error: ErrorResponse?) -> Void)) {
-        pinningPinsPostWithRequestBuilder(body: body).execute { (response, error) -> Void in
+    open class func pinningPinsPost(body: TypesIpfsPin, ignoreDupes: String? = nil, overwrite: String? = nil, completion: @escaping ((_ data: TypesIpfsPinStatusResponse?, _ error: ErrorResponse?) -> Void)) {
+        pinningPinsPostWithRequestBuilder(body: body, ignoreDupes: ignoreDupes, overwrite: overwrite).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
     }
@@ -242,14 +244,19 @@ open class PinningAPI: APIBase {
   "status" : "pinning"
 }}]
      - parameter body: (body) Pin Body {cid:cid, name:name} 
+     - parameter ignoreDupes: (query) Ignore Dupes (optional)
+     - parameter overwrite: (query) Overwrite conflicting files in collections (optional)
      - returns: RequestBuilder<TypesIpfsPinStatusResponse> 
      */
-    open class func pinningPinsPostWithRequestBuilder(body: TypesIpfsPin) -> RequestBuilder<TypesIpfsPinStatusResponse> {
+    open class func pinningPinsPostWithRequestBuilder(body: TypesIpfsPin, ignoreDupes: String? = nil, overwrite: String? = nil) -> RequestBuilder<TypesIpfsPinStatusResponse> {
         let path = "/pinning/pins"
         let URLString = estuary-clientAPI.basePath + path
         let parameters = body.encodeToJSON()
-
-        let url = URLComponents(string: URLString)
+        var url = URLComponents(string: URLString)
+        url?.queryItems = APIHelper.mapValuesToQueryItems(values:[
+                        "ignore-dupes": ignoreDupes,
+                        "overwrite": overwrite
+        ])
 
         let requestBuilder: RequestBuilder<TypesIpfsPinStatusResponse>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 

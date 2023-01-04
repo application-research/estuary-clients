@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **dir** | **String** |  | [optional] [default to null]
 **location** | **String** |  | [optional] [default to null]
 **name** | **String** |  | [optional] [default to null]
+**overwrite** | **bool** |  | [optional] [default to null]
 **root** | **String** |  | [optional] [default to null]
 **type** | [**UtilContentType**](UtilContentType.md) |  | [optional] [default to null]
 

@@ -111,7 +111,7 @@ public interface CollectionsApi  {
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public String collectionsColuuidPost(List<Integer> body, @PathParam("coluuid") String coluuid, @QueryParam("dir")String dir);
+    public String collectionsColuuidPost(List<Integer> body, @PathParam("coluuid") String coluuid, @QueryParam("dir")String dir, @QueryParam("overwrite")String overwrite);
 
     /**
      * Add a file to a collection
@@ -127,7 +127,7 @@ public interface CollectionsApi  {
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public String collectionsFsAddPost(@QueryParam("coluuid")String coluuid, @QueryParam("content")String content, @QueryParam("path")String path);
+    public String collectionsFsAddPost(@QueryParam("coluuid")String coluuid, @QueryParam("content")String content, @QueryParam("dir")String dir, @QueryParam("overwrite")String overwrite);
 
     /**
      * List all collections

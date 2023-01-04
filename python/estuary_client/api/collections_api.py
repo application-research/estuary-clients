@@ -441,6 +441,7 @@ class CollectionsApi(object):
         :param list[int] body: Content IDs to add to collection (required)
         :param str coluuid: Collection UUID (required)
         :param str dir: Directory
+        :param str overwrite: Overwrite conflicting files
         :return: str
                  If the method is called asynchronously,
                  returns the request thread.
@@ -465,12 +466,13 @@ class CollectionsApi(object):
         :param list[int] body: Content IDs to add to collection (required)
         :param str coluuid: Collection UUID (required)
         :param str dir: Directory
+        :param str overwrite: Overwrite conflicting files
         :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['body', 'coluuid', 'dir']  # noqa: E501
+        all_params = ['body', 'coluuid', 'dir', 'overwrite']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -503,6 +505,8 @@ class CollectionsApi(object):
         query_params = []
         if 'dir' in params:
             query_params.append(('dir', params['dir']))  # noqa: E501
+        if 'overwrite' in params:
+            query_params.append(('overwrite', params['overwrite']))  # noqa: E501
 
         header_params = {}
 
@@ -539,49 +543,51 @@ class CollectionsApi(object):
             _request_timeout=params.get('_request_timeout'),
             collection_formats=collection_formats)
 
-    def collections_fs_add_post(self, coluuid, content, path, **kwargs):  # noqa: E501
+    def collections_fs_add_post(self, coluuid, content, **kwargs):  # noqa: E501
         """Add a file to a collection  # noqa: E501
 
         This endpoint adds a file to a collection  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.collections_fs_add_post(coluuid, content, path, async_req=True)
+        >>> thread = api.collections_fs_add_post(coluuid, content, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str coluuid: Collection ID (required)
         :param str content: Content (required)
-        :param str path: Path to file (required)
+        :param str dir: Directory inside collection
+        :param str overwrite: Overwrite file if already exists in path
         :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.collections_fs_add_post_with_http_info(coluuid, content, path, **kwargs)  # noqa: E501
+            return self.collections_fs_add_post_with_http_info(coluuid, content, **kwargs)  # noqa: E501
         else:
-            (data) = self.collections_fs_add_post_with_http_info(coluuid, content, path, **kwargs)  # noqa: E501
+            (data) = self.collections_fs_add_post_with_http_info(coluuid, content, **kwargs)  # noqa: E501
             return data
 
-    def collections_fs_add_post_with_http_info(self, coluuid, content, path, **kwargs):  # noqa: E501
+    def collections_fs_add_post_with_http_info(self, coluuid, content, **kwargs):  # noqa: E501
         """Add a file to a collection  # noqa: E501
 
         This endpoint adds a file to a collection  # noqa: E501
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.collections_fs_add_post_with_http_info(coluuid, content, path, async_req=True)
+        >>> thread = api.collections_fs_add_post_with_http_info(coluuid, content, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
         :param str coluuid: Collection ID (required)
         :param str content: Content (required)
-        :param str path: Path to file (required)
+        :param str dir: Directory inside collection
+        :param str overwrite: Overwrite file if already exists in path
         :return: str
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['coluuid', 'content', 'path']  # noqa: E501
+        all_params = ['coluuid', 'content', 'dir', 'overwrite']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -604,10 +610,6 @@ class CollectionsApi(object):
         if ('content' not in params or
                 params['content'] is None):
             raise ValueError("Missing the required parameter `content` when calling `collections_fs_add_post`")  # noqa: E501
-        # verify the required parameter 'path' is set
-        if ('path' not in params or
-                params['path'] is None):
-            raise ValueError("Missing the required parameter `path` when calling `collections_fs_add_post`")  # noqa: E501
 
         collection_formats = {}
 
@@ -618,8 +620,10 @@ class CollectionsApi(object):
             query_params.append(('coluuid', params['coluuid']))  # noqa: E501
         if 'content' in params:
             query_params.append(('content', params['content']))  # noqa: E501
-        if 'path' in params:
-            query_params.append(('path', params['path']))  # noqa: E501
+        if 'dir' in params:
+            query_params.append(('dir', params['dir']))  # noqa: E501
+        if 'overwrite' in params:
+            query_params.append(('overwrite', params['overwrite']))  # noqa: E501
 
         header_params = {}
 

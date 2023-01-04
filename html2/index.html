@@ -1030,6 +1030,9 @@
     "name" : {
       "type" : "string"
     },
+    "overwrite" : {
+      "type" : "boolean"
+    },
     "root" : {
       "type" : "string"
     },
@@ -7861,7 +7864,7 @@ except ApiException as e:
 -H "Authorization: [[apiKey]]"\
 -H "Accept: application/json"\
 -H "Content-Type: application/json"\
-"//api.estuary.tech//collections/{coluuid}?dir="</code></pre>
+"//api.estuary.tech//collections/{coluuid}?dir=&overwrite="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Collections-collectionsColuuidPost-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -7887,8 +7890,9 @@ public class CollectionsApiExample {
         array[Integer] body = ; // array[Integer] | Content IDs to add to collection
         String coluuid = coluuid_example; // String | Collection UUID
         String dir = dir_example; // String | Directory
+        String overwrite = overwrite_example; // String | Overwrite conflicting files
         try {
-            'String' result = apiInstance.collectionsColuuidPost(body, coluuid, dir);
+            'String' result = apiInstance.collectionsColuuidPost(body, coluuid, dir, overwrite);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CollectionsApi#collectionsColuuidPost");
@@ -7908,8 +7912,9 @@ public class CollectionsApiExample {
         array[Integer] body = ; // array[Integer] | Content IDs to add to collection
         String coluuid = coluuid_example; // String | Collection UUID
         String dir = dir_example; // String | Directory
+        String overwrite = overwrite_example; // String | Overwrite conflicting files
         try {
-            'String' result = apiInstance.collectionsColuuidPost(body, coluuid, dir);
+            'String' result = apiInstance.collectionsColuuidPost(body, coluuid, dir, overwrite);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CollectionsApi#collectionsColuuidPost");
@@ -7931,6 +7936,7 @@ public class CollectionsApiExample {
 array[Integer] *body = ; // Content IDs to add to collection
 String *coluuid = coluuid_example; // Collection UUID
 String *dir = dir_example; // Directory (optional)
+String *overwrite = overwrite_example; // Overwrite conflicting files (optional)
 
 CollectionsApi *apiInstance = [[CollectionsApi alloc] init];
 
@@ -7938,6 +7944,7 @@ CollectionsApi *apiInstance = [[CollectionsApi alloc] init];
 [apiInstance collectionsColuuidPostWith:body
     coluuid:coluuid
     dir:dir
+    overwrite:overwrite
               completionHandler: ^('String' output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -7964,6 +7971,7 @@ var body = ; // {{array[Integer]}} Content IDs to add to collection
 var coluuid = coluuid_example; // {{String}} Collection UUID
 var opts = { 
   'dir': dir_example // {{String}} Directory
+  'overwrite': overwrite_example // {{String}} Overwrite conflicting files
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -8002,11 +8010,12 @@ namespace Example
             var body = new array[Integer](); // array[Integer] | Content IDs to add to collection
             var coluuid = coluuid_example;  // String | Collection UUID
             var dir = dir_example;  // String | Directory (optional) 
+            var overwrite = overwrite_example;  // String | Overwrite conflicting files (optional) 
 
             try
             {
                 // Add contents to a collection
-                'String' result = apiInstance.collectionsColuuidPost(body, coluuid, dir);
+                'String' result = apiInstance.collectionsColuuidPost(body, coluuid, dir, overwrite);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -8032,9 +8041,10 @@ $api_instance = new Swagger\Client\ApiCollectionsApi();
 $body = ; // array[Integer] | Content IDs to add to collection
 $coluuid = coluuid_example; // String | Collection UUID
 $dir = dir_example; // String | Directory
+$overwrite = overwrite_example; // String | Overwrite conflicting files
 
 try {
-    $result = $api_instance->collectionsColuuidPost($body, $coluuid, $dir);
+    $result = $api_instance->collectionsColuuidPost($body, $coluuid, $dir, $overwrite);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CollectionsApi->collectionsColuuidPost: ', $e->getMessage(), PHP_EOL;
@@ -8056,9 +8066,10 @@ my $api_instance = WWW::SwaggerClient::CollectionsApi->new();
 my $body = [WWW::SwaggerClient::Object::array[Integer]->new()]; # array[Integer] | Content IDs to add to collection
 my $coluuid = coluuid_example; # String | Collection UUID
 my $dir = dir_example; # String | Directory
+my $overwrite = overwrite_example; # String | Overwrite conflicting files
 
 eval { 
-    my $result = $api_instance->collectionsColuuidPost(body => $body, coluuid => $coluuid, dir => $dir);
+    my $result = $api_instance->collectionsColuuidPost(body => $body, coluuid => $coluuid, dir => $dir, overwrite => $overwrite);
     print Dumper($result);
 };
 if ($@) {
@@ -8083,10 +8094,11 @@ api_instance = swagger_client.CollectionsApi()
 body =  # array[Integer] | Content IDs to add to collection
 coluuid = coluuid_example # String | Collection UUID
 dir = dir_example # String | Directory (optional)
+overwrite = overwrite_example # String | Overwrite conflicting files (optional)
 
 try: 
     # Add contents to a collection
-    api_response = api_instance.collections_coluuid_post(body, coluuid, dir=dir)
+    api_response = api_instance.collections_coluuid_post(body, coluuid, dir=dir, overwrite=overwrite)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CollectionsApi->collectionsColuuidPost: %s\n" % e)</code></pre>
@@ -8194,6 +8206,25 @@ except ApiException as e:
                                 
                                                     <div class="inner description">
                                                         Directory
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr><td style="width:150px;">overwrite</td>
+                                <td>
+                                
+                                
+                                    <div id="d2e199_collectionsColuuidPost_overwrite">
+                                        <div class="json-schema-view">
+                                            <div class="primitive">
+                                                <span class="type">
+                                                    String
+                                                </span>
+                                
+                                                    <div class="inner description">
+                                                        Overwrite conflicting files
                                                     </div>
                                             </div>
                                         </div>
@@ -8386,7 +8417,7 @@ except ApiException as e:
                            <pre class="prettyprint"><code class="language-bsh">curl -X POST\
 -H "Authorization: [[apiKey]]"\
 -H "Accept: application/json"\
-"//api.estuary.tech//collections/fs/add?coluuid=&content=&path="</code></pre>
+"//api.estuary.tech//collections/fs/add?coluuid=&content=&dir=&overwrite="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Collections-collectionsFsAddPost-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -8411,9 +8442,10 @@ public class CollectionsApiExample {
         CollectionsApi apiInstance = new CollectionsApi();
         String coluuid = coluuid_example; // String | Collection ID
         String content = content_example; // String | Content
-        String path = path_example; // String | Path to file
+        String dir = dir_example; // String | Directory inside collection
+        String overwrite = overwrite_example; // String | Overwrite file if already exists in path
         try {
-            'String' result = apiInstance.collectionsFsAddPost(coluuid, content, path);
+            'String' result = apiInstance.collectionsFsAddPost(coluuid, content, dir, overwrite);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CollectionsApi#collectionsFsAddPost");
@@ -8432,9 +8464,10 @@ public class CollectionsApiExample {
         CollectionsApi apiInstance = new CollectionsApi();
         String coluuid = coluuid_example; // String | Collection ID
         String content = content_example; // String | Content
-        String path = path_example; // String | Path to file
+        String dir = dir_example; // String | Directory inside collection
+        String overwrite = overwrite_example; // String | Overwrite file if already exists in path
         try {
-            'String' result = apiInstance.collectionsFsAddPost(coluuid, content, path);
+            'String' result = apiInstance.collectionsFsAddPost(coluuid, content, dir, overwrite);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling CollectionsApi#collectionsFsAddPost");
@@ -8455,14 +8488,16 @@ public class CollectionsApiExample {
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
 String *coluuid = coluuid_example; // Collection ID
 String *content = content_example; // Content
-String *path = path_example; // Path to file
+String *dir = dir_example; // Directory inside collection (optional)
+String *overwrite = overwrite_example; // Overwrite file if already exists in path (optional)
 
 CollectionsApi *apiInstance = [[CollectionsApi alloc] init];
 
 // Add a file to a collection
 [apiInstance collectionsFsAddPostWith:coluuid
     content:content
-    path:path
+    dir:dir
+    overwrite:overwrite
               completionHandler: ^('String' output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -8487,8 +8522,10 @@ bearerAuth.apiKey = "YOUR API KEY"
 var api = new EstuaryApi.CollectionsApi()
 var coluuid = coluuid_example; // {{String}} Collection ID
 var content = content_example; // {{String}} Content
-var path = path_example; // {{String}} Path to file
-
+var opts = { 
+  'dir': dir_example, // {{String}} Directory inside collection
+  'overwrite': overwrite_example // {{String}} Overwrite file if already exists in path
+};
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -8496,7 +8533,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.collectionsFsAddPost(coluuid, content, path, callback);
+api.collectionsFsAddPost(coluuid, content, opts, callback);
 </code></pre>
                             </div>
 
@@ -8525,12 +8562,13 @@ namespace Example
             var apiInstance = new CollectionsApi();
             var coluuid = coluuid_example;  // String | Collection ID
             var content = content_example;  // String | Content
-            var path = path_example;  // String | Path to file
+            var dir = dir_example;  // String | Directory inside collection (optional) 
+            var overwrite = overwrite_example;  // String | Overwrite file if already exists in path (optional) 
 
             try
             {
                 // Add a file to a collection
-                'String' result = apiInstance.collectionsFsAddPost(coluuid, content, path);
+                'String' result = apiInstance.collectionsFsAddPost(coluuid, content, dir, overwrite);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -8555,10 +8593,11 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorizatio
 $api_instance = new Swagger\Client\ApiCollectionsApi();
 $coluuid = coluuid_example; // String | Collection ID
 $content = content_example; // String | Content
-$path = path_example; // String | Path to file
+$dir = dir_example; // String | Directory inside collection
+$overwrite = overwrite_example; // String | Overwrite file if already exists in path
 
 try {
-    $result = $api_instance->collectionsFsAddPost($coluuid, $content, $path);
+    $result = $api_instance->collectionsFsAddPost($coluuid, $content, $dir, $overwrite);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CollectionsApi->collectionsFsAddPost: ', $e->getMessage(), PHP_EOL;
@@ -8579,10 +8618,11 @@ $WWW::SwaggerClient::Configuration::api_key->{'Authorization'} = 'YOUR_API_KEY';
 my $api_instance = WWW::SwaggerClient::CollectionsApi->new();
 my $coluuid = coluuid_example; # String | Collection ID
 my $content = content_example; # String | Content
-my $path = path_example; # String | Path to file
+my $dir = dir_example; # String | Directory inside collection
+my $overwrite = overwrite_example; # String | Overwrite file if already exists in path
 
 eval { 
-    my $result = $api_instance->collectionsFsAddPost(coluuid => $coluuid, content => $content, path => $path);
+    my $result = $api_instance->collectionsFsAddPost(coluuid => $coluuid, content => $content, dir => $dir, overwrite => $overwrite);
     print Dumper($result);
 };
 if ($@) {
@@ -8606,11 +8646,12 @@ swagger_client.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 api_instance = swagger_client.CollectionsApi()
 coluuid = coluuid_example # String | Collection ID
 content = content_example # String | Content
-path = path_example # String | Path to file
+dir = dir_example # String | Directory inside collection (optional)
+overwrite = overwrite_example # String | Overwrite file if already exists in path (optional)
 
 try: 
     # Add a file to a collection
-    api_response = api_instance.collections_fs_add_post(coluuid, content, path)
+    api_response = api_instance.collections_fs_add_post(coluuid, content, dir=dir, overwrite=overwrite)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling CollectionsApi->collectionsFsAddPost: %s\n" % e)</code></pre>
@@ -8673,11 +8714,11 @@ except ApiException as e:
                                     </div>
                                 </td>
                                 </tr>
-                                <tr><td style="width:150px;">path*</td>
+                                <tr><td style="width:150px;">dir</td>
                                 <td>
                                 
                                 
-                                    <div id="d2e199_collectionsFsAddPost_path">
+                                    <div id="d2e199_collectionsFsAddPost_dir">
                                         <div class="json-schema-view">
                                             <div class="primitive">
                                                 <span class="type">
@@ -8685,12 +8726,28 @@ except ApiException as e:
                                                 </span>
                                 
                                                     <div class="inner description">
-                                                        Path to file
+                                                        Directory inside collection
                                                     </div>
                                             </div>
-                                                <div class="inner required">
-                                                    Required
-                                                </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr><td style="width:150px;">overwrite</td>
+                                <td>
+                                
+                                
+                                    <div id="d2e199_collectionsFsAddPost_overwrite">
+                                        <div class="json-schema-view">
+                                            <div class="primitive">
+                                                <span class="type">
+                                                    String
+                                                </span>
+                                
+                                                    <div class="inner description">
+                                                        Overwrite file if already exists in path
+                                                    </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </td>
@@ -11167,7 +11224,7 @@ except ApiException as e:
 -H "Authorization: [[apiKey]]"\
 -H "Accept: application/json"\
 -H "Content-Type: */*"\
-"//api.estuary.tech//content/add-ipfs?ignore-dupes="</code></pre>
+"//api.estuary.tech//content/add-ipfs?ignore-dupes=&overwrite="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Content-contentAddIpfsPost-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -11192,8 +11249,9 @@ public class ContentApiExample {
         ContentApi apiInstance = new ContentApi();
         Types.IpfsPin body = ; // Types.IpfsPin | IPFS Body
         String ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
+        String overwrite = overwrite_example; // String | Overwrite conflicting files in collections
         try {
-            'String' result = apiInstance.contentAddIpfsPost(body, ignoreDupes);
+            'String' result = apiInstance.contentAddIpfsPost(body, ignoreDupes, overwrite);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ContentApi#contentAddIpfsPost");
@@ -11212,8 +11270,9 @@ public class ContentApiExample {
         ContentApi apiInstance = new ContentApi();
         Types.IpfsPin body = ; // Types.IpfsPin | IPFS Body
         String ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
+        String overwrite = overwrite_example; // String | Overwrite conflicting files in collections
         try {
-            'String' result = apiInstance.contentAddIpfsPost(body, ignoreDupes);
+            'String' result = apiInstance.contentAddIpfsPost(body, ignoreDupes, overwrite);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ContentApi#contentAddIpfsPost");
@@ -11234,12 +11293,14 @@ public class ContentApiExample {
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
 Types.IpfsPin *body = ; // IPFS Body
 String *ignoreDupes = ignoreDupes_example; // Ignore Dupes (optional)
+String *overwrite = overwrite_example; // Overwrite conflicting files in collections (optional)
 
 ContentApi *apiInstance = [[ContentApi alloc] init];
 
 // Add IPFS object
 [apiInstance contentAddIpfsPostWith:body
     ignoreDupes:ignoreDupes
+    overwrite:overwrite
               completionHandler: ^('String' output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -11265,6 +11326,7 @@ var api = new EstuaryApi.ContentApi()
 var body = ; // {{Types.IpfsPin}} IPFS Body
 var opts = { 
   'ignoreDupes': ignoreDupes_example // {{String}} Ignore Dupes
+  'overwrite': overwrite_example // {{String}} Overwrite conflicting files in collections
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -11302,11 +11364,12 @@ namespace Example
             var apiInstance = new ContentApi();
             var body = new Types.IpfsPin(); // Types.IpfsPin | IPFS Body
             var ignoreDupes = ignoreDupes_example;  // String | Ignore Dupes (optional) 
+            var overwrite = overwrite_example;  // String | Overwrite conflicting files in collections (optional) 
 
             try
             {
                 // Add IPFS object
-                'String' result = apiInstance.contentAddIpfsPost(body, ignoreDupes);
+                'String' result = apiInstance.contentAddIpfsPost(body, ignoreDupes, overwrite);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -11331,9 +11394,10 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorizatio
 $api_instance = new Swagger\Client\ApiContentApi();
 $body = ; // Types.IpfsPin | IPFS Body
 $ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
+$overwrite = overwrite_example; // String | Overwrite conflicting files in collections
 
 try {
-    $result = $api_instance->contentAddIpfsPost($body, $ignoreDupes);
+    $result = $api_instance->contentAddIpfsPost($body, $ignoreDupes, $overwrite);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContentApi->contentAddIpfsPost: ', $e->getMessage(), PHP_EOL;
@@ -11354,9 +11418,10 @@ $WWW::SwaggerClient::Configuration::api_key->{'Authorization'} = 'YOUR_API_KEY';
 my $api_instance = WWW::SwaggerClient::ContentApi->new();
 my $body = WWW::SwaggerClient::Object::Types.IpfsPin->new(); # Types.IpfsPin | IPFS Body
 my $ignoreDupes = ignoreDupes_example; # String | Ignore Dupes
+my $overwrite = overwrite_example; # String | Overwrite conflicting files in collections
 
 eval { 
-    my $result = $api_instance->contentAddIpfsPost(body => $body, ignoreDupes => $ignoreDupes);
+    my $result = $api_instance->contentAddIpfsPost(body => $body, ignoreDupes => $ignoreDupes, overwrite => $overwrite);
     print Dumper($result);
 };
 if ($@) {
@@ -11380,10 +11445,11 @@ swagger_client.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 api_instance = swagger_client.ContentApi()
 body =  # Types.IpfsPin | IPFS Body
 ignoreDupes = ignoreDupes_example # String | Ignore Dupes (optional)
+overwrite = overwrite_example # String | Overwrite conflicting files in collections (optional)
 
 try: 
     # Add IPFS object
-    api_response = api_instance.content_add_ipfs_post(body, ignoreDupes=ignoreDupes)
+    api_response = api_instance.content_add_ipfs_post(body, ignoreDupes=ignoreDupes, overwrite=overwrite)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->contentAddIpfsPost: %s\n" % e)</code></pre>
@@ -11459,6 +11525,25 @@ except ApiException as e:
                                 
                                                     <div class="inner description">
                                                         Ignore Dupes
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr><td style="width:150px;">overwrite</td>
+                                <td>
+                                
+                                
+                                    <div id="d2e199_contentAddIpfsPost_overwrite">
+                                        <div class="json-schema-view">
+                                            <div class="primitive">
+                                                <span class="type">
+                                                    String
+                                                </span>
+                                
+                                                    <div class="inner description">
+                                                        Overwrite conflicting files in collections
                                                     </div>
                                             </div>
                                         </div>
@@ -11652,7 +11737,7 @@ except ApiException as e:
 -H "Authorization: [[apiKey]]"\
 -H "Accept: application/json"\
 -H "Content-Type: multipart/form-data"\
-"//api.estuary.tech//content/add?coluuid=&replication=&ignore-dupes=&lazy-provide=&dir="</code></pre>
+"//api.estuary.tech//content/add?coluuid=&replication=&ignore-dupes=&overwrite=&lazy-provide=&dir="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Content-contentAddPost-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -11680,10 +11765,11 @@ public class ContentApiExample {
         String coluuid = coluuid_example; // String | Collection UUID
         Integer replication = 56; // Integer | Replication value
         String ignoreDupes = ignoreDupes_example; // String | Ignore Dupes true/false
+        String overwrite = overwrite_example; // String | Overwrite files with the same path on same collection
         String lazyProvide = lazyProvide_example; // String | Lazy Provide true/false
         String dir = dir_example; // String | Directory
         try {
-            util.ContentAddResponse result = apiInstance.contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir);
+            util.ContentAddResponse result = apiInstance.contentAddPost(data, filename, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ContentApi#contentAddPost");
@@ -11705,10 +11791,11 @@ public class ContentApiExample {
         String coluuid = coluuid_example; // String | Collection UUID
         Integer replication = 56; // Integer | Replication value
         String ignoreDupes = ignoreDupes_example; // String | Ignore Dupes true/false
+        String overwrite = overwrite_example; // String | Overwrite files with the same path on same collection
         String lazyProvide = lazyProvide_example; // String | Lazy Provide true/false
         String dir = dir_example; // String | Directory
         try {
-            util.ContentAddResponse result = apiInstance.contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir);
+            util.ContentAddResponse result = apiInstance.contentAddPost(data, filename, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ContentApi#contentAddPost");
@@ -11732,6 +11819,7 @@ String *filename = filename_example; //
 String *coluuid = coluuid_example; // Collection UUID (optional)
 Integer *replication = 56; // Replication value (optional)
 String *ignoreDupes = ignoreDupes_example; // Ignore Dupes true/false (optional)
+String *overwrite = overwrite_example; // Overwrite files with the same path on same collection (optional)
 String *lazyProvide = lazyProvide_example; // Lazy Provide true/false (optional)
 String *dir = dir_example; // Directory (optional)
 
@@ -11743,6 +11831,7 @@ ContentApi *apiInstance = [[ContentApi alloc] init];
     coluuid:coluuid
     replication:replication
     ignoreDupes:ignoreDupes
+    overwrite:overwrite
     lazyProvide:lazyProvide
     dir:dir
               completionHandler: ^(util.ContentAddResponse output, NSError* error) {
@@ -11773,6 +11862,7 @@ var opts = {
   'coluuid': coluuid_example // {{String}} Collection UUID
   'replication': 56 // {{Integer}} Replication value
   'ignoreDupes': ignoreDupes_example // {{String}} Ignore Dupes true/false
+  'overwrite': overwrite_example // {{String}} Overwrite files with the same path on same collection
   'lazyProvide': lazyProvide_example // {{String}} Lazy Provide true/false
   'dir': dir_example // {{String}} Directory
 };
@@ -11815,13 +11905,14 @@ namespace Example
             var coluuid = coluuid_example;  // String | Collection UUID (optional) 
             var replication = 56;  // Integer | Replication value (optional) 
             var ignoreDupes = ignoreDupes_example;  // String | Ignore Dupes true/false (optional) 
+            var overwrite = overwrite_example;  // String | Overwrite files with the same path on same collection (optional) 
             var lazyProvide = lazyProvide_example;  // String | Lazy Provide true/false (optional) 
             var dir = dir_example;  // String | Directory (optional) 
 
             try
             {
                 // Add new content
-                util.ContentAddResponse result = apiInstance.contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir);
+                util.ContentAddResponse result = apiInstance.contentAddPost(data, filename, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -11849,11 +11940,12 @@ $filename = filename_example; // String |
 $coluuid = coluuid_example; // String | Collection UUID
 $replication = 56; // Integer | Replication value
 $ignoreDupes = ignoreDupes_example; // String | Ignore Dupes true/false
+$overwrite = overwrite_example; // String | Overwrite files with the same path on same collection
 $lazyProvide = lazyProvide_example; // String | Lazy Provide true/false
 $dir = dir_example; // String | Directory
 
 try {
-    $result = $api_instance->contentAddPost($data, $filename, $coluuid, $replication, $ignoreDupes, $lazyProvide, $dir);
+    $result = $api_instance->contentAddPost($data, $filename, $coluuid, $replication, $ignoreDupes, $overwrite, $lazyProvide, $dir);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContentApi->contentAddPost: ', $e->getMessage(), PHP_EOL;
@@ -11877,11 +11969,12 @@ my $filename = filename_example; # String |
 my $coluuid = coluuid_example; # String | Collection UUID
 my $replication = 56; # Integer | Replication value
 my $ignoreDupes = ignoreDupes_example; # String | Ignore Dupes true/false
+my $overwrite = overwrite_example; # String | Overwrite files with the same path on same collection
 my $lazyProvide = lazyProvide_example; # String | Lazy Provide true/false
 my $dir = dir_example; # String | Directory
 
 eval { 
-    my $result = $api_instance->contentAddPost(data => $data, filename => $filename, coluuid => $coluuid, replication => $replication, ignoreDupes => $ignoreDupes, lazyProvide => $lazyProvide, dir => $dir);
+    my $result = $api_instance->contentAddPost(data => $data, filename => $filename, coluuid => $coluuid, replication => $replication, ignoreDupes => $ignoreDupes, overwrite => $overwrite, lazyProvide => $lazyProvide, dir => $dir);
     print Dumper($result);
 };
 if ($@) {
@@ -11908,12 +12001,13 @@ filename = filename_example # String |
 coluuid = coluuid_example # String | Collection UUID (optional)
 replication = 56 # Integer | Replication value (optional)
 ignoreDupes = ignoreDupes_example # String | Ignore Dupes true/false (optional)
+overwrite = overwrite_example # String | Overwrite files with the same path on same collection (optional)
 lazyProvide = lazyProvide_example # String | Lazy Provide true/false (optional)
 dir = dir_example # String | Directory (optional)
 
 try: 
     # Add new content
-    api_response = api_instance.content_add_post(data, filename, coluuid=coluuid, replication=replication, ignoreDupes=ignoreDupes, lazyProvide=lazyProvide, dir=dir)
+    api_response = api_instance.content_add_post(data, filename, coluuid=coluuid, replication=replication, ignoreDupes=ignoreDupes, overwrite=overwrite, lazyProvide=lazyProvide, dir=dir)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling ContentApi->contentAddPost: %s\n" % e)</code></pre>
@@ -12031,6 +12125,25 @@ except ApiException as e:
                                 
                                                     <div class="inner description">
                                                         Ignore Dupes true/false
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr><td style="width:150px;">overwrite</td>
+                                <td>
+                                
+                                
+                                    <div id="d2e199_contentAddPost_overwrite">
+                                        <div class="json-schema-view">
+                                            <div class="primitive">
+                                                <span class="type">
+                                                    String
+                                                </span>
+                                
+                                                    <div class="inner description">
+                                                        Overwrite files with the same path on same collection
                                                     </div>
                                             </div>
                                         </div>
@@ -31751,7 +31864,7 @@ except ApiException as e:
 -H "Authorization: [[apiKey]]"\
 -H "Accept: application/json"\
 -H "Content-Type: application/json"\
-"//api.estuary.tech//pinning/pins"</code></pre>
+"//api.estuary.tech//pinning/pins?ignore-dupes=&overwrite="</code></pre>
                           </div>
                           <div class="tab-pane" id="examples-Pinning-pinningPinsPost-0-java">
                             <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
@@ -31775,8 +31888,10 @@ public class PinningApiExample {
 
         PinningApi apiInstance = new PinningApi();
         Types.IpfsPin body = ; // Types.IpfsPin | Pin Body {cid:cid, name:name}
+        String ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
+        String overwrite = overwrite_example; // String | Overwrite conflicting files in collections
         try {
-            types.IpfsPinStatusResponse result = apiInstance.pinningPinsPost(body);
+            types.IpfsPinStatusResponse result = apiInstance.pinningPinsPost(body, ignoreDupes, overwrite);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PinningApi#pinningPinsPost");
@@ -31794,8 +31909,10 @@ public class PinningApiExample {
     public static void main(String[] args) {
         PinningApi apiInstance = new PinningApi();
         Types.IpfsPin body = ; // Types.IpfsPin | Pin Body {cid:cid, name:name}
+        String ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
+        String overwrite = overwrite_example; // String | Overwrite conflicting files in collections
         try {
-            types.IpfsPinStatusResponse result = apiInstance.pinningPinsPost(body);
+            types.IpfsPinStatusResponse result = apiInstance.pinningPinsPost(body, ignoreDupes, overwrite);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PinningApi#pinningPinsPost");
@@ -31815,11 +31932,15 @@ public class PinningApiExample {
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
 Types.IpfsPin *body = ; // Pin Body {cid:cid, name:name}
+String *ignoreDupes = ignoreDupes_example; // Ignore Dupes (optional)
+String *overwrite = overwrite_example; // Overwrite conflicting files in collections (optional)
 
 PinningApi *apiInstance = [[PinningApi alloc] init];
 
 // Add and pin object
 [apiInstance pinningPinsPostWith:body
+    ignoreDupes:ignoreDupes
+    overwrite:overwrite
               completionHandler: ^(types.IpfsPinStatusResponse output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
@@ -31843,7 +31964,10 @@ bearerAuth.apiKey = "YOUR API KEY"
 
 var api = new EstuaryApi.PinningApi()
 var body = ; // {{Types.IpfsPin}} Pin Body {cid:cid, name:name}
-
+var opts = { 
+  'ignoreDupes': ignoreDupes_example // {{String}} Ignore Dupes
+  'overwrite': overwrite_example // {{String}} Overwrite conflicting files in collections
+};
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -31851,7 +31975,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.pinningPinsPost(body, callback);
+api.pinningPinsPost(body, opts, callback);
 </code></pre>
                             </div>
 
@@ -31879,11 +32003,13 @@ namespace Example
 
             var apiInstance = new PinningApi();
             var body = new Types.IpfsPin(); // Types.IpfsPin | Pin Body {cid:cid, name:name}
+            var ignoreDupes = ignoreDupes_example;  // String | Ignore Dupes (optional) 
+            var overwrite = overwrite_example;  // String | Overwrite conflicting files in collections (optional) 
 
             try
             {
                 // Add and pin object
-                types.IpfsPinStatusResponse result = apiInstance.pinningPinsPost(body);
+                types.IpfsPinStatusResponse result = apiInstance.pinningPinsPost(body, ignoreDupes, overwrite);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -31907,9 +32033,11 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorizatio
 
 $api_instance = new Swagger\Client\ApiPinningApi();
 $body = ; // Types.IpfsPin | Pin Body {cid:cid, name:name}
+$ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
+$overwrite = overwrite_example; // String | Overwrite conflicting files in collections
 
 try {
-    $result = $api_instance->pinningPinsPost($body);
+    $result = $api_instance->pinningPinsPost($body, $ignoreDupes, $overwrite);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling PinningApi->pinningPinsPost: ', $e->getMessage(), PHP_EOL;
@@ -31929,9 +32057,11 @@ $WWW::SwaggerClient::Configuration::api_key->{'Authorization'} = 'YOUR_API_KEY';
 
 my $api_instance = WWW::SwaggerClient::PinningApi->new();
 my $body = WWW::SwaggerClient::Object::Types.IpfsPin->new(); # Types.IpfsPin | Pin Body {cid:cid, name:name}
+my $ignoreDupes = ignoreDupes_example; # String | Ignore Dupes
+my $overwrite = overwrite_example; # String | Overwrite conflicting files in collections
 
 eval { 
-    my $result = $api_instance->pinningPinsPost(body => $body);
+    my $result = $api_instance->pinningPinsPost(body => $body, ignoreDupes => $ignoreDupes, overwrite => $overwrite);
     print Dumper($result);
 };
 if ($@) {
@@ -31954,10 +32084,12 @@ swagger_client.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 # create an instance of the API class
 api_instance = swagger_client.PinningApi()
 body =  # Types.IpfsPin | Pin Body {cid:cid, name:name}
+ignoreDupes = ignoreDupes_example # String | Ignore Dupes (optional)
+overwrite = overwrite_example # String | Overwrite conflicting files in collections (optional)
 
 try: 
     # Add and pin object
-    api_response = api_instance.pinning_pins_post(body)
+    api_response = api_instance.pinning_pins_post(body, ignoreDupes=ignoreDupes, overwrite=overwrite)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling PinningApi->pinningPinsPost: %s\n" % e)</code></pre>
@@ -32014,6 +32146,51 @@ except ApiException as e:
                             </table>
 
 
+                            <div class="methodsubtabletitle">Query parameters</div>
+                            <table id="methodsubtable">
+                              <tr>
+                                <th width="150px">Name</th>
+                                <th>Description</th>
+                              </tr>
+                                <tr><td style="width:150px;">ignore-dupes</td>
+                                <td>
+                                
+                                
+                                    <div id="d2e199_pinningPinsPost_ignoreDupes">
+                                        <div class="json-schema-view">
+                                            <div class="primitive">
+                                                <span class="type">
+                                                    String
+                                                </span>
+                                
+                                                    <div class="inner description">
+                                                        Ignore Dupes
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                </tr>
+                                <tr><td style="width:150px;">overwrite</td>
+                                <td>
+                                
+                                
+                                    <div id="d2e199_pinningPinsPost_overwrite">
+                                        <div class="json-schema-view">
+                                            <div class="primitive">
+                                                <span class="type">
+                                                    String
+                                                </span>
+                                
+                                                    <div class="inner description">
+                                                        Overwrite conflicting files in collections
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                </tr>
+                            </table>
 
                           <h2>Responses</h2>
                             <h3> Status: 202 - Accepted </h3>

@@ -39,8 +39,10 @@ namespace IO.Swagger.Api
         /// Add and pin object This endpoint adds a pin to the IPFS daemon.
         /// </summary>
         /// <param name="body">Pin Body {cid:cid, name:name}</param>
+        /// <param name="ignoreDupes">Ignore Dupes</param>
+        /// <param name="overwrite">Overwrite conflicting files in collections</param>
         /// <returns>TypesIpfsPinStatusResponse</returns>
-        TypesIpfsPinStatusResponse PinningPinsPost (TypesIpfsPin body);
+        TypesIpfsPinStatusResponse PinningPinsPost (TypesIpfsPin body, string ignoreDupes, string overwrite);
     }
   
     /// <summary>
@@ -240,8 +242,10 @@ namespace IO.Swagger.Api
         /// Add and pin object This endpoint adds a pin to the IPFS daemon.
         /// </summary>
         /// <param name="body">Pin Body {cid:cid, name:name}</param>
+        /// <param name="ignoreDupes">Ignore Dupes</param>
+        /// <param name="overwrite">Overwrite conflicting files in collections</param>
         /// <returns>TypesIpfsPinStatusResponse</returns>
-        public TypesIpfsPinStatusResponse PinningPinsPost (TypesIpfsPin body)
+        public TypesIpfsPinStatusResponse PinningPinsPost (TypesIpfsPin body, string ignoreDupes, string overwrite)
         {
             // verify the required parameter 'body' is set
             if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling PinningPinsPost");
@@ -255,7 +259,9 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
-                                    postBody = ApiClient.Serialize(body); // http body (model) parameter
+             if (ignoreDupes != null) queryParams.Add("ignore-dupes", ApiClient.ParameterToString(ignoreDupes)); // query parameter
+ if (overwrite != null) queryParams.Add("overwrite", ApiClient.ParameterToString(overwrite)); // query parameter
+                        postBody = ApiClient.Serialize(body); // http body (model) parameter
 
             // authentication setting, if any
             String[] authSettings = new String[] { "bearerAuth" };

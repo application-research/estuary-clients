@@ -234,7 +234,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **collectionsColuuidPost**
-> string collectionsColuuidPost($body, $coluuid, $dir)
+> string collectionsColuuidPost($body, $coluuid, $dir, $overwrite)
 
 Add contents to a collection
 
@@ -258,9 +258,10 @@ $apiInstance = new Swagger\Client\Api\CollectionsApi(
 $body = array(56); // int[] | Content IDs to add to collection
 $coluuid = "coluuid_example"; // string | Collection UUID
 $dir = "dir_example"; // string | Directory
+$overwrite = "overwrite_example"; // string | Overwrite conflicting files
 
 try {
-    $result = $apiInstance->collectionsColuuidPost($body, $coluuid, $dir);
+    $result = $apiInstance->collectionsColuuidPost($body, $coluuid, $dir, $overwrite);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CollectionsApi->collectionsColuuidPost: ', $e->getMessage(), PHP_EOL;
@@ -275,6 +276,7 @@ Name | Type | Description  | Notes
  **body** | [**int[]**](../Model/int.md)| Content IDs to add to collection |
  **coluuid** | **string**| Collection UUID |
  **dir** | **string**| Directory | [optional]
+ **overwrite** | **string**| Overwrite conflicting files | [optional]
 
 ### Return type
 
@@ -292,7 +294,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **collectionsFsAddPost**
-> string collectionsFsAddPost($coluuid, $content, $path)
+> string collectionsFsAddPost($coluuid, $content, $dir, $overwrite)
 
 Add a file to a collection
 
@@ -315,10 +317,11 @@ $apiInstance = new Swagger\Client\Api\CollectionsApi(
 );
 $coluuid = "coluuid_example"; // string | Collection ID
 $content = "content_example"; // string | Content
-$path = "path_example"; // string | Path to file
+$dir = "dir_example"; // string | Directory inside collection
+$overwrite = "overwrite_example"; // string | Overwrite file if already exists in path
 
 try {
-    $result = $apiInstance->collectionsFsAddPost($coluuid, $content, $path);
+    $result = $apiInstance->collectionsFsAddPost($coluuid, $content, $dir, $overwrite);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CollectionsApi->collectionsFsAddPost: ', $e->getMessage(), PHP_EOL;
@@ -332,7 +335,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **coluuid** | **string**| Collection ID |
  **content** | **string**| Content |
- **path** | **string**| Path to file |
+ **dir** | **string**| Directory inside collection | [optional]
+ **overwrite** | **string**| Overwrite file if already exists in path | [optional]
 
 ### Return type
 

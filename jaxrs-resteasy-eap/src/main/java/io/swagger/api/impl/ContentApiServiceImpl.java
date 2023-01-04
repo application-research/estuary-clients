@@ -17,16 +17,16 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2023-01-03T16:17:32.399Z[GMT]")public class ContentApiServiceImpl implements ContentApi {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2023-01-04T12:55:54.380Z[GMT]")public class ContentApiServiceImpl implements ContentApi {
       public Response contentAddCarPost(String body,String ignoreDupes,String filename,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
-      public Response contentAddIpfsPost(TypesIpfsPin body,String ignoreDupes,SecurityContext securityContext) {
+      public Response contentAddIpfsPost(TypesIpfsPin body,String ignoreDupes,String overwrite,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }
-      public Response contentAddPost(MultipartFormDataInput input,String coluuid,Integer replication,String ignoreDupes,String lazyProvide,String dir,SecurityContext securityContext) {
+      public Response contentAddPost(MultipartFormDataInput input,String coluuid,Integer replication,String ignoreDupes,String overwrite,String lazyProvide,String dir,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }

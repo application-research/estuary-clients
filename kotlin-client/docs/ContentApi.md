@@ -168,7 +168,7 @@ Name | Type | Description  | Notes
 
 <a name="contentAddIpfsPost"></a>
 # **contentAddIpfsPost**
-> kotlin.String contentAddIpfsPost(body, ignoreDupes)
+> kotlin.String contentAddIpfsPost(body, ignoreDupes, overwrite)
 
 Add IPFS object
 
@@ -183,8 +183,9 @@ This endpoint is used to add an IPFS object to the network. The object can be a 
 val apiInstance = ContentApi()
 val body : TypesIpfsPin =  // TypesIpfsPin | IPFS Body
 val ignoreDupes : kotlin.String = ignoreDupes_example // kotlin.String | Ignore Dupes
+val overwrite : kotlin.String = overwrite_example // kotlin.String | Overwrite conflicting files in collections
 try {
-    val result : kotlin.String = apiInstance.contentAddIpfsPost(body, ignoreDupes)
+    val result : kotlin.String = apiInstance.contentAddIpfsPost(body, ignoreDupes, overwrite)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling ContentApi#contentAddIpfsPost")
@@ -201,6 +202,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| IPFS Body |
  **ignoreDupes** | **kotlin.String**| Ignore Dupes | [optional]
+ **overwrite** | **kotlin.String**| Overwrite conflicting files in collections | [optional]
 
 ### Return type
 
@@ -217,7 +219,7 @@ Name | Type | Description  | Notes
 
 <a name="contentAddPost"></a>
 # **contentAddPost**
-> UtilContentAddResponse contentAddPost(`data`, filename, coluuid, replication, ignoreDupes, lazyProvide, dir)
+> UtilContentAddResponse contentAddPost(`data`, filename, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir)
 
 Add new content
 
@@ -235,10 +237,11 @@ val filename : kotlin.String = filename_example // kotlin.String |
 val coluuid : kotlin.String = coluuid_example // kotlin.String | Collection UUID
 val replication : kotlin.Int = 56 // kotlin.Int | Replication value
 val ignoreDupes : kotlin.String = ignoreDupes_example // kotlin.String | Ignore Dupes true/false
+val overwrite : kotlin.String = overwrite_example // kotlin.String | Overwrite files with the same path on same collection
 val lazyProvide : kotlin.String = lazyProvide_example // kotlin.String | Lazy Provide true/false
 val dir : kotlin.String = dir_example // kotlin.String | Directory
 try {
-    val result : UtilContentAddResponse = apiInstance.contentAddPost(`data`, filename, coluuid, replication, ignoreDupes, lazyProvide, dir)
+    val result : UtilContentAddResponse = apiInstance.contentAddPost(`data`, filename, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling ContentApi#contentAddPost")
@@ -258,6 +261,7 @@ Name | Type | Description  | Notes
  **coluuid** | **kotlin.String**| Collection UUID | [optional]
  **replication** | **kotlin.Int**| Replication value | [optional]
  **ignoreDupes** | **kotlin.String**| Ignore Dupes true/false | [optional]
+ **overwrite** | **kotlin.String**| Overwrite files with the same path on same collection | [optional]
  **lazyProvide** | **kotlin.String**| Lazy Provide true/false | [optional]
  **dir** | **kotlin.String**| Directory | [optional]
 

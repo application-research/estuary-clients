@@ -17,6 +17,7 @@ package io.swagger.client.model
  * @param dir 
  * @param location 
  * @param name 
+ * @param overwrite 
  * @param root 
  * @param `type` 
  */
@@ -25,6 +26,7 @@ case class ContentCreateBody (
   dir: Option[String] = None,
   location: Option[String] = None,
   name: Option[String] = None,
+  overwrite: Option[Boolean] = None,
   root: Option[String] = None,
   `type`: Option[util.ContentType] = None
 )

@@ -197,10 +197,11 @@ class CollectionsApi(
    * @param body Content IDs to add to collection 
    * @param coluuid Collection UUID 
    * @param dir Directory (optional)
+   * @param overwrite Overwrite conflicting files (optional)
    * @return String
    */
-  def collectionsColuuidPost(body: List[Integer], coluuid: String, dir: Option[String] = None): Option[String] = {
-    val await = Try(Await.result(collectionsColuuidPostAsync(body, coluuid, dir), Duration.Inf))
+  def collectionsColuuidPost(body: List[Integer], coluuid: String, dir: Option[String] = None, overwrite: Option[String] = None): Option[String] = {
+    val await = Try(Await.result(collectionsColuuidPostAsync(body, coluuid, dir, overwrite), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -214,10 +215,11 @@ class CollectionsApi(
    * @param body Content IDs to add to collection 
    * @param coluuid Collection UUID 
    * @param dir Directory (optional)
+   * @param overwrite Overwrite conflicting files (optional)
    * @return Future(String)
    */
-  def collectionsColuuidPostAsync(body: List[Integer], coluuid: String, dir: Option[String] = None): Future[String] = {
-      helper.collectionsColuuidPost(body, coluuid, dir)
+  def collectionsColuuidPostAsync(body: List[Integer], coluuid: String, dir: Option[String] = None, overwrite: Option[String] = None): Future[String] = {
+      helper.collectionsColuuidPost(body, coluuid, dir, overwrite)
   }
 
   /**
@@ -226,11 +228,12 @@ class CollectionsApi(
    *
    * @param coluuid Collection ID 
    * @param content Content 
-   * @param &#x60;path&#x60; Path to file 
+   * @param dir Directory inside collection (optional)
+   * @param overwrite Overwrite file if already exists in path (optional)
    * @return String
    */
-  def collectionsFsAddPost(coluuid: String, content: String, &#x60;path&#x60;: String): Option[String] = {
-    val await = Try(Await.result(collectionsFsAddPostAsync(coluuid, content, &#x60;path&#x60;), Duration.Inf))
+  def collectionsFsAddPost(coluuid: String, content: String, dir: Option[String] = None, overwrite: Option[String] = None): Option[String] = {
+    val await = Try(Await.result(collectionsFsAddPostAsync(coluuid, content, dir, overwrite), Duration.Inf))
     await match {
       case Success(i) => Some(await.get)
       case Failure(t) => None
@@ -243,11 +246,12 @@ class CollectionsApi(
    *
    * @param coluuid Collection ID 
    * @param content Content 
-   * @param &#x60;path&#x60; Path to file 
+   * @param dir Directory inside collection (optional)
+   * @param overwrite Overwrite file if already exists in path (optional)
    * @return Future(String)
    */
-  def collectionsFsAddPostAsync(coluuid: String, content: String, &#x60;path&#x60;: String): Future[String] = {
-      helper.collectionsFsAddPost(coluuid, content, &#x60;path&#x60;)
+  def collectionsFsAddPostAsync(coluuid: String, content: String, dir: Option[String] = None, overwrite: Option[String] = None): Future[String] = {
+      helper.collectionsFsAddPost(coluuid, content, dir, overwrite)
   }
 
   /**
@@ -386,7 +390,8 @@ class CollectionsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) 
 
   def collectionsColuuidPost(body: List[Integer],
     coluuid: String,
-    dir: Option[String] = None
+    dir: Option[String] = None,
+    overwrite: Option[String] = None
     )(implicit reader: ClientResponseReader[String], writer: RequestWriter[List[Integer]]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/collections/{coluuid}")
@@ -403,6 +408,10 @@ class CollectionsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) 
       case Some(param) => queryParams += "dir" -> param.toString
       case _ => queryParams
     }
+    overwrite match {
+      case Some(param) => queryParams += "overwrite" -> param.toString
+      case _ => queryParams
+    }
 
     val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, writer.write(body))
     resFuture flatMap { resp =>
@@ -412,7 +421,9 @@ class CollectionsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) 
 
   def collectionsFsAddPost(coluuid: String,
     content: String,
-    &#x60;path&#x60;: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
+    dir: Option[String] = None,
+    overwrite: Option[String] = None
+    )(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/collections/fs/add"))
 
@@ -424,11 +435,16 @@ class CollectionsApiAsyncHelper(client: TransportClient, config: SwaggerConfig) 
 
     if (content == null) throw new Exception("Missing required parameter 'content' when calling CollectionsApi->collectionsFsAddPost")
 
-    if (&#x60;path&#x60; == null) throw new Exception("Missing required parameter '&#x60;path&#x60;' when calling CollectionsApi->collectionsFsAddPost")
-
     queryParams += "coluuid" -> coluuid.toString
     queryParams += "content" -> content.toString
-    queryParams += "path" -> &#x60;path&#x60;.toString
+    dir match {
+      case Some(param) => queryParams += "dir" -> param.toString
+      case _ => queryParams
+    }
+    overwrite match {
+      case Some(param) => queryParams += "overwrite" -> param.toString
+      case _ => queryParams
+    }
 
     val resFuture = client.submit("POST", path, queryParams.toMap, headerParams.toMap, "")
     resFuture flatMap { resp =>

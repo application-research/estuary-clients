@@ -19,7 +19,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-03T16:17:31.923Z[GMT]")public class CollectionsApiServiceImpl implements CollectionsApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-04T12:55:51.407Z[GMT]")public class CollectionsApiServiceImpl implements CollectionsApiService {
       public Response collectionsColuuidCommitPost(String coluuid,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
@@ -40,12 +40,12 @@ import javax.ws.rs.core.SecurityContext;
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
-      public Response collectionsColuuidPost(List<Integer> body,String coluuid,String dir,SecurityContext securityContext)
+      public Response collectionsColuuidPost(List<Integer> body,String coluuid,String dir,String overwrite,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();
   }
-      public Response collectionsFsAddPost(String coluuid,String content,String path,SecurityContext securityContext)
+      public Response collectionsFsAddPost(String coluuid,String content,String dir,String overwrite,SecurityContext securityContext)
       throws NotFoundException {
       // do some magic!
       return Response.ok().entity(new ApiResponseMessage(ApiResponseMessage.OK, "magic!")).build();

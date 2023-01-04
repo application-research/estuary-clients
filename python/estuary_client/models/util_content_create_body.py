@@ -32,6 +32,7 @@ class UtilContentCreateBody(object):
         'dir': 'str',
         'location': 'str',
         'name': 'str',
+        'overwrite': 'bool',
         'root': 'str',
         'type': 'UtilContentType'
     }
@@ -41,16 +42,18 @@ class UtilContentCreateBody(object):
         'dir': 'dir',
         'location': 'location',
         'name': 'name',
+        'overwrite': 'overwrite',
         'root': 'root',
         'type': 'type'
     }
 
-    def __init__(self, coluuid=None, dir=None, location=None, name=None, root=None, type=None):  # noqa: E501
+    def __init__(self, coluuid=None, dir=None, location=None, name=None, overwrite=None, root=None, type=None):  # noqa: E501
         """UtilContentCreateBody - a model defined in Swagger"""  # noqa: E501
         self._coluuid = None
         self._dir = None
         self._location = None
         self._name = None
+        self._overwrite = None
         self._root = None
         self._type = None
         self.discriminator = None
@@ -62,6 +65,8 @@ class UtilContentCreateBody(object):
             self.location = location
         if name is not None:
             self.name = name
+        if overwrite is not None:
+            self.overwrite = overwrite
         if root is not None:
             self.root = root
         if type is not None:
@@ -150,6 +155,27 @@ class UtilContentCreateBody(object):
         """
 
         self._name = name
+
+    @property
+    def overwrite(self):
+        """Gets the overwrite of this UtilContentCreateBody.  # noqa: E501
+
+
+        :return: The overwrite of this UtilContentCreateBody.  # noqa: E501
+        :rtype: bool
+        """
+        return self._overwrite
+
+    @overwrite.setter
+    def overwrite(self, overwrite):
+        """Sets the overwrite of this UtilContentCreateBody.
+
+
+        :param overwrite: The overwrite of this UtilContentCreateBody.  # noqa: E501
+        :type: bool
+        """
+
+        self._overwrite = overwrite
 
     @property
     def root(self):

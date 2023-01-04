@@ -898,6 +898,10 @@ class Decoders {
                 case let .success(value): _result.name = value
                 case let .failure(error): break
                 }
+                switch Decoders.decodeOptional(clazz: Bool.self, source: sourceDictionary["overwrite"] as AnyObject?) {
+                case let .success(value): _result.overwrite = value
+                case let .failure(error): break
+                }
                 switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["root"] as AnyObject?) {
                 case let .success(value): _result.root = value
                 case let .failure(error): break

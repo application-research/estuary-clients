@@ -52,9 +52,11 @@ exports.pinningPinsGET = function() {
  * This endpoint adds a pin to the IPFS daemon.
  *
  * body Types.IpfsPin Pin Body {cid:cid, name:name}
+ * ignoreDupes String Ignore Dupes (optional)
+ * overwrite String Overwrite conflicting files in collections (optional)
  * returns types.IpfsPinStatusResponse
  **/
-exports.pinningPinsPOST = function(body) {
+exports.pinningPinsPOST = function(body,ignoreDupes,overwrite) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = {

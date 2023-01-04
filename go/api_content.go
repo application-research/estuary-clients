@@ -401,11 +401,13 @@ This endpoint is used to add an IPFS object to the network. The object can be a 
  * @param body IPFS Body
  * @param optional nil or *ContentApiContentAddIpfsPostOpts - Optional Parameters:
      * @param "IgnoreDupes" (optional.String) -  Ignore Dupes
+     * @param "Overwrite" (optional.String) -  Overwrite conflicting files in collections
 @return string
 */
 
 type ContentApiContentAddIpfsPostOpts struct {
     IgnoreDupes optional.String
+    Overwrite optional.String
 }
 
 func (a *ContentApiService) ContentAddIpfsPost(ctx context.Context, body TypesIpfsPin, localVarOptionals *ContentApiContentAddIpfsPostOpts) (string, *http.Response, error) {
@@ -426,6 +428,9 @@ func (a *ContentApiService) ContentAddIpfsPost(ctx context.Context, body TypesIp
 
 	if localVarOptionals != nil && localVarOptionals.IgnoreDupes.IsSet() {
 		localVarQueryParams.Add("ignore-dupes", parameterToString(localVarOptionals.IgnoreDupes.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Overwrite.IsSet() {
+		localVarQueryParams.Add("overwrite", parameterToString(localVarOptionals.Overwrite.Value(), ""))
 	}
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{"*/*"}
@@ -533,6 +538,7 @@ This endpoint is used to upload new content.
      * @param "Coluuid" (optional.String) -  Collection UUID
      * @param "Replication" (optional.Int32) -  Replication value
      * @param "IgnoreDupes" (optional.String) -  Ignore Dupes true/false
+     * @param "Overwrite" (optional.String) -  Overwrite files with the same path on same collection
      * @param "LazyProvide" (optional.String) -  Lazy Provide true/false
      * @param "Dir" (optional.String) -  Directory
 @return UtilContentAddResponse
@@ -542,6 +548,7 @@ type ContentApiContentAddPostOpts struct {
     Coluuid optional.String
     Replication optional.Int32
     IgnoreDupes optional.String
+    Overwrite optional.String
     LazyProvide optional.String
     Dir optional.String
 }
@@ -570,6 +577,9 @@ func (a *ContentApiService) ContentAddPost(ctx context.Context, data *os.File, f
 	}
 	if localVarOptionals != nil && localVarOptionals.IgnoreDupes.IsSet() {
 		localVarQueryParams.Add("ignore-dupes", parameterToString(localVarOptionals.IgnoreDupes.Value(), ""))
+	}
+	if localVarOptionals != nil && localVarOptionals.Overwrite.IsSet() {
+		localVarQueryParams.Add("overwrite", parameterToString(localVarOptionals.Overwrite.Value(), ""))
 	}
 	if localVarOptionals != nil && localVarOptionals.LazyProvide.IsSet() {
 		localVarQueryParams.Add("lazy-provide", parameterToString(localVarOptionals.LazyProvide.Value(), ""))

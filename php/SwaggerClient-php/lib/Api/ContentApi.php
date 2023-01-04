@@ -936,14 +936,15 @@ class ContentApi
      *
      * @param  \Swagger\Client\Model\TypesIpfsPin $body IPFS Body (required)
      * @param  string $ignore_dupes Ignore Dupes (optional)
+     * @param  string $overwrite Overwrite conflicting files in collections (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string
      */
-    public function contentAddIpfsPost($body, $ignore_dupes = null)
+    public function contentAddIpfsPost($body, $ignore_dupes = null, $overwrite = null)
     {
-        list($response) = $this->contentAddIpfsPostWithHttpInfo($body, $ignore_dupes);
+        list($response) = $this->contentAddIpfsPostWithHttpInfo($body, $ignore_dupes, $overwrite);
         return $response;
     }
 
@@ -954,15 +955,16 @@ class ContentApi
      *
      * @param  \Swagger\Client\Model\TypesIpfsPin $body IPFS Body (required)
      * @param  string $ignore_dupes Ignore Dupes (optional)
+     * @param  string $overwrite Overwrite conflicting files in collections (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function contentAddIpfsPostWithHttpInfo($body, $ignore_dupes = null)
+    public function contentAddIpfsPostWithHttpInfo($body, $ignore_dupes = null, $overwrite = null)
     {
         $returnType = 'string';
-        $request = $this->contentAddIpfsPostRequest($body, $ignore_dupes);
+        $request = $this->contentAddIpfsPostRequest($body, $ignore_dupes, $overwrite);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1046,13 +1048,14 @@ class ContentApi
      *
      * @param  \Swagger\Client\Model\TypesIpfsPin $body IPFS Body (required)
      * @param  string $ignore_dupes Ignore Dupes (optional)
+     * @param  string $overwrite Overwrite conflicting files in collections (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function contentAddIpfsPostAsync($body, $ignore_dupes = null)
+    public function contentAddIpfsPostAsync($body, $ignore_dupes = null, $overwrite = null)
     {
-        return $this->contentAddIpfsPostAsyncWithHttpInfo($body, $ignore_dupes)
+        return $this->contentAddIpfsPostAsyncWithHttpInfo($body, $ignore_dupes, $overwrite)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1067,14 +1070,15 @@ class ContentApi
      *
      * @param  \Swagger\Client\Model\TypesIpfsPin $body IPFS Body (required)
      * @param  string $ignore_dupes Ignore Dupes (optional)
+     * @param  string $overwrite Overwrite conflicting files in collections (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function contentAddIpfsPostAsyncWithHttpInfo($body, $ignore_dupes = null)
+    public function contentAddIpfsPostAsyncWithHttpInfo($body, $ignore_dupes = null, $overwrite = null)
     {
         $returnType = 'string';
-        $request = $this->contentAddIpfsPostRequest($body, $ignore_dupes);
+        $request = $this->contentAddIpfsPostRequest($body, $ignore_dupes, $overwrite);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1118,11 +1122,12 @@ class ContentApi
      *
      * @param  \Swagger\Client\Model\TypesIpfsPin $body IPFS Body (required)
      * @param  string $ignore_dupes Ignore Dupes (optional)
+     * @param  string $overwrite Overwrite conflicting files in collections (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function contentAddIpfsPostRequest($body, $ignore_dupes = null)
+    protected function contentAddIpfsPostRequest($body, $ignore_dupes = null, $overwrite = null)
     {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
@@ -1141,6 +1146,10 @@ class ContentApi
         // query params
         if ($ignore_dupes !== null) {
             $queryParams['ignore-dupes'] = ObjectSerializer::toQueryValue($ignore_dupes, null);
+        }
+        // query params
+        if ($overwrite !== null) {
+            $queryParams['overwrite'] = ObjectSerializer::toQueryValue($overwrite, null);
         }
 
 
@@ -1226,6 +1235,7 @@ class ContentApi
      * @param  string $coluuid Collection UUID (optional)
      * @param  int $replication Replication value (optional)
      * @param  string $ignore_dupes Ignore Dupes true/false (optional)
+     * @param  string $overwrite Overwrite files with the same path on same collection (optional)
      * @param  string $lazy_provide Lazy Provide true/false (optional)
      * @param  string $dir Directory (optional)
      *
@@ -1233,9 +1243,9 @@ class ContentApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\UtilContentAddResponse
      */
-    public function contentAddPost($data, $filename, $coluuid = null, $replication = null, $ignore_dupes = null, $lazy_provide = null, $dir = null)
+    public function contentAddPost($data, $filename, $coluuid = null, $replication = null, $ignore_dupes = null, $overwrite = null, $lazy_provide = null, $dir = null)
     {
-        list($response) = $this->contentAddPostWithHttpInfo($data, $filename, $coluuid, $replication, $ignore_dupes, $lazy_provide, $dir);
+        list($response) = $this->contentAddPostWithHttpInfo($data, $filename, $coluuid, $replication, $ignore_dupes, $overwrite, $lazy_provide, $dir);
         return $response;
     }
 
@@ -1249,6 +1259,7 @@ class ContentApi
      * @param  string $coluuid Collection UUID (optional)
      * @param  int $replication Replication value (optional)
      * @param  string $ignore_dupes Ignore Dupes true/false (optional)
+     * @param  string $overwrite Overwrite files with the same path on same collection (optional)
      * @param  string $lazy_provide Lazy Provide true/false (optional)
      * @param  string $dir Directory (optional)
      *
@@ -1256,10 +1267,10 @@ class ContentApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\UtilContentAddResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function contentAddPostWithHttpInfo($data, $filename, $coluuid = null, $replication = null, $ignore_dupes = null, $lazy_provide = null, $dir = null)
+    public function contentAddPostWithHttpInfo($data, $filename, $coluuid = null, $replication = null, $ignore_dupes = null, $overwrite = null, $lazy_provide = null, $dir = null)
     {
         $returnType = '\Swagger\Client\Model\UtilContentAddResponse';
-        $request = $this->contentAddPostRequest($data, $filename, $coluuid, $replication, $ignore_dupes, $lazy_provide, $dir);
+        $request = $this->contentAddPostRequest($data, $filename, $coluuid, $replication, $ignore_dupes, $overwrite, $lazy_provide, $dir);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1346,15 +1357,16 @@ class ContentApi
      * @param  string $coluuid Collection UUID (optional)
      * @param  int $replication Replication value (optional)
      * @param  string $ignore_dupes Ignore Dupes true/false (optional)
+     * @param  string $overwrite Overwrite files with the same path on same collection (optional)
      * @param  string $lazy_provide Lazy Provide true/false (optional)
      * @param  string $dir Directory (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function contentAddPostAsync($data, $filename, $coluuid = null, $replication = null, $ignore_dupes = null, $lazy_provide = null, $dir = null)
+    public function contentAddPostAsync($data, $filename, $coluuid = null, $replication = null, $ignore_dupes = null, $overwrite = null, $lazy_provide = null, $dir = null)
     {
-        return $this->contentAddPostAsyncWithHttpInfo($data, $filename, $coluuid, $replication, $ignore_dupes, $lazy_provide, $dir)
+        return $this->contentAddPostAsyncWithHttpInfo($data, $filename, $coluuid, $replication, $ignore_dupes, $overwrite, $lazy_provide, $dir)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1372,16 +1384,17 @@ class ContentApi
      * @param  string $coluuid Collection UUID (optional)
      * @param  int $replication Replication value (optional)
      * @param  string $ignore_dupes Ignore Dupes true/false (optional)
+     * @param  string $overwrite Overwrite files with the same path on same collection (optional)
      * @param  string $lazy_provide Lazy Provide true/false (optional)
      * @param  string $dir Directory (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function contentAddPostAsyncWithHttpInfo($data, $filename, $coluuid = null, $replication = null, $ignore_dupes = null, $lazy_provide = null, $dir = null)
+    public function contentAddPostAsyncWithHttpInfo($data, $filename, $coluuid = null, $replication = null, $ignore_dupes = null, $overwrite = null, $lazy_provide = null, $dir = null)
     {
         $returnType = '\Swagger\Client\Model\UtilContentAddResponse';
-        $request = $this->contentAddPostRequest($data, $filename, $coluuid, $replication, $ignore_dupes, $lazy_provide, $dir);
+        $request = $this->contentAddPostRequest($data, $filename, $coluuid, $replication, $ignore_dupes, $overwrite, $lazy_provide, $dir);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1428,13 +1441,14 @@ class ContentApi
      * @param  string $coluuid Collection UUID (optional)
      * @param  int $replication Replication value (optional)
      * @param  string $ignore_dupes Ignore Dupes true/false (optional)
+     * @param  string $overwrite Overwrite files with the same path on same collection (optional)
      * @param  string $lazy_provide Lazy Provide true/false (optional)
      * @param  string $dir Directory (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function contentAddPostRequest($data, $filename, $coluuid = null, $replication = null, $ignore_dupes = null, $lazy_provide = null, $dir = null)
+    protected function contentAddPostRequest($data, $filename, $coluuid = null, $replication = null, $ignore_dupes = null, $overwrite = null, $lazy_provide = null, $dir = null)
     {
         // verify the required parameter 'data' is set
         if ($data === null || (is_array($data) && count($data) === 0)) {
@@ -1467,6 +1481,10 @@ class ContentApi
         // query params
         if ($ignore_dupes !== null) {
             $queryParams['ignore-dupes'] = ObjectSerializer::toQueryValue($ignore_dupes, null);
+        }
+        // query params
+        if ($overwrite !== null) {
+            $queryParams['overwrite'] = ObjectSerializer::toQueryValue($overwrite, null);
         }
         // query params
         if ($lazy_provide !== null) {

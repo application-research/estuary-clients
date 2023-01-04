@@ -207,7 +207,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsColuuidPost"></a>
 # **collectionsColuuidPost**
-> kotlin.String collectionsColuuidPost(body, coluuid, dir)
+> kotlin.String collectionsColuuidPost(body, coluuid, dir, overwrite)
 
 Add contents to a collection
 
@@ -223,8 +223,9 @@ val apiInstance = CollectionsApi()
 val body : kotlin.Array<kotlin.Int> =  // kotlin.Array<kotlin.Int> | Content IDs to add to collection
 val coluuid : kotlin.String = coluuid_example // kotlin.String | Collection UUID
 val dir : kotlin.String = dir_example // kotlin.String | Directory
+val overwrite : kotlin.String = overwrite_example // kotlin.String | Overwrite conflicting files
 try {
-    val result : kotlin.String = apiInstance.collectionsColuuidPost(body, coluuid, dir)
+    val result : kotlin.String = apiInstance.collectionsColuuidPost(body, coluuid, dir, overwrite)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling CollectionsApi#collectionsColuuidPost")
@@ -242,6 +243,7 @@ Name | Type | Description  | Notes
  **body** | [**kotlin.Array&lt;kotlin.Int&gt;**](kotlin.Int.md)| Content IDs to add to collection |
  **coluuid** | **kotlin.String**| Collection UUID |
  **dir** | **kotlin.String**| Directory | [optional]
+ **overwrite** | **kotlin.String**| Overwrite conflicting files | [optional]
 
 ### Return type
 
@@ -258,7 +260,7 @@ Name | Type | Description  | Notes
 
 <a name="collectionsFsAddPost"></a>
 # **collectionsFsAddPost**
-> kotlin.String collectionsFsAddPost(coluuid, content, path)
+> kotlin.String collectionsFsAddPost(coluuid, content, dir, overwrite)
 
 Add a file to a collection
 
@@ -273,9 +275,10 @@ This endpoint adds a file to a collection
 val apiInstance = CollectionsApi()
 val coluuid : kotlin.String = coluuid_example // kotlin.String | Collection ID
 val content : kotlin.String = content_example // kotlin.String | Content
-val path : kotlin.String = path_example // kotlin.String | Path to file
+val dir : kotlin.String = dir_example // kotlin.String | Directory inside collection
+val overwrite : kotlin.String = overwrite_example // kotlin.String | Overwrite file if already exists in path
 try {
-    val result : kotlin.String = apiInstance.collectionsFsAddPost(coluuid, content, path)
+    val result : kotlin.String = apiInstance.collectionsFsAddPost(coluuid, content, dir, overwrite)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling CollectionsApi#collectionsFsAddPost")
@@ -292,7 +295,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **coluuid** | **kotlin.String**| Collection ID |
  **content** | **kotlin.String**| Content |
- **path** | **kotlin.String**| Path to file |
+ **dir** | **kotlin.String**| Directory inside collection | [optional]
+ **overwrite** | **kotlin.String**| Overwrite file if already exists in path | [optional]
 
 ### Return type
 

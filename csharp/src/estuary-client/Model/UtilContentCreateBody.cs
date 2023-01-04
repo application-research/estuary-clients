@@ -36,14 +36,16 @@ namespace estuary-client.Model
         /// <param name="dir">dir.</param>
         /// <param name="location">location.</param>
         /// <param name="name">name.</param>
+        /// <param name="overwrite">overwrite.</param>
         /// <param name="root">root.</param>
         /// <param name="type">type.</param>
-        public UtilContentCreateBody(string coluuid = default(string), string dir = default(string), string location = default(string), string name = default(string), string root = default(string), UtilContentType type = default(UtilContentType))
+        public UtilContentCreateBody(string coluuid = default(string), string dir = default(string), string location = default(string), string name = default(string), bool? overwrite = default(bool?), string root = default(string), UtilContentType type = default(UtilContentType))
         {
             this.Coluuid = coluuid;
             this.Dir = dir;
             this.Location = location;
             this.Name = name;
+            this.Overwrite = overwrite;
             this.Root = root;
             this.Type = type;
         }
@@ -73,6 +75,12 @@ namespace estuary-client.Model
         public string Name { get; set; }
 
         /// <summary>
+        /// Gets or Sets Overwrite
+        /// </summary>
+        [DataMember(Name="overwrite", EmitDefaultValue=false)]
+        public bool? Overwrite { get; set; }
+
+        /// <summary>
         /// Gets or Sets Root
         /// </summary>
         [DataMember(Name="root", EmitDefaultValue=false)]
@@ -96,6 +104,7 @@ namespace estuary-client.Model
             sb.Append("  Dir: ").Append(Dir).Append("\n");
             sb.Append("  Location: ").Append(Location).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Overwrite: ").Append(Overwrite).Append("\n");
             sb.Append("  Root: ").Append(Root).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");
@@ -153,6 +162,11 @@ namespace estuary-client.Model
                     this.Name.Equals(input.Name))
                 ) && 
                 (
+                    this.Overwrite == input.Overwrite ||
+                    (this.Overwrite != null &&
+                    this.Overwrite.Equals(input.Overwrite))
+                ) && 
+                (
                     this.Root == input.Root ||
                     (this.Root != null &&
                     this.Root.Equals(input.Root))
@@ -181,6 +195,8 @@ namespace estuary-client.Model
                     hashCode = hashCode * 59 + this.Location.GetHashCode();
                 if (this.Name != null)
                     hashCode = hashCode * 59 + this.Name.GetHashCode();
+                if (this.Overwrite != null)
+                    hashCode = hashCode * 59 + this.Overwrite.GetHashCode();
                 if (this.Root != null)
                     hashCode = hashCode * 59 + this.Root.GetHashCode();
                 if (this.Type != null)

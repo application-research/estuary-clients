@@ -225,10 +225,12 @@ export const PinningApiAxiosParamCreator = function (configuration?: Configurati
          * This endpoint adds a pin to the IPFS daemon.
          * @summary Add and pin object
          * @param {TypesIpfsPin} body Pin Body {cid:cid, name:name}
+         * @param {string} [ignoreDupes] Ignore Dupes
+         * @param {string} [overwrite] Overwrite conflicting files in collections
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinningPinsPost: async (body: TypesIpfsPin, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+        pinningPinsPost: async (body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling pinningPinsPost.');
@@ -250,6 +252,14 @@ export const PinningApiAxiosParamCreator = function (configuration?: Configurati
                     ? await configuration.apiKey("Authorization")
                     : await configuration.apiKey;
                 localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            if (ignoreDupes !== undefined) {
+                localVarQueryParameter['ignore-dupes'] = ignoreDupes;
+            }
+
+            if (overwrite !== undefined) {
+                localVarQueryParameter['overwrite'] = overwrite;
             }
 
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -341,11 +351,13 @@ export const PinningApiFp = function(configuration?: Configuration) {
          * This endpoint adds a pin to the IPFS daemon.
          * @summary Add and pin object
          * @param {TypesIpfsPin} body Pin Body {cid:cid, name:name}
+         * @param {string} [ignoreDupes] Ignore Dupes
+         * @param {string} [overwrite] Overwrite conflicting files in collections
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async pinningPinsPost(body: TypesIpfsPin, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<TypesIpfsPinStatusResponse>>> {
-            const localVarAxiosArgs = await PinningApiAxiosParamCreator(configuration).pinningPinsPost(body, options);
+        async pinningPinsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<TypesIpfsPinStatusResponse>>> {
+            const localVarAxiosArgs = await PinningApiAxiosParamCreator(configuration).pinningPinsPost(body, ignoreDupes, overwrite, options);
             return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
                 const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
                 return axios.request(axiosRequestArgs);
@@ -404,11 +416,13 @@ export const PinningApiFactory = function (configuration?: Configuration, basePa
          * This endpoint adds a pin to the IPFS daemon.
          * @summary Add and pin object
          * @param {TypesIpfsPin} body Pin Body {cid:cid, name:name}
+         * @param {string} [ignoreDupes] Ignore Dupes
+         * @param {string} [overwrite] Overwrite conflicting files in collections
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async pinningPinsPost(body: TypesIpfsPin, options?: AxiosRequestConfig): Promise<AxiosResponse<TypesIpfsPinStatusResponse>> {
-            return PinningApiFp(configuration).pinningPinsPost(body, options).then((request) => request(axios, basePath));
+        async pinningPinsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, options?: AxiosRequestConfig): Promise<AxiosResponse<TypesIpfsPinStatusResponse>> {
+            return PinningApiFp(configuration).pinningPinsPost(body, ignoreDupes, overwrite, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -468,11 +482,13 @@ export class PinningApi extends BaseAPI {
      * This endpoint adds a pin to the IPFS daemon.
      * @summary Add and pin object
      * @param {TypesIpfsPin} body Pin Body {cid:cid, name:name}
+     * @param {string} [ignoreDupes] Ignore Dupes
+     * @param {string} [overwrite] Overwrite conflicting files in collections
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PinningApi
      */
-    public async pinningPinsPost(body: TypesIpfsPin, options?: AxiosRequestConfig) : Promise<AxiosResponse<TypesIpfsPinStatusResponse>> {
-        return PinningApiFp(this.configuration).pinningPinsPost(body, options).then((request) => request(this.axios, this.basePath));
+    public async pinningPinsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<TypesIpfsPinStatusResponse>> {
+        return PinningApiFp(this.configuration).pinningPinsPost(body, ignoreDupes, overwrite, options).then((request) => request(this.axios, this.basePath));
     }
 }

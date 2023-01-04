@@ -105,7 +105,8 @@ namespace estuary-client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //TypesIpfsPin body = null;
             //string ignoreDupes = null;
-            //var response = instance.ContentAddIpfsPost(body, ignoreDupes);
+            //string overwrite = null;
+            //var response = instance.ContentAddIpfsPost(body, ignoreDupes, overwrite);
             //Assert.IsInstanceOf<string> (response, "response is string");
         }
         /// <summary>
@@ -120,9 +121,10 @@ namespace estuary-client.Test
             //string coluuid = null;
             //int? replication = null;
             //string ignoreDupes = null;
+            //string overwrite = null;
             //string lazyProvide = null;
             //string dir = null;
-            //var response = instance.ContentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir);
+            //var response = instance.ContentAddPost(data, filename, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir);
             //Assert.IsInstanceOf<UtilContentAddResponse> (response, "response is UtilContentAddResponse");
         }
         /// <summary>

@@ -60,6 +60,7 @@ class UtilContentCreateBody implements ModelInterface, ArrayAccess
 'dir' => 'string',
 'location' => 'string',
 'name' => 'string',
+'overwrite' => 'bool',
 'root' => 'string',
 'type' => '\Swagger\Client\Model\UtilContentType'    ];
 
@@ -73,6 +74,7 @@ class UtilContentCreateBody implements ModelInterface, ArrayAccess
 'dir' => null,
 'location' => null,
 'name' => null,
+'overwrite' => null,
 'root' => null,
 'type' => null    ];
 
@@ -107,6 +109,7 @@ class UtilContentCreateBody implements ModelInterface, ArrayAccess
 'dir' => 'dir',
 'location' => 'location',
 'name' => 'name',
+'overwrite' => 'overwrite',
 'root' => 'root',
 'type' => 'type'    ];
 
@@ -120,6 +123,7 @@ class UtilContentCreateBody implements ModelInterface, ArrayAccess
 'dir' => 'setDir',
 'location' => 'setLocation',
 'name' => 'setName',
+'overwrite' => 'setOverwrite',
 'root' => 'setRoot',
 'type' => 'setType'    ];
 
@@ -133,6 +137,7 @@ class UtilContentCreateBody implements ModelInterface, ArrayAccess
 'dir' => 'getDir',
 'location' => 'getLocation',
 'name' => 'getName',
+'overwrite' => 'getOverwrite',
 'root' => 'getRoot',
 'type' => 'getType'    ];
 
@@ -198,6 +203,7 @@ class UtilContentCreateBody implements ModelInterface, ArrayAccess
         $this->container['dir'] = isset($data['dir']) ? $data['dir'] : null;
         $this->container['location'] = isset($data['location']) ? $data['location'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['overwrite'] = isset($data['overwrite']) ? $data['overwrite'] : null;
         $this->container['root'] = isset($data['root']) ? $data['root'] : null;
         $this->container['type'] = isset($data['type']) ? $data['type'] : null;
     }
@@ -318,6 +324,30 @@ class UtilContentCreateBody implements ModelInterface, ArrayAccess
     public function setName($name)
     {
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets overwrite
+     *
+     * @return bool
+     */
+    public function getOverwrite()
+    {
+        return $this->container['overwrite'];
+    }
+
+    /**
+     * Sets overwrite
+     *
+     * @param bool $overwrite overwrite
+     *
+     * @return $this
+     */
+    public function setOverwrite($overwrite)
+    {
+        $this->container['overwrite'] = $overwrite;
 
         return $this;
     }

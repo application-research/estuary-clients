@@ -1249,14 +1249,15 @@ class CollectionsApi
      * @param  int[] $body Content IDs to add to collection (required)
      * @param  string $coluuid Collection UUID (required)
      * @param  string $dir Directory (optional)
+     * @param  string $overwrite Overwrite conflicting files (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string
      */
-    public function collectionsColuuidPost($body, $coluuid, $dir = null)
+    public function collectionsColuuidPost($body, $coluuid, $dir = null, $overwrite = null)
     {
-        list($response) = $this->collectionsColuuidPostWithHttpInfo($body, $coluuid, $dir);
+        list($response) = $this->collectionsColuuidPostWithHttpInfo($body, $coluuid, $dir, $overwrite);
         return $response;
     }
 
@@ -1268,15 +1269,16 @@ class CollectionsApi
      * @param  int[] $body Content IDs to add to collection (required)
      * @param  string $coluuid Collection UUID (required)
      * @param  string $dir Directory (optional)
+     * @param  string $overwrite Overwrite conflicting files (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function collectionsColuuidPostWithHttpInfo($body, $coluuid, $dir = null)
+    public function collectionsColuuidPostWithHttpInfo($body, $coluuid, $dir = null, $overwrite = null)
     {
         $returnType = 'string';
-        $request = $this->collectionsColuuidPostRequest($body, $coluuid, $dir);
+        $request = $this->collectionsColuuidPostRequest($body, $coluuid, $dir, $overwrite);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1361,13 +1363,14 @@ class CollectionsApi
      * @param  int[] $body Content IDs to add to collection (required)
      * @param  string $coluuid Collection UUID (required)
      * @param  string $dir Directory (optional)
+     * @param  string $overwrite Overwrite conflicting files (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function collectionsColuuidPostAsync($body, $coluuid, $dir = null)
+    public function collectionsColuuidPostAsync($body, $coluuid, $dir = null, $overwrite = null)
     {
-        return $this->collectionsColuuidPostAsyncWithHttpInfo($body, $coluuid, $dir)
+        return $this->collectionsColuuidPostAsyncWithHttpInfo($body, $coluuid, $dir, $overwrite)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1383,14 +1386,15 @@ class CollectionsApi
      * @param  int[] $body Content IDs to add to collection (required)
      * @param  string $coluuid Collection UUID (required)
      * @param  string $dir Directory (optional)
+     * @param  string $overwrite Overwrite conflicting files (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function collectionsColuuidPostAsyncWithHttpInfo($body, $coluuid, $dir = null)
+    public function collectionsColuuidPostAsyncWithHttpInfo($body, $coluuid, $dir = null, $overwrite = null)
     {
         $returnType = 'string';
-        $request = $this->collectionsColuuidPostRequest($body, $coluuid, $dir);
+        $request = $this->collectionsColuuidPostRequest($body, $coluuid, $dir, $overwrite);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1435,11 +1439,12 @@ class CollectionsApi
      * @param  int[] $body Content IDs to add to collection (required)
      * @param  string $coluuid Collection UUID (required)
      * @param  string $dir Directory (optional)
+     * @param  string $overwrite Overwrite conflicting files (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function collectionsColuuidPostRequest($body, $coluuid, $dir = null)
+    protected function collectionsColuuidPostRequest($body, $coluuid, $dir = null, $overwrite = null)
     {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
@@ -1464,6 +1469,10 @@ class CollectionsApi
         // query params
         if ($dir !== null) {
             $queryParams['dir'] = ObjectSerializer::toQueryValue($dir, null);
+        }
+        // query params
+        if ($overwrite !== null) {
+            $queryParams['overwrite'] = ObjectSerializer::toQueryValue($overwrite, null);
         }
 
         // path params
@@ -1554,15 +1563,16 @@ class CollectionsApi
      *
      * @param  string $coluuid Collection ID (required)
      * @param  string $content Content (required)
-     * @param  string $path Path to file (required)
+     * @param  string $dir Directory inside collection (optional)
+     * @param  string $overwrite Overwrite file if already exists in path (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string
      */
-    public function collectionsFsAddPost($coluuid, $content, $path)
+    public function collectionsFsAddPost($coluuid, $content, $dir = null, $overwrite = null)
     {
-        list($response) = $this->collectionsFsAddPostWithHttpInfo($coluuid, $content, $path);
+        list($response) = $this->collectionsFsAddPostWithHttpInfo($coluuid, $content, $dir, $overwrite);
         return $response;
     }
 
@@ -1573,16 +1583,17 @@ class CollectionsApi
      *
      * @param  string $coluuid Collection ID (required)
      * @param  string $content Content (required)
-     * @param  string $path Path to file (required)
+     * @param  string $dir Directory inside collection (optional)
+     * @param  string $overwrite Overwrite file if already exists in path (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function collectionsFsAddPostWithHttpInfo($coluuid, $content, $path)
+    public function collectionsFsAddPostWithHttpInfo($coluuid, $content, $dir = null, $overwrite = null)
     {
         $returnType = 'string';
-        $request = $this->collectionsFsAddPostRequest($coluuid, $content, $path);
+        $request = $this->collectionsFsAddPostRequest($coluuid, $content, $dir, $overwrite);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1666,14 +1677,15 @@ class CollectionsApi
      *
      * @param  string $coluuid Collection ID (required)
      * @param  string $content Content (required)
-     * @param  string $path Path to file (required)
+     * @param  string $dir Directory inside collection (optional)
+     * @param  string $overwrite Overwrite file if already exists in path (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function collectionsFsAddPostAsync($coluuid, $content, $path)
+    public function collectionsFsAddPostAsync($coluuid, $content, $dir = null, $overwrite = null)
     {
-        return $this->collectionsFsAddPostAsyncWithHttpInfo($coluuid, $content, $path)
+        return $this->collectionsFsAddPostAsyncWithHttpInfo($coluuid, $content, $dir, $overwrite)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1688,15 +1700,16 @@ class CollectionsApi
      *
      * @param  string $coluuid Collection ID (required)
      * @param  string $content Content (required)
-     * @param  string $path Path to file (required)
+     * @param  string $dir Directory inside collection (optional)
+     * @param  string $overwrite Overwrite file if already exists in path (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function collectionsFsAddPostAsyncWithHttpInfo($coluuid, $content, $path)
+    public function collectionsFsAddPostAsyncWithHttpInfo($coluuid, $content, $dir = null, $overwrite = null)
     {
         $returnType = 'string';
-        $request = $this->collectionsFsAddPostRequest($coluuid, $content, $path);
+        $request = $this->collectionsFsAddPostRequest($coluuid, $content, $dir, $overwrite);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1740,12 +1753,13 @@ class CollectionsApi
      *
      * @param  string $coluuid Collection ID (required)
      * @param  string $content Content (required)
-     * @param  string $path Path to file (required)
+     * @param  string $dir Directory inside collection (optional)
+     * @param  string $overwrite Overwrite file if already exists in path (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function collectionsFsAddPostRequest($coluuid, $content, $path)
+    protected function collectionsFsAddPostRequest($coluuid, $content, $dir = null, $overwrite = null)
     {
         // verify the required parameter 'coluuid' is set
         if ($coluuid === null || (is_array($coluuid) && count($coluuid) === 0)) {
@@ -1757,12 +1771,6 @@ class CollectionsApi
         if ($content === null || (is_array($content) && count($content) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $content when calling collectionsFsAddPost'
-            );
-        }
-        // verify the required parameter 'path' is set
-        if ($path === null || (is_array($path) && count($path) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $path when calling collectionsFsAddPost'
             );
         }
 
@@ -1782,8 +1790,12 @@ class CollectionsApi
             $queryParams['content'] = ObjectSerializer::toQueryValue($content, null);
         }
         // query params
-        if ($path !== null) {
-            $queryParams['path'] = ObjectSerializer::toQueryValue($path, null);
+        if ($dir !== null) {
+            $queryParams['dir'] = ObjectSerializer::toQueryValue($dir, null);
+        }
+        // query params
+        if ($overwrite !== null) {
+            $queryParams['overwrite'] = ObjectSerializer::toQueryValue($overwrite, null);
         }
 
 

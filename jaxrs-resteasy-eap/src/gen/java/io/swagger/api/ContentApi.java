@@ -31,7 +31,7 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 @Path("/content")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2023-01-03T16:17:32.399Z[GMT]")public interface ContentApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2023-01-04T12:55:54.380Z[GMT]")public interface ContentApi  {
    
     @POST
     @Path("/add-car")
@@ -57,7 +57,7 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
                 @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
                 @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
          })
-    Response contentAddIpfsPost(@Parameter(description = "IPFS Body" ,required=true) TypesIpfsPin body, @QueryParam("ignore-dupes") String ignoreDupes,@Context SecurityContext securityContext);
+    Response contentAddIpfsPost(@Parameter(description = "IPFS Body" ,required=true) TypesIpfsPin body, @QueryParam("ignore-dupes") String ignoreDupes, @QueryParam("overwrite") String overwrite,@Context SecurityContext securityContext);
 
     @POST
     @Path("/add")
@@ -70,7 +70,7 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
                 @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
                 @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
          })
-    Response contentAddPost(MultipartFormDataInput input, @QueryParam("coluuid") String coluuid, @QueryParam("replication") Integer replication, @QueryParam("ignore-dupes") String ignoreDupes, @QueryParam("lazy-provide") String lazyProvide, @QueryParam("dir") String dir,@Context SecurityContext securityContext);
+    Response contentAddPost(MultipartFormDataInput input, @QueryParam("coluuid") String coluuid, @QueryParam("replication") Integer replication, @QueryParam("ignore-dupes") String ignoreDupes, @QueryParam("overwrite") String overwrite, @QueryParam("lazy-provide") String lazyProvide, @QueryParam("dir") String dir,@Context SecurityContext securityContext);
 
     @GET
     @Path("/aggregated/{content}")

@@ -197,7 +197,7 @@ Name | Type | Description  | Notes
 
 <a name="pinningPinsPost"></a>
 # **pinningPinsPost**
-> TypesIpfsPinStatusResponse pinningPinsPost(body)
+> TypesIpfsPinStatusResponse pinningPinsPost(body, ignoreDupes, overwrite)
 
 Add and pin object
 
@@ -211,8 +211,10 @@ This endpoint adds a pin to the IPFS daemon.
 
 val apiInstance = PinningApi()
 val body : TypesIpfsPin =  // TypesIpfsPin | Pin Body {cid:cid, name:name}
+val ignoreDupes : kotlin.String = ignoreDupes_example // kotlin.String | Ignore Dupes
+val overwrite : kotlin.String = overwrite_example // kotlin.String | Overwrite conflicting files in collections
 try {
-    val result : TypesIpfsPinStatusResponse = apiInstance.pinningPinsPost(body)
+    val result : TypesIpfsPinStatusResponse = apiInstance.pinningPinsPost(body, ignoreDupes, overwrite)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling PinningApi#pinningPinsPost")
@@ -228,6 +230,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} |
+ **ignoreDupes** | **kotlin.String**| Ignore Dupes | [optional]
+ **overwrite** | **kotlin.String**| Overwrite conflicting files in collections | [optional]
 
 ### Return type
 

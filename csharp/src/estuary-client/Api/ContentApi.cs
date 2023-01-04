@@ -97,8 +97,9 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">IPFS Body</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
+        /// <param name="overwrite">Overwrite conflicting files in collections (optional)</param>
         /// <returns>string</returns>
-        string ContentAddIpfsPost (TypesIpfsPin body, string ignoreDupes = null);
+        string ContentAddIpfsPost (TypesIpfsPin body, string ignoreDupes = null, string overwrite = null);
 
         /// <summary>
         /// Add IPFS object
@@ -109,8 +110,9 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">IPFS Body</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
+        /// <param name="overwrite">Overwrite conflicting files in collections (optional)</param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> ContentAddIpfsPostWithHttpInfo (TypesIpfsPin body, string ignoreDupes = null);
+        ApiResponse<string> ContentAddIpfsPostWithHttpInfo (TypesIpfsPin body, string ignoreDupes = null, string overwrite = null);
         /// <summary>
         /// Add new content
         /// </summary>
@@ -123,10 +125,11 @@ namespace estuary-client.Api
         /// <param name="coluuid">Collection UUID (optional)</param>
         /// <param name="replication">Replication value (optional)</param>
         /// <param name="ignoreDupes">Ignore Dupes true/false (optional)</param>
+        /// <param name="overwrite">Overwrite files with the same path on same collection (optional)</param>
         /// <param name="lazyProvide">Lazy Provide true/false (optional)</param>
         /// <param name="dir">Directory (optional)</param>
         /// <returns>UtilContentAddResponse</returns>
-        UtilContentAddResponse ContentAddPost (byte[] data, string filename, string coluuid = null, int? replication = null, string ignoreDupes = null, string lazyProvide = null, string dir = null);
+        UtilContentAddResponse ContentAddPost (byte[] data, string filename, string coluuid = null, int? replication = null, string ignoreDupes = null, string overwrite = null, string lazyProvide = null, string dir = null);
 
         /// <summary>
         /// Add new content
@@ -140,10 +143,11 @@ namespace estuary-client.Api
         /// <param name="coluuid">Collection UUID (optional)</param>
         /// <param name="replication">Replication value (optional)</param>
         /// <param name="ignoreDupes">Ignore Dupes true/false (optional)</param>
+        /// <param name="overwrite">Overwrite files with the same path on same collection (optional)</param>
         /// <param name="lazyProvide">Lazy Provide true/false (optional)</param>
         /// <param name="dir">Directory (optional)</param>
         /// <returns>ApiResponse of UtilContentAddResponse</returns>
-        ApiResponse<UtilContentAddResponse> ContentAddPostWithHttpInfo (byte[] data, string filename, string coluuid = null, int? replication = null, string ignoreDupes = null, string lazyProvide = null, string dir = null);
+        ApiResponse<UtilContentAddResponse> ContentAddPostWithHttpInfo (byte[] data, string filename, string coluuid = null, int? replication = null, string ignoreDupes = null, string overwrite = null, string lazyProvide = null, string dir = null);
         /// <summary>
         /// Get aggregated content stats
         /// </summary>
@@ -547,8 +551,9 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">IPFS Body</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
+        /// <param name="overwrite">Overwrite conflicting files in collections (optional)</param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> ContentAddIpfsPostAsync (TypesIpfsPin body, string ignoreDupes = null);
+        System.Threading.Tasks.Task<string> ContentAddIpfsPostAsync (TypesIpfsPin body, string ignoreDupes = null, string overwrite = null);
 
         /// <summary>
         /// Add IPFS object
@@ -559,8 +564,9 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">IPFS Body</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
+        /// <param name="overwrite">Overwrite conflicting files in collections (optional)</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> ContentAddIpfsPostAsyncWithHttpInfo (TypesIpfsPin body, string ignoreDupes = null);
+        System.Threading.Tasks.Task<ApiResponse<string>> ContentAddIpfsPostAsyncWithHttpInfo (TypesIpfsPin body, string ignoreDupes = null, string overwrite = null);
         /// <summary>
         /// Add new content
         /// </summary>
@@ -573,10 +579,11 @@ namespace estuary-client.Api
         /// <param name="coluuid">Collection UUID (optional)</param>
         /// <param name="replication">Replication value (optional)</param>
         /// <param name="ignoreDupes">Ignore Dupes true/false (optional)</param>
+        /// <param name="overwrite">Overwrite files with the same path on same collection (optional)</param>
         /// <param name="lazyProvide">Lazy Provide true/false (optional)</param>
         /// <param name="dir">Directory (optional)</param>
         /// <returns>Task of UtilContentAddResponse</returns>
-        System.Threading.Tasks.Task<UtilContentAddResponse> ContentAddPostAsync (byte[] data, string filename, string coluuid = null, int? replication = null, string ignoreDupes = null, string lazyProvide = null, string dir = null);
+        System.Threading.Tasks.Task<UtilContentAddResponse> ContentAddPostAsync (byte[] data, string filename, string coluuid = null, int? replication = null, string ignoreDupes = null, string overwrite = null, string lazyProvide = null, string dir = null);
 
         /// <summary>
         /// Add new content
@@ -590,10 +597,11 @@ namespace estuary-client.Api
         /// <param name="coluuid">Collection UUID (optional)</param>
         /// <param name="replication">Replication value (optional)</param>
         /// <param name="ignoreDupes">Ignore Dupes true/false (optional)</param>
+        /// <param name="overwrite">Overwrite files with the same path on same collection (optional)</param>
         /// <param name="lazyProvide">Lazy Provide true/false (optional)</param>
         /// <param name="dir">Directory (optional)</param>
         /// <returns>Task of ApiResponse (UtilContentAddResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UtilContentAddResponse>> ContentAddPostAsyncWithHttpInfo (byte[] data, string filename, string coluuid = null, int? replication = null, string ignoreDupes = null, string lazyProvide = null, string dir = null);
+        System.Threading.Tasks.Task<ApiResponse<UtilContentAddResponse>> ContentAddPostAsyncWithHttpInfo (byte[] data, string filename, string coluuid = null, int? replication = null, string ignoreDupes = null, string overwrite = null, string lazyProvide = null, string dir = null);
         /// <summary>
         /// Get aggregated content stats
         /// </summary>
@@ -1477,10 +1485,11 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">IPFS Body</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
+        /// <param name="overwrite">Overwrite conflicting files in collections (optional)</param>
         /// <returns>string</returns>
-        public string ContentAddIpfsPost (TypesIpfsPin body, string ignoreDupes = null)
+        public string ContentAddIpfsPost (TypesIpfsPin body, string ignoreDupes = null, string overwrite = null)
         {
-             ApiResponse<string> localVarResponse = ContentAddIpfsPostWithHttpInfo(body, ignoreDupes);
+             ApiResponse<string> localVarResponse = ContentAddIpfsPostWithHttpInfo(body, ignoreDupes, overwrite);
              return localVarResponse.Data;
         }
 
@@ -1490,8 +1499,9 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">IPFS Body</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
+        /// <param name="overwrite">Overwrite conflicting files in collections (optional)</param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > ContentAddIpfsPostWithHttpInfo (TypesIpfsPin body, string ignoreDupes = null)
+        public ApiResponse< string > ContentAddIpfsPostWithHttpInfo (TypesIpfsPin body, string ignoreDupes = null, string overwrite = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1520,6 +1530,7 @@ namespace estuary-client.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (ignoreDupes != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "ignore-dupes", ignoreDupes)); // query parameter
+            if (overwrite != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "overwrite", overwrite)); // query parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -1558,10 +1569,11 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">IPFS Body</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
+        /// <param name="overwrite">Overwrite conflicting files in collections (optional)</param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> ContentAddIpfsPostAsync (TypesIpfsPin body, string ignoreDupes = null)
+        public async System.Threading.Tasks.Task<string> ContentAddIpfsPostAsync (TypesIpfsPin body, string ignoreDupes = null, string overwrite = null)
         {
-             ApiResponse<string> localVarResponse = await ContentAddIpfsPostAsyncWithHttpInfo(body, ignoreDupes);
+             ApiResponse<string> localVarResponse = await ContentAddIpfsPostAsyncWithHttpInfo(body, ignoreDupes, overwrite);
              return localVarResponse.Data;
 
         }
@@ -1572,8 +1584,9 @@ namespace estuary-client.Api
         /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">IPFS Body</param>
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
+        /// <param name="overwrite">Overwrite conflicting files in collections (optional)</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> ContentAddIpfsPostAsyncWithHttpInfo (TypesIpfsPin body, string ignoreDupes = null)
+        public async System.Threading.Tasks.Task<ApiResponse<string>> ContentAddIpfsPostAsyncWithHttpInfo (TypesIpfsPin body, string ignoreDupes = null, string overwrite = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1602,6 +1615,7 @@ namespace estuary-client.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (ignoreDupes != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "ignore-dupes", ignoreDupes)); // query parameter
+            if (overwrite != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "overwrite", overwrite)); // query parameter
             if (body != null && body.GetType() != typeof(byte[]))
             {
                 localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
@@ -1643,12 +1657,13 @@ namespace estuary-client.Api
         /// <param name="coluuid">Collection UUID (optional)</param>
         /// <param name="replication">Replication value (optional)</param>
         /// <param name="ignoreDupes">Ignore Dupes true/false (optional)</param>
+        /// <param name="overwrite">Overwrite files with the same path on same collection (optional)</param>
         /// <param name="lazyProvide">Lazy Provide true/false (optional)</param>
         /// <param name="dir">Directory (optional)</param>
         /// <returns>UtilContentAddResponse</returns>
-        public UtilContentAddResponse ContentAddPost (byte[] data, string filename, string coluuid = null, int? replication = null, string ignoreDupes = null, string lazyProvide = null, string dir = null)
+        public UtilContentAddResponse ContentAddPost (byte[] data, string filename, string coluuid = null, int? replication = null, string ignoreDupes = null, string overwrite = null, string lazyProvide = null, string dir = null)
         {
-             ApiResponse<UtilContentAddResponse> localVarResponse = ContentAddPostWithHttpInfo(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir);
+             ApiResponse<UtilContentAddResponse> localVarResponse = ContentAddPostWithHttpInfo(data, filename, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir);
              return localVarResponse.Data;
         }
 
@@ -1661,10 +1676,11 @@ namespace estuary-client.Api
         /// <param name="coluuid">Collection UUID (optional)</param>
         /// <param name="replication">Replication value (optional)</param>
         /// <param name="ignoreDupes">Ignore Dupes true/false (optional)</param>
+        /// <param name="overwrite">Overwrite files with the same path on same collection (optional)</param>
         /// <param name="lazyProvide">Lazy Provide true/false (optional)</param>
         /// <param name="dir">Directory (optional)</param>
         /// <returns>ApiResponse of UtilContentAddResponse</returns>
-        public ApiResponse< UtilContentAddResponse > ContentAddPostWithHttpInfo (byte[] data, string filename, string coluuid = null, int? replication = null, string ignoreDupes = null, string lazyProvide = null, string dir = null)
+        public ApiResponse< UtilContentAddResponse > ContentAddPostWithHttpInfo (byte[] data, string filename, string coluuid = null, int? replication = null, string ignoreDupes = null, string overwrite = null, string lazyProvide = null, string dir = null)
         {
             // verify the required parameter 'data' is set
             if (data == null)
@@ -1698,6 +1714,7 @@ namespace estuary-client.Api
             if (coluuid != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "coluuid", coluuid)); // query parameter
             if (replication != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "replication", replication)); // query parameter
             if (ignoreDupes != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "ignore-dupes", ignoreDupes)); // query parameter
+            if (overwrite != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "overwrite", overwrite)); // query parameter
             if (lazyProvide != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "lazy-provide", lazyProvide)); // query parameter
             if (dir != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "dir", dir)); // query parameter
             if (data != null) localVarFileParams.Add("data", this.Configuration.ApiClient.ParameterToFile("data", data));
@@ -1735,12 +1752,13 @@ namespace estuary-client.Api
         /// <param name="coluuid">Collection UUID (optional)</param>
         /// <param name="replication">Replication value (optional)</param>
         /// <param name="ignoreDupes">Ignore Dupes true/false (optional)</param>
+        /// <param name="overwrite">Overwrite files with the same path on same collection (optional)</param>
         /// <param name="lazyProvide">Lazy Provide true/false (optional)</param>
         /// <param name="dir">Directory (optional)</param>
         /// <returns>Task of UtilContentAddResponse</returns>
-        public async System.Threading.Tasks.Task<UtilContentAddResponse> ContentAddPostAsync (byte[] data, string filename, string coluuid = null, int? replication = null, string ignoreDupes = null, string lazyProvide = null, string dir = null)
+        public async System.Threading.Tasks.Task<UtilContentAddResponse> ContentAddPostAsync (byte[] data, string filename, string coluuid = null, int? replication = null, string ignoreDupes = null, string overwrite = null, string lazyProvide = null, string dir = null)
         {
-             ApiResponse<UtilContentAddResponse> localVarResponse = await ContentAddPostAsyncWithHttpInfo(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir);
+             ApiResponse<UtilContentAddResponse> localVarResponse = await ContentAddPostAsyncWithHttpInfo(data, filename, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir);
              return localVarResponse.Data;
 
         }
@@ -1754,10 +1772,11 @@ namespace estuary-client.Api
         /// <param name="coluuid">Collection UUID (optional)</param>
         /// <param name="replication">Replication value (optional)</param>
         /// <param name="ignoreDupes">Ignore Dupes true/false (optional)</param>
+        /// <param name="overwrite">Overwrite files with the same path on same collection (optional)</param>
         /// <param name="lazyProvide">Lazy Provide true/false (optional)</param>
         /// <param name="dir">Directory (optional)</param>
         /// <returns>Task of ApiResponse (UtilContentAddResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<UtilContentAddResponse>> ContentAddPostAsyncWithHttpInfo (byte[] data, string filename, string coluuid = null, int? replication = null, string ignoreDupes = null, string lazyProvide = null, string dir = null)
+        public async System.Threading.Tasks.Task<ApiResponse<UtilContentAddResponse>> ContentAddPostAsyncWithHttpInfo (byte[] data, string filename, string coluuid = null, int? replication = null, string ignoreDupes = null, string overwrite = null, string lazyProvide = null, string dir = null)
         {
             // verify the required parameter 'data' is set
             if (data == null)
@@ -1791,6 +1810,7 @@ namespace estuary-client.Api
             if (coluuid != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "coluuid", coluuid)); // query parameter
             if (replication != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "replication", replication)); // query parameter
             if (ignoreDupes != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "ignore-dupes", ignoreDupes)); // query parameter
+            if (overwrite != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "overwrite", overwrite)); // query parameter
             if (lazyProvide != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "lazy-provide", lazyProvide)); // query parameter
             if (dir != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "dir", dir)); // query parameter
             if (data != null) localVarFileParams.Add("data", this.Configuration.ApiClient.ParameterToFile("data", data));

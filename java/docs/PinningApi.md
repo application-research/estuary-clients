@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
 
 <a name="pinningPinsPost"></a>
 # **pinningPinsPost**
-> TypesIpfsPinStatusResponse pinningPinsPost(body)
+> TypesIpfsPinStatusResponse pinningPinsPost(body, ignoreDupes, overwrite)
 
 Add and pin object
 
@@ -254,8 +254,10 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 PinningApi apiInstance = new PinningApi();
 TypesIpfsPin body = new TypesIpfsPin(); // TypesIpfsPin | Pin Body {cid:cid, name:name}
+String ignoreDupes = "ignoreDupes_example"; // String | Ignore Dupes
+String overwrite = "overwrite_example"; // String | Overwrite conflicting files in collections
 try {
-    TypesIpfsPinStatusResponse result = apiInstance.pinningPinsPost(body);
+    TypesIpfsPinStatusResponse result = apiInstance.pinningPinsPost(body, ignoreDupes, overwrite);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PinningApi#pinningPinsPost");
@@ -268,6 +270,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} |
+ **ignoreDupes** | **String**| Ignore Dupes | [optional]
+ **overwrite** | **String**| Overwrite conflicting files in collections | [optional]
 
 ### Return type
 

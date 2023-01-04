@@ -40,7 +40,7 @@ import javax.validation.constraints.*;
 @Path("/collections")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2023-01-03T16:17:33.077Z[GMT]")public class CollectionsApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2023-01-04T12:55:53.153Z[GMT]")public class CollectionsApi  {
    private final CollectionsApiService delegate;
 
    public CollectionsApi(@Context ServletConfig servletContext) {
@@ -151,9 +151,10 @@ import javax.validation.constraints.*;
 
 ,@Parameter(in = ParameterIn.PATH, description = "Collection UUID",required=true) @PathParam("coluuid") String coluuid
 ,@Parameter(in = ParameterIn.QUERY, description = "Directory") @QueryParam("dir") String dir
+,@Parameter(in = ParameterIn.QUERY, description = "Overwrite conflicting files") @QueryParam("overwrite") String overwrite
 ,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return delegate.collectionsColuuidPost(body,coluuid,dir,securityContext);
+        return delegate.collectionsColuuidPost(body,coluuid,dir,overwrite,securityContext);
     }
     @POST
     @Path("/fs/add")
@@ -169,10 +170,11 @@ import javax.validation.constraints.*;
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response collectionsFsAddPost(@Parameter(in = ParameterIn.QUERY, description = "Collection ID",required=true) @QueryParam("coluuid") String coluuid
 ,@Parameter(in = ParameterIn.QUERY, description = "Content",required=true) @QueryParam("content") String content
-,@Parameter(in = ParameterIn.QUERY, description = "Path to file",required=true) @QueryParam("path") String path
+,@Parameter(in = ParameterIn.QUERY, description = "Directory inside collection") @QueryParam("dir") String dir
+,@Parameter(in = ParameterIn.QUERY, description = "Overwrite file if already exists in path") @QueryParam("overwrite") String overwrite
 ,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return delegate.collectionsFsAddPost(coluuid,content,path,securityContext);
+        return delegate.collectionsFsAddPost(coluuid,content,dir,overwrite,securityContext);
     }
     @GET
     @Path("/")

@@ -248,6 +248,7 @@ export class CollectionsApi {
      * @param {String} coluuid Collection UUID
      * @param {Object} opts Optional parameters
      * @param {String} opts.dir Directory
+     * @param {String} opts.overwrite Overwrite conflicting files
      * @param {module:api/CollectionsApi~collectionsColuuidPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
@@ -267,7 +268,7 @@ export class CollectionsApi {
         'coluuid': coluuid
       };
       let queryParams = {
-        'dir': opts['dir']
+        'dir': opts['dir'],'overwrite': opts['overwrite']
       };
       let headerParams = {
         
@@ -300,12 +301,14 @@ export class CollectionsApi {
      * This endpoint adds a file to a collection
      * @param {String} coluuid Collection ID
      * @param {String} content Content
-     * @param {String} path Path to file
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.dir Directory inside collection
+     * @param {String} opts.overwrite Overwrite file if already exists in path
      * @param {module:api/CollectionsApi~collectionsFsAddPostCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
      */
-    collectionsFsAddPost(coluuid, content, path, callback) {
-      
+    collectionsFsAddPost(coluuid, content, opts, callback) {
+      opts = opts || {};
       let postBody = null;
       // verify the required parameter 'coluuid' is set
       if (coluuid === undefined || coluuid === null) {
@@ -315,16 +318,12 @@ export class CollectionsApi {
       if (content === undefined || content === null) {
         throw new Error("Missing the required parameter 'content' when calling collectionsFsAddPost");
       }
-      // verify the required parameter 'path' is set
-      if (path === undefined || path === null) {
-        throw new Error("Missing the required parameter 'path' when calling collectionsFsAddPost");
-      }
 
       let pathParams = {
         
       };
       let queryParams = {
-        'coluuid': coluuid,'content': content,'path': path
+        'coluuid': coluuid,'content': content,'dir': opts['dir'],'overwrite': opts['overwrite']
       };
       let headerParams = {
         

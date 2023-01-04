@@ -13,6 +13,7 @@ type UtilContentCreateBody struct {
 	Dir string `json:"dir,omitempty"`
 	Location string `json:"location,omitempty"`
 	Name string `json:"name,omitempty"`
+	Overwrite bool `json:"overwrite,omitempty"`
 	Root string `json:"root,omitempty"`
 	Type_ *UtilContentType `json:"type,omitempty"`
 }

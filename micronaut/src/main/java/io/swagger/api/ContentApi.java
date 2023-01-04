@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2023-01-03T16:17:32.325Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2023-01-04T12:55:53.483Z[GMT]")
 @Controller
 public interface ContentApi {
 
@@ -54,6 +54,7 @@ public interface ContentApi {
     @Post(value = "/content/add-ipfs", produces = { "application/json" }, consumes = {"*/*"})
     default Single<HttpResponse<String>> contentAddIpfsPost(@Parameter(description = "IPFS Body") @Valid @Body TypesIpfsPin body
 ,@Nullable @Parameter(description = "Ignore Dupes") @Valid @QueryValue(value = "ignore-dupes") String ignoreDupes
+,@Nullable @Parameter(description = "Overwrite conflicting files in collections") @Valid @QueryValue(value = "overwrite") String overwrite
 ) {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
@@ -71,6 +72,7 @@ public interface ContentApi {
 ,@Nullable @Parameter(description = "Collection UUID") @Valid @QueryValue(value = "coluuid") String coluuid
 ,@Nullable @Parameter(description = "Replication value") @Valid @QueryValue(value = "replication") Integer replication
 ,@Nullable @Parameter(description = "Ignore Dupes true/false") @Valid @QueryValue(value = "ignore-dupes") String ignoreDupes
+,@Nullable @Parameter(description = "Overwrite files with the same path on same collection") @Valid @QueryValue(value = "overwrite") String overwrite
 ,@Nullable @Parameter(description = "Lazy Provide true/false") @Valid @QueryValue(value = "lazy-provide") String lazyProvide
 ,@Nullable @Parameter(description = "Directory") @Valid @QueryValue(value = "dir") String dir
 ) {

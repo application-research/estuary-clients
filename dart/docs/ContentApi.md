@@ -172,7 +172,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **contentAddIpfsPost**
-> String contentAddIpfsPost(body, ignoreDupes)
+> String contentAddIpfsPost(body, ignoreDupes, overwrite)
 
 Add IPFS object
 
@@ -189,9 +189,10 @@ import 'package:swagger/api.dart';
 var api_instance = new ContentApi();
 var body = new TypesIpfsPin(); // TypesIpfsPin | IPFS Body
 var ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
+var overwrite = overwrite_example; // String | Overwrite conflicting files in collections
 
 try {
-    var result = api_instance.contentAddIpfsPost(body, ignoreDupes);
+    var result = api_instance.contentAddIpfsPost(body, ignoreDupes, overwrite);
     print(result);
 } catch (e) {
     print("Exception when calling ContentApi->contentAddIpfsPost: $e\n");
@@ -204,6 +205,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| IPFS Body | 
  **ignoreDupes** | **String**| Ignore Dupes | [optional] 
+ **overwrite** | **String**| Overwrite conflicting files in collections | [optional] 
 
 ### Return type
 
@@ -221,7 +223,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **contentAddPost**
-> UtilContentAddResponse contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir)
+> UtilContentAddResponse contentAddPost(data, filename, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir)
 
 Add new content
 
@@ -241,11 +243,12 @@ var filename = filename_example; // String |
 var coluuid = coluuid_example; // String | Collection UUID
 var replication = 56; // int | Replication value
 var ignoreDupes = ignoreDupes_example; // String | Ignore Dupes true/false
+var overwrite = overwrite_example; // String | Overwrite files with the same path on same collection
 var lazyProvide = lazyProvide_example; // String | Lazy Provide true/false
 var dir = dir_example; // String | Directory
 
 try {
-    var result = api_instance.contentAddPost(data, filename, coluuid, replication, ignoreDupes, lazyProvide, dir);
+    var result = api_instance.contentAddPost(data, filename, coluuid, replication, ignoreDupes, overwrite, lazyProvide, dir);
     print(result);
 } catch (e) {
     print("Exception when calling ContentApi->contentAddPost: $e\n");
@@ -261,6 +264,7 @@ Name | Type | Description  | Notes
  **coluuid** | **String**| Collection UUID | [optional] 
  **replication** | **int**| Replication value | [optional] 
  **ignoreDupes** | **String**| Ignore Dupes true/false | [optional] 
+ **overwrite** | **String**| Overwrite files with the same path on same collection | [optional] 
  **lazyProvide** | **String**| Lazy Provide true/false | [optional] 
  **dir** | **String**| Directory | [optional] 
 
