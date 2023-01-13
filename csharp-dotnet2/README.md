@@ -56,6 +56,26 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new AdminApi();
+
+            try
+            {
+                // Get all miners
+                ApiMinerResp result = apiInstance.AdminMinersGet();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling AdminApi.AdminMinersGet: " + e.Message );
+            }
+        }
+    }
+}
+            // Configure API key authorization: bearerAuth
+            Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
+
+            var apiInstance = new AdminApi();
             var body = new List<string>(); // List<string> | Peer ids
 
             try
@@ -221,6 +241,7 @@ All URIs are relative to *//api.estuary.tech/*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AdminApi* | [**AdminMinersGet**](docs/AdminApi.md#adminminersget) | **GET** /admin/miners/ | Get all miners
 *AdminApi* | [**AdminPeeringPeersDelete**](docs/AdminApi.md#adminpeeringpeersdelete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
 *AdminApi* | [**AdminPeeringPeersGet**](docs/AdminApi.md#adminpeeringpeersget) | **GET** /admin/peering/peers | List all Peering peers
 *AdminApi* | [**AdminPeeringPeersPost**](docs/AdminApi.md#adminpeeringpeerspost) | **POST** /admin/peering/peers | Add peers on Peering Service
@@ -282,8 +303,8 @@ Class | Method | HTTP request | Description
 *MinerApi* | [**MinerUnsuspendMinerPut**](docs/MinerApi.md#minerunsuspendminerput) | **PUT** /miner/unsuspend/{miner} | Unuspend Miner
 *MinerApi* | [**PublicMinersDealsMinerGet**](docs/MinerApi.md#publicminersdealsminerget) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *MinerApi* | [**PublicMinersStatsMinerGet**](docs/MinerApi.md#publicminersstatsminerget) | **GET** /public/miners/stats/{miner} | Get miner stats
+*NetApi* | [**AdminMinersGet**](docs/NetApi.md#adminminersget) | **GET** /admin/miners/ | Get all miners
 *NetApi* | [**PublicMinersFailuresMinerGet**](docs/NetApi.md#publicminersfailuresminerget) | **GET** /public/miners/failures/{miner} | Get all miners
-*NetApi* | [**PublicMinersGet**](docs/NetApi.md#publicminersget) | **GET** /public/miners | Get all miners
 *NetApi* | [**PublicNetAddrsGet**](docs/NetApi.md#publicnetaddrsget) | **GET** /public/net/addrs | Net Addrs
 *NetApi* | [**PublicNetPeersGet**](docs/NetApi.md#publicnetpeersget) | **GET** /public/net/peers | Net Peers
 *PinningApi* | [**PinningPinsGet**](docs/PinningApi.md#pinningpinsget) | **GET** /pinning/pins | List all pin status objects
@@ -297,7 +318,6 @@ Class | Method | HTTP request | Description
 *PublicApi* | [**PublicMetricsDealsOnChainGet**](docs/PublicApi.md#publicmetricsdealsonchainget) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 *PublicApi* | [**PublicMinersDealsMinerGet**](docs/PublicApi.md#publicminersdealsminerget) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *PublicApi* | [**PublicMinersFailuresMinerGet**](docs/PublicApi.md#publicminersfailuresminerget) | **GET** /public/miners/failures/{miner} | Get all miners
-*PublicApi* | [**PublicMinersGet**](docs/PublicApi.md#publicminersget) | **GET** /public/miners | Get all miners
 *PublicApi* | [**PublicMinersStatsMinerGet**](docs/PublicApi.md#publicminersstatsminerget) | **GET** /public/miners/stats/{miner} | Get miner stats
 *PublicApi* | [**PublicNetAddrsGet**](docs/PublicApi.md#publicnetaddrsget) | **GET** /public/net/addrs | Net Addrs
 *PublicApi* | [**PublicNetPeersGet**](docs/PublicApi.md#publicnetpeersget) | **GET** /public/net/peers | Net Peers
@@ -320,6 +340,7 @@ Class | Method | HTTP request | Description
  - [estuary-client.Model.ApiEmptyResp](docs/ApiEmptyResp.md)
  - [estuary-client.Model.ApiEstimateDealBody](docs/ApiEstimateDealBody.md)
  - [estuary-client.Model.ApiGetApiKeysResp](docs/ApiGetApiKeysResp.md)
+ - [estuary-client.Model.ApiMinerResp](docs/ApiMinerResp.md)
  - [estuary-client.Model.ApiPublicNodeInfo](docs/ApiPublicNodeInfo.md)
  - [estuary-client.Model.AutoretrieveInitBody](docs/AutoretrieveInitBody.md)
  - [estuary-client.Model.CidCid](docs/CidCid.md)
@@ -328,6 +349,7 @@ Class | Method | HTTP request | Description
  - [estuary-client.Model.CollectionsCollectionListResponse](docs/CollectionsCollectionListResponse.md)
  - [estuary-client.Model.ContentAddBody](docs/ContentAddBody.md)
  - [estuary-client.Model.MinerClaimMinerBody](docs/MinerClaimMinerBody.md)
+ - [estuary-client.Model.MinerMinerChainInfo](docs/MinerMinerChainInfo.md)
  - [estuary-client.Model.MinerMinerSetInfoParams](docs/MinerMinerSetInfoParams.md)
  - [estuary-client.Model.MinerSuspendMinerBody](docs/MinerSuspendMinerBody.md)
  - [estuary-client.Model.PeeringPeeringPeer](docs/PeeringPeeringPeer.md)

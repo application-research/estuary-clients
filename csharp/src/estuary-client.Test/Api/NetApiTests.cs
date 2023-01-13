@@ -63,6 +63,16 @@ namespace estuary-client.Test
         }
 
         /// <summary>
+        /// Test AdminMinersGet
+        /// </summary>
+        [Test]
+        public void AdminMinersGetTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //var response = instance.AdminMinersGet();
+            //Assert.IsInstanceOf<ApiMinerResp> (response, "response is ApiMinerResp");
+        }
+        /// <summary>
         /// Test PublicMinersFailuresMinerGet
         /// </summary>
         [Test]
@@ -71,16 +81,6 @@ namespace estuary-client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string miner = null;
             //var response = instance.PublicMinersFailuresMinerGet(miner);
-            //Assert.IsInstanceOf<string> (response, "response is string");
-        }
-        /// <summary>
-        /// Test PublicMinersGet
-        /// </summary>
-        [Test]
-        public void PublicMinersGetTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //var response = instance.PublicMinersGet();
             //Assert.IsInstanceOf<string> (response, "response is string");
         }
         /// <summary>

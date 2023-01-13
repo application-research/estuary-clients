@@ -157,27 +157,6 @@
           done();
         });
       });
-      describe('publicMinersGet', function() {
-        it('should call publicMinersGet successfully', function(done) {
-          // TODO: uncomment publicMinersGet call and complete the assertions
-          /*
-
-          instance.publicMinersGet(function(error, data, response) {
-            if (error) {
-              done(error);
-              return;
-            }
-            // TODO: update response assertions
-            expect(data).to.be.a(&#x27;string&#x27;);
-            // expect(data).to.be(null);
-
-            done();
-          });
-          */
-          // TODO: uncomment and complete method invocation above, then delete this line and the next:
-          done();
-        });
-      });
       describe('publicMinersStatsMinerGet', function() {
         it('should call publicMinersStatsMinerGet successfully', function(done) {
           // TODO: uncomment, update parameter values for publicMinersStatsMinerGet call and complete the assertions

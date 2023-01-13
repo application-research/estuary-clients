@@ -105,21 +105,6 @@ class PublicApi(
         }
       }
     } ~
-    path() { () => 
-      get {
-        parameters() { () =>
-          
-            formFields() { () =>
-              
-                
-                  publicService.publicMinersGet()
-               
-             
-            }
-         
-        }
-      }
-    } ~
     path() { (miner) => 
       get {
         parameters() { () =>
@@ -268,20 +253,6 @@ trait PublicApiService {
   def publicMinersFailuresMinerGet(miner: String)
       (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
-  def publicMinersGet200(responseString: String): Route =
-    complete((200, responseString))
-  def publicMinersGet400(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
-    complete((400, responseutil.HttpError))
-  def publicMinersGet500(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
-    complete((500, responseutil.HttpError))
-  /**
-   * Code: 200, Message: OK, DataType: String
-   * Code: 400, Message: Bad Request, DataType: util.HttpError
-   * Code: 500, Message: Internal Server Error, DataType: util.HttpError
-   */
-  def publicMinersGet()
-      (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
-
   def publicMinersStatsMinerGet200(responseString: String): Route =
     complete((200, responseString))
   def publicMinersStatsMinerGet400(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
@@ -345,10 +316,6 @@ trait PublicApiMarshaller {
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 
   implicit def toEntityMarshallerapi.publicNodeInfo: ToEntityMarshaller[api.publicNodeInfo]
-
-  implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
-
-  implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 

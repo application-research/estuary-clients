@@ -16,7 +16,7 @@ import javax.validation.constraints.*;
  * TypesIpfsPinStatusResponse
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-04T12:55:54.653Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-13T19:43:18.594Z[GMT]")
 
 
 public class TypesIpfsPinStatusResponse   {

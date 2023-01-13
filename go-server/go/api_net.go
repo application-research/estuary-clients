@@ -12,12 +12,12 @@ import (
 	"net/http"
 )
 
-func PublicMinersFailuresMinerGet(w http.ResponseWriter, r *http.Request) {
+func AdminMinersGet(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	w.WriteHeader(http.StatusOK)
 }
 
-func PublicMinersGet(w http.ResponseWriter, r *http.Request) {
+func PublicMinersFailuresMinerGet(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	w.WriteHeader(http.StatusOK)
 }

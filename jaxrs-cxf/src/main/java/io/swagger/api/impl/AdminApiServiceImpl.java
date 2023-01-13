@@ -1,6 +1,7 @@
 package io.swagger.api.impl;
 
 import io.swagger.api.*;
+import io.swagger.model.ApiMinerResp;
 import io.swagger.model.PeeringPeeringPeer;
 import io.swagger.model.UtilHttpError;
 
@@ -23,6 +24,18 @@ import org.apache.cxf.jaxrs.ext.multipart.*;
  *
  */
 public class AdminApiServiceImpl implements AdminApi {
+    /**
+     * Get all miners
+     *
+     * This endpoint returns all miners. Note: value may be cached
+     *
+     */
+    public ApiMinerResp adminMinersGet() {
+        // TODO: Implement...
+        
+        return null;
+    }
+    
     /**
      * Remove peers on Peering Service
      *

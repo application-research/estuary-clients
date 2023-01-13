@@ -13,7 +13,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2023-01-04T12:55:54.380Z[GMT]")public class PublicApiServiceImpl implements PublicApi {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2023-01-13T19:43:16.993Z[GMT]")public class PublicApiServiceImpl implements PublicApi {
       public Response publicByCidCidGet(String cid,SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
@@ -35,10 +35,6 @@ import javax.ws.rs.core.SecurityContext;
       return Response.ok().build();
   }
       public Response publicMinersFailuresMinerGet(String miner,SecurityContext securityContext) {
-      // do some magic!
-      return Response.ok().build();
-  }
-      public Response publicMinersGet(SecurityContext securityContext) {
       // do some magic!
       return Response.ok().build();
   }

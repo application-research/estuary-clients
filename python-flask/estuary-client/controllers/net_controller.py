@@ -1,8 +1,20 @@
 import connexion
 import six
 
+from estuary-client.models.api_miner_resp import ApiMinerResp  # noqa: E501
 from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
 from estuary-client import util
+
+
+def admin_miners_get():  # noqa: E501
+    """Get all miners
+
+    This endpoint returns all miners. Note: value may be cached # noqa: E501
+
+
+    :rtype: ApiMinerResp
+    """
+    return 'do some magic!'
 
 
 def public_miners_failures_miner_get(miner):  # noqa: E501
@@ -12,17 +24,6 @@ def public_miners_failures_miner_get(miner):  # noqa: E501
 
     :param miner: Filter by miner
     :type miner: str
-
-    :rtype: str
-    """
-    return 'do some magic!'
-
-
-def public_miners_get():  # noqa: E501
-    """Get all miners
-
-    This endpoint returns all miners # noqa: E501
-
 
     :rtype: str
     """

@@ -147,6 +147,7 @@ Class | Method | HTTP request | Description
 *UserApi* | [**user_api_keys_post**](docs/UserApi.md#user_api_keys_post) | **POST** /user/api-keys | Create API keys for a user
 *UserApi* | [**user_export_get**](docs/UserApi.md#user_export_get) | **GET** /user/export | Export user data
 *UserApi* | [**user_stats_get**](docs/UserApi.md#user_stats_get) | **GET** /user/stats | Get stats for the current user
+*AdminApi* | [**admin_miners_get**](docs/AdminApi.md#admin_miners_get) | **GET** /admin/miners/ | Get all miners
 *AdminApi* | [**admin_peering_peers_delete**](docs/AdminApi.md#admin_peering_peers_delete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
 *AdminApi* | [**admin_peering_peers_get**](docs/AdminApi.md#admin_peering_peers_get) | **GET** /admin/peering/peers | List all Peering peers
 *AdminApi* | [**admin_peering_peers_post**](docs/AdminApi.md#admin_peering_peers_post) | **POST** /admin/peering/peers | Add peers on Peering Service
@@ -208,8 +209,8 @@ Class | Method | HTTP request | Description
 *MinerApi* | [**miner_unsuspend_miner_put**](docs/MinerApi.md#miner_unsuspend_miner_put) | **PUT** /miner/unsuspend/{miner} | Unuspend Miner
 *MinerApi* | [**public_miners_deals_miner_get**](docs/MinerApi.md#public_miners_deals_miner_get) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *MinerApi* | [**public_miners_stats_miner_get**](docs/MinerApi.md#public_miners_stats_miner_get) | **GET** /public/miners/stats/{miner} | Get miner stats
+*NetApi* | [**admin_miners_get**](docs/NetApi.md#admin_miners_get) | **GET** /admin/miners/ | Get all miners
 *NetApi* | [**public_miners_failures_miner_get**](docs/NetApi.md#public_miners_failures_miner_get) | **GET** /public/miners/failures/{miner} | Get all miners
-*NetApi* | [**public_miners_get**](docs/NetApi.md#public_miners_get) | **GET** /public/miners | Get all miners
 *NetApi* | [**public_net_addrs_get**](docs/NetApi.md#public_net_addrs_get) | **GET** /public/net/addrs | Net Addrs
 *NetApi* | [**public_net_peers_get**](docs/NetApi.md#public_net_peers_get) | **GET** /public/net/peers | Net Peers
 *PinningApi* | [**pinning_pins_get**](docs/PinningApi.md#pinning_pins_get) | **GET** /pinning/pins | List all pin status objects
@@ -223,7 +224,6 @@ Class | Method | HTTP request | Description
 *PublicApi* | [**public_metrics_deals_on_chain_get**](docs/PublicApi.md#public_metrics_deals_on_chain_get) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 *PublicApi* | [**public_miners_deals_miner_get**](docs/PublicApi.md#public_miners_deals_miner_get) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *PublicApi* | [**public_miners_failures_miner_get**](docs/PublicApi.md#public_miners_failures_miner_get) | **GET** /public/miners/failures/{miner} | Get all miners
-*PublicApi* | [**public_miners_get**](docs/PublicApi.md#public_miners_get) | **GET** /public/miners | Get all miners
 *PublicApi* | [**public_miners_stats_miner_get**](docs/PublicApi.md#public_miners_stats_miner_get) | **GET** /public/miners/stats/{miner} | Get miner stats
 *PublicApi* | [**public_net_addrs_get**](docs/PublicApi.md#public_net_addrs_get) | **GET** /public/net/addrs | Net Addrs
 *PublicApi* | [**public_net_peers_get**](docs/PublicApi.md#public_net_peers_get) | **GET** /public/net/peers | Net Peers
@@ -240,6 +240,7 @@ Class | Method | HTTP request | Description
  - [ApiEmptyResp](docs/ApiEmptyResp.md)
  - [ApiEstimateDealBody](docs/ApiEstimateDealBody.md)
  - [ApiGetApiKeysResp](docs/ApiGetApiKeysResp.md)
+ - [ApiMinerResp](docs/ApiMinerResp.md)
  - [ApiPublicNodeInfo](docs/ApiPublicNodeInfo.md)
  - [AutoretrieveInitBody](docs/AutoretrieveInitBody.md)
  - [CidCid](docs/CidCid.md)
@@ -248,6 +249,7 @@ Class | Method | HTTP request | Description
  - [CollectionsCollectionListResponse](docs/CollectionsCollectionListResponse.md)
  - [ContentAddBody](docs/ContentAddBody.md)
  - [MinerClaimMinerBody](docs/MinerClaimMinerBody.md)
+ - [MinerMinerChainInfo](docs/MinerMinerChainInfo.md)
  - [MinerMinerSetInfoParams](docs/MinerMinerSetInfoParams.md)
  - [MinerSuspendMinerBody](docs/MinerSuspendMinerBody.md)
  - [PeeringPeeringPeer](docs/PeeringPeeringPeer.md)

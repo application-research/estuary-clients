@@ -198,6 +198,7 @@
   <div class="method-summary"></div>
   <h4><a href="#Admin">Admin</a></h4>
   <ul>
+  <li><a href="#adminMinersGet"><code><span class="http-method">get</span> /admin/miners/</code></a></li>
   <li><a href="#adminPeeringPeersDelete"><code><span class="http-method">delete</span> /admin/peering/peers</code></a></li>
   <li><a href="#adminPeeringPeersGet"><code><span class="http-method">get</span> /admin/peering/peers</code></a></li>
   <li><a href="#adminPeeringPeersPost"><code><span class="http-method">post</span> /admin/peering/peers</code></a></li>
@@ -283,8 +284,8 @@
   </ul>
   <h4><a href="#Net">Net</a></h4>
   <ul>
+  <li><a href="#adminMinersGet"><code><span class="http-method">get</span> /admin/miners/</code></a></li>
   <li><a href="#publicMinersFailuresMinerGet"><code><span class="http-method">get</span> /public/miners/failures/{miner}</code></a></li>
-  <li><a href="#publicMinersGet"><code><span class="http-method">get</span> /public/miners</code></a></li>
   <li><a href="#publicNetAddrsGet"><code><span class="http-method">get</span> /public/net/addrs</code></a></li>
   <li><a href="#publicNetPeersGet"><code><span class="http-method">get</span> /public/net/peers</code></a></li>
   </ul>
@@ -304,7 +305,6 @@
   <li><a href="#publicMetricsDealsOnChainGet"><code><span class="http-method">get</span> /public/metrics/deals-on-chain</code></a></li>
   <li><a href="#publicMinersDealsMinerGet"><code><span class="http-method">get</span> /public/miners/deals/{miner}</code></a></li>
   <li><a href="#publicMinersFailuresMinerGet"><code><span class="http-method">get</span> /public/miners/failures/{miner}</code></a></li>
-  <li><a href="#publicMinersGet"><code><span class="http-method">get</span> /public/miners</code></a></li>
   <li><a href="#publicMinersStatsMinerGet"><code><span class="http-method">get</span> /public/miners/stats/{miner}</code></a></li>
   <li><a href="#publicNetAddrsGet"><code><span class="http-method">get</span> /public/net/addrs</code></a></li>
   <li><a href="#publicNetPeersGet"><code><span class="http-method">get</span> /public/net/peers</code></a></li>
@@ -320,6 +320,62 @@
   </ul>
 
   <h1><a name="Admin">Admin</a></h1>
+  <div class="method"><a name="adminMinersGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /admin/miners/</code></pre></div>
+    <div class="method-summary">Get all miners (<span class="nickname">adminMinersGet</span>)</div>
+    <div class="method-notes">This endpoint returns all miners. Note: value may be cached</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#api.minerResp">api.minerResp</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "name" : "name",
+  "chain_info" : {
+    "owner" : "owner",
+    "peerId" : "peerId",
+    "addresses" : [ "addresses", "addresses" ],
+    "worker" : "worker"
+  },
+  "suspendedReason" : "suspendedReason",
+  "addr" : { },
+  "version" : "version",
+  "suspended" : true
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#api.minerResp">api.minerResp</a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#util.HttpError">util.HttpError</a>
+    <h4 class="field-label">500</h4>
+    Internal Server Error
+        <a href="#util.HttpError">util.HttpError</a>
+  </div> <!-- method -->
+  <hr/>
   <div class="method"><a name="adminPeeringPeersDelete"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
@@ -3516,6 +3572,62 @@
   </div> <!-- method -->
   <hr/>
   <h1><a name="Net">Net</a></h1>
+  <div class="method"><a name="adminMinersGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /admin/miners/</code></pre></div>
+    <div class="method-summary">Get all miners (<span class="nickname">adminMinersGet</span>)</div>
+    <div class="method-notes">This endpoint returns all miners. Note: value may be cached</div>
+
+
+
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#api.minerResp">api.minerResp</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "name" : "name",
+  "chain_info" : {
+    "owner" : "owner",
+    "peerId" : "peerId",
+    "addresses" : [ "addresses", "addresses" ],
+    "worker" : "worker"
+  },
+  "suspendedReason" : "suspendedReason",
+  "addr" : { },
+  "version" : "version",
+  "suspended" : true
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#api.minerResp">api.minerResp</a>
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#util.HttpError">util.HttpError</a>
+    <h4 class="field-label">500</h4>
+    Internal Server Error
+        <a href="#util.HttpError">util.HttpError</a>
+  </div> <!-- method -->
+  <hr/>
   <div class="method"><a name="publicMinersFailuresMinerGet"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
@@ -3528,50 +3640,6 @@
       <div class="param">miner (required)</div>
       
             <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Filter by miner </div>    </div>  <!-- field-items -->
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      
-      String
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>""</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    OK
-        <a href="#String">String</a>
-    <h4 class="field-label">400</h4>
-    Bad Request
-        <a href="#util.HttpError">util.HttpError</a>
-    <h4 class="field-label">500</h4>
-    Internal Server Error
-        <a href="#util.HttpError">util.HttpError</a>
-  </div> <!-- method -->
-  <hr/>
-  <div class="method"><a name="publicMinersGet"></a>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /public/miners</code></pre></div>
-    <div class="method-summary">Get all miners (<span class="nickname">publicMinersGet</span>)</div>
-    <div class="method-notes">This endpoint returns all miners</div>
-
 
 
 
@@ -4289,50 +4357,6 @@
         <a href="#util.HttpError">util.HttpError</a>
   </div> <!-- method -->
   <hr/>
-  <div class="method"><a name="publicMinersGet"></a>
-    <div class="method-path">
-    <a class="up" href="#__Methods">Up</a>
-    <pre class="get"><code class="huge"><span class="http-method">get</span> /public/miners</code></pre></div>
-    <div class="method-summary">Get all miners (<span class="nickname">publicMinersGet</span>)</div>
-    <div class="method-notes">This endpoint returns all miners</div>
-
-
-
-
-
-
-
-    <h3 class="field-label">Return type</h3>
-    <div class="return-type">
-      
-      String
-    </div>
-
-    <!--Todo: process Response Object and its headers, schema, examples -->
-
-    <h3 class="field-label">Example data</h3>
-    <div class="example-data-content-type">Content-Type: application/json</div>
-    <pre class="example"><code>""</code></pre>
-
-    <h3 class="field-label">Produces</h3>
-    This API call produces the following media types according to the <span class="header">Accept</span> request header;
-    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
-    <ul>
-      <li><code>application/json</code></li>
-    </ul>
-
-    <h3 class="field-label">Responses</h3>
-    <h4 class="field-label">200</h4>
-    OK
-        <a href="#String">String</a>
-    <h4 class="field-label">400</h4>
-    Bad Request
-        <a href="#util.HttpError">util.HttpError</a>
-    <h4 class="field-label">500</h4>
-    Internal Server Error
-        <a href="#util.HttpError">util.HttpError</a>
-  </div> <!-- method -->
-  <hr/>
   <div class="method"><a name="publicMinersStatsMinerGet"></a>
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
@@ -4777,6 +4801,7 @@
     <li><a href="#api.emptyResp"><code>api.emptyResp</code></a></li>
     <li><a href="#api.estimateDealBody"><code>api.estimateDealBody</code></a></li>
     <li><a href="#api.getApiKeysResp"><code>api.getApiKeysResp</code></a></li>
+    <li><a href="#api.minerResp"><code>api.minerResp</code></a></li>
     <li><a href="#api.publicNodeInfo"><code>api.publicNodeInfo</code></a></li>
     <li><a href="#autoretrieve_init_body"><code>autoretrieve_init_body</code></a></li>
     <li><a href="#cid.Cid"><code>cid.Cid</code></a></li>
@@ -4785,6 +4810,7 @@
     <li><a href="#collections.CollectionListResponse"><code>collections.CollectionListResponse</code></a></li>
     <li><a href="#content_add_body"><code>content_add_body</code></a></li>
     <li><a href="#miner.ClaimMinerBody"><code>miner.ClaimMinerBody</code></a></li>
+    <li><a href="#miner.MinerChainInfo"><code>miner.MinerChainInfo</code></a></li>
     <li><a href="#miner.MinerSetInfoParams"><code>miner.MinerSetInfoParams</code></a></li>
     <li><a href="#miner.SuspendMinerBody"><code>miner.SuspendMinerBody</code></a></li>
     <li><a href="#peering.PeeringPeer"><code>peering.PeeringPeer</code></a></li>
@@ -4873,6 +4899,18 @@
     </div>  <!-- field-items -->
   </div>
   <div class="model">
+    <h3><a name="api.minerResp"><code>api.minerResp</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">addr (optional)</div><div class="param-desc"><span class="param-type"><a href="#address.Address">address.Address</a></span>  </div>
+<div class="param">chain_info (optional)</div><div class="param-desc"><span class="param-type"><a href="#miner.MinerChainInfo">miner.MinerChainInfo</a></span>  </div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">suspended (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+<div class="param">suspendedReason (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">version (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
     <h3><a name="api.publicNodeInfo"><code>api.publicNodeInfo</code></a> <a class="up" href="#__Models">Up</a></h3>
     
     <div class="field-items">
@@ -4940,6 +4978,16 @@
       <div class="param">claim (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">miner (optional)</div><div class="param-desc"><span class="param-type"><a href="#address.Address">address.Address</a></span>  </div>
 <div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="miner.MinerChainInfo"><code>miner.MinerChainInfo</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">addresses (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
+<div class="param">owner (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">peerId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">worker (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">

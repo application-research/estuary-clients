@@ -2,7 +2,7 @@
 
 Estuary API
 - API version: 0.0.0
-  - Build date: 2023-01-04T12:55:51.421Z[GMT]
+  - Build date: 2023-01-13T19:43:15.077Z[GMT]
 
 This is the API for the Estuary application.
 
@@ -72,6 +72,35 @@ Then manually install the following JARs:
 Please follow the [installation](#installation) instruction and execute the following Java code:
 
 ```java
+import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.AdminApi;
+
+import java.io.File;
+import java.util.*;
+
+public class AdminApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: bearerAuth
+        ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //bearerAuth.setApiKeyPrefix("Token");
+
+        AdminApi apiInstance = new AdminApi();
+        try {
+            ApiMinerResp result = apiInstance.adminMinersGet();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AdminApi#adminMinersGet");
+            e.printStackTrace();
+        }
+    }
+}
 import io.swagger.client.*;
 import io.swagger.client.auth.*;
 import io.swagger.client.model.*;
@@ -314,6 +343,7 @@ All URIs are relative to *//api.estuary.tech/*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AdminApi* | [**adminMinersGet**](docs/AdminApi.md#adminMinersGet) | **GET** /admin/miners/ | Get all miners
 *AdminApi* | [**adminPeeringPeersDelete**](docs/AdminApi.md#adminPeeringPeersDelete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
 *AdminApi* | [**adminPeeringPeersGet**](docs/AdminApi.md#adminPeeringPeersGet) | **GET** /admin/peering/peers | List all Peering peers
 *AdminApi* | [**adminPeeringPeersPost**](docs/AdminApi.md#adminPeeringPeersPost) | **POST** /admin/peering/peers | Add peers on Peering Service
@@ -375,8 +405,8 @@ Class | Method | HTTP request | Description
 *MinerApi* | [**minerUnsuspendMinerPut**](docs/MinerApi.md#minerUnsuspendMinerPut) | **PUT** /miner/unsuspend/{miner} | Unuspend Miner
 *MinerApi* | [**publicMinersDealsMinerGet**](docs/MinerApi.md#publicMinersDealsMinerGet) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *MinerApi* | [**publicMinersStatsMinerGet**](docs/MinerApi.md#publicMinersStatsMinerGet) | **GET** /public/miners/stats/{miner} | Get miner stats
+*NetApi* | [**adminMinersGet**](docs/NetApi.md#adminMinersGet) | **GET** /admin/miners/ | Get all miners
 *NetApi* | [**publicMinersFailuresMinerGet**](docs/NetApi.md#publicMinersFailuresMinerGet) | **GET** /public/miners/failures/{miner} | Get all miners
-*NetApi* | [**publicMinersGet**](docs/NetApi.md#publicMinersGet) | **GET** /public/miners | Get all miners
 *NetApi* | [**publicNetAddrsGet**](docs/NetApi.md#publicNetAddrsGet) | **GET** /public/net/addrs | Net Addrs
 *NetApi* | [**publicNetPeersGet**](docs/NetApi.md#publicNetPeersGet) | **GET** /public/net/peers | Net Peers
 *PinningApi* | [**pinningPinsGet**](docs/PinningApi.md#pinningPinsGet) | **GET** /pinning/pins | List all pin status objects
@@ -390,7 +420,6 @@ Class | Method | HTTP request | Description
 *PublicApi* | [**publicMetricsDealsOnChainGet**](docs/PublicApi.md#publicMetricsDealsOnChainGet) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 *PublicApi* | [**publicMinersDealsMinerGet**](docs/PublicApi.md#publicMinersDealsMinerGet) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *PublicApi* | [**publicMinersFailuresMinerGet**](docs/PublicApi.md#publicMinersFailuresMinerGet) | **GET** /public/miners/failures/{miner} | Get all miners
-*PublicApi* | [**publicMinersGet**](docs/PublicApi.md#publicMinersGet) | **GET** /public/miners | Get all miners
 *PublicApi* | [**publicMinersStatsMinerGet**](docs/PublicApi.md#publicMinersStatsMinerGet) | **GET** /public/miners/stats/{miner} | Get miner stats
 *PublicApi* | [**publicNetAddrsGet**](docs/PublicApi.md#publicNetAddrsGet) | **GET** /public/net/addrs | Net Addrs
 *PublicApi* | [**publicNetPeersGet**](docs/PublicApi.md#publicNetPeersGet) | **GET** /public/net/peers | Net Peers
@@ -412,6 +441,7 @@ Class | Method | HTTP request | Description
  - [ApiEmptyResp](docs/ApiEmptyResp.md)
  - [ApiEstimateDealBody](docs/ApiEstimateDealBody.md)
  - [ApiGetApiKeysResp](docs/ApiGetApiKeysResp.md)
+ - [ApiMinerResp](docs/ApiMinerResp.md)
  - [ApiPublicNodeInfo](docs/ApiPublicNodeInfo.md)
  - [AutoretrieveInitBody](docs/AutoretrieveInitBody.md)
  - [CidCid](docs/CidCid.md)
@@ -420,6 +450,7 @@ Class | Method | HTTP request | Description
  - [CollectionsCollectionListResponse](docs/CollectionsCollectionListResponse.md)
  - [ContentAddBody](docs/ContentAddBody.md)
  - [MinerClaimMinerBody](docs/MinerClaimMinerBody.md)
+ - [MinerMinerChainInfo](docs/MinerMinerChainInfo.md)
  - [MinerMinerSetInfoParams](docs/MinerMinerSetInfoParams.md)
  - [MinerSuspendMinerBody](docs/MinerSuspendMinerBody.md)
  - [PeeringPeeringPeer](docs/PeeringPeeringPeer.md)

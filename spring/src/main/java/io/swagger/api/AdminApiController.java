@@ -1,5 +1,6 @@
 package io.swagger.api;
 
+import io.swagger.model.ApiMinerResp;
 import io.swagger.model.PeeringPeeringPeer;
 import io.swagger.model.UtilHttpError;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -33,7 +34,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-04T12:55:54.653Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-13T19:43:18.594Z[GMT]")
 @RestController
 public class AdminApiController implements AdminApi {
 
@@ -103,6 +104,20 @@ public class AdminApiController implements AdminApi {
         }
 
         return new ResponseEntity<String>(HttpStatus.NOT_IMPLEMENTED);
+    }
+
+    public ResponseEntity<ApiMinerResp> adminMinersGet() {
+        String accept = request.getHeader("Accept");
+        if (accept != null && accept.contains("application/json")) {
+            try {
+                return new ResponseEntity<ApiMinerResp>(objectMapper.readValue("{\n  \"name\" : \"name\",\n  \"chain_info\" : {\n    \"owner\" : \"owner\",\n    \"peerId\" : \"peerId\",\n    \"addresses\" : [ \"addresses\", \"addresses\" ],\n    \"worker\" : \"worker\"\n  },\n  \"suspendedReason\" : \"suspendedReason\",\n  \"addr\" : { },\n  \"version\" : \"version\",\n  \"suspended\" : true\n}", ApiMinerResp.class), HttpStatus.NOT_IMPLEMENTED);
+            } catch (IOException e) {
+                log.error("Couldn't serialize response for content type application/json", e);
+                return new ResponseEntity<ApiMinerResp>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        return new ResponseEntity<ApiMinerResp>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<String> adminPeeringPeersDelete(@Parameter(in = ParameterIn.DEFAULT, description = "Peer ids", required=true, schema=@Schema()) @Valid @RequestBody List<String> body) {

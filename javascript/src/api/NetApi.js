@@ -13,6 +13,7 @@
  *
  */
 import {ApiClient} from "../ApiClient";
+import {ApiMinerResp} from '../model/ApiMinerResp';
 import {UtilHttpError} from '../model/UtilHttpError';
 
 /**
@@ -34,6 +35,48 @@ export class NetApi {
         this.apiClient = apiClient || ApiClient.instance;
     }
 
+    /**
+     * Callback function to receive the result of the adminMinersGet operation.
+     * @callback moduleapi/NetApi~adminMinersGetCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/ApiMinerResp{ data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get all miners
+     * This endpoint returns all miners. Note: value may be cached
+     * @param {module:api/NetApi~adminMinersGetCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
+     */
+    adminMinersGet(callback) {
+      
+      let postBody = null;
+
+      let pathParams = {
+        
+      };
+      let queryParams = {
+        
+      };
+      let headerParams = {
+        
+      };
+      let formParams = {
+        
+      };
+
+      let authNames = ['bearerAuth'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ApiMinerResp;
+
+      return this.apiClient.callApi(
+        '/admin/miners/', 'GET',
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
     /**
      * Callback function to receive the result of the publicMinersFailuresMinerGet operation.
      * @callback moduleapi/NetApi~publicMinersFailuresMinerGetCallback
@@ -77,48 +120,6 @@ export class NetApi {
 
       return this.apiClient.callApi(
         '/public/miners/failures/{miner}', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-    /**
-     * Callback function to receive the result of the publicMinersGet operation.
-     * @callback moduleapi/NetApi~publicMinersGetCallback
-     * @param {String} error Error message, if any.
-     * @param {'String'{ data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get all miners
-     * This endpoint returns all miners
-     * @param {module:api/NetApi~publicMinersGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
-     */
-    publicMinersGet(callback) {
-      
-      let postBody = null;
-
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
-
-      let authNames = ['bearerAuth'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = 'String';
-
-      return this.apiClient.callApi(
-        '/public/miners', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

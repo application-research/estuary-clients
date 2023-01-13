@@ -68,6 +68,25 @@ $apiInstance = new Swagger\Client\Api\AdminApi(
     new GuzzleHttp\Client(),
     $config
 );
+
+try {
+    $result = $apiInstance->adminMinersGet();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdminApi->adminMinersGet: ', $e->getMessage(), PHP_EOL;
+}
+
+// Configure API key authorization: bearerAuth
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$apiInstance = new Swagger\Client\Api\AdminApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $body = array("body_example"); // string[] | Peer ids
 
 try {
@@ -219,6 +238,7 @@ All URIs are relative to *//api.estuary.tech/*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AdminApi* | [**adminMinersGet**](docs/Api/AdminApi.md#adminminersget) | **GET** /admin/miners/ | Get all miners
 *AdminApi* | [**adminPeeringPeersDelete**](docs/Api/AdminApi.md#adminpeeringpeersdelete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
 *AdminApi* | [**adminPeeringPeersGet**](docs/Api/AdminApi.md#adminpeeringpeersget) | **GET** /admin/peering/peers | List all Peering peers
 *AdminApi* | [**adminPeeringPeersPost**](docs/Api/AdminApi.md#adminpeeringpeerspost) | **POST** /admin/peering/peers | Add peers on Peering Service
@@ -280,8 +300,8 @@ Class | Method | HTTP request | Description
 *MinerApi* | [**minerUnsuspendMinerPut**](docs/Api/MinerApi.md#minerunsuspendminerput) | **PUT** /miner/unsuspend/{miner} | Unuspend Miner
 *MinerApi* | [**publicMinersDealsMinerGet**](docs/Api/MinerApi.md#publicminersdealsminerget) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *MinerApi* | [**publicMinersStatsMinerGet**](docs/Api/MinerApi.md#publicminersstatsminerget) | **GET** /public/miners/stats/{miner} | Get miner stats
+*NetApi* | [**adminMinersGet**](docs/Api/NetApi.md#adminminersget) | **GET** /admin/miners/ | Get all miners
 *NetApi* | [**publicMinersFailuresMinerGet**](docs/Api/NetApi.md#publicminersfailuresminerget) | **GET** /public/miners/failures/{miner} | Get all miners
-*NetApi* | [**publicMinersGet**](docs/Api/NetApi.md#publicminersget) | **GET** /public/miners | Get all miners
 *NetApi* | [**publicNetAddrsGet**](docs/Api/NetApi.md#publicnetaddrsget) | **GET** /public/net/addrs | Net Addrs
 *NetApi* | [**publicNetPeersGet**](docs/Api/NetApi.md#publicnetpeersget) | **GET** /public/net/peers | Net Peers
 *PinningApi* | [**pinningPinsGet**](docs/Api/PinningApi.md#pinningpinsget) | **GET** /pinning/pins | List all pin status objects
@@ -295,7 +315,6 @@ Class | Method | HTTP request | Description
 *PublicApi* | [**publicMetricsDealsOnChainGet**](docs/Api/PublicApi.md#publicmetricsdealsonchainget) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 *PublicApi* | [**publicMinersDealsMinerGet**](docs/Api/PublicApi.md#publicminersdealsminerget) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *PublicApi* | [**publicMinersFailuresMinerGet**](docs/Api/PublicApi.md#publicminersfailuresminerget) | **GET** /public/miners/failures/{miner} | Get all miners
-*PublicApi* | [**publicMinersGet**](docs/Api/PublicApi.md#publicminersget) | **GET** /public/miners | Get all miners
 *PublicApi* | [**publicMinersStatsMinerGet**](docs/Api/PublicApi.md#publicminersstatsminerget) | **GET** /public/miners/stats/{miner} | Get miner stats
 *PublicApi* | [**publicNetAddrsGet**](docs/Api/PublicApi.md#publicnetaddrsget) | **GET** /public/net/addrs | Net Addrs
 *PublicApi* | [**publicNetPeersGet**](docs/Api/PublicApi.md#publicnetpeersget) | **GET** /public/net/peers | Net Peers
@@ -317,6 +336,7 @@ Class | Method | HTTP request | Description
  - [ApiEmptyResp](docs/Model/ApiEmptyResp.md)
  - [ApiEstimateDealBody](docs/Model/ApiEstimateDealBody.md)
  - [ApiGetApiKeysResp](docs/Model/ApiGetApiKeysResp.md)
+ - [ApiMinerResp](docs/Model/ApiMinerResp.md)
  - [ApiPublicNodeInfo](docs/Model/ApiPublicNodeInfo.md)
  - [AutoretrieveInitBody](docs/Model/AutoretrieveInitBody.md)
  - [CidCid](docs/Model/CidCid.md)
@@ -325,6 +345,7 @@ Class | Method | HTTP request | Description
  - [CollectionsCollectionListResponse](docs/Model/CollectionsCollectionListResponse.md)
  - [ContentAddBody](docs/Model/ContentAddBody.md)
  - [MinerClaimMinerBody](docs/Model/MinerClaimMinerBody.md)
+ - [MinerMinerChainInfo](docs/Model/MinerMinerChainInfo.md)
  - [MinerMinerSetInfoParams](docs/Model/MinerMinerSetInfoParams.md)
  - [MinerSuspendMinerBody](docs/Model/MinerSuspendMinerBody.md)
  - [PeeringPeeringPeer](docs/Model/PeeringPeeringPeer.md)

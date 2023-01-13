@@ -24,6 +24,25 @@ namespace estuary-client.Api
     {
         #region Synchronous Operations
         /// <summary>
+        /// Get all miners
+        /// </summary>
+        /// <remarks>
+        /// This endpoint returns all miners. Note: value may be cached
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiMinerResp</returns>
+        ApiMinerResp AdminMinersGet ();
+
+        /// <summary>
+        /// Get all miners
+        /// </summary>
+        /// <remarks>
+        /// This endpoint returns all miners. Note: value may be cached
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ApiMinerResp</returns>
+        ApiResponse<ApiMinerResp> AdminMinersGetWithHttpInfo ();
+        /// <summary>
         /// Remove peers on Peering Service
         /// </summary>
         /// <remarks>
@@ -181,6 +200,25 @@ namespace estuary-client.Api
         ApiResponse<string> AdminUsersGetWithHttpInfo ();
         #endregion Synchronous Operations
         #region Asynchronous Operations
+        /// <summary>
+        /// Get all miners
+        /// </summary>
+        /// <remarks>
+        /// This endpoint returns all miners. Note: value may be cached
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiMinerResp</returns>
+        System.Threading.Tasks.Task<ApiMinerResp> AdminMinersGetAsync ();
+
+        /// <summary>
+        /// Get all miners
+        /// </summary>
+        /// <remarks>
+        /// This endpoint returns all miners. Note: value may be cached
+        /// </remarks>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (ApiMinerResp)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ApiMinerResp>> AdminMinersGetAsyncWithHttpInfo ();
         /// <summary>
         /// Remove peers on Peering Service
         /// </summary>
@@ -446,6 +484,135 @@ namespace estuary-client.Api
         public void AddDefaultHeader(string key, string value)
         {
             this.Configuration.AddDefaultHeader(key, value);
+        }
+
+        /// <summary>
+        /// Get all miners This endpoint returns all miners. Note: value may be cached
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiMinerResp</returns>
+        public ApiMinerResp AdminMinersGet ()
+        {
+             ApiResponse<ApiMinerResp> localVarResponse = AdminMinersGetWithHttpInfo();
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get all miners This endpoint returns all miners. Note: value may be cached
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ApiMinerResp</returns>
+        public ApiResponse< ApiMinerResp > AdminMinersGetWithHttpInfo ()
+        {
+
+            var localVarPath = "/admin/miners/";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // authentication (bearerAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AdminMinersGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ApiMinerResp>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (ApiMinerResp) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiMinerResp)));
+        }
+
+        /// <summary>
+        /// Get all miners This endpoint returns all miners. Note: value may be cached
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiMinerResp</returns>
+        public async System.Threading.Tasks.Task<ApiMinerResp> AdminMinersGetAsync ()
+        {
+             ApiResponse<ApiMinerResp> localVarResponse = await AdminMinersGetAsyncWithHttpInfo();
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get all miners This endpoint returns all miners. Note: value may be cached
+        /// </summary>
+        /// <exception cref="estuary-client.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>Task of ApiResponse (ApiMinerResp)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ApiMinerResp>> AdminMinersGetAsyncWithHttpInfo ()
+        {
+
+            var localVarPath = "/admin/miners/";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            // authentication (bearerAuth) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
+            {
+                localVarHeaderParams["Authorization"] = this.Configuration.GetApiKeyWithPrefix("Authorization");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("AdminMinersGet", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<ApiMinerResp>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (ApiMinerResp) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ApiMinerResp)));
         }
 
         /// <summary>

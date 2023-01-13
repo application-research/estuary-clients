@@ -33,7 +33,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-04T12:55:54.653Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-13T19:43:18.594Z[GMT]")
 @Validated
 public interface PublicApi {
 
@@ -119,20 +119,6 @@ public interface PublicApi {
         produces = { "application/json" }, 
         method = RequestMethod.GET)
     ResponseEntity<String> publicMinersFailuresMinerGet(@Parameter(in = ParameterIn.PATH, description = "Filter by miner", required=true, schema=@Schema()) @PathVariable("miner") String miner);
-
-
-    @Operation(summary = "Get all miners", description = "This endpoint returns all miners", security = {
-        @SecurityRequirement(name = "bearerAuth")    }, tags={ "public", "net" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
-        
-        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
-        
-        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    @RequestMapping(value = "/public/miners",
-        produces = { "application/json" }, 
-        method = RequestMethod.GET)
-    ResponseEntity<String> publicMinersGet();
 
 
     @Operation(summary = "Get miner stats", description = "This endpoint returns miner stats", security = {

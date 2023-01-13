@@ -17,6 +17,9 @@
 #' @section Methods:
 #' \describe{
 #'
+#' admin_miners_get Get all miners
+#'
+#'
 #' admin_peering_peers_delete Remove peers on Peering Service
 #'
 #'
@@ -56,6 +59,30 @@ AdminApi <- R6::R6Class(
         self$apiClient <- ApiClient$new()
       }
     },
+    admin_miners_get = function(...){
+      args <- list(...)
+      queryParams <- list()
+      headerParams <- character()
+
+      urlPath <- "/admin/miners/"
+      resp <- self$apiClient$callApi(url = paste0(self$apiClient$basePath, urlPath),
+                                 method = "GET",
+                                 queryParams = queryParams,
+                                 headerParams = headerParams,
+                                 body = body,
+                                 ...)
+      
+      if (httr::status_code(resp) >= 200 && httr::status_code(resp) <= 299) {
+        returnObject <- ApiMinerResp$new()
+        result <- returnObject$fromJSON(httr::content(resp, "text", encoding = "UTF-8"))
+        Response$new(returnObject, resp)
+      } else if (httr::status_code(resp) >= 400 && httr::status_code(resp) <= 499) {
+        Response$new("API client error", resp)
+      } else if (httr::status_code(resp) >= 500 && httr::status_code(resp) <= 599) {
+        Response$new("API server error", resp)
+      }
+
+    }
     admin_peering_peers_delete = function(body, ...){
       args <- list(...)
       queryParams <- list()

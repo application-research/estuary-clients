@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
+import io.swagger.model.ApiMinerResp;
 import io.swagger.model.PeeringPeeringPeer;
 import io.swagger.model.UtilHttpError;
 
@@ -28,7 +29,7 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 @Path("/admin")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2023-01-04T12:55:54.380Z[GMT]")public interface AdminApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2023-01-13T19:43:16.993Z[GMT]")public interface AdminApi  {
    
     @POST
     @Path("/autoretrieve/init")
@@ -81,6 +82,19 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
                 @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
          })
     Response adminInvitesGet(@Context SecurityContext securityContext);
+
+    @GET
+    @Path("/miners/")
+    
+    @Produces({ "application/json" })
+    @Operation(summary = "Get all miners", description = "This endpoint returns all miners. Note: value may be cached", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "admin", "net" })
+    @ApiResponses(value = {
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiMinerResp.class))),
+                @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+                @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
+         })
+    Response adminMinersGet(@Context SecurityContext securityContext);
 
     @DELETE
     @Path("/peering/peers")

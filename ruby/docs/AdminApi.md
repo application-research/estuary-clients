@@ -4,6 +4,7 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**admin_miners_get**](AdminApi.md#admin_miners_get) | **GET** /admin/miners/ | Get all miners
 [**admin_peering_peers_delete**](AdminApi.md#admin_peering_peers_delete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
 [**admin_peering_peers_get**](AdminApi.md#admin_peering_peers_get) | **GET** /admin/peering/peers | List all Peering peers
 [**admin_peering_peers_post**](AdminApi.md#admin_peering_peers_post) | **POST** /admin/peering/peers | Add peers on Peering Service
@@ -12,6 +13,54 @@ Method | HTTP request | Description
 [**admin_peering_stop_post**](AdminApi.md#admin_peering_stop_post) | **POST** /admin/peering/stop | Stop Peering
 [**admin_system_config_get**](AdminApi.md#admin_system_config_get) | **GET** /admin/system/config | Get systems(estuary/shuttle) config
 [**admin_users_get**](AdminApi.md#admin_users_get) | **GET** /admin/users | Get all users
+
+# **admin_miners_get**
+> ApiMinerResp admin_miners_get
+
+Get all miners
+
+This endpoint returns all miners. Note: value may be cached
+
+### Example
+```ruby
+# load the gem
+require 'swagger_client'
+# setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: bearerAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::AdminApi.new
+
+begin
+  #Get all miners
+  result = api_instance.admin_miners_get
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling AdminApi->admin_miners_get: #{e}"
+end
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ApiMinerResp**](ApiMinerResp.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
 
 # **admin_peering_peers_delete**
 > String admin_peering_peers_delete(body)

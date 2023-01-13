@@ -2,6 +2,37 @@
 
 
 /**
+ * Get all miners
+ * This endpoint returns all miners. Note: value may be cached
+ *
+ * returns api.minerResp
+ **/
+exports.adminMinersGET = function() {
+  return new Promise(function(resolve, reject) {
+    var examples = {};
+    examples['application/json'] = {
+  "name" : "name",
+  "chain_info" : {
+    "owner" : "owner",
+    "peerId" : "peerId",
+    "addresses" : [ "addresses", "addresses" ],
+    "worker" : "worker"
+  },
+  "suspendedReason" : "suspendedReason",
+  "addr" : { },
+  "version" : "version",
+  "suspended" : true
+};
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
+  });
+}
+
+
+/**
  * Remove peers on Peering Service
  * This endpoint can be used to remove a Peer from the Peering Service
  *

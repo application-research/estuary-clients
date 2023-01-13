@@ -12,6 +12,11 @@ namespace IO.Swagger.Api
     public interface IAdminApi
     {
         /// <summary>
+        /// Get all miners This endpoint returns all miners. Note: value may be cached
+        /// </summary>
+        /// <returns>ApiMinerResp</returns>
+        ApiMinerResp AdminMinersGet ();
+        /// <summary>
         /// Remove peers on Peering Service This endpoint can be used to remove a Peer from the Peering Service
         /// </summary>
         /// <param name="body">Peer ids</param>
@@ -107,6 +112,37 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <value>An instance of the ApiClient</value>
         public ApiClient ApiClient {get; set;}
+    
+        /// <summary>
+        /// Get all miners This endpoint returns all miners. Note: value may be cached
+        /// </summary>
+        /// <returns>ApiMinerResp</returns>
+        public ApiMinerResp AdminMinersGet ()
+        {
+    
+            var path = "/admin/miners/";
+            path = path.Replace("{format}", "json");
+                
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+                                    
+            // authentication setting, if any
+            String[] authSettings = new String[] { "bearerAuth" };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling AdminMinersGet: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling AdminMinersGet: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (ApiMinerResp) ApiClient.Deserialize(response.Content, typeof(ApiMinerResp), response.Headers);
+        }
     
         /// <summary>
         /// Remove peers on Peering Service This endpoint can be used to remove a Peer from the Peering Service

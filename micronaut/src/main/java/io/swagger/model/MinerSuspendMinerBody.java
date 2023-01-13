@@ -12,7 +12,7 @@ import javax.validation.constraints.*;
  * MinerSuspendMinerBody
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2023-01-04T12:55:53.483Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2023-01-13T19:43:16.363Z[GMT]")
 public class MinerSuspendMinerBody   {
   @JsonProperty("reason")
   private String reason = null;

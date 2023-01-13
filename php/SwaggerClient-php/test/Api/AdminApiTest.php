@@ -71,6 +71,16 @@ class AdminApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for adminMinersGet
+     *
+     * Get all miners.
+     *
+     */
+    public function testAdminMinersGet()
+    {
+    }
+
+    /**
      * Test case for adminPeeringPeersDelete
      *
      * Remove peers on Peering Service.

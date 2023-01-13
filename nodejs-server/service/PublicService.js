@@ -117,25 +117,6 @@ exports.publicMinersFailuresMinerGET = function(miner) {
 
 
 /**
- * Get all miners
- * This endpoint returns all miners
- *
- * returns String
- **/
-exports.publicMinersGET = function() {
-  return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = "";
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
-  });
-}
-
-
-/**
  * Get miner stats
  * This endpoint returns miner stats
  *

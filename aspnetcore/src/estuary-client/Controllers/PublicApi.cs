@@ -232,40 +232,6 @@ namespace estuary-client.Controllers
         }
 
         /// <summary>
-        /// Get all miners
-        /// </summary>
-        /// <remarks>This endpoint returns all miners</remarks>
-        /// <response code="200">OK</response>
-        /// <response code="400">Bad Request</response>
-        /// <response code="500">Internal Server Error</response>
-        [HttpGet]
-        [Route("//api.estuary.tech//public/miners")]
-        [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
-        [ValidateModelState]
-        [SwaggerOperation("PublicMinersGet")]
-        [SwaggerResponse(statusCode: 200, type: typeof(string), description: "OK")]
-        [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
-        [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
-        public virtual IActionResult PublicMinersGet()
-        { 
-            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(string));
-
-            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400, default(UtilHttpError));
-
-            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(500, default(UtilHttpError));
-            string exampleJson = null;
-            exampleJson = "\"\"";
-            
-                        var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<string>(exampleJson)
-                        : default(string);            //TODO: Change the data returned
-            return new ObjectResult(example);
-        }
-
-        /// <summary>
         /// Get miner stats
         /// </summary>
         /// <remarks>This endpoint returns miner stats</remarks>

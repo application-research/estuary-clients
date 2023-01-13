@@ -66,6 +66,7 @@ All URIs are relative to *//api.estuary.tech/*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AdminApi* | [**adminMinersGet**](AdminApi.md#adminMinersGet) | **GET** /admin/miners/ | Get all miners
 *AdminApi* | [**adminPeeringPeersDelete**](AdminApi.md#adminPeeringPeersDelete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
 *AdminApi* | [**adminPeeringPeersGet**](AdminApi.md#adminPeeringPeersGet) | **GET** /admin/peering/peers | List all Peering peers
 *AdminApi* | [**adminPeeringPeersPost**](AdminApi.md#adminPeeringPeersPost) | **POST** /admin/peering/peers | Add peers on Peering Service
@@ -127,8 +128,8 @@ Class | Method | HTTP request | Description
 *MinerApi* | [**minerUnsuspendMinerPut**](MinerApi.md#minerUnsuspendMinerPut) | **PUT** /miner/unsuspend/{miner} | Unuspend Miner
 *MinerApi* | [**publicMinersDealsMinerGet**](MinerApi.md#publicMinersDealsMinerGet) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *MinerApi* | [**publicMinersStatsMinerGet**](MinerApi.md#publicMinersStatsMinerGet) | **GET** /public/miners/stats/{miner} | Get miner stats
+*NetApi* | [**adminMinersGet**](NetApi.md#adminMinersGet) | **GET** /admin/miners/ | Get all miners
 *NetApi* | [**publicMinersFailuresMinerGet**](NetApi.md#publicMinersFailuresMinerGet) | **GET** /public/miners/failures/{miner} | Get all miners
-*NetApi* | [**publicMinersGet**](NetApi.md#publicMinersGet) | **GET** /public/miners | Get all miners
 *NetApi* | [**publicNetAddrsGet**](NetApi.md#publicNetAddrsGet) | **GET** /public/net/addrs | Net Addrs
 *NetApi* | [**publicNetPeersGet**](NetApi.md#publicNetPeersGet) | **GET** /public/net/peers | Net Peers
 *PinningApi* | [**pinningPinsGet**](PinningApi.md#pinningPinsGet) | **GET** /pinning/pins | List all pin status objects
@@ -142,7 +143,6 @@ Class | Method | HTTP request | Description
 *PublicApi* | [**publicMetricsDealsOnChainGet**](PublicApi.md#publicMetricsDealsOnChainGet) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 *PublicApi* | [**publicMinersDealsMinerGet**](PublicApi.md#publicMinersDealsMinerGet) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *PublicApi* | [**publicMinersFailuresMinerGet**](PublicApi.md#publicMinersFailuresMinerGet) | **GET** /public/miners/failures/{miner} | Get all miners
-*PublicApi* | [**publicMinersGet**](PublicApi.md#publicMinersGet) | **GET** /public/miners | Get all miners
 *PublicApi* | [**publicMinersStatsMinerGet**](PublicApi.md#publicMinersStatsMinerGet) | **GET** /public/miners/stats/{miner} | Get miner stats
 *PublicApi* | [**publicNetAddrsGet**](PublicApi.md#publicNetAddrsGet) | **GET** /public/net/addrs | Net Addrs
 *PublicApi* | [**publicNetPeersGet**](PublicApi.md#publicNetPeersGet) | **GET** /public/net/peers | Net Peers
@@ -178,6 +178,8 @@ Class | Method | HTTP request | Description
  - [IpfsListPinStatusResponse](IpfsListPinStatusResponse.md)
  - [IpfsPin](IpfsPin.md)
  - [IpfsPinStatusResponse](IpfsPinStatusResponse.md)
+ - [MinerChainInfo](MinerChainInfo.md)
+ - [MinerResp](MinerResp.md)
  - [MinerSetInfoParams](MinerSetInfoParams.md)
  - [ModelContentType](ModelContentType.md)
  - [PeeringPeer](PeeringPeer.md)

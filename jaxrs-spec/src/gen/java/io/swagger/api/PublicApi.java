@@ -22,7 +22,7 @@ import javax.validation.Valid;
 
 @Path("/public")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2023-01-04T12:55:56.542Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2023-01-13T19:43:18.351Z[GMT]")
 public class PublicApi {
 
     @GET
@@ -113,19 +113,6 @@ public class PublicApi {
 
  @Parameter(description = "Filter by miner") String miner
 ) {
-        return Response.ok().entity("magic!").build();
-    }
-    @GET
-    @Path("/miners")
-    @Produces({ "application/json" })
-    @Operation(summary = "Get all miners", description = "This endpoint returns all miners", security = {
-        @SecurityRequirement(name = "bearerAuth")    }, tags={ "public", "net" })
-    @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
-        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
-        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
-    })
-    public Response publicMinersGet() {
         return Response.ok().entity("magic!").build();
     }
     @GET

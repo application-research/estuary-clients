@@ -131,16 +131,6 @@ class PublicApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test case for publicMinersGet
-     *
-     * Get all miners.
-     *
-     */
-    public function testPublicMinersGet()
-    {
-    }
-
-    /**
      * Test case for publicMinersStatsMinerGet
      *
      * Get miner stats.

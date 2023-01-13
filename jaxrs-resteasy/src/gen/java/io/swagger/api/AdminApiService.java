@@ -4,6 +4,7 @@ import io.swagger.api.*;
 import io.swagger.model.*;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
+import io.swagger.model.ApiMinerResp;
 import io.swagger.model.PeeringPeeringPeer;
 import io.swagger.model.UtilHttpError;
 
@@ -15,7 +16,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-04T12:55:51.407Z[GMT]")public interface AdminApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-13T19:43:16.246Z[GMT]")public interface AdminApiService {
       Response adminAutoretrieveInitPost(MultipartFormDataInput input,SecurityContext securityContext)
       throws NotFoundException;
       Response adminAutoretrieveListGet(SecurityContext securityContext)
@@ -23,6 +24,8 @@ import javax.ws.rs.core.SecurityContext;
       Response adminInvitesCodePost(String code,SecurityContext securityContext)
       throws NotFoundException;
       Response adminInvitesGet(SecurityContext securityContext)
+      throws NotFoundException;
+      Response adminMinersGet(SecurityContext securityContext)
       throws NotFoundException;
       Response adminPeeringPeersDelete(List<String> body,SecurityContext securityContext)
       throws NotFoundException;

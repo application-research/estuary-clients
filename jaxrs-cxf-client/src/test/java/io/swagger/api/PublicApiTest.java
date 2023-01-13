@@ -172,22 +172,6 @@ public class PublicApiTest {
         
     }
     /**
-     * Get all miners
-     *
-     * This endpoint returns all miners
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void publicMinersGetTest() {
-        //String response = api.publicMinersGet();
-        //assertNotNull(response);
-        // TODO: test validations
-        
-        
-    }
-    /**
      * Get miner stats
      *
      * This endpoint returns miner stats

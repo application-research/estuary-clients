@@ -63,16 +63,6 @@ module.exports.publicMinersFailuresMinerGET = function publicMinersFailuresMiner
     });
 };
 
-module.exports.publicMinersGET = function publicMinersGET (req, res, next) {
-  Public.publicMinersGET()
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
 module.exports.publicMinersStatsMinerGET = function publicMinersStatsMinerGET (req, res, next, miner) {
   Public.publicMinersStatsMinerGET(miner)
     .then(function (response) {

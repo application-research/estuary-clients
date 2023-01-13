@@ -331,47 +331,6 @@ export class PublicService {
     }
 
     /**
-     * Get all miners
-     * This endpoint returns all miners
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public publicMinersGet(observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public publicMinersGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public publicMinersGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
-    public publicMinersGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        let headers = this.defaultHeaders;
-
-        // authentication (bearerAuth) required
-        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
-            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
-        }
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<string>('get',`${this.basePath}/public/miners`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
      * Get miner stats
      * This endpoint returns miner stats
      * @param miner Filter by miner

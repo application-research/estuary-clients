@@ -34,19 +34,18 @@
 
   describe('(package)', function() {
     describe('NetApi', function() {
-      describe('publicMinersFailuresMinerGet', function() {
-        it('should call publicMinersFailuresMinerGet successfully', function(done) {
-          // TODO: uncomment, update parameter values for publicMinersFailuresMinerGet call and complete the assertions
+      describe('adminMinersGet', function() {
+        it('should call adminMinersGet successfully', function(done) {
+          // TODO: uncomment adminMinersGet call and complete the assertions
           /*
 
-          instance.publicMinersFailuresMinerGet(miner, function(error, data, response) {
+          instance.adminMinersGet(function(error, data, response) {
             if (error) {
               done(error);
               return;
             }
             // TODO: update response assertions
-            expect(data).to.be.a(&#x27;string&#x27;);
-            // expect(data).to.be(null);
+            expect(data).to.be.a(EstuaryClient.ApiMinerResp);
 
             done();
           });
@@ -55,12 +54,12 @@
           done();
         });
       });
-      describe('publicMinersGet', function() {
-        it('should call publicMinersGet successfully', function(done) {
-          // TODO: uncomment publicMinersGet call and complete the assertions
+      describe('publicMinersFailuresMinerGet', function() {
+        it('should call publicMinersFailuresMinerGet successfully', function(done) {
+          // TODO: uncomment, update parameter values for publicMinersFailuresMinerGet call and complete the assertions
           /*
 
-          instance.publicMinersGet(function(error, data, response) {
+          instance.publicMinersFailuresMinerGet(miner, function(error, data, response) {
             if (error) {
               done(error);
               return;

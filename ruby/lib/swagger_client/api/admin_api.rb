@@ -16,6 +16,56 @@ module SwaggerClient
     def initialize(api_client = ApiClient.default)
       @api_client = api_client
     end
+    # Get all miners
+    # This endpoint returns all miners. Note: value may be cached
+    # @param [Hash] opts the optional parameters
+    # @return [ApiMinerResp]
+    def admin_miners_get(opts = {})
+      data, _status_code, _headers = admin_miners_get_with_http_info(opts)
+      data
+    end
+
+    # Get all miners
+    # This endpoint returns all miners. Note: value may be cached
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ApiMinerResp, Integer, Hash)>] ApiMinerResp data, response status code and response headers
+    def admin_miners_get_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: AdminApi.admin_miners_get ...'
+      end
+      # resource path
+      local_var_path = '/admin/miners/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] 
+
+      return_type = opts[:return_type] || 'ApiMinerResp' 
+
+      auth_names = opts[:auth_names] || ['bearerAuth']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type)
+
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: AdminApi#admin_miners_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
     # Remove peers on Peering Service
     # This endpoint can be used to remove a Peer from the Peering Service
     # @param body Peer ids

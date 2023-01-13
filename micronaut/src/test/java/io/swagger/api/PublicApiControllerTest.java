@@ -79,15 +79,6 @@ class PublicApiControllerTest {
     }
 
     @Test
-    void publicMinersGetTest() {
-        try {
-            api.publicMinersGet().blockingGet();
-        } catch (UnsupportedOperationException e) {
-            assumeTrue(false, "API is not yet implemented");
-        }
-    }
-
-    @Test
     void publicMinersStatsMinerGetTest() {
         String miner = "miner_example";
         try {

@@ -5,6 +5,7 @@ import io.swagger.model.*;
 
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 
+import io.swagger.model.ApiMinerResp;
 import io.swagger.model.PeeringPeeringPeer;
 import io.swagger.model.UtilHttpError;
 
@@ -16,11 +17,12 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2023-01-04T12:55:53.653Z[GMT]")public interface AdminApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2023-01-13T19:43:16.521Z[GMT]")public interface AdminApiService {
     public Response adminAutoretrieveInitPost(String addresses,String pubKey,SecurityContext securityContext);
     public Response adminAutoretrieveListGet(SecurityContext securityContext);
     public Response adminInvitesCodePost(String code,SecurityContext securityContext);
     public Response adminInvitesGet(SecurityContext securityContext);
+    public Response adminMinersGet(SecurityContext securityContext);
     public Response adminPeeringPeersDelete(List<String> body,SecurityContext securityContext);
     public Response adminPeeringPeersGet(SecurityContext securityContext);
     public Response adminPeeringPeersPost(List<PeeringPeeringPeer> body,SecurityContext securityContext);

@@ -5,6 +5,7 @@
  */
 package io.swagger.api;
 
+import io.swagger.model.ApiMinerResp;
 import io.swagger.model.PeeringPeeringPeer;
 import io.swagger.model.UtilHttpError;
 import io.swagger.v3.oas.annotations.Operation;
@@ -33,7 +34,7 @@ import javax.validation.constraints.*;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-04T12:55:54.653Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-13T19:43:18.594Z[GMT]")
 @Validated
 public interface AdminApi {
 
@@ -92,6 +93,20 @@ public interface AdminApi {
         produces = { "application/json" }, 
         method = RequestMethod.GET)
     ResponseEntity<String> adminInvitesGet();
+
+
+    @Operation(summary = "Get all miners", description = "This endpoint returns all miners. Note: value may be cached", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "admin", "net" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiMinerResp.class))),
+        
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    @RequestMapping(value = "/admin/miners/",
+        produces = { "application/json" }, 
+        method = RequestMethod.GET)
+    ResponseEntity<ApiMinerResp> adminMinersGet();
 
 
     @Operation(summary = "Remove peers on Peering Service", description = "This endpoint can be used to remove a Peer from the Peering Service", security = {

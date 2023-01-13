@@ -481,6 +481,44 @@ class Decoders {
                 return .failure(.typeMismatch(expected: "ApiGetApiKeysResp", actual: "\(source)"))
             }
         }
+        // Decoder for [ApiMinerResp]
+        Decoders.addDecoder(clazz: [ApiMinerResp].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[ApiMinerResp]> in
+            return Decoders.decode(clazz: [ApiMinerResp].self, source: source)
+        }
+
+        // Decoder for ApiMinerResp
+        Decoders.addDecoder(clazz: ApiMinerResp.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<ApiMinerResp> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? ApiMinerResp() : instance as! ApiMinerResp
+                switch Decoders.decodeOptional(clazz: AddressAddress.self, source: sourceDictionary["addr"] as AnyObject?) {
+                case let .success(value): _result.addr = value
+                case let .failure(error): break
+                }
+                switch Decoders.decodeOptional(clazz: MinerMinerChainInfo.self, source: sourceDictionary["chain_info"] as AnyObject?) {
+                case let .success(value): _result.chainInfo = value
+                case let .failure(error): break
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["name"] as AnyObject?) {
+                case let .success(value): _result.name = value
+                case let .failure(error): break
+                }
+                switch Decoders.decodeOptional(clazz: Bool.self, source: sourceDictionary["suspended"] as AnyObject?) {
+                case let .success(value): _result.suspended = value
+                case let .failure(error): break
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["suspendedReason"] as AnyObject?) {
+                case let .success(value): _result.suspendedReason = value
+                case let .failure(error): break
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["version"] as AnyObject?) {
+                case let .success(value): _result.version = value
+                case let .failure(error): break
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "ApiMinerResp", actual: "\(source)"))
+            }
+        }
         // Decoder for [ApiPublicNodeInfo]
         Decoders.addDecoder(clazz: [ApiPublicNodeInfo].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[ApiPublicNodeInfo]> in
             return Decoders.decode(clazz: [ApiPublicNodeInfo].self, source: source)
@@ -675,6 +713,36 @@ class Decoders {
                 return .success(_result)
             } else {
                 return .failure(.typeMismatch(expected: "MinerClaimMinerBody", actual: "\(source)"))
+            }
+        }
+        // Decoder for [MinerMinerChainInfo]
+        Decoders.addDecoder(clazz: [MinerMinerChainInfo].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[MinerMinerChainInfo]> in
+            return Decoders.decode(clazz: [MinerMinerChainInfo].self, source: source)
+        }
+
+        // Decoder for MinerMinerChainInfo
+        Decoders.addDecoder(clazz: MinerMinerChainInfo.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<MinerMinerChainInfo> in
+            if let sourceDictionary = source as? [AnyHashable: Any] {
+                let _result = instance == nil ? MinerMinerChainInfo() : instance as! MinerMinerChainInfo
+                switch Decoders.decodeOptional(clazz: [String].self, source: sourceDictionary["addresses"] as AnyObject?) {
+                case let .success(value): _result.addresses = value
+                case let .failure(error): break
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["owner"] as AnyObject?) {
+                case let .success(value): _result.owner = value
+                case let .failure(error): break
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["peerId"] as AnyObject?) {
+                case let .success(value): _result.peerId = value
+                case let .failure(error): break
+                }
+                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["worker"] as AnyObject?) {
+                case let .success(value): _result.worker = value
+                case let .failure(error): break
+                }
+                return .success(_result)
+            } else {
+                return .failure(.typeMismatch(expected: "MinerMinerChainInfo", actual: "\(source)"))
             }
         }
         // Decoder for [MinerMinerSetInfoParams]

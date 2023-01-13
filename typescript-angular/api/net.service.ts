@@ -17,6 +17,7 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
+import { ApiMinerResp } from '../model/apiMinerResp';
 import { UtilHttpError } from '../model/utilHttpError';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -57,6 +58,47 @@ export class NetService {
 
     /**
      * Get all miners
+     * This endpoint returns all miners. Note: value may be cached
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public adminMinersGet(observe?: 'body', reportProgress?: boolean): Observable<ApiMinerResp>;
+    public adminMinersGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<ApiMinerResp>>;
+    public adminMinersGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<ApiMinerResp>>;
+    public adminMinersGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
+        let headers = this.defaultHeaders;
+
+        // authentication (bearerAuth) required
+        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
+            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
+        }
+
+        // to determine the Accept header
+        let httpHeaderAccepts: string[] = [
+            'application/json'
+        ];
+        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        if (httpHeaderAcceptSelected != undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+        ];
+
+        return this.httpClient.request<ApiMinerResp>('get',`${this.basePath}/admin/miners/`,
+            {
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    /**
+     * Get all miners
      * This endpoint returns all miners
      * @param miner Filter by miner
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
@@ -92,47 +134,6 @@ export class NetService {
         ];
 
         return this.httpClient.request<string>('get',`${this.basePath}/public/miners/failures/${encodeURIComponent(String(miner))}`,
-            {
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * Get all miners
-     * This endpoint returns all miners
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public publicMinersGet(observe?: 'body', reportProgress?: boolean): Observable<string>;
-    public publicMinersGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<string>>;
-    public publicMinersGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<string>>;
-    public publicMinersGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-        let headers = this.defaultHeaders;
-
-        // authentication (bearerAuth) required
-        if (this.configuration.apiKeys && this.configuration.apiKeys["Authorization"]) {
-            headers = headers.set('Authorization', this.configuration.apiKeys["Authorization"]);
-        }
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.request<string>('get',`${this.basePath}/public/miners`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

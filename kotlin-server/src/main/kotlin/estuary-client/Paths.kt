@@ -32,6 +32,12 @@ inline fun <reified T : Any> Route.delete(noinline body: suspend PipelineContext
 
 object Paths {
     /**
+     * Get all miners
+     * This endpoint returns all miners. Note: value may be cached
+     */
+    @Location("/admin/miners/") class adminMinersGet()
+
+    /**
      * Remove peers on Peering Service
      * This endpoint can be used to remove a Peer from the Peering Service
      * @param body Peer ids 
@@ -477,16 +483,16 @@ object Paths {
 
     /**
      * Get all miners
-     * This endpoint returns all miners
-     * @param miner Filter by miner 
+     * This endpoint returns all miners. Note: value may be cached
      */
-    @Location("/public/miners/failures/{miner}") class publicMinersFailuresMinerGet(val miner: kotlin.String)
+    @Location("/admin/miners/") class adminMinersGet()
 
     /**
      * Get all miners
      * This endpoint returns all miners
+     * @param miner Filter by miner 
      */
-    @Location("/public/miners") class publicMinersGet()
+    @Location("/public/miners/failures/{miner}") class publicMinersFailuresMinerGet(val miner: kotlin.String)
 
     /**
      * Net Addrs
@@ -577,12 +583,6 @@ object Paths {
      * @param miner Filter by miner 
      */
     @Location("/public/miners/failures/{miner}") class publicMinersFailuresMinerGet(val miner: kotlin.String)
-
-    /**
-     * Get all miners
-     * This endpoint returns all miners
-     */
-    @Location("/public/miners") class publicMinersGet()
 
     /**
      * Get miner stats

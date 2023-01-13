@@ -4,6 +4,7 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AdminMinersGet**](AdminApi.md#AdminMinersGet) | **Get** /admin/miners/ | Get all miners
 [**AdminPeeringPeersDelete**](AdminApi.md#AdminPeeringPeersDelete) | **Delete** /admin/peering/peers | Remove peers on Peering Service
 [**AdminPeeringPeersGet**](AdminApi.md#AdminPeeringPeersGet) | **Get** /admin/peering/peers | List all Peering peers
 [**AdminPeeringPeersPost**](AdminApi.md#AdminPeeringPeersPost) | **Post** /admin/peering/peers | Add peers on Peering Service
@@ -12,6 +13,30 @@ Method | HTTP request | Description
 [**AdminPeeringStopPost**](AdminApi.md#AdminPeeringStopPost) | **Post** /admin/peering/stop | Stop Peering
 [**AdminSystemConfigGet**](AdminApi.md#AdminSystemConfigGet) | **Get** /admin/system/config | Get systems(estuary/shuttle) config
 [**AdminUsersGet**](AdminApi.md#AdminUsersGet) | **Get** /admin/users | Get all users
+
+# **AdminMinersGet**
+> ApiMinerResp AdminMinersGet(ctx, )
+Get all miners
+
+This endpoint returns all miners. Note: value may be cached
+
+### Required Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ApiMinerResp**](api.minerResp.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **AdminPeeringPeersDelete**
 > string AdminPeeringPeersDelete(ctx, body)

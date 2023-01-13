@@ -56,6 +56,8 @@ class ApiClient {
           return new ApiEstimateDealBody.fromJson(value);
         case 'ApiGetApiKeysResp':
           return new ApiGetApiKeysResp.fromJson(value);
+        case 'ApiMinerResp':
+          return new ApiMinerResp.fromJson(value);
         case 'ApiPublicNodeInfo':
           return new ApiPublicNodeInfo.fromJson(value);
         case 'AutoretrieveInitBody':
@@ -72,6 +74,8 @@ class ApiClient {
           return new ContentAddBody.fromJson(value);
         case 'MinerClaimMinerBody':
           return new MinerClaimMinerBody.fromJson(value);
+        case 'MinerMinerChainInfo':
+          return new MinerMinerChainInfo.fromJson(value);
         case 'MinerMinerSetInfoParams':
           return new MinerMinerSetInfoParams.fromJson(value);
         case 'MinerSuspendMinerBody':

@@ -22,6 +22,7 @@ import {ApiDeleteContentFromCollectionBody} from './model/ApiDeleteContentFromCo
 import {ApiEmptyResp} from './model/ApiEmptyResp';
 import {ApiEstimateDealBody} from './model/ApiEstimateDealBody';
 import {ApiGetApiKeysResp} from './model/ApiGetApiKeysResp';
+import {ApiMinerResp} from './model/ApiMinerResp';
 import {ApiPublicNodeInfo} from './model/ApiPublicNodeInfo';
 import {AutoretrieveInitBody} from './model/AutoretrieveInitBody';
 import {CidCid} from './model/CidCid';
@@ -30,6 +31,7 @@ import {CollectionsCollection} from './model/CollectionsCollection';
 import {CollectionsCollectionListResponse} from './model/CollectionsCollectionListResponse';
 import {ContentAddBody} from './model/ContentAddBody';
 import {MinerClaimMinerBody} from './model/MinerClaimMinerBody';
+import {MinerMinerChainInfo} from './model/MinerMinerChainInfo';
 import {MinerMinerSetInfoParams} from './model/MinerMinerSetInfoParams';
 import {MinerSuspendMinerBody} from './model/MinerSuspendMinerBody';
 import {PeeringPeeringPeer} from './model/PeeringPeeringPeer';
@@ -150,6 +152,12 @@ export {
     ApiGetApiKeysResp,
 
     /**
+     * The ApiMinerResp model constructor.
+     * @property {module:model/ApiMinerResp}
+     */
+    ApiMinerResp,
+
+    /**
      * The ApiPublicNodeInfo model constructor.
      * @property {module:model/ApiPublicNodeInfo}
      */
@@ -196,6 +204,12 @@ export {
      * @property {module:model/MinerClaimMinerBody}
      */
     MinerClaimMinerBody,
+
+    /**
+     * The MinerMinerChainInfo model constructor.
+     * @property {module:model/MinerMinerChainInfo}
+     */
+    MinerMinerChainInfo,
 
     /**
      * The MinerMinerSetInfoParams model constructor.

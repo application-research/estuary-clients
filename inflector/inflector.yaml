@@ -13,6 +13,7 @@ ApiDeleteContentFromCollectionBody : io.swagger.model.ApiDeleteContentFromCollec
 ApiEmptyResp : io.swagger.model.ApiEmptyResp
 ApiEstimateDealBody : io.swagger.model.ApiEstimateDealBody
 ApiGetApiKeysResp : io.swagger.model.ApiGetApiKeysResp
+ApiMinerResp : io.swagger.model.ApiMinerResp
 ApiPublicNodeInfo : io.swagger.model.ApiPublicNodeInfo
 AutoretrieveInitBody : io.swagger.model.AutoretrieveInitBody
 CidCid : io.swagger.model.CidCid
@@ -21,6 +22,7 @@ CollectionsCollection : io.swagger.model.CollectionsCollection
 CollectionsCollectionListResponse : io.swagger.model.CollectionsCollectionListResponse
 ContentAddBody : io.swagger.model.ContentAddBody
 MinerClaimMinerBody : io.swagger.model.MinerClaimMinerBody
+MinerMinerChainInfo : io.swagger.model.MinerMinerChainInfo
 MinerMinerSetInfoParams : io.swagger.model.MinerMinerSetInfoParams
 MinerSuspendMinerBody : io.swagger.model.MinerSuspendMinerBody
 PeeringPeeringPeer : io.swagger.model.PeeringPeeringPeer

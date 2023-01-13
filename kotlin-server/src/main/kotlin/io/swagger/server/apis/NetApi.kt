@@ -33,19 +33,32 @@ import estuary-client.Paths
 import estuary-client.infrastructure.ApiPrincipal
 
 
+import io.swagger.server.models.ApiminerResp
 import io.swagger.server.models.UtilHttpError
 
 @KtorExperimentalLocationsAPI
 fun Route.NetApi() {
     val gson = Gson()
     val empty = mutableMapOf<String, Any?>()
-    get<Paths.publicMinersFailuresMinerGet> {  _: Paths.publicMinersFailuresMinerGet ->
+    get<Paths.adminMinersGet> {  _: Paths.adminMinersGet ->
         val principal = call.authentication.principal<ApiPrincipal>()
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)
         } else {
             val exampleContentType = "application/json"
-            val exampleContentString = """"""""
+            val exampleContentString = """{
+  "name" : "name",
+  "chain_info" : {
+    "owner" : "owner",
+    "peerId" : "peerId",
+    "addresses" : [ "addresses", "addresses" ],
+    "worker" : "worker"
+  },
+  "suspendedReason" : "suspendedReason",
+  "addr" : { },
+  "version" : "version",
+  "suspended" : true
+}"""
             
             when(exampleContentType) {
                 "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
@@ -53,7 +66,7 @@ fun Route.NetApi() {
                 else -> call.respondText(exampleContentString)
             }        }
     }
-    get<Paths.publicMinersGet> {  _: Paths.publicMinersGet ->
+    get<Paths.publicMinersFailuresMinerGet> {  _: Paths.publicMinersFailuresMinerGet ->
         val principal = call.authentication.principal<ApiPrincipal>()
         if (principal == null) {
             call.respond(HttpStatusCode.Unauthorized)

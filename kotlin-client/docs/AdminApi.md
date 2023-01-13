@@ -4,6 +4,7 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**adminMinersGet**](AdminApi.md#adminMinersGet) | **GET** /admin/miners/ | Get all miners
 [**adminPeeringPeersDelete**](AdminApi.md#adminPeeringPeersDelete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
 [**adminPeeringPeersGet**](AdminApi.md#adminPeeringPeersGet) | **GET** /admin/peering/peers | List all Peering peers
 [**adminPeeringPeersPost**](AdminApi.md#adminPeeringPeersPost) | **POST** /admin/peering/peers | Add peers on Peering Service
@@ -12,6 +13,49 @@ Method | HTTP request | Description
 [**adminPeeringStopPost**](AdminApi.md#adminPeeringStopPost) | **POST** /admin/peering/stop | Stop Peering
 [**adminSystemConfigGet**](AdminApi.md#adminSystemConfigGet) | **GET** /admin/system/config | Get systems(estuary/shuttle) config
 [**adminUsersGet**](AdminApi.md#adminUsersGet) | **GET** /admin/users | Get all users
+
+<a name="adminMinersGet"></a>
+# **adminMinersGet**
+> ApiminerResp adminMinersGet()
+
+Get all miners
+
+This endpoint returns all miners. Note: value may be cached
+
+### Example
+```kotlin
+// Import classes:
+//import estuary-client.infrastructure.*
+//import io.swagger.client.models.*;
+
+val apiInstance = AdminApi()
+try {
+    val result : ApiminerResp = apiInstance.adminMinersGet()
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling AdminApi#adminMinersGet")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling AdminApi#adminMinersGet")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ApiminerResp**](ApiminerResp.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="adminPeeringPeersDelete"></a>
 # **adminPeeringPeersDelete**

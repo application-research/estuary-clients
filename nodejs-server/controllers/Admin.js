@@ -3,6 +3,16 @@
 var utils = require('../utils/writer.js');
 var Admin = require('../service/AdminService');
 
+module.exports.adminMinersGET = function adminMinersGET (req, res, next) {
+  Admin.adminMinersGET()
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
+
 module.exports.adminPeeringPeersDELETE = function adminPeeringPeersDELETE (req, res, next, body) {
   Admin.adminPeeringPeersDELETE(body)
     .then(function (response) {

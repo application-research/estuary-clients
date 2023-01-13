@@ -17,7 +17,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2023-01-04T12:55:54.251Z[GMT]")public class PublicApiServiceImpl implements PublicApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2023-01-13T19:43:17.065Z[GMT]")public class PublicApiServiceImpl implements PublicApiService {
       @Override
       public Response publicByCidCidGet(String cid, SecurityContext securityContext) {
       // do some magic!
@@ -45,11 +45,6 @@ import javax.ws.rs.core.SecurityContext;
   }
       @Override
       public Response publicMinersFailuresMinerGet(String miner, SecurityContext securityContext) {
-      // do some magic!
-      return Response.ok().entity("magic!").build();
-  }
-      @Override
-      public Response publicMinersGet(SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }

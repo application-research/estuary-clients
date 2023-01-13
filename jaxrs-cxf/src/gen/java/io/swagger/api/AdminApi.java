@@ -1,5 +1,6 @@
 package io.swagger.api;
 
+import io.swagger.model.ApiMinerResp;
 import io.swagger.model.PeeringPeeringPeer;
 import io.swagger.model.UtilHttpError;
 
@@ -29,6 +30,22 @@ import javax.validation.Valid;
  */
 @Path("/")
 public interface AdminApi  {
+
+    /**
+     * Get all miners
+     *
+     * This endpoint returns all miners. Note: value may be cached
+     *
+     */
+    @GET
+    @Path("/admin/miners/")
+    @Produces({ "application/json" })
+    @Operation(summary = "Get all miners", tags={ "admin", "net" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiMinerResp.class))),
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public ApiMinerResp adminMinersGet();
 
     /**
      * Remove peers on Peering Service

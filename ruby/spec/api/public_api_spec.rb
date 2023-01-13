@@ -102,17 +102,6 @@ describe 'PublicApi' do
     end
   end
 
-  # unit tests for public_miners_get
-  # Get all miners
-  # This endpoint returns all miners
-  # @param [Hash] opts the optional parameters
-  # @return [String]
-  describe 'public_miners_get test' do
-    it 'should work' do
-      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-    end
-  end
-
   # unit tests for public_miners_stats_miner_get
   # Get miner stats
   # This endpoint returns miner stats

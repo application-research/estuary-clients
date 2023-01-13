@@ -17,6 +17,56 @@ module SwaggerClient
       @api_client = api_client
     end
     # Get all miners
+    # This endpoint returns all miners. Note: value may be cached
+    # @param [Hash] opts the optional parameters
+    # @return [ApiMinerResp]
+    def admin_miners_get(opts = {})
+      data, _status_code, _headers = admin_miners_get_with_http_info(opts)
+      data
+    end
+
+    # Get all miners
+    # This endpoint returns all miners. Note: value may be cached
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(ApiMinerResp, Integer, Hash)>] ApiMinerResp data, response status code and response headers
+    def admin_miners_get_with_http_info(opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: NetApi.admin_miners_get ...'
+      end
+      # resource path
+      local_var_path = '/admin/miners/'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:body] 
+
+      return_type = opts[:return_type] || 'ApiMinerResp' 
+
+      auth_names = opts[:auth_names] || ['bearerAuth']
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type)
+
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: NetApi#admin_miners_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+    # Get all miners
     # This endpoint returns all miners
     # @param miner Filter by miner
     # @param [Hash] opts the optional parameters
@@ -69,56 +119,6 @@ module SwaggerClient
 
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: NetApi#public_miners_failures_miner_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-    # Get all miners
-    # This endpoint returns all miners
-    # @param [Hash] opts the optional parameters
-    # @return [String]
-    def public_miners_get(opts = {})
-      data, _status_code, _headers = public_miners_get_with_http_info(opts)
-      data
-    end
-
-    # Get all miners
-    # This endpoint returns all miners
-    # @param [Hash] opts the optional parameters
-    # @return [Array<(String, Integer, Hash)>] String data, response status code and response headers
-    def public_miners_get_with_http_info(opts = {})
-      if @api_client.config.debugging
-        @api_client.config.logger.debug 'Calling API: NetApi.public_miners_get ...'
-      end
-      # resource path
-      local_var_path = '/public/miners'
-
-      # query parameters
-      query_params = opts[:query_params] || {}
-
-      # header parameters
-      header_params = opts[:header_params] || {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-
-      # form parameters
-      form_params = opts[:form_params] || {}
-
-      # http body (model)
-      post_body = opts[:body] 
-
-      return_type = opts[:return_type] || 'String' 
-
-      auth_names = opts[:auth_names] || ['bearerAuth']
-      data, status_code, headers = @api_client.call_api(:GET, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => return_type)
-
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: NetApi#public_miners_get\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

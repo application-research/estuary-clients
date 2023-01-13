@@ -781,6 +781,29 @@
     }
   }
 };
+            defs["api.minerResp"] = {
+  "type" : "object",
+  "properties" : {
+    "addr" : {
+      "$ref" : "#/components/schemas/address.Address"
+    },
+    "chain_info" : {
+      "$ref" : "#/components/schemas/miner.MinerChainInfo"
+    },
+    "name" : {
+      "type" : "string"
+    },
+    "suspended" : {
+      "type" : "boolean"
+    },
+    "suspendedReason" : {
+      "type" : "string"
+    },
+    "version" : {
+      "type" : "string"
+    }
+  }
+};
             defs["api.publicNodeInfo"] = {
   "type" : "object",
   "properties" : {
@@ -888,6 +911,26 @@
       "$ref" : "#/components/schemas/address.Address"
     },
     "name" : {
+      "type" : "string"
+    }
+  }
+};
+            defs["miner.MinerChainInfo"] = {
+  "type" : "object",
+  "properties" : {
+    "addresses" : {
+      "type" : "array",
+      "items" : {
+        "type" : "string"
+      }
+    },
+    "owner" : {
+      "type" : "string"
+    },
+    "peerId" : {
+      "type" : "string"
+    },
+    "worker" : {
       "type" : "string"
     }
   }
@@ -1146,6 +1189,9 @@
             <li class="nav-fixed nav-header active" data-group="_"><a href="#api-_">API Summary</a></li>
 
                   <li class="nav-header" data-group="Admin"><a href="#api-Admin">API Methods - Admin</a></li>
+                    <li data-group="Admin" data-name="adminMinersGet" class="">
+                      <a href="#api-Admin-adminMinersGet">adminMinersGet</a>
+                    </li>
                     <li data-group="Admin" data-name="adminPeeringPeersDelete" class="">
                       <a href="#api-Admin-adminPeeringPeersDelete">adminPeeringPeersDelete</a>
                     </li>
@@ -1337,11 +1383,11 @@
                       <a href="#api-Miner-publicMinersStatsMinerGet">publicMinersStatsMinerGet</a>
                     </li>
                   <li class="nav-header" data-group="Net"><a href="#api-Net">API Methods - Net</a></li>
+                    <li data-group="Net" data-name="adminMinersGet" class="">
+                      <a href="#api-Net-adminMinersGet">adminMinersGet</a>
+                    </li>
                     <li data-group="Net" data-name="publicMinersFailuresMinerGet" class="">
                       <a href="#api-Net-publicMinersFailuresMinerGet">publicMinersFailuresMinerGet</a>
-                    </li>
-                    <li data-group="Net" data-name="publicMinersGet" class="">
-                      <a href="#api-Net-publicMinersGet">publicMinersGet</a>
                     </li>
                     <li data-group="Net" data-name="publicNetAddrsGet" class="">
                       <a href="#api-Net-publicNetAddrsGet">publicNetAddrsGet</a>
@@ -1383,9 +1429,6 @@
                     </li>
                     <li data-group="Public" data-name="publicMinersFailuresMinerGet" class="">
                       <a href="#api-Public-publicMinersFailuresMinerGet">publicMinersFailuresMinerGet</a>
-                    </li>
-                    <li data-group="Public" data-name="publicMinersGet" class="">
-                      <a href="#api-Public-publicMinersGet">publicMinersGet</a>
                     </li>
                     <li data-group="Public" data-name="publicMinersStatsMinerGet" class="">
                       <a href="#api-Public-publicMinersStatsMinerGet">publicMinersStatsMinerGet</a>
@@ -1436,6 +1479,400 @@
         <div id="sections">
                 <section id="api-Admin">
                   <h1>Admin</h1>
+                    <div id="api-Admin-adminMinersGet">
+                      <article id="api-Admin-adminMinersGet-0" data-group="User" data-name="adminMinersGet" data-version="0">
+                        <div class="pull-left">
+                          <h1>adminMinersGet</h1>
+                          <p>Get all miners</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">This endpoint returns all miners. Note: value may be cached</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/admin/miners/</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Admin-adminMinersGet-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Admin-adminMinersGet-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Admin-adminMinersGet-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Admin-adminMinersGet-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Admin-adminMinersGet-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Admin-adminMinersGet-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Admin-adminMinersGet-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Admin-adminMinersGet-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Admin-adminMinersGet-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Admin-adminMinersGet-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Admin-adminMinersGet-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Admin-adminMinersGet-0-curl">
+                           <pre class="prettyprint"><code class="language-bsh">curl -X GET\
+-H "Authorization: [[apiKey]]"\
+-H "Accept: application/json"\
+"//api.estuary.tech//admin/miners/"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Admin-adminMinersGet-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.AdminApi;
+
+import java.io.File;
+import java.util.*;
+
+public class AdminApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: bearerAuth
+        ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //bearerAuth.setApiKeyPrefix("Token");
+
+        AdminApi apiInstance = new AdminApi();
+        try {
+            api.minerResp result = apiInstance.adminMinersGet();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AdminApi#adminMinersGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Admin-adminMinersGet-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.AdminApi;
+
+public class AdminApiExample {
+
+    public static void main(String[] args) {
+        AdminApi apiInstance = new AdminApi();
+        try {
+            api.minerResp result = apiInstance.adminMinersGet();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling AdminApi#adminMinersGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Admin-adminMinersGet-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Admin-adminMinersGet-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: bearerAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"Authorization"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
+
+AdminApi *apiInstance = [[AdminApi alloc] init];
+
+// Get all miners
+[apiInstance adminMinersGetWithCompletionHandler: 
+              ^(api.minerResp output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Admin-adminMinersGet-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var EstuaryApi = require('estuary_api');
+var defaultClient = EstuaryApi.ApiClient.instance;
+
+// Configure API key authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearerAuth.apiKeyPrefix['Authorization'] = "Token"
+
+var api = new EstuaryApi.AdminApi()
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.adminMinersGet(callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Admin-adminMinersGet-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Admin-adminMinersGet-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
+
+namespace Example
+{
+    public class adminMinersGetExample
+    {
+        public void main()
+        {
+
+            // Configure API key authorization: bearerAuth
+            Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
+
+            var apiInstance = new AdminApi();
+
+            try
+            {
+                // Get all miners
+                api.minerResp result = apiInstance.adminMinersGet();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling AdminApi.adminMinersGet: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Admin-adminMinersGet-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: bearerAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$api_instance = new Swagger\Client\ApiAdminApi();
+
+try {
+    $result = $api_instance->adminMinersGet();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AdminApi->adminMinersGet: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Admin-adminMinersGet-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::AdminApi;
+
+# Configure API key authorization: bearerAuth
+$WWW::SwaggerClient::Configuration::api_key->{'Authorization'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'Authorization'} = "Bearer";
+
+my $api_instance = WWW::SwaggerClient::AdminApi->new();
+
+eval { 
+    my $result = $api_instance->adminMinersGet();
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling AdminApi->adminMinersGet: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Admin-adminMinersGet-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: bearerAuth
+swagger_client.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = swagger_client.AdminApi()
+
+try: 
+    # Get all miners
+    api_response = api_instance.admin_miners_get()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling AdminApi->adminMinersGet: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - OK </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-adminMinersGet-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-adminMinersGet-200-schema">
+                                  <div id='responses-adminMinersGet-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "OK",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/api.minerResp"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-adminMinersGet-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-adminMinersGet-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-adminMinersGet-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 400 - Bad Request </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-adminMinersGet-400-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-adminMinersGet-400-schema">
+                                  <div id='responses-adminMinersGet-400-schema-400' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Bad Request",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/util.HttpError"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-adminMinersGet-400-schema-data').val(stringify(schema));
+                                        var result = $('#responses-adminMinersGet-400-schema-400');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-adminMinersGet-400-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 500 - Internal Server Error </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-adminMinersGet-500-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-adminMinersGet-500-schema">
+                                  <div id='responses-adminMinersGet-500-schema-500' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Internal Server Error",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/util.HttpError"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-adminMinersGet-500-schema-data').val(stringify(schema));
+                                        var result = $('#responses-adminMinersGet-500-schema-500');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-adminMinersGet-500-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
                     <div id="api-Admin-adminPeeringPeersDelete">
                       <article id="api-Admin-adminPeeringPeersDelete-0" data-group="User" data-name="adminPeeringPeersDelete" data-version="0">
                         <div class="pull-left">
@@ -28650,6 +29087,400 @@ except ApiException as e:
                   </section>
                 <section id="api-Net">
                   <h1>Net</h1>
+                    <div id="api-Net-adminMinersGet">
+                      <article id="api-Net-adminMinersGet-0" data-group="User" data-name="adminMinersGet" data-version="0">
+                        <div class="pull-left">
+                          <h1>adminMinersGet</h1>
+                          <p>Get all miners</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">This endpoint returns all miners. Note: value may be cached</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/admin/miners/</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Net-adminMinersGet-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Net-adminMinersGet-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Net-adminMinersGet-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Net-adminMinersGet-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Net-adminMinersGet-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Net-adminMinersGet-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Net-adminMinersGet-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Net-adminMinersGet-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Net-adminMinersGet-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Net-adminMinersGet-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Net-adminMinersGet-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Net-adminMinersGet-0-curl">
+                           <pre class="prettyprint"><code class="language-bsh">curl -X GET\
+-H "Authorization: [[apiKey]]"\
+-H "Accept: application/json"\
+"//api.estuary.tech//admin/miners/"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Net-adminMinersGet-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.NetApi;
+
+import java.io.File;
+import java.util.*;
+
+public class NetApiExample {
+
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+        // Configure API key authorization: bearerAuth
+        ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
+        bearerAuth.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+        //bearerAuth.setApiKeyPrefix("Token");
+
+        NetApi apiInstance = new NetApi();
+        try {
+            api.minerResp result = apiInstance.adminMinersGet();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling NetApi#adminMinersGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+
+                          <div class="tab-pane" id="examples-Net-adminMinersGet-0-android">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.NetApi;
+
+public class NetApiExample {
+
+    public static void main(String[] args) {
+        NetApi apiInstance = new NetApi();
+        try {
+            api.minerResp result = apiInstance.adminMinersGet();
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling NetApi#adminMinersGet");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Net-adminMinersGet-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Net-adminMinersGet-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
+// Configure API key authorization: (authentication scheme: bearerAuth)
+[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"Authorization"];
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
+
+NetApi *apiInstance = [[NetApi alloc] init];
+
+// Get all miners
+[apiInstance adminMinersGetWithCompletionHandler: 
+              ^(api.minerResp output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Net-adminMinersGet-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var EstuaryApi = require('estuary_api');
+var defaultClient = EstuaryApi.ApiClient.instance;
+
+// Configure API key authorization: bearerAuth
+var bearerAuth = defaultClient.authentications['bearerAuth'];
+bearerAuth.apiKey = "YOUR API KEY"
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//bearerAuth.apiKeyPrefix['Authorization'] = "Token"
+
+var api = new EstuaryApi.NetApi()
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.adminMinersGet(callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Net-adminMinersGet-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Net-adminMinersGet-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using estuary-client.Api;
+using estuary-client.Client;
+using estuary-client.Model;
+
+namespace Example
+{
+    public class adminMinersGetExample
+    {
+        public void main()
+        {
+
+            // Configure API key authorization: bearerAuth
+            Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
+
+            var apiInstance = new NetApi();
+
+            try
+            {
+                // Get all miners
+                api.minerResp result = apiInstance.adminMinersGet();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling NetApi.adminMinersGet: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Net-adminMinersGet-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: bearerAuth
+Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$api_instance = new Swagger\Client\ApiNetApi();
+
+try {
+    $result = $api_instance->adminMinersGet();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling NetApi->adminMinersGet: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Net-adminMinersGet-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::NetApi;
+
+# Configure API key authorization: bearerAuth
+$WWW::SwaggerClient::Configuration::api_key->{'Authorization'} = 'YOUR_API_KEY';
+# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+#$WWW::SwaggerClient::Configuration::api_key_prefix->{'Authorization'} = "Bearer";
+
+my $api_instance = WWW::SwaggerClient::NetApi->new();
+
+eval { 
+    my $result = $api_instance->adminMinersGet();
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling NetApi->adminMinersGet: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Net-adminMinersGet-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: bearerAuth
+swagger_client.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# swagger_client.configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+# create an instance of the API class
+api_instance = swagger_client.NetApi()
+
+try: 
+    # Get all miners
+    api_response = api_instance.admin_miners_get()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling NetApi->adminMinersGet: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - OK </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-adminMinersGet-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-adminMinersGet-200-schema">
+                                  <div id='responses-adminMinersGet-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "OK",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/api.minerResp"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-adminMinersGet-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-adminMinersGet-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-adminMinersGet-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 400 - Bad Request </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-adminMinersGet-400-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-adminMinersGet-400-schema">
+                                  <div id='responses-adminMinersGet-400-schema-400' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Bad Request",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/util.HttpError"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-adminMinersGet-400-schema-data').val(stringify(schema));
+                                        var result = $('#responses-adminMinersGet-400-schema-400');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-adminMinersGet-400-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                            <h3> Status: 500 - Internal Server Error </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-adminMinersGet-500-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-adminMinersGet-500-schema">
+                                  <div id='responses-adminMinersGet-500-schema-500' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Internal Server Error",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "$ref" : "#/components/schemas/util.HttpError"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-adminMinersGet-500-schema-data').val(stringify(schema));
+                                        var result = $('#responses-adminMinersGet-500-schema-500');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-adminMinersGet-500-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
                     <div id="api-Net-publicMinersFailuresMinerGet">
                       <article id="api-Net-publicMinersFailuresMinerGet-0" data-group="User" data-name="publicMinersFailuresMinerGet" data-version="0">
                         <div class="pull-left">
@@ -29077,401 +29908,6 @@ except ApiException as e:
                                     </script>
                                   </div>
                                   <input id='responses-publicMinersFailuresMinerGet-500-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                        </article>
-                      </div>
-                      <hr>
-                    <div id="api-Net-publicMinersGet">
-                      <article id="api-Net-publicMinersGet-0" data-group="User" data-name="publicMinersGet" data-version="0">
-                        <div class="pull-left">
-                          <h1>publicMinersGet</h1>
-                          <p>Get all miners</p>
-                        </div>
-                        <div class="pull-right"></div>
-                        <div class="clearfix"></div>
-                        <p></p>
-                        <p class="marked">This endpoint returns all miners</p>
-                        <p></p>
-                        <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/public/miners</span></code></pre>
-                        <p>
-                          <h3>Usage and SDK Samples</h3>
-                        </p>
-                        <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Net-publicMinersGet-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Net-publicMinersGet-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Net-publicMinersGet-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Net-publicMinersGet-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Net-publicMinersGet-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Net-publicMinersGet-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Net-publicMinersGet-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Net-publicMinersGet-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Net-publicMinersGet-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Net-publicMinersGet-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Net-publicMinersGet-0-python">Python</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Net-publicMinersGet-0-curl">
-                           <pre class="prettyprint"><code class="language-bsh">curl -X GET\
--H "Authorization: [[apiKey]]"\
--H "Accept: application/json"\
-"//api.estuary.tech//public/miners"</code></pre>
-                          </div>
-                          <div class="tab-pane" id="examples-Net-publicMinersGet-0-java">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
-import io.swagger.client.auth.*;
-import io.swagger.client.model.*;
-import io.swagger.client.api.NetApi;
-
-import java.io.File;
-import java.util.*;
-
-public class NetApiExample {
-
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-        // Configure API key authorization: bearerAuth
-        ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //bearerAuth.setApiKeyPrefix("Token");
-
-        NetApi apiInstance = new NetApi();
-        try {
-            'String' result = apiInstance.publicMinersGet();
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling NetApi#publicMinersGet");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Net-publicMinersGet-0-android">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.NetApi;
-
-public class NetApiExample {
-
-    public static void main(String[] args) {
-        NetApi apiInstance = new NetApi();
-        try {
-            'String' result = apiInstance.publicMinersGet();
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling NetApi#publicMinersGet");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-Net-publicMinersGet-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-Net-publicMinersGet-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
-// Configure API key authorization: (authentication scheme: bearerAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"Authorization"];
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
-
-NetApi *apiInstance = [[NetApi alloc] init];
-
-// Get all miners
-[apiInstance publicMinersGetWithCompletionHandler: 
-              ^('String' output, NSError* error) {
-                            if (output) {
-                                NSLog(@"%@", output);
-                            }
-                            if (error) {
-                                NSLog(@"Error: %@", error);
-                            }
-                        }];
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Net-publicMinersGet-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var EstuaryApi = require('estuary_api');
-var defaultClient = EstuaryApi.ApiClient.instance;
-
-// Configure API key authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
-bearerAuth.apiKey = "YOUR API KEY"
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix['Authorization'] = "Token"
-
-var api = new EstuaryApi.NetApi()
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.publicMinersGet(callback);
-</code></pre>
-                            </div>
-
-                            <!--<div class="tab-pane" id="examples-Net-publicMinersGet-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                            <div class="tab-pane" id="examples-Net-publicMinersGet-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using estuary-client.Api;
-using estuary-client.Client;
-using estuary-client.Model;
-
-namespace Example
-{
-    public class publicMinersGetExample
-    {
-        public void main()
-        {
-
-            // Configure API key authorization: bearerAuth
-            Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
-
-            var apiInstance = new NetApi();
-
-            try
-            {
-                // Get all miners
-                'String' result = apiInstance.publicMinersGet();
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling NetApi.publicMinersGet: " + e.Message );
-            }
-        }
-    }
-}
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Net-publicMinersGet-0-php">
-                              <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure API key authorization: bearerAuth
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
-
-$api_instance = new Swagger\Client\ApiNetApi();
-
-try {
-    $result = $api_instance->publicMinersGet();
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling NetApi->publicMinersGet: ', $e->getMessage(), PHP_EOL;
-}
-?></code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Net-publicMinersGet-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
-use WWW::SwaggerClient::NetApi;
-
-# Configure API key authorization: bearerAuth
-$WWW::SwaggerClient::Configuration::api_key->{'Authorization'} = 'YOUR_API_KEY';
-# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'Authorization'} = "Bearer";
-
-my $api_instance = WWW::SwaggerClient::NetApi->new();
-
-eval { 
-    my $result = $api_instance->publicMinersGet();
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling NetApi->publicMinersGet: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Net-publicMinersGet-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import swagger_client
-from swagger_client.rest import ApiException
-from pprint import pprint
-
-# Configure API key authorization: bearerAuth
-swagger_client.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['Authorization'] = 'Bearer'
-
-# create an instance of the API class
-api_instance = swagger_client.NetApi()
-
-try: 
-    # Get all miners
-    api_response = api_instance.public_miners_get()
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling NetApi->publicMinersGet: %s\n" % e)</code></pre>
-                            </div>
-                          </div>
-
-                          <h2>Parameters</h2>
-
-
-
-
-
-
-                          <h2>Responses</h2>
-                            <h3> Status: 200 - OK </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-publicMinersGet-200-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-publicMinersGet-200-schema">
-                                  <div id='responses-publicMinersGet-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "OK",
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "type" : "string",
-        "x-content-type" : "application/json"
-      }
-    }
-  }
-};
-                                        var schema = schemaWrapper.content["application/json"].schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.components = {};
-                                          schemaWrapper.components.schemas = Object.assign({}, defs);
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-publicMinersGet-200-schema-data').val(stringify(schema));
-                                        var result = $('#responses-publicMinersGet-200-schema-200');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-publicMinersGet-200-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                            <h3> Status: 400 - Bad Request </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-publicMinersGet-400-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-publicMinersGet-400-schema">
-                                  <div id='responses-publicMinersGet-400-schema-400' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "Bad Request",
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/util.HttpError"
-      }
-    }
-  }
-};
-                                        var schema = schemaWrapper.content["application/json"].schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.components = {};
-                                          schemaWrapper.components.schemas = Object.assign({}, defs);
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-publicMinersGet-400-schema-data').val(stringify(schema));
-                                        var result = $('#responses-publicMinersGet-400-schema-400');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-publicMinersGet-400-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                            <h3> Status: 500 - Internal Server Error </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-publicMinersGet-500-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-publicMinersGet-500-schema">
-                                  <div id='responses-publicMinersGet-500-schema-500' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "Internal Server Error",
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/util.HttpError"
-      }
-    }
-  }
-};
-                                        var schema = schemaWrapper.content["application/json"].schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.components = {};
-                                          schemaWrapper.components.schemas = Object.assign({}, defs);
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-publicMinersGet-500-schema-data').val(stringify(schema));
-                                        var result = $('#responses-publicMinersGet-500-schema-500');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-publicMinersGet-500-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
 
@@ -34837,401 +35273,6 @@ except ApiException as e:
                                     </script>
                                   </div>
                                   <input id='responses-publicMinersFailuresMinerGet-500-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                        </article>
-                      </div>
-                      <hr>
-                    <div id="api-Public-publicMinersGet">
-                      <article id="api-Public-publicMinersGet-0" data-group="User" data-name="publicMinersGet" data-version="0">
-                        <div class="pull-left">
-                          <h1>publicMinersGet</h1>
-                          <p>Get all miners</p>
-                        </div>
-                        <div class="pull-right"></div>
-                        <div class="clearfix"></div>
-                        <p></p>
-                        <p class="marked">This endpoint returns all miners</p>
-                        <p></p>
-                        <br />
-                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/public/miners</span></code></pre>
-                        <p>
-                          <h3>Usage and SDK Samples</h3>
-                        </p>
-                        <ul class="nav nav-tabs nav-tabs-examples">
-                          <li class="active"><a href="#examples-Public-publicMinersGet-0-curl">Curl</a></li>
-                          <li class=""><a href="#examples-Public-publicMinersGet-0-java">Java</a></li>
-                          <li class=""><a href="#examples-Public-publicMinersGet-0-android">Android</a></li>
-                          <!--<li class=""><a href="#examples-Public-publicMinersGet-0-groovy">Groovy</a></li>-->
-                          <li class=""><a href="#examples-Public-publicMinersGet-0-objc">Obj-C</a></li>
-                          <li class=""><a href="#examples-Public-publicMinersGet-0-javascript">JavaScript</a></li>
-                          <!--<li class=""><a href="#examples-Public-publicMinersGet-0-angular">Angular</a></li>-->
-                          <li class=""><a href="#examples-Public-publicMinersGet-0-csharp">C#</a></li>
-                          <li class=""><a href="#examples-Public-publicMinersGet-0-php">PHP</a></li>
-                          <li class=""><a href="#examples-Public-publicMinersGet-0-perl">Perl</a></li>
-                          <li class=""><a href="#examples-Public-publicMinersGet-0-python">Python</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                          <div class="tab-pane active" id="examples-Public-publicMinersGet-0-curl">
-                           <pre class="prettyprint"><code class="language-bsh">curl -X GET\
--H "Authorization: [[apiKey]]"\
--H "Accept: application/json"\
-"//api.estuary.tech//public/miners"</code></pre>
-                          </div>
-                          <div class="tab-pane" id="examples-Public-publicMinersGet-0-java">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
-import io.swagger.client.auth.*;
-import io.swagger.client.model.*;
-import io.swagger.client.api.PublicApi;
-
-import java.io.File;
-import java.util.*;
-
-public class PublicApiExample {
-
-    public static void main(String[] args) {
-        ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-        // Configure API key authorization: bearerAuth
-        ApiKeyAuth bearerAuth = (ApiKeyAuth) defaultClient.getAuthentication("bearerAuth");
-        bearerAuth.setApiKey("YOUR API KEY");
-        // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-        //bearerAuth.setApiKeyPrefix("Token");
-
-        PublicApi apiInstance = new PublicApi();
-        try {
-            'String' result = apiInstance.publicMinersGet();
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling PublicApi#publicMinersGet");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-
-                          <div class="tab-pane" id="examples-Public-publicMinersGet-0-android">
-                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.api.PublicApi;
-
-public class PublicApiExample {
-
-    public static void main(String[] args) {
-        PublicApi apiInstance = new PublicApi();
-        try {
-            'String' result = apiInstance.publicMinersGet();
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling PublicApi#publicMinersGet");
-            e.printStackTrace();
-        }
-    }
-}</code></pre>
-                          </div>
-  <!--
-  <div class="tab-pane" id="examples-Public-publicMinersGet-0-groovy">
-  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-  </div> -->
-                            <div class="tab-pane" id="examples-Public-publicMinersGet-0-objc">
-                              <pre class="prettyprint"><code class="language-cpp">Configuration *apiConfig = [Configuration sharedConfig];
-// Configure API key authorization: (authentication scheme: bearerAuth)
-[apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"Authorization"];
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
-
-PublicApi *apiInstance = [[PublicApi alloc] init];
-
-// Get all miners
-[apiInstance publicMinersGetWithCompletionHandler: 
-              ^('String' output, NSError* error) {
-                            if (output) {
-                                NSLog(@"%@", output);
-                            }
-                            if (error) {
-                                NSLog(@"Error: %@", error);
-                            }
-                        }];
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Public-publicMinersGet-0-javascript">
-                              <pre class="prettyprint"><code class="language-js">var EstuaryApi = require('estuary_api');
-var defaultClient = EstuaryApi.ApiClient.instance;
-
-// Configure API key authorization: bearerAuth
-var bearerAuth = defaultClient.authentications['bearerAuth'];
-bearerAuth.apiKey = "YOUR API KEY"
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//bearerAuth.apiKeyPrefix['Authorization'] = "Token"
-
-var api = new EstuaryApi.PublicApi()
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.publicMinersGet(callback);
-</code></pre>
-                            </div>
-
-                            <!--<div class="tab-pane" id="examples-Public-publicMinersGet-0-angular">
-              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-            </div>-->
-                            <div class="tab-pane" id="examples-Public-publicMinersGet-0-csharp">
-                              <pre class="prettyprint"><code class="language-cs">using System;
-using System.Diagnostics;
-using estuary-client.Api;
-using estuary-client.Client;
-using estuary-client.Model;
-
-namespace Example
-{
-    public class publicMinersGetExample
-    {
-        public void main()
-        {
-
-            // Configure API key authorization: bearerAuth
-            Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
-            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-            // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
-
-            var apiInstance = new PublicApi();
-
-            try
-            {
-                // Get all miners
-                'String' result = apiInstance.publicMinersGet();
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling PublicApi.publicMinersGet: " + e.Message );
-            }
-        }
-    }
-}
-</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Public-publicMinersGet-0-php">
-                              <pre class="prettyprint"><code class="language-php"><&#63;php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure API key authorization: bearerAuth
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
-
-$api_instance = new Swagger\Client\ApiPublicApi();
-
-try {
-    $result = $api_instance->publicMinersGet();
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling PublicApi->publicMinersGet: ', $e->getMessage(), PHP_EOL;
-}
-?></code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Public-publicMinersGet-0-perl">
-                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
-use WWW::SwaggerClient::Configuration;
-use WWW::SwaggerClient::PublicApi;
-
-# Configure API key authorization: bearerAuth
-$WWW::SwaggerClient::Configuration::api_key->{'Authorization'} = 'YOUR_API_KEY';
-# uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-#$WWW::SwaggerClient::Configuration::api_key_prefix->{'Authorization'} = "Bearer";
-
-my $api_instance = WWW::SwaggerClient::PublicApi->new();
-
-eval { 
-    my $result = $api_instance->publicMinersGet();
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling PublicApi->publicMinersGet: $@\n";
-}</code></pre>
-                            </div>
-
-                            <div class="tab-pane" id="examples-Public-publicMinersGet-0-python">
-                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
-import time
-import swagger_client
-from swagger_client.rest import ApiException
-from pprint import pprint
-
-# Configure API key authorization: bearerAuth
-swagger_client.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# swagger_client.configuration.api_key_prefix['Authorization'] = 'Bearer'
-
-# create an instance of the API class
-api_instance = swagger_client.PublicApi()
-
-try: 
-    # Get all miners
-    api_response = api_instance.public_miners_get()
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling PublicApi->publicMinersGet: %s\n" % e)</code></pre>
-                            </div>
-                          </div>
-
-                          <h2>Parameters</h2>
-
-
-
-
-
-
-                          <h2>Responses</h2>
-                            <h3> Status: 200 - OK </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-publicMinersGet-200-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-publicMinersGet-200-schema">
-                                  <div id='responses-publicMinersGet-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "OK",
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "type" : "string",
-        "x-content-type" : "application/json"
-      }
-    }
-  }
-};
-                                        var schema = schemaWrapper.content["application/json"].schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.components = {};
-                                          schemaWrapper.components.schemas = Object.assign({}, defs);
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-publicMinersGet-200-schema-data').val(stringify(schema));
-                                        var result = $('#responses-publicMinersGet-200-schema-200');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-publicMinersGet-200-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                            <h3> Status: 400 - Bad Request </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-publicMinersGet-400-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-publicMinersGet-400-schema">
-                                  <div id='responses-publicMinersGet-400-schema-400' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "Bad Request",
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/util.HttpError"
-      }
-    }
-  }
-};
-                                        var schema = schemaWrapper.content["application/json"].schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.components = {};
-                                          schemaWrapper.components.schemas = Object.assign({}, defs);
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-publicMinersGet-400-schema-data').val(stringify(schema));
-                                        var result = $('#responses-publicMinersGet-400-schema-400');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-publicMinersGet-400-schema-data' type='hidden' value=''></input>
-                                </div>
-                            </div>
-
-                            <h3> Status: 500 - Internal Server Error </h3>
-
-                            <ul class="nav nav-tabs nav-tabs-examples" >
-                                <li class="active">
-                                  <a data-toggle="tab" href="#responses-publicMinersGet-500-schema">Schema</a>
-                                </li>
-
-                            </ul>
-
-                            <div class="tab-content" style='margin-bottom: 10px;'>
-                                <div class="tab-pane active" id="responses-publicMinersGet-500-schema">
-                                  <div id='responses-publicMinersGet-500-schema-500' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-                                    <script>
-                                      $(document).ready(function() {
-                                        var schemaWrapper = {
-  "description" : "Internal Server Error",
-  "content" : {
-    "application/json" : {
-      "schema" : {
-        "$ref" : "#/components/schemas/util.HttpError"
-      }
-    }
-  }
-};
-                                        var schema = schemaWrapper.content["application/json"].schema;
-                                        if (schema.$ref != null) {
-                                          schema = defsParser.$refs.get(schema.$ref);
-                                        } else {
-                                          schemaWrapper.components = {};
-                                          schemaWrapper.components.schemas = Object.assign({}, defs);
-                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
-                                            console.log(err);
-                                          });
-                                        }
-
-                                        //console.log(JSON.stringify(schema));
-                                        var view = new JSONSchemaView(schema, 3);
-                                        $('#responses-publicMinersGet-500-schema-data').val(stringify(schema));
-                                        var result = $('#responses-publicMinersGet-500-schema-500');
-                                        result.empty();
-                                        result.append(view.render());
-                                      });
-                                    </script>
-                                  </div>
-                                  <input id='responses-publicMinersGet-500-schema-data' type='hidden' value=''></input>
                                 </div>
                             </div>
 

@@ -22,6 +22,7 @@ All URIs are relative to *//api.estuary.tech/*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AdminApi* | [**AdminMinersGet**](docs/AdminApi.md#adminminersget) | **Get** /admin/miners/ | Get all miners
 *AdminApi* | [**AdminPeeringPeersDelete**](docs/AdminApi.md#adminpeeringpeersdelete) | **Delete** /admin/peering/peers | Remove peers on Peering Service
 *AdminApi* | [**AdminPeeringPeersGet**](docs/AdminApi.md#adminpeeringpeersget) | **Get** /admin/peering/peers | List all Peering peers
 *AdminApi* | [**AdminPeeringPeersPost**](docs/AdminApi.md#adminpeeringpeerspost) | **Post** /admin/peering/peers | Add peers on Peering Service
@@ -83,8 +84,8 @@ Class | Method | HTTP request | Description
 *MinerApi* | [**MinerUnsuspendMinerPut**](docs/MinerApi.md#minerunsuspendminerput) | **Put** /miner/unsuspend/{miner} | Unuspend Miner
 *MinerApi* | [**PublicMinersDealsMinerGet**](docs/MinerApi.md#publicminersdealsminerget) | **Get** /public/miners/deals/{miner} | Get all miners deals
 *MinerApi* | [**PublicMinersStatsMinerGet**](docs/MinerApi.md#publicminersstatsminerget) | **Get** /public/miners/stats/{miner} | Get miner stats
+*NetApi* | [**AdminMinersGet**](docs/NetApi.md#adminminersget) | **Get** /admin/miners/ | Get all miners
 *NetApi* | [**PublicMinersFailuresMinerGet**](docs/NetApi.md#publicminersfailuresminerget) | **Get** /public/miners/failures/{miner} | Get all miners
-*NetApi* | [**PublicMinersGet**](docs/NetApi.md#publicminersget) | **Get** /public/miners | Get all miners
 *NetApi* | [**PublicNetAddrsGet**](docs/NetApi.md#publicnetaddrsget) | **Get** /public/net/addrs | Net Addrs
 *NetApi* | [**PublicNetPeersGet**](docs/NetApi.md#publicnetpeersget) | **Get** /public/net/peers | Net Peers
 *PinningApi* | [**PinningPinsGet**](docs/PinningApi.md#pinningpinsget) | **Get** /pinning/pins | List all pin status objects
@@ -98,7 +99,6 @@ Class | Method | HTTP request | Description
 *PublicApi* | [**PublicMetricsDealsOnChainGet**](docs/PublicApi.md#publicmetricsdealsonchainget) | **Get** /public/metrics/deals-on-chain | Get deal metrics
 *PublicApi* | [**PublicMinersDealsMinerGet**](docs/PublicApi.md#publicminersdealsminerget) | **Get** /public/miners/deals/{miner} | Get all miners deals
 *PublicApi* | [**PublicMinersFailuresMinerGet**](docs/PublicApi.md#publicminersfailuresminerget) | **Get** /public/miners/failures/{miner} | Get all miners
-*PublicApi* | [**PublicMinersGet**](docs/PublicApi.md#publicminersget) | **Get** /public/miners | Get all miners
 *PublicApi* | [**PublicMinersStatsMinerGet**](docs/PublicApi.md#publicminersstatsminerget) | **Get** /public/miners/stats/{miner} | Get miner stats
 *PublicApi* | [**PublicNetAddrsGet**](docs/PublicApi.md#publicnetaddrsget) | **Get** /public/net/addrs | Net Addrs
 *PublicApi* | [**PublicNetPeersGet**](docs/PublicApi.md#publicnetpeersget) | **Get** /public/net/peers | Net Peers
@@ -120,6 +120,7 @@ Class | Method | HTTP request | Description
  - [ApiEmptyResp](docs/ApiEmptyResp.md)
  - [ApiEstimateDealBody](docs/ApiEstimateDealBody.md)
  - [ApiGetApiKeysResp](docs/ApiGetApiKeysResp.md)
+ - [ApiMinerResp](docs/ApiMinerResp.md)
  - [ApiPublicNodeInfo](docs/ApiPublicNodeInfo.md)
  - [AutoretrieveInitBody](docs/AutoretrieveInitBody.md)
  - [CidCid](docs/CidCid.md)
@@ -128,6 +129,7 @@ Class | Method | HTTP request | Description
  - [CollectionsCollectionListResponse](docs/CollectionsCollectionListResponse.md)
  - [ContentAddBody](docs/ContentAddBody.md)
  - [MinerClaimMinerBody](docs/MinerClaimMinerBody.md)
+ - [MinerMinerChainInfo](docs/MinerMinerChainInfo.md)
  - [MinerMinerSetInfoParams](docs/MinerMinerSetInfoParams.md)
  - [MinerSuspendMinerBody](docs/MinerSuspendMinerBody.md)
  - [PeeringPeeringPeer](docs/PeeringPeeringPeer.md)

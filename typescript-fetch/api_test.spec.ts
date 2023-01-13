@@ -21,6 +21,9 @@ describe("AdminApi", () => {
     instance = new api.AdminApi(config)
   });
 
+  test("adminMinersGet", () => {
+    return expect(instance.adminMinersGet({})).resolves.toBe(null)
+  })
   test("adminPeeringPeersDelete", () => {
     const body: Array<string> = undefined
     return expect(instance.adminPeeringPeersDelete(body, {})).resolves.toBe(null)
@@ -346,12 +349,12 @@ describe("NetApi", () => {
     instance = new api.NetApi(config)
   });
 
+  test("adminMinersGet", () => {
+    return expect(instance.adminMinersGet({})).resolves.toBe(null)
+  })
   test("publicMinersFailuresMinerGet", () => {
     const miner: string = "miner_example"
     return expect(instance.publicMinersFailuresMinerGet(miner, {})).resolves.toBe(null)
-  })
-  test("publicMinersGet", () => {
-    return expect(instance.publicMinersGet({})).resolves.toBe(null)
   })
   test("publicNetAddrsGet", () => {
     return expect(instance.publicNetAddrsGet({})).resolves.toBe(null)
@@ -419,9 +422,6 @@ describe("PublicApi", () => {
   test("publicMinersFailuresMinerGet", () => {
     const miner: string = "miner_example"
     return expect(instance.publicMinersFailuresMinerGet(miner, {})).resolves.toBe(null)
-  })
-  test("publicMinersGet", () => {
-    return expect(instance.publicMinersGet({})).resolves.toBe(null)
   })
   test("publicMinersStatsMinerGet", () => {
     const miner: string = "miner_example"

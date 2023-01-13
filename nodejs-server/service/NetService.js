@@ -3,15 +3,26 @@
 
 /**
  * Get all miners
- * This endpoint returns all miners
+ * This endpoint returns all miners. Note: value may be cached
  *
- * miner String Filter by miner
- * returns String
+ * returns api.minerResp
  **/
-exports.publicMinersFailuresMinerGET = function(miner) {
+exports.adminMinersGET = function() {
   return new Promise(function(resolve, reject) {
     var examples = {};
-    examples['application/json'] = "";
+    examples['application/json'] = {
+  "name" : "name",
+  "chain_info" : {
+    "owner" : "owner",
+    "peerId" : "peerId",
+    "addresses" : [ "addresses", "addresses" ],
+    "worker" : "worker"
+  },
+  "suspendedReason" : "suspendedReason",
+  "addr" : { },
+  "version" : "version",
+  "suspended" : true
+};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -25,9 +36,10 @@ exports.publicMinersFailuresMinerGET = function(miner) {
  * Get all miners
  * This endpoint returns all miners
  *
+ * miner String Filter by miner
  * returns String
  **/
-exports.publicMinersGET = function() {
+exports.publicMinersFailuresMinerGET = function(miner) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = "";

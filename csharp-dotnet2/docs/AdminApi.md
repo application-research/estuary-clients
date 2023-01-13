@@ -4,6 +4,7 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**AdminMinersGet**](AdminApi.md#adminminersget) | **GET** /admin/miners/ | Get all miners
 [**AdminPeeringPeersDelete**](AdminApi.md#adminpeeringpeersdelete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
 [**AdminPeeringPeersGet**](AdminApi.md#adminpeeringpeersget) | **GET** /admin/peering/peers | List all Peering peers
 [**AdminPeeringPeersPost**](AdminApi.md#adminpeeringpeerspost) | **POST** /admin/peering/peers | Add peers on Peering Service
@@ -12,6 +13,69 @@ Method | HTTP request | Description
 [**AdminPeeringStopPost**](AdminApi.md#adminpeeringstoppost) | **POST** /admin/peering/stop | Stop Peering
 [**AdminSystemConfigGet**](AdminApi.md#adminsystemconfigget) | **GET** /admin/system/config | Get systems(estuary/shuttle) config
 [**AdminUsersGet**](AdminApi.md#adminusersget) | **GET** /admin/users | Get all users
+
+<a name="adminminersget"></a>
+# **AdminMinersGet**
+> ApiMinerResp AdminMinersGet ()
+
+Get all miners
+
+This endpoint returns all miners. Note: value may be cached
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class AdminMinersGetExample
+    {
+        public void main()
+        {
+
+            // Configure API key authorization: bearerAuth
+            Configuration.Default.ApiKey.Add("Authorization", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
+
+            var apiInstance = new AdminApi();
+
+            try
+            {
+                // Get all miners
+                ApiMinerResp result = apiInstance.AdminMinersGet();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling AdminApi.AdminMinersGet: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ApiMinerResp**](ApiMinerResp.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="adminpeeringpeersdelete"></a>
 # **AdminPeeringPeersDelete**

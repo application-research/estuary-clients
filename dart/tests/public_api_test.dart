@@ -61,15 +61,6 @@ void main() {
       // TODO
     });
 
-    // Get all miners
-    //
-    // This endpoint returns all miners
-    //
-    //Future<String> publicMinersGet() async
-    test('test publicMinersGet', () async {
-      // TODO
-    });
-
     // Get miner stats
     //
     // This endpoint returns miner stats

@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2023-01-04T12:55:53.483Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2023-01-13T19:43:16.363Z[GMT]")
 @Controller
 public interface PublicApi {
 
@@ -99,18 +99,6 @@ public interface PublicApi {
     @Get(value = "/public/miners/failures/{miner}", produces = { "application/json" })
     default Single<HttpResponse<String>> publicMinersFailuresMinerGet(@Parameter(description = "Filter by miner") @PathVariable("miner") String miner
 ) {
-        return Single.fromCallable(() -> {
-            throw new UnsupportedOperationException();
-        });
-    }
-
-
-    @Operation(summary = "Get all miners", operationId = "publicMinersGet", description = "This endpoint returns all miners" , tags = {"public", "net"})
-    @ApiResponse(responseCode = "200", description = "OK")
-    @ApiResponse(responseCode = "400", description = "Bad Request")
-    @ApiResponse(responseCode = "500", description = "Internal Server Error")
-    @Get(value = "/public/miners", produces = { "application/json" })
-    default Single<HttpResponse<String>> publicMinersGet() {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });

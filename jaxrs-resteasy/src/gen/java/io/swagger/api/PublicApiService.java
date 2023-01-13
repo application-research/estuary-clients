@@ -14,7 +14,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-04T12:55:51.407Z[GMT]")public interface PublicApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-13T19:43:16.246Z[GMT]")public interface PublicApiService {
       Response publicByCidCidGet(String cid,SecurityContext securityContext)
       throws NotFoundException;
       Response publicDealsFailuresGet(SecurityContext securityContext)
@@ -26,8 +26,6 @@ import javax.ws.rs.core.SecurityContext;
       Response publicMinersDealsMinerGet(String miner,String ignoreFailed,SecurityContext securityContext)
       throws NotFoundException;
       Response publicMinersFailuresMinerGet(String miner,SecurityContext securityContext)
-      throws NotFoundException;
-      Response publicMinersGet(SecurityContext securityContext)
       throws NotFoundException;
       Response publicMinersStatsMinerGet(String miner,SecurityContext securityContext)
       throws NotFoundException;

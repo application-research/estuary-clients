@@ -306,48 +306,6 @@ export const PublicApiAxiosParamCreator = function (configuration?: Configuratio
             };
         },
         /**
-         * This endpoint returns all miners
-         * @summary Get all miners
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        publicMinersGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/public/miners`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearerAuth required
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-                    ? await configuration.apiKey("Authorization")
-                    : await configuration.apiKey;
-                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
-            }
-
-            const query = new URLSearchParams(localVarUrlObj.search);
-            for (const key in localVarQueryParameter) {
-                query.set(key, localVarQueryParameter[key]);
-            }
-            for (const key in options.params) {
-                query.set(key, options.params[key]);
-            }
-            localVarUrlObj.search = (new URLSearchParams(query)).toString();
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * This endpoint returns miner stats
          * @summary Get miner stats
          * @param {string} miner Filter by miner
@@ -614,19 +572,6 @@ export const PublicApiFp = function(configuration?: Configuration) {
             };
         },
         /**
-         * This endpoint returns all miners
-         * @summary Get all miners
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async publicMinersGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<string>>> {
-            const localVarAxiosArgs = await PublicApiAxiosParamCreator(configuration).publicMinersGet(options);
-            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
-                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
-                return axios.request(axiosRequestArgs);
-            };
-        },
-        /**
          * This endpoint returns miner stats
          * @summary Get miner stats
          * @param {string} miner Filter by miner
@@ -748,15 +693,6 @@ export const PublicApiFactory = function (configuration?: Configuration, basePat
             return PublicApiFp(configuration).publicMinersFailuresMinerGet(miner, options).then((request) => request(axios, basePath));
         },
         /**
-         * This endpoint returns all miners
-         * @summary Get all miners
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async publicMinersGet(options?: AxiosRequestConfig): Promise<AxiosResponse<string>> {
-            return PublicApiFp(configuration).publicMinersGet(options).then((request) => request(axios, basePath));
-        },
-        /**
          * This endpoint returns miner stats
          * @summary Get miner stats
          * @param {string} miner Filter by miner
@@ -867,16 +803,6 @@ export class PublicApi extends BaseAPI {
      */
     public async publicMinersFailuresMinerGet(miner: string, options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
         return PublicApiFp(this.configuration).publicMinersFailuresMinerGet(miner, options).then((request) => request(this.axios, this.basePath));
-    }
-    /**
-     * This endpoint returns all miners
-     * @summary Get all miners
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof PublicApi
-     */
-    public async publicMinersGet(options?: AxiosRequestConfig) : Promise<AxiosResponse<string>> {
-        return PublicApiFp(this.configuration).publicMinersGet(options).then((request) => request(this.axios, this.basePath));
     }
     /**
      * This endpoint returns miner stats

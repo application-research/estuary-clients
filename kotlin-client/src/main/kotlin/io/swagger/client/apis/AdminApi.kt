@@ -11,6 +11,7 @@
  */
 package io.swagger.client.apis
 
+import io.swagger.client.models.ApiminerResp
 import io.swagger.client.models.PeeringPeeringPeer
 import io.swagger.client.models.UtilHttpError
 
@@ -18,6 +19,30 @@ import estuary-client.infrastructure.*
 
 class AdminApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(basePath) {
 
+    /**
+     * Get all miners
+     * This endpoint returns all miners. Note: value may be cached
+     * @return ApiminerResp
+     */
+    @Suppress("UNCHECKED_CAST")
+    fun adminMinersGet(): ApiminerResp {
+        
+        val localVariableConfig = RequestConfig(
+                RequestMethod.GET,
+                "/admin/miners/"
+        )
+        val response = request<ApiminerResp>(
+                localVariableConfig
+        )
+
+        return when (response.responseType) {
+            ResponseType.Success -> (response as Success<*>).data as ApiminerResp
+            ResponseType.Informational -> TODO()
+            ResponseType.Redirection -> TODO()
+            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+        }
+    }
     /**
      * Remove peers on Peering Service
      * This endpoint can be used to remove a Peer from the Peering Service

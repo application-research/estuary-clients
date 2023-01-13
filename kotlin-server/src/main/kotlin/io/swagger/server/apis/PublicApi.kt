@@ -120,20 +120,6 @@ fun Route.PublicApi() {
                 else -> call.respondText(exampleContentString)
             }        }
     }
-    get<Paths.publicMinersGet> {  _: Paths.publicMinersGet ->
-        val principal = call.authentication.principal<ApiPrincipal>()
-        if (principal == null) {
-            call.respond(HttpStatusCode.Unauthorized)
-        } else {
-            val exampleContentType = "application/json"
-            val exampleContentString = """"""""
-            
-            when(exampleContentType) {
-                "application/json" -> call.respond(gson.fromJson(exampleContentString, empty::class.java))
-                "application/xml" -> call.respondText(exampleContentString, ContentType.Text.Xml)
-                else -> call.respondText(exampleContentString)
-            }        }
-    }
     get<Paths.publicMinersStatsMinerGet> {  _: Paths.publicMinersStatsMinerGet ->
         val principal = call.authentication.principal<ApiPrincipal>()
         if (principal == null) {

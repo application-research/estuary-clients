@@ -12,6 +12,7 @@
 
 package io.swagger.client.api;
 
+import io.swagger.client.model.ApiMinerResp;
 import io.swagger.client.model.UtilHttpError;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -34,15 +35,14 @@ public class NetApiTest {
     /**
      * Get all miners
      *
-     * This endpoint returns all miners
+     * This endpoint returns all miners. Note: value may be cached
      *
      * @throws Exception
      *          if the Api call fails
      */
     @Test
-    public void publicMinersFailuresMinerGetTest() throws Exception {
-        String miner = null;
-        String response = api.publicMinersFailuresMinerGet(miner);
+    public void adminMinersGetTest() throws Exception {
+        ApiMinerResp response = api.adminMinersGet();
 
         // TODO: test validations
     }
@@ -55,8 +55,9 @@ public class NetApiTest {
      *          if the Api call fails
      */
     @Test
-    public void publicMinersGetTest() throws Exception {
-        String response = api.publicMinersGet();
+    public void publicMinersFailuresMinerGetTest() throws Exception {
+        String miner = null;
+        String response = api.publicMinersFailuresMinerGet(miner);
 
         // TODO: test validations
     }

@@ -63,6 +63,16 @@ namespace estuary-client.Test
         }
 
         /// <summary>
+        /// Test AdminMinersGet
+        /// </summary>
+        [Test]
+        public void AdminMinersGetTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //var response = instance.AdminMinersGet();
+            //Assert.IsInstanceOf<ApiMinerResp> (response, "response is ApiMinerResp");
+        }
+        /// <summary>
         /// Test AdminPeeringPeersDelete
         /// </summary>
         [Test]

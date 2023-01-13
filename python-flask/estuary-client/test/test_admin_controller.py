@@ -5,6 +5,7 @@ from __future__ import absolute_import
 from flask import json
 from six import BytesIO
 
+from estuary-client.models.api_miner_resp import ApiMinerResp  # noqa: E501
 from estuary-client.models.peering_peering_peer import PeeringPeeringPeer  # noqa: E501
 from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
 from estuary-client.test import BaseTestCase
@@ -12,6 +13,17 @@ from estuary-client.test import BaseTestCase
 
 class TestAdminController(BaseTestCase):
     """AdminController integration test stubs"""
+
+    def test_admin_miners_get(self):
+        """Test case for admin_miners_get
+
+        Get all miners
+        """
+        response = self.client.open(
+            '/admin/miners/',
+            method='GET')
+        self.assert200(response,
+                       'Response body is : ' + response.data.decode('utf-8'))
 
     def test_admin_peering_peers_delete(self):
         """Test case for admin_peering_peers_delete

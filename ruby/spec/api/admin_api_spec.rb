@@ -31,6 +31,17 @@ describe 'AdminApi' do
     end
   end
 
+  # unit tests for admin_miners_get
+  # Get all miners
+  # This endpoint returns all miners. Note: value may be cached
+  # @param [Hash] opts the optional parameters
+  # @return [ApiMinerResp]
+  describe 'admin_miners_get test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for admin_peering_peers_delete
   # Remove peers on Peering Service
   # This endpoint can be used to remove a Peer from the Peering Service

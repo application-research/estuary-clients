@@ -5,6 +5,7 @@
  */
 package io.swagger.api;
 
+import io.swagger.model.ApiMinerResp;
 import io.swagger.model.PeeringPeeringPeer;
 import io.swagger.model.UtilHttpError;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -24,7 +25,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2023-01-04T12:55:53.483Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2023-01-13T19:43:16.363Z[GMT]")
 @Controller
 public interface AdminApi {
 
@@ -74,6 +75,18 @@ public interface AdminApi {
     @ApiResponse(responseCode = "500", description = "Internal Server Error")
     @Get(value = "/admin/invites", produces = { "application/json" })
     default Single<HttpResponse<String>> adminInvitesGet() {
+        return Single.fromCallable(() -> {
+            throw new UnsupportedOperationException();
+        });
+    }
+
+
+    @Operation(summary = "Get all miners", operationId = "adminMinersGet", description = "This endpoint returns all miners. Note: value may be cached" , tags = {"admin", "net"})
+    @ApiResponse(responseCode = "200", description = "OK")
+    @ApiResponse(responseCode = "400", description = "Bad Request")
+    @ApiResponse(responseCode = "500", description = "Internal Server Error")
+    @Get(value = "/admin/miners/", produces = { "application/json" })
+    default Single<HttpResponse<ApiMinerResp>> adminMinersGet() {
         return Single.fromCallable(() -> {
             throw new UnsupportedOperationException();
         });

@@ -82,17 +82,6 @@ def public_miners_failures_miner_get(miner):  # noqa: E501
     return 'do some magic!'
 
 
-def public_miners_get():  # noqa: E501
-    """Get all miners
-
-    This endpoint returns all miners # noqa: E501
-
-
-    :rtype: str
-    """
-    return 'do some magic!'
-
-
 def public_miners_stats_miner_get(miner):  # noqa: E501
     """Get miner stats
 

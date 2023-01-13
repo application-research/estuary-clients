@@ -15,7 +15,6 @@ Method | HTTP request | Description
 [**publicMetricsDealsOnChainGet**](PublicApi.md#publicMetricsDealsOnChainGet) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 [**publicMinersDealsMinerGet**](PublicApi.md#publicMinersDealsMinerGet) | **GET** /public/miners/deals/{miner} | Get all miners deals
 [**publicMinersFailuresMinerGet**](PublicApi.md#publicMinersFailuresMinerGet) | **GET** /public/miners/failures/{miner} | Get all miners
-[**publicMinersGet**](PublicApi.md#publicMinersGet) | **GET** /public/miners | Get all miners
 [**publicMinersStatsMinerGet**](PublicApi.md#publicMinersStatsMinerGet) | **GET** /public/miners/stats/{miner} | Get miner stats
 [**publicNetAddrsGet**](PublicApi.md#publicNetAddrsGet) | **GET** /public/net/addrs | Net Addrs
 [**publicNetPeersGet**](PublicApi.md#publicNetPeersGet) | **GET** /public/net/peers | Net Peers
@@ -280,49 +279,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **miner** | **String**| Filter by miner | 
-
-### Return type
-
-**String**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **publicMinersGet**
-> String publicMinersGet()
-
-Get all miners
-
-This endpoint returns all miners
-
-### Example
-```dart
-import 'package:swagger/api.dart';
-// TODO Configure API key authorization: bearerAuth
-//swagger.api.Configuration.apiKey{'Authorization'} = 'YOUR_API_KEY';
-// uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-//swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
-
-var api_instance = new PublicApi();
-
-try {
-    var result = api_instance.publicMinersGet();
-    print(result);
-} catch (e) {
-    print("Exception when calling PublicApi->publicMinersGet: $e\n");
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
 
 ### Return type
 

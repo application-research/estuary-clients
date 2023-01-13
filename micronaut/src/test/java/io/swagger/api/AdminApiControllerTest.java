@@ -1,5 +1,6 @@
 package io.swagger.api;
 
+import io.swagger.model.ApiMinerResp;
 import io.swagger.model.PeeringPeeringPeer;
 import io.swagger.model.UtilHttpError;
 
@@ -54,6 +55,15 @@ class AdminApiControllerTest {
     void adminInvitesGetTest() {
         try {
             api.adminInvitesGet().blockingGet();
+        } catch (UnsupportedOperationException e) {
+            assumeTrue(false, "API is not yet implemented");
+        }
+    }
+
+    @Test
+    void adminMinersGetTest() {
+        try {
+            api.adminMinersGet().blockingGet();
         } catch (UnsupportedOperationException e) {
             assumeTrue(false, "API is not yet implemented");
         }

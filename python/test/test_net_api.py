@@ -28,15 +28,15 @@ class TestNetApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_public_miners_failures_miner_get(self):
-        """Test case for public_miners_failures_miner_get
+    def test_admin_miners_get(self):
+        """Test case for admin_miners_get
 
         Get all miners  # noqa: E501
         """
         pass
 
-    def test_public_miners_get(self):
-        """Test case for public_miners_get
+    def test_public_miners_failures_miner_get(self):
+        """Test case for public_miners_failures_miner_get
 
         Get all miners  # noqa: E501
         """

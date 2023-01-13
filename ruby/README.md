@@ -63,6 +63,23 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::AdminApi.new
+
+begin
+  #Get all miners
+  result = api_instance.admin_miners_get
+  p result
+rescue SwaggerClient::ApiError => e
+  puts "Exception when calling AdminApi->admin_miners_get: #{e}"
+end
+# Setup authorization
+SwaggerClient.configure do |config|
+  # Configure API key authorization: bearerAuth
+  config.api_key['Authorization'] = 'YOUR API KEY'
+  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
+  #config.api_key_prefix['Authorization'] = 'Bearer'
+end
+
+api_instance = SwaggerClient::AdminApi.new
 body = ['body_example'] # Array<String> | Peer ids
 
 
@@ -1232,15 +1249,13 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::NetApi.new
-miner = 'miner_example' # String | Filter by miner
-
 
 begin
   #Get all miners
-  result = api_instance.public_miners_failures_miner_get(miner)
+  result = api_instance.admin_miners_get
   p result
 rescue SwaggerClient::ApiError => e
-  puts "Exception when calling NetApi->public_miners_failures_miner_get: #{e}"
+  puts "Exception when calling NetApi->admin_miners_get: #{e}"
 end
 # Setup authorization
 SwaggerClient.configure do |config|
@@ -1251,13 +1266,15 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::NetApi.new
+miner = 'miner_example' # String | Filter by miner
+
 
 begin
   #Get all miners
-  result = api_instance.public_miners_get
+  result = api_instance.public_miners_failures_miner_get(miner)
   p result
 rescue SwaggerClient::ApiError => e
-  puts "Exception when calling NetApi->public_miners_get: #{e}"
+  puts "Exception when calling NetApi->public_miners_failures_miner_get: #{e}"
 end
 # Setup authorization
 SwaggerClient.configure do |config|
@@ -1509,23 +1526,6 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::PublicApi.new
-
-begin
-  #Get all miners
-  result = api_instance.public_miners_get
-  p result
-rescue SwaggerClient::ApiError => e
-  puts "Exception when calling PublicApi->public_miners_get: #{e}"
-end
-# Setup authorization
-SwaggerClient.configure do |config|
-  # Configure API key authorization: bearerAuth
-  config.api_key['Authorization'] = 'YOUR API KEY'
-  # Uncomment the following line to set a prefix for the API key, e.g. 'Bearer' (defaults to nil)
-  #config.api_key_prefix['Authorization'] = 'Bearer'
-end
-
-api_instance = SwaggerClient::PublicApi.new
 miner = 'miner_example' # String | Filter by miner
 
 
@@ -1686,6 +1686,7 @@ All URIs are relative to *//api.estuary.tech/*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*SwaggerClient::AdminApi* | [**admin_miners_get**](docs/AdminApi.md#admin_miners_get) | **GET** /admin/miners/ | Get all miners
 *SwaggerClient::AdminApi* | [**admin_peering_peers_delete**](docs/AdminApi.md#admin_peering_peers_delete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
 *SwaggerClient::AdminApi* | [**admin_peering_peers_get**](docs/AdminApi.md#admin_peering_peers_get) | **GET** /admin/peering/peers | List all Peering peers
 *SwaggerClient::AdminApi* | [**admin_peering_peers_post**](docs/AdminApi.md#admin_peering_peers_post) | **POST** /admin/peering/peers | Add peers on Peering Service
@@ -1747,8 +1748,8 @@ Class | Method | HTTP request | Description
 *SwaggerClient::MinerApi* | [**miner_unsuspend_miner_put**](docs/MinerApi.md#miner_unsuspend_miner_put) | **PUT** /miner/unsuspend/{miner} | Unuspend Miner
 *SwaggerClient::MinerApi* | [**public_miners_deals_miner_get**](docs/MinerApi.md#public_miners_deals_miner_get) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *SwaggerClient::MinerApi* | [**public_miners_stats_miner_get**](docs/MinerApi.md#public_miners_stats_miner_get) | **GET** /public/miners/stats/{miner} | Get miner stats
+*SwaggerClient::NetApi* | [**admin_miners_get**](docs/NetApi.md#admin_miners_get) | **GET** /admin/miners/ | Get all miners
 *SwaggerClient::NetApi* | [**public_miners_failures_miner_get**](docs/NetApi.md#public_miners_failures_miner_get) | **GET** /public/miners/failures/{miner} | Get all miners
-*SwaggerClient::NetApi* | [**public_miners_get**](docs/NetApi.md#public_miners_get) | **GET** /public/miners | Get all miners
 *SwaggerClient::NetApi* | [**public_net_addrs_get**](docs/NetApi.md#public_net_addrs_get) | **GET** /public/net/addrs | Net Addrs
 *SwaggerClient::NetApi* | [**public_net_peers_get**](docs/NetApi.md#public_net_peers_get) | **GET** /public/net/peers | Net Peers
 *SwaggerClient::PinningApi* | [**pinning_pins_get**](docs/PinningApi.md#pinning_pins_get) | **GET** /pinning/pins | List all pin status objects
@@ -1762,7 +1763,6 @@ Class | Method | HTTP request | Description
 *SwaggerClient::PublicApi* | [**public_metrics_deals_on_chain_get**](docs/PublicApi.md#public_metrics_deals_on_chain_get) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 *SwaggerClient::PublicApi* | [**public_miners_deals_miner_get**](docs/PublicApi.md#public_miners_deals_miner_get) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *SwaggerClient::PublicApi* | [**public_miners_failures_miner_get**](docs/PublicApi.md#public_miners_failures_miner_get) | **GET** /public/miners/failures/{miner} | Get all miners
-*SwaggerClient::PublicApi* | [**public_miners_get**](docs/PublicApi.md#public_miners_get) | **GET** /public/miners | Get all miners
 *SwaggerClient::PublicApi* | [**public_miners_stats_miner_get**](docs/PublicApi.md#public_miners_stats_miner_get) | **GET** /public/miners/stats/{miner} | Get miner stats
 *SwaggerClient::PublicApi* | [**public_net_addrs_get**](docs/PublicApi.md#public_net_addrs_get) | **GET** /public/net/addrs | Net Addrs
 *SwaggerClient::PublicApi* | [**public_net_peers_get**](docs/PublicApi.md#public_net_peers_get) | **GET** /public/net/peers | Net Peers
@@ -1784,6 +1784,7 @@ Class | Method | HTTP request | Description
  - [SwaggerClient::ApiEmptyResp](docs/ApiEmptyResp.md)
  - [SwaggerClient::ApiEstimateDealBody](docs/ApiEstimateDealBody.md)
  - [SwaggerClient::ApiGetApiKeysResp](docs/ApiGetApiKeysResp.md)
+ - [SwaggerClient::ApiMinerResp](docs/ApiMinerResp.md)
  - [SwaggerClient::ApiPublicNodeInfo](docs/ApiPublicNodeInfo.md)
  - [SwaggerClient::AutoretrieveInitBody](docs/AutoretrieveInitBody.md)
  - [SwaggerClient::CidCid](docs/CidCid.md)
@@ -1792,6 +1793,7 @@ Class | Method | HTTP request | Description
  - [SwaggerClient::CollectionsCollectionListResponse](docs/CollectionsCollectionListResponse.md)
  - [SwaggerClient::ContentAddBody](docs/ContentAddBody.md)
  - [SwaggerClient::MinerClaimMinerBody](docs/MinerClaimMinerBody.md)
+ - [SwaggerClient::MinerMinerChainInfo](docs/MinerMinerChainInfo.md)
  - [SwaggerClient::MinerMinerSetInfoParams](docs/MinerMinerSetInfoParams.md)
  - [SwaggerClient::MinerSuspendMinerBody](docs/MinerSuspendMinerBody.md)
  - [SwaggerClient::PeeringPeeringPeer](docs/PeeringPeeringPeer.md)

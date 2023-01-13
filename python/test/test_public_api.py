@@ -70,13 +70,6 @@ class TestPublicApi(unittest.TestCase):
         """
         pass
 
-    def test_public_miners_get(self):
-        """Test case for public_miners_get
-
-        Get all miners  # noqa: E501
-        """
-        pass
-
     def test_public_miners_stats_miner_get(self):
         """Test case for public_miners_stats_miner_get
 

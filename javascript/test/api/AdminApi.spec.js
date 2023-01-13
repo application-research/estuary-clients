@@ -34,6 +34,26 @@
 
   describe('(package)', function() {
     describe('AdminApi', function() {
+      describe('adminMinersGet', function() {
+        it('should call adminMinersGet successfully', function(done) {
+          // TODO: uncomment adminMinersGet call and complete the assertions
+          /*
+
+          instance.adminMinersGet(function(error, data, response) {
+            if (error) {
+              done(error);
+              return;
+            }
+            // TODO: update response assertions
+            expect(data).to.be.a(EstuaryClient.ApiMinerResp);
+
+            done();
+          });
+          */
+          // TODO: uncomment and complete method invocation above, then delete this line and the next:
+          done();
+        });
+      });
       describe('adminPeeringPeersDelete', function() {
         it('should call adminPeeringPeersDelete successfully', function(done) {
           // TODO: uncomment, update parameter values for adminPeeringPeersDelete call and complete the assertions

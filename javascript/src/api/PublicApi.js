@@ -309,48 +309,6 @@ export class PublicApi {
       );
     }
     /**
-     * Callback function to receive the result of the publicMinersGet operation.
-     * @callback moduleapi/PublicApi~publicMinersGetCallback
-     * @param {String} error Error message, if any.
-     * @param {'String'{ data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get all miners
-     * This endpoint returns all miners
-     * @param {module:api/PublicApi~publicMinersGetCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link <&vendorExtensions.x-jsdoc-type>}
-     */
-    publicMinersGet(callback) {
-      
-      let postBody = null;
-
-      let pathParams = {
-        
-      };
-      let queryParams = {
-        
-      };
-      let headerParams = {
-        
-      };
-      let formParams = {
-        
-      };
-
-      let authNames = ['bearerAuth'];
-      let contentTypes = [];
-      let accepts = ['application/json'];
-      let returnType = 'String';
-
-      return this.apiClient.callApi(
-        '/public/miners', 'GET',
-        pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-    /**
      * Callback function to receive the result of the publicMinersStatsMinerGet operation.
      * @callback moduleapi/PublicApi~publicMinersStatsMinerGetCallback
      * @param {String} error Error message, if any.

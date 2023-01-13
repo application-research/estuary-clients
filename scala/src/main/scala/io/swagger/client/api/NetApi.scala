@@ -13,6 +13,7 @@ package io.swagger.client.api
 
 import java.text.SimpleDateFormat
 
+import io.swagger.client.model.api.minerResp
 import io.swagger.client.model.util.HttpError
 import io.swagger.client.{ApiInvoker, ApiException}
 
@@ -80,6 +81,30 @@ class NetApi(
 
   /**
    * Get all miners
+   * This endpoint returns all miners. Note: value may be cached
+   *
+   * @return api.minerResp
+   */
+  def adminMinersGet(): Option[api.minerResp] = {
+    val await = Try(Await.result(adminMinersGetAsync(), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Get all miners asynchronously
+   * This endpoint returns all miners. Note: value may be cached
+   *
+   * @return Future(api.minerResp)
+   */
+  def adminMinersGetAsync(): Future[api.minerResp] = {
+      helper.adminMinersGet()
+  }
+
+  /**
+   * Get all miners
    * This endpoint returns all miners
    *
    * @param miner Filter by miner 
@@ -102,30 +127,6 @@ class NetApi(
    */
   def publicMinersFailuresMinerGetAsync(miner: String): Future[String] = {
       helper.publicMinersFailuresMinerGet(miner)
-  }
-
-  /**
-   * Get all miners
-   * This endpoint returns all miners
-   *
-   * @return String
-   */
-  def publicMinersGet(): Option[String] = {
-    val await = Try(Await.result(publicMinersGetAsync(), Duration.Inf))
-    await match {
-      case Success(i) => Some(await.get)
-      case Failure(t) => None
-    }
-  }
-
-  /**
-   * Get all miners asynchronously
-   * This endpoint returns all miners
-   *
-   * @return Future(String)
-   */
-  def publicMinersGetAsync(): Future[String] = {
-      helper.publicMinersGet()
   }
 
   /**
@@ -180,6 +181,21 @@ class NetApi(
 
 class NetApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
 
+  def adminMinersGet()(implicit reader: ClientResponseReader[api.minerResp]): Future[api.minerResp] = {
+    // create path and map variables
+    val path = (addFmt("/admin/miners/"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
+
   def publicMinersFailuresMinerGet(miner: String)(implicit reader: ClientResponseReader[String]): Future[String] = {
     // create path and map variables
     val path = (addFmt("/public/miners/failures/{miner}")
@@ -190,21 +206,6 @@ class NetApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends 
     val headerParams = new mutable.HashMap[String, String]
 
     if (miner == null) throw new Exception("Missing required parameter 'miner' when calling NetApi->publicMinersFailuresMinerGet")
-
-
-    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
-    resFuture flatMap { resp =>
-      process(reader.read(resp))
-    }
-  }
-
-  def publicMinersGet()(implicit reader: ClientResponseReader[String]): Future[String] = {
-    // create path and map variables
-    val path = (addFmt("/public/miners"))
-
-    // query params
-    val queryParams = new mutable.HashMap[String, String]
-    val headerParams = new mutable.HashMap[String, String]
 
 
     val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")

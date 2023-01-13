@@ -9,10 +9,10 @@ void main() {
   group('tests for NetApi', () {
     // Get all miners
     //
-    // This endpoint returns all miners
+    // This endpoint returns all miners. Note: value may be cached
     //
-    //Future<String> publicMinersFailuresMinerGet(String miner) async
-    test('test publicMinersFailuresMinerGet', () async {
+    //Future<ApiMinerResp> adminMinersGet() async
+    test('test adminMinersGet', () async {
       // TODO
     });
 
@@ -20,8 +20,8 @@ void main() {
     //
     // This endpoint returns all miners
     //
-    //Future<String> publicMinersGet() async
-    test('test publicMinersGet', () async {
+    //Future<String> publicMinersFailuresMinerGet(String miner) async
+    test('test publicMinersFailuresMinerGet', () async {
       // TODO
     });
 

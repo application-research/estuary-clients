@@ -1,9 +1,21 @@
 import connexion
 import six
 
+from estuary-client.models.api_miner_resp import ApiMinerResp  # noqa: E501
 from estuary-client.models.peering_peering_peer import PeeringPeeringPeer  # noqa: E501
 from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
 from estuary-client import util
+
+
+def admin_miners_get():  # noqa: E501
+    """Get all miners
+
+    This endpoint returns all miners. Note: value may be cached # noqa: E501
+
+
+    :rtype: ApiMinerResp
+    """
+    return 'do some magic!'
 
 
 def admin_peering_peers_delete(body):  # noqa: E501

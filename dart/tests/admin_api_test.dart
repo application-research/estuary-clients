@@ -7,6 +7,15 @@ void main() {
   var instance = new AdminApi();
 
   group('tests for AdminApi', () {
+    // Get all miners
+    //
+    // This endpoint returns all miners. Note: value may be cached
+    //
+    //Future<ApiMinerResp> adminMinersGet() async
+    test('test adminMinersGet', () async {
+      // TODO
+    });
+
     // Remove peers on Peering Service
     //
     // This endpoint can be used to remove a Peer from the Peering Service

@@ -55,6 +55,13 @@ var routes = Routes{
 	},
 
 	Route{
+		"AdminMinersGet",
+		strings.ToUpper("Get"),
+		"/admin/miners/",
+		AdminMinersGet,
+	},
+
+	Route{
 		"AdminPeeringPeersDelete",
 		strings.ToUpper("Delete"),
 		"/admin/peering/peers",
@@ -482,17 +489,17 @@ var routes = Routes{
 	},
 
 	Route{
+		"AdminMinersGet",
+		strings.ToUpper("Get"),
+		"/admin/miners/",
+		AdminMinersGet,
+	},
+
+	Route{
 		"PublicMinersFailuresMinerGet",
 		strings.ToUpper("Get"),
 		"/public/miners/failures/{miner}",
 		PublicMinersFailuresMinerGet,
-	},
-
-	Route{
-		"PublicMinersGet",
-		strings.ToUpper("Get"),
-		"/public/miners",
-		PublicMinersGet,
 	},
 
 	Route{
@@ -584,13 +591,6 @@ var routes = Routes{
 		strings.ToUpper("Get"),
 		"/public/miners/failures/{miner}",
 		PublicMinersFailuresMinerGet,
-	},
-
-	Route{
-		"PublicMinersGet",
-		strings.ToUpper("Get"),
-		"/public/miners",
-		PublicMinersGet,
 	},
 
 	Route{

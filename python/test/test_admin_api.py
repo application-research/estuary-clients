@@ -28,6 +28,13 @@ class TestAdminApi(unittest.TestCase):
     def tearDown(self):
         pass
 
+    def test_admin_miners_get(self):
+        """Test case for admin_miners_get
+
+        Get all miners  # noqa: E501
+        """
+        pass
+
     def test_admin_peering_peers_delete(self):
         """Test case for admin_peering_peers_delete
 

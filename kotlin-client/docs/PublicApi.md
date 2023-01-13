@@ -10,7 +10,6 @@ Method | HTTP request | Description
 [**publicMetricsDealsOnChainGet**](PublicApi.md#publicMetricsDealsOnChainGet) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 [**publicMinersDealsMinerGet**](PublicApi.md#publicMinersDealsMinerGet) | **GET** /public/miners/deals/{miner} | Get all miners deals
 [**publicMinersFailuresMinerGet**](PublicApi.md#publicMinersFailuresMinerGet) | **GET** /public/miners/failures/{miner} | Get all miners
-[**publicMinersGet**](PublicApi.md#publicMinersGet) | **GET** /public/miners | Get all miners
 [**publicMinersStatsMinerGet**](PublicApi.md#publicMinersStatsMinerGet) | **GET** /public/miners/stats/{miner} | Get miner stats
 [**publicNetAddrsGet**](PublicApi.md#publicNetAddrsGet) | **GET** /public/net/addrs | Net Addrs
 [**publicNetPeersGet**](PublicApi.md#publicNetPeersGet) | **GET** /public/net/peers | Net Peers
@@ -277,49 +276,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **miner** | **kotlin.String**| Filter by miner |
-
-### Return type
-
-**kotlin.String**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="publicMinersGet"></a>
-# **publicMinersGet**
-> kotlin.String publicMinersGet()
-
-Get all miners
-
-This endpoint returns all miners
-
-### Example
-```kotlin
-// Import classes:
-//import estuary-client.infrastructure.*
-//import io.swagger.client.models.*;
-
-val apiInstance = PublicApi()
-try {
-    val result : kotlin.String = apiInstance.publicMinersGet()
-    println(result)
-} catch (e: ClientException) {
-    println("4xx response calling PublicApi#publicMinersGet")
-    e.printStackTrace()
-} catch (e: ServerException) {
-    println("5xx response calling PublicApi#publicMinersGet")
-    e.printStackTrace()
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
 
 ### Return type
 

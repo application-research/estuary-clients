@@ -134,6 +134,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/util.HttpError'
+  /admin/miners/:
+    get:
+      tags:
+      - admin
+      - net
+      summary: Get all miners
+      description: "This endpoint returns all miners. Note: value may be cached"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/api.minerResp'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/util.HttpError'
   /admin/peering/peers:
     get:
       tags:
@@ -2394,33 +2420,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/util.HttpError'
-  /public/miners:
-    get:
-      tags:
-      - public
-      - net
-      summary: Get all miners
-      description: This endpoint returns all miners
-      responses:
-        "200":
-          description: OK
-          content:
-            application/json:
-              schema:
-                type: string
-                x-content-type: application/json
-        "400":
-          description: Bad Request
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/util.HttpError'
-        "500":
-          description: Internal Server Error
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/util.HttpError'
   /public/miners/deals/{miner}:
     get:
       tags:
@@ -2914,6 +2913,34 @@ components:
         label: label
         tokenHash: tokenHash
         token: token
+    api.minerResp:
+      type: object
+      properties:
+        addr:
+          $ref: '#/components/schemas/address.Address'
+        chain_info:
+          $ref: '#/components/schemas/miner.MinerChainInfo'
+        name:
+          type: string
+        suspended:
+          type: boolean
+        suspendedReason:
+          type: string
+        version:
+          type: string
+      example:
+        name: name
+        chain_info:
+          owner: owner
+          peerId: peerId
+          addresses:
+          - addresses
+          - addresses
+          worker: worker
+        suspendedReason: suspendedReason
+        addr: {}
+        version: version
+        suspended: true
     api.publicNodeInfo:
       type: object
       properties:
@@ -2991,6 +3018,26 @@ components:
           $ref: '#/components/schemas/address.Address'
         name:
           type: string
+    miner.MinerChainInfo:
+      type: object
+      properties:
+        addresses:
+          type: array
+          items:
+            type: string
+        owner:
+          type: string
+        peerId:
+          type: string
+        worker:
+          type: string
+      example:
+        owner: owner
+        peerId: peerId
+        addresses:
+        - addresses
+        - addresses
+        worker: worker
     miner.MinerSetInfoParams:
       type: object
       properties:

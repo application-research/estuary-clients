@@ -11,6 +11,51 @@ import Alamofire
 
 open class AdminAPI: APIBase {
     /**
+     Get all miners
+     - parameter completion: completion handler to receive the data and the error objects
+     */
+    open class func adminMinersGet(completion: @escaping ((_ data: ApiMinerResp?, _ error: ErrorResponse?) -> Void)) {
+        adminMinersGetWithRequestBuilder().execute { (response, error) -> Void in
+            completion(response?.body, error)
+        }
+    }
+
+
+    /**
+     Get all miners
+     - GET /admin/miners/
+     - This endpoint returns all miners. Note: value may be cached
+     - API Key:
+       - type: apiKey Authorization 
+       - name: bearerAuth
+     - examples: [{contentType=application/json, example={
+  "name" : "name",
+  "chain_info" : {
+    "owner" : "owner",
+    "peerId" : "peerId",
+    "addresses" : [ "addresses", "addresses" ],
+    "worker" : "worker"
+  },
+  "suspendedReason" : "suspendedReason",
+  "addr" : { },
+  "version" : "version",
+  "suspended" : true
+}}]
+     - returns: RequestBuilder<ApiMinerResp> 
+     */
+    open class func adminMinersGetWithRequestBuilder() -> RequestBuilder<ApiMinerResp> {
+        let path = "/admin/miners/"
+        let URLString = estuary-clientAPI.basePath + path
+        let parameters: [String:Any]? = nil
+
+        let url = URLComponents(string: URLString)
+
+        let requestBuilder: RequestBuilder<ApiMinerResp>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+
+        return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
+    }
+
+    /**
      Remove peers on Peering Service
      - parameter body: (body) Peer ids 
      - parameter completion: completion handler to receive the data and the error objects

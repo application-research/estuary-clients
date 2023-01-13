@@ -13,6 +13,7 @@ package io.swagger.client.api
 
 import java.text.SimpleDateFormat
 
+import io.swagger.client.model.api.minerResp
 import io.swagger.client.model.peering.PeeringPeer
 import io.swagger.client.model.util.HttpError
 import io.swagger.client.{ApiInvoker, ApiException}
@@ -78,6 +79,30 @@ class AdminApi(
   val config: SwaggerConfig = SwaggerConfig.forUrl(new URI(defBasePath))
   val client = new RestClient(config)
   val helper = new AdminApiAsyncHelper(client, config)
+
+  /**
+   * Get all miners
+   * This endpoint returns all miners. Note: value may be cached
+   *
+   * @return api.minerResp
+   */
+  def adminMinersGet(): Option[api.minerResp] = {
+    val await = Try(Await.result(adminMinersGetAsync(), Duration.Inf))
+    await match {
+      case Success(i) => Some(await.get)
+      case Failure(t) => None
+    }
+  }
+
+  /**
+   * Get all miners asynchronously
+   * This endpoint returns all miners. Note: value may be cached
+   *
+   * @return Future(api.minerResp)
+   */
+  def adminMinersGetAsync(): Future[api.minerResp] = {
+      helper.adminMinersGet()
+  }
 
   /**
    * Remove peers on Peering Service
@@ -278,6 +303,21 @@ class AdminApi(
 }
 
 class AdminApiAsyncHelper(client: TransportClient, config: SwaggerConfig) extends ApiClient(client, config) {
+
+  def adminMinersGet()(implicit reader: ClientResponseReader[api.minerResp]): Future[api.minerResp] = {
+    // create path and map variables
+    val path = (addFmt("/admin/miners/"))
+
+    // query params
+    val queryParams = new mutable.HashMap[String, String]
+    val headerParams = new mutable.HashMap[String, String]
+
+
+    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
+    resFuture flatMap { resp =>
+      process(reader.read(resp))
+    }
+  }
 
   def adminPeeringPeersDelete(body: List[String])(implicit reader: ClientResponseReader[String], writer: RequestWriter[List[String]]): Future[String] = {
     // create path and map variables

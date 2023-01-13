@@ -3,8 +3,8 @@
 var utils = require('../utils/writer.js');
 var Net = require('../service/NetService');
 
-module.exports.publicMinersFailuresMinerGET = function publicMinersFailuresMinerGET (req, res, next, miner) {
-  Net.publicMinersFailuresMinerGET(miner)
+module.exports.adminMinersGET = function adminMinersGET (req, res, next) {
+  Net.adminMinersGET()
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -13,8 +13,8 @@ module.exports.publicMinersFailuresMinerGET = function publicMinersFailuresMiner
     });
 };
 
-module.exports.publicMinersGET = function publicMinersGET (req, res, next) {
-  Net.publicMinersGET()
+module.exports.publicMinersFailuresMinerGET = function publicMinersFailuresMinerGET (req, res, next, miner) {
+  Net.publicMinersFailuresMinerGET(miner)
     .then(function (response) {
       utils.writeJson(res, response);
     })

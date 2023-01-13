@@ -12,6 +12,7 @@ from estuary-client.models.api_delete_content_from_collection_body import ApiDel
 from estuary-client.models.api_empty_resp import ApiEmptyResp
 from estuary-client.models.api_estimate_deal_body import ApiEstimateDealBody
 from estuary-client.models.api_get_api_keys_resp import ApiGetApiKeysResp
+from estuary-client.models.api_miner_resp import ApiMinerResp
 from estuary-client.models.api_public_node_info import ApiPublicNodeInfo
 from estuary-client.models.autoretrieve_init_body import AutoretrieveInitBody
 from estuary-client.models.cid_cid import CidCid
@@ -20,6 +21,7 @@ from estuary-client.models.collections_collection import CollectionsCollection
 from estuary-client.models.collections_collection_list_response import CollectionsCollectionListResponse
 from estuary-client.models.content_add_body import ContentAddBody
 from estuary-client.models.miner_claim_miner_body import MinerClaimMinerBody
+from estuary-client.models.miner_miner_chain_info import MinerMinerChainInfo
 from estuary-client.models.miner_miner_set_info_params import MinerMinerSetInfoParams
 from estuary-client.models.miner_suspend_miner_body import MinerSuspendMinerBody
 from estuary-client.models.peering_peering_peer import PeeringPeeringPeer

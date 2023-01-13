@@ -5,6 +5,7 @@ import io.swagger.model.*;
 
 import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 
+import io.swagger.model.ApiMinerResp;
 import io.swagger.model.PeeringPeeringPeer;
 import io.swagger.model.UtilHttpError;
 
@@ -17,7 +18,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2023-01-04T12:55:54.251Z[GMT]")public class AdminApiServiceImpl implements AdminApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2023-01-13T19:43:17.065Z[GMT]")public class AdminApiServiceImpl implements AdminApiService {
       @Override
       public Response adminAutoretrieveInitPost(String addresses, String pubKey, SecurityContext securityContext) {
       // do some magic!
@@ -35,6 +36,11 @@ import javax.ws.rs.core.SecurityContext;
   }
       @Override
       public Response adminInvitesGet(SecurityContext securityContext) {
+      // do some magic!
+      return Response.ok().entity("magic!").build();
+  }
+      @Override
+      public Response adminMinersGet(SecurityContext securityContext) {
       // do some magic!
       return Response.ok().entity("magic!").build();
   }

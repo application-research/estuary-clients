@@ -13,6 +13,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
+import io.swagger.model.ApiMinerResp;
 import io.swagger.model.PeeringPeeringPeer;
 import io.swagger.model.UtilHttpError;
 
@@ -33,7 +34,7 @@ import javax.validation.constraints.*;
 @Path("/admin")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2023-01-04T12:55:53.653Z[GMT]")public class AdminApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2023-01-13T19:43:16.521Z[GMT]")public class AdminApi  {
 
    private AdminApiService delegate;
 
@@ -111,6 +112,22 @@ import javax.validation.constraints.*;
     public Response adminInvitesGet(@Context SecurityContext securityContext)
     throws NotFoundException {
         return delegate.adminInvitesGet(securityContext);
+    }
+    @GET
+    @Path("/miners/")
+    
+    @Produces({ "application/json" })
+    @Operation(summary = "Get all miners", description = "This endpoint returns all miners. Note: value may be cached", security = {
+        @SecurityRequirement(name = "bearerAuth")    }, tags={ "admin", "net" })
+    @ApiResponses(value = { 
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ApiMinerResp.class))),
+        
+        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
+        
+        @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
+    public Response adminMinersGet(@Context SecurityContext securityContext)
+    throws NotFoundException {
+        return delegate.adminMinersGet(securityContext);
     }
     @DELETE
     @Path("/peering/peers")

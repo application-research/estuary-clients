@@ -9,17 +9,14 @@ class NetApi {
 
   /// Get all miners
   ///
-  /// This endpoint returns all miners
-  Future<String> publicMinersFailuresMinerGet(String miner) async {
+  /// This endpoint returns all miners. Note: value may be cached
+  Future<ApiMinerResp> adminMinersGet() async {
     Object postBody = null;
 
     // verify required params are set
-    if(miner == null) {
-     throw new ApiException(400, "Missing required param: miner");
-    }
 
     // create path and map variables
-    String path = "/public/miners/failures/{miner}".replaceAll("{format}","json").replaceAll("{" + "miner" + "}", miner.toString());
+    String path = "/admin/miners/".replaceAll("{format}","json");
 
     // query params
     List<QueryParam> queryParams = [];
@@ -53,7 +50,7 @@ class NetApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          apiClient.deserialize(response.body, 'String') as String ;
+          apiClient.deserialize(response.body, 'ApiMinerResp') as ApiMinerResp ;
     } else {
       return null;
     }
@@ -61,13 +58,16 @@ class NetApi {
   /// Get all miners
   ///
   /// This endpoint returns all miners
-  Future<String> publicMinersGet() async {
+  Future<String> publicMinersFailuresMinerGet(String miner) async {
     Object postBody = null;
 
     // verify required params are set
+    if(miner == null) {
+     throw new ApiException(400, "Missing required param: miner");
+    }
 
     // create path and map variables
-    String path = "/public/miners".replaceAll("{format}","json");
+    String path = "/public/miners/failures/{miner}".replaceAll("{format}","json").replaceAll("{" + "miner" + "}", miner.toString());
 
     // query params
     List<QueryParam> queryParams = [];

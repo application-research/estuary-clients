@@ -27,7 +27,7 @@ import javax.validation.constraints.*;
 @Path("/public")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2023-01-04T12:55:54.380Z[GMT]")public interface PublicApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2023-01-13T19:43:16.993Z[GMT]")public interface PublicApi  {
    
     @GET
     @Path("/by-cid/{cid}")
@@ -106,19 +106,6 @@ import javax.validation.constraints.*;
                 @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
          })
     Response publicMinersFailuresMinerGet( @PathParam("miner") String miner,@Context SecurityContext securityContext);
-
-    @GET
-    @Path("/miners")
-    
-    @Produces({ "application/json" })
-    @Operation(summary = "Get all miners", description = "This endpoint returns all miners", security = {
-        @SecurityRequirement(name = "bearerAuth")    }, tags={ "public", "net" })
-    @ApiResponses(value = {
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
-                @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
-                @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
-         })
-    Response publicMinersGet(@Context SecurityContext securityContext);
 
     @GET
     @Path("/miners/stats/{miner}")

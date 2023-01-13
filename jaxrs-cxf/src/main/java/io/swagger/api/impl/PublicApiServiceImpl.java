@@ -96,18 +96,6 @@ public class PublicApiServiceImpl implements PublicApi {
     }
     
     /**
-     * Get all miners
-     *
-     * This endpoint returns all miners
-     *
-     */
-    public String publicMinersGet() {
-        // TODO: Implement...
-        
-        return null;
-    }
-    
-    /**
      * Get miner stats
      *
      * This endpoint returns miner stats

@@ -12,6 +12,7 @@
 
 package io.swagger.client.api;
 
+import io.swagger.client.model.ApiMinerResp;
 import io.swagger.client.model.PeeringPeeringPeer;
 import io.swagger.client.model.UtilHttpError;
 import org.junit.Test;
@@ -32,6 +33,20 @@ public class AdminApiTest {
 
     private final AdminApi api = new AdminApi();
 
+    /**
+     * Get all miners
+     *
+     * This endpoint returns all miners. Note: value may be cached
+     *
+     * @throws Exception
+     *          if the Api call fails
+     */
+    @Test
+    public void adminMinersGetTest() throws Exception {
+        ApiMinerResp response = api.adminMinersGet();
+
+        // TODO: test validations
+    }
     /**
      * Remove peers on Peering Service
      *

@@ -12,16 +12,16 @@ namespace IO.Swagger.Api
     public interface INetApi
     {
         /// <summary>
+        /// Get all miners This endpoint returns all miners. Note: value may be cached
+        /// </summary>
+        /// <returns>ApiMinerResp</returns>
+        ApiMinerResp AdminMinersGet ();
+        /// <summary>
         /// Get all miners This endpoint returns all miners
         /// </summary>
         /// <param name="miner">Filter by miner</param>
         /// <returns>string</returns>
         string PublicMinersFailuresMinerGet (string miner);
-        /// <summary>
-        /// Get all miners This endpoint returns all miners
-        /// </summary>
-        /// <returns>string</returns>
-        string PublicMinersGet ();
         /// <summary>
         /// Net Addrs This endpoint is used to get net addrs
         /// </summary>
@@ -88,6 +88,37 @@ namespace IO.Swagger.Api
         public ApiClient ApiClient {get; set;}
     
         /// <summary>
+        /// Get all miners This endpoint returns all miners. Note: value may be cached
+        /// </summary>
+        /// <returns>ApiMinerResp</returns>
+        public ApiMinerResp AdminMinersGet ()
+        {
+    
+            var path = "/admin/miners/";
+            path = path.Replace("{format}", "json");
+                
+            var queryParams = new Dictionary<String, String>();
+            var headerParams = new Dictionary<String, String>();
+            var formParams = new Dictionary<String, String>();
+            var fileParams = new Dictionary<String, FileParameter>();
+            String postBody = null;
+    
+                                    
+            // authentication setting, if any
+            String[] authSettings = new String[] { "bearerAuth" };
+    
+            // make the HTTP request
+            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
+    
+            if (((int)response.StatusCode) >= 400)
+                throw new ApiException ((int)response.StatusCode, "Error calling AdminMinersGet: " + response.Content, response.Content);
+            else if (((int)response.StatusCode) == 0)
+                throw new ApiException ((int)response.StatusCode, "Error calling AdminMinersGet: " + response.ErrorMessage, response.ErrorMessage);
+    
+            return (ApiMinerResp) ApiClient.Deserialize(response.Content, typeof(ApiMinerResp), response.Headers);
+        }
+    
+        /// <summary>
         /// Get all miners This endpoint returns all miners
         /// </summary>
         /// <param name="miner">Filter by miner</param>
@@ -118,37 +149,6 @@ namespace IO.Swagger.Api
                 throw new ApiException ((int)response.StatusCode, "Error calling PublicMinersFailuresMinerGet: " + response.Content, response.Content);
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PublicMinersFailuresMinerGet: " + response.ErrorMessage, response.ErrorMessage);
-    
-            return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
-        }
-    
-        /// <summary>
-        /// Get all miners This endpoint returns all miners
-        /// </summary>
-        /// <returns>string</returns>
-        public string PublicMinersGet ()
-        {
-    
-            var path = "/public/miners";
-            path = path.Replace("{format}", "json");
-                
-            var queryParams = new Dictionary<String, String>();
-            var headerParams = new Dictionary<String, String>();
-            var formParams = new Dictionary<String, String>();
-            var fileParams = new Dictionary<String, FileParameter>();
-            String postBody = null;
-    
-                                    
-            // authentication setting, if any
-            String[] authSettings = new String[] { "bearerAuth" };
-    
-            // make the HTTP request
-            IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
-    
-            if (((int)response.StatusCode) >= 400)
-                throw new ApiException ((int)response.StatusCode, "Error calling PublicMinersGet: " + response.Content, response.Content);
-            else if (((int)response.StatusCode) == 0)
-                throw new ApiException ((int)response.StatusCode, "Error calling PublicMinersGet: " + response.ErrorMessage, response.ErrorMessage);
     
             return (string) ApiClient.Deserialize(response.Content, typeof(string), response.Headers);
         }

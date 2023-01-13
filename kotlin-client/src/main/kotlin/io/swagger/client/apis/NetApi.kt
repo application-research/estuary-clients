@@ -11,12 +11,37 @@
  */
 package io.swagger.client.apis
 
+import io.swagger.client.models.ApiminerResp
 import io.swagger.client.models.UtilHttpError
 
 import estuary-client.infrastructure.*
 
 class NetApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(basePath) {
 
+    /**
+     * Get all miners
+     * This endpoint returns all miners. Note: value may be cached
+     * @return ApiminerResp
+     */
+    @Suppress("UNCHECKED_CAST")
+    fun adminMinersGet(): ApiminerResp {
+        
+        val localVariableConfig = RequestConfig(
+                RequestMethod.GET,
+                "/admin/miners/"
+        )
+        val response = request<ApiminerResp>(
+                localVariableConfig
+        )
+
+        return when (response.responseType) {
+            ResponseType.Success -> (response as Success<*>).data as ApiminerResp
+            ResponseType.Informational -> TODO()
+            ResponseType.Redirection -> TODO()
+            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
+            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
+        }
+    }
     /**
      * Get all miners
      * This endpoint returns all miners
@@ -29,30 +54,6 @@ class NetApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(basePa
         val localVariableConfig = RequestConfig(
                 RequestMethod.GET,
                 "/public/miners/failures/{miner}".replace("{" + "miner" + "}", "$miner")
-        )
-        val response = request<kotlin.String>(
-                localVariableConfig
-        )
-
-        return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as kotlin.String
-            ResponseType.Informational -> TODO()
-            ResponseType.Redirection -> TODO()
-            ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
-            ResponseType.ServerError -> throw ServerException((response as ServerError<*>).message ?: "Server error")
-        }
-    }
-    /**
-     * Get all miners
-     * This endpoint returns all miners
-     * @return kotlin.String
-     */
-    @Suppress("UNCHECKED_CAST")
-    fun publicMinersGet(): kotlin.String {
-        
-        val localVariableConfig = RequestConfig(
-                RequestMethod.GET,
-                "/public/miners"
         )
         val response = request<kotlin.String>(
                 localVariableConfig

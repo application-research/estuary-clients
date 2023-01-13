@@ -81,17 +81,6 @@ class TestPublicController(BaseTestCase):
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
-    def test_public_miners_get(self):
-        """Test case for public_miners_get
-
-        Get all miners
-        """
-        response = self.client.open(
-            '/public/miners',
-            method='GET')
-        self.assert200(response,
-                       'Response body is : ' + response.data.decode('utf-8'))
-
     def test_public_miners_stats_miner_get(self):
         """Test case for public_miners_stats_miner_get
 

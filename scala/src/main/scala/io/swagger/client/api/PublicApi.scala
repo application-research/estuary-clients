@@ -234,30 +234,6 @@ class PublicApi(
   }
 
   /**
-   * Get all miners
-   * This endpoint returns all miners
-   *
-   * @return String
-   */
-  def publicMinersGet(): Option[String] = {
-    val await = Try(Await.result(publicMinersGetAsync(), Duration.Inf))
-    await match {
-      case Success(i) => Some(await.get)
-      case Failure(t) => None
-    }
-  }
-
-  /**
-   * Get all miners asynchronously
-   * This endpoint returns all miners
-   *
-   * @return Future(String)
-   */
-  def publicMinersGetAsync(): Future[String] = {
-      helper.publicMinersGet()
-  }
-
-  /**
    * Get miner stats
    * This endpoint returns miner stats
    *
@@ -459,21 +435,6 @@ class PublicApiAsyncHelper(client: TransportClient, config: SwaggerConfig) exten
     val headerParams = new mutable.HashMap[String, String]
 
     if (miner == null) throw new Exception("Missing required parameter 'miner' when calling PublicApi->publicMinersFailuresMinerGet")
-
-
-    val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")
-    resFuture flatMap { resp =>
-      process(reader.read(resp))
-    }
-  }
-
-  def publicMinersGet()(implicit reader: ClientResponseReader[String]): Future[String] = {
-    // create path and map variables
-    val path = (addFmt("/public/miners"))
-
-    // query params
-    val queryParams = new mutable.HashMap[String, String]
-    val headerParams = new mutable.HashMap[String, String]
 
 
     val resFuture = client.submit("GET", path, queryParams.toMap, headerParams.toMap, "")

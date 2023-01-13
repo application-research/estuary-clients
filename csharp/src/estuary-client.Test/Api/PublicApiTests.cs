@@ -128,16 +128,6 @@ namespace estuary-client.Test
             //Assert.IsInstanceOf<string> (response, "response is string");
         }
         /// <summary>
-        /// Test PublicMinersGet
-        /// </summary>
-        [Test]
-        public void PublicMinersGetTest()
-        {
-            // TODO uncomment below to test the method and replace null with proper value
-            //var response = instance.PublicMinersGet();
-            //Assert.IsInstanceOf<string> (response, "response is string");
-        }
-        /// <summary>
         /// Test PublicMinersStatsMinerGet
         /// </summary>
         [Test]

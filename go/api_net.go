@@ -26,23 +26,21 @@ var (
 type NetApiService service
 /*
 NetApiService Get all miners
-This endpoint returns all miners
+This endpoint returns all miners. Note: value may be cached
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- * @param miner Filter by miner
-@return string
+@return ApiMinerResp
 */
-func (a *NetApiService) PublicMinersFailuresMinerGet(ctx context.Context, miner string) (string, *http.Response, error) {
+func (a *NetApiService) AdminMinersGet(ctx context.Context) (ApiMinerResp, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue string
+		localVarReturnValue ApiMinerResp
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/public/miners/failures/{miner}"
-	localVarPath = strings.Replace(localVarPath, "{"+"miner"+"}", fmt.Sprintf("%v", miner), -1)
+	localVarPath := a.client.cfg.BasePath + "/admin/miners/"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
@@ -108,7 +106,7 @@ func (a *NetApiService) PublicMinersFailuresMinerGet(ctx context.Context, miner 
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v string
+			var v ApiMinerResp
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -146,9 +144,10 @@ func (a *NetApiService) PublicMinersFailuresMinerGet(ctx context.Context, miner 
 NetApiService Get all miners
 This endpoint returns all miners
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
+ * @param miner Filter by miner
 @return string
 */
-func (a *NetApiService) PublicMinersGet(ctx context.Context) (string, *http.Response, error) {
+func (a *NetApiService) PublicMinersFailuresMinerGet(ctx context.Context, miner string) (string, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
@@ -158,7 +157,8 @@ func (a *NetApiService) PublicMinersGet(ctx context.Context) (string, *http.Resp
 	)
 
 	// create path and map variables
-	localVarPath := a.client.cfg.BasePath + "/public/miners"
+	localVarPath := a.client.cfg.BasePath + "/public/miners/failures/{miner}"
+	localVarPath = strings.Replace(localVarPath, "{"+"miner"+"}", fmt.Sprintf("%v", miner), -1)
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}

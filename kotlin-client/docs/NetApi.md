@@ -4,10 +4,53 @@ All URIs are relative to *//api.estuary.tech/*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**adminMinersGet**](NetApi.md#adminMinersGet) | **GET** /admin/miners/ | Get all miners
 [**publicMinersFailuresMinerGet**](NetApi.md#publicMinersFailuresMinerGet) | **GET** /public/miners/failures/{miner} | Get all miners
-[**publicMinersGet**](NetApi.md#publicMinersGet) | **GET** /public/miners | Get all miners
 [**publicNetAddrsGet**](NetApi.md#publicNetAddrsGet) | **GET** /public/net/addrs | Net Addrs
 [**publicNetPeersGet**](NetApi.md#publicNetPeersGet) | **GET** /public/net/peers | Net Peers
+
+<a name="adminMinersGet"></a>
+# **adminMinersGet**
+> ApiminerResp adminMinersGet()
+
+Get all miners
+
+This endpoint returns all miners. Note: value may be cached
+
+### Example
+```kotlin
+// Import classes:
+//import estuary-client.infrastructure.*
+//import io.swagger.client.models.*;
+
+val apiInstance = NetApi()
+try {
+    val result : ApiminerResp = apiInstance.adminMinersGet()
+    println(result)
+} catch (e: ClientException) {
+    println("4xx response calling NetApi#adminMinersGet")
+    e.printStackTrace()
+} catch (e: ServerException) {
+    println("5xx response calling NetApi#adminMinersGet")
+    e.printStackTrace()
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**ApiminerResp**](ApiminerResp.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 <a name="publicMinersFailuresMinerGet"></a>
 # **publicMinersFailuresMinerGet**
@@ -42,49 +85,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **miner** | **kotlin.String**| Filter by miner |
-
-### Return type
-
-**kotlin.String**
-
-### Authorization
-
-[bearerAuth](../README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="publicMinersGet"></a>
-# **publicMinersGet**
-> kotlin.String publicMinersGet()
-
-Get all miners
-
-This endpoint returns all miners
-
-### Example
-```kotlin
-// Import classes:
-//import estuary-client.infrastructure.*
-//import io.swagger.client.models.*;
-
-val apiInstance = NetApi()
-try {
-    val result : kotlin.String = apiInstance.publicMinersGet()
-    println(result)
-} catch (e: ClientException) {
-    println("4xx response calling NetApi#publicMinersGet")
-    e.printStackTrace()
-} catch (e: ServerException) {
-    println("5xx response calling NetApi#publicMinersGet")
-    e.printStackTrace()
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
 
 ### Return type
 

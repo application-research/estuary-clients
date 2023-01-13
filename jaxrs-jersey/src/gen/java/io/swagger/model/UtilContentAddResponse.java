@@ -24,7 +24,7 @@ import javax.validation.Valid;
 /**
  * UtilContentAddResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2023-01-04T12:55:53.153Z[GMT]")public class UtilContentAddResponse   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2023-01-13T19:43:16.543Z[GMT]")public class UtilContentAddResponse   {
   @JsonProperty("cid")
   private String cid = null;
 

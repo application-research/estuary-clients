@@ -49,13 +49,12 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new AdminApi();
-var body = [new List&lt;String&gt;()]; // List<String> | Peer ids
 
 try {
-    var result = api_instance.adminPeeringPeersDelete(body);
+    var result = api_instance.adminMinersGet();
     print(result);
 } catch (e) {
-    print("Exception when calling AdminApi->adminPeeringPeersDelete: $e\n");
+    print("Exception when calling AdminApi->adminMinersGet: $e\n");
 }
 ```
 
@@ -65,6 +64,7 @@ All URIs are relative to *//api.estuary.tech/*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AdminApi* | [**adminMinersGet**](docs//AdminApi.md#adminminersget) | **GET** /admin/miners/ | Get all miners
 *AdminApi* | [**adminPeeringPeersDelete**](docs//AdminApi.md#adminpeeringpeersdelete) | **DELETE** /admin/peering/peers | Remove peers on Peering Service
 *AdminApi* | [**adminPeeringPeersGet**](docs//AdminApi.md#adminpeeringpeersget) | **GET** /admin/peering/peers | List all Peering peers
 *AdminApi* | [**adminPeeringPeersPost**](docs//AdminApi.md#adminpeeringpeerspost) | **POST** /admin/peering/peers | Add peers on Peering Service
@@ -126,8 +126,8 @@ Class | Method | HTTP request | Description
 *MinerApi* | [**minerUnsuspendMinerPut**](docs//MinerApi.md#minerunsuspendminerput) | **PUT** /miner/unsuspend/{miner} | Unuspend Miner
 *MinerApi* | [**publicMinersDealsMinerGet**](docs//MinerApi.md#publicminersdealsminerget) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *MinerApi* | [**publicMinersStatsMinerGet**](docs//MinerApi.md#publicminersstatsminerget) | **GET** /public/miners/stats/{miner} | Get miner stats
+*NetApi* | [**adminMinersGet**](docs//NetApi.md#adminminersget) | **GET** /admin/miners/ | Get all miners
 *NetApi* | [**publicMinersFailuresMinerGet**](docs//NetApi.md#publicminersfailuresminerget) | **GET** /public/miners/failures/{miner} | Get all miners
-*NetApi* | [**publicMinersGet**](docs//NetApi.md#publicminersget) | **GET** /public/miners | Get all miners
 *NetApi* | [**publicNetAddrsGet**](docs//NetApi.md#publicnetaddrsget) | **GET** /public/net/addrs | Net Addrs
 *NetApi* | [**publicNetPeersGet**](docs//NetApi.md#publicnetpeersget) | **GET** /public/net/peers | Net Peers
 *PinningApi* | [**pinningPinsGet**](docs//PinningApi.md#pinningpinsget) | **GET** /pinning/pins | List all pin status objects
@@ -141,7 +141,6 @@ Class | Method | HTTP request | Description
 *PublicApi* | [**publicMetricsDealsOnChainGet**](docs//PublicApi.md#publicmetricsdealsonchainget) | **GET** /public/metrics/deals-on-chain | Get deal metrics
 *PublicApi* | [**publicMinersDealsMinerGet**](docs//PublicApi.md#publicminersdealsminerget) | **GET** /public/miners/deals/{miner} | Get all miners deals
 *PublicApi* | [**publicMinersFailuresMinerGet**](docs//PublicApi.md#publicminersfailuresminerget) | **GET** /public/miners/failures/{miner} | Get all miners
-*PublicApi* | [**publicMinersGet**](docs//PublicApi.md#publicminersget) | **GET** /public/miners | Get all miners
 *PublicApi* | [**publicMinersStatsMinerGet**](docs//PublicApi.md#publicminersstatsminerget) | **GET** /public/miners/stats/{miner} | Get miner stats
 *PublicApi* | [**publicNetAddrsGet**](docs//PublicApi.md#publicnetaddrsget) | **GET** /public/net/addrs | Net Addrs
 *PublicApi* | [**publicNetPeersGet**](docs//PublicApi.md#publicnetpeersget) | **GET** /public/net/peers | Net Peers
@@ -163,6 +162,7 @@ Class | Method | HTTP request | Description
  - [ApiEmptyResp](docs//ApiEmptyResp.md)
  - [ApiEstimateDealBody](docs//ApiEstimateDealBody.md)
  - [ApiGetApiKeysResp](docs//ApiGetApiKeysResp.md)
+ - [ApiMinerResp](docs//ApiMinerResp.md)
  - [ApiPublicNodeInfo](docs//ApiPublicNodeInfo.md)
  - [AutoretrieveInitBody](docs//AutoretrieveInitBody.md)
  - [CidCid](docs//CidCid.md)
@@ -171,6 +171,7 @@ Class | Method | HTTP request | Description
  - [CollectionsCollectionListResponse](docs//CollectionsCollectionListResponse.md)
  - [ContentAddBody](docs//ContentAddBody.md)
  - [MinerClaimMinerBody](docs//MinerClaimMinerBody.md)
+ - [MinerMinerChainInfo](docs//MinerMinerChainInfo.md)
  - [MinerMinerSetInfoParams](docs//MinerMinerSetInfoParams.md)
  - [MinerSuspendMinerBody](docs//MinerSuspendMinerBody.md)
  - [PeeringPeeringPeer](docs//PeeringPeeringPeer.md)

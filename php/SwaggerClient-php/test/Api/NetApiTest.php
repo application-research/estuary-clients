@@ -71,22 +71,22 @@ class NetApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for adminMinersGet
+     *
+     * Get all miners.
+     *
+     */
+    public function testAdminMinersGet()
+    {
+    }
+
+    /**
      * Test case for publicMinersFailuresMinerGet
      *
      * Get all miners.
      *
      */
     public function testPublicMinersFailuresMinerGet()
-    {
-    }
-
-    /**
-     * Test case for publicMinersGet
-     *
-     * Get all miners.
-     *
-     */
-    public function testPublicMinersGet()
     {
     }
 

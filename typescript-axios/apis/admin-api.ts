@@ -16,6 +16,7 @@ import { Configuration } from '../configuration';
 // Some imports not used depending on template conditions
 // @ts-ignore
 import { BASE_PATH, COLLECTION_FORMATS, RequestArgs, BaseAPI, RequiredError } from '../base';
+import { ApiMinerResp } from '../models';
 import { PeeringPeeringPeer } from '../models';
 import { UtilHttpError } from '../models';
 /**
@@ -24,6 +25,48 @@ import { UtilHttpError } from '../models';
  */
 export const AdminApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
+        /**
+         * This endpoint returns all miners. Note: value may be cached
+         * @summary Get all miners
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        adminMinersGet: async (options: AxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/admin/miners/`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, 'https://example.com');
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+            const localVarRequestOptions :AxiosRequestConfig = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication bearerAuth required
+            if (configuration && configuration.apiKey) {
+                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+                    ? await configuration.apiKey("Authorization")
+                    : await configuration.apiKey;
+                localVarHeaderParameter["Authorization"] = localVarApiKeyValue;
+            }
+
+            const query = new URLSearchParams(localVarUrlObj.search);
+            for (const key in localVarQueryParameter) {
+                query.set(key, localVarQueryParameter[key]);
+            }
+            for (const key in options.params) {
+                query.set(key, options.params[key]);
+            }
+            localVarUrlObj.search = (new URLSearchParams(query)).toString();
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: localVarUrlObj.pathname + localVarUrlObj.search + localVarUrlObj.hash,
+                options: localVarRequestOptions,
+            };
+        },
         /**
          * This endpoint can be used to remove a Peer from the Peering Service
          * @summary Remove peers on Peering Service
@@ -388,6 +431,19 @@ export const AdminApiAxiosParamCreator = function (configuration?: Configuration
 export const AdminApiFp = function(configuration?: Configuration) {
     return {
         /**
+         * This endpoint returns all miners. Note: value may be cached
+         * @summary Get all miners
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async adminMinersGet(options?: AxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => Promise<AxiosResponse<ApiMinerResp>>> {
+            const localVarAxiosArgs = await AdminApiAxiosParamCreator(configuration).adminMinersGet(options);
+            return (axios: AxiosInstance = globalAxios, basePath: string = BASE_PATH) => {
+                const axiosRequestArgs :AxiosRequestConfig = {...localVarAxiosArgs.options, url: basePath + localVarAxiosArgs.url};
+                return axios.request(axiosRequestArgs);
+            };
+        },
+        /**
          * This endpoint can be used to remove a Peer from the Peering Service
          * @summary Remove peers on Peering Service
          * @param {Array<string>} body Peer ids
@@ -503,6 +559,15 @@ export const AdminApiFp = function(configuration?: Configuration) {
 export const AdminApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
     return {
         /**
+         * This endpoint returns all miners. Note: value may be cached
+         * @summary Get all miners
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async adminMinersGet(options?: AxiosRequestConfig): Promise<AxiosResponse<ApiMinerResp>> {
+            return AdminApiFp(configuration).adminMinersGet(options).then((request) => request(axios, basePath));
+        },
+        /**
          * This endpoint can be used to remove a Peer from the Peering Service
          * @summary Remove peers on Peering Service
          * @param {Array<string>} body Peer ids
@@ -586,6 +651,16 @@ export const AdminApiFactory = function (configuration?: Configuration, basePath
  * @extends {BaseAPI}
  */
 export class AdminApi extends BaseAPI {
+    /**
+     * This endpoint returns all miners. Note: value may be cached
+     * @summary Get all miners
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof AdminApi
+     */
+    public async adminMinersGet(options?: AxiosRequestConfig) : Promise<AxiosResponse<ApiMinerResp>> {
+        return AdminApiFp(this.configuration).adminMinersGet(options).then((request) => request(this.axios, this.basePath));
+    }
     /**
      * This endpoint can be used to remove a Peer from the Peering Service
      * @summary Remove peers on Peering Service
