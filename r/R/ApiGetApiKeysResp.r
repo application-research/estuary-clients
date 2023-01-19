@@ -9,6 +9,7 @@
 #' ApiGetApiKeysResp Class
 #'
 #' @field expiry 
+#' @field isSession 
 #' @field label 
 #' @field token 
 #' @field tokenHash 
@@ -20,13 +21,17 @@ ApiGetApiKeysResp <- R6::R6Class(
   'ApiGetApiKeysResp',
   public = list(
     `expiry` = NULL,
+    `isSession` = NULL,
     `label` = NULL,
     `token` = NULL,
     `tokenHash` = NULL,
-    initialize = function(`expiry`, `label`, `token`, `tokenHash`){
+    initialize = function(`expiry`, `isSession`, `label`, `token`, `tokenHash`){
       if (!missing(`expiry`)) {
         stopifnot(is.character(`expiry`), length(`expiry`) == 1)
         self$`expiry` <- `expiry`
+      }
+      if (!missing(`isSession`)) {
+        self$`isSession` <- `isSession`
       }
       if (!missing(`label`)) {
         stopifnot(is.character(`label`), length(`label`) == 1)
@@ -46,6 +51,9 @@ ApiGetApiKeysResp <- R6::R6Class(
       if (!is.null(self$`expiry`)) {
         ApiGetApiKeysRespObject[['expiry']] <- self$`expiry`
       }
+      if (!is.null(self$`isSession`)) {
+        ApiGetApiKeysRespObject[['isSession']] <- self$`isSession`
+      }
       if (!is.null(self$`label`)) {
         ApiGetApiKeysRespObject[['label']] <- self$`label`
       }
@@ -63,6 +71,9 @@ ApiGetApiKeysResp <- R6::R6Class(
       if (!is.null(ApiGetApiKeysRespObject$`expiry`)) {
         self$`expiry` <- ApiGetApiKeysRespObject$`expiry`
       }
+      if (!is.null(ApiGetApiKeysRespObject$`isSession`)) {
+        self$`isSession` <- ApiGetApiKeysRespObject$`isSession`
+      }
       if (!is.null(ApiGetApiKeysRespObject$`label`)) {
         self$`label` <- ApiGetApiKeysRespObject$`label`
       }
@@ -77,11 +88,13 @@ ApiGetApiKeysResp <- R6::R6Class(
        sprintf(
         '{
            "expiry": %s,
+           "isSession": %s,
            "label": %s,
            "token": %s,
            "tokenHash": %s
         }',
         self$`expiry`,
+        self$`isSession`,
         self$`label`,
         self$`token`,
         self$`tokenHash`
@@ -90,6 +103,7 @@ ApiGetApiKeysResp <- R6::R6Class(
     fromJSONString = function(ApiGetApiKeysRespJson) {
       ApiGetApiKeysRespObject <- jsonlite::fromJSON(ApiGetApiKeysRespJson)
       self$`expiry` <- ApiGetApiKeysRespObject$`expiry`
+      self$`isSession` <- ApiGetApiKeysRespObject$`isSession`
       self$`label` <- ApiGetApiKeysRespObject$`label`
       self$`token` <- ApiGetApiKeysRespObject$`token`
       self$`tokenHash` <- ApiGetApiKeysRespObject$`tokenHash`

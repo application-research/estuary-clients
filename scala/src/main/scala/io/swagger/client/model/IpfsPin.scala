@@ -20,7 +20,7 @@ package io.swagger.client.model
  */
 case class IpfsPin (
   cid: Option[String] = None,
-  meta: Option[Any] = None,
+  meta: Option[Map[String, Any]] = None,
   name: Option[String] = None,
   origins: Option[List[String]] = None
 )

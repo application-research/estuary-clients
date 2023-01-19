@@ -24,7 +24,7 @@ namespace IO.Swagger.Model {
     /// </summary>
     [DataMember(Name="meta", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "meta")]
-    public Object Meta { get; set; }
+    public Dictionary<string, Object> Meta { get; set; }
 
     /// <summary>
     /// Gets or Sets Name

@@ -3,7 +3,9 @@ package io.swagger.model;
 import io.swagger.model.TypesIpfsPin;
 import io.swagger.model.TypesPinningStatus;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.validation.constraints.*;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -27,7 +29,7 @@ public class TypesIpfsPinStatusResponse   {
   private List<String> delegates = null;
   
   @Schema(description = "")
-  private Object info = null;
+  private Map<String, Object> info = null;
   
   @Schema(description = "")
   private TypesIpfsPin pin = null;
@@ -83,16 +85,21 @@ public class TypesIpfsPinStatusResponse   {
    * @return info
   **/
   @JsonProperty("info")
-  public Object getInfo() {
+  public Map<String, Object> getInfo() {
     return info;
   }
 
-  public void setInfo(Object info) {
+  public void setInfo(Map<String, Object> info) {
     this.info = info;
   }
 
-  public TypesIpfsPinStatusResponse info(Object info) {
+  public TypesIpfsPinStatusResponse info(Map<String, Object> info) {
     this.info = info;
+    return this;
+  }
+
+  public TypesIpfsPinStatusResponse putInfoItem(String key, Object infoItem) {
+    this.info.put(key, infoItem);
     return this;
   }
 

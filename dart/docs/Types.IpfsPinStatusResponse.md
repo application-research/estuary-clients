@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **created** | **String** |  | [optional] [default to null]
 **delegates** | **List&lt;String&gt;** |  | [optional] [default to []]
-**info** | [**Object**](Object.md) |  | [optional] [default to null]
+**info** | [**Map**](Object.md) |  | [optional] [default to {}]
 **pin** | [**TypesIpfsPin**](TypesIpfsPin.md) |  | [optional] [default to null]
 **requestid** | **String** |  | [optional] [default to null]
 **status** | [**TypesPinningStatus**](TypesPinningStatus.md) |  | [optional] [default to null]

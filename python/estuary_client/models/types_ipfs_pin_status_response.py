@@ -30,7 +30,7 @@ class TypesIpfsPinStatusResponse(object):
     swagger_types = {
         'created': 'str',
         'delegates': 'list[str]',
-        'info': 'object',
+        'info': 'dict(str, object)',
         'pin': 'TypesIpfsPin',
         'requestid': 'str',
         'status': 'TypesPinningStatus'
@@ -115,7 +115,7 @@ class TypesIpfsPinStatusResponse(object):
 
 
         :return: The info of this TypesIpfsPinStatusResponse.  # noqa: E501
-        :rtype: object
+        :rtype: dict(str, object)
         """
         return self._info
 
@@ -125,7 +125,7 @@ class TypesIpfsPinStatusResponse(object):
 
 
         :param info: The info of this TypesIpfsPinStatusResponse.  # noqa: E501
-        :type: object
+        :type: dict(str, object)
         """
 
         self._info = info

@@ -29,7 +29,7 @@ class TypesIpfsPin(object):
     """
     swagger_types = {
         'cid': 'str',
-        'meta': 'object',
+        'meta': 'dict(str, object)',
         'name': 'str',
         'origins': 'list[str]'
     }
@@ -84,7 +84,7 @@ class TypesIpfsPin(object):
 
 
         :return: The meta of this TypesIpfsPin.  # noqa: E501
-        :rtype: object
+        :rtype: dict(str, object)
         """
         return self._meta
 
@@ -94,7 +94,7 @@ class TypesIpfsPin(object):
 
 
         :param meta: The meta of this TypesIpfsPin.  # noqa: E501
-        :type: object
+        :type: dict(str, object)
         """
 
         self._meta = meta

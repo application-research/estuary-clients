@@ -5,13 +5,14 @@ import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.List;
+import java.util.Map;
 import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2023-01-13T19:43:16.993Z[GMT]")public class TypesIpfsPin   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2023-01-19T16:30:02.672Z[GMT]")public class TypesIpfsPin   {
   private String cid = null;
-  private Object meta = null;
+  private Map<String, Object> meta = new HashMap<String, Object>();
   private String name = null;
   private List<String> origins = new ArrayList<String>();
 
@@ -32,10 +33,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
   
   @Schema(description = "")
   @JsonProperty("meta")
-  public Object getMeta() {
+  public Map<String, Object> getMeta() {
     return meta;
   }
-  public void setMeta(Object meta) {
+  public void setMeta(Map<String, Object> meta) {
     this.meta = meta;
   }
 

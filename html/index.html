@@ -3787,7 +3787,7 @@
   "count" : 0,
   "results" : [ {
     "pin" : {
-      "meta" : { },
+      "meta" : "",
       "name" : "name",
       "origins" : [ "origins", "origins" ],
       "cid" : "cid"
@@ -3795,11 +3795,11 @@
     "created" : "created",
     "requestid" : "requestid",
     "delegates" : [ "delegates", "delegates" ],
-    "info" : { },
+    "info" : "",
     "status" : "pinning"
   }, {
     "pin" : {
-      "meta" : { },
+      "meta" : "",
       "name" : "name",
       "origins" : [ "origins", "origins" ],
       "cid" : "cid"
@@ -3807,7 +3807,7 @@
     "created" : "created",
     "requestid" : "requestid",
     "delegates" : [ "delegates", "delegates" ],
-    "info" : { },
+    "info" : "",
     "status" : "pinning"
   } ]
 }</code></pre>
@@ -3899,7 +3899,7 @@
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
   "pin" : {
-    "meta" : { },
+    "meta" : "",
     "name" : "name",
     "origins" : [ "origins", "origins" ],
     "cid" : "cid"
@@ -3907,7 +3907,7 @@
   "created" : "created",
   "requestid" : "requestid",
   "delegates" : [ "delegates", "delegates" ],
-  "info" : { },
+  "info" : "",
   "status" : "pinning"
 }</code></pre>
 
@@ -3971,7 +3971,7 @@
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
   "pin" : {
-    "meta" : { },
+    "meta" : "",
     "name" : "name",
     "origins" : [ "origins", "origins" ],
     "cid" : "cid"
@@ -3979,7 +3979,7 @@
   "created" : "created",
   "requestid" : "requestid",
   "delegates" : [ "delegates", "delegates" ],
-  "info" : { },
+  "info" : "",
   "status" : "pinning"
 }</code></pre>
 
@@ -4045,7 +4045,7 @@
     <div class="example-data-content-type">Content-Type: application/json</div>
     <pre class="example"><code>{
   "pin" : {
-    "meta" : { },
+    "meta" : "",
     "name" : "name",
     "origins" : [ "origins", "origins" ],
     "cid" : "cid"
@@ -4053,7 +4053,7 @@
   "created" : "created",
   "requestid" : "requestid",
   "delegates" : [ "delegates", "delegates" ],
-  "info" : { },
+  "info" : "",
   "status" : "pinning"
 }</code></pre>
 
@@ -4559,11 +4559,13 @@
     <pre class="example"><code>[ {
   "expiry" : "expiry",
   "label" : "label",
+  "isSession" : true,
   "tokenHash" : "tokenHash",
   "token" : "token"
 }, {
   "expiry" : "expiry",
   "label" : "label",
+  "isSession" : true,
   "tokenHash" : "tokenHash",
   "token" : "token"
 } ]</code></pre>
@@ -4672,6 +4674,7 @@
     <pre class="example"><code>{
   "expiry" : "expiry",
   "label" : "label",
+  "isSession" : true,
   "tokenHash" : "tokenHash",
   "token" : "token"
 }</code></pre>
@@ -4893,6 +4896,7 @@
     
     <div class="field-items">
       <div class="param">expiry (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">isSession (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
 <div class="param">label (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">token (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">tokenHash (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
@@ -5026,7 +5030,7 @@
     
     <div class="field-items">
       <div class="param">cid (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
-<div class="param">meta (optional)</div><div class="param-desc"><span class="param-type"><a href="#object">Object</a></span>  </div>
+<div class="param">meta (optional)</div><div class="param-desc"><span class="param-type"><a href="#object">map[String, Object]</a></span>  </div>
 <div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">origins (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
     </div>  <!-- field-items -->
@@ -5037,7 +5041,7 @@
     <div class="field-items">
       <div class="param">created (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">delegates (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
-<div class="param">info (optional)</div><div class="param-desc"><span class="param-type"><a href="#object">Object</a></span>  </div>
+<div class="param">info (optional)</div><div class="param-desc"><span class="param-type"><a href="#object">map[String, Object]</a></span>  </div>
 <div class="param">pin (optional)</div><div class="param-desc"><span class="param-type"><a href="#types.IpfsPin">types.IpfsPin</a></span>  </div>
 <div class="param">requestid (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
 <div class="param">status (optional)</div><div class="param-desc"><span class="param-type"><a href="#types.PinningStatus">types.PinningStatus</a></span>  </div>

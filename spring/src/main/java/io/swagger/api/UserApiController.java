@@ -33,7 +33,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-13T19:43:18.594Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-19T16:30:02.322Z[GMT]")
 @RestController
 public class UserApiController implements UserApi {
 
@@ -53,7 +53,7 @@ public class UserApiController implements UserApi {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<List<ApiGetApiKeysResp>>(objectMapper.readValue("[ {\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n}, {\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n} ]", List.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<List<ApiGetApiKeysResp>>(objectMapper.readValue("[ {\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"isSession\" : true,\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n}, {\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"isSession\" : true,\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n} ]", List.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
                 return new ResponseEntity<List<ApiGetApiKeysResp>>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -81,7 +81,7 @@ public class UserApiController implements UserApi {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<ApiGetApiKeysResp>(objectMapper.readValue("{\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n}", ApiGetApiKeysResp.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<ApiGetApiKeysResp>(objectMapper.readValue("{\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"isSession\" : true,\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n}", ApiGetApiKeysResp.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
                 return new ResponseEntity<ApiGetApiKeysResp>(HttpStatus.INTERNAL_SERVER_ERROR);

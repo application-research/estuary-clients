@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Expiry** | **string** |  | [optional] [default to null]
+**IsSession** | **bool** |  | [optional] [default to null]
 **Label** | **string** |  | [optional] [default to null]
 **Token** | **string** |  | [optional] [default to null]
 **TokenHash** | **string** |  | [optional] [default to null]

@@ -4154,6 +4154,9 @@
           "expiry" : {
             "type" : "string"
           },
+          "isSession" : {
+            "type" : "boolean"
+          },
           "label" : {
             "type" : "string"
           },
@@ -4345,7 +4348,7 @@
           },
           "meta" : {
             "type" : "object",
-            "properties" : { }
+            "additionalProperties" : true
           },
           "name" : {
             "type" : "string"
@@ -4372,7 +4375,7 @@
           },
           "info" : {
             "type" : "object",
-            "properties" : { }
+            "additionalProperties" : true
           },
           "pin" : {
             "$ref" : "#/components/schemas/types.IpfsPin"

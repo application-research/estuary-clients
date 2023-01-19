@@ -14,13 +14,13 @@ class TypesIpfsPin(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, cid: str=None, meta: object=None, name: str=None, origins: List[str]=None):  # noqa: E501
+    def __init__(self, cid: str=None, meta: Dict=None, name: str=None, origins: List[str]=None):  # noqa: E501
         """TypesIpfsPin - a model defined in Swagger
 
         :param cid: The cid of this TypesIpfsPin.  # noqa: E501
         :type cid: str
         :param meta: The meta of this TypesIpfsPin.  # noqa: E501
-        :type meta: object
+        :type meta: Dict
         :param name: The name of this TypesIpfsPin.  # noqa: E501
         :type name: str
         :param origins: The origins of this TypesIpfsPin.  # noqa: E501
@@ -28,7 +28,7 @@ class TypesIpfsPin(Model):
         """
         self.swagger_types = {
             'cid': str,
-            'meta': object,
+            'meta': Dict,
             'name': str,
             'origins': List[str]
         }
@@ -77,22 +77,22 @@ class TypesIpfsPin(Model):
         self._cid = cid
 
     @property
-    def meta(self) -> object:
+    def meta(self) -> Dict:
         """Gets the meta of this TypesIpfsPin.
 
 
         :return: The meta of this TypesIpfsPin.
-        :rtype: object
+        :rtype: Dict
         """
         return self._meta
 
     @meta.setter
-    def meta(self, meta: object):
+    def meta(self, meta: Dict):
         """Sets the meta of this TypesIpfsPin.
 
 
         :param meta: The meta of this TypesIpfsPin.
-        :type meta: object
+        :type meta: Dict
         """
 
         self._meta = meta

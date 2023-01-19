@@ -16,7 +16,7 @@ class TypesIpfsPinStatusResponse(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, created: str=None, delegates: List[str]=None, info: object=None, pin: TypesIpfsPin=None, requestid: str=None, status: TypesPinningStatus=None):  # noqa: E501
+    def __init__(self, created: str=None, delegates: List[str]=None, info: Dict=None, pin: TypesIpfsPin=None, requestid: str=None, status: TypesPinningStatus=None):  # noqa: E501
         """TypesIpfsPinStatusResponse - a model defined in Swagger
 
         :param created: The created of this TypesIpfsPinStatusResponse.  # noqa: E501
@@ -24,7 +24,7 @@ class TypesIpfsPinStatusResponse(Model):
         :param delegates: The delegates of this TypesIpfsPinStatusResponse.  # noqa: E501
         :type delegates: List[str]
         :param info: The info of this TypesIpfsPinStatusResponse.  # noqa: E501
-        :type info: object
+        :type info: Dict
         :param pin: The pin of this TypesIpfsPinStatusResponse.  # noqa: E501
         :type pin: TypesIpfsPin
         :param requestid: The requestid of this TypesIpfsPinStatusResponse.  # noqa: E501
@@ -35,7 +35,7 @@ class TypesIpfsPinStatusResponse(Model):
         self.swagger_types = {
             'created': str,
             'delegates': List[str],
-            'info': object,
+            'info': Dict,
             'pin': TypesIpfsPin,
             'requestid': str,
             'status': TypesPinningStatus
@@ -110,22 +110,22 @@ class TypesIpfsPinStatusResponse(Model):
         self._delegates = delegates
 
     @property
-    def info(self) -> object:
+    def info(self) -> Dict:
         """Gets the info of this TypesIpfsPinStatusResponse.
 
 
         :return: The info of this TypesIpfsPinStatusResponse.
-        :rtype: object
+        :rtype: Dict
         """
         return self._info
 
     @info.setter
-    def info(self, info: object):
+    def info(self, info: Dict):
         """Sets the info of this TypesIpfsPinStatusResponse.
 
 
         :param info: The info of this TypesIpfsPinStatusResponse.
-        :type info: object
+        :type info: Dict
         """
 
         self._info = info

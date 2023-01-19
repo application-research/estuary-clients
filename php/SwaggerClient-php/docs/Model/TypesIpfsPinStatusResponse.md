@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **created** | **string** |  | [optional] 
 **delegates** | **string[]** |  | [optional] 
-**info** | **object** |  | [optional] 
+**info** | **map[string,object]** |  | [optional] 
 **pin** | [**\Swagger\Client\Model\TypesIpfsPin**](TypesIpfsPin.md) |  | [optional] 
 **requestid** | **string** |  | [optional] 
 **status** | [**\Swagger\Client\Model\TypesPinningStatus**](TypesPinningStatus.md) |  | [optional] 

@@ -6,18 +6,20 @@ import io.swagger.model.TypesIpfsPin;
 import io.swagger.model.TypesPinningStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2023-01-13T19:43:13.967Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2023-01-19T16:29:58.380Z[GMT]")
 public class TypesIpfsPinStatusResponse   {
   @JsonProperty("created")
   private String created = null;
   @JsonProperty("delegates")
   private List<String> delegates = null;
   @JsonProperty("info")
-  private Object info = null;
+  private Map<String, Object> info = null;
   @JsonProperty("pin")
   private TypesIpfsPin pin = null;
   @JsonProperty("requestid")
@@ -60,7 +62,7 @@ public class TypesIpfsPinStatusResponse   {
 
   /**
    **/
-  public TypesIpfsPinStatusResponse info(Object info) {
+  public TypesIpfsPinStatusResponse info(Map<String, Object> info) {
     this.info = info;
     return this;
   }
@@ -68,10 +70,10 @@ public class TypesIpfsPinStatusResponse   {
   
   @Schema(description = "")
   @JsonProperty("info")
-  public Object getInfo() {
+  public Map<String, Object> getInfo() {
     return info;
   }
-  public void setInfo(Object info) {
+  public void setInfo(Map<String, Object> info) {
     this.info = info;
   }
 

@@ -12,7 +12,7 @@
 
 
 /**
- *  * @param expiry  * @param label  * @param token  * @param tokenHash */
-data class ApigetApiKeysResp (    val expiry: kotlin.String? = null,    val label: kotlin.String? = null,    val token: kotlin.String? = null,    val tokenHash: kotlin.String? = null
+ *  * @param expiry  * @param isSession  * @param label  * @param token  * @param tokenHash */
+data class ApigetApiKeysResp (    val expiry: kotlin.String? = null,    val isSession: kotlin.Boolean? = null,    val label: kotlin.String? = null,    val token: kotlin.String? = null,    val tokenHash: kotlin.String? = null
 ) {
 }

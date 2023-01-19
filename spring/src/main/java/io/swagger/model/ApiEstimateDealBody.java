@@ -12,7 +12,7 @@ import javax.validation.constraints.*;
  * ApiEstimateDealBody
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-13T19:43:18.594Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-19T16:30:02.322Z[GMT]")
 
 
 public class ApiEstimateDealBody   {

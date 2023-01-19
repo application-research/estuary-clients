@@ -86,7 +86,7 @@ TypesIpfsPinStatusResponse <- R6::R6Class(
         self$`delegates` <- TypesIpfsPinStatusResponseObject$`delegates`
       }
       if (!is.null(TypesIpfsPinStatusResponseObject$`info`)) {
-        infoObject <- TODO_OBJECT_MAPPING$new()
+        infoObject <- Map$new()
         infoObject$fromJSON(jsonlite::toJSON(TypesIpfsPinStatusResponseObject$info, auto_unbox = TRUE))
         self$`info` <- infoObject
       }
@@ -126,8 +126,8 @@ TypesIpfsPinStatusResponse <- R6::R6Class(
       TypesIpfsPinStatusResponseObject <- jsonlite::fromJSON(TypesIpfsPinStatusResponseJson)
       self$`created` <- TypesIpfsPinStatusResponseObject$`created`
       self$`delegates` <- TypesIpfsPinStatusResponseObject$`delegates`
-      TODO_OBJECT_MAPPINGObject <- TODO_OBJECT_MAPPING$new()
-      self$`info` <- TODO_OBJECT_MAPPINGObject$fromJSON(jsonlite::toJSON(TypesIpfsPinStatusResponseObject$info, auto_unbox = TRUE))
+      MapObject <- Map$new()
+      self$`info` <- MapObject$fromJSON(jsonlite::toJSON(TypesIpfsPinStatusResponseObject$info, auto_unbox = TRUE))
       TypesIpfsPinObject <- TypesIpfsPin$new()
       self$`pin` <- TypesIpfsPinObject$fromJSON(jsonlite::toJSON(TypesIpfsPinStatusResponseObject$pin, auto_unbox = TRUE))
       self$`requestid` <- TypesIpfsPinStatusResponseObject$`requestid`

@@ -225,6 +225,12 @@ export interface ApiGetApiKeysResp {
     expiry?: string;
     /**
      * 
+     * @type {boolean}
+     * @memberof ApiGetApiKeysResp
+     */
+    isSession?: boolean;
+    /**
+     * 
      * @type {string}
      * @memberof ApiGetApiKeysResp
      */
@@ -590,10 +596,10 @@ export interface TypesIpfsPin {
     cid?: string;
     /**
      * 
-     * @type {any}
+     * @type {{ [key: string]: any; }}
      * @memberof TypesIpfsPin
      */
-    meta?: any;
+    meta?: { [key: string]: any; };
     /**
      * 
      * @type {string}
@@ -627,10 +633,10 @@ export interface TypesIpfsPinStatusResponse {
     delegates?: Array<string>;
     /**
      * 
-     * @type {any}
+     * @type {{ [key: string]: any; }}
      * @memberof TypesIpfsPinStatusResponse
      */
-    info?: any;
+    info?: { [key: string]: any; };
     /**
      * 
      * @type {TypesIpfsPin}

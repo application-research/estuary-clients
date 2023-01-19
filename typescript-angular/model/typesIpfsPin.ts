@@ -12,7 +12,7 @@
 
 export interface TypesIpfsPin { 
     cid?: string;
-    meta?: any;
+    meta?: { [key: string]: any; };
     name?: string;
     origins?: Array<string>;
 }

@@ -13,12 +13,12 @@ public struct TypesIpfsPin: Codable {
 
     public var cid: String?
 
-    public var meta: Any?
+    public var meta: [String:Any]?
 
     public var name: String?
 
     public var origins: [String]?
-    public init(cid: String? = nil, meta: Any? = nil, name: String? = nil, origins: [String]? = nil) { 
+    public init(cid: String? = nil, meta: [String:Any]? = nil, name: String? = nil, origins: [String]? = nil) { 
         self.cid = cid
         self.meta = meta
         self.name = name

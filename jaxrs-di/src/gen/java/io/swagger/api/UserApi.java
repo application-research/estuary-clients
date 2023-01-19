@@ -33,7 +33,7 @@ import javax.validation.constraints.*;
 @Path("/user")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2023-01-13T19:43:16.521Z[GMT]")public class UserApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2023-01-19T16:29:58.888Z[GMT]")public class UserApi  {
 
    private UserApiService delegate;
 

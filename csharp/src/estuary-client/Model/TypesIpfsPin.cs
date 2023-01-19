@@ -36,7 +36,7 @@ namespace estuary-client.Model
         /// <param name="meta">meta.</param>
         /// <param name="name">name.</param>
         /// <param name="origins">origins.</param>
-        public TypesIpfsPin(string cid = default(string), Object meta = default(Object), string name = default(string), List<string> origins = default(List<string>))
+        public TypesIpfsPin(string cid = default(string), Dictionary<string, Object> meta = default(Dictionary<string, Object>), string name = default(string), List<string> origins = default(List<string>))
         {
             this.Cid = cid;
             this.Meta = meta;
@@ -54,7 +54,7 @@ namespace estuary-client.Model
         /// Gets or Sets Meta
         /// </summary>
         [DataMember(Name="meta", EmitDefaultValue=false)]
-        public Object Meta { get; set; }
+        public Dictionary<string, Object> Meta { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
@@ -121,8 +121,9 @@ namespace estuary-client.Model
                 ) && 
                 (
                     this.Meta == input.Meta ||
-                    (this.Meta != null &&
-                    this.Meta.Equals(input.Meta))
+                    this.Meta != null &&
+                    input.Meta != null &&
+                    this.Meta.SequenceEqual(input.Meta)
                 ) && 
                 (
                     this.Name == input.Name ||

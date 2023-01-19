@@ -11,7 +11,7 @@ import Foundation
 open class TypesIpfsPinStatusResponse: JSONEncodable {
     public var created: String?
     public var delegates: [String]?
-    public var info: Any?
+    public var info: [String:Any]?
     public var pin: TypesIpfsPin?
     public var requestid: String?
     public var status: TypesPinningStatus?
@@ -23,7 +23,7 @@ open class TypesIpfsPinStatusResponse: JSONEncodable {
         var nillableDictionary = [String:Any?]()
         nillableDictionary["created"] = self.created
         nillableDictionary["delegates"] = self.delegates?.encodeToJSON()
-        nillableDictionary["info"] = self.info
+        nillableDictionary["info"] = self.info?.encodeToJSON()
         nillableDictionary["pin"] = self.pin?.encodeToJSON()
         nillableDictionary["requestid"] = self.requestid
         nillableDictionary["status"] = self.status?.encodeToJSON()

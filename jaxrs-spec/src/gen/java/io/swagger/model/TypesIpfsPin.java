@@ -1,7 +1,9 @@
 package io.swagger.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
 
@@ -15,7 +17,7 @@ public class TypesIpfsPin   {
 
   private @Valid String cid = null;
 
-  private @Valid Object meta = null;
+  private @Valid Map<String, Object> meta = new HashMap<String, Object>();
 
   private @Valid String name = null;
 
@@ -41,7 +43,7 @@ public class TypesIpfsPin   {
 
   /**
    **/
-  public TypesIpfsPin meta(Object meta) {
+  public TypesIpfsPin meta(Map<String, Object> meta) {
     this.meta = meta;
     return this;
   }
@@ -50,10 +52,10 @@ public class TypesIpfsPin   {
   @ApiModelProperty(value = "")
   @JsonProperty("meta")
 
-  public Object getMeta() {
+  public Map<String, Object> getMeta() {
     return meta;
   }
-  public void setMeta(Object meta) {
+  public void setMeta(Map<String, Object> meta) {
     this.meta = meta;
   }
 

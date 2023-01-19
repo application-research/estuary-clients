@@ -12,6 +12,8 @@ type ApiGetApiKeysResp struct {
 
 	Expiry string `json:"expiry,omitempty"`
 
+	IsSession bool `json:"isSession,omitempty"`
+
 	Label string `json:"label,omitempty"`
 
 	Token string `json:"token,omitempty"`

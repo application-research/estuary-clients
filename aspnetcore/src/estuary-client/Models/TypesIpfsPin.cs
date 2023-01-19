@@ -38,7 +38,7 @@ namespace estuary-client.Models
         /// </summary>
 
         [DataMember(Name="meta")]
-        public Object Meta { get; set; }
+        public Dictionary<string, Object> Meta { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
@@ -110,7 +110,7 @@ namespace estuary-client.Models
                 (
                     Meta == other.Meta ||
                     Meta != null &&
-                    Meta.Equals(other.Meta)
+                    Meta.SequenceEqual(other.Meta)
                 ) && 
                 (
                     Name == other.Name ||

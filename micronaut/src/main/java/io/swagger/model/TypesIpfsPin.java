@@ -5,7 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import io.micronaut.validation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -14,13 +16,14 @@ import javax.validation.constraints.*;
  * TypesIpfsPin
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2023-01-13T19:43:16.363Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2023-01-19T16:30:00.179Z[GMT]")
 public class TypesIpfsPin   {
   @JsonProperty("cid")
   private String cid = null;
 
   @JsonProperty("meta")
-  private Object meta = null;
+  @Valid
+  private Map<String, Object> meta = null;
 
   @JsonProperty("name")
   private String name = null;
@@ -48,8 +51,16 @@ public class TypesIpfsPin   {
     this.cid = cid;
   }
 
-  public TypesIpfsPin meta(Object meta) {
+  public TypesIpfsPin meta(Map<String, Object> meta) {
     this.meta = meta;
+    return this;
+  }
+
+  public TypesIpfsPin putMetaItem(String key, Object metaItem) {
+    if (this.meta == null) {
+      this.meta = new HashMap<String, Object>();
+    }
+    this.meta.put(key, metaItem);
     return this;
   }
 
@@ -59,11 +70,11 @@ public class TypesIpfsPin   {
   **/
   @Schema(description = "")
 
-  public Object getMeta() {
+  public Map<String, Object> getMeta() {
     return meta;
   }
 
-  public void setMeta(Object meta) {
+  public void setMeta(Map<String, Object> meta) {
     this.meta = meta;
   }
 

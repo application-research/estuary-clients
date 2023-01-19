@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Cid** | **string** |  | [optional] [default to null]
-**Meta** | [***interface{}**](interface{}.md) |  | [optional] [default to null]
+**Meta** | [**ModelMap**](interface{}.md) |  | [optional] [default to null]
 **Name** | **string** |  | [optional] [default to null]
 **Origins** | **[]string** |  | [optional] [default to null]
 

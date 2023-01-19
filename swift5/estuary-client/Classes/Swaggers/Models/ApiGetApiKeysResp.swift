@@ -12,12 +12,14 @@ import Foundation
 public struct ApiGetApiKeysResp: Codable {
 
     public var expiry: String?
+    public var isSession: Bool?
     public var label: String?
     public var token: String?
     public var tokenHash: String?
 
-    public init(expiry: String? = nil, label: String? = nil, token: String? = nil, tokenHash: String? = nil) {
+    public init(expiry: String? = nil, isSession: Bool? = nil, label: String? = nil, token: String? = nil, tokenHash: String? = nil) {
         self.expiry = expiry
+        self.isSession = isSession
         self.label = label
         self.token = token
         self.tokenHash = tokenHash

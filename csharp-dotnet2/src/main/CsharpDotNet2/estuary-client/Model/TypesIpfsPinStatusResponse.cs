@@ -31,7 +31,7 @@ namespace IO.Swagger.Model {
     /// </summary>
     [DataMember(Name="info", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "info")]
-    public Object Info { get; set; }
+    public Dictionary<string, Object> Info { get; set; }
 
     /// <summary>
     /// Gets or Sets Pin

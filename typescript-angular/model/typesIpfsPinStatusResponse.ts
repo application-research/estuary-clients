@@ -15,7 +15,7 @@ import { TypesPinningStatus } from './typesPinningStatus';
 export interface TypesIpfsPinStatusResponse { 
     created?: string;
     delegates?: Array<string>;
-    info?: any;
+    info?: { [key: string]: any; };
     pin?: TypesIpfsPin;
     requestid?: string;
     status?: TypesPinningStatus;

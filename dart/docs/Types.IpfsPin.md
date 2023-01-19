@@ -9,7 +9,7 @@ import 'package:swagger/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **cid** | **String** |  | [optional] [default to null]
-**meta** | [**Object**](Object.md) |  | [optional] [default to null]
+**meta** | [**Map**](Object.md) |  | [optional] [default to {}]
 **name** | **String** |  | [optional] [default to null]
 **origins** | **List&lt;String&gt;** |  | [optional] [default to []]
 

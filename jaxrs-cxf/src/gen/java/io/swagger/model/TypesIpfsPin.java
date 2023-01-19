@@ -1,7 +1,9 @@
 package io.swagger.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.validation.constraints.*;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -22,7 +24,7 @@ public class TypesIpfsPin   {
   private String cid = null;
   
   @Schema(description = "")
-  private Object meta = null;
+  private Map<String, Object> meta = null;
   
   @Schema(description = "")
   private String name = null;
@@ -52,16 +54,21 @@ public class TypesIpfsPin   {
    * @return meta
   **/
   @JsonProperty("meta")
-  public Object getMeta() {
+  public Map<String, Object> getMeta() {
     return meta;
   }
 
-  public void setMeta(Object meta) {
+  public void setMeta(Map<String, Object> meta) {
     this.meta = meta;
   }
 
-  public TypesIpfsPin meta(Object meta) {
+  public TypesIpfsPin meta(Map<String, Object> meta) {
     this.meta = meta;
+    return this;
+  }
+
+  public TypesIpfsPin putMetaItem(String key, Object metaItem) {
+    this.meta.put(key, metaItem);
     return this;
   }
 

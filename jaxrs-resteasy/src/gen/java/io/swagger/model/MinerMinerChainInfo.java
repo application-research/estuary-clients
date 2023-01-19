@@ -9,7 +9,7 @@ import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-13T19:43:16.246Z[GMT]")public class MinerMinerChainInfo   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-19T16:30:00.063Z[GMT]")public class MinerMinerChainInfo   {
   private List<String> addresses = new ArrayList<String>();  private String owner = null;  private String peerId = null;  private String worker = null;
 
   /**

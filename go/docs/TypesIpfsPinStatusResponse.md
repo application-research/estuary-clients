@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Created** | **string** |  | [optional] [default to null]
 **Delegates** | **[]string** |  | [optional] [default to null]
-**Info** | [***interface{}**](interface{}.md) |  | [optional] [default to null]
+**Info** | [**ModelMap**](interface{}.md) |  | [optional] [default to null]
 **Pin** | [***TypesIpfsPin**](types.IpfsPin.md) |  | [optional] [default to null]
 **Requestid** | **string** |  | [optional] [default to null]
 **Status** | [***TypesPinningStatus**](types.PinningStatus.md) |  | [optional] [default to null]

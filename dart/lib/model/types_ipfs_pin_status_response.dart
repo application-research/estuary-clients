@@ -6,7 +6,7 @@ class TypesIpfsPinStatusResponse {
 
   List<String> delegates = [];
 
-  Object info = null;
+  Map info = {};
 
   TypesIpfsPin pin = null;
 
@@ -25,7 +25,7 @@ class TypesIpfsPinStatusResponse {
     if (json == null) return;
     created = json['created'];
     delegates = (json['delegates'] as List).map((item) => item as String).toList();
-    info = new Object.fromJson(json['info']);
+    info = Object.mapFromJson(json['info']);
     pin = new TypesIpfsPin.fromJson(json['pin']);
     requestid = json['requestid'];
     status = new TypesPinningStatus.fromJson(json['status']);

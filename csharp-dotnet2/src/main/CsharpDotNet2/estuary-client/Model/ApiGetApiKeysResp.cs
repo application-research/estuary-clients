@@ -20,6 +20,13 @@ namespace IO.Swagger.Model {
     public string Expiry { get; set; }
 
     /// <summary>
+    /// Gets or Sets IsSession
+    /// </summary>
+    [DataMember(Name="isSession", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "isSession")]
+    public bool? IsSession { get; set; }
+
+    /// <summary>
     /// Gets or Sets Label
     /// </summary>
     [DataMember(Name="label", EmitDefaultValue=false)]
@@ -49,6 +56,7 @@ namespace IO.Swagger.Model {
       var sb = new StringBuilder();
       sb.Append("class ApiGetApiKeysResp {\n");
       sb.Append("  Expiry: ").Append(Expiry).Append("\n");
+      sb.Append("  IsSession: ").Append(IsSession).Append("\n");
       sb.Append("  Label: ").Append(Label).Append("\n");
       sb.Append("  Token: ").Append(Token).Append("\n");
       sb.Append("  TokenHash: ").Append(TokenHash).Append("\n");

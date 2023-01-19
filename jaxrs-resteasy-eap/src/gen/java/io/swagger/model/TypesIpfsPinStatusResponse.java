@@ -7,14 +7,15 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.model.TypesIpfsPin;
 import io.swagger.model.TypesPinningStatus;
 import java.util.List;
+import java.util.Map;
 import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2023-01-13T19:43:16.993Z[GMT]")public class TypesIpfsPinStatusResponse   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2023-01-19T16:30:02.672Z[GMT]")public class TypesIpfsPinStatusResponse   {
   private String created = null;
   private List<String> delegates = new ArrayList<String>();
-  private Object info = null;
+  private Map<String, Object> info = new HashMap<String, Object>();
   private TypesIpfsPin pin = null;
   private String requestid = null;
   private TypesPinningStatus status = null;
@@ -48,10 +49,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
   
   @Schema(description = "")
   @JsonProperty("info")
-  public Object getInfo() {
+  public Map<String, Object> getInfo() {
     return info;
   }
-  public void setInfo(Object info) {
+  public void setInfo(Map<String, Object> info) {
     this.info = info;
   }
 

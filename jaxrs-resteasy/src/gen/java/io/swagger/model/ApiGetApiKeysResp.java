@@ -8,8 +8,8 @@ import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-13T19:43:16.246Z[GMT]")public class ApiGetApiKeysResp   {
-  private String expiry = null;  private String label = null;  private String token = null;  private String tokenHash = null;
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-19T16:30:00.063Z[GMT]")public class ApiGetApiKeysResp   {
+  private String expiry = null;  private Boolean isSession = null;  private String label = null;  private String token = null;  private String tokenHash = null;
 
   /**
    **/
@@ -21,6 +21,18 @@ import io.swagger.v3.oas.annotations.media.Schema;
   }
   public void setExpiry(String expiry) {
     this.expiry = expiry;
+  }
+
+  /**
+   **/
+  
+  @Schema(description = "")
+  @JsonProperty("isSession")
+  public Boolean isIsSession() {
+    return isSession;
+  }
+  public void setIsSession(Boolean isSession) {
+    this.isSession = isSession;
   }
 
   /**
@@ -70,6 +82,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
     }
     ApiGetApiKeysResp apiGetApiKeysResp = (ApiGetApiKeysResp) o;
     return Objects.equals(expiry, apiGetApiKeysResp.expiry) &&
+        Objects.equals(isSession, apiGetApiKeysResp.isSession) &&
         Objects.equals(label, apiGetApiKeysResp.label) &&
         Objects.equals(token, apiGetApiKeysResp.token) &&
         Objects.equals(tokenHash, apiGetApiKeysResp.tokenHash);
@@ -77,7 +90,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
   @Override
   public int hashCode() {
-    return Objects.hash(expiry, label, token, tokenHash);
+    return Objects.hash(expiry, isSession, label, token, tokenHash);
   }
 
   @Override
@@ -86,6 +99,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
     sb.append("class ApiGetApiKeysResp {\n");
     
     sb.append("    expiry: ").append(toIndentedString(expiry)).append("\n");
+    sb.append("    isSession: ").append(toIndentedString(isSession)).append("\n");
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    token: ").append(toIndentedString(token)).append("\n");
     sb.append("    tokenHash: ").append(toIndentedString(tokenHash)).append("\n");

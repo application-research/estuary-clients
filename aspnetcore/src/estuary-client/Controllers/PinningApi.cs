@@ -53,7 +53,7 @@ namespace estuary-client.Controllers
             //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(500, default(UtilHttpError));
             string exampleJson = null;
-            exampleJson = "{\n  \"count\" : 0,\n  \"results\" : [ {\n    \"pin\" : {\n      \"meta\" : { },\n      \"name\" : \"name\",\n      \"origins\" : [ \"origins\", \"origins\" ],\n      \"cid\" : \"cid\"\n    },\n    \"created\" : \"created\",\n    \"requestid\" : \"requestid\",\n    \"delegates\" : [ \"delegates\", \"delegates\" ],\n    \"info\" : { },\n    \"status\" : \"pinning\"\n  }, {\n    \"pin\" : {\n      \"meta\" : { },\n      \"name\" : \"name\",\n      \"origins\" : [ \"origins\", \"origins\" ],\n      \"cid\" : \"cid\"\n    },\n    \"created\" : \"created\",\n    \"requestid\" : \"requestid\",\n    \"delegates\" : [ \"delegates\", \"delegates\" ],\n    \"info\" : { },\n    \"status\" : \"pinning\"\n  } ]\n}";
+            exampleJson = "{\n  \"count\" : 0,\n  \"results\" : [ {\n    \"pin\" : {\n      \"meta\" : \"\",\n      \"name\" : \"name\",\n      \"origins\" : [ \"origins\", \"origins\" ],\n      \"cid\" : \"cid\"\n    },\n    \"created\" : \"created\",\n    \"requestid\" : \"requestid\",\n    \"delegates\" : [ \"delegates\", \"delegates\" ],\n    \"info\" : \"\",\n    \"status\" : \"pinning\"\n  }, {\n    \"pin\" : {\n      \"meta\" : \"\",\n      \"name\" : \"name\",\n      \"origins\" : [ \"origins\", \"origins\" ],\n      \"cid\" : \"cid\"\n    },\n    \"created\" : \"created\",\n    \"requestid\" : \"requestid\",\n    \"delegates\" : [ \"delegates\", \"delegates\" ],\n    \"info\" : \"\",\n    \"status\" : \"pinning\"\n  } ]\n}";
             
                         var example = exampleJson != null
                         ? JsonConvert.DeserializeObject<TypesIpfsListPinStatusResponse>(exampleJson)
@@ -112,7 +112,7 @@ namespace estuary-client.Controllers
             //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(500, default(UtilHttpError));
             string exampleJson = null;
-            exampleJson = "{\n  \"pin\" : {\n    \"meta\" : { },\n    \"name\" : \"name\",\n    \"origins\" : [ \"origins\", \"origins\" ],\n    \"cid\" : \"cid\"\n  },\n  \"created\" : \"created\",\n  \"requestid\" : \"requestid\",\n  \"delegates\" : [ \"delegates\", \"delegates\" ],\n  \"info\" : { },\n  \"status\" : \"pinning\"\n}";
+            exampleJson = "{\n  \"pin\" : {\n    \"meta\" : \"\",\n    \"name\" : \"name\",\n    \"origins\" : [ \"origins\", \"origins\" ],\n    \"cid\" : \"cid\"\n  },\n  \"created\" : \"created\",\n  \"requestid\" : \"requestid\",\n  \"delegates\" : [ \"delegates\", \"delegates\" ],\n  \"info\" : \"\",\n  \"status\" : \"pinning\"\n}";
             
                         var example = exampleJson != null
                         ? JsonConvert.DeserializeObject<TypesIpfsPinStatusResponse>(exampleJson)
@@ -148,7 +148,7 @@ namespace estuary-client.Controllers
             //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(500, default(UtilHttpError));
             string exampleJson = null;
-            exampleJson = "{\n  \"pin\" : {\n    \"meta\" : { },\n    \"name\" : \"name\",\n    \"origins\" : [ \"origins\", \"origins\" ],\n    \"cid\" : \"cid\"\n  },\n  \"created\" : \"created\",\n  \"requestid\" : \"requestid\",\n  \"delegates\" : [ \"delegates\", \"delegates\" ],\n  \"info\" : { },\n  \"status\" : \"pinning\"\n}";
+            exampleJson = "{\n  \"pin\" : {\n    \"meta\" : \"\",\n    \"name\" : \"name\",\n    \"origins\" : [ \"origins\", \"origins\" ],\n    \"cid\" : \"cid\"\n  },\n  \"created\" : \"created\",\n  \"requestid\" : \"requestid\",\n  \"delegates\" : [ \"delegates\", \"delegates\" ],\n  \"info\" : \"\",\n  \"status\" : \"pinning\"\n}";
             
                         var example = exampleJson != null
                         ? JsonConvert.DeserializeObject<TypesIpfsPinStatusResponse>(exampleJson)
@@ -180,7 +180,7 @@ namespace estuary-client.Controllers
             //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(500, default(UtilHttpError));
             string exampleJson = null;
-            exampleJson = "{\n  \"pin\" : {\n    \"meta\" : { },\n    \"name\" : \"name\",\n    \"origins\" : [ \"origins\", \"origins\" ],\n    \"cid\" : \"cid\"\n  },\n  \"created\" : \"created\",\n  \"requestid\" : \"requestid\",\n  \"delegates\" : [ \"delegates\", \"delegates\" ],\n  \"info\" : { },\n  \"status\" : \"pinning\"\n}";
+            exampleJson = "{\n  \"pin\" : {\n    \"meta\" : \"\",\n    \"name\" : \"name\",\n    \"origins\" : [ \"origins\", \"origins\" ],\n    \"cid\" : \"cid\"\n  },\n  \"created\" : \"created\",\n  \"requestid\" : \"requestid\",\n  \"delegates\" : [ \"delegates\", \"delegates\" ],\n  \"info\" : \"\",\n  \"status\" : \"pinning\"\n}";
             
                         var example = exampleJson != null
                         ? JsonConvert.DeserializeObject<TypesIpfsPinStatusResponse>(exampleJson)

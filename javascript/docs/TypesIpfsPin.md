@@ -4,6 +4,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **cid** | **String** |  | [optional] 
-**meta** | **Object** |  | [optional] 
+**meta** | **{String: Object}** |  | [optional] 
 **name** | **String** |  | [optional] 
 **origins** | **[String]** |  | [optional] 

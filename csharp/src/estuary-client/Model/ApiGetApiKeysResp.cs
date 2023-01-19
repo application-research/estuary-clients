@@ -33,12 +33,14 @@ namespace estuary-client.Model
         /// Initializes a new instance of the <see cref="ApiGetApiKeysResp" /> class.
         /// </summary>
         /// <param name="expiry">expiry.</param>
+        /// <param name="isSession">isSession.</param>
         /// <param name="label">label.</param>
         /// <param name="token">token.</param>
         /// <param name="tokenHash">tokenHash.</param>
-        public ApiGetApiKeysResp(string expiry = default(string), string label = default(string), string token = default(string), string tokenHash = default(string))
+        public ApiGetApiKeysResp(string expiry = default(string), bool? isSession = default(bool?), string label = default(string), string token = default(string), string tokenHash = default(string))
         {
             this.Expiry = expiry;
+            this.IsSession = isSession;
             this.Label = label;
             this.Token = token;
             this.TokenHash = tokenHash;
@@ -49,6 +51,12 @@ namespace estuary-client.Model
         /// </summary>
         [DataMember(Name="expiry", EmitDefaultValue=false)]
         public string Expiry { get; set; }
+
+        /// <summary>
+        /// Gets or Sets IsSession
+        /// </summary>
+        [DataMember(Name="isSession", EmitDefaultValue=false)]
+        public bool? IsSession { get; set; }
 
         /// <summary>
         /// Gets or Sets Label
@@ -77,6 +85,7 @@ namespace estuary-client.Model
             var sb = new StringBuilder();
             sb.Append("class ApiGetApiKeysResp {\n");
             sb.Append("  Expiry: ").Append(Expiry).Append("\n");
+            sb.Append("  IsSession: ").Append(IsSession).Append("\n");
             sb.Append("  Label: ").Append(Label).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  TokenHash: ").Append(TokenHash).Append("\n");
@@ -120,6 +129,11 @@ namespace estuary-client.Model
                     this.Expiry.Equals(input.Expiry))
                 ) && 
                 (
+                    this.IsSession == input.IsSession ||
+                    (this.IsSession != null &&
+                    this.IsSession.Equals(input.IsSession))
+                ) && 
+                (
                     this.Label == input.Label ||
                     (this.Label != null &&
                     this.Label.Equals(input.Label))
@@ -147,6 +161,8 @@ namespace estuary-client.Model
                 int hashCode = 41;
                 if (this.Expiry != null)
                     hashCode = hashCode * 59 + this.Expiry.GetHashCode();
+                if (this.IsSession != null)
+                    hashCode = hashCode * 59 + this.IsSession.GetHashCode();
                 if (this.Label != null)
                     hashCode = hashCode * 59 + this.Label.GetHashCode();
                 if (this.Token != null)

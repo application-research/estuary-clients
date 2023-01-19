@@ -464,6 +464,10 @@ class Decoders {
                 case let .success(value): _result.expiry = value
                 case let .failure(error): break
                 }
+                switch Decoders.decodeOptional(clazz: Bool.self, source: sourceDictionary["isSession"] as AnyObject?) {
+                case let .success(value): _result.isSession = value
+                case let .failure(error): break
+                }
                 switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["label"] as AnyObject?) {
                 case let .success(value): _result.label = value
                 case let .failure(error): break
@@ -842,7 +846,7 @@ class Decoders {
                 case let .success(value): _result.cid = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: Any.self, source: sourceDictionary["meta"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: [String:Any].self, source: sourceDictionary["meta"] as AnyObject?) {
                 case let .success(value): _result.meta = value
                 case let .failure(error): break
                 }
@@ -876,7 +880,7 @@ class Decoders {
                 case let .success(value): _result.delegates = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: Any.self, source: sourceDictionary["info"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: [String:Any].self, source: sourceDictionary["info"] as AnyObject?) {
                 case let .success(value): _result.info = value
                 case let .failure(error): break
                 }

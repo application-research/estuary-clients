@@ -12,7 +12,7 @@ package io.swagger.server.model
 case class Types.IpfsPinStatusResponse (
   created: Option[String],
   delegates: Option[List[String]],
-  info: Option[Object],
+  info: Option[Map[String, Object]],
   pin: Option[types.IpfsPin],
   requestid: Option[String],
   status: Option[types.PinningStatus]

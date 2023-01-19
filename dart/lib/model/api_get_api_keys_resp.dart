@@ -4,6 +4,8 @@ class ApiGetApiKeysResp {
   
   String expiry = null;
 
+  bool isSession = null;
+
   String label = null;
 
   String token = null;
@@ -14,12 +16,13 @@ class ApiGetApiKeysResp {
 
   @override
   String toString() {
-    return 'ApiGetApiKeysResp[expiry=$expiry, label=$label, token=$token, tokenHash=$tokenHash, ]';
+    return 'ApiGetApiKeysResp[expiry=$expiry, isSession=$isSession, label=$label, token=$token, tokenHash=$tokenHash, ]';
   }
 
   ApiGetApiKeysResp.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
     expiry = json['expiry'];
+    isSession = json['isSession'];
     label = json['label'];
     token = json['token'];
     tokenHash = json['tokenHash'];
@@ -28,6 +31,7 @@ class ApiGetApiKeysResp {
   Map<String, dynamic> toJson() {
     return {
       'expiry': expiry,
+      'isSession': isSession,
       'label': label,
       'token': token,
       'tokenHash': tokenHash

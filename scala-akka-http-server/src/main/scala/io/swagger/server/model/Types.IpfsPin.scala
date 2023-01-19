@@ -9,7 +9,7 @@ package io.swagger.server.model
  */
 case class Types.IpfsPin (
   cid: Option[String],
-  meta: Option[Object],
+  meta: Option[Map[String, Object]],
   name: Option[String],
   origins: Option[List[String]]
 )

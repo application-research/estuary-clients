@@ -33,10 +33,10 @@ export interface TypesIpfsPinStatusResponse {
     delegates?: Array<string>;
     /**
      * 
-     * @type {any}
+     * @type {{ [key: string]: any; }}
      * @memberof TypesIpfsPinStatusResponse
      */
-    info?: any;
+    info?: { [key: string]: any; };
     /**
      * 
      * @type {TypesIpfsPin}

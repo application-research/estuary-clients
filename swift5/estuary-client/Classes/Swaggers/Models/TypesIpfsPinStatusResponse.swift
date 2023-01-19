@@ -13,12 +13,12 @@ public struct TypesIpfsPinStatusResponse: Codable {
 
     public var created: String?
     public var delegates: [String]?
-    public var info: Any?
+    public var info: Dictionary?
     public var pin: TypesIpfsPin?
     public var requestid: String?
     public var status: TypesPinningStatus?
 
-    public init(created: String? = nil, delegates: [String]? = nil, info: Any? = nil, pin: TypesIpfsPin? = nil, requestid: String? = nil, status: TypesPinningStatus? = nil) {
+    public init(created: String? = nil, delegates: [String]? = nil, info: Dictionary? = nil, pin: TypesIpfsPin? = nil, requestid: String? = nil, status: TypesPinningStatus? = nil) {
         self.created = created
         self.delegates = delegates
         self.info = info

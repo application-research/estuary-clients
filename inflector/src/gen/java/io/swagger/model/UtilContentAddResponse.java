@@ -8,7 +8,7 @@ import java.util.List;
 
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2023-01-13T19:43:13.967Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2023-01-19T16:29:58.380Z[GMT]")
 public class UtilContentAddResponse   {
   @JsonProperty("cid")
   private String cid = null;

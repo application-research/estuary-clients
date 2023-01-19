@@ -14,12 +14,14 @@ package io.swagger.client.model
 
 /**
  * @param expiry 
+ * @param isSession 
  * @param label 
  * @param token 
  * @param tokenHash 
  */
 case class GetApiKeysResp (
   expiry: Option[String] = None,
+  isSession: Option[Boolean] = None,
   label: Option[String] = None,
   token: Option[String] = None,
   tokenHash: Option[String] = None

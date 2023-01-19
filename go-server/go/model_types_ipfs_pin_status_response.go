@@ -14,7 +14,7 @@ type TypesIpfsPinStatusResponse struct {
 
 	Delegates []string `json:"delegates,omitempty"`
 
-	Info *interface{} `json:"info,omitempty"`
+	Info ModelMap `json:"info,omitempty"`
 
 	Pin *TypesIpfsPin `json:"pin,omitempty"`
 

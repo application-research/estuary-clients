@@ -35,7 +35,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-13T19:43:18.594Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-19T16:30:02.322Z[GMT]")
 @RestController
 public class PinningApiController implements PinningApi {
 
@@ -55,7 +55,7 @@ public class PinningApiController implements PinningApi {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<TypesIpfsListPinStatusResponse>(objectMapper.readValue("{\n  \"count\" : 0,\n  \"results\" : [ {\n    \"pin\" : {\n      \"meta\" : { },\n      \"name\" : \"name\",\n      \"origins\" : [ \"origins\", \"origins\" ],\n      \"cid\" : \"cid\"\n    },\n    \"created\" : \"created\",\n    \"requestid\" : \"requestid\",\n    \"delegates\" : [ \"delegates\", \"delegates\" ],\n    \"info\" : { },\n    \"status\" : \"pinning\"\n  }, {\n    \"pin\" : {\n      \"meta\" : { },\n      \"name\" : \"name\",\n      \"origins\" : [ \"origins\", \"origins\" ],\n      \"cid\" : \"cid\"\n    },\n    \"created\" : \"created\",\n    \"requestid\" : \"requestid\",\n    \"delegates\" : [ \"delegates\", \"delegates\" ],\n    \"info\" : { },\n    \"status\" : \"pinning\"\n  } ]\n}", TypesIpfsListPinStatusResponse.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<TypesIpfsListPinStatusResponse>(objectMapper.readValue("{\n  \"count\" : 0,\n  \"results\" : [ {\n    \"pin\" : {\n      \"meta\" : \"\",\n      \"name\" : \"name\",\n      \"origins\" : [ \"origins\", \"origins\" ],\n      \"cid\" : \"cid\"\n    },\n    \"created\" : \"created\",\n    \"requestid\" : \"requestid\",\n    \"delegates\" : [ \"delegates\", \"delegates\" ],\n    \"info\" : \"\",\n    \"status\" : \"pinning\"\n  }, {\n    \"pin\" : {\n      \"meta\" : \"\",\n      \"name\" : \"name\",\n      \"origins\" : [ \"origins\", \"origins\" ],\n      \"cid\" : \"cid\"\n    },\n    \"created\" : \"created\",\n    \"requestid\" : \"requestid\",\n    \"delegates\" : [ \"delegates\", \"delegates\" ],\n    \"info\" : \"\",\n    \"status\" : \"pinning\"\n  } ]\n}", TypesIpfsListPinStatusResponse.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
                 return new ResponseEntity<TypesIpfsListPinStatusResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -74,7 +74,7 @@ public class PinningApiController implements PinningApi {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<TypesIpfsPinStatusResponse>(objectMapper.readValue("{\n  \"pin\" : {\n    \"meta\" : { },\n    \"name\" : \"name\",\n    \"origins\" : [ \"origins\", \"origins\" ],\n    \"cid\" : \"cid\"\n  },\n  \"created\" : \"created\",\n  \"requestid\" : \"requestid\",\n  \"delegates\" : [ \"delegates\", \"delegates\" ],\n  \"info\" : { },\n  \"status\" : \"pinning\"\n}", TypesIpfsPinStatusResponse.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<TypesIpfsPinStatusResponse>(objectMapper.readValue("{\n  \"pin\" : {\n    \"meta\" : \"\",\n    \"name\" : \"name\",\n    \"origins\" : [ \"origins\", \"origins\" ],\n    \"cid\" : \"cid\"\n  },\n  \"created\" : \"created\",\n  \"requestid\" : \"requestid\",\n  \"delegates\" : [ \"delegates\", \"delegates\" ],\n  \"info\" : \"\",\n  \"status\" : \"pinning\"\n}", TypesIpfsPinStatusResponse.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
                 return new ResponseEntity<TypesIpfsPinStatusResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -88,7 +88,7 @@ public class PinningApiController implements PinningApi {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<TypesIpfsPinStatusResponse>(objectMapper.readValue("{\n  \"pin\" : {\n    \"meta\" : { },\n    \"name\" : \"name\",\n    \"origins\" : [ \"origins\", \"origins\" ],\n    \"cid\" : \"cid\"\n  },\n  \"created\" : \"created\",\n  \"requestid\" : \"requestid\",\n  \"delegates\" : [ \"delegates\", \"delegates\" ],\n  \"info\" : { },\n  \"status\" : \"pinning\"\n}", TypesIpfsPinStatusResponse.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<TypesIpfsPinStatusResponse>(objectMapper.readValue("{\n  \"pin\" : {\n    \"meta\" : \"\",\n    \"name\" : \"name\",\n    \"origins\" : [ \"origins\", \"origins\" ],\n    \"cid\" : \"cid\"\n  },\n  \"created\" : \"created\",\n  \"requestid\" : \"requestid\",\n  \"delegates\" : [ \"delegates\", \"delegates\" ],\n  \"info\" : \"\",\n  \"status\" : \"pinning\"\n}", TypesIpfsPinStatusResponse.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
                 return new ResponseEntity<TypesIpfsPinStatusResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -102,7 +102,7 @@ public class PinningApiController implements PinningApi {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<TypesIpfsPinStatusResponse>(objectMapper.readValue("{\n  \"pin\" : {\n    \"meta\" : { },\n    \"name\" : \"name\",\n    \"origins\" : [ \"origins\", \"origins\" ],\n    \"cid\" : \"cid\"\n  },\n  \"created\" : \"created\",\n  \"requestid\" : \"requestid\",\n  \"delegates\" : [ \"delegates\", \"delegates\" ],\n  \"info\" : { },\n  \"status\" : \"pinning\"\n}", TypesIpfsPinStatusResponse.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<TypesIpfsPinStatusResponse>(objectMapper.readValue("{\n  \"pin\" : {\n    \"meta\" : \"\",\n    \"name\" : \"name\",\n    \"origins\" : [ \"origins\", \"origins\" ],\n    \"cid\" : \"cid\"\n  },\n  \"created\" : \"created\",\n  \"requestid\" : \"requestid\",\n  \"delegates\" : [ \"delegates\", \"delegates\" ],\n  \"info\" : \"\",\n  \"status\" : \"pinning\"\n}", TypesIpfsPinStatusResponse.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
                 return new ResponseEntity<TypesIpfsPinStatusResponse>(HttpStatus.INTERNAL_SERVER_ERROR);

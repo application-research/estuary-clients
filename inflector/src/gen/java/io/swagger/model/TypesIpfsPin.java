@@ -4,16 +4,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2023-01-13T19:43:13.967Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2023-01-19T16:29:58.380Z[GMT]")
 public class TypesIpfsPin   {
   @JsonProperty("cid")
   private String cid = null;
   @JsonProperty("meta")
-  private Object meta = null;
+  private Map<String, Object> meta = null;
   @JsonProperty("name")
   private String name = null;
   @JsonProperty("origins")
@@ -37,7 +39,7 @@ public class TypesIpfsPin   {
 
   /**
    **/
-  public TypesIpfsPin meta(Object meta) {
+  public TypesIpfsPin meta(Map<String, Object> meta) {
     this.meta = meta;
     return this;
   }
@@ -45,10 +47,10 @@ public class TypesIpfsPin   {
   
   @Schema(description = "")
   @JsonProperty("meta")
-  public Object getMeta() {
+  public Map<String, Object> getMeta() {
     return meta;
   }
-  public void setMeta(Object meta) {
+  public void setMeta(Map<String, Object> meta) {
     this.meta = meta;
   }
 

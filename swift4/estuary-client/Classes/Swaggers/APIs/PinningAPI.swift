@@ -34,7 +34,7 @@ open class PinningAPI {
   "count" : 0,
   "results" : [ {
     "pin" : {
-      "meta" : { },
+      "meta" : "",
       "name" : "name",
       "origins" : [ "origins", "origins" ],
       "cid" : "cid"
@@ -42,11 +42,11 @@ open class PinningAPI {
     "created" : "created",
     "requestid" : "requestid",
     "delegates" : [ "delegates", "delegates" ],
-    "info" : { },
+    "info" : "",
     "status" : "pinning"
   }, {
     "pin" : {
-      "meta" : { },
+      "meta" : "",
       "name" : "name",
       "origins" : [ "origins", "origins" ],
       "cid" : "cid"
@@ -54,7 +54,7 @@ open class PinningAPI {
     "created" : "created",
     "requestid" : "requestid",
     "delegates" : [ "delegates", "delegates" ],
-    "info" : { },
+    "info" : "",
     "status" : "pinning"
   } ]
 }}]
@@ -136,7 +136,7 @@ open class PinningAPI {
        - name: bearerAuth
      - examples: [{contentType=application/json, example={
   "pin" : {
-    "meta" : { },
+    "meta" : "",
     "name" : "name",
     "origins" : [ "origins", "origins" ],
     "cid" : "cid"
@@ -144,7 +144,7 @@ open class PinningAPI {
   "created" : "created",
   "requestid" : "requestid",
   "delegates" : [ "delegates", "delegates" ],
-  "info" : { },
+  "info" : "",
   "status" : "pinning"
 }}]
      - parameter pinid: (path) cid 
@@ -187,7 +187,7 @@ open class PinningAPI {
        - name: bearerAuth
      - examples: [{contentType=application/json, example={
   "pin" : {
-    "meta" : { },
+    "meta" : "",
     "name" : "name",
     "origins" : [ "origins", "origins" ],
     "cid" : "cid"
@@ -195,7 +195,7 @@ open class PinningAPI {
   "created" : "created",
   "requestid" : "requestid",
   "delegates" : [ "delegates", "delegates" ],
-  "info" : { },
+  "info" : "",
   "status" : "pinning"
 }}]
      - parameter body: (body) New pin      - parameter pinid: (path) Pin ID to be replaced 
@@ -238,7 +238,7 @@ open class PinningAPI {
        - name: bearerAuth
      - examples: [{contentType=application/json, example={
   "pin" : {
-    "meta" : { },
+    "meta" : "",
     "name" : "name",
     "origins" : [ "origins", "origins" ],
     "cid" : "cid"
@@ -246,7 +246,7 @@ open class PinningAPI {
   "created" : "created",
   "requestid" : "requestid",
   "delegates" : [ "delegates", "delegates" ],
-  "info" : { },
+  "info" : "",
   "status" : "pinning"
 }}]
      - parameter body: (body) Pin Body {cid:cid, name:name}      - parameter ignoreDupes: (query) Ignore Dupes (optional)     - parameter overwrite: (query) Overwrite conflicting files in collections (optional)

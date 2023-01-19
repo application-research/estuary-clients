@@ -49,11 +49,13 @@ fun Route.UserApi() {
             val exampleContentString = """[ {
   "expiry" : "expiry",
   "label" : "label",
+  "isSession" : true,
   "tokenHash" : "tokenHash",
   "token" : "token"
 }, {
   "expiry" : "expiry",
   "label" : "label",
+  "isSession" : true,
   "tokenHash" : "tokenHash",
   "token" : "token"
 } ]"""
@@ -87,6 +89,7 @@ fun Route.UserApi() {
             val exampleContentString = """{
   "expiry" : "expiry",
   "label" : "label",
+  "isSession" : true,
   "tokenHash" : "tokenHash",
   "token" : "token"
 }"""

@@ -45,7 +45,7 @@ namespace estuary-client.Models
         /// </summary>
 
         [DataMember(Name="info")]
-        public Object Info { get; set; }
+        public Dictionary<string, Object> Info { get; set; }
 
         /// <summary>
         /// Gets or Sets Pin
@@ -131,7 +131,7 @@ namespace estuary-client.Models
                 (
                     Info == other.Info ||
                     Info != null &&
-                    Info.Equals(other.Info)
+                    Info.SequenceEqual(other.Info)
                 ) && 
                 (
                     Pin == other.Pin ||

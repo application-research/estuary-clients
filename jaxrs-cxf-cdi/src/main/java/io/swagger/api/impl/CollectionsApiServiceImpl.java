@@ -20,7 +20,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2023-01-13T19:43:17.065Z[GMT]")public class CollectionsApiServiceImpl implements CollectionsApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2023-01-19T16:30:02.104Z[GMT]")public class CollectionsApiServiceImpl implements CollectionsApiService {
       @Override
       public Response collectionsColuuidCommitPost(String coluuid, SecurityContext securityContext) {
       // do some magic!

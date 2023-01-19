@@ -14,11 +14,13 @@ class ApiGetApiKeysResp(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, expiry: str=None, label: str=None, token: str=None, token_hash: str=None):  # noqa: E501
+    def __init__(self, expiry: str=None, is_session: bool=None, label: str=None, token: str=None, token_hash: str=None):  # noqa: E501
         """ApiGetApiKeysResp - a model defined in Swagger
 
         :param expiry: The expiry of this ApiGetApiKeysResp.  # noqa: E501
         :type expiry: str
+        :param is_session: The is_session of this ApiGetApiKeysResp.  # noqa: E501
+        :type is_session: bool
         :param label: The label of this ApiGetApiKeysResp.  # noqa: E501
         :type label: str
         :param token: The token of this ApiGetApiKeysResp.  # noqa: E501
@@ -28,6 +30,7 @@ class ApiGetApiKeysResp(Model):
         """
         self.swagger_types = {
             'expiry': str,
+            'is_session': bool,
             'label': str,
             'token': str,
             'token_hash': str
@@ -35,11 +38,13 @@ class ApiGetApiKeysResp(Model):
 
         self.attribute_map = {
             'expiry': 'expiry',
+            'is_session': 'isSession',
             'label': 'label',
             'token': 'token',
             'token_hash': 'tokenHash'
         }
         self._expiry = expiry
+        self._is_session = is_session
         self._label = label
         self._token = token
         self._token_hash = token_hash
@@ -75,6 +80,27 @@ class ApiGetApiKeysResp(Model):
         """
 
         self._expiry = expiry
+
+    @property
+    def is_session(self) -> bool:
+        """Gets the is_session of this ApiGetApiKeysResp.
+
+
+        :return: The is_session of this ApiGetApiKeysResp.
+        :rtype: bool
+        """
+        return self._is_session
+
+    @is_session.setter
+    def is_session(self, is_session: bool):
+        """Sets the is_session of this ApiGetApiKeysResp.
+
+
+        :param is_session: The is_session of this ApiGetApiKeysResp.
+        :type is_session: bool
+        """
+
+        self._is_session = is_session
 
     @property
     def label(self) -> str:

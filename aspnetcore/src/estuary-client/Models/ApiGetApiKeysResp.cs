@@ -34,6 +34,13 @@ namespace estuary-client.Models
         public string Expiry { get; set; }
 
         /// <summary>
+        /// Gets or Sets IsSession
+        /// </summary>
+
+        [DataMember(Name="isSession")]
+        public bool? IsSession { get; set; }
+
+        /// <summary>
         /// Gets or Sets Label
         /// </summary>
 
@@ -63,6 +70,7 @@ namespace estuary-client.Models
             var sb = new StringBuilder();
             sb.Append("class ApiGetApiKeysResp {\n");
             sb.Append("  Expiry: ").Append(Expiry).Append("\n");
+            sb.Append("  IsSession: ").Append(IsSession).Append("\n");
             sb.Append("  Label: ").Append(Label).Append("\n");
             sb.Append("  Token: ").Append(Token).Append("\n");
             sb.Append("  TokenHash: ").Append(TokenHash).Append("\n");
@@ -108,6 +116,11 @@ namespace estuary-client.Models
                     Expiry.Equals(other.Expiry)
                 ) && 
                 (
+                    IsSession == other.IsSession ||
+                    IsSession != null &&
+                    IsSession.Equals(other.IsSession)
+                ) && 
+                (
                     Label == other.Label ||
                     Label != null &&
                     Label.Equals(other.Label)
@@ -136,6 +149,8 @@ namespace estuary-client.Models
                 // Suitable nullity checks etc, of course :)
                     if (Expiry != null)
                     hashCode = hashCode * 59 + Expiry.GetHashCode();
+                    if (IsSession != null)
+                    hashCode = hashCode * 59 + IsSession.GetHashCode();
                     if (Label != null)
                     hashCode = hashCode * 59 + Label.GetHashCode();
                     if (Token != null)

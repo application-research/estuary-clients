@@ -12,7 +12,7 @@ OpenAPI spec version: 0.0.0
     
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A5D1FA78-81AF-4C0C-A17B-871A8613AFB7}</ProjectGuid>
+    <ProjectGuid>{5DD4B0BA-621A-4D66-B1E4-595CFC9B5E5B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>estuary-client</RootNamespace>

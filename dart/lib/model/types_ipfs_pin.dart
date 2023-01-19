@@ -4,7 +4,7 @@ class TypesIpfsPin {
   
   String cid = null;
 
-  Object meta = null;
+  Map meta = {};
 
   String name = null;
 
@@ -20,7 +20,7 @@ class TypesIpfsPin {
   TypesIpfsPin.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
     cid = json['cid'];
-    meta = new Object.fromJson(json['meta']);
+    meta = Object.mapFromJson(json['meta']);
     name = json['name'];
     origins = (json['origins'] as List).map((item) => item as String).toList();
   }

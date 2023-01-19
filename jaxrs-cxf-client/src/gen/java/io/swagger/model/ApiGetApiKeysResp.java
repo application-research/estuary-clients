@@ -19,6 +19,9 @@ public class ApiGetApiKeysResp   {
   private String expiry = null;
   
   @Schema(description = "")
+  private Boolean isSession = null;
+  
+  @Schema(description = "")
   private String label = null;
   
   @Schema(description = "")
@@ -41,6 +44,24 @@ public class ApiGetApiKeysResp   {
 
   public ApiGetApiKeysResp expiry(String expiry) {
     this.expiry = expiry;
+    return this;
+  }
+
+ /**
+   * Get isSession
+   * @return isSession
+  **/
+  @JsonProperty("isSession")
+  public Boolean isIsSession() {
+    return isSession;
+  }
+
+  public void setIsSession(Boolean isSession) {
+    this.isSession = isSession;
+  }
+
+  public ApiGetApiKeysResp isSession(Boolean isSession) {
+    this.isSession = isSession;
     return this;
   }
 
@@ -105,6 +126,7 @@ public class ApiGetApiKeysResp   {
     sb.append("class ApiGetApiKeysResp {\n");
     
     sb.append("    expiry: ").append(toIndentedString(expiry)).append("\n");
+    sb.append("    isSession: ").append(toIndentedString(isSession)).append("\n");
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    token: ").append(toIndentedString(token)).append("\n");
     sb.append("    tokenHash: ").append(toIndentedString(tokenHash)).append("\n");

@@ -22,7 +22,7 @@ package io.swagger.client.models
 data class TypesIpfsPin (
 
     val cid: kotlin.String? = null,
-    val meta: kotlin.Any? = null,
+    val meta: kotlin.collections.Map<kotlin.String, kotlin.Any>? = null,
     val name: kotlin.String? = null,
     val origins: kotlin.Array<kotlin.String>? = null
 ) {

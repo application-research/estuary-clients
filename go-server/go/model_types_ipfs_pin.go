@@ -12,7 +12,7 @@ type TypesIpfsPin struct {
 
 	Cid string `json:"cid,omitempty"`
 
-	Meta *interface{} `json:"meta,omitempty"`
+	Meta ModelMap `json:"meta,omitempty"`
 
 	Name string `json:"name,omitempty"`
 

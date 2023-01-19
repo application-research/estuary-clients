@@ -52,7 +52,7 @@ fun Route.PinningApi() {
   "count" : 0,
   "results" : [ {
     "pin" : {
-      "meta" : { },
+      "meta" : "",
       "name" : "name",
       "origins" : [ "origins", "origins" ],
       "cid" : "cid"
@@ -60,11 +60,11 @@ fun Route.PinningApi() {
     "created" : "created",
     "requestid" : "requestid",
     "delegates" : [ "delegates", "delegates" ],
-    "info" : { },
+    "info" : "",
     "status" : "pinning"
   }, {
     "pin" : {
-      "meta" : { },
+      "meta" : "",
       "name" : "name",
       "origins" : [ "origins", "origins" ],
       "cid" : "cid"
@@ -72,7 +72,7 @@ fun Route.PinningApi() {
     "created" : "created",
     "requestid" : "requestid",
     "delegates" : [ "delegates", "delegates" ],
-    "info" : { },
+    "info" : "",
     "status" : "pinning"
   } ]
 }"""
@@ -99,7 +99,7 @@ fun Route.PinningApi() {
             val exampleContentType = "application/json"
             val exampleContentString = """{
   "pin" : {
-    "meta" : { },
+    "meta" : "",
     "name" : "name",
     "origins" : [ "origins", "origins" ],
     "cid" : "cid"
@@ -107,7 +107,7 @@ fun Route.PinningApi() {
   "created" : "created",
   "requestid" : "requestid",
   "delegates" : [ "delegates", "delegates" ],
-  "info" : { },
+  "info" : "",
   "status" : "pinning"
 }"""
             
@@ -125,7 +125,7 @@ fun Route.PinningApi() {
             val exampleContentType = "application/json"
             val exampleContentString = """{
   "pin" : {
-    "meta" : { },
+    "meta" : "",
     "name" : "name",
     "origins" : [ "origins", "origins" ],
     "cid" : "cid"
@@ -133,7 +133,7 @@ fun Route.PinningApi() {
   "created" : "created",
   "requestid" : "requestid",
   "delegates" : [ "delegates", "delegates" ],
-  "info" : { },
+  "info" : "",
   "status" : "pinning"
 }"""
             
@@ -151,7 +151,7 @@ fun Route.PinningApi() {
             val exampleContentType = "application/json"
             val exampleContentString = """{
   "pin" : {
-    "meta" : { },
+    "meta" : "",
     "name" : "name",
     "origins" : [ "origins", "origins" ],
     "cid" : "cid"
@@ -159,7 +159,7 @@ fun Route.PinningApi() {
   "created" : "created",
   "requestid" : "requestid",
   "delegates" : [ "delegates", "delegates" ],
-  "info" : { },
+  "info" : "",
   "status" : "pinning"
 }"""
             

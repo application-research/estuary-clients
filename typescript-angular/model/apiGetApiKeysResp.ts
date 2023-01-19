@@ -12,6 +12,7 @@
 
 export interface ApiGetApiKeysResp { 
     expiry?: string;
+    isSession?: boolean;
     label?: string;
     token?: string;
     tokenHash?: string;

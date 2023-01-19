@@ -9,6 +9,7 @@ import 'package:swagger/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **expiry** | **String** |  | [optional] [default to null]
+**isSession** | **bool** |  | [optional] [default to null]
 **label** | **String** |  | [optional] [default to null]
 **token** | **String** |  | [optional] [default to null]
 **tokenHash** | **String** |  | [optional] [default to null]

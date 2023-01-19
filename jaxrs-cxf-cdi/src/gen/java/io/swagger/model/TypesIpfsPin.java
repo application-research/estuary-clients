@@ -3,7 +3,9 @@ package io.swagger.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.validation.constraints.*;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -15,7 +17,7 @@ import javax.xml.bind.annotation.*;
 
 public class TypesIpfsPin   {
   private String cid = null;
-  private Object meta = null;
+  private Map<String, Object> meta = new HashMap<String, Object>();
   private String name = null;
   private List<String> origins = new ArrayList<String>();
 
@@ -39,7 +41,7 @@ public class TypesIpfsPin   {
 
   /**
    **/
-  public TypesIpfsPin meta(Object meta) {
+  public TypesIpfsPin meta(Map<String, Object> meta) {
     this.meta = meta;
     return this;
   }
@@ -48,10 +50,10 @@ public class TypesIpfsPin   {
   
   @Schema(description = "")
   @JsonProperty("meta")
-  public Object getMeta() {
+  public Map<String, Object> getMeta() {
     return meta;
   }
-  public void setMeta(Object meta) {
+  public void setMeta(Map<String, Object> meta) {
     this.meta = meta;
   }
 

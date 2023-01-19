@@ -12,12 +12,15 @@ import javax.validation.constraints.*;
  * ApiGetApiKeysResp
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-13T19:43:18.594Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-19T16:30:02.322Z[GMT]")
 
 
 public class ApiGetApiKeysResp   {
   @JsonProperty("expiry")
   private String expiry = null;
+
+  @JsonProperty("isSession")
+  private Boolean isSession = null;
 
   @JsonProperty("label")
   private String label = null;
@@ -45,6 +48,25 @@ public class ApiGetApiKeysResp   {
 
   public void setExpiry(String expiry) {
     this.expiry = expiry;
+  }
+
+  public ApiGetApiKeysResp isSession(Boolean isSession) {
+    this.isSession = isSession;
+    return this;
+  }
+
+  /**
+   * Get isSession
+   * @return isSession
+   **/
+  @Schema(description = "")
+  
+    public Boolean isIsSession() {
+    return isSession;
+  }
+
+  public void setIsSession(Boolean isSession) {
+    this.isSession = isSession;
   }
 
   public ApiGetApiKeysResp label(String label) {
@@ -115,6 +137,7 @@ public class ApiGetApiKeysResp   {
     }
     ApiGetApiKeysResp apiGetApiKeysResp = (ApiGetApiKeysResp) o;
     return Objects.equals(this.expiry, apiGetApiKeysResp.expiry) &&
+        Objects.equals(this.isSession, apiGetApiKeysResp.isSession) &&
         Objects.equals(this.label, apiGetApiKeysResp.label) &&
         Objects.equals(this.token, apiGetApiKeysResp.token) &&
         Objects.equals(this.tokenHash, apiGetApiKeysResp.tokenHash);
@@ -122,7 +145,7 @@ public class ApiGetApiKeysResp   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(expiry, label, token, tokenHash);
+    return Objects.hash(expiry, isSession, label, token, tokenHash);
   }
 
   @Override
@@ -131,6 +154,7 @@ public class ApiGetApiKeysResp   {
     sb.append("class ApiGetApiKeysResp {\n");
     
     sb.append("    expiry: ").append(toIndentedString(expiry)).append("\n");
+    sb.append("    isSession: ").append(toIndentedString(isSession)).append("\n");
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    token: ").append(toIndentedString(token)).append("\n");
     sb.append("    tokenHash: ").append(toIndentedString(tokenHash)).append("\n");

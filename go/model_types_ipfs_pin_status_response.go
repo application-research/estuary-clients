@@ -11,7 +11,7 @@ package estuary_client
 type TypesIpfsPinStatusResponse struct {
 	Created string `json:"created,omitempty"`
 	Delegates []string `json:"delegates,omitempty"`
-	Info *interface{} `json:"info,omitempty"`
+	Info ModelMap `json:"info,omitempty"`
 	Pin *TypesIpfsPin `json:"pin,omitempty"`
 	Requestid string `json:"requestid,omitempty"`
 	Status *TypesPinningStatus `json:"status,omitempty"`

@@ -18,7 +18,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2023-01-13T19:43:16.543Z[GMT]")public abstract class AdminApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2023-01-19T16:30:00.833Z[GMT]")public abstract class AdminApiService {
     public abstract Response adminAutoretrieveInitPost(String addresses,String pubKey,SecurityContext securityContext) throws NotFoundException;
     public abstract Response adminAutoretrieveListGet(SecurityContext securityContext) throws NotFoundException;
     public abstract Response adminInvitesCodePost(String code,SecurityContext securityContext) throws NotFoundException;

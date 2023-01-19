@@ -10,7 +10,7 @@ import Foundation
 
 open class TypesIpfsPin: JSONEncodable {
     public var cid: String?
-    public var meta: Any?
+    public var meta: [String:Any]?
     public var name: String?
     public var origins: [String]?
 
@@ -20,7 +20,7 @@ open class TypesIpfsPin: JSONEncodable {
     open func encodeToJSON() -> Any {
         var nillableDictionary = [String:Any?]()
         nillableDictionary["cid"] = self.cid
-        nillableDictionary["meta"] = self.meta
+        nillableDictionary["meta"] = self.meta?.encodeToJSON()
         nillableDictionary["name"] = self.name
         nillableDictionary["origins"] = self.origins?.encodeToJSON()
 

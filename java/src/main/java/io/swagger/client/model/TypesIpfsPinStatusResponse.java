@@ -24,12 +24,14 @@ import io.swagger.client.model.TypesPinningStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 /**
  * TypesIpfsPinStatusResponse
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2023-01-13T19:43:15.077Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2023-01-19T16:29:58.195Z[GMT]")
 public class TypesIpfsPinStatusResponse {
   @SerializedName("created")
   private String created = null;
@@ -38,7 +40,7 @@ public class TypesIpfsPinStatusResponse {
   private List<String> delegates = null;
 
   @SerializedName("info")
-  private Object info = null;
+  private Map<String, Object> info = null;
 
   @SerializedName("pin")
   private TypesIpfsPin pin = null;
@@ -93,8 +95,16 @@ public class TypesIpfsPinStatusResponse {
     this.delegates = delegates;
   }
 
-  public TypesIpfsPinStatusResponse info(Object info) {
+  public TypesIpfsPinStatusResponse info(Map<String, Object> info) {
     this.info = info;
+    return this;
+  }
+
+  public TypesIpfsPinStatusResponse putInfoItem(String key, Object infoItem) {
+    if (this.info == null) {
+      this.info = new HashMap<String, Object>();
+    }
+    this.info.put(key, infoItem);
     return this;
   }
 
@@ -103,11 +113,11 @@ public class TypesIpfsPinStatusResponse {
    * @return info
   **/
   @Schema(description = "")
-  public Object getInfo() {
+  public Map<String, Object> getInfo() {
     return info;
   }
 
-  public void setInfo(Object info) {
+  public void setInfo(Map<String, Object> info) {
     this.info = info;
   }
 

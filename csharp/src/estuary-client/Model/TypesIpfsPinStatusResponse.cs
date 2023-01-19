@@ -38,7 +38,7 @@ namespace estuary-client.Model
         /// <param name="pin">pin.</param>
         /// <param name="requestid">requestid.</param>
         /// <param name="status">status.</param>
-        public TypesIpfsPinStatusResponse(string created = default(string), List<string> delegates = default(List<string>), Object info = default(Object), TypesIpfsPin pin = default(TypesIpfsPin), string requestid = default(string), TypesPinningStatus status = default(TypesPinningStatus))
+        public TypesIpfsPinStatusResponse(string created = default(string), List<string> delegates = default(List<string>), Dictionary<string, Object> info = default(Dictionary<string, Object>), TypesIpfsPin pin = default(TypesIpfsPin), string requestid = default(string), TypesPinningStatus status = default(TypesPinningStatus))
         {
             this.Created = created;
             this.Delegates = delegates;
@@ -64,7 +64,7 @@ namespace estuary-client.Model
         /// Gets or Sets Info
         /// </summary>
         [DataMember(Name="info", EmitDefaultValue=false)]
-        public Object Info { get; set; }
+        public Dictionary<string, Object> Info { get; set; }
 
         /// <summary>
         /// Gets or Sets Pin
@@ -145,8 +145,9 @@ namespace estuary-client.Model
                 ) && 
                 (
                     this.Info == input.Info ||
-                    (this.Info != null &&
-                    this.Info.Equals(input.Info))
+                    this.Info != null &&
+                    input.Info != null &&
+                    this.Info.SequenceEqual(input.Info)
                 ) && 
                 (
                     this.Pin == input.Pin ||

@@ -10,6 +10,7 @@ import Foundation
 
 open class ApiGetApiKeysResp: JSONEncodable {
     public var expiry: String?
+    public var isSession: Bool?
     public var label: String?
     public var token: String?
     public var tokenHash: String?
@@ -20,6 +21,7 @@ open class ApiGetApiKeysResp: JSONEncodable {
     open func encodeToJSON() -> Any {
         var nillableDictionary = [String:Any?]()
         nillableDictionary["expiry"] = self.expiry
+        nillableDictionary["isSession"] = self.isSession
         nillableDictionary["label"] = self.label
         nillableDictionary["token"] = self.token
         nillableDictionary["tokenHash"] = self.tokenHash

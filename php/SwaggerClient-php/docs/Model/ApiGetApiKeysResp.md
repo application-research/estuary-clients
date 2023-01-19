@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **expiry** | **string** |  | [optional] 
+**is_session** | **bool** |  | [optional] 
 **label** | **string** |  | [optional] 
 **token** | **string** |  | [optional] 
 **token_hash** | **string** |  | [optional] 

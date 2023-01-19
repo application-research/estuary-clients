@@ -58,7 +58,7 @@ namespace estuary-client.Controllers
             //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(500, default(UtilHttpError));
             string exampleJson = null;
-            exampleJson = "[ {\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n}, {\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n} ]";
+            exampleJson = "[ {\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"isSession\" : true,\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n}, {\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"isSession\" : true,\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n} ]";
             
                         var example = exampleJson != null
                         ? JsonConvert.DeserializeObject<List<ApiGetApiKeysResp>>(exampleJson)
@@ -134,7 +134,7 @@ namespace estuary-client.Controllers
             //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(500, default(UtilHttpError));
             string exampleJson = null;
-            exampleJson = "{\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n}";
+            exampleJson = "{\n  \"expiry\" : \"expiry\",\n  \"label\" : \"label\",\n  \"isSession\" : true,\n  \"tokenHash\" : \"tokenHash\",\n  \"token\" : \"token\"\n}";
             
                         var example = exampleJson != null
                         ? JsonConvert.DeserializeObject<ApiGetApiKeysResp>(exampleJson)

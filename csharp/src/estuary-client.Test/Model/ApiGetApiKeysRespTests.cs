@@ -74,6 +74,14 @@ namespace estuary-client.Test
             // TODO unit test for the property 'Expiry'
         }
         /// <summary>
+        /// Test the property 'IsSession'
+        /// </summary>
+        [Test]
+        public void IsSessionTest()
+        {
+            // TODO unit test for the property 'IsSession'
+        }
+        /// <summary>
         /// Test the property 'Label'
         /// </summary>
         [Test]

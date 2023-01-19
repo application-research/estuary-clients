@@ -33,11 +33,13 @@ open class UserAPI {
      - examples: [{contentType=application/json, example=[ {
   "expiry" : "expiry",
   "label" : "label",
+  "isSession" : true,
   "tokenHash" : "tokenHash",
   "token" : "token"
 }, {
   "expiry" : "expiry",
   "label" : "label",
+  "isSession" : true,
   "tokenHash" : "tokenHash",
   "token" : "token"
 } ]}]
@@ -117,6 +119,7 @@ open class UserAPI {
      - examples: [{contentType=application/json, example={
   "expiry" : "expiry",
   "label" : "label",
+  "isSession" : true,
   "tokenHash" : "tokenHash",
   "token" : "token"
 }}]

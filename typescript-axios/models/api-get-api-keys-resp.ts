@@ -25,6 +25,12 @@ export interface ApiGetApiKeysResp {
     expiry?: string;
     /**
      * 
+     * @type {boolean}
+     * @memberof ApiGetApiKeysResp
+     */
+    isSession?: boolean;
+    /**
+     * 
      * @type {string}
      * @memberof ApiGetApiKeysResp
      */

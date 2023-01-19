@@ -6,10 +6,12 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2023-01-13T19:43:13.967Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2023-01-19T16:29:58.380Z[GMT]")
 public class ApiGetApiKeysResp   {
   @JsonProperty("expiry")
   private String expiry = null;
+  @JsonProperty("isSession")
+  private Boolean isSession = null;
   @JsonProperty("label")
   private String label = null;
   @JsonProperty("token")
@@ -31,6 +33,23 @@ public class ApiGetApiKeysResp   {
   }
   public void setExpiry(String expiry) {
     this.expiry = expiry;
+  }
+
+  /**
+   **/
+  public ApiGetApiKeysResp isSession(Boolean isSession) {
+    this.isSession = isSession;
+    return this;
+  }
+
+  
+  @Schema(description = "")
+  @JsonProperty("isSession")
+  public Boolean isIsSession() {
+    return isSession;
+  }
+  public void setIsSession(Boolean isSession) {
+    this.isSession = isSession;
   }
 
   /**
@@ -95,6 +114,7 @@ public class ApiGetApiKeysResp   {
     }
     ApiGetApiKeysResp apiGetApiKeysResp = (ApiGetApiKeysResp) o;
     return Objects.equals(expiry, apiGetApiKeysResp.expiry) &&
+        Objects.equals(isSession, apiGetApiKeysResp.isSession) &&
         Objects.equals(label, apiGetApiKeysResp.label) &&
         Objects.equals(token, apiGetApiKeysResp.token) &&
         Objects.equals(tokenHash, apiGetApiKeysResp.tokenHash);
@@ -102,7 +122,7 @@ public class ApiGetApiKeysResp   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(expiry, label, token, tokenHash);
+    return Objects.hash(expiry, isSession, label, token, tokenHash);
   }
 
   @Override
@@ -110,6 +130,7 @@ public class ApiGetApiKeysResp   {
     StringBuilder sb = new StringBuilder();
     sb.append("class ApiGetApiKeysResp {\n");
     sb.append("    expiry: ").append(toIndentedString(expiry)).append("\n");
+    sb.append("    isSession: ").append(toIndentedString(isSession)).append("\n");
     sb.append("    label: ").append(toIndentedString(label)).append("\n");
     sb.append("    token: ").append(toIndentedString(token)).append("\n");
     sb.append("    tokenHash: ").append(toIndentedString(tokenHash)).append("\n");

@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Created** | **string** |  | [optional] 
 **Delegates** | **List&lt;string&gt;** |  | [optional] 
-**Info** | **Object** |  | [optional] 
+**Info** | **Dictionary&lt;string, Object&gt;** |  | [optional] 
 **Pin** | [**TypesIpfsPin**](TypesIpfsPin.md) |  | [optional] 
 **Requestid** | **string** |  | [optional] 
 **Status** | [**TypesPinningStatus**](TypesPinningStatus.md) |  | [optional] 

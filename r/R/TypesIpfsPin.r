@@ -65,7 +65,7 @@ TypesIpfsPin <- R6::R6Class(
         self$`cid` <- TypesIpfsPinObject$`cid`
       }
       if (!is.null(TypesIpfsPinObject$`meta`)) {
-        metaObject <- TODO_OBJECT_MAPPING$new()
+        metaObject <- Map$new()
         metaObject$fromJSON(jsonlite::toJSON(TypesIpfsPinObject$meta, auto_unbox = TRUE))
         self$`meta` <- metaObject
       }
@@ -93,8 +93,8 @@ TypesIpfsPin <- R6::R6Class(
     fromJSONString = function(TypesIpfsPinJson) {
       TypesIpfsPinObject <- jsonlite::fromJSON(TypesIpfsPinJson)
       self$`cid` <- TypesIpfsPinObject$`cid`
-      TODO_OBJECT_MAPPINGObject <- TODO_OBJECT_MAPPING$new()
-      self$`meta` <- TODO_OBJECT_MAPPINGObject$fromJSON(jsonlite::toJSON(TypesIpfsPinObject$meta, auto_unbox = TRUE))
+      MapObject <- Map$new()
+      self$`meta` <- MapObject$fromJSON(jsonlite::toJSON(TypesIpfsPinObject$meta, auto_unbox = TRUE))
       self$`name` <- TypesIpfsPinObject$`name`
       self$`origins` <- TypesIpfsPinObject$`origins`
     }

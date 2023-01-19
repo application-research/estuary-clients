@@ -22,18 +22,20 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 /**
  * TypesIpfsPin
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2023-01-13T19:43:15.077Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2023-01-19T16:29:58.195Z[GMT]")
 public class TypesIpfsPin {
   @SerializedName("cid")
   private String cid = null;
 
   @SerializedName("meta")
-  private Object meta = null;
+  private Map<String, Object> meta = null;
 
   @SerializedName("name")
   private String name = null;
@@ -59,8 +61,16 @@ public class TypesIpfsPin {
     this.cid = cid;
   }
 
-  public TypesIpfsPin meta(Object meta) {
+  public TypesIpfsPin meta(Map<String, Object> meta) {
     this.meta = meta;
+    return this;
+  }
+
+  public TypesIpfsPin putMetaItem(String key, Object metaItem) {
+    if (this.meta == null) {
+      this.meta = new HashMap<String, Object>();
+    }
+    this.meta.put(key, metaItem);
     return this;
   }
 
@@ -69,11 +79,11 @@ public class TypesIpfsPin {
    * @return meta
   **/
   @Schema(description = "")
-  public Object getMeta() {
+  public Map<String, Object> getMeta() {
     return meta;
   }
 
-  public void setMeta(Object meta) {
+  public void setMeta(Map<String, Object> meta) {
     this.meta = meta;
   }
 

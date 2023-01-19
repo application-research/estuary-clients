@@ -29,6 +29,7 @@ class ApiGetApiKeysResp(object):
     """
     swagger_types = {
         'expiry': 'str',
+        'is_session': 'bool',
         'label': 'str',
         'token': 'str',
         'token_hash': 'str'
@@ -36,20 +37,24 @@ class ApiGetApiKeysResp(object):
 
     attribute_map = {
         'expiry': 'expiry',
+        'is_session': 'isSession',
         'label': 'label',
         'token': 'token',
         'token_hash': 'tokenHash'
     }
 
-    def __init__(self, expiry=None, label=None, token=None, token_hash=None):  # noqa: E501
+    def __init__(self, expiry=None, is_session=None, label=None, token=None, token_hash=None):  # noqa: E501
         """ApiGetApiKeysResp - a model defined in Swagger"""  # noqa: E501
         self._expiry = None
+        self._is_session = None
         self._label = None
         self._token = None
         self._token_hash = None
         self.discriminator = None
         if expiry is not None:
             self.expiry = expiry
+        if is_session is not None:
+            self.is_session = is_session
         if label is not None:
             self.label = label
         if token is not None:
@@ -77,6 +82,27 @@ class ApiGetApiKeysResp(object):
         """
 
         self._expiry = expiry
+
+    @property
+    def is_session(self):
+        """Gets the is_session of this ApiGetApiKeysResp.  # noqa: E501
+
+
+        :return: The is_session of this ApiGetApiKeysResp.  # noqa: E501
+        :rtype: bool
+        """
+        return self._is_session
+
+    @is_session.setter
+    def is_session(self, is_session):
+        """Sets the is_session of this ApiGetApiKeysResp.
+
+
+        :param is_session: The is_session of this ApiGetApiKeysResp.  # noqa: E501
+        :type: bool
+        """
+
+        self._is_session = is_session
 
     @property
     def label(self):

@@ -14,7 +14,7 @@ exports.pinningPinsGET = function() {
   "count" : 0,
   "results" : [ {
     "pin" : {
-      "meta" : { },
+      "meta" : "",
       "name" : "name",
       "origins" : [ "origins", "origins" ],
       "cid" : "cid"
@@ -22,11 +22,11 @@ exports.pinningPinsGET = function() {
     "created" : "created",
     "requestid" : "requestid",
     "delegates" : [ "delegates", "delegates" ],
-    "info" : { },
+    "info" : "",
     "status" : "pinning"
   }, {
     "pin" : {
-      "meta" : { },
+      "meta" : "",
       "name" : "name",
       "origins" : [ "origins", "origins" ],
       "cid" : "cid"
@@ -34,7 +34,7 @@ exports.pinningPinsGET = function() {
     "created" : "created",
     "requestid" : "requestid",
     "delegates" : [ "delegates", "delegates" ],
-    "info" : { },
+    "info" : "",
     "status" : "pinning"
   } ]
 };
@@ -61,7 +61,7 @@ exports.pinningPinsPOST = function(body,ignoreDupes,overwrite) {
     var examples = {};
     examples['application/json'] = {
   "pin" : {
-    "meta" : { },
+    "meta" : "",
     "name" : "name",
     "origins" : [ "origins", "origins" ],
     "cid" : "cid"
@@ -69,7 +69,7 @@ exports.pinningPinsPOST = function(body,ignoreDupes,overwrite) {
   "created" : "created",
   "requestid" : "requestid",
   "delegates" : [ "delegates", "delegates" ],
-  "info" : { },
+  "info" : "",
   "status" : "pinning"
 };
     if (Object.keys(examples).length > 0) {
@@ -107,7 +107,7 @@ exports.pinningPinsPinidGET = function(pinid) {
     var examples = {};
     examples['application/json'] = {
   "pin" : {
-    "meta" : { },
+    "meta" : "",
     "name" : "name",
     "origins" : [ "origins", "origins" ],
     "cid" : "cid"
@@ -115,7 +115,7 @@ exports.pinningPinsPinidGET = function(pinid) {
   "created" : "created",
   "requestid" : "requestid",
   "delegates" : [ "delegates", "delegates" ],
-  "info" : { },
+  "info" : "",
   "status" : "pinning"
 };
     if (Object.keys(examples).length > 0) {
@@ -140,7 +140,7 @@ exports.pinningPinsPinidPOST = function(body,pinid) {
     var examples = {};
     examples['application/json'] = {
   "pin" : {
-    "meta" : { },
+    "meta" : "",
     "name" : "name",
     "origins" : [ "origins", "origins" ],
     "cid" : "cid"
@@ -148,7 +148,7 @@ exports.pinningPinsPinidPOST = function(body,pinid) {
   "created" : "created",
   "requestid" : "requestid",
   "delegates" : [ "delegates", "delegates" ],
-  "info" : { },
+  "info" : "",
   "status" : "pinning"
 };
     if (Object.keys(examples).length > 0) {

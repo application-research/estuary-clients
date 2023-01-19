@@ -27,7 +27,7 @@ data class TypesIpfsPinStatusResponse (
 
     val created: kotlin.String? = null,
     val delegates: kotlin.Array<kotlin.String>? = null,
-    val info: kotlin.Any? = null,
+    val info: kotlin.collections.Map<kotlin.String, kotlin.Any>? = null,
     val pin: TypesIpfsPin? = null,
     val requestid: kotlin.String? = null,
     val status: TypesPinningStatus? = null

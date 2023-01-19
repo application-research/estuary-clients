@@ -25,10 +25,10 @@ export interface TypesIpfsPin {
     cid?: string;
     /**
      * 
-     * @type {any}
+     * @type {{ [key: string]: any; }}
      * @memberof TypesIpfsPin
      */
-    meta?: any;
+    meta?: { [key: string]: any; };
     /**
      * 
      * @type {string}

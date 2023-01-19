@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Cid** | **string** |  | [optional] 
-**Meta** | **Object** |  | [optional] 
+**Meta** | **Dictionary&lt;string, Object&gt;** |  | [optional] 
 **Name** | **string** |  | [optional] 
 **Origins** | **List&lt;string&gt;** |  | [optional] 
 

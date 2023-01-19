@@ -23,7 +23,7 @@ package io.swagger.client.model
 case class IpfsPinStatusResponse (
   created: Option[String] = None,
   delegates: Option[List[String]] = None,
-  info: Option[Any] = None,
+  info: Option[Map[String, Any]] = None,
   pin: Option[types.IpfsPin] = None,
   requestid: Option[String] = None,
   status: Option[types.PinningStatus] = None

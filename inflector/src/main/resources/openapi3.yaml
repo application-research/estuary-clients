@@ -3010,6 +3010,8 @@ components:
       properties:
         expiry:
           type: string
+        isSession:
+          type: boolean
         label:
           type: string
         token:
@@ -3019,6 +3021,7 @@ components:
       example:
         expiry: expiry
         label: label
+        isSession: true
         tokenHash: tokenHash
         token: token
     api.minerResp:
@@ -3180,7 +3183,7 @@ components:
         count: 0
         results:
         - pin:
-            meta: {}
+            meta: ""
             name: name
             origins:
             - origins
@@ -3191,10 +3194,10 @@ components:
           delegates:
           - delegates
           - delegates
-          info: {}
+          info: ""
           status: pinning
         - pin:
-            meta: {}
+            meta: ""
             name: name
             origins:
             - origins
@@ -3205,7 +3208,7 @@ components:
           delegates:
           - delegates
           - delegates
-          info: {}
+          info: ""
           status: pinning
     types.IpfsPin:
       type: object
@@ -3214,8 +3217,7 @@ components:
           type: string
         meta:
           type: object
-          properties: {}
-          example: {}
+          additionalProperties: true
         name:
           type: string
         origins:
@@ -3223,7 +3225,7 @@ components:
           items:
             type: string
       example:
-        meta: {}
+        meta: ""
         name: name
         origins:
         - origins
@@ -3240,8 +3242,7 @@ components:
             type: string
         info:
           type: object
-          properties: {}
-          example: {}
+          additionalProperties: true
         pin:
           $ref: '#/components/schemas/types.IpfsPin'
         requestid:
@@ -3250,7 +3251,7 @@ components:
           $ref: '#/components/schemas/types.PinningStatus'
       example:
         pin:
-          meta: {}
+          meta: ""
           name: name
           origins:
           - origins
@@ -3261,7 +3262,7 @@ components:
         delegates:
         - delegates
         - delegates
-        info: {}
+        info: ""
         status: pinning
     types.PinningStatus:
       type: string
