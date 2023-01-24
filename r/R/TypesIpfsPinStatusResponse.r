@@ -8,6 +8,7 @@
 
 #' TypesIpfsPinStatusResponse Class
 #'
+#' @field content 
 #' @field created 
 #' @field delegates 
 #' @field info 
@@ -21,13 +22,18 @@
 TypesIpfsPinStatusResponse <- R6::R6Class(
   'TypesIpfsPinStatusResponse',
   public = list(
+    `content` = NULL,
     `created` = NULL,
     `delegates` = NULL,
     `info` = NULL,
     `pin` = NULL,
     `requestid` = NULL,
     `status` = NULL,
-    initialize = function(`created`, `delegates`, `info`, `pin`, `requestid`, `status`){
+    initialize = function(`content`, `created`, `delegates`, `info`, `pin`, `requestid`, `status`){
+      if (!missing(`content`)) {
+        stopifnot(R6::is.R6(`content`))
+        self$`content` <- `content`
+      }
       if (!missing(`created`)) {
         stopifnot(is.character(`created`), length(`created`) == 1)
         self$`created` <- `created`
@@ -56,6 +62,9 @@ TypesIpfsPinStatusResponse <- R6::R6Class(
     },
     toJSON = function() {
       TypesIpfsPinStatusResponseObject <- list()
+      if (!is.null(self$`content`)) {
+        TypesIpfsPinStatusResponseObject[['content']] <- self$`content`$toJSON()
+      }
       if (!is.null(self$`created`)) {
         TypesIpfsPinStatusResponseObject[['created']] <- self$`created`
       }
@@ -79,6 +88,11 @@ TypesIpfsPinStatusResponse <- R6::R6Class(
     },
     fromJSON = function(TypesIpfsPinStatusResponseJson) {
       TypesIpfsPinStatusResponseObject <- jsonlite::fromJSON(TypesIpfsPinStatusResponseJson)
+      if (!is.null(TypesIpfsPinStatusResponseObject$`content`)) {
+        contentObject <- UtilContent$new()
+        contentObject$fromJSON(jsonlite::toJSON(TypesIpfsPinStatusResponseObject$content, auto_unbox = TRUE))
+        self$`content` <- contentObject
+      }
       if (!is.null(TypesIpfsPinStatusResponseObject$`created`)) {
         self$`created` <- TypesIpfsPinStatusResponseObject$`created`
       }
@@ -107,6 +121,7 @@ TypesIpfsPinStatusResponse <- R6::R6Class(
     toJSONString = function() {
        sprintf(
         '{
+           "content": %s,
            "created": %s,
            "delegates": [%s],
            "info": %s,
@@ -114,6 +129,7 @@ TypesIpfsPinStatusResponse <- R6::R6Class(
            "requestid": %s,
            "status": %s
         }',
+        self$`content`$toJSON(),
         self$`created`,
         lapply(self$`delegates`, function(x) paste(paste0('"', x, '"'), sep=",")),
         self$`info`$toJSON(),
@@ -124,6 +140,8 @@ TypesIpfsPinStatusResponse <- R6::R6Class(
     },
     fromJSONString = function(TypesIpfsPinStatusResponseJson) {
       TypesIpfsPinStatusResponseObject <- jsonlite::fromJSON(TypesIpfsPinStatusResponseJson)
+      UtilContentObject <- UtilContent$new()
+      self$`content` <- UtilContentObject$fromJSON(jsonlite::toJSON(TypesIpfsPinStatusResponseObject$content, auto_unbox = TRUE))
       self$`created` <- TypesIpfsPinStatusResponseObject$`created`
       self$`delegates` <- TypesIpfsPinStatusResponseObject$`delegates`
       MapObject <- Map$new()

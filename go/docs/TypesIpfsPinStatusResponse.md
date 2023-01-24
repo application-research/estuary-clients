@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Content** | [***UtilContent**](util.Content.md) |  | [optional] [default to null]
 **Created** | **string** |  | [optional] [default to null]
 **Delegates** | **[]string** |  | [optional] [default to null]
 **Info** | [**ModelMap**](interface{}.md) |  | [optional] [default to null]

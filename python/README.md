@@ -257,6 +257,7 @@ Class | Method | HTTP request | Description
  - [TypesIpfsPin](docs/TypesIpfsPin.md)
  - [TypesIpfsPinStatusResponse](docs/TypesIpfsPinStatusResponse.md)
  - [TypesPinningStatus](docs/TypesPinningStatus.md)
+ - [UtilContent](docs/UtilContent.md)
  - [UtilContentAddResponse](docs/UtilContentAddResponse.md)
  - [UtilContentCreateBody](docs/UtilContentCreateBody.md)
  - [UtilContentType](docs/UtilContentType.md)

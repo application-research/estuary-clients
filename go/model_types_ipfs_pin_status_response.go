@@ -9,6 +9,7 @@
 package estuary_client
 
 type TypesIpfsPinStatusResponse struct {
+	Content *UtilContent `json:"content,omitempty"`
 	Created string `json:"created,omitempty"`
 	Delegates []string `json:"delegates,omitempty"`
 	Info ModelMap `json:"info,omitempty"`

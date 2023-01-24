@@ -24,6 +24,7 @@ export * from './typesIpfsListPinStatusResponse';
 export * from './typesIpfsPin';
 export * from './typesIpfsPinStatusResponse';
 export * from './typesPinningStatus';
+export * from './utilContent';
 export * from './utilContentAddResponse';
 export * from './utilContentCreateBody';
 export * from './utilContentType';

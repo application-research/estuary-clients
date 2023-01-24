@@ -8,7 +8,7 @@ import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2023-01-19T16:30:02.672Z[GMT]")public class UtilHttpError   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2023-01-24T07:25:41.999Z[GMT]")public class UtilHttpError   {
   private Integer code = null;
   private String details = null;
   private String reason = null;

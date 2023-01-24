@@ -66,6 +66,14 @@ namespace estuary-client.Test
 
 
         /// <summary>
+        /// Test the property 'Content'
+        /// </summary>
+        [Test]
+        public void ContentTest()
+        {
+            // TODO unit test for the property 'Content'
+        }
+        /// <summary>
         /// Test the property 'Created'
         /// </summary>
         [Test]

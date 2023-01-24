@@ -1801,6 +1801,7 @@ Class | Method | HTTP request | Description
  - [SwaggerClient::TypesIpfsPin](docs/TypesIpfsPin.md)
  - [SwaggerClient::TypesIpfsPinStatusResponse](docs/TypesIpfsPinStatusResponse.md)
  - [SwaggerClient::TypesPinningStatus](docs/TypesPinningStatus.md)
+ - [SwaggerClient::UtilContent](docs/UtilContent.md)
  - [SwaggerClient::UtilContentAddResponse](docs/UtilContentAddResponse.md)
  - [SwaggerClient::UtilContentCreateBody](docs/UtilContentCreateBody.md)
  - [SwaggerClient::UtilContentType](docs/UtilContentType.md)

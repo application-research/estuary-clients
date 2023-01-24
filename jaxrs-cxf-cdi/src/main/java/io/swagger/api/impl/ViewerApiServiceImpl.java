@@ -17,7 +17,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2023-01-19T16:30:02.104Z[GMT]")public class ViewerApiServiceImpl implements ViewerApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2023-01-24T07:25:44.517Z[GMT]")public class ViewerApiServiceImpl implements ViewerApiService {
       @Override
       public Response viewerGet(SecurityContext securityContext) {
       // do some magic!

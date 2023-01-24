@@ -2,6 +2,7 @@ package io.swagger.model;
 
 import io.swagger.model.TypesIpfsPin;
 import io.swagger.model.TypesPinningStatus;
+import io.swagger.model.UtilContent;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,6 +18,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TypesIpfsPinStatusResponse   {
 
+  private @Valid UtilContent content = null;
+
   private @Valid String created = null;
 
   private @Valid List<String> delegates = new ArrayList<String>();
@@ -28,6 +31,24 @@ public class TypesIpfsPinStatusResponse   {
   private @Valid String requestid = null;
 
   private @Valid TypesPinningStatus status = null;
+
+  /**
+   **/
+  public TypesIpfsPinStatusResponse content(UtilContent content) {
+    this.content = content;
+    return this;
+  }
+
+  
+  @ApiModelProperty(value = "")
+  @JsonProperty("content")
+
+  public UtilContent getContent() {
+    return content;
+  }
+  public void setContent(UtilContent content) {
+    this.content = content;
+  }
 
   /**
    **/
@@ -147,7 +168,8 @@ public class TypesIpfsPinStatusResponse   {
       return false;
     }
     TypesIpfsPinStatusResponse typesIpfsPinStatusResponse = (TypesIpfsPinStatusResponse) o;
-    return Objects.equals(created, typesIpfsPinStatusResponse.created) &&
+    return Objects.equals(content, typesIpfsPinStatusResponse.content) &&
+        Objects.equals(created, typesIpfsPinStatusResponse.created) &&
         Objects.equals(delegates, typesIpfsPinStatusResponse.delegates) &&
         Objects.equals(info, typesIpfsPinStatusResponse.info) &&
         Objects.equals(pin, typesIpfsPinStatusResponse.pin) &&
@@ -157,7 +179,7 @@ public class TypesIpfsPinStatusResponse   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(created, delegates, info, pin, requestid, status);
+    return Objects.hash(content, created, delegates, info, pin, requestid, status);
   }
 
   @Override
@@ -165,6 +187,7 @@ public class TypesIpfsPinStatusResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TypesIpfsPinStatusResponse {\n");
     
+    sb.append("    content: ").append(toIndentedString(content)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    delegates: ").append(toIndentedString(delegates)).append("\n");
     sb.append("    info: ").append(toIndentedString(info)).append("\n");

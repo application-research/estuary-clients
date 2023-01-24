@@ -28,6 +28,7 @@ class TypesIpfsPinStatusResponse(object):
                             and the value is json key in definition.
     """
     swagger_types = {
+        'content': 'UtilContent',
         'created': 'str',
         'delegates': 'list[str]',
         'info': 'dict(str, object)',
@@ -37,6 +38,7 @@ class TypesIpfsPinStatusResponse(object):
     }
 
     attribute_map = {
+        'content': 'content',
         'created': 'created',
         'delegates': 'delegates',
         'info': 'info',
@@ -45,8 +47,9 @@ class TypesIpfsPinStatusResponse(object):
         'status': 'status'
     }
 
-    def __init__(self, created=None, delegates=None, info=None, pin=None, requestid=None, status=None):  # noqa: E501
+    def __init__(self, content=None, created=None, delegates=None, info=None, pin=None, requestid=None, status=None):  # noqa: E501
         """TypesIpfsPinStatusResponse - a model defined in Swagger"""  # noqa: E501
+        self._content = None
         self._created = None
         self._delegates = None
         self._info = None
@@ -54,6 +57,8 @@ class TypesIpfsPinStatusResponse(object):
         self._requestid = None
         self._status = None
         self.discriminator = None
+        if content is not None:
+            self.content = content
         if created is not None:
             self.created = created
         if delegates is not None:
@@ -66,6 +71,27 @@ class TypesIpfsPinStatusResponse(object):
             self.requestid = requestid
         if status is not None:
             self.status = status
+
+    @property
+    def content(self):
+        """Gets the content of this TypesIpfsPinStatusResponse.  # noqa: E501
+
+
+        :return: The content of this TypesIpfsPinStatusResponse.  # noqa: E501
+        :rtype: UtilContent
+        """
+        return self._content
+
+    @content.setter
+    def content(self, content):
+        """Sets the content of this TypesIpfsPinStatusResponse.
+
+
+        :param content: The content of this TypesIpfsPinStatusResponse.  # noqa: E501
+        :type: UtilContent
+        """
+
+        self._content = content
 
     @property
     def created(self):

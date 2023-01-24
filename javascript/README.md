@@ -210,6 +210,7 @@ Class | Method | HTTP request | Description
  - [EstuaryClient.TypesIpfsPin](docs/TypesIpfsPin.md)
  - [EstuaryClient.TypesIpfsPinStatusResponse](docs/TypesIpfsPinStatusResponse.md)
  - [EstuaryClient.TypesPinningStatus](docs/TypesPinningStatus.md)
+ - [EstuaryClient.UtilContent](docs/UtilContent.md)
  - [EstuaryClient.UtilContentAddResponse](docs/UtilContentAddResponse.md)
  - [EstuaryClient.UtilContentCreateBody](docs/UtilContentCreateBody.md)
  - [EstuaryClient.UtilContentType](docs/UtilContentType.md)

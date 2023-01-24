@@ -2,6 +2,8 @@ part of swagger.api;
 
 class TypesIpfsPinStatusResponse {
   
+  UtilContent content = null;
+
   String created = null;
 
   List<String> delegates = [];
@@ -18,11 +20,12 @@ class TypesIpfsPinStatusResponse {
 
   @override
   String toString() {
-    return 'TypesIpfsPinStatusResponse[created=$created, delegates=$delegates, info=$info, pin=$pin, requestid=$requestid, status=$status, ]';
+    return 'TypesIpfsPinStatusResponse[content=$content, created=$created, delegates=$delegates, info=$info, pin=$pin, requestid=$requestid, status=$status, ]';
   }
 
   TypesIpfsPinStatusResponse.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
+    content = new UtilContent.fromJson(json['content']);
     created = json['created'];
     delegates = (json['delegates'] as List).map((item) => item as String).toList();
     info = Object.mapFromJson(json['info']);
@@ -33,6 +36,7 @@ class TypesIpfsPinStatusResponse {
 
   Map<String, dynamic> toJson() {
     return {
+      'content': content,
       'created': created,
       'delegates': delegates,
       'info': info,

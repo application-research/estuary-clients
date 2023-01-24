@@ -9,6 +9,7 @@ import Foundation
 
 
 open class TypesIpfsPinStatusResponse: JSONEncodable {
+    public var content: UtilContent?
     public var created: String?
     public var delegates: [String]?
     public var info: [String:Any]?
@@ -21,6 +22,7 @@ open class TypesIpfsPinStatusResponse: JSONEncodable {
     // MARK: JSONEncodable
     open func encodeToJSON() -> Any {
         var nillableDictionary = [String:Any?]()
+        nillableDictionary["content"] = self.content?.encodeToJSON()
         nillableDictionary["created"] = self.created
         nillableDictionary["delegates"] = self.delegates?.encodeToJSON()
         nillableDictionary["info"] = self.info?.encodeToJSON()

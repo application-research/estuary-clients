@@ -2977,6 +2977,8 @@ components:
     types.IpfsPinStatusResponse:
       type: object
       properties:
+        content:
+          $ref: '#/components/schemas/util.Content'
         created:
           type: string
         delegates:
@@ -3006,6 +3008,65 @@ components:
       - PinningStatusFailed
       - PinningStatusQueued
       - PinningStatusOffloaded
+    util.Content:
+      type: object
+      properties:
+        active:
+          type: boolean
+        aggregate:
+          type: boolean
+        aggregatedIn:
+          type: integer
+          description: |-
+            TODO: shift most of the 'state' booleans in here into a single state
+            field, should make reasoning about things much simpler
+        cid:
+          $ref: '#/components/schemas/util.DbCID'
+        createdAt:
+          type: string
+        dagSplit:
+          type: boolean
+          description: |-
+            If set, this content is part of a split dag.
+            In such a case, the 'root' content should be advertised on the dht, but
+            not have deals made for it, and the children should have deals made for
+            them (unlike with aggregates)
+        dealStatus:
+          type: string
+        description:
+          type: string
+        failed:
+          type: boolean
+        id:
+          type: integer
+        location:
+          type: string
+        name:
+          type: string
+        offloaded:
+          type: boolean
+        origins:
+          type: string
+        pinMeta:
+          type: string
+        pinning:
+          type: boolean
+        pinningStatus:
+          type: string
+        replace:
+          type: boolean
+        replication:
+          type: integer
+        size:
+          type: integer
+        splitFrom:
+          type: integer
+        type:
+          $ref: '#/components/schemas/util.ContentType'
+        updatedAt:
+          type: string
+        userId:
+          type: integer
     util.ContentAddResponse:
       type: object
       properties:

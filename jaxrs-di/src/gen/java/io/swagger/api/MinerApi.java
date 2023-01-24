@@ -38,7 +38,7 @@ import javax.validation.constraints.*;
 @Path("/miner")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2023-01-19T16:29:58.888Z[GMT]")public class MinerApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2023-01-24T07:25:42.416Z[GMT]")public class MinerApi  {
 
    private MinerApiService delegate;
 

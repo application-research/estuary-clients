@@ -13,9 +13,11 @@ package io.swagger.client.models
 
 import io.swagger.client.models.TypesIpfsPin
 import io.swagger.client.models.TypesPinningStatus
+import io.swagger.client.models.UtilContent
 
 /**
  * 
+ * @param content 
  * @param created 
  * @param delegates 
  * @param info 
@@ -25,6 +27,7 @@ import io.swagger.client.models.TypesPinningStatus
  */
 data class TypesIpfsPinStatusResponse (
 
+    val content: UtilContent? = null,
     val created: kotlin.String? = null,
     val delegates: kotlin.Array<kotlin.String>? = null,
     val info: kotlin.collections.Map<kotlin.String, kotlin.Any>? = null,

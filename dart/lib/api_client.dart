@@ -90,6 +90,8 @@ class ApiClient {
           return new TypesIpfsPinStatusResponse.fromJson(value);
         case 'TypesPinningStatus':
            return new TypesPinningStatus.fromJson(value);
+        case 'UtilContent':
+          return new UtilContent.fromJson(value);
         case 'UtilContentAddResponse':
           return new UtilContentAddResponse.fromJson(value);
         case 'UtilContentCreateBody':

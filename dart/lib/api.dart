@@ -51,6 +51,7 @@ part 'model/types_ipfs_list_pin_status_response.dart';
 part 'model/types_ipfs_pin.dart';
 part 'model/types_ipfs_pin_status_response.dart';
 part 'model/types_pinning_status.dart';
+part 'model/util_content.dart';
 part 'model/util_content_add_response.dart';
 part 'model/util_content_create_body.dart';
 part 'model/util_content_type.dart';

@@ -12,7 +12,7 @@ import javax.validation.constraints.*;
  * CollectionsCollection
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2023-01-19T16:30:00.179Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2023-01-24T07:25:42.279Z[GMT]")
 public class CollectionsCollection   {
   @JsonProperty("cid")
   private String cid = null;

@@ -11,6 +11,7 @@ import Foundation
 
 public struct TypesIpfsPinStatusResponse: Codable {
 
+    public var content: UtilContent?
     public var created: String?
     public var delegates: [String]?
     public var info: Dictionary?
@@ -18,7 +19,8 @@ public struct TypesIpfsPinStatusResponse: Codable {
     public var requestid: String?
     public var status: TypesPinningStatus?
 
-    public init(created: String? = nil, delegates: [String]? = nil, info: Dictionary? = nil, pin: TypesIpfsPin? = nil, requestid: String? = nil, status: TypesPinningStatus? = nil) {
+    public init(content: UtilContent? = nil, created: String? = nil, delegates: [String]? = nil, info: Dictionary? = nil, pin: TypesIpfsPin? = nil, requestid: String? = nil, status: TypesPinningStatus? = nil) {
+        self.content = content
         self.created = created
         self.delegates = delegates
         self.info = info

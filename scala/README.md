@@ -165,6 +165,7 @@ Class | Method | HTTP request | Description
  - [ClaimResponse](ClaimResponse.md)
  - [Collection](Collection.md)
  - [CollectionListResponse](CollectionListResponse.md)
+ - [Content](Content.md)
  - [ContentAddBody](ContentAddBody.md)
  - [ContentAddResponse](ContentAddResponse.md)
  - [ContentCreateBody](ContentCreateBody.md)

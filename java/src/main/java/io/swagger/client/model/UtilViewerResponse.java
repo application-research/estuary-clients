@@ -28,7 +28,7 @@ import java.util.List;
  * UtilViewerResponse
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2023-01-19T16:29:58.195Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2023-01-24T07:25:39.898Z[GMT]")
 public class UtilViewerResponse {
   @SerializedName("address")
   private String address = null;

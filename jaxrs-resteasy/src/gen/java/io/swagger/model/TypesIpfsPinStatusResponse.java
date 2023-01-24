@@ -6,14 +6,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.model.TypesIpfsPin;
 import io.swagger.model.TypesPinningStatus;
+import io.swagger.model.UtilContent;
 import java.util.List;
 import java.util.Map;
 import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-19T16:30:00.063Z[GMT]")public class TypesIpfsPinStatusResponse   {
-  private String created = null;  private List<String> delegates = new ArrayList<String>();  private Map<String, Object> info = new HashMap<String, Object>();  private TypesIpfsPin pin = null;  private String requestid = null;  private TypesPinningStatus status = null;
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-24T07:25:42.644Z[GMT]")public class TypesIpfsPinStatusResponse   {
+  private UtilContent content = null;  private String created = null;  private List<String> delegates = new ArrayList<String>();  private Map<String, Object> info = new HashMap<String, Object>();  private TypesIpfsPin pin = null;  private String requestid = null;  private TypesPinningStatus status = null;
+
+  /**
+   **/
+  
+  @Schema(description = "")
+  @JsonProperty("content")
+  public UtilContent getContent() {
+    return content;
+  }
+  public void setContent(UtilContent content) {
+    this.content = content;
+  }
 
   /**
    **/
@@ -97,7 +110,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
       return false;
     }
     TypesIpfsPinStatusResponse typesIpfsPinStatusResponse = (TypesIpfsPinStatusResponse) o;
-    return Objects.equals(created, typesIpfsPinStatusResponse.created) &&
+    return Objects.equals(content, typesIpfsPinStatusResponse.content) &&
+        Objects.equals(created, typesIpfsPinStatusResponse.created) &&
         Objects.equals(delegates, typesIpfsPinStatusResponse.delegates) &&
         Objects.equals(info, typesIpfsPinStatusResponse.info) &&
         Objects.equals(pin, typesIpfsPinStatusResponse.pin) &&
@@ -107,7 +121,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
   @Override
   public int hashCode() {
-    return Objects.hash(created, delegates, info, pin, requestid, status);
+    return Objects.hash(content, created, delegates, info, pin, requestid, status);
   }
 
   @Override
@@ -115,6 +129,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
     StringBuilder sb = new StringBuilder();
     sb.append("class TypesIpfsPinStatusResponse {\n");
     
+    sb.append("    content: ").append(toIndentedString(content)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    delegates: ").append(toIndentedString(delegates)).append("\n");
     sb.append("    info: ").append(toIndentedString(info)).append("\n");

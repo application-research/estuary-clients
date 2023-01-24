@@ -13,6 +13,7 @@ package io.swagger.client.model
 
 
 /**
+ * @param content 
  * @param created 
  * @param delegates 
  * @param info 
@@ -21,6 +22,7 @@ package io.swagger.client.model
  * @param status 
  */
 case class IpfsPinStatusResponse (
+  content: Option[util.Content] = None,
   created: Option[String] = None,
   delegates: Option[List[String]] = None,
   info: Option[Map[String, Any]] = None,

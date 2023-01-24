@@ -13,12 +13,19 @@
  */
 import { TypesIpfsPin } from './types-ipfs-pin';
 import { TypesPinningStatus } from './types-pinning-status';
+import { UtilContent } from './util-content';
 /**
  * 
  * @export
  * @interface TypesIpfsPinStatusResponse
  */
 export interface TypesIpfsPinStatusResponse {
+    /**
+     * 
+     * @type {UtilContent}
+     * @memberof TypesIpfsPinStatusResponse
+     */
+    content?: UtilContent;
     /**
      * 
      * @type {string}

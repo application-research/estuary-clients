@@ -19,7 +19,7 @@ import javax.validation.Valid;
 /**
  * ApiEmptyResp
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2023-01-19T16:30:00.833Z[GMT]")public class ApiEmptyResp   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2023-01-24T07:25:42.112Z[GMT]")public class ApiEmptyResp   {
 
   @Override
   public boolean equals(java.lang.Object o) {

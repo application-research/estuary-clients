@@ -32,14 +32,16 @@ namespace estuary-client.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="TypesIpfsPinStatusResponse" /> class.
         /// </summary>
+        /// <param name="content">content.</param>
         /// <param name="created">created.</param>
         /// <param name="delegates">delegates.</param>
         /// <param name="info">info.</param>
         /// <param name="pin">pin.</param>
         /// <param name="requestid">requestid.</param>
         /// <param name="status">status.</param>
-        public TypesIpfsPinStatusResponse(string created = default(string), List<string> delegates = default(List<string>), Dictionary<string, Object> info = default(Dictionary<string, Object>), TypesIpfsPin pin = default(TypesIpfsPin), string requestid = default(string), TypesPinningStatus status = default(TypesPinningStatus))
+        public TypesIpfsPinStatusResponse(UtilContent content = default(UtilContent), string created = default(string), List<string> delegates = default(List<string>), Dictionary<string, Object> info = default(Dictionary<string, Object>), TypesIpfsPin pin = default(TypesIpfsPin), string requestid = default(string), TypesPinningStatus status = default(TypesPinningStatus))
         {
+            this.Content = content;
             this.Created = created;
             this.Delegates = delegates;
             this.Info = info;
@@ -48,6 +50,12 @@ namespace estuary-client.Model
             this.Status = status;
         }
         
+        /// <summary>
+        /// Gets or Sets Content
+        /// </summary>
+        [DataMember(Name="content", EmitDefaultValue=false)]
+        public UtilContent Content { get; set; }
+
         /// <summary>
         /// Gets or Sets Created
         /// </summary>
@@ -92,6 +100,7 @@ namespace estuary-client.Model
         {
             var sb = new StringBuilder();
             sb.Append("class TypesIpfsPinStatusResponse {\n");
+            sb.Append("  Content: ").Append(Content).Append("\n");
             sb.Append("  Created: ").Append(Created).Append("\n");
             sb.Append("  Delegates: ").Append(Delegates).Append("\n");
             sb.Append("  Info: ").Append(Info).Append("\n");
@@ -132,6 +141,11 @@ namespace estuary-client.Model
                 return false;
 
             return 
+                (
+                    this.Content == input.Content ||
+                    (this.Content != null &&
+                    this.Content.Equals(input.Content))
+                ) && 
                 (
                     this.Created == input.Created ||
                     (this.Created != null &&
@@ -175,6 +189,8 @@ namespace estuary-client.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
+                if (this.Content != null)
+                    hashCode = hashCode * 59 + this.Content.GetHashCode();
                 if (this.Created != null)
                     hashCode = hashCode * 59 + this.Created.GetHashCode();
                 if (this.Delegates != null)

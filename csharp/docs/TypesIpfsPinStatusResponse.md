@@ -3,6 +3,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Content** | [**UtilContent**](UtilContent.md) |  | [optional] 
 **Created** | **string** |  | [optional] 
 **Delegates** | **List&lt;string&gt;** |  | [optional] 
 **Info** | **Dictionary&lt;string, Object&gt;** |  | [optional] 

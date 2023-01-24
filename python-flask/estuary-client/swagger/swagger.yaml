@@ -3244,6 +3244,32 @@ components:
           delegates:
           - delegates
           - delegates
+          content:
+            aggregatedIn: 6
+            offloaded: true
+            replication: 5
+            pinning: true
+            pinMeta: pinMeta
+            replace: true
+            active: true
+            description: description
+            dagSplit: true
+            dealStatus: dealStatus
+            failed: true
+            type: 7
+            userId: 9
+            aggregate: true
+            createdAt: createdAt
+            pinningStatus: pinningStatus
+            size: 5
+            splitFrom: 2
+            name: name
+            origins: origins
+            location: location
+            id: 1
+            cid:
+              cid: {}
+            updatedAt: updatedAt
           info: ""
           status: pinning
         - pin:
@@ -3258,6 +3284,32 @@ components:
           delegates:
           - delegates
           - delegates
+          content:
+            aggregatedIn: 6
+            offloaded: true
+            replication: 5
+            pinning: true
+            pinMeta: pinMeta
+            replace: true
+            active: true
+            description: description
+            dagSplit: true
+            dealStatus: dealStatus
+            failed: true
+            type: 7
+            userId: 9
+            aggregate: true
+            createdAt: createdAt
+            pinningStatus: pinningStatus
+            size: 5
+            splitFrom: 2
+            name: name
+            origins: origins
+            location: location
+            id: 1
+            cid:
+              cid: {}
+            updatedAt: updatedAt
           info: ""
           status: pinning
     types.IpfsPin:
@@ -3284,6 +3336,8 @@ components:
     types.IpfsPinStatusResponse:
       type: object
       properties:
+        content:
+          $ref: '#/components/schemas/util.Content'
         created:
           type: string
         delegates:
@@ -3312,6 +3366,32 @@ components:
         delegates:
         - delegates
         - delegates
+        content:
+          aggregatedIn: 6
+          offloaded: true
+          replication: 5
+          pinning: true
+          pinMeta: pinMeta
+          replace: true
+          active: true
+          description: description
+          dagSplit: true
+          dealStatus: dealStatus
+          failed: true
+          type: 7
+          userId: 9
+          aggregate: true
+          createdAt: createdAt
+          pinningStatus: pinningStatus
+          size: 5
+          splitFrom: 2
+          name: name
+          origins: origins
+          location: location
+          id: 1
+          cid:
+            cid: {}
+          updatedAt: updatedAt
         info: ""
         status: pinning
     types.PinningStatus:
@@ -3328,6 +3408,91 @@ components:
       - PinningStatusFailed
       - PinningStatusQueued
       - PinningStatusOffloaded
+    util.Content:
+      type: object
+      properties:
+        active:
+          type: boolean
+        aggregate:
+          type: boolean
+        aggregatedIn:
+          type: integer
+          description: |-
+            TODO: shift most of the 'state' booleans in here into a single state
+            field, should make reasoning about things much simpler
+        cid:
+          $ref: '#/components/schemas/util.DbCID'
+        createdAt:
+          type: string
+        dagSplit:
+          type: boolean
+          description: |-
+            If set, this content is part of a split dag.
+            In such a case, the 'root' content should be advertised on the dht, but
+            not have deals made for it, and the children should have deals made for
+            them (unlike with aggregates)
+        dealStatus:
+          type: string
+        description:
+          type: string
+        failed:
+          type: boolean
+        id:
+          type: integer
+        location:
+          type: string
+        name:
+          type: string
+        offloaded:
+          type: boolean
+        origins:
+          type: string
+        pinMeta:
+          type: string
+        pinning:
+          type: boolean
+        pinningStatus:
+          type: string
+        replace:
+          type: boolean
+        replication:
+          type: integer
+        size:
+          type: integer
+        splitFrom:
+          type: integer
+        type:
+          $ref: '#/components/schemas/util.ContentType'
+        updatedAt:
+          type: string
+        userId:
+          type: integer
+      example:
+        aggregatedIn: 6
+        offloaded: true
+        replication: 5
+        pinning: true
+        pinMeta: pinMeta
+        replace: true
+        active: true
+        description: description
+        dagSplit: true
+        dealStatus: dealStatus
+        failed: true
+        type: 7
+        userId: 9
+        aggregate: true
+        createdAt: createdAt
+        pinningStatus: pinningStatus
+        size: 5
+        splitFrom: 2
+        name: name
+        origins: origins
+        location: location
+        id: 1
+        cid:
+          cid: {}
+        updatedAt: updatedAt
     util.ContentAddResponse:
       type: object
       properties:

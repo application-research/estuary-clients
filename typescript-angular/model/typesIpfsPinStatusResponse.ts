@@ -11,8 +11,10 @@
  */
 import { TypesIpfsPin } from './typesIpfsPin';
 import { TypesPinningStatus } from './typesPinningStatus';
+import { UtilContent } from './utilContent';
 
 export interface TypesIpfsPinStatusResponse { 
+    content?: UtilContent;
     created?: string;
     delegates?: Array<string>;
     info?: { [key: string]: any; };

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.model.TypesIpfsPin;
 import io.swagger.model.TypesPinningStatus;
+import io.swagger.model.UtilContent;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,8 +13,10 @@ import java.util.Map;
 
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2023-01-19T16:29:58.380Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2023-01-24T07:25:40.154Z[GMT]")
 public class TypesIpfsPinStatusResponse   {
+  @JsonProperty("content")
+  private UtilContent content = null;
   @JsonProperty("created")
   private String created = null;
   @JsonProperty("delegates")
@@ -26,6 +29,23 @@ public class TypesIpfsPinStatusResponse   {
   private String requestid = null;
   @JsonProperty("status")
   private TypesPinningStatus status = null;
+  /**
+   **/
+  public TypesIpfsPinStatusResponse content(UtilContent content) {
+    this.content = content;
+    return this;
+  }
+
+  
+  @Schema(description = "")
+  @JsonProperty("content")
+  public UtilContent getContent() {
+    return content;
+  }
+  public void setContent(UtilContent content) {
+    this.content = content;
+  }
+
   /**
    **/
   public TypesIpfsPinStatusResponse created(String created) {
@@ -138,7 +158,8 @@ public class TypesIpfsPinStatusResponse   {
       return false;
     }
     TypesIpfsPinStatusResponse typesIpfsPinStatusResponse = (TypesIpfsPinStatusResponse) o;
-    return Objects.equals(created, typesIpfsPinStatusResponse.created) &&
+    return Objects.equals(content, typesIpfsPinStatusResponse.content) &&
+        Objects.equals(created, typesIpfsPinStatusResponse.created) &&
         Objects.equals(delegates, typesIpfsPinStatusResponse.delegates) &&
         Objects.equals(info, typesIpfsPinStatusResponse.info) &&
         Objects.equals(pin, typesIpfsPinStatusResponse.pin) &&
@@ -148,13 +169,14 @@ public class TypesIpfsPinStatusResponse   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(created, delegates, info, pin, requestid, status);
+    return Objects.hash(content, created, delegates, info, pin, requestid, status);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class TypesIpfsPinStatusResponse {\n");
+    sb.append("    content: ").append(toIndentedString(content)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    delegates: ").append(toIndentedString(delegates)).append("\n");
     sb.append("    info: ").append(toIndentedString(info)).append("\n");

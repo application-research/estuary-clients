@@ -2,7 +2,7 @@
 
 Estuary API
 - API version: 0.0.0
-  - Build date: 2023-01-19T16:29:58.195Z[GMT]
+  - Build date: 2023-01-24T07:25:39.898Z[GMT]
 
 This is the API for the Estuary application.
 
@@ -458,6 +458,7 @@ Class | Method | HTTP request | Description
  - [TypesIpfsPin](docs/TypesIpfsPin.md)
  - [TypesIpfsPinStatusResponse](docs/TypesIpfsPinStatusResponse.md)
  - [TypesPinningStatus](docs/TypesPinningStatus.md)
+ - [UtilContent](docs/UtilContent.md)
  - [UtilContentAddResponse](docs/UtilContentAddResponse.md)
  - [UtilContentCreateBody](docs/UtilContentCreateBody.md)
  - [UtilContentType](docs/UtilContentType.md)

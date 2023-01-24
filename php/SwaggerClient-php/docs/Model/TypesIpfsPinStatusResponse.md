@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**content** | [**\Swagger\Client\Model\UtilContent**](UtilContent.md) |  | [optional] 
 **created** | **string** |  | [optional] 
 **delegates** | **string[]** |  | [optional] 
 **info** | **map[string,object]** |  | [optional] 

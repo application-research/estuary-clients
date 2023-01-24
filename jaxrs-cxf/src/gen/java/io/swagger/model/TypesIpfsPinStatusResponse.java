@@ -2,6 +2,7 @@ package io.swagger.model;
 
 import io.swagger.model.TypesIpfsPin;
 import io.swagger.model.TypesPinningStatus;
+import io.swagger.model.UtilContent;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,6 +24,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 public class TypesIpfsPinStatusResponse   {
   
   @Schema(description = "")
+  private UtilContent content = null;
+  
+  @Schema(description = "")
   private String created = null;
   
   @Schema(description = "")
@@ -39,6 +43,24 @@ public class TypesIpfsPinStatusResponse   {
   
   @Schema(description = "")
   private TypesPinningStatus status = null;
+ /**
+   * Get content
+   * @return content
+  **/
+  @JsonProperty("content")
+  public UtilContent getContent() {
+    return content;
+  }
+
+  public void setContent(UtilContent content) {
+    this.content = content;
+  }
+
+  public TypesIpfsPinStatusResponse content(UtilContent content) {
+    this.content = content;
+    return this;
+  }
+
  /**
    * Get created
    * @return created
@@ -163,6 +185,7 @@ public class TypesIpfsPinStatusResponse   {
     StringBuilder sb = new StringBuilder();
     sb.append("class TypesIpfsPinStatusResponse {\n");
     
+    sb.append("    content: ").append(toIndentedString(content)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    delegates: ").append(toIndentedString(delegates)).append("\n");
     sb.append("    info: ").append(toIndentedString(info)).append("\n");

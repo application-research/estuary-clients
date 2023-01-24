@@ -2,6 +2,7 @@ package io.swagger.server.model
 
 
 /**
+ * @param content 
  * @param created 
  * @param delegates 
  * @param info 
@@ -10,6 +11,7 @@ package io.swagger.server.model
  * @param status 
  */
 case class Types.IpfsPinStatusResponse (
+  content: Option[util.Content],
   created: Option[String],
   delegates: Option[List[String]],
   info: Option[Map[String, Object]],

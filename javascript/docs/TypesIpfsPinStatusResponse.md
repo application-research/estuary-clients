@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**content** | [**UtilContent**](UtilContent.md) |  | [optional] 
 **created** | **String** |  | [optional] 
 **delegates** | **[String]** |  | [optional] 
 **info** | **{String: Object}** |  | [optional] 

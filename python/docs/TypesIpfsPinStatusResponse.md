@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**content** | [**UtilContent**](UtilContent.md) |  | [optional] 
 **created** | **str** |  | [optional] 
 **delegates** | **list[str]** |  | [optional] 
 **info** | **dict(str, object)** |  | [optional] 

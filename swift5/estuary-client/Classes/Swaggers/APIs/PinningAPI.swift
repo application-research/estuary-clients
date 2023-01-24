@@ -41,6 +41,34 @@ open class PinningAPI {
     "created" : "created",
     "requestid" : "requestid",
     "delegates" : [ "delegates", "delegates" ],
+    "content" : {
+      "aggregatedIn" : 6,
+      "offloaded" : true,
+      "replication" : 5,
+      "pinning" : true,
+      "pinMeta" : "pinMeta",
+      "replace" : true,
+      "active" : true,
+      "description" : "description",
+      "dagSplit" : true,
+      "dealStatus" : "dealStatus",
+      "failed" : true,
+      "type" : 7,
+      "userId" : 9,
+      "aggregate" : true,
+      "createdAt" : "createdAt",
+      "pinningStatus" : "pinningStatus",
+      "size" : 5,
+      "splitFrom" : 2,
+      "name" : "name",
+      "origins" : "origins",
+      "location" : "location",
+      "id" : 1,
+      "cid" : {
+        "cid" : { }
+      },
+      "updatedAt" : "updatedAt"
+    },
     "info" : "",
     "status" : "pinning"
   }, {
@@ -53,6 +81,34 @@ open class PinningAPI {
     "created" : "created",
     "requestid" : "requestid",
     "delegates" : [ "delegates", "delegates" ],
+    "content" : {
+      "aggregatedIn" : 6,
+      "offloaded" : true,
+      "replication" : 5,
+      "pinning" : true,
+      "pinMeta" : "pinMeta",
+      "replace" : true,
+      "active" : true,
+      "description" : "description",
+      "dagSplit" : true,
+      "dealStatus" : "dealStatus",
+      "failed" : true,
+      "type" : 7,
+      "userId" : 9,
+      "aggregate" : true,
+      "createdAt" : "createdAt",
+      "pinningStatus" : "pinningStatus",
+      "size" : 5,
+      "splitFrom" : 2,
+      "name" : "name",
+      "origins" : "origins",
+      "location" : "location",
+      "id" : 1,
+      "cid" : {
+        "cid" : { }
+      },
+      "updatedAt" : "updatedAt"
+    },
     "info" : "",
     "status" : "pinning"
   } ]
@@ -143,6 +199,34 @@ open class PinningAPI {
   "created" : "created",
   "requestid" : "requestid",
   "delegates" : [ "delegates", "delegates" ],
+  "content" : {
+    "aggregatedIn" : 6,
+    "offloaded" : true,
+    "replication" : 5,
+    "pinning" : true,
+    "pinMeta" : "pinMeta",
+    "replace" : true,
+    "active" : true,
+    "description" : "description",
+    "dagSplit" : true,
+    "dealStatus" : "dealStatus",
+    "failed" : true,
+    "type" : 7,
+    "userId" : 9,
+    "aggregate" : true,
+    "createdAt" : "createdAt",
+    "pinningStatus" : "pinningStatus",
+    "size" : 5,
+    "splitFrom" : 2,
+    "name" : "name",
+    "origins" : "origins",
+    "location" : "location",
+    "id" : 1,
+    "cid" : {
+      "cid" : { }
+    },
+    "updatedAt" : "updatedAt"
+  },
   "info" : "",
   "status" : "pinning"
 }}]
@@ -195,6 +279,34 @@ open class PinningAPI {
   "created" : "created",
   "requestid" : "requestid",
   "delegates" : [ "delegates", "delegates" ],
+  "content" : {
+    "aggregatedIn" : 6,
+    "offloaded" : true,
+    "replication" : 5,
+    "pinning" : true,
+    "pinMeta" : "pinMeta",
+    "replace" : true,
+    "active" : true,
+    "description" : "description",
+    "dagSplit" : true,
+    "dealStatus" : "dealStatus",
+    "failed" : true,
+    "type" : 7,
+    "userId" : 9,
+    "aggregate" : true,
+    "createdAt" : "createdAt",
+    "pinningStatus" : "pinningStatus",
+    "size" : 5,
+    "splitFrom" : 2,
+    "name" : "name",
+    "origins" : "origins",
+    "location" : "location",
+    "id" : 1,
+    "cid" : {
+      "cid" : { }
+    },
+    "updatedAt" : "updatedAt"
+  },
   "info" : "",
   "status" : "pinning"
 }}]
@@ -249,6 +361,34 @@ open class PinningAPI {
   "created" : "created",
   "requestid" : "requestid",
   "delegates" : [ "delegates", "delegates" ],
+  "content" : {
+    "aggregatedIn" : 6,
+    "offloaded" : true,
+    "replication" : 5,
+    "pinning" : true,
+    "pinMeta" : "pinMeta",
+    "replace" : true,
+    "active" : true,
+    "description" : "description",
+    "dagSplit" : true,
+    "dealStatus" : "dealStatus",
+    "failed" : true,
+    "type" : 7,
+    "userId" : 9,
+    "aggregate" : true,
+    "createdAt" : "createdAt",
+    "pinningStatus" : "pinningStatus",
+    "size" : 5,
+    "splitFrom" : 2,
+    "name" : "name",
+    "origins" : "origins",
+    "location" : "location",
+    "id" : 1,
+    "cid" : {
+      "cid" : { }
+    },
+    "updatedAt" : "updatedAt"
+  },
   "info" : "",
   "status" : "pinning"
 }}]

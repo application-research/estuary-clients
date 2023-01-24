@@ -13,6 +13,13 @@ namespace IO.Swagger.Model {
   [DataContract]
   public class TypesIpfsPinStatusResponse {
     /// <summary>
+    /// Gets or Sets Content
+    /// </summary>
+    [DataMember(Name="content", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "content")]
+    public UtilContent Content { get; set; }
+
+    /// <summary>
     /// Gets or Sets Created
     /// </summary>
     [DataMember(Name="created", EmitDefaultValue=false)]
@@ -62,6 +69,7 @@ namespace IO.Swagger.Model {
     public override string ToString()  {
       var sb = new StringBuilder();
       sb.Append("class TypesIpfsPinStatusResponse {\n");
+      sb.Append("  Content: ").Append(Content).Append("\n");
       sb.Append("  Created: ").Append(Created).Append("\n");
       sb.Append("  Delegates: ").Append(Delegates).Append("\n");
       sb.Append("  Info: ").Append(Info).Append("\n");

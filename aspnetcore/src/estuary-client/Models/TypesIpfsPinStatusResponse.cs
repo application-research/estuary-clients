@@ -27,6 +27,13 @@ namespace estuary-client.Models
     public partial class TypesIpfsPinStatusResponse : IEquatable<TypesIpfsPinStatusResponse>
     { 
         /// <summary>
+        /// Gets or Sets Content
+        /// </summary>
+
+        [DataMember(Name="content")]
+        public UtilContent Content { get; set; }
+
+        /// <summary>
         /// Gets or Sets Created
         /// </summary>
 
@@ -76,6 +83,7 @@ namespace estuary-client.Models
         {
             var sb = new StringBuilder();
             sb.Append("class TypesIpfsPinStatusResponse {\n");
+            sb.Append("  Content: ").Append(Content).Append("\n");
             sb.Append("  Created: ").Append(Created).Append("\n");
             sb.Append("  Delegates: ").Append(Delegates).Append("\n");
             sb.Append("  Info: ").Append(Info).Append("\n");
@@ -119,6 +127,11 @@ namespace estuary-client.Models
 
             return 
                 (
+                    Content == other.Content ||
+                    Content != null &&
+                    Content.Equals(other.Content)
+                ) && 
+                (
                     Created == other.Created ||
                     Created != null &&
                     Created.Equals(other.Created)
@@ -160,6 +173,8 @@ namespace estuary-client.Models
             {
                 var hashCode = 41;
                 // Suitable nullity checks etc, of course :)
+                    if (Content != null)
+                    hashCode = hashCode * 59 + Content.GetHashCode();
                     if (Created != null)
                     hashCode = hashCode * 59 + Created.GetHashCode();
                     if (Delegates != null)

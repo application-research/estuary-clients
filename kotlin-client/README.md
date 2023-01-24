@@ -151,6 +151,7 @@ Class | Method | HTTP request | Description
  - [io.swagger.client.models.TypesIpfsPin](docs/TypesIpfsPin.md)
  - [io.swagger.client.models.TypesIpfsPinStatusResponse](docs/TypesIpfsPinStatusResponse.md)
  - [io.swagger.client.models.TypesPinningStatus](docs/TypesPinningStatus.md)
+ - [io.swagger.client.models.UtilContent](docs/UtilContent.md)
  - [io.swagger.client.models.UtilContentAddResponse](docs/UtilContentAddResponse.md)
  - [io.swagger.client.models.UtilContentCreateBody](docs/UtilContentCreateBody.md)
  - [io.swagger.client.models.UtilContentType](docs/UtilContentType.md)

@@ -24,6 +24,7 @@ export * from './types-ipfs-list-pin-status-response';
 export * from './types-ipfs-pin';
 export * from './types-ipfs-pin-status-response';
 export * from './types-pinning-status';
+export * from './util-content';
 export * from './util-content-add-response';
 export * from './util-content-create-body';
 export * from './util-content-type';

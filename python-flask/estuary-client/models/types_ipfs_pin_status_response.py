@@ -8,6 +8,7 @@ from typing import List, Dict  # noqa: F401
 from estuary-client.models.base_model_ import Model
 from estuary-client.models.types_ipfs_pin import TypesIpfsPin  # noqa: F401,E501
 from estuary-client.models.types_pinning_status import TypesPinningStatus  # noqa: F401,E501
+from estuary-client.models.util_content import UtilContent  # noqa: F401,E501
 from estuary-client import util
 
 
@@ -16,9 +17,11 @@ class TypesIpfsPinStatusResponse(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, created: str=None, delegates: List[str]=None, info: Dict=None, pin: TypesIpfsPin=None, requestid: str=None, status: TypesPinningStatus=None):  # noqa: E501
+    def __init__(self, content: UtilContent=None, created: str=None, delegates: List[str]=None, info: Dict=None, pin: TypesIpfsPin=None, requestid: str=None, status: TypesPinningStatus=None):  # noqa: E501
         """TypesIpfsPinStatusResponse - a model defined in Swagger
 
+        :param content: The content of this TypesIpfsPinStatusResponse.  # noqa: E501
+        :type content: UtilContent
         :param created: The created of this TypesIpfsPinStatusResponse.  # noqa: E501
         :type created: str
         :param delegates: The delegates of this TypesIpfsPinStatusResponse.  # noqa: E501
@@ -33,6 +36,7 @@ class TypesIpfsPinStatusResponse(Model):
         :type status: TypesPinningStatus
         """
         self.swagger_types = {
+            'content': UtilContent,
             'created': str,
             'delegates': List[str],
             'info': Dict,
@@ -42,6 +46,7 @@ class TypesIpfsPinStatusResponse(Model):
         }
 
         self.attribute_map = {
+            'content': 'content',
             'created': 'created',
             'delegates': 'delegates',
             'info': 'info',
@@ -49,6 +54,7 @@ class TypesIpfsPinStatusResponse(Model):
             'requestid': 'requestid',
             'status': 'status'
         }
+        self._content = content
         self._created = created
         self._delegates = delegates
         self._info = info
@@ -66,6 +72,27 @@ class TypesIpfsPinStatusResponse(Model):
         :rtype: TypesIpfsPinStatusResponse
         """
         return util.deserialize_model(dikt, cls)
+
+    @property
+    def content(self) -> UtilContent:
+        """Gets the content of this TypesIpfsPinStatusResponse.
+
+
+        :return: The content of this TypesIpfsPinStatusResponse.
+        :rtype: UtilContent
+        """
+        return self._content
+
+    @content.setter
+    def content(self, content: UtilContent):
+        """Sets the content of this TypesIpfsPinStatusResponse.
+
+
+        :param content: The content of this TypesIpfsPinStatusResponse.
+        :type content: UtilContent
+        """
+
+        self._content = content
 
     @property
     def created(self) -> str:

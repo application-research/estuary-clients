@@ -19,7 +19,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2023-01-19T16:29:58.888Z[GMT]")public interface ContentApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyDIServerCodegen", date = "2023-01-24T07:25:42.416Z[GMT]")public interface ContentApiService {
     public Response contentAddCarPost(String body, String ignoreDupes, String filename,SecurityContext securityContext);
     public Response contentAddIpfsPost(TypesIpfsPin body, String ignoreDupes, String overwrite,SecurityContext securityContext);
     public Response contentAddPost(InputStream dataInputStream, FormDataContentDisposition dataDetail,String filename, String coluuid, Integer replication, String ignoreDupes, String overwrite, String lazyProvide, String dir,SecurityContext securityContext);
