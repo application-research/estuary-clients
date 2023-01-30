@@ -10,7 +10,7 @@ class PinningApi {
   /// List all pin status objects
   ///
   /// This endpoint lists all pin status objects
-  Future<TypesIpfsListPinStatusResponse> pinningPinsGet() async {
+  Future<PinnerIpfsListPinStatusResponse> pinningPinsGet() async {
     Object postBody = null;
 
     // verify required params are set
@@ -50,7 +50,7 @@ class PinningApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          apiClient.deserialize(response.body, 'TypesIpfsListPinStatusResponse') as TypesIpfsListPinStatusResponse ;
+          apiClient.deserialize(response.body, 'PinnerIpfsListPinStatusResponse') as PinnerIpfsListPinStatusResponse ;
     } else {
       return null;
     }
@@ -109,7 +109,7 @@ class PinningApi {
   /// Get a pin status object
   ///
   /// This endpoint returns a pin status object.
-  Future<TypesIpfsPinStatusResponse> pinningPinsPinidGet(String pinid) async {
+  Future<PinnerIpfsPinStatusResponse> pinningPinsPinidGet(String pinid) async {
     Object postBody = null;
 
     // verify required params are set
@@ -152,7 +152,7 @@ class PinningApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          apiClient.deserialize(response.body, 'TypesIpfsPinStatusResponse') as TypesIpfsPinStatusResponse ;
+          apiClient.deserialize(response.body, 'PinnerIpfsPinStatusResponse') as PinnerIpfsPinStatusResponse ;
     } else {
       return null;
     }
@@ -160,7 +160,7 @@ class PinningApi {
   /// Replace a pinned object
   ///
   /// This endpoint replaces a pinned object.
-  Future<TypesIpfsPinStatusResponse> pinningPinsPinidPost(TypesIpfsPin body, String pinid) async {
+  Future<PinnerIpfsPinStatusResponse> pinningPinsPinidPost(PinnerIpfsPin body, String pinid) async {
     Object postBody = body;
 
     // verify required params are set
@@ -206,7 +206,7 @@ class PinningApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          apiClient.deserialize(response.body, 'TypesIpfsPinStatusResponse') as TypesIpfsPinStatusResponse ;
+          apiClient.deserialize(response.body, 'PinnerIpfsPinStatusResponse') as PinnerIpfsPinStatusResponse ;
     } else {
       return null;
     }
@@ -214,7 +214,7 @@ class PinningApi {
   /// Add and pin object
   ///
   /// This endpoint adds a pin to the IPFS daemon.
-  Future<TypesIpfsPinStatusResponse> pinningPinsPost(TypesIpfsPin body, { String ignoreDupes, String overwrite }) async {
+  Future<PinnerIpfsPinStatusResponse> pinningPinsPost(PinnerIpfsPin body, { String ignoreDupes, String overwrite }) async {
     Object postBody = body;
 
     // verify required params are set
@@ -263,7 +263,7 @@ class PinningApi {
       throw new ApiException(response.statusCode, response.body);
     } else if(response.body != null) {
       return
-          apiClient.deserialize(response.body, 'TypesIpfsPinStatusResponse') as TypesIpfsPinStatusResponse ;
+          apiClient.deserialize(response.body, 'PinnerIpfsPinStatusResponse') as PinnerIpfsPinStatusResponse ;
     } else {
       return null;
     }

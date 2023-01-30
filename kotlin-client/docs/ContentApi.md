@@ -181,7 +181,7 @@ This endpoint is used to add an IPFS object to the network. The object can be a 
 //import io.swagger.client.models.*;
 
 val apiInstance = ContentApi()
-val body : TypesIpfsPin =  // TypesIpfsPin | IPFS Body
+val body : PinnerIpfsPin =  // PinnerIpfsPin | IPFS Body
 val ignoreDupes : kotlin.String = ignoreDupes_example // kotlin.String | Ignore Dupes
 val overwrite : kotlin.String = overwrite_example // kotlin.String | Overwrite conflicting files in collections
 try {
@@ -200,7 +200,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| IPFS Body |
+ **body** | [**PinnerIpfsPin**](PinnerIpfsPin.md)| IPFS Body |
  **ignoreDupes** | **kotlin.String**| Ignore Dupes | [optional]
  **overwrite** | **kotlin.String**| Overwrite conflicting files in collections | [optional]
 

@@ -23,7 +23,7 @@ import javax.validation.Valid;
 
 @Path("/deal")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2023-01-24T07:25:41.516Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2023-01-30T18:30:37.026Z[GMT]")
 public class DealApi {
 
     @POST

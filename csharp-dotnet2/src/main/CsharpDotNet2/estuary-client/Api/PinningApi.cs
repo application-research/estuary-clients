@@ -14,8 +14,8 @@ namespace IO.Swagger.Api
         /// <summary>
         /// List all pin status objects This endpoint lists all pin status objects
         /// </summary>
-        /// <returns>TypesIpfsListPinStatusResponse</returns>
-        TypesIpfsListPinStatusResponse PinningPinsGet ();
+        /// <returns>PinnerIpfsListPinStatusResponse</returns>
+        PinnerIpfsListPinStatusResponse PinningPinsGet ();
         /// <summary>
         /// Delete a pinned object This endpoint deletes a pinned object.
         /// </summary>
@@ -26,23 +26,23 @@ namespace IO.Swagger.Api
         /// Get a pin status object This endpoint returns a pin status object.
         /// </summary>
         /// <param name="pinid">cid</param>
-        /// <returns>TypesIpfsPinStatusResponse</returns>
-        TypesIpfsPinStatusResponse PinningPinsPinidGet (string pinid);
+        /// <returns>PinnerIpfsPinStatusResponse</returns>
+        PinnerIpfsPinStatusResponse PinningPinsPinidGet (string pinid);
         /// <summary>
         /// Replace a pinned object This endpoint replaces a pinned object.
         /// </summary>
         /// <param name="body">New pin</param>
         /// <param name="pinid">Pin ID to be replaced</param>
-        /// <returns>TypesIpfsPinStatusResponse</returns>
-        TypesIpfsPinStatusResponse PinningPinsPinidPost (TypesIpfsPin body, string pinid);
+        /// <returns>PinnerIpfsPinStatusResponse</returns>
+        PinnerIpfsPinStatusResponse PinningPinsPinidPost (PinnerIpfsPin body, string pinid);
         /// <summary>
         /// Add and pin object This endpoint adds a pin to the IPFS daemon.
         /// </summary>
         /// <param name="body">Pin Body {cid:cid, name:name}</param>
         /// <param name="ignoreDupes">Ignore Dupes</param>
         /// <param name="overwrite">Overwrite conflicting files in collections</param>
-        /// <returns>TypesIpfsPinStatusResponse</returns>
-        TypesIpfsPinStatusResponse PinningPinsPost (TypesIpfsPin body, string ignoreDupes, string overwrite);
+        /// <returns>PinnerIpfsPinStatusResponse</returns>
+        PinnerIpfsPinStatusResponse PinningPinsPost (PinnerIpfsPin body, string ignoreDupes, string overwrite);
     }
   
     /// <summary>
@@ -101,8 +101,8 @@ namespace IO.Swagger.Api
         /// <summary>
         /// List all pin status objects This endpoint lists all pin status objects
         /// </summary>
-        /// <returns>TypesIpfsListPinStatusResponse</returns>
-        public TypesIpfsListPinStatusResponse PinningPinsGet ()
+        /// <returns>PinnerIpfsListPinStatusResponse</returns>
+        public PinnerIpfsListPinStatusResponse PinningPinsGet ()
         {
     
             var path = "/pinning/pins";
@@ -126,7 +126,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PinningPinsGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (TypesIpfsListPinStatusResponse) ApiClient.Deserialize(response.Content, typeof(TypesIpfsListPinStatusResponse), response.Headers);
+            return (PinnerIpfsListPinStatusResponse) ApiClient.Deserialize(response.Content, typeof(PinnerIpfsListPinStatusResponse), response.Headers);
         }
     
         /// <summary>
@@ -168,8 +168,8 @@ namespace IO.Swagger.Api
         /// Get a pin status object This endpoint returns a pin status object.
         /// </summary>
         /// <param name="pinid">cid</param>
-        /// <returns>TypesIpfsPinStatusResponse</returns>
-        public TypesIpfsPinStatusResponse PinningPinsPinidGet (string pinid)
+        /// <returns>PinnerIpfsPinStatusResponse</returns>
+        public PinnerIpfsPinStatusResponse PinningPinsPinidGet (string pinid)
         {
             // verify the required parameter 'pinid' is set
             if (pinid == null) throw new ApiException(400, "Missing required parameter 'pinid' when calling PinningPinsPinidGet");
@@ -196,7 +196,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PinningPinsPinidGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (TypesIpfsPinStatusResponse) ApiClient.Deserialize(response.Content, typeof(TypesIpfsPinStatusResponse), response.Headers);
+            return (PinnerIpfsPinStatusResponse) ApiClient.Deserialize(response.Content, typeof(PinnerIpfsPinStatusResponse), response.Headers);
         }
     
         /// <summary>
@@ -204,8 +204,8 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="body">New pin</param>
         /// <param name="pinid">Pin ID to be replaced</param>
-        /// <returns>TypesIpfsPinStatusResponse</returns>
-        public TypesIpfsPinStatusResponse PinningPinsPinidPost (TypesIpfsPin body, string pinid)
+        /// <returns>PinnerIpfsPinStatusResponse</returns>
+        public PinnerIpfsPinStatusResponse PinningPinsPinidPost (PinnerIpfsPin body, string pinid)
         {
             // verify the required parameter 'body' is set
             if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling PinningPinsPinidPost");
@@ -235,7 +235,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PinningPinsPinidPost: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (TypesIpfsPinStatusResponse) ApiClient.Deserialize(response.Content, typeof(TypesIpfsPinStatusResponse), response.Headers);
+            return (PinnerIpfsPinStatusResponse) ApiClient.Deserialize(response.Content, typeof(PinnerIpfsPinStatusResponse), response.Headers);
         }
     
         /// <summary>
@@ -244,8 +244,8 @@ namespace IO.Swagger.Api
         /// <param name="body">Pin Body {cid:cid, name:name}</param>
         /// <param name="ignoreDupes">Ignore Dupes</param>
         /// <param name="overwrite">Overwrite conflicting files in collections</param>
-        /// <returns>TypesIpfsPinStatusResponse</returns>
-        public TypesIpfsPinStatusResponse PinningPinsPost (TypesIpfsPin body, string ignoreDupes, string overwrite)
+        /// <returns>PinnerIpfsPinStatusResponse</returns>
+        public PinnerIpfsPinStatusResponse PinningPinsPost (PinnerIpfsPin body, string ignoreDupes, string overwrite)
         {
             // verify the required parameter 'body' is set
             if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling PinningPinsPost");
@@ -274,7 +274,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling PinningPinsPost: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (TypesIpfsPinStatusResponse) ApiClient.Deserialize(response.Content, typeof(TypesIpfsPinStatusResponse), response.Headers);
+            return (PinnerIpfsPinStatusResponse) ApiClient.Deserialize(response.Content, typeof(PinnerIpfsPinStatusResponse), response.Headers);
         }
     
     }

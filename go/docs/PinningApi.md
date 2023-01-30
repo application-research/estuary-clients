@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**PinningPinsPost**](PinningApi.md#PinningPinsPost) | **Post** /pinning/pins | Add and pin object
 
 # **PinningPinsGet**
-> TypesIpfsListPinStatusResponse PinningPinsGet(ctx, )
+> PinnerIpfsListPinStatusResponse PinningPinsGet(ctx, )
 List all pin status objects
 
 This endpoint lists all pin status objects
@@ -21,7 +21,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**TypesIpfsListPinStatusResponse**](types.IpfsListPinStatusResponse.md)
+[**PinnerIpfsListPinStatusResponse**](pinner.IpfsListPinStatusResponse.md)
 
 ### Authorization
 
@@ -63,7 +63,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PinningPinsPinidGet**
-> TypesIpfsPinStatusResponse PinningPinsPinidGet(ctx, pinid)
+> PinnerIpfsPinStatusResponse PinningPinsPinidGet(ctx, pinid)
 Get a pin status object
 
 This endpoint returns a pin status object.
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TypesIpfsPinStatusResponse**](types.IpfsPinStatusResponse.md)
+[**PinnerIpfsPinStatusResponse**](pinner.IpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -91,7 +91,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PinningPinsPinidPost**
-> TypesIpfsPinStatusResponse PinningPinsPinidPost(ctx, body, pinid)
+> PinnerIpfsPinStatusResponse PinningPinsPinidPost(ctx, body, pinid)
 Replace a pinned object
 
 This endpoint replaces a pinned object.
@@ -101,12 +101,12 @@ This endpoint replaces a pinned object.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| New pin | 
+  **body** | [**PinnerIpfsPin**](PinnerIpfsPin.md)| New pin | 
   **pinid** | **string**| Pin ID to be replaced | 
 
 ### Return type
 
-[**TypesIpfsPinStatusResponse**](types.IpfsPinStatusResponse.md)
+[**PinnerIpfsPinStatusResponse**](pinner.IpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **PinningPinsPost**
-> TypesIpfsPinStatusResponse PinningPinsPost(ctx, body, optional)
+> PinnerIpfsPinStatusResponse PinningPinsPost(ctx, body, optional)
 Add and pin object
 
 This endpoint adds a pin to the IPFS daemon.
@@ -130,7 +130,7 @@ This endpoint adds a pin to the IPFS daemon.
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ctx** | **context.Context** | context for authentication, logging, cancellation, deadlines, tracing, etc.
-  **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
+  **body** | [**PinnerIpfsPin**](PinnerIpfsPin.md)| Pin Body {cid:cid, name:name} | 
  **optional** | ***PinningApiPinningPinsPostOpts** | optional parameters | nil if no parameters
 
 ### Optional Parameters
@@ -143,7 +143,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TypesIpfsPinStatusResponse**](types.IpfsPinStatusResponse.md)
+[**PinnerIpfsPinStatusResponse**](pinner.IpfsPinStatusResponse.md)
 
 ### Authorization
 

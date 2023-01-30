@@ -5,7 +5,7 @@ import akka.http.scaladsl.server.Route
 import akka.http.scaladsl.unmarshalling.FromRequestUnmarshaller
 import akka.http.scaladsl.marshalling.ToEntityMarshaller
 import io.swagger.server.AkkaHttpHelper._
-import io.swagger.server.model.Types.IpfsPin
+import io.swagger.server.model.Pinner.IpfsPin
 import io.swagger.server.model.Util.ContentCreateBody
 import io.swagger.server.model.byte[]
 import io.swagger.server.model.util.ContentAddResponse
@@ -69,7 +69,7 @@ class ContentApi(
           
             formFields() { () =>
               
-                entity(as[Types.IpfsPin]){ body =>
+                entity(as[Pinner.IpfsPin]){ body =>
                   contentService.contentAddIpfsPost(body = body, ignoreDupes = ignoreDupes, overwrite = overwrite)
                 }
              
@@ -375,7 +375,7 @@ trait ContentApiService {
    * Code: 400, Message: Bad Request, DataType: util.HttpError
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
-  def contentAddIpfsPost(body: Types.IpfsPin, ignoreDupes: Option[String], overwrite: Option[String])
+  def contentAddIpfsPost(body: Pinner.IpfsPin, ignoreDupes: Option[String], overwrite: Option[String])
       (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
   def contentAddPost200(responseutil.ContentAddResponse: util.ContentAddResponse)(implicit toEntityMarshallerutil.ContentAddResponse: ToEntityMarshaller[util.ContentAddResponse]): Route =
@@ -605,9 +605,9 @@ trait ContentApiService {
 }
 
 trait ContentApiMarshaller {
-  implicit def fromRequestUnmarshallerUtil.ContentCreateBody: FromRequestUnmarshaller[Util.ContentCreateBody]
+  implicit def fromRequestUnmarshallerPinner.IpfsPin: FromRequestUnmarshaller[Pinner.IpfsPin]
 
-  implicit def fromRequestUnmarshallerTypes.IpfsPin: FromRequestUnmarshaller[Types.IpfsPin]
+  implicit def fromRequestUnmarshallerUtil.ContentCreateBody: FromRequestUnmarshaller[Util.ContentCreateBody]
 
   implicit def fromRequestUnmarshallerString: FromRequestUnmarshaller[String]
 

@@ -24,9 +24,9 @@
 
 package io.swagger.api;
 
-import io.swagger.model.TypesIpfsListPinStatusResponse;
-import io.swagger.model.TypesIpfsPin;
-import io.swagger.model.TypesIpfsPinStatusResponse;
+import io.swagger.model.PinnerIpfsListPinStatusResponse;
+import io.swagger.model.PinnerIpfsPin;
+import io.swagger.model.PinnerIpfsPinStatusResponse;
 import io.swagger.model.UtilHttpError;
 import org.junit.Test;
 import org.junit.Before;
@@ -82,7 +82,7 @@ public class PinningApiTest {
      */
     @Test
     public void pinningPinsGetTest() {
-        //TypesIpfsListPinStatusResponse response = api.pinningPinsGet();
+        //PinnerIpfsListPinStatusResponse response = api.pinningPinsGet();
         //assertNotNull(response);
         // TODO: test validations
         
@@ -116,7 +116,7 @@ public class PinningApiTest {
     @Test
     public void pinningPinsPinidGetTest() {
         String pinid = null;
-        //TypesIpfsPinStatusResponse response = api.pinningPinsPinidGet(pinid);
+        //PinnerIpfsPinStatusResponse response = api.pinningPinsPinidGet(pinid);
         //assertNotNull(response);
         // TODO: test validations
         
@@ -132,9 +132,9 @@ public class PinningApiTest {
      */
     @Test
     public void pinningPinsPinidPostTest() {
-        TypesIpfsPin body = null;
+        PinnerIpfsPin body = null;
         String pinid = null;
-        //TypesIpfsPinStatusResponse response = api.pinningPinsPinidPost(body, pinid);
+        //PinnerIpfsPinStatusResponse response = api.pinningPinsPinidPost(body, pinid);
         //assertNotNull(response);
         // TODO: test validations
         
@@ -150,10 +150,10 @@ public class PinningApiTest {
      */
     @Test
     public void pinningPinsPostTest() {
-        TypesIpfsPin body = null;
+        PinnerIpfsPin body = null;
         String ignoreDupes = null;
         String overwrite = null;
-        //TypesIpfsPinStatusResponse response = api.pinningPinsPost(body, ignoreDupes, overwrite);
+        //PinnerIpfsPinStatusResponse response = api.pinningPinsPost(body, ignoreDupes, overwrite);
         //assertNotNull(response);
         // TODO: test validations
         

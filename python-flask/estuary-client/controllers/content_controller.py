@@ -1,7 +1,7 @@
 import connexion
 import six
 
-from estuary-client.models.types_ipfs_pin import TypesIpfsPin  # noqa: E501
+from estuary-client.models.pinner_ipfs_pin import PinnerIpfsPin  # noqa: E501
 from estuary-client.models.util_content_add_response import UtilContentAddResponse  # noqa: E501
 from estuary-client.models.util_content_create_body import UtilContentCreateBody  # noqa: E501
 from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
@@ -66,7 +66,7 @@ def content_add_ipfs_post(body, ignore_dupes=None, overwrite=None):  # noqa: E50
     :rtype: str
     """
     if connexion.request.is_json:
-        body = TypesIpfsPin.from_dict(connexion.request.get_json())  # noqa: E501
+        body = PinnerIpfsPin.from_dict(connexion.request.get_json())  # noqa: E501
     return 'do some magic!'
 
 

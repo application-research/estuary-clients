@@ -2,7 +2,7 @@
 
 Estuary API
 - API version: 0.0.0
-  - Build date: 2023-01-24T07:25:39.898Z[GMT]
+  - Build date: 2023-01-30T18:30:33.258Z[GMT]
 
 This is the API for the Estuary application.
 
@@ -454,10 +454,10 @@ Class | Method | HTTP request | Description
  - [MinerMinerSetInfoParams](docs/MinerMinerSetInfoParams.md)
  - [MinerSuspendMinerBody](docs/MinerSuspendMinerBody.md)
  - [PeeringPeeringPeer](docs/PeeringPeeringPeer.md)
- - [TypesIpfsListPinStatusResponse](docs/TypesIpfsListPinStatusResponse.md)
- - [TypesIpfsPin](docs/TypesIpfsPin.md)
- - [TypesIpfsPinStatusResponse](docs/TypesIpfsPinStatusResponse.md)
- - [TypesPinningStatus](docs/TypesPinningStatus.md)
+ - [PinnerIpfsListPinStatusResponse](docs/PinnerIpfsListPinStatusResponse.md)
+ - [PinnerIpfsPin](docs/PinnerIpfsPin.md)
+ - [PinnerIpfsPinStatusResponse](docs/PinnerIpfsPinStatusResponse.md)
+ - [StatusPinningStatus](docs/StatusPinningStatus.md)
  - [UtilContent](docs/UtilContent.md)
  - [UtilContentAddResponse](docs/UtilContentAddResponse.md)
  - [UtilContentCreateBody](docs/UtilContentCreateBody.md)

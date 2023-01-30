@@ -38,7 +38,7 @@ import javax.validation.constraints.*;
 @Path("/admin")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2023-01-24T07:25:42.112Z[GMT]")public class AdminApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2023-01-30T18:30:35.620Z[GMT]")public class AdminApi  {
    private final AdminApiService delegate;
 
    public AdminApi(@Context ServletConfig servletContext) {

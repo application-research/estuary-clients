@@ -16,7 +16,7 @@ open class PinningAPI {
 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func pinningPinsGet(completion: @escaping ((_ data: TypesIpfsListPinStatusResponse?,_ error: Error?) -> Void)) {
+    open class func pinningPinsGet(completion: @escaping ((_ data: PinnerIpfsListPinStatusResponse?,_ error: Error?) -> Void)) {
         pinningPinsGetWithRequestBuilder().execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -115,16 +115,16 @@ open class PinningAPI {
   } ]
 }}]
 
-     - returns: RequestBuilder<TypesIpfsListPinStatusResponse> 
+     - returns: RequestBuilder<PinnerIpfsListPinStatusResponse> 
      */
-    open class func pinningPinsGetWithRequestBuilder() -> RequestBuilder<TypesIpfsListPinStatusResponse> {
+    open class func pinningPinsGetWithRequestBuilder() -> RequestBuilder<PinnerIpfsListPinStatusResponse> {
         let path = "/pinning/pins"
         let URLString = estuary-clientAPI.basePath + path
         let parameters: [String:Any]? = nil
 
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<TypesIpfsListPinStatusResponse>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<PinnerIpfsListPinStatusResponse>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -176,7 +176,7 @@ open class PinningAPI {
      - parameter pinid: (path) cid 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func pinningPinsPinidGet(pinid: String, completion: @escaping ((_ data: TypesIpfsPinStatusResponse?,_ error: Error?) -> Void)) {
+    open class func pinningPinsPinidGet(pinid: String, completion: @escaping ((_ data: PinnerIpfsPinStatusResponse?,_ error: Error?) -> Void)) {
         pinningPinsPinidGetWithRequestBuilder(pinid: pinid).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -233,9 +233,9 @@ open class PinningAPI {
 }}]
      - parameter pinid: (path) cid 
 
-     - returns: RequestBuilder<TypesIpfsPinStatusResponse> 
+     - returns: RequestBuilder<PinnerIpfsPinStatusResponse> 
      */
-    open class func pinningPinsPinidGetWithRequestBuilder(pinid: String) -> RequestBuilder<TypesIpfsPinStatusResponse> {
+    open class func pinningPinsPinidGetWithRequestBuilder(pinid: String) -> RequestBuilder<PinnerIpfsPinStatusResponse> {
         var path = "/pinning/pins/{pinid}"
         let pinidPreEscape = "\(pinid)"
         let pinidPostEscape = pinidPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -245,7 +245,7 @@ open class PinningAPI {
 
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<TypesIpfsPinStatusResponse>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<PinnerIpfsPinStatusResponse>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "GET", URLString: (url?.string ?? URLString), parameters: parameters, isBody: false)
     }
@@ -255,7 +255,7 @@ open class PinningAPI {
      - parameter body: (body) New pin      - parameter pinid: (path) Pin ID to be replaced 
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func pinningPinsPinidPost(body: TypesIpfsPin, pinid: String, completion: @escaping ((_ data: TypesIpfsPinStatusResponse?,_ error: Error?) -> Void)) {
+    open class func pinningPinsPinidPost(body: PinnerIpfsPin, pinid: String, completion: @escaping ((_ data: PinnerIpfsPinStatusResponse?,_ error: Error?) -> Void)) {
         pinningPinsPinidPostWithRequestBuilder(body: body, pinid: pinid).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -312,9 +312,9 @@ open class PinningAPI {
 }}]
      - parameter body: (body) New pin      - parameter pinid: (path) Pin ID to be replaced 
 
-     - returns: RequestBuilder<TypesIpfsPinStatusResponse> 
+     - returns: RequestBuilder<PinnerIpfsPinStatusResponse> 
      */
-    open class func pinningPinsPinidPostWithRequestBuilder(body: TypesIpfsPin, pinid: String) -> RequestBuilder<TypesIpfsPinStatusResponse> {
+    open class func pinningPinsPinidPostWithRequestBuilder(body: PinnerIpfsPin, pinid: String) -> RequestBuilder<PinnerIpfsPinStatusResponse> {
         var path = "/pinning/pins/{pinid}"
         let pinidPreEscape = "\(pinid)"
         let pinidPostEscape = pinidPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -324,7 +324,7 @@ open class PinningAPI {
 
         let url = URLComponents(string: URLString)
 
-        let requestBuilder: RequestBuilder<TypesIpfsPinStatusResponse>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<PinnerIpfsPinStatusResponse>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }
@@ -334,7 +334,7 @@ open class PinningAPI {
      - parameter body: (body) Pin Body {cid:cid, name:name}      - parameter ignoreDupes: (query) Ignore Dupes (optional)     - parameter overwrite: (query) Overwrite conflicting files in collections (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func pinningPinsPost(body: TypesIpfsPin, ignoreDupes: String? = nil, overwrite: String? = nil, completion: @escaping ((_ data: TypesIpfsPinStatusResponse?,_ error: Error?) -> Void)) {
+    open class func pinningPinsPost(body: PinnerIpfsPin, ignoreDupes: String? = nil, overwrite: String? = nil, completion: @escaping ((_ data: PinnerIpfsPinStatusResponse?,_ error: Error?) -> Void)) {
         pinningPinsPostWithRequestBuilder(body: body, ignoreDupes: ignoreDupes, overwrite: overwrite).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -391,9 +391,9 @@ open class PinningAPI {
 }}]
      - parameter body: (body) Pin Body {cid:cid, name:name}      - parameter ignoreDupes: (query) Ignore Dupes (optional)     - parameter overwrite: (query) Overwrite conflicting files in collections (optional)
 
-     - returns: RequestBuilder<TypesIpfsPinStatusResponse> 
+     - returns: RequestBuilder<PinnerIpfsPinStatusResponse> 
      */
-    open class func pinningPinsPostWithRequestBuilder(body: TypesIpfsPin, ignoreDupes: String? = nil, overwrite: String? = nil) -> RequestBuilder<TypesIpfsPinStatusResponse> {
+    open class func pinningPinsPostWithRequestBuilder(body: PinnerIpfsPin, ignoreDupes: String? = nil, overwrite: String? = nil) -> RequestBuilder<PinnerIpfsPinStatusResponse> {
         let path = "/pinning/pins"
         let URLString = estuary-clientAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)
@@ -403,7 +403,7 @@ open class PinningAPI {
                         "overwrite": overwrite
         ])
 
-        let requestBuilder: RequestBuilder<TypesIpfsPinStatusResponse>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
+        let requestBuilder: RequestBuilder<PinnerIpfsPinStatusResponse>.Type = estuary-clientAPI.requestBuilderFactory.getBuilder()
 
         return requestBuilder.init(method: "POST", URLString: (url?.string ?? URLString), parameters: parameters, isBody: true)
     }

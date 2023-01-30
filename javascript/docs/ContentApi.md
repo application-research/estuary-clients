@@ -195,7 +195,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 //bearerAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new EstuaryClient.ContentApi();
-let body = new EstuaryClient.TypesIpfsPin(); // TypesIpfsPin | IPFS Body
+let body = new EstuaryClient.PinnerIpfsPin(); // PinnerIpfsPin | IPFS Body
 let opts = { 
   'ignoreDupes': "ignoreDupes_example", // String | Ignore Dupes
   'overwrite': "overwrite_example" // String | Overwrite conflicting files in collections
@@ -213,7 +213,7 @@ apiInstance.contentAddIpfsPost(body, opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| IPFS Body | 
+ **body** | [**PinnerIpfsPin**](PinnerIpfsPin.md)| IPFS Body | 
  **ignoreDupes** | **String**| Ignore Dupes | [optional] 
  **overwrite** | **String**| Overwrite conflicting files in collections | [optional] 
 

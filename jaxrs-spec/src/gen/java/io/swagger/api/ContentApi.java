@@ -1,7 +1,7 @@
 package io.swagger.api;
 
 import java.io.File;
-import io.swagger.model.TypesIpfsPin;
+import io.swagger.model.PinnerIpfsPin;
 import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
@@ -25,7 +25,7 @@ import javax.validation.Valid;
 
 @Path("/content")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2023-01-24T07:25:41.516Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2023-01-30T18:30:37.026Z[GMT]")
 public class ContentApi {
 
     @POST
@@ -59,7 +59,7 @@ public class ContentApi {
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
     })
-    public Response contentAddIpfsPost(@Valid TypesIpfsPin body,  @QueryParam("ignore-dupes") 
+    public Response contentAddIpfsPost(@Valid PinnerIpfsPin body,  @QueryParam("ignore-dupes") 
 
  @Parameter(description = "Ignore Dupes")  String ignoreDupes
 ,  @QueryParam("overwrite") 

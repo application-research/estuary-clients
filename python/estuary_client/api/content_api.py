@@ -331,7 +331,7 @@ class ContentApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param TypesIpfsPin body: IPFS Body (required)
+        :param PinnerIpfsPin body: IPFS Body (required)
         :param str ignore_dupes: Ignore Dupes
         :param str overwrite: Overwrite conflicting files in collections
         :return: str
@@ -355,7 +355,7 @@ class ContentApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param TypesIpfsPin body: IPFS Body (required)
+        :param PinnerIpfsPin body: IPFS Body (required)
         :param str ignore_dupes: Ignore Dupes
         :param str overwrite: Overwrite conflicting files in collections
         :return: str

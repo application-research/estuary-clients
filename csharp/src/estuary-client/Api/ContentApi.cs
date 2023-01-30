@@ -99,7 +99,7 @@ namespace estuary-client.Api
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <param name="overwrite">Overwrite conflicting files in collections (optional)</param>
         /// <returns>string</returns>
-        string ContentAddIpfsPost (TypesIpfsPin body, string ignoreDupes = null, string overwrite = null);
+        string ContentAddIpfsPost (PinnerIpfsPin body, string ignoreDupes = null, string overwrite = null);
 
         /// <summary>
         /// Add IPFS object
@@ -112,7 +112,7 @@ namespace estuary-client.Api
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <param name="overwrite">Overwrite conflicting files in collections (optional)</param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> ContentAddIpfsPostWithHttpInfo (TypesIpfsPin body, string ignoreDupes = null, string overwrite = null);
+        ApiResponse<string> ContentAddIpfsPostWithHttpInfo (PinnerIpfsPin body, string ignoreDupes = null, string overwrite = null);
         /// <summary>
         /// Add new content
         /// </summary>
@@ -553,7 +553,7 @@ namespace estuary-client.Api
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <param name="overwrite">Overwrite conflicting files in collections (optional)</param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> ContentAddIpfsPostAsync (TypesIpfsPin body, string ignoreDupes = null, string overwrite = null);
+        System.Threading.Tasks.Task<string> ContentAddIpfsPostAsync (PinnerIpfsPin body, string ignoreDupes = null, string overwrite = null);
 
         /// <summary>
         /// Add IPFS object
@@ -566,7 +566,7 @@ namespace estuary-client.Api
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <param name="overwrite">Overwrite conflicting files in collections (optional)</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> ContentAddIpfsPostAsyncWithHttpInfo (TypesIpfsPin body, string ignoreDupes = null, string overwrite = null);
+        System.Threading.Tasks.Task<ApiResponse<string>> ContentAddIpfsPostAsyncWithHttpInfo (PinnerIpfsPin body, string ignoreDupes = null, string overwrite = null);
         /// <summary>
         /// Add new content
         /// </summary>
@@ -1487,7 +1487,7 @@ namespace estuary-client.Api
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <param name="overwrite">Overwrite conflicting files in collections (optional)</param>
         /// <returns>string</returns>
-        public string ContentAddIpfsPost (TypesIpfsPin body, string ignoreDupes = null, string overwrite = null)
+        public string ContentAddIpfsPost (PinnerIpfsPin body, string ignoreDupes = null, string overwrite = null)
         {
              ApiResponse<string> localVarResponse = ContentAddIpfsPostWithHttpInfo(body, ignoreDupes, overwrite);
              return localVarResponse.Data;
@@ -1501,7 +1501,7 @@ namespace estuary-client.Api
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <param name="overwrite">Overwrite conflicting files in collections (optional)</param>
         /// <returns>ApiResponse of string</returns>
-        public ApiResponse< string > ContentAddIpfsPostWithHttpInfo (TypesIpfsPin body, string ignoreDupes = null, string overwrite = null)
+        public ApiResponse< string > ContentAddIpfsPostWithHttpInfo (PinnerIpfsPin body, string ignoreDupes = null, string overwrite = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)
@@ -1571,7 +1571,7 @@ namespace estuary-client.Api
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <param name="overwrite">Overwrite conflicting files in collections (optional)</param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> ContentAddIpfsPostAsync (TypesIpfsPin body, string ignoreDupes = null, string overwrite = null)
+        public async System.Threading.Tasks.Task<string> ContentAddIpfsPostAsync (PinnerIpfsPin body, string ignoreDupes = null, string overwrite = null)
         {
              ApiResponse<string> localVarResponse = await ContentAddIpfsPostAsyncWithHttpInfo(body, ignoreDupes, overwrite);
              return localVarResponse.Data;
@@ -1586,7 +1586,7 @@ namespace estuary-client.Api
         /// <param name="ignoreDupes">Ignore Dupes (optional)</param>
         /// <param name="overwrite">Overwrite conflicting files in collections (optional)</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<string>> ContentAddIpfsPostAsyncWithHttpInfo (TypesIpfsPin body, string ignoreDupes = null, string overwrite = null)
+        public async System.Threading.Tasks.Task<ApiResponse<string>> ContentAddIpfsPostAsyncWithHttpInfo (PinnerIpfsPin body, string ignoreDupes = null, string overwrite = null)
         {
             // verify the required parameter 'body' is set
             if (body == null)

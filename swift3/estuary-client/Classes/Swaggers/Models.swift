@@ -811,37 +811,37 @@ class Decoders {
                 return .failure(.typeMismatch(expected: "PeeringPeeringPeer", actual: "\(source)"))
             }
         }
-        // Decoder for [TypesIpfsListPinStatusResponse]
-        Decoders.addDecoder(clazz: [TypesIpfsListPinStatusResponse].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[TypesIpfsListPinStatusResponse]> in
-            return Decoders.decode(clazz: [TypesIpfsListPinStatusResponse].self, source: source)
+        // Decoder for [PinnerIpfsListPinStatusResponse]
+        Decoders.addDecoder(clazz: [PinnerIpfsListPinStatusResponse].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[PinnerIpfsListPinStatusResponse]> in
+            return Decoders.decode(clazz: [PinnerIpfsListPinStatusResponse].self, source: source)
         }
 
-        // Decoder for TypesIpfsListPinStatusResponse
-        Decoders.addDecoder(clazz: TypesIpfsListPinStatusResponse.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<TypesIpfsListPinStatusResponse> in
+        // Decoder for PinnerIpfsListPinStatusResponse
+        Decoders.addDecoder(clazz: PinnerIpfsListPinStatusResponse.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<PinnerIpfsListPinStatusResponse> in
             if let sourceDictionary = source as? [AnyHashable: Any] {
-                let _result = instance == nil ? TypesIpfsListPinStatusResponse() : instance as! TypesIpfsListPinStatusResponse
+                let _result = instance == nil ? PinnerIpfsListPinStatusResponse() : instance as! PinnerIpfsListPinStatusResponse
                 switch Decoders.decodeOptional(clazz: Int32.self, source: sourceDictionary["count"] as AnyObject?) {
                 case let .success(value): _result.count = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: [TypesIpfsPinStatusResponse].self, source: sourceDictionary["results"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: [PinnerIpfsPinStatusResponse].self, source: sourceDictionary["results"] as AnyObject?) {
                 case let .success(value): _result.results = value
                 case let .failure(error): break
                 }
                 return .success(_result)
             } else {
-                return .failure(.typeMismatch(expected: "TypesIpfsListPinStatusResponse", actual: "\(source)"))
+                return .failure(.typeMismatch(expected: "PinnerIpfsListPinStatusResponse", actual: "\(source)"))
             }
         }
-        // Decoder for [TypesIpfsPin]
-        Decoders.addDecoder(clazz: [TypesIpfsPin].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[TypesIpfsPin]> in
-            return Decoders.decode(clazz: [TypesIpfsPin].self, source: source)
+        // Decoder for [PinnerIpfsPin]
+        Decoders.addDecoder(clazz: [PinnerIpfsPin].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[PinnerIpfsPin]> in
+            return Decoders.decode(clazz: [PinnerIpfsPin].self, source: source)
         }
 
-        // Decoder for TypesIpfsPin
-        Decoders.addDecoder(clazz: TypesIpfsPin.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<TypesIpfsPin> in
+        // Decoder for PinnerIpfsPin
+        Decoders.addDecoder(clazz: PinnerIpfsPin.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<PinnerIpfsPin> in
             if let sourceDictionary = source as? [AnyHashable: Any] {
-                let _result = instance == nil ? TypesIpfsPin() : instance as! TypesIpfsPin
+                let _result = instance == nil ? PinnerIpfsPin() : instance as! PinnerIpfsPin
                 switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["cid"] as AnyObject?) {
                 case let .success(value): _result.cid = value
                 case let .failure(error): break
@@ -860,18 +860,18 @@ class Decoders {
                 }
                 return .success(_result)
             } else {
-                return .failure(.typeMismatch(expected: "TypesIpfsPin", actual: "\(source)"))
+                return .failure(.typeMismatch(expected: "PinnerIpfsPin", actual: "\(source)"))
             }
         }
-        // Decoder for [TypesIpfsPinStatusResponse]
-        Decoders.addDecoder(clazz: [TypesIpfsPinStatusResponse].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[TypesIpfsPinStatusResponse]> in
-            return Decoders.decode(clazz: [TypesIpfsPinStatusResponse].self, source: source)
+        // Decoder for [PinnerIpfsPinStatusResponse]
+        Decoders.addDecoder(clazz: [PinnerIpfsPinStatusResponse].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[PinnerIpfsPinStatusResponse]> in
+            return Decoders.decode(clazz: [PinnerIpfsPinStatusResponse].self, source: source)
         }
 
-        // Decoder for TypesIpfsPinStatusResponse
-        Decoders.addDecoder(clazz: TypesIpfsPinStatusResponse.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<TypesIpfsPinStatusResponse> in
+        // Decoder for PinnerIpfsPinStatusResponse
+        Decoders.addDecoder(clazz: PinnerIpfsPinStatusResponse.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<PinnerIpfsPinStatusResponse> in
             if let sourceDictionary = source as? [AnyHashable: Any] {
-                let _result = instance == nil ? TypesIpfsPinStatusResponse() : instance as! TypesIpfsPinStatusResponse
+                let _result = instance == nil ? PinnerIpfsPinStatusResponse() : instance as! PinnerIpfsPinStatusResponse
                 switch Decoders.decodeOptional(clazz: UtilContent.self, source: sourceDictionary["content"] as AnyObject?) {
                 case let .success(value): _result.content = value
                 case let .failure(error): break
@@ -888,7 +888,7 @@ class Decoders {
                 case let .success(value): _result.info = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: TypesIpfsPin.self, source: sourceDictionary["pin"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: PinnerIpfsPin.self, source: sourceDictionary["pin"] as AnyObject?) {
                 case let .success(value): _result.pin = value
                 case let .failure(error): break
                 }
@@ -896,24 +896,24 @@ class Decoders {
                 case let .success(value): _result.requestid = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: TypesPinningStatus.self, source: sourceDictionary["status"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: StatusPinningStatus.self, source: sourceDictionary["status"] as AnyObject?) {
                 case let .success(value): _result.status = value
                 case let .failure(error): break
                 }
                 return .success(_result)
             } else {
-                return .failure(.typeMismatch(expected: "TypesIpfsPinStatusResponse", actual: "\(source)"))
+                return .failure(.typeMismatch(expected: "PinnerIpfsPinStatusResponse", actual: "\(source)"))
             }
         }
-        // Decoder for [TypesPinningStatus]
-        Decoders.addDecoder(clazz: [TypesPinningStatus].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[TypesPinningStatus]> in
-            return Decoders.decode(clazz: [TypesPinningStatus].self, source: source)
+        // Decoder for [StatusPinningStatus]
+        Decoders.addDecoder(clazz: [StatusPinningStatus].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[StatusPinningStatus]> in
+            return Decoders.decode(clazz: [StatusPinningStatus].self, source: source)
         }
 
-        // Decoder for TypesPinningStatus
-        Decoders.addDecoder(clazz: TypesPinningStatus.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<TypesPinningStatus> in
+        // Decoder for StatusPinningStatus
+        Decoders.addDecoder(clazz: StatusPinningStatus.self) { (source: AnyObject, instance: AnyObject?) -> Decoded<StatusPinningStatus> in
             //TODO: I don't think we need this anymore
-            return Decoders.decode(clazz: TypesPinningStatus.self, source: source, instance: instance)
+            return Decoders.decode(clazz: StatusPinningStatus.self, source: source, instance: instance)
         }
         // Decoder for [UtilContent]
         Decoders.addDecoder(clazz: [UtilContent].self) { (source: AnyObject, instance: AnyObject?) -> Decoded<[UtilContent]> in

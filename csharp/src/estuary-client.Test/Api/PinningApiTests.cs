@@ -70,7 +70,7 @@ namespace estuary-client.Test
         {
             // TODO uncomment below to test the method and replace null with proper value
             //var response = instance.PinningPinsGet();
-            //Assert.IsInstanceOf<TypesIpfsListPinStatusResponse> (response, "response is TypesIpfsListPinStatusResponse");
+            //Assert.IsInstanceOf<PinnerIpfsListPinStatusResponse> (response, "response is PinnerIpfsListPinStatusResponse");
         }
         /// <summary>
         /// Test PinningPinsPinidDelete
@@ -92,7 +92,7 @@ namespace estuary-client.Test
             // TODO uncomment below to test the method and replace null with proper value
             //string pinid = null;
             //var response = instance.PinningPinsPinidGet(pinid);
-            //Assert.IsInstanceOf<TypesIpfsPinStatusResponse> (response, "response is TypesIpfsPinStatusResponse");
+            //Assert.IsInstanceOf<PinnerIpfsPinStatusResponse> (response, "response is PinnerIpfsPinStatusResponse");
         }
         /// <summary>
         /// Test PinningPinsPinidPost
@@ -101,10 +101,10 @@ namespace estuary-client.Test
         public void PinningPinsPinidPostTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //TypesIpfsPin body = null;
+            //PinnerIpfsPin body = null;
             //string pinid = null;
             //var response = instance.PinningPinsPinidPost(body, pinid);
-            //Assert.IsInstanceOf<TypesIpfsPinStatusResponse> (response, "response is TypesIpfsPinStatusResponse");
+            //Assert.IsInstanceOf<PinnerIpfsPinStatusResponse> (response, "response is PinnerIpfsPinStatusResponse");
         }
         /// <summary>
         /// Test PinningPinsPost
@@ -113,11 +113,11 @@ namespace estuary-client.Test
         public void PinningPinsPostTest()
         {
             // TODO uncomment below to test the method and replace null with proper value
-            //TypesIpfsPin body = null;
+            //PinnerIpfsPin body = null;
             //string ignoreDupes = null;
             //string overwrite = null;
             //var response = instance.PinningPinsPost(body, ignoreDupes, overwrite);
-            //Assert.IsInstanceOf<TypesIpfsPinStatusResponse> (response, "response is TypesIpfsPinStatusResponse");
+            //Assert.IsInstanceOf<PinnerIpfsPinStatusResponse> (response, "response is PinnerIpfsPinStatusResponse");
         }
     }
 

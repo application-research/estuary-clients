@@ -11,7 +11,7 @@ void main() {
     //
     // This endpoint lists all pin status objects
     //
-    //Future<TypesIpfsListPinStatusResponse> pinningPinsGet() async
+    //Future<PinnerIpfsListPinStatusResponse> pinningPinsGet() async
     test('test pinningPinsGet', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // This endpoint returns a pin status object.
     //
-    //Future<TypesIpfsPinStatusResponse> pinningPinsPinidGet(String pinid) async
+    //Future<PinnerIpfsPinStatusResponse> pinningPinsPinidGet(String pinid) async
     test('test pinningPinsPinidGet', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // This endpoint replaces a pinned object.
     //
-    //Future<TypesIpfsPinStatusResponse> pinningPinsPinidPost(TypesIpfsPin body, String pinid) async
+    //Future<PinnerIpfsPinStatusResponse> pinningPinsPinidPost(PinnerIpfsPin body, String pinid) async
     test('test pinningPinsPinidPost', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // This endpoint adds a pin to the IPFS daemon.
     //
-    //Future<TypesIpfsPinStatusResponse> pinningPinsPost(TypesIpfsPin body, { String ignoreDupes, String overwrite }) async
+    //Future<PinnerIpfsPinStatusResponse> pinningPinsPost(PinnerIpfsPin body, { String ignoreDupes, String overwrite }) async
     test('test pinningPinsPost', () async {
       // TODO
     });

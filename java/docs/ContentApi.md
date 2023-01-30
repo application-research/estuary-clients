@@ -216,7 +216,7 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 ContentApi apiInstance = new ContentApi();
-TypesIpfsPin body = new TypesIpfsPin(); // TypesIpfsPin | IPFS Body
+PinnerIpfsPin body = new PinnerIpfsPin(); // PinnerIpfsPin | IPFS Body
 String ignoreDupes = "ignoreDupes_example"; // String | Ignore Dupes
 String overwrite = "overwrite_example"; // String | Overwrite conflicting files in collections
 try {
@@ -232,7 +232,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| IPFS Body |
+ **body** | [**PinnerIpfsPin**](PinnerIpfsPin.md)| IPFS Body |
  **ignoreDupes** | **String**| Ignore Dupes | [optional]
  **overwrite** | **String**| Overwrite conflicting files in collections | [optional]
 

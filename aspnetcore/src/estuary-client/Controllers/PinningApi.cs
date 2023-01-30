@@ -39,13 +39,13 @@ namespace estuary-client.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("PinningPinsGet")]
-        [SwaggerResponse(statusCode: 200, type: typeof(TypesIpfsListPinStatusResponse), description: "OK")]
+        [SwaggerResponse(statusCode: 200, type: typeof(PinnerIpfsListPinStatusResponse), description: "OK")]
         [SwaggerResponse(statusCode: 400, type: typeof(UtilHttpError), description: "Bad Request")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult PinningPinsGet()
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(TypesIpfsListPinStatusResponse));
+            // return StatusCode(200, default(PinnerIpfsListPinStatusResponse));
 
             //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(400, default(UtilHttpError));
@@ -56,8 +56,8 @@ namespace estuary-client.Controllers
             exampleJson = "{\n  \"count\" : 0,\n  \"results\" : [ {\n    \"pin\" : {\n      \"meta\" : \"\",\n      \"name\" : \"name\",\n      \"origins\" : [ \"origins\", \"origins\" ],\n      \"cid\" : \"cid\"\n    },\n    \"created\" : \"created\",\n    \"requestid\" : \"requestid\",\n    \"delegates\" : [ \"delegates\", \"delegates\" ],\n    \"content\" : {\n      \"aggregatedIn\" : 6,\n      \"offloaded\" : true,\n      \"replication\" : 5,\n      \"pinning\" : true,\n      \"pinMeta\" : \"pinMeta\",\n      \"replace\" : true,\n      \"active\" : true,\n      \"description\" : \"description\",\n      \"dagSplit\" : true,\n      \"dealStatus\" : \"dealStatus\",\n      \"failed\" : true,\n      \"type\" : 7,\n      \"userId\" : 9,\n      \"aggregate\" : true,\n      \"createdAt\" : \"createdAt\",\n      \"pinningStatus\" : \"pinningStatus\",\n      \"size\" : 5,\n      \"splitFrom\" : 2,\n      \"name\" : \"name\",\n      \"origins\" : \"origins\",\n      \"location\" : \"location\",\n      \"id\" : 1,\n      \"cid\" : {\n        \"cid\" : { }\n      },\n      \"updatedAt\" : \"updatedAt\"\n    },\n    \"info\" : \"\",\n    \"status\" : \"pinning\"\n  }, {\n    \"pin\" : {\n      \"meta\" : \"\",\n      \"name\" : \"name\",\n      \"origins\" : [ \"origins\", \"origins\" ],\n      \"cid\" : \"cid\"\n    },\n    \"created\" : \"created\",\n    \"requestid\" : \"requestid\",\n    \"delegates\" : [ \"delegates\", \"delegates\" ],\n    \"content\" : {\n      \"aggregatedIn\" : 6,\n      \"offloaded\" : true,\n      \"replication\" : 5,\n      \"pinning\" : true,\n      \"pinMeta\" : \"pinMeta\",\n      \"replace\" : true,\n      \"active\" : true,\n      \"description\" : \"description\",\n      \"dagSplit\" : true,\n      \"dealStatus\" : \"dealStatus\",\n      \"failed\" : true,\n      \"type\" : 7,\n      \"userId\" : 9,\n      \"aggregate\" : true,\n      \"createdAt\" : \"createdAt\",\n      \"pinningStatus\" : \"pinningStatus\",\n      \"size\" : 5,\n      \"splitFrom\" : 2,\n      \"name\" : \"name\",\n      \"origins\" : \"origins\",\n      \"location\" : \"location\",\n      \"id\" : 1,\n      \"cid\" : {\n        \"cid\" : { }\n      },\n      \"updatedAt\" : \"updatedAt\"\n    },\n    \"info\" : \"\",\n    \"status\" : \"pinning\"\n  } ]\n}";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<TypesIpfsListPinStatusResponse>(exampleJson)
-                        : default(TypesIpfsListPinStatusResponse);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<PinnerIpfsListPinStatusResponse>(exampleJson)
+                        : default(PinnerIpfsListPinStatusResponse);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
 
@@ -98,13 +98,13 @@ namespace estuary-client.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("PinningPinsPinidGet")]
-        [SwaggerResponse(statusCode: 200, type: typeof(TypesIpfsPinStatusResponse), description: "OK")]
+        [SwaggerResponse(statusCode: 200, type: typeof(PinnerIpfsPinStatusResponse), description: "OK")]
         [SwaggerResponse(statusCode: 404, type: typeof(UtilHttpError), description: "Not Found")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
         public virtual IActionResult PinningPinsPinidGet([FromRoute][Required]string pinid)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(TypesIpfsPinStatusResponse));
+            // return StatusCode(200, default(PinnerIpfsPinStatusResponse));
 
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(404, default(UtilHttpError));
@@ -115,8 +115,8 @@ namespace estuary-client.Controllers
             exampleJson = "{\n  \"pin\" : {\n    \"meta\" : \"\",\n    \"name\" : \"name\",\n    \"origins\" : [ \"origins\", \"origins\" ],\n    \"cid\" : \"cid\"\n  },\n  \"created\" : \"created\",\n  \"requestid\" : \"requestid\",\n  \"delegates\" : [ \"delegates\", \"delegates\" ],\n  \"content\" : {\n    \"aggregatedIn\" : 6,\n    \"offloaded\" : true,\n    \"replication\" : 5,\n    \"pinning\" : true,\n    \"pinMeta\" : \"pinMeta\",\n    \"replace\" : true,\n    \"active\" : true,\n    \"description\" : \"description\",\n    \"dagSplit\" : true,\n    \"dealStatus\" : \"dealStatus\",\n    \"failed\" : true,\n    \"type\" : 7,\n    \"userId\" : 9,\n    \"aggregate\" : true,\n    \"createdAt\" : \"createdAt\",\n    \"pinningStatus\" : \"pinningStatus\",\n    \"size\" : 5,\n    \"splitFrom\" : 2,\n    \"name\" : \"name\",\n    \"origins\" : \"origins\",\n    \"location\" : \"location\",\n    \"id\" : 1,\n    \"cid\" : {\n      \"cid\" : { }\n    },\n    \"updatedAt\" : \"updatedAt\"\n  },\n  \"info\" : \"\",\n  \"status\" : \"pinning\"\n}";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<TypesIpfsPinStatusResponse>(exampleJson)
-                        : default(TypesIpfsPinStatusResponse);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<PinnerIpfsPinStatusResponse>(exampleJson)
+                        : default(PinnerIpfsPinStatusResponse);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
 
@@ -134,13 +134,13 @@ namespace estuary-client.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("PinningPinsPinidPost")]
-        [SwaggerResponse(statusCode: 202, type: typeof(TypesIpfsPinStatusResponse), description: "Accepted")]
+        [SwaggerResponse(statusCode: 202, type: typeof(PinnerIpfsPinStatusResponse), description: "Accepted")]
         [SwaggerResponse(statusCode: 404, type: typeof(UtilHttpError), description: "Not Found")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
-        public virtual IActionResult PinningPinsPinidPost([FromBody]TypesIpfsPin body, [FromRoute][Required]string pinid)
+        public virtual IActionResult PinningPinsPinidPost([FromBody]PinnerIpfsPin body, [FromRoute][Required]string pinid)
         { 
             //TODO: Uncomment the next line to return response 202 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(202, default(TypesIpfsPinStatusResponse));
+            // return StatusCode(202, default(PinnerIpfsPinStatusResponse));
 
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(404, default(UtilHttpError));
@@ -151,8 +151,8 @@ namespace estuary-client.Controllers
             exampleJson = "{\n  \"pin\" : {\n    \"meta\" : \"\",\n    \"name\" : \"name\",\n    \"origins\" : [ \"origins\", \"origins\" ],\n    \"cid\" : \"cid\"\n  },\n  \"created\" : \"created\",\n  \"requestid\" : \"requestid\",\n  \"delegates\" : [ \"delegates\", \"delegates\" ],\n  \"content\" : {\n    \"aggregatedIn\" : 6,\n    \"offloaded\" : true,\n    \"replication\" : 5,\n    \"pinning\" : true,\n    \"pinMeta\" : \"pinMeta\",\n    \"replace\" : true,\n    \"active\" : true,\n    \"description\" : \"description\",\n    \"dagSplit\" : true,\n    \"dealStatus\" : \"dealStatus\",\n    \"failed\" : true,\n    \"type\" : 7,\n    \"userId\" : 9,\n    \"aggregate\" : true,\n    \"createdAt\" : \"createdAt\",\n    \"pinningStatus\" : \"pinningStatus\",\n    \"size\" : 5,\n    \"splitFrom\" : 2,\n    \"name\" : \"name\",\n    \"origins\" : \"origins\",\n    \"location\" : \"location\",\n    \"id\" : 1,\n    \"cid\" : {\n      \"cid\" : { }\n    },\n    \"updatedAt\" : \"updatedAt\"\n  },\n  \"info\" : \"\",\n  \"status\" : \"pinning\"\n}";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<TypesIpfsPinStatusResponse>(exampleJson)
-                        : default(TypesIpfsPinStatusResponse);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<PinnerIpfsPinStatusResponse>(exampleJson)
+                        : default(PinnerIpfsPinStatusResponse);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
 
@@ -170,12 +170,12 @@ namespace estuary-client.Controllers
         [Authorize(AuthenticationSchemes = ApiKeyAuthenticationHandler.SchemeName)]
         [ValidateModelState]
         [SwaggerOperation("PinningPinsPost")]
-        [SwaggerResponse(statusCode: 202, type: typeof(TypesIpfsPinStatusResponse), description: "Accepted")]
+        [SwaggerResponse(statusCode: 202, type: typeof(PinnerIpfsPinStatusResponse), description: "Accepted")]
         [SwaggerResponse(statusCode: 500, type: typeof(UtilHttpError), description: "Internal Server Error")]
-        public virtual IActionResult PinningPinsPost([FromBody]TypesIpfsPin body, [FromQuery]string ignoreDupes, [FromQuery]string overwrite)
+        public virtual IActionResult PinningPinsPost([FromBody]PinnerIpfsPin body, [FromQuery]string ignoreDupes, [FromQuery]string overwrite)
         { 
             //TODO: Uncomment the next line to return response 202 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(202, default(TypesIpfsPinStatusResponse));
+            // return StatusCode(202, default(PinnerIpfsPinStatusResponse));
 
             //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(500, default(UtilHttpError));
@@ -183,8 +183,8 @@ namespace estuary-client.Controllers
             exampleJson = "{\n  \"pin\" : {\n    \"meta\" : \"\",\n    \"name\" : \"name\",\n    \"origins\" : [ \"origins\", \"origins\" ],\n    \"cid\" : \"cid\"\n  },\n  \"created\" : \"created\",\n  \"requestid\" : \"requestid\",\n  \"delegates\" : [ \"delegates\", \"delegates\" ],\n  \"content\" : {\n    \"aggregatedIn\" : 6,\n    \"offloaded\" : true,\n    \"replication\" : 5,\n    \"pinning\" : true,\n    \"pinMeta\" : \"pinMeta\",\n    \"replace\" : true,\n    \"active\" : true,\n    \"description\" : \"description\",\n    \"dagSplit\" : true,\n    \"dealStatus\" : \"dealStatus\",\n    \"failed\" : true,\n    \"type\" : 7,\n    \"userId\" : 9,\n    \"aggregate\" : true,\n    \"createdAt\" : \"createdAt\",\n    \"pinningStatus\" : \"pinningStatus\",\n    \"size\" : 5,\n    \"splitFrom\" : 2,\n    \"name\" : \"name\",\n    \"origins\" : \"origins\",\n    \"location\" : \"location\",\n    \"id\" : 1,\n    \"cid\" : {\n      \"cid\" : { }\n    },\n    \"updatedAt\" : \"updatedAt\"\n  },\n  \"info\" : \"\",\n  \"status\" : \"pinning\"\n}";
             
                         var example = exampleJson != null
-                        ? JsonConvert.DeserializeObject<TypesIpfsPinStatusResponse>(exampleJson)
-                        : default(TypesIpfsPinStatusResponse);            //TODO: Change the data returned
+                        ? JsonConvert.DeserializeObject<PinnerIpfsPinStatusResponse>(exampleJson)
+                        : default(PinnerIpfsPinStatusResponse);            //TODO: Change the data returned
             return new ObjectResult(example);
         }
     }

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="pinningPinsGet"></a>
 # **pinningPinsGet**
-> TypesIpfsListPinStatusResponse pinningPinsGet()
+> PinnerIpfsListPinStatusResponse pinningPinsGet()
 
 List all pin status objects
 
@@ -44,7 +44,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**TypesIpfsListPinStatusResponse**](TypesIpfsListPinStatusResponse.md)
+[**PinnerIpfsListPinStatusResponse**](PinnerIpfsListPinStatusResponse.md)
 
 ### Authorization
 
@@ -107,7 +107,7 @@ null (empty response body)
 
 <a name="pinningPinsPinidGet"></a>
 # **pinningPinsPinidGet**
-> TypesIpfsPinStatusResponse pinningPinsPinidGet(pinid)
+> PinnerIpfsPinStatusResponse pinningPinsPinidGet(pinid)
 
 Get a pin status object
 
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
+[**PinnerIpfsPinStatusResponse**](PinnerIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 
 <a name="pinningPinsPinidPost"></a>
 # **pinningPinsPinidPost**
-> TypesIpfsPinStatusResponse pinningPinsPinidPost(body, pinid)
+> PinnerIpfsPinStatusResponse pinningPinsPinidPost(body, pinid)
 
 Replace a pinned object
 
@@ -175,7 +175,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 //bearerAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new EstuaryClient.PinningApi();
-let body = new EstuaryClient.TypesIpfsPin(); // TypesIpfsPin | New pin
+let body = new EstuaryClient.PinnerIpfsPin(); // PinnerIpfsPin | New pin
 let pinid = "pinid_example"; // String | Pin ID to be replaced
 
 apiInstance.pinningPinsPinidPost(body, pinid, (error, data, response) => {
@@ -191,12 +191,12 @@ apiInstance.pinningPinsPinidPost(body, pinid, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| New pin | 
+ **body** | [**PinnerIpfsPin**](PinnerIpfsPin.md)| New pin | 
  **pinid** | **String**| Pin ID to be replaced | 
 
 ### Return type
 
-[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
+[**PinnerIpfsPinStatusResponse**](PinnerIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -209,7 +209,7 @@ Name | Type | Description  | Notes
 
 <a name="pinningPinsPost"></a>
 # **pinningPinsPost**
-> TypesIpfsPinStatusResponse pinningPinsPost(body, opts)
+> PinnerIpfsPinStatusResponse pinningPinsPost(body, opts)
 
 Add and pin object
 
@@ -227,7 +227,7 @@ bearerAuth.apiKey = 'YOUR API KEY';
 //bearerAuth.apiKeyPrefix = 'Token';
 
 let apiInstance = new EstuaryClient.PinningApi();
-let body = new EstuaryClient.TypesIpfsPin(); // TypesIpfsPin | Pin Body {cid:cid, name:name}
+let body = new EstuaryClient.PinnerIpfsPin(); // PinnerIpfsPin | Pin Body {cid:cid, name:name}
 let opts = { 
   'ignoreDupes': "ignoreDupes_example", // String | Ignore Dupes
   'overwrite': "overwrite_example" // String | Overwrite conflicting files in collections
@@ -245,13 +245,13 @@ apiInstance.pinningPinsPost(body, opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
+ **body** | [**PinnerIpfsPin**](PinnerIpfsPin.md)| Pin Body {cid:cid, name:name} | 
  **ignoreDupes** | **String**| Ignore Dupes | [optional] 
  **overwrite** | **String**| Overwrite conflicting files in collections | [optional] 
 
 ### Return type
 
-[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
+[**PinnerIpfsPinStatusResponse**](PinnerIpfsPinStatusResponse.md)
 
 ### Authorization
 

@@ -5,7 +5,7 @@ from __future__ import absolute_import
 from flask import json
 from six import BytesIO
 
-from estuary-client.models.types_ipfs_pin import TypesIpfsPin  # noqa: E501
+from estuary-client.models.pinner_ipfs_pin import PinnerIpfsPin  # noqa: E501
 from estuary-client.models.util_content_add_response import UtilContentAddResponse  # noqa: E501
 from estuary-client.models.util_content_create_body import UtilContentCreateBody  # noqa: E501
 from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
@@ -59,7 +59,7 @@ class TestContentController(BaseTestCase):
 
         Add IPFS object
         """
-        body = TypesIpfsPin()
+        body = PinnerIpfsPin()
         query_string = [('ignore_dupes', 'ignore_dupes_example'),
                         ('overwrite', 'overwrite_example')]
         response = self.client.open(

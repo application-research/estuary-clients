@@ -135,7 +135,7 @@ open class ContentAPI {
      - parameter body: (body) IPFS Body      - parameter ignoreDupes: (query) Ignore Dupes (optional)     - parameter overwrite: (query) Overwrite conflicting files in collections (optional)
      - parameter completion: completion handler to receive the data and the error objects
      */
-    open class func contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes: String? = nil, overwrite: String? = nil, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
+    open class func contentAddIpfsPost(body: PinnerIpfsPin, ignoreDupes: String? = nil, overwrite: String? = nil, completion: @escaping ((_ data: String?,_ error: Error?) -> Void)) {
         contentAddIpfsPostWithRequestBuilder(body: body, ignoreDupes: ignoreDupes, overwrite: overwrite).execute { (response, error) -> Void in
             completion(response?.body, error)
         }
@@ -154,7 +154,7 @@ open class ContentAPI {
 
      - returns: RequestBuilder<String> 
      */
-    open class func contentAddIpfsPostWithRequestBuilder(body: TypesIpfsPin, ignoreDupes: String? = nil, overwrite: String? = nil) -> RequestBuilder<String> {
+    open class func contentAddIpfsPostWithRequestBuilder(body: PinnerIpfsPin, ignoreDupes: String? = nil, overwrite: String? = nil) -> RequestBuilder<String> {
         let path = "/content/add-ipfs"
         let URLString = estuary-clientAPI.basePath + path
         let parameters = JSONEncodingHelper.encodingParameters(forEncodableObject: body)

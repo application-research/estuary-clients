@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="contentaddipfspost"></a>
 # **ContentAddIpfsPost**
-> string ContentAddIpfsPost (TypesIpfsPin body, string ignoreDupes = null, string overwrite = null)
+> string ContentAddIpfsPost (PinnerIpfsPin body, string ignoreDupes = null, string overwrite = null)
 
 Add IPFS object
 
@@ -248,7 +248,7 @@ namespace Example
             // Configuration.Default.AddApiKeyPrefix("Authorization", "Bearer");
 
             var apiInstance = new ContentApi();
-            var body = new TypesIpfsPin(); // TypesIpfsPin | IPFS Body
+            var body = new PinnerIpfsPin(); // PinnerIpfsPin | IPFS Body
             var ignoreDupes = ignoreDupes_example;  // string | Ignore Dupes (optional) 
             var overwrite = overwrite_example;  // string | Overwrite conflicting files in collections (optional) 
 
@@ -271,7 +271,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| IPFS Body | 
+ **body** | [**PinnerIpfsPin**](PinnerIpfsPin.md)| IPFS Body | 
  **ignoreDupes** | **string**| Ignore Dupes | [optional] 
  **overwrite** | **string**| Overwrite conflicting files in collections | [optional] 
 

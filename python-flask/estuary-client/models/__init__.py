@@ -25,10 +25,10 @@ from estuary-client.models.miner_miner_chain_info import MinerMinerChainInfo
 from estuary-client.models.miner_miner_set_info_params import MinerMinerSetInfoParams
 from estuary-client.models.miner_suspend_miner_body import MinerSuspendMinerBody
 from estuary-client.models.peering_peering_peer import PeeringPeeringPeer
-from estuary-client.models.types_ipfs_list_pin_status_response import TypesIpfsListPinStatusResponse
-from estuary-client.models.types_ipfs_pin import TypesIpfsPin
-from estuary-client.models.types_ipfs_pin_status_response import TypesIpfsPinStatusResponse
-from estuary-client.models.types_pinning_status import TypesPinningStatus
+from estuary-client.models.pinner_ipfs_list_pin_status_response import PinnerIpfsListPinStatusResponse
+from estuary-client.models.pinner_ipfs_pin import PinnerIpfsPin
+from estuary-client.models.pinner_ipfs_pin_status_response import PinnerIpfsPinStatusResponse
+from estuary-client.models.status_pinning_status import StatusPinningStatus
 from estuary-client.models.util_content import UtilContent
 from estuary-client.models.util_content_add_response import UtilContentAddResponse
 from estuary-client.models.util_content_create_body import UtilContentCreateBody

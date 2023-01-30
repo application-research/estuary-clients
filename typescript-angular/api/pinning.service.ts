@@ -17,9 +17,9 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { TypesIpfsListPinStatusResponse } from '../model/typesIpfsListPinStatusResponse';
-import { TypesIpfsPin } from '../model/typesIpfsPin';
-import { TypesIpfsPinStatusResponse } from '../model/typesIpfsPinStatusResponse';
+import { PinnerIpfsListPinStatusResponse } from '../model/pinnerIpfsListPinStatusResponse';
+import { PinnerIpfsPin } from '../model/pinnerIpfsPin';
+import { PinnerIpfsPinStatusResponse } from '../model/pinnerIpfsPinStatusResponse';
 import { UtilHttpError } from '../model/utilHttpError';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -64,9 +64,9 @@ export class PinningService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public pinningPinsGet(observe?: 'body', reportProgress?: boolean): Observable<TypesIpfsListPinStatusResponse>;
-    public pinningPinsGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<TypesIpfsListPinStatusResponse>>;
-    public pinningPinsGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<TypesIpfsListPinStatusResponse>>;
+    public pinningPinsGet(observe?: 'body', reportProgress?: boolean): Observable<PinnerIpfsListPinStatusResponse>;
+    public pinningPinsGet(observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PinnerIpfsListPinStatusResponse>>;
+    public pinningPinsGet(observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PinnerIpfsListPinStatusResponse>>;
     public pinningPinsGet(observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         let headers = this.defaultHeaders;
@@ -89,7 +89,7 @@ export class PinningService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<TypesIpfsListPinStatusResponse>('get',`${this.basePath}/pinning/pins`,
+        return this.httpClient.request<PinnerIpfsListPinStatusResponse>('get',`${this.basePath}/pinning/pins`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -152,9 +152,9 @@ export class PinningService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public pinningPinsPinidGet(pinid: string, observe?: 'body', reportProgress?: boolean): Observable<TypesIpfsPinStatusResponse>;
-    public pinningPinsPinidGet(pinid: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<TypesIpfsPinStatusResponse>>;
-    public pinningPinsPinidGet(pinid: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<TypesIpfsPinStatusResponse>>;
+    public pinningPinsPinidGet(pinid: string, observe?: 'body', reportProgress?: boolean): Observable<PinnerIpfsPinStatusResponse>;
+    public pinningPinsPinidGet(pinid: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PinnerIpfsPinStatusResponse>>;
+    public pinningPinsPinidGet(pinid: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PinnerIpfsPinStatusResponse>>;
     public pinningPinsPinidGet(pinid: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (pinid === null || pinid === undefined) {
@@ -181,7 +181,7 @@ export class PinningService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<TypesIpfsPinStatusResponse>('get',`${this.basePath}/pinning/pins/${encodeURIComponent(String(pinid))}`,
+        return this.httpClient.request<PinnerIpfsPinStatusResponse>('get',`${this.basePath}/pinning/pins/${encodeURIComponent(String(pinid))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,
@@ -199,10 +199,10 @@ export class PinningService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public pinningPinsPinidPost(body: TypesIpfsPin, pinid: string, observe?: 'body', reportProgress?: boolean): Observable<TypesIpfsPinStatusResponse>;
-    public pinningPinsPinidPost(body: TypesIpfsPin, pinid: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<TypesIpfsPinStatusResponse>>;
-    public pinningPinsPinidPost(body: TypesIpfsPin, pinid: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<TypesIpfsPinStatusResponse>>;
-    public pinningPinsPinidPost(body: TypesIpfsPin, pinid: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public pinningPinsPinidPost(body: PinnerIpfsPin, pinid: string, observe?: 'body', reportProgress?: boolean): Observable<PinnerIpfsPinStatusResponse>;
+    public pinningPinsPinidPost(body: PinnerIpfsPin, pinid: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PinnerIpfsPinStatusResponse>>;
+    public pinningPinsPinidPost(body: PinnerIpfsPin, pinid: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PinnerIpfsPinStatusResponse>>;
+    public pinningPinsPinidPost(body: PinnerIpfsPin, pinid: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling pinningPinsPinidPost.');
@@ -237,7 +237,7 @@ export class PinningService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<TypesIpfsPinStatusResponse>('post',`${this.basePath}/pinning/pins/${encodeURIComponent(String(pinid))}`,
+        return this.httpClient.request<PinnerIpfsPinStatusResponse>('post',`${this.basePath}/pinning/pins/${encodeURIComponent(String(pinid))}`,
             {
                 body: body,
                 withCredentials: this.configuration.withCredentials,
@@ -257,10 +257,10 @@ export class PinningService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public pinningPinsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, observe?: 'body', reportProgress?: boolean): Observable<TypesIpfsPinStatusResponse>;
-    public pinningPinsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<TypesIpfsPinStatusResponse>>;
-    public pinningPinsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<TypesIpfsPinStatusResponse>>;
-    public pinningPinsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public pinningPinsPost(body: PinnerIpfsPin, ignoreDupes?: string, overwrite?: string, observe?: 'body', reportProgress?: boolean): Observable<PinnerIpfsPinStatusResponse>;
+    public pinningPinsPost(body: PinnerIpfsPin, ignoreDupes?: string, overwrite?: string, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<PinnerIpfsPinStatusResponse>>;
+    public pinningPinsPost(body: PinnerIpfsPin, ignoreDupes?: string, overwrite?: string, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<PinnerIpfsPinStatusResponse>>;
+    public pinningPinsPost(body: PinnerIpfsPin, ignoreDupes?: string, overwrite?: string, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
         if (body === null || body === undefined) {
             throw new Error('Required parameter body was null or undefined when calling pinningPinsPost.');
@@ -301,7 +301,7 @@ export class PinningService {
             headers = headers.set('Content-Type', httpContentTypeSelected);
         }
 
-        return this.httpClient.request<TypesIpfsPinStatusResponse>('post',`${this.basePath}/pinning/pins`,
+        return this.httpClient.request<PinnerIpfsPinStatusResponse>('post',`${this.basePath}/pinning/pins`,
             {
                 body: body,
                 params: queryParameters,

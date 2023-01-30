@@ -495,7 +495,7 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-body = SwaggerClient::TypesIpfsPin.new # TypesIpfsPin | IPFS Body
+body = SwaggerClient::PinnerIpfsPin.new # PinnerIpfsPin | IPFS Body
 opts = { 
   ignore_dupes: 'ignore_dupes_example', # String | Ignore Dupes
   overwrite: 'overwrite_example' # String | Overwrite conflicting files in collections
@@ -1373,7 +1373,7 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::PinningApi.new
-body = SwaggerClient::TypesIpfsPin.new # TypesIpfsPin | New pin
+body = SwaggerClient::PinnerIpfsPin.new # PinnerIpfsPin | New pin
 pinid = 'pinid_example' # String | Pin ID to be replaced
 
 
@@ -1393,7 +1393,7 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::PinningApi.new
-body = SwaggerClient::TypesIpfsPin.new # TypesIpfsPin | Pin Body {cid:cid, name:name}
+body = SwaggerClient::PinnerIpfsPin.new # PinnerIpfsPin | Pin Body {cid:cid, name:name}
 opts = { 
   ignore_dupes: 'ignore_dupes_example', # String | Ignore Dupes
   overwrite: 'overwrite_example' # String | Overwrite conflicting files in collections
@@ -1797,10 +1797,10 @@ Class | Method | HTTP request | Description
  - [SwaggerClient::MinerMinerSetInfoParams](docs/MinerMinerSetInfoParams.md)
  - [SwaggerClient::MinerSuspendMinerBody](docs/MinerSuspendMinerBody.md)
  - [SwaggerClient::PeeringPeeringPeer](docs/PeeringPeeringPeer.md)
- - [SwaggerClient::TypesIpfsListPinStatusResponse](docs/TypesIpfsListPinStatusResponse.md)
- - [SwaggerClient::TypesIpfsPin](docs/TypesIpfsPin.md)
- - [SwaggerClient::TypesIpfsPinStatusResponse](docs/TypesIpfsPinStatusResponse.md)
- - [SwaggerClient::TypesPinningStatus](docs/TypesPinningStatus.md)
+ - [SwaggerClient::PinnerIpfsListPinStatusResponse](docs/PinnerIpfsListPinStatusResponse.md)
+ - [SwaggerClient::PinnerIpfsPin](docs/PinnerIpfsPin.md)
+ - [SwaggerClient::PinnerIpfsPinStatusResponse](docs/PinnerIpfsPinStatusResponse.md)
+ - [SwaggerClient::StatusPinningStatus](docs/StatusPinningStatus.md)
  - [SwaggerClient::UtilContent](docs/UtilContent.md)
  - [SwaggerClient::UtilContentAddResponse](docs/UtilContentAddResponse.md)
  - [SwaggerClient::UtilContentCreateBody](docs/UtilContentCreateBody.md)

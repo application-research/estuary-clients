@@ -33,9 +33,9 @@ import estuary-client.Paths
 import estuary-client.infrastructure.ApiPrincipal
 
 
-import io.swagger.server.models.TypesIpfsListPinStatusResponse
-import io.swagger.server.models.TypesIpfsPin
-import io.swagger.server.models.TypesIpfsPinStatusResponse
+import io.swagger.server.models.PinnerIpfsListPinStatusResponse
+import io.swagger.server.models.PinnerIpfsPin
+import io.swagger.server.models.PinnerIpfsPinStatusResponse
 import io.swagger.server.models.UtilHttpError
 
 @KtorExperimentalLocationsAPI

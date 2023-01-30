@@ -5,7 +5,7 @@
  * List all pin status objects
  * This endpoint lists all pin status objects
  *
- * returns types.IpfsListPinStatusResponse
+ * returns pinner.IpfsListPinStatusResponse
  **/
 exports.pinningPinsGET = function() {
   return new Promise(function(resolve, reject) {
@@ -107,10 +107,10 @@ exports.pinningPinsGET = function() {
  * Add and pin object
  * This endpoint adds a pin to the IPFS daemon.
  *
- * body Types.IpfsPin Pin Body {cid:cid, name:name}
+ * body Pinner.IpfsPin Pin Body {cid:cid, name:name}
  * ignoreDupes String Ignore Dupes (optional)
  * overwrite String Overwrite conflicting files in collections (optional)
- * returns types.IpfsPinStatusResponse
+ * returns pinner.IpfsPinStatusResponse
  **/
 exports.pinningPinsPOST = function(body,ignoreDupes,overwrite) {
   return new Promise(function(resolve, reject) {
@@ -184,7 +184,7 @@ exports.pinningPinsPinidDELETE = function(pinid) {
  * This endpoint returns a pin status object.
  *
  * pinid String cid
- * returns types.IpfsPinStatusResponse
+ * returns pinner.IpfsPinStatusResponse
  **/
 exports.pinningPinsPinidGET = function(pinid) {
   return new Promise(function(resolve, reject) {
@@ -243,9 +243,9 @@ exports.pinningPinsPinidGET = function(pinid) {
  * Replace a pinned object
  * This endpoint replaces a pinned object.
  *
- * body Types.IpfsPin New pin
+ * body Pinner.IpfsPin New pin
  * pinid String Pin ID to be replaced
- * returns types.IpfsPinStatusResponse
+ * returns pinner.IpfsPinStatusResponse
  **/
 exports.pinningPinsPinidPOST = function(body,pinid) {
   return new Promise(function(resolve, reject) {

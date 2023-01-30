@@ -187,7 +187,7 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new ContentApi();
-var body = new TypesIpfsPin(); // TypesIpfsPin | IPFS Body
+var body = new PinnerIpfsPin(); // PinnerIpfsPin | IPFS Body
 var ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
 var overwrite = overwrite_example; // String | Overwrite conflicting files in collections
 
@@ -203,7 +203,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| IPFS Body | 
+ **body** | [**PinnerIpfsPin**](PinnerIpfsPin.md)| IPFS Body | 
  **ignoreDupes** | **String**| Ignore Dupes | [optional] 
  **overwrite** | **String**| Overwrite conflicting files in collections | [optional] 
 

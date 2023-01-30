@@ -1,8 +1,8 @@
 package io.swagger.api;
 
-import io.swagger.model.TypesIpfsListPinStatusResponse;
-import io.swagger.model.TypesIpfsPin;
-import io.swagger.model.TypesIpfsPinStatusResponse;
+import io.swagger.model.PinnerIpfsListPinStatusResponse;
+import io.swagger.model.PinnerIpfsPin;
+import io.swagger.model.PinnerIpfsPinStatusResponse;
 import io.swagger.model.UtilHttpError;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.Operation;
@@ -35,7 +35,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-24T07:25:42.958Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-30T18:30:36.664Z[GMT]")
 @RestController
 public class PinningApiController implements PinningApi {
 
@@ -51,18 +51,18 @@ public class PinningApiController implements PinningApi {
         this.request = request;
     }
 
-    public ResponseEntity<TypesIpfsListPinStatusResponse> pinningPinsGet() {
+    public ResponseEntity<PinnerIpfsListPinStatusResponse> pinningPinsGet() {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<TypesIpfsListPinStatusResponse>(objectMapper.readValue("{\n  \"count\" : 0,\n  \"results\" : [ {\n    \"pin\" : {\n      \"meta\" : \"\",\n      \"name\" : \"name\",\n      \"origins\" : [ \"origins\", \"origins\" ],\n      \"cid\" : \"cid\"\n    },\n    \"created\" : \"created\",\n    \"requestid\" : \"requestid\",\n    \"delegates\" : [ \"delegates\", \"delegates\" ],\n    \"content\" : {\n      \"aggregatedIn\" : 6,\n      \"offloaded\" : true,\n      \"replication\" : 5,\n      \"pinning\" : true,\n      \"pinMeta\" : \"pinMeta\",\n      \"replace\" : true,\n      \"active\" : true,\n      \"description\" : \"description\",\n      \"dagSplit\" : true,\n      \"dealStatus\" : \"dealStatus\",\n      \"failed\" : true,\n      \"type\" : 7,\n      \"userId\" : 9,\n      \"aggregate\" : true,\n      \"createdAt\" : \"createdAt\",\n      \"pinningStatus\" : \"pinningStatus\",\n      \"size\" : 5,\n      \"splitFrom\" : 2,\n      \"name\" : \"name\",\n      \"origins\" : \"origins\",\n      \"location\" : \"location\",\n      \"id\" : 1,\n      \"cid\" : {\n        \"cid\" : { }\n      },\n      \"updatedAt\" : \"updatedAt\"\n    },\n    \"info\" : \"\",\n    \"status\" : \"pinning\"\n  }, {\n    \"pin\" : {\n      \"meta\" : \"\",\n      \"name\" : \"name\",\n      \"origins\" : [ \"origins\", \"origins\" ],\n      \"cid\" : \"cid\"\n    },\n    \"created\" : \"created\",\n    \"requestid\" : \"requestid\",\n    \"delegates\" : [ \"delegates\", \"delegates\" ],\n    \"content\" : {\n      \"aggregatedIn\" : 6,\n      \"offloaded\" : true,\n      \"replication\" : 5,\n      \"pinning\" : true,\n      \"pinMeta\" : \"pinMeta\",\n      \"replace\" : true,\n      \"active\" : true,\n      \"description\" : \"description\",\n      \"dagSplit\" : true,\n      \"dealStatus\" : \"dealStatus\",\n      \"failed\" : true,\n      \"type\" : 7,\n      \"userId\" : 9,\n      \"aggregate\" : true,\n      \"createdAt\" : \"createdAt\",\n      \"pinningStatus\" : \"pinningStatus\",\n      \"size\" : 5,\n      \"splitFrom\" : 2,\n      \"name\" : \"name\",\n      \"origins\" : \"origins\",\n      \"location\" : \"location\",\n      \"id\" : 1,\n      \"cid\" : {\n        \"cid\" : { }\n      },\n      \"updatedAt\" : \"updatedAt\"\n    },\n    \"info\" : \"\",\n    \"status\" : \"pinning\"\n  } ]\n}", TypesIpfsListPinStatusResponse.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<PinnerIpfsListPinStatusResponse>(objectMapper.readValue("{\n  \"count\" : 0,\n  \"results\" : [ {\n    \"pin\" : {\n      \"meta\" : \"\",\n      \"name\" : \"name\",\n      \"origins\" : [ \"origins\", \"origins\" ],\n      \"cid\" : \"cid\"\n    },\n    \"created\" : \"created\",\n    \"requestid\" : \"requestid\",\n    \"delegates\" : [ \"delegates\", \"delegates\" ],\n    \"content\" : {\n      \"aggregatedIn\" : 6,\n      \"offloaded\" : true,\n      \"replication\" : 5,\n      \"pinning\" : true,\n      \"pinMeta\" : \"pinMeta\",\n      \"replace\" : true,\n      \"active\" : true,\n      \"description\" : \"description\",\n      \"dagSplit\" : true,\n      \"dealStatus\" : \"dealStatus\",\n      \"failed\" : true,\n      \"type\" : 7,\n      \"userId\" : 9,\n      \"aggregate\" : true,\n      \"createdAt\" : \"createdAt\",\n      \"pinningStatus\" : \"pinningStatus\",\n      \"size\" : 5,\n      \"splitFrom\" : 2,\n      \"name\" : \"name\",\n      \"origins\" : \"origins\",\n      \"location\" : \"location\",\n      \"id\" : 1,\n      \"cid\" : {\n        \"cid\" : { }\n      },\n      \"updatedAt\" : \"updatedAt\"\n    },\n    \"info\" : \"\",\n    \"status\" : \"pinning\"\n  }, {\n    \"pin\" : {\n      \"meta\" : \"\",\n      \"name\" : \"name\",\n      \"origins\" : [ \"origins\", \"origins\" ],\n      \"cid\" : \"cid\"\n    },\n    \"created\" : \"created\",\n    \"requestid\" : \"requestid\",\n    \"delegates\" : [ \"delegates\", \"delegates\" ],\n    \"content\" : {\n      \"aggregatedIn\" : 6,\n      \"offloaded\" : true,\n      \"replication\" : 5,\n      \"pinning\" : true,\n      \"pinMeta\" : \"pinMeta\",\n      \"replace\" : true,\n      \"active\" : true,\n      \"description\" : \"description\",\n      \"dagSplit\" : true,\n      \"dealStatus\" : \"dealStatus\",\n      \"failed\" : true,\n      \"type\" : 7,\n      \"userId\" : 9,\n      \"aggregate\" : true,\n      \"createdAt\" : \"createdAt\",\n      \"pinningStatus\" : \"pinningStatus\",\n      \"size\" : 5,\n      \"splitFrom\" : 2,\n      \"name\" : \"name\",\n      \"origins\" : \"origins\",\n      \"location\" : \"location\",\n      \"id\" : 1,\n      \"cid\" : {\n        \"cid\" : { }\n      },\n      \"updatedAt\" : \"updatedAt\"\n    },\n    \"info\" : \"\",\n    \"status\" : \"pinning\"\n  } ]\n}", PinnerIpfsListPinStatusResponse.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<TypesIpfsListPinStatusResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<PinnerIpfsListPinStatusResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return new ResponseEntity<TypesIpfsListPinStatusResponse>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<PinnerIpfsListPinStatusResponse>(HttpStatus.NOT_IMPLEMENTED);
     }
 
     public ResponseEntity<Void> pinningPinsPinidDelete(@Parameter(in = ParameterIn.PATH, description = "Pin ID", required=true, schema=@Schema()) @PathVariable("pinid") String pinid) {
@@ -70,46 +70,46 @@ public class PinningApiController implements PinningApi {
         return new ResponseEntity<Void>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<TypesIpfsPinStatusResponse> pinningPinsPinidGet(@Parameter(in = ParameterIn.PATH, description = "cid", required=true, schema=@Schema()) @PathVariable("pinid") String pinid) {
+    public ResponseEntity<PinnerIpfsPinStatusResponse> pinningPinsPinidGet(@Parameter(in = ParameterIn.PATH, description = "cid", required=true, schema=@Schema()) @PathVariable("pinid") String pinid) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<TypesIpfsPinStatusResponse>(objectMapper.readValue("{\n  \"pin\" : {\n    \"meta\" : \"\",\n    \"name\" : \"name\",\n    \"origins\" : [ \"origins\", \"origins\" ],\n    \"cid\" : \"cid\"\n  },\n  \"created\" : \"created\",\n  \"requestid\" : \"requestid\",\n  \"delegates\" : [ \"delegates\", \"delegates\" ],\n  \"content\" : {\n    \"aggregatedIn\" : 6,\n    \"offloaded\" : true,\n    \"replication\" : 5,\n    \"pinning\" : true,\n    \"pinMeta\" : \"pinMeta\",\n    \"replace\" : true,\n    \"active\" : true,\n    \"description\" : \"description\",\n    \"dagSplit\" : true,\n    \"dealStatus\" : \"dealStatus\",\n    \"failed\" : true,\n    \"type\" : 7,\n    \"userId\" : 9,\n    \"aggregate\" : true,\n    \"createdAt\" : \"createdAt\",\n    \"pinningStatus\" : \"pinningStatus\",\n    \"size\" : 5,\n    \"splitFrom\" : 2,\n    \"name\" : \"name\",\n    \"origins\" : \"origins\",\n    \"location\" : \"location\",\n    \"id\" : 1,\n    \"cid\" : {\n      \"cid\" : { }\n    },\n    \"updatedAt\" : \"updatedAt\"\n  },\n  \"info\" : \"\",\n  \"status\" : \"pinning\"\n}", TypesIpfsPinStatusResponse.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<PinnerIpfsPinStatusResponse>(objectMapper.readValue("{\n  \"pin\" : {\n    \"meta\" : \"\",\n    \"name\" : \"name\",\n    \"origins\" : [ \"origins\", \"origins\" ],\n    \"cid\" : \"cid\"\n  },\n  \"created\" : \"created\",\n  \"requestid\" : \"requestid\",\n  \"delegates\" : [ \"delegates\", \"delegates\" ],\n  \"content\" : {\n    \"aggregatedIn\" : 6,\n    \"offloaded\" : true,\n    \"replication\" : 5,\n    \"pinning\" : true,\n    \"pinMeta\" : \"pinMeta\",\n    \"replace\" : true,\n    \"active\" : true,\n    \"description\" : \"description\",\n    \"dagSplit\" : true,\n    \"dealStatus\" : \"dealStatus\",\n    \"failed\" : true,\n    \"type\" : 7,\n    \"userId\" : 9,\n    \"aggregate\" : true,\n    \"createdAt\" : \"createdAt\",\n    \"pinningStatus\" : \"pinningStatus\",\n    \"size\" : 5,\n    \"splitFrom\" : 2,\n    \"name\" : \"name\",\n    \"origins\" : \"origins\",\n    \"location\" : \"location\",\n    \"id\" : 1,\n    \"cid\" : {\n      \"cid\" : { }\n    },\n    \"updatedAt\" : \"updatedAt\"\n  },\n  \"info\" : \"\",\n  \"status\" : \"pinning\"\n}", PinnerIpfsPinStatusResponse.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<TypesIpfsPinStatusResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<PinnerIpfsPinStatusResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return new ResponseEntity<TypesIpfsPinStatusResponse>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<PinnerIpfsPinStatusResponse>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<TypesIpfsPinStatusResponse> pinningPinsPinidPost(@Parameter(in = ParameterIn.PATH, description = "Pin ID to be replaced", required=true, schema=@Schema()) @PathVariable("pinid") String pinid,@Parameter(in = ParameterIn.DEFAULT, description = "New pin", required=true, schema=@Schema()) @Valid @RequestBody TypesIpfsPin body) {
+    public ResponseEntity<PinnerIpfsPinStatusResponse> pinningPinsPinidPost(@Parameter(in = ParameterIn.PATH, description = "Pin ID to be replaced", required=true, schema=@Schema()) @PathVariable("pinid") String pinid,@Parameter(in = ParameterIn.DEFAULT, description = "New pin", required=true, schema=@Schema()) @Valid @RequestBody PinnerIpfsPin body) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<TypesIpfsPinStatusResponse>(objectMapper.readValue("{\n  \"pin\" : {\n    \"meta\" : \"\",\n    \"name\" : \"name\",\n    \"origins\" : [ \"origins\", \"origins\" ],\n    \"cid\" : \"cid\"\n  },\n  \"created\" : \"created\",\n  \"requestid\" : \"requestid\",\n  \"delegates\" : [ \"delegates\", \"delegates\" ],\n  \"content\" : {\n    \"aggregatedIn\" : 6,\n    \"offloaded\" : true,\n    \"replication\" : 5,\n    \"pinning\" : true,\n    \"pinMeta\" : \"pinMeta\",\n    \"replace\" : true,\n    \"active\" : true,\n    \"description\" : \"description\",\n    \"dagSplit\" : true,\n    \"dealStatus\" : \"dealStatus\",\n    \"failed\" : true,\n    \"type\" : 7,\n    \"userId\" : 9,\n    \"aggregate\" : true,\n    \"createdAt\" : \"createdAt\",\n    \"pinningStatus\" : \"pinningStatus\",\n    \"size\" : 5,\n    \"splitFrom\" : 2,\n    \"name\" : \"name\",\n    \"origins\" : \"origins\",\n    \"location\" : \"location\",\n    \"id\" : 1,\n    \"cid\" : {\n      \"cid\" : { }\n    },\n    \"updatedAt\" : \"updatedAt\"\n  },\n  \"info\" : \"\",\n  \"status\" : \"pinning\"\n}", TypesIpfsPinStatusResponse.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<PinnerIpfsPinStatusResponse>(objectMapper.readValue("{\n  \"pin\" : {\n    \"meta\" : \"\",\n    \"name\" : \"name\",\n    \"origins\" : [ \"origins\", \"origins\" ],\n    \"cid\" : \"cid\"\n  },\n  \"created\" : \"created\",\n  \"requestid\" : \"requestid\",\n  \"delegates\" : [ \"delegates\", \"delegates\" ],\n  \"content\" : {\n    \"aggregatedIn\" : 6,\n    \"offloaded\" : true,\n    \"replication\" : 5,\n    \"pinning\" : true,\n    \"pinMeta\" : \"pinMeta\",\n    \"replace\" : true,\n    \"active\" : true,\n    \"description\" : \"description\",\n    \"dagSplit\" : true,\n    \"dealStatus\" : \"dealStatus\",\n    \"failed\" : true,\n    \"type\" : 7,\n    \"userId\" : 9,\n    \"aggregate\" : true,\n    \"createdAt\" : \"createdAt\",\n    \"pinningStatus\" : \"pinningStatus\",\n    \"size\" : 5,\n    \"splitFrom\" : 2,\n    \"name\" : \"name\",\n    \"origins\" : \"origins\",\n    \"location\" : \"location\",\n    \"id\" : 1,\n    \"cid\" : {\n      \"cid\" : { }\n    },\n    \"updatedAt\" : \"updatedAt\"\n  },\n  \"info\" : \"\",\n  \"status\" : \"pinning\"\n}", PinnerIpfsPinStatusResponse.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<TypesIpfsPinStatusResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<PinnerIpfsPinStatusResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return new ResponseEntity<TypesIpfsPinStatusResponse>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<PinnerIpfsPinStatusResponse>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<TypesIpfsPinStatusResponse> pinningPinsPost(@Parameter(in = ParameterIn.DEFAULT, description = "Pin Body {cid:cid, name:name}", required=true, schema=@Schema()) @Valid @RequestBody TypesIpfsPin body,@Parameter(in = ParameterIn.QUERY, description = "Ignore Dupes" ,schema=@Schema()) @Valid @RequestParam(value = "ignore-dupes", required = false) String ignoreDupes,@Parameter(in = ParameterIn.QUERY, description = "Overwrite conflicting files in collections" ,schema=@Schema()) @Valid @RequestParam(value = "overwrite", required = false) String overwrite) {
+    public ResponseEntity<PinnerIpfsPinStatusResponse> pinningPinsPost(@Parameter(in = ParameterIn.DEFAULT, description = "Pin Body {cid:cid, name:name}", required=true, schema=@Schema()) @Valid @RequestBody PinnerIpfsPin body,@Parameter(in = ParameterIn.QUERY, description = "Ignore Dupes" ,schema=@Schema()) @Valid @RequestParam(value = "ignore-dupes", required = false) String ignoreDupes,@Parameter(in = ParameterIn.QUERY, description = "Overwrite conflicting files in collections" ,schema=@Schema()) @Valid @RequestParam(value = "overwrite", required = false) String overwrite) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<TypesIpfsPinStatusResponse>(objectMapper.readValue("{\n  \"pin\" : {\n    \"meta\" : \"\",\n    \"name\" : \"name\",\n    \"origins\" : [ \"origins\", \"origins\" ],\n    \"cid\" : \"cid\"\n  },\n  \"created\" : \"created\",\n  \"requestid\" : \"requestid\",\n  \"delegates\" : [ \"delegates\", \"delegates\" ],\n  \"content\" : {\n    \"aggregatedIn\" : 6,\n    \"offloaded\" : true,\n    \"replication\" : 5,\n    \"pinning\" : true,\n    \"pinMeta\" : \"pinMeta\",\n    \"replace\" : true,\n    \"active\" : true,\n    \"description\" : \"description\",\n    \"dagSplit\" : true,\n    \"dealStatus\" : \"dealStatus\",\n    \"failed\" : true,\n    \"type\" : 7,\n    \"userId\" : 9,\n    \"aggregate\" : true,\n    \"createdAt\" : \"createdAt\",\n    \"pinningStatus\" : \"pinningStatus\",\n    \"size\" : 5,\n    \"splitFrom\" : 2,\n    \"name\" : \"name\",\n    \"origins\" : \"origins\",\n    \"location\" : \"location\",\n    \"id\" : 1,\n    \"cid\" : {\n      \"cid\" : { }\n    },\n    \"updatedAt\" : \"updatedAt\"\n  },\n  \"info\" : \"\",\n  \"status\" : \"pinning\"\n}", TypesIpfsPinStatusResponse.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<PinnerIpfsPinStatusResponse>(objectMapper.readValue("{\n  \"pin\" : {\n    \"meta\" : \"\",\n    \"name\" : \"name\",\n    \"origins\" : [ \"origins\", \"origins\" ],\n    \"cid\" : \"cid\"\n  },\n  \"created\" : \"created\",\n  \"requestid\" : \"requestid\",\n  \"delegates\" : [ \"delegates\", \"delegates\" ],\n  \"content\" : {\n    \"aggregatedIn\" : 6,\n    \"offloaded\" : true,\n    \"replication\" : 5,\n    \"pinning\" : true,\n    \"pinMeta\" : \"pinMeta\",\n    \"replace\" : true,\n    \"active\" : true,\n    \"description\" : \"description\",\n    \"dagSplit\" : true,\n    \"dealStatus\" : \"dealStatus\",\n    \"failed\" : true,\n    \"type\" : 7,\n    \"userId\" : 9,\n    \"aggregate\" : true,\n    \"createdAt\" : \"createdAt\",\n    \"pinningStatus\" : \"pinningStatus\",\n    \"size\" : 5,\n    \"splitFrom\" : 2,\n    \"name\" : \"name\",\n    \"origins\" : \"origins\",\n    \"location\" : \"location\",\n    \"id\" : 1,\n    \"cid\" : {\n      \"cid\" : { }\n    },\n    \"updatedAt\" : \"updatedAt\"\n  },\n  \"info\" : \"\",\n  \"status\" : \"pinning\"\n}", PinnerIpfsPinStatusResponse.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<TypesIpfsPinStatusResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<PinnerIpfsPinStatusResponse>(HttpStatus.INTERNAL_SERVER_ERROR);
             }
         }
 
-        return new ResponseEntity<TypesIpfsPinStatusResponse>(HttpStatus.NOT_IMPLEMENTED);
+        return new ResponseEntity<PinnerIpfsPinStatusResponse>(HttpStatus.NOT_IMPLEMENTED);
     }
 
 }

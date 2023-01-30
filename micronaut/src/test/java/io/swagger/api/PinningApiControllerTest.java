@@ -1,8 +1,8 @@
 package io.swagger.api;
 
-import io.swagger.model.TypesIpfsListPinStatusResponse;
-import io.swagger.model.TypesIpfsPin;
-import io.swagger.model.TypesIpfsPinStatusResponse;
+import io.swagger.model.PinnerIpfsListPinStatusResponse;
+import io.swagger.model.PinnerIpfsPin;
+import io.swagger.model.PinnerIpfsPinStatusResponse;
 import io.swagger.model.UtilHttpError;
 
 import io.micronaut.http.HttpResponse;
@@ -53,7 +53,7 @@ class PinningApiControllerTest {
 
     @Test
     void pinningPinsPinidPostTest() {
-        TypesIpfsPin body = new TypesIpfsPin();
+        PinnerIpfsPin body = new PinnerIpfsPin();
         String pinid = "pinid_example";
         try {
             api.pinningPinsPinidPost(body, pinid).blockingGet();
@@ -64,7 +64,7 @@ class PinningApiControllerTest {
 
     @Test
     void pinningPinsPostTest() {
-        TypesIpfsPin body = new TypesIpfsPin();
+        PinnerIpfsPin body = new PinnerIpfsPin();
         String ignoreDupes = "ignoreDupes_example";
         String overwrite = "overwrite_example";
         try {

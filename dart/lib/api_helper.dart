@@ -40,8 +40,8 @@ String parameterToString(dynamic value) {
     return value.toUtc().toIso8601String();
   } else if (value is CollectionsCidType) {
     return CollectionsCidType.encode(value).toString();
-  } else if (value is TypesPinningStatus) {
-    return TypesPinningStatus.encode(value).toString();
+  } else if (value is StatusPinningStatus) {
+    return StatusPinningStatus.encode(value).toString();
   } else if (value is UtilContentType) {
     return UtilContentType.encode(value).toString();
   } else {

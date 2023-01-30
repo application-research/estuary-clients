@@ -566,108 +566,108 @@ export interface PeeringPeeringPeer {
 /**
  * 
  * @export
- * @interface TypesIpfsListPinStatusResponse
+ * @interface PinnerIpfsListPinStatusResponse
  */
-export interface TypesIpfsListPinStatusResponse {
+export interface PinnerIpfsListPinStatusResponse {
     /**
      * 
      * @type {number}
-     * @memberof TypesIpfsListPinStatusResponse
+     * @memberof PinnerIpfsListPinStatusResponse
      */
     count?: number;
     /**
      * 
-     * @type {Array<TypesIpfsPinStatusResponse>}
-     * @memberof TypesIpfsListPinStatusResponse
+     * @type {Array<PinnerIpfsPinStatusResponse>}
+     * @memberof PinnerIpfsListPinStatusResponse
      */
-    results?: Array<TypesIpfsPinStatusResponse>;
+    results?: Array<PinnerIpfsPinStatusResponse>;
 }
 /**
  * 
  * @export
- * @interface TypesIpfsPin
+ * @interface PinnerIpfsPin
  */
-export interface TypesIpfsPin {
+export interface PinnerIpfsPin {
     /**
      * 
      * @type {string}
-     * @memberof TypesIpfsPin
+     * @memberof PinnerIpfsPin
      */
     cid?: string;
     /**
      * 
      * @type {{ [key: string]: any; }}
-     * @memberof TypesIpfsPin
+     * @memberof PinnerIpfsPin
      */
     meta?: { [key: string]: any; };
     /**
      * 
      * @type {string}
-     * @memberof TypesIpfsPin
+     * @memberof PinnerIpfsPin
      */
     name?: string;
     /**
      * 
      * @type {Array<string>}
-     * @memberof TypesIpfsPin
+     * @memberof PinnerIpfsPin
      */
     origins?: Array<string>;
 }
 /**
  * 
  * @export
- * @interface TypesIpfsPinStatusResponse
+ * @interface PinnerIpfsPinStatusResponse
  */
-export interface TypesIpfsPinStatusResponse {
+export interface PinnerIpfsPinStatusResponse {
     /**
      * 
      * @type {UtilContent}
-     * @memberof TypesIpfsPinStatusResponse
+     * @memberof PinnerIpfsPinStatusResponse
      */
     content?: UtilContent;
     /**
      * 
      * @type {string}
-     * @memberof TypesIpfsPinStatusResponse
+     * @memberof PinnerIpfsPinStatusResponse
      */
     created?: string;
     /**
      * 
      * @type {Array<string>}
-     * @memberof TypesIpfsPinStatusResponse
+     * @memberof PinnerIpfsPinStatusResponse
      */
     delegates?: Array<string>;
     /**
      * 
      * @type {{ [key: string]: any; }}
-     * @memberof TypesIpfsPinStatusResponse
+     * @memberof PinnerIpfsPinStatusResponse
      */
     info?: { [key: string]: any; };
     /**
      * 
-     * @type {TypesIpfsPin}
-     * @memberof TypesIpfsPinStatusResponse
+     * @type {PinnerIpfsPin}
+     * @memberof PinnerIpfsPinStatusResponse
      */
-    pin?: TypesIpfsPin;
+    pin?: PinnerIpfsPin;
     /**
      * 
      * @type {string}
-     * @memberof TypesIpfsPinStatusResponse
+     * @memberof PinnerIpfsPinStatusResponse
      */
     requestid?: string;
     /**
      * 
-     * @type {TypesPinningStatus}
-     * @memberof TypesIpfsPinStatusResponse
+     * @type {StatusPinningStatus}
+     * @memberof PinnerIpfsPinStatusResponse
      */
-    status?: TypesPinningStatus;
+    status?: StatusPinningStatus;
 }
 /**
  * 
  * @export
  * @enum {string}
  */
-export enum TypesPinningStatus {
+export enum StatusPinningStatus {
     Pinning = <any> 'pinning',
     Pinned = <any> 'pinned',
     Failed = <any> 'failed',
@@ -2884,13 +2884,13 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
         /**
          * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
          * @summary Add IPFS object
-         * @param {TypesIpfsPin} body IPFS Body
+         * @param {PinnerIpfsPin} body IPFS Body
          * @param {string} [ignoreDupes] Ignore Dupes
          * @param {string} [overwrite] Overwrite conflicting files in collections
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, options: any = {}): FetchArgs {
+        contentAddIpfsPost(body: PinnerIpfsPin, ignoreDupes?: string, overwrite?: string, options: any = {}): FetchArgs {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling contentAddIpfsPost.');
@@ -2923,7 +2923,7 @@ export const ContentApiFetchParamCreator = function (configuration?: Configurati
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"TypesIpfsPin" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (<any>"PinnerIpfsPin" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
 
             return {
@@ -3702,13 +3702,13 @@ export const ContentApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
          * @summary Add IPFS object
-         * @param {TypesIpfsPin} body IPFS Body
+         * @param {PinnerIpfsPin} body IPFS Body
          * @param {string} [ignoreDupes] Ignore Dupes
          * @param {string} [overwrite] Overwrite conflicting files in collections
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
+        contentAddIpfsPost(body: PinnerIpfsPin, ignoreDupes?: string, overwrite?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<string> {
             const localVarFetchArgs = ContentApiFetchParamCreator(configuration).contentAddIpfsPost(body, ignoreDupes, overwrite, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -4080,13 +4080,13 @@ export const ContentApiFactory = function (configuration?: Configuration, fetch?
         /**
          * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
          * @summary Add IPFS object
-         * @param {TypesIpfsPin} body IPFS Body
+         * @param {PinnerIpfsPin} body IPFS Body
          * @param {string} [ignoreDupes] Ignore Dupes
          * @param {string} [overwrite] Overwrite conflicting files in collections
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, options?: any) {
+        contentAddIpfsPost(body: PinnerIpfsPin, ignoreDupes?: string, overwrite?: string, options?: any) {
             return ContentApiFp(configuration).contentAddIpfsPost(body, ignoreDupes, overwrite, options)(fetch, basePath);
         },
         /**
@@ -4312,14 +4312,14 @@ export class ContentApi extends BaseAPI {
     /**
      * This endpoint is used to add an IPFS object to the network. The object can be a file or a directory.
      * @summary Add IPFS object
-     * @param {TypesIpfsPin} body IPFS Body
+     * @param {PinnerIpfsPin} body IPFS Body
      * @param {string} [ignoreDupes] Ignore Dupes
      * @param {string} [overwrite] Overwrite conflicting files in collections
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContentApi
      */
-    public contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, options?: any) {
+    public contentAddIpfsPost(body: PinnerIpfsPin, ignoreDupes?: string, overwrite?: string, options?: any) {
         return ContentApiFp(this.configuration).contentAddIpfsPost(body, ignoreDupes, overwrite, options)(this.fetch, this.basePath);
     }
 
@@ -6836,12 +6836,12 @@ export const PinningApiFetchParamCreator = function (configuration?: Configurati
         /**
          * This endpoint replaces a pinned object.
          * @summary Replace a pinned object
-         * @param {TypesIpfsPin} body New pin
+         * @param {PinnerIpfsPin} body New pin
          * @param {string} pinid Pin ID to be replaced
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinningPinsPinidPost(body: TypesIpfsPin, pinid: string, options: any = {}): FetchArgs {
+        pinningPinsPinidPost(body: PinnerIpfsPin, pinid: string, options: any = {}): FetchArgs {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling pinningPinsPinidPost.');
@@ -6871,7 +6871,7 @@ export const PinningApiFetchParamCreator = function (configuration?: Configurati
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"TypesIpfsPin" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (<any>"PinnerIpfsPin" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
 
             return {
@@ -6882,13 +6882,13 @@ export const PinningApiFetchParamCreator = function (configuration?: Configurati
         /**
          * This endpoint adds a pin to the IPFS daemon.
          * @summary Add and pin object
-         * @param {TypesIpfsPin} body Pin Body {cid:cid, name:name}
+         * @param {PinnerIpfsPin} body Pin Body {cid:cid, name:name}
          * @param {string} [ignoreDupes] Ignore Dupes
          * @param {string} [overwrite] Overwrite conflicting files in collections
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinningPinsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, options: any = {}): FetchArgs {
+        pinningPinsPost(body: PinnerIpfsPin, ignoreDupes?: string, overwrite?: string, options: any = {}): FetchArgs {
             // verify required parameter 'body' is not null or undefined
             if (body === null || body === undefined) {
                 throw new RequiredError('body','Required parameter body was null or undefined when calling pinningPinsPost.');
@@ -6921,7 +6921,7 @@ export const PinningApiFetchParamCreator = function (configuration?: Configurati
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"TypesIpfsPin" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+            const needsSerialization = (<any>"PinnerIpfsPin" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
             localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
 
             return {
@@ -6944,7 +6944,7 @@ export const PinningApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinningPinsGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<TypesIpfsListPinStatusResponse> {
+        pinningPinsGet(options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<PinnerIpfsListPinStatusResponse> {
             const localVarFetchArgs = PinningApiFetchParamCreator(configuration).pinningPinsGet(options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -6982,7 +6982,7 @@ export const PinningApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinningPinsPinidGet(pinid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<TypesIpfsPinStatusResponse> {
+        pinningPinsPinidGet(pinid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<PinnerIpfsPinStatusResponse> {
             const localVarFetchArgs = PinningApiFetchParamCreator(configuration).pinningPinsPinidGet(pinid, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -6997,12 +6997,12 @@ export const PinningApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint replaces a pinned object.
          * @summary Replace a pinned object
-         * @param {TypesIpfsPin} body New pin
+         * @param {PinnerIpfsPin} body New pin
          * @param {string} pinid Pin ID to be replaced
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinningPinsPinidPost(body: TypesIpfsPin, pinid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<TypesIpfsPinStatusResponse> {
+        pinningPinsPinidPost(body: PinnerIpfsPin, pinid: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<PinnerIpfsPinStatusResponse> {
             const localVarFetchArgs = PinningApiFetchParamCreator(configuration).pinningPinsPinidPost(body, pinid, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -7017,13 +7017,13 @@ export const PinningApiFp = function(configuration?: Configuration) {
         /**
          * This endpoint adds a pin to the IPFS daemon.
          * @summary Add and pin object
-         * @param {TypesIpfsPin} body Pin Body {cid:cid, name:name}
+         * @param {PinnerIpfsPin} body Pin Body {cid:cid, name:name}
          * @param {string} [ignoreDupes] Ignore Dupes
          * @param {string} [overwrite] Overwrite conflicting files in collections
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinningPinsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<TypesIpfsPinStatusResponse> {
+        pinningPinsPost(body: PinnerIpfsPin, ignoreDupes?: string, overwrite?: string, options?: any): (fetch?: FetchAPI, basePath?: string) => Promise<PinnerIpfsPinStatusResponse> {
             const localVarFetchArgs = PinningApiFetchParamCreator(configuration).pinningPinsPost(body, ignoreDupes, overwrite, options);
             return (fetch: FetchAPI = isomorphicFetch, basePath: string = BASE_PATH) => {
                 return fetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options).then((response) => {
@@ -7076,24 +7076,24 @@ export const PinningApiFactory = function (configuration?: Configuration, fetch?
         /**
          * This endpoint replaces a pinned object.
          * @summary Replace a pinned object
-         * @param {TypesIpfsPin} body New pin
+         * @param {PinnerIpfsPin} body New pin
          * @param {string} pinid Pin ID to be replaced
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinningPinsPinidPost(body: TypesIpfsPin, pinid: string, options?: any) {
+        pinningPinsPinidPost(body: PinnerIpfsPin, pinid: string, options?: any) {
             return PinningApiFp(configuration).pinningPinsPinidPost(body, pinid, options)(fetch, basePath);
         },
         /**
          * This endpoint adds a pin to the IPFS daemon.
          * @summary Add and pin object
-         * @param {TypesIpfsPin} body Pin Body {cid:cid, name:name}
+         * @param {PinnerIpfsPin} body Pin Body {cid:cid, name:name}
          * @param {string} [ignoreDupes] Ignore Dupes
          * @param {string} [overwrite] Overwrite conflicting files in collections
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        pinningPinsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, options?: any) {
+        pinningPinsPost(body: PinnerIpfsPin, ignoreDupes?: string, overwrite?: string, options?: any) {
             return PinningApiFp(configuration).pinningPinsPost(body, ignoreDupes, overwrite, options)(fetch, basePath);
         },
     };
@@ -7144,27 +7144,27 @@ export class PinningApi extends BaseAPI {
     /**
      * This endpoint replaces a pinned object.
      * @summary Replace a pinned object
-     * @param {TypesIpfsPin} body New pin
+     * @param {PinnerIpfsPin} body New pin
      * @param {string} pinid Pin ID to be replaced
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PinningApi
      */
-    public pinningPinsPinidPost(body: TypesIpfsPin, pinid: string, options?: any) {
+    public pinningPinsPinidPost(body: PinnerIpfsPin, pinid: string, options?: any) {
         return PinningApiFp(this.configuration).pinningPinsPinidPost(body, pinid, options)(this.fetch, this.basePath);
     }
 
     /**
      * This endpoint adds a pin to the IPFS daemon.
      * @summary Add and pin object
-     * @param {TypesIpfsPin} body Pin Body {cid:cid, name:name}
+     * @param {PinnerIpfsPin} body Pin Body {cid:cid, name:name}
      * @param {string} [ignoreDupes] Ignore Dupes
      * @param {string} [overwrite] Overwrite conflicting files in collections
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof PinningApi
      */
-    public pinningPinsPost(body: TypesIpfsPin, ignoreDupes?: string, overwrite?: string, options?: any) {
+    public pinningPinsPost(body: PinnerIpfsPin, ignoreDupes?: string, overwrite?: string, options?: any) {
         return PinningApiFp(this.configuration).pinningPinsPost(body, ignoreDupes, overwrite, options)(this.fetch, this.basePath);
     }
 

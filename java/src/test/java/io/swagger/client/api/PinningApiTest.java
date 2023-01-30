@@ -12,9 +12,9 @@
 
 package io.swagger.client.api;
 
-import io.swagger.client.model.TypesIpfsListPinStatusResponse;
-import io.swagger.client.model.TypesIpfsPin;
-import io.swagger.client.model.TypesIpfsPinStatusResponse;
+import io.swagger.client.model.PinnerIpfsListPinStatusResponse;
+import io.swagger.client.model.PinnerIpfsPin;
+import io.swagger.client.model.PinnerIpfsPinStatusResponse;
 import io.swagger.client.model.UtilHttpError;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -44,7 +44,7 @@ public class PinningApiTest {
      */
     @Test
     public void pinningPinsGetTest() throws Exception {
-        TypesIpfsListPinStatusResponse response = api.pinningPinsGet();
+        PinnerIpfsListPinStatusResponse response = api.pinningPinsGet();
 
         // TODO: test validations
     }
@@ -74,7 +74,7 @@ public class PinningApiTest {
     @Test
     public void pinningPinsPinidGetTest() throws Exception {
         String pinid = null;
-        TypesIpfsPinStatusResponse response = api.pinningPinsPinidGet(pinid);
+        PinnerIpfsPinStatusResponse response = api.pinningPinsPinidGet(pinid);
 
         // TODO: test validations
     }
@@ -88,9 +88,9 @@ public class PinningApiTest {
      */
     @Test
     public void pinningPinsPinidPostTest() throws Exception {
-        TypesIpfsPin body = null;
+        PinnerIpfsPin body = null;
         String pinid = null;
-        TypesIpfsPinStatusResponse response = api.pinningPinsPinidPost(body, pinid);
+        PinnerIpfsPinStatusResponse response = api.pinningPinsPinidPost(body, pinid);
 
         // TODO: test validations
     }
@@ -104,10 +104,10 @@ public class PinningApiTest {
      */
     @Test
     public void pinningPinsPostTest() throws Exception {
-        TypesIpfsPin body = null;
+        PinnerIpfsPin body = null;
         String ignoreDupes = null;
         String overwrite = null;
-        TypesIpfsPinStatusResponse response = api.pinningPinsPost(body, ignoreDupes, overwrite);
+        PinnerIpfsPinStatusResponse response = api.pinningPinsPost(body, ignoreDupes, overwrite);
 
         // TODO: test validations
     }

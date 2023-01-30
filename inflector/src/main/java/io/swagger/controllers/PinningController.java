@@ -10,12 +10,12 @@ import java.util.List;
 
 import io.swagger.model.*;
 
-import io.swagger.model.TypesIpfsListPinStatusResponse;
-import io.swagger.model.TypesIpfsPin;
-import io.swagger.model.TypesIpfsPinStatusResponse;
+import io.swagger.model.PinnerIpfsListPinStatusResponse;
+import io.swagger.model.PinnerIpfsPin;
+import io.swagger.model.PinnerIpfsPinStatusResponse;
 import io.swagger.model.UtilHttpError;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2023-01-24T07:25:40.154Z[GMT]")public class PinningController  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2023-01-30T18:30:33.816Z[GMT]")public class PinningController  {
   /** 
    * Uncomment and implement as you see fit.  These operations will map
    * Directly to operation calls from the routing logic.  Because the inflector
@@ -29,7 +29,7 @@ import io.swagger.model.UtilHttpError;
   */
 
   /*
-    public ResponseContext pinningPinsPOST(RequestContext request , TypesIpfsPin body 
+    public ResponseContext pinningPinsPOST(RequestContext request , PinnerIpfsPin body 
 , String ignoreDupes 
 , String overwrite 
 ) {
@@ -52,7 +52,7 @@ import io.swagger.model.UtilHttpError;
   */
 
   /*
-    public ResponseContext pinningPinsPinidPOST(RequestContext request , TypesIpfsPin body 
+    public ResponseContext pinningPinsPinidPOST(RequestContext request , PinnerIpfsPin body 
 , String pinid 
 ) {
         return new ResponseContext().status(Status.INTERNAL_SERVER_ERROR).entity( "Not implemented" );

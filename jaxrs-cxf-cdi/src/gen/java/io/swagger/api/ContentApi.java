@@ -1,7 +1,7 @@
 package io.swagger.api;
 
 import java.io.File;
-import io.swagger.model.TypesIpfsPin;
+import io.swagger.model.PinnerIpfsPin;
 import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
@@ -36,7 +36,7 @@ import javax.validation.constraints.*;
 
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2023-01-24T07:25:44.517Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2023-01-30T18:30:35.818Z[GMT]")
 public class ContentApi  {
 
   @Context SecurityContext securityContext;
@@ -75,7 +75,7 @@ public class ContentApi  {
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
     public Response contentAddIpfsPost(
-@Parameter(description = "IPFS Body" ,required=true) TypesIpfsPin body
+@Parameter(description = "IPFS Body" ,required=true) PinnerIpfsPin body
 ,  
 @Parameter(description = "Ignore Dupes")  @QueryParam("ignore-dupes") String ignoreDupes
 ,  

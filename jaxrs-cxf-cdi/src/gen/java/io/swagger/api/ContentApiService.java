@@ -7,7 +7,7 @@ import org.apache.cxf.jaxrs.ext.multipart.Attachment;
 import org.apache.cxf.jaxrs.ext.multipart.Multipart;
 
 import java.io.File;
-import io.swagger.model.TypesIpfsPin;
+import io.swagger.model.PinnerIpfsPin;
 import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
@@ -19,9 +19,9 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2023-01-24T07:25:44.517Z[GMT]")public interface ContentApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2023-01-30T18:30:35.818Z[GMT]")public interface ContentApiService {
       public Response contentAddCarPost(String body, String ignoreDupes, String filename, SecurityContext securityContext);
-      public Response contentAddIpfsPost(TypesIpfsPin body, String ignoreDupes, String overwrite, SecurityContext securityContext);
+      public Response contentAddIpfsPost(PinnerIpfsPin body, String ignoreDupes, String overwrite, SecurityContext securityContext);
       public Response contentAddPost(InputStream dataInputStream, Attachment dataDetail, String filename, String coluuid, Integer replication, String ignoreDupes, String overwrite, String lazyProvide, String dir, SecurityContext securityContext);
       public Response contentAggregatedContentGet(String content, SecurityContext securityContext);
       public Response contentAllDealsGet(String begin, String duration, String all, SecurityContext securityContext);

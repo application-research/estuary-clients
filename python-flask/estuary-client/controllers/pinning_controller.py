@@ -1,9 +1,9 @@
 import connexion
 import six
 
-from estuary-client.models.types_ipfs_list_pin_status_response import TypesIpfsListPinStatusResponse  # noqa: E501
-from estuary-client.models.types_ipfs_pin import TypesIpfsPin  # noqa: E501
-from estuary-client.models.types_ipfs_pin_status_response import TypesIpfsPinStatusResponse  # noqa: E501
+from estuary-client.models.pinner_ipfs_list_pin_status_response import PinnerIpfsListPinStatusResponse  # noqa: E501
+from estuary-client.models.pinner_ipfs_pin import PinnerIpfsPin  # noqa: E501
+from estuary-client.models.pinner_ipfs_pin_status_response import PinnerIpfsPinStatusResponse  # noqa: E501
 from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
 from estuary-client import util
 
@@ -14,7 +14,7 @@ def pinning_pins_get():  # noqa: E501
     This endpoint lists all pin status objects # noqa: E501
 
 
-    :rtype: TypesIpfsListPinStatusResponse
+    :rtype: PinnerIpfsListPinStatusResponse
     """
     return 'do some magic!'
 
@@ -40,7 +40,7 @@ def pinning_pins_pinid_get(pinid):  # noqa: E501
     :param pinid: cid
     :type pinid: str
 
-    :rtype: TypesIpfsPinStatusResponse
+    :rtype: PinnerIpfsPinStatusResponse
     """
     return 'do some magic!'
 
@@ -55,10 +55,10 @@ def pinning_pins_pinid_post(body, pinid):  # noqa: E501
     :param pinid: Pin ID to be replaced
     :type pinid: str
 
-    :rtype: TypesIpfsPinStatusResponse
+    :rtype: PinnerIpfsPinStatusResponse
     """
     if connexion.request.is_json:
-        body = TypesIpfsPin.from_dict(connexion.request.get_json())  # noqa: E501
+        body = PinnerIpfsPin.from_dict(connexion.request.get_json())  # noqa: E501
     return 'do some magic!'
 
 
@@ -74,8 +74,8 @@ def pinning_pins_post(body, ignore_dupes=None, overwrite=None):  # noqa: E501
     :param overwrite: Overwrite conflicting files in collections
     :type overwrite: str
 
-    :rtype: TypesIpfsPinStatusResponse
+    :rtype: PinnerIpfsPinStatusResponse
     """
     if connexion.request.is_json:
-        body = TypesIpfsPin.from_dict(connexion.request.get_json())  # noqa: E501
+        body = PinnerIpfsPin.from_dict(connexion.request.get_json())  # noqa: E501
     return 'do some magic!'

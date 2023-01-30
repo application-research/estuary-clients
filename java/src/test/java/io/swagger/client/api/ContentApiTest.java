@@ -13,7 +13,7 @@
 package io.swagger.client.api;
 
 import java.io.File;
-import io.swagger.client.model.TypesIpfsPin;
+import io.swagger.client.model.PinnerIpfsPin;
 import io.swagger.client.model.UtilContentAddResponse;
 import io.swagger.client.model.UtilContentCreateBody;
 import io.swagger.client.model.UtilHttpError;
@@ -91,7 +91,7 @@ public class ContentApiTest {
      */
     @Test
     public void contentAddIpfsPostTest() throws Exception {
-        TypesIpfsPin body = null;
+        PinnerIpfsPin body = null;
         String ignoreDupes = null;
         String overwrite = null;
         String response = api.contentAddIpfsPost(body, ignoreDupes, overwrite);

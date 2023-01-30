@@ -5,7 +5,7 @@ import io.swagger.model.*;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
 import java.io.File;
-import io.swagger.model.TypesIpfsPin;
+import io.swagger.model.PinnerIpfsPin;
 import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
@@ -18,10 +18,10 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-24T07:25:42.644Z[GMT]")public interface ContentApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-30T18:30:33.651Z[GMT]")public interface ContentApiService {
       Response contentAddCarPost(String body,String ignoreDupes,String filename,SecurityContext securityContext)
       throws NotFoundException;
-      Response contentAddIpfsPost(TypesIpfsPin body,String ignoreDupes,String overwrite,SecurityContext securityContext)
+      Response contentAddIpfsPost(PinnerIpfsPin body,String ignoreDupes,String overwrite,SecurityContext securityContext)
       throws NotFoundException;
       Response contentAddPost(MultipartFormDataInput input,String coluuid,Integer replication,String ignoreDupes,String overwrite,String lazyProvide,String dir,SecurityContext securityContext)
       throws NotFoundException;

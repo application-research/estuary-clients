@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="pinningpinsget"></a>
 # **PinningPinsGet**
-> TypesIpfsListPinStatusResponse PinningPinsGet ()
+> PinnerIpfsListPinStatusResponse PinningPinsGet ()
 
 List all pin status objects
 
@@ -43,7 +43,7 @@ namespace Example
             try
             {
                 // List all pin status objects
-                TypesIpfsListPinStatusResponse result = apiInstance.PinningPinsGet();
+                PinnerIpfsListPinStatusResponse result = apiInstance.PinningPinsGet();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -60,7 +60,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**TypesIpfsListPinStatusResponse**](TypesIpfsListPinStatusResponse.md)
+[**PinnerIpfsListPinStatusResponse**](PinnerIpfsListPinStatusResponse.md)
 
 ### Authorization
 
@@ -141,7 +141,7 @@ void (empty response body)
 
 <a name="pinningpinspinidget"></a>
 # **PinningPinsPinidGet**
-> TypesIpfsPinStatusResponse PinningPinsPinidGet (string pinid)
+> PinnerIpfsPinStatusResponse PinningPinsPinidGet (string pinid)
 
 Get a pin status object
 
@@ -173,7 +173,7 @@ namespace Example
             try
             {
                 // Get a pin status object
-                TypesIpfsPinStatusResponse result = apiInstance.PinningPinsPinidGet(pinid);
+                PinnerIpfsPinStatusResponse result = apiInstance.PinningPinsPinidGet(pinid);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -193,7 +193,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
+[**PinnerIpfsPinStatusResponse**](PinnerIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -208,7 +208,7 @@ Name | Type | Description  | Notes
 
 <a name="pinningpinspinidpost"></a>
 # **PinningPinsPinidPost**
-> TypesIpfsPinStatusResponse PinningPinsPinidPost (TypesIpfsPin body, string pinid)
+> PinnerIpfsPinStatusResponse PinningPinsPinidPost (PinnerIpfsPin body, string pinid)
 
 Replace a pinned object
 
@@ -235,13 +235,13 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new PinningApi();
-            var body = new TypesIpfsPin(); // TypesIpfsPin | New pin
+            var body = new PinnerIpfsPin(); // PinnerIpfsPin | New pin
             var pinid = pinid_example;  // string | Pin ID to be replaced
 
             try
             {
                 // Replace a pinned object
-                TypesIpfsPinStatusResponse result = apiInstance.PinningPinsPinidPost(body, pinid);
+                PinnerIpfsPinStatusResponse result = apiInstance.PinningPinsPinidPost(body, pinid);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -257,12 +257,12 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| New pin | 
+ **body** | [**PinnerIpfsPin**](PinnerIpfsPin.md)| New pin | 
  **pinid** | **string**| Pin ID to be replaced | 
 
 ### Return type
 
-[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
+[**PinnerIpfsPinStatusResponse**](PinnerIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -277,7 +277,7 @@ Name | Type | Description  | Notes
 
 <a name="pinningpinspost"></a>
 # **PinningPinsPost**
-> TypesIpfsPinStatusResponse PinningPinsPost (TypesIpfsPin body, string ignoreDupes, string overwrite)
+> PinnerIpfsPinStatusResponse PinningPinsPost (PinnerIpfsPin body, string ignoreDupes, string overwrite)
 
 Add and pin object
 
@@ -304,14 +304,14 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new PinningApi();
-            var body = new TypesIpfsPin(); // TypesIpfsPin | Pin Body {cid:cid, name:name}
+            var body = new PinnerIpfsPin(); // PinnerIpfsPin | Pin Body {cid:cid, name:name}
             var ignoreDupes = ignoreDupes_example;  // string | Ignore Dupes (optional) 
             var overwrite = overwrite_example;  // string | Overwrite conflicting files in collections (optional) 
 
             try
             {
                 // Add and pin object
-                TypesIpfsPinStatusResponse result = apiInstance.PinningPinsPost(body, ignoreDupes, overwrite);
+                PinnerIpfsPinStatusResponse result = apiInstance.PinningPinsPost(body, ignoreDupes, overwrite);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -327,13 +327,13 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
+ **body** | [**PinnerIpfsPin**](PinnerIpfsPin.md)| Pin Body {cid:cid, name:name} | 
  **ignoreDupes** | **string**| Ignore Dupes | [optional] 
  **overwrite** | **string**| Overwrite conflicting files in collections | [optional] 
 
 ### Return type
 
-[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
+[**PinnerIpfsPinStatusResponse**](PinnerIpfsPinStatusResponse.md)
 
 ### Authorization
 

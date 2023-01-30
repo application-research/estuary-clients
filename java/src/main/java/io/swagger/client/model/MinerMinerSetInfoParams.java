@@ -25,7 +25,7 @@ import java.io.IOException;
  * MinerMinerSetInfoParams
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2023-01-24T07:25:39.898Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2023-01-30T18:30:33.258Z[GMT]")
 public class MinerMinerSetInfoParams {
   @SerializedName("name")
   private String name = null;

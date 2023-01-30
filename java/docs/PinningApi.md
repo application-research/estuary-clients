@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="pinningPinsGet"></a>
 # **pinningPinsGet**
-> TypesIpfsListPinStatusResponse pinningPinsGet()
+> PinnerIpfsListPinStatusResponse pinningPinsGet()
 
 List all pin status objects
 
@@ -37,7 +37,7 @@ bearerAuth.setApiKey("YOUR API KEY");
 
 PinningApi apiInstance = new PinningApi();
 try {
-    TypesIpfsListPinStatusResponse result = apiInstance.pinningPinsGet();
+    PinnerIpfsListPinStatusResponse result = apiInstance.pinningPinsGet();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PinningApi#pinningPinsGet");
@@ -50,7 +50,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**TypesIpfsListPinStatusResponse**](TypesIpfsListPinStatusResponse.md)
+[**PinnerIpfsListPinStatusResponse**](PinnerIpfsListPinStatusResponse.md)
 
 ### Authorization
 
@@ -117,7 +117,7 @@ null (empty response body)
 
 <a name="pinningPinsPinidGet"></a>
 # **pinningPinsPinidGet**
-> TypesIpfsPinStatusResponse pinningPinsPinidGet(pinid)
+> PinnerIpfsPinStatusResponse pinningPinsPinidGet(pinid)
 
 Get a pin status object
 
@@ -143,7 +143,7 @@ bearerAuth.setApiKey("YOUR API KEY");
 PinningApi apiInstance = new PinningApi();
 String pinid = "pinid_example"; // String | cid
 try {
-    TypesIpfsPinStatusResponse result = apiInstance.pinningPinsPinidGet(pinid);
+    PinnerIpfsPinStatusResponse result = apiInstance.pinningPinsPinidGet(pinid);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PinningApi#pinningPinsPinidGet");
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
+[**PinnerIpfsPinStatusResponse**](PinnerIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -172,7 +172,7 @@ Name | Type | Description  | Notes
 
 <a name="pinningPinsPinidPost"></a>
 # **pinningPinsPinidPost**
-> TypesIpfsPinStatusResponse pinningPinsPinidPost(body, pinid)
+> PinnerIpfsPinStatusResponse pinningPinsPinidPost(body, pinid)
 
 Replace a pinned object
 
@@ -196,10 +196,10 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 PinningApi apiInstance = new PinningApi();
-TypesIpfsPin body = new TypesIpfsPin(); // TypesIpfsPin | New pin
+PinnerIpfsPin body = new PinnerIpfsPin(); // PinnerIpfsPin | New pin
 String pinid = "pinid_example"; // String | Pin ID to be replaced
 try {
-    TypesIpfsPinStatusResponse result = apiInstance.pinningPinsPinidPost(body, pinid);
+    PinnerIpfsPinStatusResponse result = apiInstance.pinningPinsPinidPost(body, pinid);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PinningApi#pinningPinsPinidPost");
@@ -211,12 +211,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| New pin |
+ **body** | [**PinnerIpfsPin**](PinnerIpfsPin.md)| New pin |
  **pinid** | **String**| Pin ID to be replaced |
 
 ### Return type
 
-[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
+[**PinnerIpfsPinStatusResponse**](PinnerIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
 
 <a name="pinningPinsPost"></a>
 # **pinningPinsPost**
-> TypesIpfsPinStatusResponse pinningPinsPost(body, ignoreDupes, overwrite)
+> PinnerIpfsPinStatusResponse pinningPinsPost(body, ignoreDupes, overwrite)
 
 Add and pin object
 
@@ -253,11 +253,11 @@ bearerAuth.setApiKey("YOUR API KEY");
 //bearerAuth.setApiKeyPrefix("Token");
 
 PinningApi apiInstance = new PinningApi();
-TypesIpfsPin body = new TypesIpfsPin(); // TypesIpfsPin | Pin Body {cid:cid, name:name}
+PinnerIpfsPin body = new PinnerIpfsPin(); // PinnerIpfsPin | Pin Body {cid:cid, name:name}
 String ignoreDupes = "ignoreDupes_example"; // String | Ignore Dupes
 String overwrite = "overwrite_example"; // String | Overwrite conflicting files in collections
 try {
-    TypesIpfsPinStatusResponse result = apiInstance.pinningPinsPost(body, ignoreDupes, overwrite);
+    PinnerIpfsPinStatusResponse result = apiInstance.pinningPinsPost(body, ignoreDupes, overwrite);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PinningApi#pinningPinsPost");
@@ -269,13 +269,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} |
+ **body** | [**PinnerIpfsPin**](PinnerIpfsPin.md)| Pin Body {cid:cid, name:name} |
  **ignoreDupes** | **String**| Ignore Dupes | [optional]
  **overwrite** | **String**| Overwrite conflicting files in collections | [optional]
 
 ### Return type
 
-[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
+[**PinnerIpfsPinStatusResponse**](PinnerIpfsPinStatusResponse.md)
 
 ### Authorization
 

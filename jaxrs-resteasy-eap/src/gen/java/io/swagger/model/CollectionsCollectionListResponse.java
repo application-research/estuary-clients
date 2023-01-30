@@ -10,7 +10,7 @@ import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2023-01-24T07:25:41.999Z[GMT]")public class CollectionsCollectionListResponse   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2023-01-30T18:30:34.034Z[GMT]")public class CollectionsCollectionListResponse   {
   private UtilDbCID cid = null;
   private String coluuid = null;
   private Integer contId = null;

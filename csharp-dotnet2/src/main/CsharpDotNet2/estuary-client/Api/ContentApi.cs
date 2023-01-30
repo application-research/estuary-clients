@@ -37,7 +37,7 @@ namespace IO.Swagger.Api
         /// <param name="ignoreDupes">Ignore Dupes</param>
         /// <param name="overwrite">Overwrite conflicting files in collections</param>
         /// <returns>string</returns>
-        string ContentAddIpfsPost (TypesIpfsPin body, string ignoreDupes, string overwrite);
+        string ContentAddIpfsPost (PinnerIpfsPin body, string ignoreDupes, string overwrite);
         /// <summary>
         /// Add new content This endpoint is used to upload new content.
         /// </summary>
@@ -314,7 +314,7 @@ namespace IO.Swagger.Api
         /// <param name="ignoreDupes">Ignore Dupes</param>
         /// <param name="overwrite">Overwrite conflicting files in collections</param>
         /// <returns>string</returns>
-        public string ContentAddIpfsPost (TypesIpfsPin body, string ignoreDupes, string overwrite)
+        public string ContentAddIpfsPost (PinnerIpfsPin body, string ignoreDupes, string overwrite)
         {
             // verify the required parameter 'body' is set
             if (body == null) throw new ApiException(400, "Missing required parameter 'body' when calling ContentAddIpfsPost");

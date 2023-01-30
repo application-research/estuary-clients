@@ -16,7 +16,7 @@ Method | HTTP request | Description
 [**pinningPinsPost**](PinningApi.md#pinningPinsPost) | **POST** /pinning/pins | Add and pin object
 
 # **pinningPinsGet**
-> TypesIpfsListPinStatusResponse pinningPinsGet()
+> PinnerIpfsListPinStatusResponse pinningPinsGet()
 
 List all pin status objects
 
@@ -45,7 +45,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**TypesIpfsListPinStatusResponse**](TypesIpfsListPinStatusResponse.md)
+[**PinnerIpfsListPinStatusResponse**](PinnerIpfsListPinStatusResponse.md)
 
 ### Authorization
 
@@ -105,7 +105,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinningPinsPinidGet**
-> TypesIpfsPinStatusResponse pinningPinsPinidGet(pinid)
+> PinnerIpfsPinStatusResponse pinningPinsPinidGet(pinid)
 
 Get a pin status object
 
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
+[**PinnerIpfsPinStatusResponse**](PinnerIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -152,7 +152,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinningPinsPinidPost**
-> TypesIpfsPinStatusResponse pinningPinsPinidPost(body, pinid)
+> PinnerIpfsPinStatusResponse pinningPinsPinidPost(body, pinid)
 
 Replace a pinned object
 
@@ -167,7 +167,7 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new PinningApi();
-var body = new TypesIpfsPin(); // TypesIpfsPin | New pin
+var body = new PinnerIpfsPin(); // PinnerIpfsPin | New pin
 var pinid = pinid_example; // String | Pin ID to be replaced
 
 try {
@@ -182,12 +182,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| New pin | 
+ **body** | [**PinnerIpfsPin**](PinnerIpfsPin.md)| New pin | 
  **pinid** | **String**| Pin ID to be replaced | 
 
 ### Return type
 
-[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
+[**PinnerIpfsPinStatusResponse**](PinnerIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -201,7 +201,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **pinningPinsPost**
-> TypesIpfsPinStatusResponse pinningPinsPost(body, ignoreDupes, overwrite)
+> PinnerIpfsPinStatusResponse pinningPinsPost(body, ignoreDupes, overwrite)
 
 Add and pin object
 
@@ -216,7 +216,7 @@ import 'package:swagger/api.dart';
 //swagger.api.Configuration.apiKeyPrefix{'Authorization'} = "Bearer";
 
 var api_instance = new PinningApi();
-var body = new TypesIpfsPin(); // TypesIpfsPin | Pin Body {cid:cid, name:name}
+var body = new PinnerIpfsPin(); // PinnerIpfsPin | Pin Body {cid:cid, name:name}
 var ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
 var overwrite = overwrite_example; // String | Overwrite conflicting files in collections
 
@@ -232,13 +232,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
+ **body** | [**PinnerIpfsPin**](PinnerIpfsPin.md)| Pin Body {cid:cid, name:name} | 
  **ignoreDupes** | **String**| Ignore Dupes | [optional] 
  **overwrite** | **String**| Overwrite conflicting files in collections | [optional] 
 
 ### Return type
 
-[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
+[**PinnerIpfsPinStatusResponse**](PinnerIpfsPinStatusResponse.md)
 
 ### Authorization
 

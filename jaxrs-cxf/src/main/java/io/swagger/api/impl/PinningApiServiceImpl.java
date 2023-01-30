@@ -1,9 +1,9 @@
 package io.swagger.api.impl;
 
 import io.swagger.api.*;
-import io.swagger.model.TypesIpfsListPinStatusResponse;
-import io.swagger.model.TypesIpfsPin;
-import io.swagger.model.TypesIpfsPinStatusResponse;
+import io.swagger.model.PinnerIpfsListPinStatusResponse;
+import io.swagger.model.PinnerIpfsPin;
+import io.swagger.model.PinnerIpfsPinStatusResponse;
 import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
@@ -31,7 +31,7 @@ public class PinningApiServiceImpl implements PinningApi {
      * This endpoint lists all pin status objects
      *
      */
-    public TypesIpfsListPinStatusResponse pinningPinsGet() {
+    public PinnerIpfsListPinStatusResponse pinningPinsGet() {
         // TODO: Implement...
         
         return null;
@@ -55,7 +55,7 @@ public class PinningApiServiceImpl implements PinningApi {
      * This endpoint returns a pin status object.
      *
      */
-    public TypesIpfsPinStatusResponse pinningPinsPinidGet(String pinid) {
+    public PinnerIpfsPinStatusResponse pinningPinsPinidGet(String pinid) {
         // TODO: Implement...
         
         return null;
@@ -67,7 +67,7 @@ public class PinningApiServiceImpl implements PinningApi {
      * This endpoint replaces a pinned object.
      *
      */
-    public TypesIpfsPinStatusResponse pinningPinsPinidPost(TypesIpfsPin body, String pinid) {
+    public PinnerIpfsPinStatusResponse pinningPinsPinidPost(PinnerIpfsPin body, String pinid) {
         // TODO: Implement...
         
         return null;
@@ -79,7 +79,7 @@ public class PinningApiServiceImpl implements PinningApi {
      * This endpoint adds a pin to the IPFS daemon.
      *
      */
-    public TypesIpfsPinStatusResponse pinningPinsPost(TypesIpfsPin body, String ignoreDupes, String overwrite) {
+    public PinnerIpfsPinStatusResponse pinningPinsPost(PinnerIpfsPin body, String ignoreDupes, String overwrite) {
         // TODO: Implement...
         
         return null;

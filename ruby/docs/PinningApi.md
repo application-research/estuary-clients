@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**pinning_pins_post**](PinningApi.md#pinning_pins_post) | **POST** /pinning/pins | Add and pin object
 
 # **pinning_pins_get**
-> TypesIpfsListPinStatusResponse pinning_pins_get
+> PinnerIpfsListPinStatusResponse pinning_pins_get
 
 List all pin status objects
 
@@ -45,7 +45,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**TypesIpfsListPinStatusResponse**](TypesIpfsListPinStatusResponse.md)
+[**PinnerIpfsListPinStatusResponse**](PinnerIpfsListPinStatusResponse.md)
 
 ### Authorization
 
@@ -111,7 +111,7 @@ nil (empty response body)
 
 
 # **pinning_pins_pinid_get**
-> TypesIpfsPinStatusResponse pinning_pins_pinid_get(pinid)
+> PinnerIpfsPinStatusResponse pinning_pins_pinid_get(pinid)
 
 Get a pin status object
 
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
+[**PinnerIpfsPinStatusResponse**](PinnerIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -164,7 +164,7 @@ Name | Type | Description  | Notes
 
 
 # **pinning_pins_pinid_post**
-> TypesIpfsPinStatusResponse pinning_pins_pinid_post(bodypinid)
+> PinnerIpfsPinStatusResponse pinning_pins_pinid_post(bodypinid)
 
 Replace a pinned object
 
@@ -183,7 +183,7 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::PinningApi.new
-body = SwaggerClient::TypesIpfsPin.new # TypesIpfsPin | New pin
+body = SwaggerClient::PinnerIpfsPin.new # PinnerIpfsPin | New pin
 pinid = 'pinid_example' # String | Pin ID to be replaced
 
 
@@ -200,12 +200,12 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| New pin | 
+ **body** | [**PinnerIpfsPin**](PinnerIpfsPin.md)| New pin | 
  **pinid** | **String**| Pin ID to be replaced | 
 
 ### Return type
 
-[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
+[**PinnerIpfsPinStatusResponse**](PinnerIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 
 
 # **pinning_pins_post**
-> TypesIpfsPinStatusResponse pinning_pins_post(body, opts)
+> PinnerIpfsPinStatusResponse pinning_pins_post(body, opts)
 
 Add and pin object
 
@@ -238,7 +238,7 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::PinningApi.new
-body = SwaggerClient::TypesIpfsPin.new # TypesIpfsPin | Pin Body {cid:cid, name:name}
+body = SwaggerClient::PinnerIpfsPin.new # PinnerIpfsPin | Pin Body {cid:cid, name:name}
 opts = { 
   ignore_dupes: 'ignore_dupes_example' # String | Ignore Dupes
   overwrite: 'overwrite_example' # String | Overwrite conflicting files in collections
@@ -257,13 +257,13 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} | 
+ **body** | [**PinnerIpfsPin**](PinnerIpfsPin.md)| Pin Body {cid:cid, name:name} | 
  **ignore_dupes** | **String**| Ignore Dupes | [optional] 
  **overwrite** | **String**| Overwrite conflicting files in collections | [optional] 
 
 ### Return type
 
-[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
+[**PinnerIpfsPinStatusResponse**](PinnerIpfsPinStatusResponse.md)
 
 ### Authorization
 

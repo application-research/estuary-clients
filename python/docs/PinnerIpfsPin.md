@@ -1,0 +1,12 @@
+# PinnerIpfsPin
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**cid** | **str** |  | [optional] 
+**meta** | **dict(str, object)** |  | [optional] 
+**name** | **str** |  | [optional] 
+**origins** | **list[str]** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+

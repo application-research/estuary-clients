@@ -22,7 +22,7 @@ import javax.validation.Valid;
 /**
  * ApiCreateCollectionBody
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2023-01-24T07:25:42.112Z[GMT]")public class ApiCreateCollectionBody   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2023-01-30T18:30:35.620Z[GMT]")public class ApiCreateCollectionBody   {
   @JsonProperty("description")
   private String description = null;
 

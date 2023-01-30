@@ -200,7 +200,7 @@ object Paths {
      * @param ignoreDupes Ignore Dupes (optional)
      * @param overwrite Overwrite conflicting files in collections (optional)
      */
-    @Location("/content/add-ipfs") class contentAddIpfsPost(val body: TypesIpfsPin, val ignoreDupes: kotlin.String, val overwrite: kotlin.String)
+    @Location("/content/add-ipfs") class contentAddIpfsPost(val body: PinnerIpfsPin, val ignoreDupes: kotlin.String, val overwrite: kotlin.String)
 
     /**
      * Add new content
@@ -532,7 +532,7 @@ object Paths {
      * @param body New pin 
      * @param pinid Pin ID to be replaced 
      */
-    @Location("/pinning/pins/{pinid}") class pinningPinsPinidPost(val body: TypesIpfsPin, val pinid: kotlin.String)
+    @Location("/pinning/pins/{pinid}") class pinningPinsPinidPost(val body: PinnerIpfsPin, val pinid: kotlin.String)
 
     /**
      * Add and pin object
@@ -541,7 +541,7 @@ object Paths {
      * @param ignoreDupes Ignore Dupes (optional)
      * @param overwrite Overwrite conflicting files in collections (optional)
      */
-    @Location("/pinning/pins") class pinningPinsPost(val body: TypesIpfsPin, val ignoreDupes: kotlin.String, val overwrite: kotlin.String)
+    @Location("/pinning/pins") class pinningPinsPost(val body: PinnerIpfsPin, val ignoreDupes: kotlin.String, val overwrite: kotlin.String)
 
     /**
      * Get Full Content by Cid

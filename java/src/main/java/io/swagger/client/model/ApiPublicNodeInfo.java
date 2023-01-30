@@ -26,7 +26,7 @@ import java.io.IOException;
  * ApiPublicNodeInfo
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2023-01-24T07:25:39.898Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2023-01-30T18:30:33.258Z[GMT]")
 public class ApiPublicNodeInfo {
   @SerializedName("primaryAddress")
   private AddressAddress primaryAddress = null;

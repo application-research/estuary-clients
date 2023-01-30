@@ -971,7 +971,7 @@
     }
   }
 };
-            defs["types.IpfsListPinStatusResponse"] = {
+            defs["pinner.IpfsListPinStatusResponse"] = {
   "type" : "object",
   "properties" : {
     "count" : {
@@ -980,12 +980,12 @@
     "results" : {
       "type" : "array",
       "items" : {
-        "$ref" : "#/components/schemas/types.IpfsPinStatusResponse"
+        "$ref" : "#/components/schemas/pinner.IpfsPinStatusResponse"
       }
     }
   }
 };
-            defs["types.IpfsPin"] = {
+            defs["pinner.IpfsPin"] = {
   "type" : "object",
   "properties" : {
     "cid" : {
@@ -1006,7 +1006,7 @@
     }
   }
 };
-            defs["types.IpfsPinStatusResponse"] = {
+            defs["pinner.IpfsPinStatusResponse"] = {
   "type" : "object",
   "properties" : {
     "content" : {
@@ -1026,17 +1026,17 @@
       "additionalProperties" : true
     },
     "pin" : {
-      "$ref" : "#/components/schemas/types.IpfsPin"
+      "$ref" : "#/components/schemas/pinner.IpfsPin"
     },
     "requestid" : {
       "type" : "string"
     },
     "status" : {
-      "$ref" : "#/components/schemas/types.PinningStatus"
+      "$ref" : "#/components/schemas/status.PinningStatus"
     }
   }
 };
-            defs["types.PinningStatus"] = {
+            defs["status.PinningStatus"] = {
   "type" : "string",
   "enum" : [ "pinning", "pinned", "failed", "queued", "offloaded" ],
   "x-enum-varnames" : [ "PinningStatusPinning", "PinningStatusPinned", "PinningStatusFailed", "PinningStatusQueued", "PinningStatusOffloaded" ]
@@ -11769,7 +11769,7 @@ public class ContentApiExample {
         //bearerAuth.setApiKeyPrefix("Token");
 
         ContentApi apiInstance = new ContentApi();
-        Types.IpfsPin body = ; // Types.IpfsPin | IPFS Body
+        Pinner.IpfsPin body = ; // Pinner.IpfsPin | IPFS Body
         String ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
         String overwrite = overwrite_example; // String | Overwrite conflicting files in collections
         try {
@@ -11790,7 +11790,7 @@ public class ContentApiExample {
 
     public static void main(String[] args) {
         ContentApi apiInstance = new ContentApi();
-        Types.IpfsPin body = ; // Types.IpfsPin | IPFS Body
+        Pinner.IpfsPin body = ; // Pinner.IpfsPin | IPFS Body
         String ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
         String overwrite = overwrite_example; // String | Overwrite conflicting files in collections
         try {
@@ -11813,7 +11813,7 @@ public class ContentApiExample {
 [apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"Authorization"];
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
-Types.IpfsPin *body = ; // IPFS Body
+Pinner.IpfsPin *body = ; // IPFS Body
 String *ignoreDupes = ignoreDupes_example; // Ignore Dupes (optional)
 String *overwrite = overwrite_example; // Overwrite conflicting files in collections (optional)
 
@@ -11845,7 +11845,7 @@ bearerAuth.apiKey = "YOUR API KEY"
 //bearerAuth.apiKeyPrefix['Authorization'] = "Token"
 
 var api = new EstuaryApi.ContentApi()
-var body = ; // {{Types.IpfsPin}} IPFS Body
+var body = ; // {{Pinner.IpfsPin}} IPFS Body
 var opts = { 
   'ignoreDupes': ignoreDupes_example // {{String}} Ignore Dupes
   'overwrite': overwrite_example // {{String}} Overwrite conflicting files in collections
@@ -11884,7 +11884,7 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new ContentApi();
-            var body = new Types.IpfsPin(); // Types.IpfsPin | IPFS Body
+            var body = new Pinner.IpfsPin(); // Pinner.IpfsPin | IPFS Body
             var ignoreDupes = ignoreDupes_example;  // String | Ignore Dupes (optional) 
             var overwrite = overwrite_example;  // String | Overwrite conflicting files in collections (optional) 
 
@@ -11914,7 +11914,7 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorizatio
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 $api_instance = new Swagger\Client\ApiContentApi();
-$body = ; // Types.IpfsPin | IPFS Body
+$body = ; // Pinner.IpfsPin | IPFS Body
 $ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
 $overwrite = overwrite_example; // String | Overwrite conflicting files in collections
 
@@ -11938,7 +11938,7 @@ $WWW::SwaggerClient::Configuration::api_key->{'Authorization'} = 'YOUR_API_KEY';
 #$WWW::SwaggerClient::Configuration::api_key_prefix->{'Authorization'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::ContentApi->new();
-my $body = WWW::SwaggerClient::Object::Types.IpfsPin->new(); # Types.IpfsPin | IPFS Body
+my $body = WWW::SwaggerClient::Object::Pinner.IpfsPin->new(); # Pinner.IpfsPin | IPFS Body
 my $ignoreDupes = ignoreDupes_example; # String | Ignore Dupes
 my $overwrite = overwrite_example; # String | Overwrite conflicting files in collections
 
@@ -11965,7 +11965,7 @@ swagger_client.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = swagger_client.ContentApi()
-body =  # Types.IpfsPin | IPFS Body
+body =  # Pinner.IpfsPin | IPFS Body
 ignoreDupes = ignoreDupes_example # String | Ignore Dupes (optional)
 overwrite = overwrite_example # String | Overwrite conflicting files in collections (optional)
 
@@ -11999,7 +11999,7 @@ except ApiException as e:
   "content" : {
     "*/*" : {
       "schema" : {
-        "$ref" : "#/components/schemas/types.IpfsPin"
+        "$ref" : "#/components/schemas/pinner.IpfsPin"
       }
     }
   },
@@ -30761,7 +30761,7 @@ public class PinningApiExample {
 
         PinningApi apiInstance = new PinningApi();
         try {
-            types.IpfsListPinStatusResponse result = apiInstance.pinningPinsGet();
+            pinner.IpfsListPinStatusResponse result = apiInstance.pinningPinsGet();
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PinningApi#pinningPinsGet");
@@ -30779,7 +30779,7 @@ public class PinningApiExample {
     public static void main(String[] args) {
         PinningApi apiInstance = new PinningApi();
         try {
-            types.IpfsListPinStatusResponse result = apiInstance.pinningPinsGet();
+            pinner.IpfsListPinStatusResponse result = apiInstance.pinningPinsGet();
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PinningApi#pinningPinsGet");
@@ -30803,7 +30803,7 @@ PinningApi *apiInstance = [[PinningApi alloc] init];
 
 // List all pin status objects
 [apiInstance pinningPinsGetWithCompletionHandler: 
-              ^(types.IpfsListPinStatusResponse output, NSError* error) {
+              ^(pinner.IpfsListPinStatusResponse output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -30863,7 +30863,7 @@ namespace Example
             try
             {
                 // List all pin status objects
-                types.IpfsListPinStatusResponse result = apiInstance.pinningPinsGet();
+                pinner.IpfsListPinStatusResponse result = apiInstance.pinningPinsGet();
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -30968,7 +30968,7 @@ except ApiException as e:
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/types.IpfsListPinStatusResponse"
+        "$ref" : "#/components/schemas/pinner.IpfsListPinStatusResponse"
       }
     }
   }
@@ -31491,7 +31491,7 @@ public class PinningApiExample {
         PinningApi apiInstance = new PinningApi();
         String pinid = pinid_example; // String | cid
         try {
-            types.IpfsPinStatusResponse result = apiInstance.pinningPinsPinidGet(pinid);
+            pinner.IpfsPinStatusResponse result = apiInstance.pinningPinsPinidGet(pinid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PinningApi#pinningPinsPinidGet");
@@ -31510,7 +31510,7 @@ public class PinningApiExample {
         PinningApi apiInstance = new PinningApi();
         String pinid = pinid_example; // String | cid
         try {
-            types.IpfsPinStatusResponse result = apiInstance.pinningPinsPinidGet(pinid);
+            pinner.IpfsPinStatusResponse result = apiInstance.pinningPinsPinidGet(pinid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PinningApi#pinningPinsPinidGet");
@@ -31535,7 +31535,7 @@ PinningApi *apiInstance = [[PinningApi alloc] init];
 
 // Get a pin status object
 [apiInstance pinningPinsPinidGetWith:pinid
-              completionHandler: ^(types.IpfsPinStatusResponse output, NSError* error) {
+              completionHandler: ^(pinner.IpfsPinStatusResponse output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -31598,7 +31598,7 @@ namespace Example
             try
             {
                 // Get a pin status object
-                types.IpfsPinStatusResponse result = apiInstance.pinningPinsPinidGet(pinid);
+                pinner.IpfsPinStatusResponse result = apiInstance.pinningPinsPinidGet(pinid);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -31735,7 +31735,7 @@ except ApiException as e:
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/types.IpfsPinStatusResponse"
+        "$ref" : "#/components/schemas/pinner.IpfsPinStatusResponse"
       }
     }
   }
@@ -31922,10 +31922,10 @@ public class PinningApiExample {
         //bearerAuth.setApiKeyPrefix("Token");
 
         PinningApi apiInstance = new PinningApi();
-        Types.IpfsPin body = ; // Types.IpfsPin | New pin
+        Pinner.IpfsPin body = ; // Pinner.IpfsPin | New pin
         String pinid = pinid_example; // String | Pin ID to be replaced
         try {
-            types.IpfsPinStatusResponse result = apiInstance.pinningPinsPinidPost(body, pinid);
+            pinner.IpfsPinStatusResponse result = apiInstance.pinningPinsPinidPost(body, pinid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PinningApi#pinningPinsPinidPost");
@@ -31942,10 +31942,10 @@ public class PinningApiExample {
 
     public static void main(String[] args) {
         PinningApi apiInstance = new PinningApi();
-        Types.IpfsPin body = ; // Types.IpfsPin | New pin
+        Pinner.IpfsPin body = ; // Pinner.IpfsPin | New pin
         String pinid = pinid_example; // String | Pin ID to be replaced
         try {
-            types.IpfsPinStatusResponse result = apiInstance.pinningPinsPinidPost(body, pinid);
+            pinner.IpfsPinStatusResponse result = apiInstance.pinningPinsPinidPost(body, pinid);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PinningApi#pinningPinsPinidPost");
@@ -31964,7 +31964,7 @@ public class PinningApiExample {
 [apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"Authorization"];
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
-Types.IpfsPin *body = ; // New pin
+Pinner.IpfsPin *body = ; // New pin
 String *pinid = pinid_example; // Pin ID to be replaced
 
 PinningApi *apiInstance = [[PinningApi alloc] init];
@@ -31972,7 +31972,7 @@ PinningApi *apiInstance = [[PinningApi alloc] init];
 // Replace a pinned object
 [apiInstance pinningPinsPinidPostWith:body
     pinid:pinid
-              completionHandler: ^(types.IpfsPinStatusResponse output, NSError* error) {
+              completionHandler: ^(pinner.IpfsPinStatusResponse output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -31994,7 +31994,7 @@ bearerAuth.apiKey = "YOUR API KEY"
 //bearerAuth.apiKeyPrefix['Authorization'] = "Token"
 
 var api = new EstuaryApi.PinningApi()
-var body = ; // {{Types.IpfsPin}} New pin
+var body = ; // {{Pinner.IpfsPin}} New pin
 var pinid = pinid_example; // {{String}} Pin ID to be replaced
 
 var callback = function(error, data, response) {
@@ -32031,13 +32031,13 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new PinningApi();
-            var body = new Types.IpfsPin(); // Types.IpfsPin | New pin
+            var body = new Pinner.IpfsPin(); // Pinner.IpfsPin | New pin
             var pinid = pinid_example;  // String | Pin ID to be replaced
 
             try
             {
                 // Replace a pinned object
-                types.IpfsPinStatusResponse result = apiInstance.pinningPinsPinidPost(body, pinid);
+                pinner.IpfsPinStatusResponse result = apiInstance.pinningPinsPinidPost(body, pinid);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -32060,7 +32060,7 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorizatio
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 $api_instance = new Swagger\Client\ApiPinningApi();
-$body = ; // Types.IpfsPin | New pin
+$body = ; // Pinner.IpfsPin | New pin
 $pinid = pinid_example; // String | Pin ID to be replaced
 
 try {
@@ -32083,7 +32083,7 @@ $WWW::SwaggerClient::Configuration::api_key->{'Authorization'} = 'YOUR_API_KEY';
 #$WWW::SwaggerClient::Configuration::api_key_prefix->{'Authorization'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::PinningApi->new();
-my $body = WWW::SwaggerClient::Object::Types.IpfsPin->new(); # Types.IpfsPin | New pin
+my $body = WWW::SwaggerClient::Object::Pinner.IpfsPin->new(); # Pinner.IpfsPin | New pin
 my $pinid = pinid_example; # String | Pin ID to be replaced
 
 eval { 
@@ -32109,7 +32109,7 @@ swagger_client.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = swagger_client.PinningApi()
-body =  # Types.IpfsPin | New pin
+body =  # Pinner.IpfsPin | New pin
 pinid = pinid_example # String | Pin ID to be replaced
 
 try: 
@@ -32171,7 +32171,7 @@ except ApiException as e:
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/types.IpfsPin"
+        "$ref" : "#/components/schemas/pinner.IpfsPin"
       }
     }
   },
@@ -32221,7 +32221,7 @@ except ApiException as e:
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/types.IpfsPinStatusResponse"
+        "$ref" : "#/components/schemas/pinner.IpfsPinStatusResponse"
       }
     }
   }
@@ -32408,11 +32408,11 @@ public class PinningApiExample {
         //bearerAuth.setApiKeyPrefix("Token");
 
         PinningApi apiInstance = new PinningApi();
-        Types.IpfsPin body = ; // Types.IpfsPin | Pin Body {cid:cid, name:name}
+        Pinner.IpfsPin body = ; // Pinner.IpfsPin | Pin Body {cid:cid, name:name}
         String ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
         String overwrite = overwrite_example; // String | Overwrite conflicting files in collections
         try {
-            types.IpfsPinStatusResponse result = apiInstance.pinningPinsPost(body, ignoreDupes, overwrite);
+            pinner.IpfsPinStatusResponse result = apiInstance.pinningPinsPost(body, ignoreDupes, overwrite);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PinningApi#pinningPinsPost");
@@ -32429,11 +32429,11 @@ public class PinningApiExample {
 
     public static void main(String[] args) {
         PinningApi apiInstance = new PinningApi();
-        Types.IpfsPin body = ; // Types.IpfsPin | Pin Body {cid:cid, name:name}
+        Pinner.IpfsPin body = ; // Pinner.IpfsPin | Pin Body {cid:cid, name:name}
         String ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
         String overwrite = overwrite_example; // String | Overwrite conflicting files in collections
         try {
-            types.IpfsPinStatusResponse result = apiInstance.pinningPinsPost(body, ignoreDupes, overwrite);
+            pinner.IpfsPinStatusResponse result = apiInstance.pinningPinsPost(body, ignoreDupes, overwrite);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling PinningApi#pinningPinsPost");
@@ -32452,7 +32452,7 @@ public class PinningApiExample {
 [apiConfig setApiKey:@"YOUR_API_KEY" forApiKeyIdentifier:@"Authorization"];
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 //[apiConfig setApiKeyPrefix:@"Bearer" forApiKeyIdentifier:@"Authorization"];
-Types.IpfsPin *body = ; // Pin Body {cid:cid, name:name}
+Pinner.IpfsPin *body = ; // Pin Body {cid:cid, name:name}
 String *ignoreDupes = ignoreDupes_example; // Ignore Dupes (optional)
 String *overwrite = overwrite_example; // Overwrite conflicting files in collections (optional)
 
@@ -32462,7 +32462,7 @@ PinningApi *apiInstance = [[PinningApi alloc] init];
 [apiInstance pinningPinsPostWith:body
     ignoreDupes:ignoreDupes
     overwrite:overwrite
-              completionHandler: ^(types.IpfsPinStatusResponse output, NSError* error) {
+              completionHandler: ^(pinner.IpfsPinStatusResponse output, NSError* error) {
                             if (output) {
                                 NSLog(@"%@", output);
                             }
@@ -32484,7 +32484,7 @@ bearerAuth.apiKey = "YOUR API KEY"
 //bearerAuth.apiKeyPrefix['Authorization'] = "Token"
 
 var api = new EstuaryApi.PinningApi()
-var body = ; // {{Types.IpfsPin}} Pin Body {cid:cid, name:name}
+var body = ; // {{Pinner.IpfsPin}} Pin Body {cid:cid, name:name}
 var opts = { 
   'ignoreDupes': ignoreDupes_example // {{String}} Ignore Dupes
   'overwrite': overwrite_example // {{String}} Overwrite conflicting files in collections
@@ -32523,14 +32523,14 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new PinningApi();
-            var body = new Types.IpfsPin(); // Types.IpfsPin | Pin Body {cid:cid, name:name}
+            var body = new Pinner.IpfsPin(); // Pinner.IpfsPin | Pin Body {cid:cid, name:name}
             var ignoreDupes = ignoreDupes_example;  // String | Ignore Dupes (optional) 
             var overwrite = overwrite_example;  // String | Overwrite conflicting files in collections (optional) 
 
             try
             {
                 // Add and pin object
-                types.IpfsPinStatusResponse result = apiInstance.pinningPinsPost(body, ignoreDupes, overwrite);
+                pinner.IpfsPinStatusResponse result = apiInstance.pinningPinsPost(body, ignoreDupes, overwrite);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -32553,7 +32553,7 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorizatio
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 $api_instance = new Swagger\Client\ApiPinningApi();
-$body = ; // Types.IpfsPin | Pin Body {cid:cid, name:name}
+$body = ; // Pinner.IpfsPin | Pin Body {cid:cid, name:name}
 $ignoreDupes = ignoreDupes_example; // String | Ignore Dupes
 $overwrite = overwrite_example; // String | Overwrite conflicting files in collections
 
@@ -32577,7 +32577,7 @@ $WWW::SwaggerClient::Configuration::api_key->{'Authorization'} = 'YOUR_API_KEY';
 #$WWW::SwaggerClient::Configuration::api_key_prefix->{'Authorization'} = "Bearer";
 
 my $api_instance = WWW::SwaggerClient::PinningApi->new();
-my $body = WWW::SwaggerClient::Object::Types.IpfsPin->new(); # Types.IpfsPin | Pin Body {cid:cid, name:name}
+my $body = WWW::SwaggerClient::Object::Pinner.IpfsPin->new(); # Pinner.IpfsPin | Pin Body {cid:cid, name:name}
 my $ignoreDupes = ignoreDupes_example; # String | Ignore Dupes
 my $overwrite = overwrite_example; # String | Overwrite conflicting files in collections
 
@@ -32604,7 +32604,7 @@ swagger_client.configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = swagger_client.PinningApi()
-body =  # Types.IpfsPin | Pin Body {cid:cid, name:name}
+body =  # Pinner.IpfsPin | Pin Body {cid:cid, name:name}
 ignoreDupes = ignoreDupes_example # String | Ignore Dupes (optional)
 overwrite = overwrite_example # String | Overwrite conflicting files in collections (optional)
 
@@ -32638,7 +32638,7 @@ except ApiException as e:
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/types.IpfsPin"
+        "$ref" : "#/components/schemas/pinner.IpfsPin"
       }
     }
   },
@@ -32733,7 +32733,7 @@ except ApiException as e:
   "content" : {
     "application/json" : {
       "schema" : {
-        "$ref" : "#/components/schemas/types.IpfsPinStatusResponse"
+        "$ref" : "#/components/schemas/pinner.IpfsPinStatusResponse"
       }
     }
   }

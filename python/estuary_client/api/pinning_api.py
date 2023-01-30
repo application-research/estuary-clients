@@ -42,7 +42,7 @@ class PinningApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: TypesIpfsListPinStatusResponse
+        :return: PinnerIpfsListPinStatusResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -63,7 +63,7 @@ class PinningApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: TypesIpfsListPinStatusResponse
+        :return: PinnerIpfsListPinStatusResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -111,7 +111,7 @@ class PinningApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='TypesIpfsListPinStatusResponse',  # noqa: E501
+            response_type='PinnerIpfsListPinStatusResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -225,7 +225,7 @@ class PinningApi(object):
 
         :param async_req bool
         :param str pinid: cid (required)
-        :return: TypesIpfsPinStatusResponse
+        :return: PinnerIpfsPinStatusResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -247,7 +247,7 @@ class PinningApi(object):
 
         :param async_req bool
         :param str pinid: cid (required)
-        :return: TypesIpfsPinStatusResponse
+        :return: PinnerIpfsPinStatusResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -301,7 +301,7 @@ class PinningApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='TypesIpfsPinStatusResponse',  # noqa: E501
+            response_type='PinnerIpfsPinStatusResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -319,9 +319,9 @@ class PinningApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param TypesIpfsPin body: New pin (required)
+        :param PinnerIpfsPin body: New pin (required)
         :param str pinid: Pin ID to be replaced (required)
-        :return: TypesIpfsPinStatusResponse
+        :return: PinnerIpfsPinStatusResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -342,9 +342,9 @@ class PinningApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param TypesIpfsPin body: New pin (required)
+        :param PinnerIpfsPin body: New pin (required)
         :param str pinid: Pin ID to be replaced (required)
-        :return: TypesIpfsPinStatusResponse
+        :return: PinnerIpfsPinStatusResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -408,7 +408,7 @@ class PinningApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='TypesIpfsPinStatusResponse',  # noqa: E501
+            response_type='PinnerIpfsPinStatusResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -426,10 +426,10 @@ class PinningApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param TypesIpfsPin body: Pin Body {cid:cid, name:name} (required)
+        :param PinnerIpfsPin body: Pin Body {cid:cid, name:name} (required)
         :param str ignore_dupes: Ignore Dupes
         :param str overwrite: Overwrite conflicting files in collections
-        :return: TypesIpfsPinStatusResponse
+        :return: PinnerIpfsPinStatusResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -450,10 +450,10 @@ class PinningApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param TypesIpfsPin body: Pin Body {cid:cid, name:name} (required)
+        :param PinnerIpfsPin body: Pin Body {cid:cid, name:name} (required)
         :param str ignore_dupes: Ignore Dupes
         :param str overwrite: Overwrite conflicting files in collections
-        :return: TypesIpfsPinStatusResponse
+        :return: PinnerIpfsPinStatusResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -515,7 +515,7 @@ class PinningApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='TypesIpfsPinStatusResponse',  # noqa: E501
+            response_type='PinnerIpfsPinStatusResponse',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

@@ -1355,7 +1355,7 @@
           "content" : {
             "*/*" : {
               "schema" : {
-                "$ref" : "#/components/schemas/types.IpfsPin"
+                "$ref" : "#/components/schemas/pinner.IpfsPin"
               }
             }
           },
@@ -3122,7 +3122,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/types.IpfsListPinStatusResponse"
+                  "$ref" : "#/components/schemas/pinner.IpfsListPinStatusResponse"
                 }
               }
             }
@@ -3179,7 +3179,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/types.IpfsPin"
+                "$ref" : "#/components/schemas/pinner.IpfsPin"
               }
             }
           },
@@ -3191,7 +3191,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/types.IpfsPinStatusResponse"
+                  "$ref" : "#/components/schemas/pinner.IpfsPinStatusResponse"
                 }
               }
             }
@@ -3232,7 +3232,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/types.IpfsPinStatusResponse"
+                  "$ref" : "#/components/schemas/pinner.IpfsPinStatusResponse"
                 }
               }
             }
@@ -3279,7 +3279,7 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/types.IpfsPin"
+                "$ref" : "#/components/schemas/pinner.IpfsPin"
               }
             }
           },
@@ -3291,7 +3291,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/types.IpfsPinStatusResponse"
+                  "$ref" : "#/components/schemas/pinner.IpfsPinStatusResponse"
                 }
               }
             }
@@ -4443,7 +4443,7 @@
           }
         }
       },
-      "types.IpfsListPinStatusResponse" : {
+      "pinner.IpfsListPinStatusResponse" : {
         "type" : "object",
         "properties" : {
           "count" : {
@@ -4452,7 +4452,7 @@
           "results" : {
             "type" : "array",
             "items" : {
-              "$ref" : "#/components/schemas/types.IpfsPinStatusResponse"
+              "$ref" : "#/components/schemas/pinner.IpfsPinStatusResponse"
             }
           }
         },
@@ -4541,7 +4541,7 @@
           } ]
         }
       },
-      "types.IpfsPin" : {
+      "pinner.IpfsPin" : {
         "type" : "object",
         "properties" : {
           "cid" : {
@@ -4568,7 +4568,7 @@
           "cid" : "cid"
         }
       },
-      "types.IpfsPinStatusResponse" : {
+      "pinner.IpfsPinStatusResponse" : {
         "type" : "object",
         "properties" : {
           "content" : {
@@ -4588,13 +4588,13 @@
             "additionalProperties" : true
           },
           "pin" : {
-            "$ref" : "#/components/schemas/types.IpfsPin"
+            "$ref" : "#/components/schemas/pinner.IpfsPin"
           },
           "requestid" : {
             "type" : "string"
           },
           "status" : {
-            "$ref" : "#/components/schemas/types.PinningStatus"
+            "$ref" : "#/components/schemas/status.PinningStatus"
           }
         },
         "example" : {
@@ -4639,7 +4639,7 @@
           "status" : "pinning"
         }
       },
-      "types.PinningStatus" : {
+      "status.PinningStatus" : {
         "type" : "string",
         "enum" : [ "pinning", "pinned", "failed", "queued", "offloaded" ],
         "x-enum-varnames" : [ "PinningStatusPinning", "PinningStatusPinned", "PinningStatusFailed", "PinningStatusQueued", "PinningStatusOffloaded" ]

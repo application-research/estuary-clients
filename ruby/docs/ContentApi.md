@@ -204,7 +204,7 @@ SwaggerClient.configure do |config|
 end
 
 api_instance = SwaggerClient::ContentApi.new
-body = SwaggerClient::TypesIpfsPin.new # TypesIpfsPin | IPFS Body
+body = SwaggerClient::PinnerIpfsPin.new # PinnerIpfsPin | IPFS Body
 opts = { 
   ignore_dupes: 'ignore_dupes_example' # String | Ignore Dupes
   overwrite: 'overwrite_example' # String | Overwrite conflicting files in collections
@@ -223,7 +223,7 @@ end
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| IPFS Body | 
+ **body** | [**PinnerIpfsPin**](PinnerIpfsPin.md)| IPFS Body | 
  **ignore_dupes** | **String**| Ignore Dupes | [optional] 
  **overwrite** | **String**| Overwrite conflicting files in collections | [optional] 
 

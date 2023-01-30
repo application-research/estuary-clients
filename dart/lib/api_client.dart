@@ -82,14 +82,14 @@ class ApiClient {
           return new MinerSuspendMinerBody.fromJson(value);
         case 'PeeringPeeringPeer':
           return new PeeringPeeringPeer.fromJson(value);
-        case 'TypesIpfsListPinStatusResponse':
-          return new TypesIpfsListPinStatusResponse.fromJson(value);
-        case 'TypesIpfsPin':
-          return new TypesIpfsPin.fromJson(value);
-        case 'TypesIpfsPinStatusResponse':
-          return new TypesIpfsPinStatusResponse.fromJson(value);
-        case 'TypesPinningStatus':
-           return new TypesPinningStatus.fromJson(value);
+        case 'PinnerIpfsListPinStatusResponse':
+          return new PinnerIpfsListPinStatusResponse.fromJson(value);
+        case 'PinnerIpfsPin':
+          return new PinnerIpfsPin.fromJson(value);
+        case 'PinnerIpfsPinStatusResponse':
+          return new PinnerIpfsPinStatusResponse.fromJson(value);
+        case 'StatusPinningStatus':
+           return new StatusPinningStatus.fromJson(value);
         case 'UtilContent':
           return new UtilContent.fromJson(value);
         case 'UtilContentAddResponse':

@@ -228,7 +228,7 @@ Name | Type | Description  | Notes
 
 <a name="contentaddipfspost"></a>
 # **ContentAddIpfsPost**
-> string ContentAddIpfsPost (TypesIpfsPin body, string ignoreDupes, string overwrite)
+> string ContentAddIpfsPost (PinnerIpfsPin body, string ignoreDupes, string overwrite)
 
 Add IPFS object
 
@@ -255,7 +255,7 @@ namespace Example
             // Configuration.Default.ApiKeyPrefix.Add("Authorization", "Bearer");
 
             var apiInstance = new ContentApi();
-            var body = new TypesIpfsPin(); // TypesIpfsPin | IPFS Body
+            var body = new PinnerIpfsPin(); // PinnerIpfsPin | IPFS Body
             var ignoreDupes = ignoreDupes_example;  // string | Ignore Dupes (optional) 
             var overwrite = overwrite_example;  // string | Overwrite conflicting files in collections (optional) 
 
@@ -278,7 +278,7 @@ namespace Example
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| IPFS Body | 
+ **body** | [**PinnerIpfsPin**](PinnerIpfsPin.md)| IPFS Body | 
  **ignoreDupes** | **string**| Ignore Dupes | [optional] 
  **overwrite** | **string**| Overwrite conflicting files in collections | [optional] 
 

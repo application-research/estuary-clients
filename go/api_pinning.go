@@ -29,15 +29,15 @@ type PinningApiService service
 PinningApiService List all pin status objects
 This endpoint lists all pin status objects
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
-@return TypesIpfsListPinStatusResponse
+@return PinnerIpfsListPinStatusResponse
 */
-func (a *PinningApiService) PinningPinsGet(ctx context.Context) (TypesIpfsListPinStatusResponse, *http.Response, error) {
+func (a *PinningApiService) PinningPinsGet(ctx context.Context) (PinnerIpfsListPinStatusResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue TypesIpfsListPinStatusResponse
+		localVarReturnValue PinnerIpfsListPinStatusResponse
 	)
 
 	// create path and map variables
@@ -107,7 +107,7 @@ func (a *PinningApiService) PinningPinsGet(ctx context.Context) (TypesIpfsListPi
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v TypesIpfsListPinStatusResponse
+			var v PinnerIpfsListPinStatusResponse
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -237,15 +237,15 @@ PinningApiService Get a pin status object
 This endpoint returns a pin status object.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param pinid cid
-@return TypesIpfsPinStatusResponse
+@return PinnerIpfsPinStatusResponse
 */
-func (a *PinningApiService) PinningPinsPinidGet(ctx context.Context, pinid string) (TypesIpfsPinStatusResponse, *http.Response, error) {
+func (a *PinningApiService) PinningPinsPinidGet(ctx context.Context, pinid string) (PinnerIpfsPinStatusResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Get")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue TypesIpfsPinStatusResponse
+		localVarReturnValue PinnerIpfsPinStatusResponse
 	)
 
 	// create path and map variables
@@ -316,7 +316,7 @@ func (a *PinningApiService) PinningPinsPinidGet(ctx context.Context, pinid strin
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 200 {
-			var v TypesIpfsPinStatusResponse
+			var v PinnerIpfsPinStatusResponse
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -356,15 +356,15 @@ This endpoint replaces a pinned object.
  * @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
  * @param body New pin
  * @param pinid Pin ID to be replaced
-@return TypesIpfsPinStatusResponse
+@return PinnerIpfsPinStatusResponse
 */
-func (a *PinningApiService) PinningPinsPinidPost(ctx context.Context, body TypesIpfsPin, pinid string) (TypesIpfsPinStatusResponse, *http.Response, error) {
+func (a *PinningApiService) PinningPinsPinidPost(ctx context.Context, body PinnerIpfsPin, pinid string) (PinnerIpfsPinStatusResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue TypesIpfsPinStatusResponse
+		localVarReturnValue PinnerIpfsPinStatusResponse
 	)
 
 	// create path and map variables
@@ -437,7 +437,7 @@ func (a *PinningApiService) PinningPinsPinidPost(ctx context.Context, body Types
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 202 {
-			var v TypesIpfsPinStatusResponse
+			var v PinnerIpfsPinStatusResponse
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()
@@ -479,7 +479,7 @@ This endpoint adds a pin to the IPFS daemon.
  * @param optional nil or *PinningApiPinningPinsPostOpts - Optional Parameters:
      * @param "IgnoreDupes" (optional.String) -  Ignore Dupes
      * @param "Overwrite" (optional.String) -  Overwrite conflicting files in collections
-@return TypesIpfsPinStatusResponse
+@return PinnerIpfsPinStatusResponse
 */
 
 type PinningApiPinningPinsPostOpts struct {
@@ -487,13 +487,13 @@ type PinningApiPinningPinsPostOpts struct {
     Overwrite optional.String
 }
 
-func (a *PinningApiService) PinningPinsPost(ctx context.Context, body TypesIpfsPin, localVarOptionals *PinningApiPinningPinsPostOpts) (TypesIpfsPinStatusResponse, *http.Response, error) {
+func (a *PinningApiService) PinningPinsPost(ctx context.Context, body PinnerIpfsPin, localVarOptionals *PinningApiPinningPinsPostOpts) (PinnerIpfsPinStatusResponse, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}
 		localVarFileName   string
 		localVarFileBytes  []byte
-		localVarReturnValue TypesIpfsPinStatusResponse
+		localVarReturnValue PinnerIpfsPinStatusResponse
 	)
 
 	// create path and map variables
@@ -571,7 +571,7 @@ func (a *PinningApiService) PinningPinsPost(ctx context.Context, body TypesIpfsP
 			error: localVarHttpResponse.Status,
 		}
 		if localVarHttpResponse.StatusCode == 202 {
-			var v TypesIpfsPinStatusResponse
+			var v PinnerIpfsPinStatusResponse
 			err = a.client.decode(&v, localVarBody, localVarHttpResponse.Header.Get("Content-Type"));
 				if err != nil {
 					newErr.error = err.Error()

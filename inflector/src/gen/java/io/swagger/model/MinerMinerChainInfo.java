@@ -8,7 +8,7 @@ import java.util.List;
 
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2023-01-24T07:25:40.154Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2023-01-30T18:30:33.816Z[GMT]")
 public class MinerMinerChainInfo   {
   @JsonProperty("addresses")
   private List<String> addresses = null;

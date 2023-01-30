@@ -139,7 +139,7 @@ describe("ContentApi", () => {
     return expect(instance.contentAddCarPost(body, ignoreDupes, filename, {})).resolves.toBe(null)
   })
   test("contentAddIpfsPost", () => {
-    const body: api.TypesIpfsPin = undefined
+    const body: api.PinnerIpfsPin = undefined
     const ignoreDupes: string = "ignoreDupes_example"
     const overwrite: string = "overwrite_example"
     return expect(instance.contentAddIpfsPost(body, ignoreDupes, overwrite, {})).resolves.toBe(null)
@@ -382,12 +382,12 @@ describe("PinningApi", () => {
     return expect(instance.pinningPinsPinidGet(pinid, {})).resolves.toBe(null)
   })
   test("pinningPinsPinidPost", () => {
-    const body: api.TypesIpfsPin = undefined
+    const body: api.PinnerIpfsPin = undefined
     const pinid: string = "pinid_example"
     return expect(instance.pinningPinsPinidPost(body, pinid, {})).resolves.toBe(null)
   })
   test("pinningPinsPost", () => {
-    const body: api.TypesIpfsPin = undefined
+    const body: api.PinnerIpfsPin = undefined
     const ignoreDupes: string = "ignoreDupes_example"
     const overwrite: string = "overwrite_example"
     return expect(instance.pinningPinsPost(body, ignoreDupes, overwrite, {})).resolves.toBe(null)

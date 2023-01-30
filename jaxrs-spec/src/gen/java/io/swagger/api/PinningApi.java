@@ -1,8 +1,8 @@
 package io.swagger.api;
 
-import io.swagger.model.TypesIpfsListPinStatusResponse;
-import io.swagger.model.TypesIpfsPin;
-import io.swagger.model.TypesIpfsPinStatusResponse;
+import io.swagger.model.PinnerIpfsListPinStatusResponse;
+import io.swagger.model.PinnerIpfsPin;
+import io.swagger.model.PinnerIpfsPinStatusResponse;
 import io.swagger.model.UtilHttpError;
 
 import javax.ws.rs.*;
@@ -24,7 +24,7 @@ import javax.validation.Valid;
 
 @Path("/pinning")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2023-01-24T07:25:41.516Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2023-01-30T18:30:37.026Z[GMT]")
 public class PinningApi {
 
     @GET
@@ -33,7 +33,7 @@ public class PinningApi {
     @Operation(summary = "List all pin status objects", description = "This endpoint lists all pin status objects", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "pinning" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TypesIpfsListPinStatusResponse.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = PinnerIpfsListPinStatusResponse.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
     })
@@ -61,7 +61,7 @@ public class PinningApi {
     @Operation(summary = "Get a pin status object", description = "This endpoint returns a pin status object.", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "pinning" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TypesIpfsPinStatusResponse.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = PinnerIpfsPinStatusResponse.class))),
         @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
     })
@@ -78,11 +78,11 @@ public class PinningApi {
     @Operation(summary = "Replace a pinned object", description = "This endpoint replaces a pinned object.", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "pinning" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "202", description = "Accepted", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TypesIpfsPinStatusResponse.class))),
+        @ApiResponse(responseCode = "202", description = "Accepted", content = @Content(mediaType = "application/json", schema = @Schema(implementation = PinnerIpfsPinStatusResponse.class))),
         @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
     })
-    public Response pinningPinsPinidPost(@Valid TypesIpfsPin body, @PathParam("pinid")
+    public Response pinningPinsPinidPost(@Valid PinnerIpfsPin body, @PathParam("pinid")
 
  @Parameter(description = "Pin ID to be replaced") String pinid
 ) {
@@ -95,10 +95,10 @@ public class PinningApi {
     @Operation(summary = "Add and pin object", description = "This endpoint adds a pin to the IPFS daemon.", security = {
         @SecurityRequirement(name = "bearerAuth")    }, tags={ "pinning" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "202", description = "Accepted", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TypesIpfsPinStatusResponse.class))),
+        @ApiResponse(responseCode = "202", description = "Accepted", content = @Content(mediaType = "application/json", schema = @Schema(implementation = PinnerIpfsPinStatusResponse.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class)))
     })
-    public Response pinningPinsPost(@Valid TypesIpfsPin body,  @QueryParam("ignore-dupes") 
+    public Response pinningPinsPost(@Valid PinnerIpfsPin body,  @QueryParam("ignore-dupes") 
 
  @Parameter(description = "Ignore Dupes")  String ignoreDupes
 ,  @QueryParam("overwrite") 

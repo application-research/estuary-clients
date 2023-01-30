@@ -15,7 +15,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 import java.io.File;
-import io.swagger.model.TypesIpfsPin;
+import io.swagger.model.PinnerIpfsPin;
 import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
@@ -40,7 +40,7 @@ import javax.validation.constraints.*;
 @Path("/content")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2023-01-24T07:25:42.112Z[GMT]")public class ContentApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2023-01-30T18:30:35.620Z[GMT]")public class ContentApi  {
    private final ContentApiService delegate;
 
    public ContentApi(@Context ServletConfig servletContext) {
@@ -96,7 +96,7 @@ import javax.validation.constraints.*;
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response contentAddIpfsPost(@Parameter(in = ParameterIn.DEFAULT, description = "IPFS Body" ,required=true) TypesIpfsPin body
+    public Response contentAddIpfsPost(@Parameter(in = ParameterIn.DEFAULT, description = "IPFS Body" ,required=true) PinnerIpfsPin body
 
 ,@Parameter(in = ParameterIn.QUERY, description = "Ignore Dupes") @QueryParam("ignore-dupes") String ignoreDupes
 ,@Parameter(in = ParameterIn.QUERY, description = "Overwrite conflicting files in collections") @QueryParam("overwrite") String overwrite

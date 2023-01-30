@@ -1,8 +1,8 @@
 package io.swagger.api;
 
-import io.swagger.model.TypesIpfsListPinStatusResponse;
-import io.swagger.model.TypesIpfsPin;
-import io.swagger.model.TypesIpfsPinStatusResponse;
+import io.swagger.model.PinnerIpfsListPinStatusResponse;
+import io.swagger.model.PinnerIpfsPin;
+import io.swagger.model.PinnerIpfsPinStatusResponse;
 import io.swagger.model.UtilHttpError;
 
 import java.io.InputStream;
@@ -41,10 +41,10 @@ public interface PinningApi  {
     @Produces({ "application/json" })
     @Operation(summary = "List all pin status objects", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TypesIpfsListPinStatusResponse.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = PinnerIpfsListPinStatusResponse.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public TypesIpfsListPinStatusResponse pinningPinsGet();
+    public PinnerIpfsListPinStatusResponse pinningPinsGet();
 
     /**
      * Delete a pinned object
@@ -72,10 +72,10 @@ public interface PinningApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Get a pin status object", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TypesIpfsPinStatusResponse.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = PinnerIpfsPinStatusResponse.class))),
         @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public TypesIpfsPinStatusResponse pinningPinsPinidGet(@PathParam("pinid") String pinid);
+    public PinnerIpfsPinStatusResponse pinningPinsPinidGet(@PathParam("pinid") String pinid);
 
     /**
      * Replace a pinned object
@@ -89,10 +89,10 @@ public interface PinningApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Replace a pinned object", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "202", description = "Accepted", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TypesIpfsPinStatusResponse.class))),
+        @ApiResponse(responseCode = "202", description = "Accepted", content = @Content(mediaType = "application/json", schema = @Schema(implementation = PinnerIpfsPinStatusResponse.class))),
         @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public TypesIpfsPinStatusResponse pinningPinsPinidPost(TypesIpfsPin body, @PathParam("pinid") String pinid);
+    public PinnerIpfsPinStatusResponse pinningPinsPinidPost(PinnerIpfsPin body, @PathParam("pinid") String pinid);
 
     /**
      * Add and pin object
@@ -106,7 +106,7 @@ public interface PinningApi  {
     @Produces({ "application/json" })
     @Operation(summary = "Add and pin object", tags={  })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "202", description = "Accepted", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TypesIpfsPinStatusResponse.class))),
+        @ApiResponse(responseCode = "202", description = "Accepted", content = @Content(mediaType = "application/json", schema = @Schema(implementation = PinnerIpfsPinStatusResponse.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public TypesIpfsPinStatusResponse pinningPinsPost(TypesIpfsPin body, @QueryParam("ignore-dupes")String ignoreDupes, @QueryParam("overwrite")String overwrite);
+    public PinnerIpfsPinStatusResponse pinningPinsPost(PinnerIpfsPin body, @QueryParam("ignore-dupes")String ignoreDupes, @QueryParam("overwrite")String overwrite);
 }

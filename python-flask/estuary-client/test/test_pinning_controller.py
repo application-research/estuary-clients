@@ -5,9 +5,9 @@ from __future__ import absolute_import
 from flask import json
 from six import BytesIO
 
-from estuary-client.models.types_ipfs_list_pin_status_response import TypesIpfsListPinStatusResponse  # noqa: E501
-from estuary-client.models.types_ipfs_pin import TypesIpfsPin  # noqa: E501
-from estuary-client.models.types_ipfs_pin_status_response import TypesIpfsPinStatusResponse  # noqa: E501
+from estuary-client.models.pinner_ipfs_list_pin_status_response import PinnerIpfsListPinStatusResponse  # noqa: E501
+from estuary-client.models.pinner_ipfs_pin import PinnerIpfsPin  # noqa: E501
+from estuary-client.models.pinner_ipfs_pin_status_response import PinnerIpfsPinStatusResponse  # noqa: E501
 from estuary-client.models.util_http_error import UtilHttpError  # noqa: E501
 from estuary-client.test import BaseTestCase
 
@@ -53,7 +53,7 @@ class TestPinningController(BaseTestCase):
 
         Replace a pinned object
         """
-        body = TypesIpfsPin()
+        body = PinnerIpfsPin()
         response = self.client.open(
             '/pinning/pins/{pinid}'.format(pinid='pinid_example'),
             method='POST',
@@ -67,7 +67,7 @@ class TestPinningController(BaseTestCase):
 
         Add and pin object
         """
-        body = TypesIpfsPin()
+        body = PinnerIpfsPin()
         query_string = [('ignore_dupes', 'ignore_dupes_example'),
                         ('overwrite', 'overwrite_example')]
         response = self.client.open(

@@ -18,6 +18,6 @@ package io.swagger.client.model
  */
 case class IpfsListPinStatusResponse (
   count: Option[Integer] = None,
-  results: Option[List[types.IpfsPinStatusResponse]] = None
+  results: Option[List[pinner.IpfsPinStatusResponse]] = None
 )
 

@@ -1,7 +1,7 @@
 package io.swagger.api;
 
+import io.swagger.model.PinnerIpfsPin;
 import org.springframework.core.io.Resource;
-import io.swagger.model.TypesIpfsPin;
 import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
@@ -36,7 +36,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-24T07:25:42.958Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-30T18:30:36.664Z[GMT]")
 @RestController
 public class ContentApiController implements ContentApi {
 
@@ -66,7 +66,7 @@ public class ContentApiController implements ContentApi {
         return new ResponseEntity<UtilContentAddResponse>(HttpStatus.NOT_IMPLEMENTED);
     }
 
-    public ResponseEntity<String> contentAddIpfsPost(@Parameter(in = ParameterIn.DEFAULT, description = "IPFS Body", required=true, schema=@Schema()) @Valid @RequestBody TypesIpfsPin body,@Parameter(in = ParameterIn.QUERY, description = "Ignore Dupes" ,schema=@Schema()) @Valid @RequestParam(value = "ignore-dupes", required = false) String ignoreDupes,@Parameter(in = ParameterIn.QUERY, description = "Overwrite conflicting files in collections" ,schema=@Schema()) @Valid @RequestParam(value = "overwrite", required = false) String overwrite) {
+    public ResponseEntity<String> contentAddIpfsPost(@Parameter(in = ParameterIn.DEFAULT, description = "IPFS Body", required=true, schema=@Schema()) @Valid @RequestBody PinnerIpfsPin body,@Parameter(in = ParameterIn.QUERY, description = "Ignore Dupes" ,schema=@Schema()) @Valid @RequestParam(value = "ignore-dupes", required = false) String ignoreDupes,@Parameter(in = ParameterIn.QUERY, description = "Overwrite conflicting files in collections" ,schema=@Schema()) @Valid @RequestParam(value = "overwrite", required = false) String overwrite) {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {

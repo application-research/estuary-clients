@@ -1,7 +1,7 @@
 package io.swagger.api;
 
 import java.io.File;
-import io.swagger.model.TypesIpfsPin;
+import io.swagger.model.PinnerIpfsPin;
 import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
@@ -37,7 +37,7 @@ class ContentApiControllerTest {
 
     @Test
     void contentAddIpfsPostTest() {
-        TypesIpfsPin body = new TypesIpfsPin();
+        PinnerIpfsPin body = new PinnerIpfsPin();
         String ignoreDupes = "ignoreDupes_example";
         String overwrite = "overwrite_example";
         try {

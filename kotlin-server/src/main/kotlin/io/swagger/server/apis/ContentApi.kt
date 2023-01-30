@@ -33,7 +33,7 @@ import estuary-client.Paths
 import estuary-client.infrastructure.ApiPrincipal
 
 
-import io.swagger.server.models.TypesIpfsPin
+import io.swagger.server.models.PinnerIpfsPin
 import io.swagger.server.models.UtilContentAddResponse
 import io.swagger.server.models.UtilContentCreateBody
 import io.swagger.server.models.UtilHttpError

@@ -11,7 +11,7 @@
  */
 package io.swagger.client.apis
 
-import io.swagger.client.models.TypesIpfsPin
+import io.swagger.client.models.PinnerIpfsPin
 import io.swagger.client.models.UtilContentAddResponse
 import io.swagger.client.models.UtilContentCreateBody
 import io.swagger.client.models.UtilHttpError
@@ -106,7 +106,7 @@ class ContentApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(ba
      * @return kotlin.String
      */
     @Suppress("UNCHECKED_CAST")
-    fun contentAddIpfsPost(body: TypesIpfsPin, ignoreDupes: kotlin.String? = null, overwrite: kotlin.String? = null): kotlin.String {
+    fun contentAddIpfsPost(body: PinnerIpfsPin, ignoreDupes: kotlin.String? = null, overwrite: kotlin.String? = null): kotlin.String {
         val localVariableBody: kotlin.Any? = body
         val localVariableQuery: MultiValueMap = mapOf("ignore-dupes" to listOf("$ignoreDupes"), "overwrite" to listOf("$overwrite"))
         val localVariableConfig = RequestConfig(

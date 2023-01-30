@@ -1,7 +1,7 @@
 package io.swagger.api;
 
 import java.io.File;
-import io.swagger.model.TypesIpfsPin;
+import io.swagger.model.PinnerIpfsPin;
 import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
@@ -97,7 +97,7 @@ public interface ContentApi  {
         @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = String.class))),
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public String contentAddIpfsPost(@Valid TypesIpfsPin body, @QueryParam("ignore-dupes") String ignoreDupes, @QueryParam("overwrite") String overwrite);
+    public String contentAddIpfsPost(@Valid PinnerIpfsPin body, @QueryParam("ignore-dupes") String ignoreDupes, @QueryParam("overwrite") String overwrite);
 
     /**
      * Add new content

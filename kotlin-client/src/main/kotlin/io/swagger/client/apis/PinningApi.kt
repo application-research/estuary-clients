@@ -11,9 +11,9 @@
  */
 package io.swagger.client.apis
 
-import io.swagger.client.models.TypesIpfsListPinStatusResponse
-import io.swagger.client.models.TypesIpfsPin
-import io.swagger.client.models.TypesIpfsPinStatusResponse
+import io.swagger.client.models.PinnerIpfsListPinStatusResponse
+import io.swagger.client.models.PinnerIpfsPin
+import io.swagger.client.models.PinnerIpfsPinStatusResponse
 import io.swagger.client.models.UtilHttpError
 
 import estuary-client.infrastructure.*
@@ -23,21 +23,21 @@ class PinningApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(ba
     /**
      * List all pin status objects
      * This endpoint lists all pin status objects
-     * @return TypesIpfsListPinStatusResponse
+     * @return PinnerIpfsListPinStatusResponse
      */
     @Suppress("UNCHECKED_CAST")
-    fun pinningPinsGet(): TypesIpfsListPinStatusResponse {
+    fun pinningPinsGet(): PinnerIpfsListPinStatusResponse {
         
         val localVariableConfig = RequestConfig(
                 RequestMethod.GET,
                 "/pinning/pins"
         )
-        val response = request<TypesIpfsListPinStatusResponse>(
+        val response = request<PinnerIpfsListPinStatusResponse>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as TypesIpfsListPinStatusResponse
+            ResponseType.Success -> (response as Success<*>).data as PinnerIpfsListPinStatusResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -72,21 +72,21 @@ class PinningApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(ba
      * Get a pin status object
      * This endpoint returns a pin status object.
      * @param pinid cid 
-     * @return TypesIpfsPinStatusResponse
+     * @return PinnerIpfsPinStatusResponse
      */
     @Suppress("UNCHECKED_CAST")
-    fun pinningPinsPinidGet(pinid: kotlin.String): TypesIpfsPinStatusResponse {
+    fun pinningPinsPinidGet(pinid: kotlin.String): PinnerIpfsPinStatusResponse {
         
         val localVariableConfig = RequestConfig(
                 RequestMethod.GET,
                 "/pinning/pins/{pinid}".replace("{" + "pinid" + "}", "$pinid")
         )
-        val response = request<TypesIpfsPinStatusResponse>(
+        val response = request<PinnerIpfsPinStatusResponse>(
                 localVariableConfig
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as TypesIpfsPinStatusResponse
+            ResponseType.Success -> (response as Success<*>).data as PinnerIpfsPinStatusResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -98,22 +98,22 @@ class PinningApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(ba
      * This endpoint replaces a pinned object.
      * @param body New pin 
      * @param pinid Pin ID to be replaced 
-     * @return TypesIpfsPinStatusResponse
+     * @return PinnerIpfsPinStatusResponse
      */
     @Suppress("UNCHECKED_CAST")
-    fun pinningPinsPinidPost(body: TypesIpfsPin, pinid: kotlin.String): TypesIpfsPinStatusResponse {
+    fun pinningPinsPinidPost(body: PinnerIpfsPin, pinid: kotlin.String): PinnerIpfsPinStatusResponse {
         val localVariableBody: kotlin.Any? = body
         
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
                 "/pinning/pins/{pinid}".replace("{" + "pinid" + "}", "$pinid")
         )
-        val response = request<TypesIpfsPinStatusResponse>(
+        val response = request<PinnerIpfsPinStatusResponse>(
                 localVariableConfig, localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as TypesIpfsPinStatusResponse
+            ResponseType.Success -> (response as Success<*>).data as PinnerIpfsPinStatusResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")
@@ -126,22 +126,22 @@ class PinningApi(basePath: kotlin.String = "//api.estuary.tech/") : ApiClient(ba
      * @param body Pin Body {cid:cid, name:name} 
      * @param ignoreDupes Ignore Dupes (optional)
      * @param overwrite Overwrite conflicting files in collections (optional)
-     * @return TypesIpfsPinStatusResponse
+     * @return PinnerIpfsPinStatusResponse
      */
     @Suppress("UNCHECKED_CAST")
-    fun pinningPinsPost(body: TypesIpfsPin, ignoreDupes: kotlin.String? = null, overwrite: kotlin.String? = null): TypesIpfsPinStatusResponse {
+    fun pinningPinsPost(body: PinnerIpfsPin, ignoreDupes: kotlin.String? = null, overwrite: kotlin.String? = null): PinnerIpfsPinStatusResponse {
         val localVariableBody: kotlin.Any? = body
         val localVariableQuery: MultiValueMap = mapOf("ignore-dupes" to listOf("$ignoreDupes"), "overwrite" to listOf("$overwrite"))
         val localVariableConfig = RequestConfig(
                 RequestMethod.POST,
                 "/pinning/pins", query = localVariableQuery
         )
-        val response = request<TypesIpfsPinStatusResponse>(
+        val response = request<PinnerIpfsPinStatusResponse>(
                 localVariableConfig, localVariableBody
         )
 
         return when (response.responseType) {
-            ResponseType.Success -> (response as Success<*>).data as TypesIpfsPinStatusResponse
+            ResponseType.Success -> (response as Success<*>).data as PinnerIpfsPinStatusResponse
             ResponseType.Informational -> TODO()
             ResponseType.Redirection -> TODO()
             ResponseType.ClientError -> throw ClientException((response as ClientError<*>).body as? String ?: "Client error")

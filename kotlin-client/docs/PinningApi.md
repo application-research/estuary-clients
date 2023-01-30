@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="pinningPinsGet"></a>
 # **pinningPinsGet**
-> TypesIpfsListPinStatusResponse pinningPinsGet()
+> PinnerIpfsListPinStatusResponse pinningPinsGet()
 
 List all pin status objects
 
@@ -26,7 +26,7 @@ This endpoint lists all pin status objects
 
 val apiInstance = PinningApi()
 try {
-    val result : TypesIpfsListPinStatusResponse = apiInstance.pinningPinsGet()
+    val result : PinnerIpfsListPinStatusResponse = apiInstance.pinningPinsGet()
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling PinningApi#pinningPinsGet")
@@ -42,7 +42,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**TypesIpfsListPinStatusResponse**](TypesIpfsListPinStatusResponse.md)
+[**PinnerIpfsListPinStatusResponse**](PinnerIpfsListPinStatusResponse.md)
 
 ### Authorization
 
@@ -101,7 +101,7 @@ null (empty response body)
 
 <a name="pinningPinsPinidGet"></a>
 # **pinningPinsPinidGet**
-> TypesIpfsPinStatusResponse pinningPinsPinidGet(pinid)
+> PinnerIpfsPinStatusResponse pinningPinsPinidGet(pinid)
 
 Get a pin status object
 
@@ -116,7 +116,7 @@ This endpoint returns a pin status object.
 val apiInstance = PinningApi()
 val pinid : kotlin.String = pinid_example // kotlin.String | cid
 try {
-    val result : TypesIpfsPinStatusResponse = apiInstance.pinningPinsPinidGet(pinid)
+    val result : PinnerIpfsPinStatusResponse = apiInstance.pinningPinsPinidGet(pinid)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling PinningApi#pinningPinsPinidGet")
@@ -135,7 +135,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
+[**PinnerIpfsPinStatusResponse**](PinnerIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 
 <a name="pinningPinsPinidPost"></a>
 # **pinningPinsPinidPost**
-> TypesIpfsPinStatusResponse pinningPinsPinidPost(body, pinid)
+> PinnerIpfsPinStatusResponse pinningPinsPinidPost(body, pinid)
 
 Replace a pinned object
 
@@ -161,10 +161,10 @@ This endpoint replaces a pinned object.
 //import io.swagger.client.models.*;
 
 val apiInstance = PinningApi()
-val body : TypesIpfsPin =  // TypesIpfsPin | New pin
+val body : PinnerIpfsPin =  // PinnerIpfsPin | New pin
 val pinid : kotlin.String = pinid_example // kotlin.String | Pin ID to be replaced
 try {
-    val result : TypesIpfsPinStatusResponse = apiInstance.pinningPinsPinidPost(body, pinid)
+    val result : PinnerIpfsPinStatusResponse = apiInstance.pinningPinsPinidPost(body, pinid)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling PinningApi#pinningPinsPinidPost")
@@ -179,12 +179,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| New pin |
+ **body** | [**PinnerIpfsPin**](PinnerIpfsPin.md)| New pin |
  **pinid** | **kotlin.String**| Pin ID to be replaced |
 
 ### Return type
 
-[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
+[**PinnerIpfsPinStatusResponse**](PinnerIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -197,7 +197,7 @@ Name | Type | Description  | Notes
 
 <a name="pinningPinsPost"></a>
 # **pinningPinsPost**
-> TypesIpfsPinStatusResponse pinningPinsPost(body, ignoreDupes, overwrite)
+> PinnerIpfsPinStatusResponse pinningPinsPost(body, ignoreDupes, overwrite)
 
 Add and pin object
 
@@ -210,11 +210,11 @@ This endpoint adds a pin to the IPFS daemon.
 //import io.swagger.client.models.*;
 
 val apiInstance = PinningApi()
-val body : TypesIpfsPin =  // TypesIpfsPin | Pin Body {cid:cid, name:name}
+val body : PinnerIpfsPin =  // PinnerIpfsPin | Pin Body {cid:cid, name:name}
 val ignoreDupes : kotlin.String = ignoreDupes_example // kotlin.String | Ignore Dupes
 val overwrite : kotlin.String = overwrite_example // kotlin.String | Overwrite conflicting files in collections
 try {
-    val result : TypesIpfsPinStatusResponse = apiInstance.pinningPinsPost(body, ignoreDupes, overwrite)
+    val result : PinnerIpfsPinStatusResponse = apiInstance.pinningPinsPost(body, ignoreDupes, overwrite)
     println(result)
 } catch (e: ClientException) {
     println("4xx response calling PinningApi#pinningPinsPost")
@@ -229,13 +229,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**TypesIpfsPin**](TypesIpfsPin.md)| Pin Body {cid:cid, name:name} |
+ **body** | [**PinnerIpfsPin**](PinnerIpfsPin.md)| Pin Body {cid:cid, name:name} |
  **ignoreDupes** | **kotlin.String**| Ignore Dupes | [optional]
  **overwrite** | **kotlin.String**| Overwrite conflicting files in collections | [optional]
 
 ### Return type
 
-[**TypesIpfsPinStatusResponse**](TypesIpfsPinStatusResponse.md)
+[**PinnerIpfsPinStatusResponse**](PinnerIpfsPinStatusResponse.md)
 
 ### Authorization
 

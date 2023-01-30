@@ -13,7 +13,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
 import java.io.File;
-import io.swagger.model.TypesIpfsPin;
+import io.swagger.model.PinnerIpfsPin;
 import io.swagger.model.UtilContentAddResponse;
 import io.swagger.model.UtilContentCreateBody;
 import io.swagger.model.UtilHttpError;
@@ -35,7 +35,7 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 @Path("/content")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-24T07:25:42.644Z[GMT]")public class ContentApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-30T18:30:33.651Z[GMT]")public class ContentApi  {
 
     @Inject ContentApiService service;
 
@@ -69,7 +69,7 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response contentAddIpfsPost(@Parameter(description = "IPFS Body" ,required=true) TypesIpfsPin body,  @QueryParam("ignore-dupes") String ignoreDupes,  @QueryParam("overwrite") String overwrite,@Context SecurityContext securityContext)
+    public Response contentAddIpfsPost(@Parameter(description = "IPFS Body" ,required=true) PinnerIpfsPin body,  @QueryParam("ignore-dupes") String ignoreDupes,  @QueryParam("overwrite") String overwrite,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.contentAddIpfsPost(body,ignoreDupes,overwrite,securityContext);
     }

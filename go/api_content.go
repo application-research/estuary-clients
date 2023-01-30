@@ -410,7 +410,7 @@ type ContentApiContentAddIpfsPostOpts struct {
     Overwrite optional.String
 }
 
-func (a *ContentApiService) ContentAddIpfsPost(ctx context.Context, body TypesIpfsPin, localVarOptionals *ContentApiContentAddIpfsPostOpts) (string, *http.Response, error) {
+func (a *ContentApiService) ContentAddIpfsPost(ctx context.Context, body PinnerIpfsPin, localVarOptionals *ContentApiContentAddIpfsPostOpts) (string, *http.Response, error) {
 	var (
 		localVarHttpMethod = strings.ToUpper("Post")
 		localVarPostBody   interface{}

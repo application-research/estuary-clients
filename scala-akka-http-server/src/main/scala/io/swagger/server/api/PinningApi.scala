@@ -5,9 +5,9 @@ import akka.http.scaladsl.server.Route
 import akka.http.scaladsl.unmarshalling.FromRequestUnmarshaller
 import akka.http.scaladsl.marshalling.ToEntityMarshaller
 import io.swagger.server.AkkaHttpHelper._
-import io.swagger.server.model.Types.IpfsPin
-import io.swagger.server.model.types.IpfsListPinStatusResponse
-import io.swagger.server.model.types.IpfsPinStatusResponse
+import io.swagger.server.model.Pinner.IpfsPin
+import io.swagger.server.model.pinner.IpfsListPinStatusResponse
+import io.swagger.server.model.pinner.IpfsPinStatusResponse
 import io.swagger.server.model.util.HttpError
 
 class PinningApi(
@@ -68,7 +68,7 @@ class PinningApi(
           
             formFields() { () =>
               
-                entity(as[Types.IpfsPin]){ body =>
+                entity(as[Pinner.IpfsPin]){ body =>
                   pinningService.pinningPinsPinidPost(body = body, pinid = pinid)
                 }
              
@@ -83,7 +83,7 @@ class PinningApi(
           
             formFields() { () =>
               
-                entity(as[Types.IpfsPin]){ body =>
+                entity(as[Pinner.IpfsPin]){ body =>
                   pinningService.pinningPinsPost(body = body, ignoreDupes = ignoreDupes, overwrite = overwrite)
                 }
              
@@ -96,19 +96,19 @@ class PinningApi(
 
 trait PinningApiService {
 
-  def pinningPinsGet200(responsetypes.IpfsListPinStatusResponse: types.IpfsListPinStatusResponse)(implicit toEntityMarshallertypes.IpfsListPinStatusResponse: ToEntityMarshaller[types.IpfsListPinStatusResponse]): Route =
-    complete((200, responsetypes.IpfsListPinStatusResponse))
+  def pinningPinsGet200(responsepinner.IpfsListPinStatusResponse: pinner.IpfsListPinStatusResponse)(implicit toEntityMarshallerpinner.IpfsListPinStatusResponse: ToEntityMarshaller[pinner.IpfsListPinStatusResponse]): Route =
+    complete((200, responsepinner.IpfsListPinStatusResponse))
   def pinningPinsGet400(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((400, responseutil.HttpError))
   def pinningPinsGet500(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((500, responseutil.HttpError))
   /**
-   * Code: 200, Message: OK, DataType: types.IpfsListPinStatusResponse
+   * Code: 200, Message: OK, DataType: pinner.IpfsListPinStatusResponse
    * Code: 400, Message: Bad Request, DataType: util.HttpError
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
   def pinningPinsGet()
-      (implicit toEntityMarshallertypes.IpfsListPinStatusResponse: ToEntityMarshaller[types.IpfsListPinStatusResponse], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
+      (implicit toEntityMarshallerpinner.IpfsListPinStatusResponse: ToEntityMarshaller[pinner.IpfsListPinStatusResponse], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
   def pinningPinsPinidDelete202: Route =
     complete((202, "Accepted"))
@@ -121,72 +121,72 @@ trait PinningApiService {
   def pinningPinsPinidDelete(pinid: String)
       (implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
-  def pinningPinsPinidGet200(responsetypes.IpfsPinStatusResponse: types.IpfsPinStatusResponse)(implicit toEntityMarshallertypes.IpfsPinStatusResponse: ToEntityMarshaller[types.IpfsPinStatusResponse]): Route =
-    complete((200, responsetypes.IpfsPinStatusResponse))
+  def pinningPinsPinidGet200(responsepinner.IpfsPinStatusResponse: pinner.IpfsPinStatusResponse)(implicit toEntityMarshallerpinner.IpfsPinStatusResponse: ToEntityMarshaller[pinner.IpfsPinStatusResponse]): Route =
+    complete((200, responsepinner.IpfsPinStatusResponse))
   def pinningPinsPinidGet404(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((404, responseutil.HttpError))
   def pinningPinsPinidGet500(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((500, responseutil.HttpError))
   /**
-   * Code: 200, Message: OK, DataType: types.IpfsPinStatusResponse
+   * Code: 200, Message: OK, DataType: pinner.IpfsPinStatusResponse
    * Code: 404, Message: Not Found, DataType: util.HttpError
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
   def pinningPinsPinidGet(pinid: String)
-      (implicit toEntityMarshallertypes.IpfsPinStatusResponse: ToEntityMarshaller[types.IpfsPinStatusResponse], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
+      (implicit toEntityMarshallerpinner.IpfsPinStatusResponse: ToEntityMarshaller[pinner.IpfsPinStatusResponse], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
-  def pinningPinsPinidPost202(responsetypes.IpfsPinStatusResponse: types.IpfsPinStatusResponse)(implicit toEntityMarshallertypes.IpfsPinStatusResponse: ToEntityMarshaller[types.IpfsPinStatusResponse]): Route =
-    complete((202, responsetypes.IpfsPinStatusResponse))
+  def pinningPinsPinidPost202(responsepinner.IpfsPinStatusResponse: pinner.IpfsPinStatusResponse)(implicit toEntityMarshallerpinner.IpfsPinStatusResponse: ToEntityMarshaller[pinner.IpfsPinStatusResponse]): Route =
+    complete((202, responsepinner.IpfsPinStatusResponse))
   def pinningPinsPinidPost404(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((404, responseutil.HttpError))
   def pinningPinsPinidPost500(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((500, responseutil.HttpError))
   /**
-   * Code: 202, Message: Accepted, DataType: types.IpfsPinStatusResponse
+   * Code: 202, Message: Accepted, DataType: pinner.IpfsPinStatusResponse
    * Code: 404, Message: Not Found, DataType: util.HttpError
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
-  def pinningPinsPinidPost(body: Types.IpfsPin, pinid: String)
-      (implicit toEntityMarshallertypes.IpfsPinStatusResponse: ToEntityMarshaller[types.IpfsPinStatusResponse], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
+  def pinningPinsPinidPost(body: Pinner.IpfsPin, pinid: String)
+      (implicit toEntityMarshallerpinner.IpfsPinStatusResponse: ToEntityMarshaller[pinner.IpfsPinStatusResponse], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
-  def pinningPinsPost202(responsetypes.IpfsPinStatusResponse: types.IpfsPinStatusResponse)(implicit toEntityMarshallertypes.IpfsPinStatusResponse: ToEntityMarshaller[types.IpfsPinStatusResponse]): Route =
-    complete((202, responsetypes.IpfsPinStatusResponse))
+  def pinningPinsPost202(responsepinner.IpfsPinStatusResponse: pinner.IpfsPinStatusResponse)(implicit toEntityMarshallerpinner.IpfsPinStatusResponse: ToEntityMarshaller[pinner.IpfsPinStatusResponse]): Route =
+    complete((202, responsepinner.IpfsPinStatusResponse))
   def pinningPinsPost500(responseutil.HttpError: util.HttpError)(implicit toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route =
     complete((500, responseutil.HttpError))
   /**
-   * Code: 202, Message: Accepted, DataType: types.IpfsPinStatusResponse
+   * Code: 202, Message: Accepted, DataType: pinner.IpfsPinStatusResponse
    * Code: 500, Message: Internal Server Error, DataType: util.HttpError
    */
-  def pinningPinsPost(body: Types.IpfsPin, ignoreDupes: Option[String], overwrite: Option[String])
-      (implicit toEntityMarshallertypes.IpfsPinStatusResponse: ToEntityMarshaller[types.IpfsPinStatusResponse], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
+  def pinningPinsPost(body: Pinner.IpfsPin, ignoreDupes: Option[String], overwrite: Option[String])
+      (implicit toEntityMarshallerpinner.IpfsPinStatusResponse: ToEntityMarshaller[pinner.IpfsPinStatusResponse], toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]): Route
 
 }
 
 trait PinningApiMarshaller {
-  implicit def fromRequestUnmarshallerTypes.IpfsPin: FromRequestUnmarshaller[Types.IpfsPin]
+  implicit def fromRequestUnmarshallerPinner.IpfsPin: FromRequestUnmarshaller[Pinner.IpfsPin]
 
 
-  implicit def toEntityMarshallertypes.IpfsListPinStatusResponse: ToEntityMarshaller[types.IpfsListPinStatusResponse]
-
-  implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
+  implicit def toEntityMarshallerpinner.IpfsListPinStatusResponse: ToEntityMarshaller[pinner.IpfsListPinStatusResponse]
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 
-  implicit def toEntityMarshallertypes.IpfsPinStatusResponse: ToEntityMarshaller[types.IpfsPinStatusResponse]
+  implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
+
+  implicit def toEntityMarshallerpinner.IpfsPinStatusResponse: ToEntityMarshaller[pinner.IpfsPinStatusResponse]
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 
-  implicit def toEntityMarshallertypes.IpfsPinStatusResponse: ToEntityMarshaller[types.IpfsPinStatusResponse]
+  implicit def toEntityMarshallerpinner.IpfsPinStatusResponse: ToEntityMarshaller[pinner.IpfsPinStatusResponse]
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 
-  implicit def toEntityMarshallertypes.IpfsPinStatusResponse: ToEntityMarshaller[types.IpfsPinStatusResponse]
+  implicit def toEntityMarshallerpinner.IpfsPinStatusResponse: ToEntityMarshaller[pinner.IpfsPinStatusResponse]
 
   implicit def toEntityMarshallerutil.HttpError: ToEntityMarshaller[util.HttpError]
 

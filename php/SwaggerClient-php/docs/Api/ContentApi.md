@@ -209,7 +209,7 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = new \Swagger\Client\Model\TypesIpfsPin(); // \Swagger\Client\Model\TypesIpfsPin | IPFS Body
+$body = new \Swagger\Client\Model\PinnerIpfsPin(); // \Swagger\Client\Model\PinnerIpfsPin | IPFS Body
 $ignore_dupes = "ignore_dupes_example"; // string | Ignore Dupes
 $overwrite = "overwrite_example"; // string | Overwrite conflicting files in collections
 
@@ -226,7 +226,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\TypesIpfsPin**](../Model/TypesIpfsPin.md)| IPFS Body |
+ **body** | [**\Swagger\Client\Model\PinnerIpfsPin**](../Model/PinnerIpfsPin.md)| IPFS Body |
  **ignore_dupes** | **string**| Ignore Dupes | [optional]
  **overwrite** | **string**| Overwrite conflicting files in collections | [optional]
 

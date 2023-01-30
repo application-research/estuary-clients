@@ -12,9 +12,9 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 
-import io.swagger.model.TypesIpfsListPinStatusResponse;
-import io.swagger.model.TypesIpfsPin;
-import io.swagger.model.TypesIpfsPinStatusResponse;
+import io.swagger.model.PinnerIpfsListPinStatusResponse;
+import io.swagger.model.PinnerIpfsPin;
+import io.swagger.model.PinnerIpfsPinStatusResponse;
 import io.swagger.model.UtilHttpError;
 
 import java.util.Map;
@@ -33,7 +33,7 @@ import javax.validation.constraints.*;
 @Path("/pinning")
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-24T07:25:42.644Z[GMT]")public class PinningApi  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-30T18:30:33.651Z[GMT]")public class PinningApi  {
 
     @Inject PinningApiService service;
 
@@ -45,7 +45,7 @@ import javax.validation.constraints.*;
         @SecurityRequirement(name = "bearerAuth")
     }, tags={ "pinning" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TypesIpfsListPinStatusResponse.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = PinnerIpfsListPinStatusResponse.class))),
         
         @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
@@ -77,7 +77,7 @@ import javax.validation.constraints.*;
         @SecurityRequirement(name = "bearerAuth")
     }, tags={ "pinning" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TypesIpfsPinStatusResponse.class))),
+        @ApiResponse(responseCode = "200", description = "OK", content = @Content(mediaType = "application/json", schema = @Schema(implementation = PinnerIpfsPinStatusResponse.class))),
         
         @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
@@ -94,12 +94,12 @@ import javax.validation.constraints.*;
         @SecurityRequirement(name = "bearerAuth")
     }, tags={ "pinning" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "202", description = "Accepted", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TypesIpfsPinStatusResponse.class))),
+        @ApiResponse(responseCode = "202", description = "Accepted", content = @Content(mediaType = "application/json", schema = @Schema(implementation = PinnerIpfsPinStatusResponse.class))),
         
         @ApiResponse(responseCode = "404", description = "Not Found", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))),
         
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response pinningPinsPinidPost(@Parameter(description = "New pin" ,required=true) TypesIpfsPin body, @PathParam("pinid") String pinid,@Context SecurityContext securityContext)
+    public Response pinningPinsPinidPost(@Parameter(description = "New pin" ,required=true) PinnerIpfsPin body, @PathParam("pinid") String pinid,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.pinningPinsPinidPost(body,pinid,securityContext);
     }
@@ -111,10 +111,10 @@ import javax.validation.constraints.*;
         @SecurityRequirement(name = "bearerAuth")
     }, tags={ "pinning" })
     @ApiResponses(value = { 
-        @ApiResponse(responseCode = "202", description = "Accepted", content = @Content(mediaType = "application/json", schema = @Schema(implementation = TypesIpfsPinStatusResponse.class))),
+        @ApiResponse(responseCode = "202", description = "Accepted", content = @Content(mediaType = "application/json", schema = @Schema(implementation = PinnerIpfsPinStatusResponse.class))),
         
         @ApiResponse(responseCode = "500", description = "Internal Server Error", content = @Content(mediaType = "application/json", schema = @Schema(implementation = UtilHttpError.class))) })
-    public Response pinningPinsPost(@Parameter(description = "Pin Body {cid:cid, name:name}" ,required=true) TypesIpfsPin body,  @QueryParam("ignore-dupes") String ignoreDupes,  @QueryParam("overwrite") String overwrite,@Context SecurityContext securityContext)
+    public Response pinningPinsPost(@Parameter(description = "Pin Body {cid:cid, name:name}" ,required=true) PinnerIpfsPin body,  @QueryParam("ignore-dupes") String ignoreDupes,  @QueryParam("overwrite") String overwrite,@Context SecurityContext securityContext)
     throws NotFoundException {
         return service.pinningPinsPost(body,ignoreDupes,overwrite,securityContext);
     }

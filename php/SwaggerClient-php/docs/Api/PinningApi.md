@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**pinningPinsPost**](PinningApi.md#pinningpinspost) | **POST** /pinning/pins | Add and pin object
 
 # **pinningPinsGet**
-> \Swagger\Client\Model\TypesIpfsListPinStatusResponse pinningPinsGet()
+> \Swagger\Client\Model\PinnerIpfsListPinStatusResponse pinningPinsGet()
 
 List all pin status objects
 
@@ -47,7 +47,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Swagger\Client\Model\TypesIpfsListPinStatusResponse**](../Model/TypesIpfsListPinStatusResponse.md)
+[**\Swagger\Client\Model\PinnerIpfsListPinStatusResponse**](../Model/PinnerIpfsListPinStatusResponse.md)
 
 ### Authorization
 
@@ -114,7 +114,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **pinningPinsPinidGet**
-> \Swagger\Client\Model\TypesIpfsPinStatusResponse pinningPinsPinidGet($pinid)
+> \Swagger\Client\Model\PinnerIpfsPinStatusResponse pinningPinsPinidGet($pinid)
 
 Get a pin status object
 
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\TypesIpfsPinStatusResponse**](../Model/TypesIpfsPinStatusResponse.md)
+[**\Swagger\Client\Model\PinnerIpfsPinStatusResponse**](../Model/PinnerIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -168,7 +168,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **pinningPinsPinidPost**
-> \Swagger\Client\Model\TypesIpfsPinStatusResponse pinningPinsPinidPost($body, $pinid)
+> \Swagger\Client\Model\PinnerIpfsPinStatusResponse pinningPinsPinidPost($body, $pinid)
 
 Replace a pinned object
 
@@ -189,7 +189,7 @@ $apiInstance = new Swagger\Client\Api\PinningApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = new \Swagger\Client\Model\TypesIpfsPin(); // \Swagger\Client\Model\TypesIpfsPin | New pin
+$body = new \Swagger\Client\Model\PinnerIpfsPin(); // \Swagger\Client\Model\PinnerIpfsPin | New pin
 $pinid = "pinid_example"; // string | Pin ID to be replaced
 
 try {
@@ -205,12 +205,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\TypesIpfsPin**](../Model/TypesIpfsPin.md)| New pin |
+ **body** | [**\Swagger\Client\Model\PinnerIpfsPin**](../Model/PinnerIpfsPin.md)| New pin |
  **pinid** | **string**| Pin ID to be replaced |
 
 ### Return type
 
-[**\Swagger\Client\Model\TypesIpfsPinStatusResponse**](../Model/TypesIpfsPinStatusResponse.md)
+[**\Swagger\Client\Model\PinnerIpfsPinStatusResponse**](../Model/PinnerIpfsPinStatusResponse.md)
 
 ### Authorization
 
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **pinningPinsPost**
-> \Swagger\Client\Model\TypesIpfsPinStatusResponse pinningPinsPost($body, $ignore_dupes, $overwrite)
+> \Swagger\Client\Model\PinnerIpfsPinStatusResponse pinningPinsPost($body, $ignore_dupes, $overwrite)
 
 Add and pin object
 
@@ -245,7 +245,7 @@ $apiInstance = new Swagger\Client\Api\PinningApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = new \Swagger\Client\Model\TypesIpfsPin(); // \Swagger\Client\Model\TypesIpfsPin | Pin Body {cid:cid, name:name}
+$body = new \Swagger\Client\Model\PinnerIpfsPin(); // \Swagger\Client\Model\PinnerIpfsPin | Pin Body {cid:cid, name:name}
 $ignore_dupes = "ignore_dupes_example"; // string | Ignore Dupes
 $overwrite = "overwrite_example"; // string | Overwrite conflicting files in collections
 
@@ -262,13 +262,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\TypesIpfsPin**](../Model/TypesIpfsPin.md)| Pin Body {cid:cid, name:name} |
+ **body** | [**\Swagger\Client\Model\PinnerIpfsPin**](../Model/PinnerIpfsPin.md)| Pin Body {cid:cid, name:name} |
  **ignore_dupes** | **string**| Ignore Dupes | [optional]
  **overwrite** | **string**| Overwrite conflicting files in collections | [optional]
 
 ### Return type
 
-[**\Swagger\Client\Model\TypesIpfsPinStatusResponse**](../Model/TypesIpfsPinStatusResponse.md)
+[**\Swagger\Client\Model\PinnerIpfsPinStatusResponse**](../Model/PinnerIpfsPinStatusResponse.md)
 
 ### Authorization
 

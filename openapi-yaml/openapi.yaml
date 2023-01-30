@@ -919,7 +919,7 @@ paths:
         content:
           '*/*':
             schema:
-              $ref: '#/components/schemas/types.IpfsPin'
+              $ref: '#/components/schemas/pinner.IpfsPin'
         required: true
       responses:
         "200":
@@ -2104,7 +2104,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/types.IpfsListPinStatusResponse'
+                $ref: '#/components/schemas/pinner.IpfsListPinStatusResponse'
         "400":
           description: Bad Request
           content:
@@ -2144,7 +2144,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/types.IpfsPin'
+              $ref: '#/components/schemas/pinner.IpfsPin'
         required: true
       responses:
         "202":
@@ -2152,7 +2152,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/types.IpfsPinStatusResponse'
+                $ref: '#/components/schemas/pinner.IpfsPinStatusResponse'
         "500":
           description: Internal Server Error
           content:
@@ -2181,7 +2181,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/types.IpfsPinStatusResponse'
+                $ref: '#/components/schemas/pinner.IpfsPinStatusResponse'
         "404":
           description: Not Found
           content:
@@ -2213,7 +2213,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/types.IpfsPin'
+              $ref: '#/components/schemas/pinner.IpfsPin'
         required: true
       responses:
         "202":
@@ -2221,7 +2221,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/types.IpfsPinStatusResponse'
+                $ref: '#/components/schemas/pinner.IpfsPinStatusResponse'
         "404":
           description: Not Found
           content:
@@ -2951,7 +2951,7 @@ components:
           type: boolean
         ID:
           type: string
-    types.IpfsListPinStatusResponse:
+    pinner.IpfsListPinStatusResponse:
       type: object
       properties:
         count:
@@ -2959,8 +2959,8 @@ components:
         results:
           type: array
           items:
-            $ref: '#/components/schemas/types.IpfsPinStatusResponse'
-    types.IpfsPin:
+            $ref: '#/components/schemas/pinner.IpfsPinStatusResponse'
+    pinner.IpfsPin:
       type: object
       properties:
         cid:
@@ -2974,7 +2974,7 @@ components:
           type: array
           items:
             type: string
-    types.IpfsPinStatusResponse:
+    pinner.IpfsPinStatusResponse:
       type: object
       properties:
         content:
@@ -2989,12 +2989,12 @@ components:
           type: object
           additionalProperties: true
         pin:
-          $ref: '#/components/schemas/types.IpfsPin'
+          $ref: '#/components/schemas/pinner.IpfsPin'
         requestid:
           type: string
         status:
-          $ref: '#/components/schemas/types.PinningStatus'
-    types.PinningStatus:
+          $ref: '#/components/schemas/status.PinningStatus'
+    status.PinningStatus:
       type: string
       enum:
       - pinning
