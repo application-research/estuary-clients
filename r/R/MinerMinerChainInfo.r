@@ -30,7 +30,7 @@ MinerMinerChainInfo <- R6::R6Class(
         self$`addresses` <- `addresses`
       }
       if (!missing(`owner`)) {
-        stopifnot(is.character(`owner`), length(`owner`) == 1)
+        stopifnot(R6::is.R6(`owner`))
         self$`owner` <- `owner`
       }
       if (!missing(`peerId`)) {
@@ -38,7 +38,7 @@ MinerMinerChainInfo <- R6::R6Class(
         self$`peerId` <- `peerId`
       }
       if (!missing(`worker`)) {
-        stopifnot(is.character(`worker`), length(`worker`) == 1)
+        stopifnot(R6::is.R6(`worker`))
         self$`worker` <- `worker`
       }
     },
@@ -48,13 +48,13 @@ MinerMinerChainInfo <- R6::R6Class(
         MinerMinerChainInfoObject[['addresses']] <- self$`addresses`
       }
       if (!is.null(self$`owner`)) {
-        MinerMinerChainInfoObject[['owner']] <- self$`owner`
+        MinerMinerChainInfoObject[['owner']] <- self$`owner`$toJSON()
       }
       if (!is.null(self$`peerId`)) {
         MinerMinerChainInfoObject[['peerId']] <- self$`peerId`
       }
       if (!is.null(self$`worker`)) {
-        MinerMinerChainInfoObject[['worker']] <- self$`worker`
+        MinerMinerChainInfoObject[['worker']] <- self$`worker`$toJSON()
       }
 
       MinerMinerChainInfoObject
@@ -65,13 +65,17 @@ MinerMinerChainInfo <- R6::R6Class(
         self$`addresses` <- MinerMinerChainInfoObject$`addresses`
       }
       if (!is.null(MinerMinerChainInfoObject$`owner`)) {
-        self$`owner` <- MinerMinerChainInfoObject$`owner`
+        ownerObject <- AddressAddress$new()
+        ownerObject$fromJSON(jsonlite::toJSON(MinerMinerChainInfoObject$owner, auto_unbox = TRUE))
+        self$`owner` <- ownerObject
       }
       if (!is.null(MinerMinerChainInfoObject$`peerId`)) {
         self$`peerId` <- MinerMinerChainInfoObject$`peerId`
       }
       if (!is.null(MinerMinerChainInfoObject$`worker`)) {
-        self$`worker` <- MinerMinerChainInfoObject$`worker`
+        workerObject <- AddressAddress$new()
+        workerObject$fromJSON(jsonlite::toJSON(MinerMinerChainInfoObject$worker, auto_unbox = TRUE))
+        self$`worker` <- workerObject
       }
     },
     toJSONString = function() {
@@ -83,17 +87,19 @@ MinerMinerChainInfo <- R6::R6Class(
            "worker": %s
         }',
         lapply(self$`addresses`, function(x) paste(paste0('"', x, '"'), sep=",")),
-        self$`owner`,
+        self$`owner`$toJSON(),
         self$`peerId`,
-        self$`worker`
+        self$`worker`$toJSON()
       )
     },
     fromJSONString = function(MinerMinerChainInfoJson) {
       MinerMinerChainInfoObject <- jsonlite::fromJSON(MinerMinerChainInfoJson)
       self$`addresses` <- MinerMinerChainInfoObject$`addresses`
-      self$`owner` <- MinerMinerChainInfoObject$`owner`
+      AddressAddressObject <- AddressAddress$new()
+      self$`owner` <- AddressAddressObject$fromJSON(jsonlite::toJSON(MinerMinerChainInfoObject$owner, auto_unbox = TRUE))
       self$`peerId` <- MinerMinerChainInfoObject$`peerId`
-      self$`worker` <- MinerMinerChainInfoObject$`worker`
+      AddressAddressObject <- AddressAddress$new()
+      self$`worker` <- AddressAddressObject$fromJSON(jsonlite::toJSON(MinerMinerChainInfoObject$worker, auto_unbox = TRUE))
     }
   )
 )

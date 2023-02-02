@@ -6,6 +6,7 @@ from datetime import date, datetime  # noqa: F401
 from typing import List, Dict  # noqa: F401
 
 from estuary-client.models.base_model_ import Model
+from estuary-client.models.address_address import AddressAddress  # noqa: F401,E501
 from estuary-client import util
 
 
@@ -14,23 +15,23 @@ class MinerMinerChainInfo(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, addresses: List[str]=None, owner: str=None, peer_id: str=None, worker: str=None):  # noqa: E501
+    def __init__(self, addresses: List[str]=None, owner: AddressAddress=None, peer_id: str=None, worker: AddressAddress=None):  # noqa: E501
         """MinerMinerChainInfo - a model defined in Swagger
 
         :param addresses: The addresses of this MinerMinerChainInfo.  # noqa: E501
         :type addresses: List[str]
         :param owner: The owner of this MinerMinerChainInfo.  # noqa: E501
-        :type owner: str
+        :type owner: AddressAddress
         :param peer_id: The peer_id of this MinerMinerChainInfo.  # noqa: E501
         :type peer_id: str
         :param worker: The worker of this MinerMinerChainInfo.  # noqa: E501
-        :type worker: str
+        :type worker: AddressAddress
         """
         self.swagger_types = {
             'addresses': List[str],
-            'owner': str,
+            'owner': AddressAddress,
             'peer_id': str,
-            'worker': str
+            'worker': AddressAddress
         }
 
         self.attribute_map = {
@@ -77,22 +78,22 @@ class MinerMinerChainInfo(Model):
         self._addresses = addresses
 
     @property
-    def owner(self) -> str:
+    def owner(self) -> AddressAddress:
         """Gets the owner of this MinerMinerChainInfo.
 
 
         :return: The owner of this MinerMinerChainInfo.
-        :rtype: str
+        :rtype: AddressAddress
         """
         return self._owner
 
     @owner.setter
-    def owner(self, owner: str):
+    def owner(self, owner: AddressAddress):
         """Sets the owner of this MinerMinerChainInfo.
 
 
         :param owner: The owner of this MinerMinerChainInfo.
-        :type owner: str
+        :type owner: AddressAddress
         """
 
         self._owner = owner
@@ -119,22 +120,22 @@ class MinerMinerChainInfo(Model):
         self._peer_id = peer_id
 
     @property
-    def worker(self) -> str:
+    def worker(self) -> AddressAddress:
         """Gets the worker of this MinerMinerChainInfo.
 
 
         :return: The worker of this MinerMinerChainInfo.
-        :rtype: str
+        :rtype: AddressAddress
         """
         return self._worker
 
     @worker.setter
-    def worker(self, worker: str):
+    def worker(self, worker: AddressAddress):
         """Sets the worker of this MinerMinerChainInfo.
 
 
         :param worker: The worker of this MinerMinerChainInfo.
-        :type worker: str
+        :type worker: AddressAddress
         """
 
         self._worker = worker

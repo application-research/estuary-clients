@@ -10,9 +10,10 @@
 * Do not edit the class manually.
 */package io.swagger.server.models
 
+import io.swagger.server.models.AddressAddress
 
 /**
  *  * @param addresses  * @param owner  * @param peerId  * @param worker */
-data class MinerMinerChainInfo (    val addresses: kotlin.Array<kotlin.String>? = null,    val owner: kotlin.String? = null,    val peerId: kotlin.String? = null,    val worker: kotlin.String? = null
+data class MinerMinerChainInfo (    val addresses: kotlin.Array<kotlin.String>? = null,    val owner: AddressAddress? = null,    val peerId: kotlin.String? = null,    val worker: AddressAddress? = null
 ) {
 }

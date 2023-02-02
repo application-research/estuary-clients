@@ -53,7 +53,7 @@ namespace estuary-client.Controllers
             //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(500, default(UtilHttpError));
             string exampleJson = null;
-            exampleJson = "{\n  \"name\" : \"name\",\n  \"chain_info\" : {\n    \"owner\" : \"owner\",\n    \"peerId\" : \"peerId\",\n    \"addresses\" : [ \"addresses\", \"addresses\" ],\n    \"worker\" : \"worker\"\n  },\n  \"suspendedReason\" : \"suspendedReason\",\n  \"addr\" : { },\n  \"version\" : \"version\",\n  \"suspended\" : true\n}";
+            exampleJson = "{\n  \"name\" : \"name\",\n  \"chain_info\" : {\n    \"peerId\" : \"peerId\",\n    \"addresses\" : [ \"addresses\", \"addresses\" ]\n  },\n  \"suspendedReason\" : \"suspendedReason\",\n  \"addr\" : { },\n  \"version\" : \"version\",\n  \"suspended\" : true\n}";
             
                         var example = exampleJson != null
                         ? JsonConvert.DeserializeObject<ApiMinerResp>(exampleJson)

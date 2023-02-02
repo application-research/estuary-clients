@@ -2,8 +2,10 @@ package io.swagger.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.model.AddressAddress;
 import java.util.ArrayList;
 import java.util.List;
+import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -15,9 +17,9 @@ import javax.xml.bind.annotation.*;
 
 public class MinerMinerChainInfo   {
   private List<String> addresses = new ArrayList<String>();
-  private String owner = null;
+  private AddressAddress owner = null;
   private String peerId = null;
-  private String worker = null;
+  private AddressAddress worker = null;
 
   /**
    **/
@@ -39,7 +41,7 @@ public class MinerMinerChainInfo   {
 
   /**
    **/
-  public MinerMinerChainInfo owner(String owner) {
+  public MinerMinerChainInfo owner(AddressAddress owner) {
     this.owner = owner;
     return this;
   }
@@ -48,10 +50,11 @@ public class MinerMinerChainInfo   {
   
   @Schema(description = "")
   @JsonProperty("owner")
-  public String getOwner() {
+  @Valid
+  public AddressAddress getOwner() {
     return owner;
   }
-  public void setOwner(String owner) {
+  public void setOwner(AddressAddress owner) {
     this.owner = owner;
   }
 
@@ -75,7 +78,7 @@ public class MinerMinerChainInfo   {
 
   /**
    **/
-  public MinerMinerChainInfo worker(String worker) {
+  public MinerMinerChainInfo worker(AddressAddress worker) {
     this.worker = worker;
     return this;
   }
@@ -84,10 +87,11 @@ public class MinerMinerChainInfo   {
   
   @Schema(description = "")
   @JsonProperty("worker")
-  public String getWorker() {
+  @Valid
+  public AddressAddress getWorker() {
     return worker;
   }
-  public void setWorker(String worker) {
+  public void setWorker(AddressAddress worker) {
     this.worker = worker;
   }
 

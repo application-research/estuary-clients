@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **addresses** | **Array&lt;String&gt;** |  | [optional] 
-**owner** | **String** |  | [optional] 
+**owner** | [**AddressAddress**](AddressAddress.md) |  | [optional] 
 **peer_id** | **String** |  | [optional] 
-**worker** | **String** |  | [optional] 
+**worker** | [**AddressAddress**](AddressAddress.md) |  | [optional] 
 

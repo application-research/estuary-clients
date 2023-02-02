@@ -36,7 +36,7 @@ namespace estuary-client.Model
         /// <param name="owner">owner.</param>
         /// <param name="peerId">peerId.</param>
         /// <param name="worker">worker.</param>
-        public MinerMinerChainInfo(List<string> addresses = default(List<string>), string owner = default(string), string peerId = default(string), string worker = default(string))
+        public MinerMinerChainInfo(List<string> addresses = default(List<string>), AddressAddress owner = default(AddressAddress), string peerId = default(string), AddressAddress worker = default(AddressAddress))
         {
             this.Addresses = addresses;
             this.Owner = owner;
@@ -54,7 +54,7 @@ namespace estuary-client.Model
         /// Gets or Sets Owner
         /// </summary>
         [DataMember(Name="owner", EmitDefaultValue=false)]
-        public string Owner { get; set; }
+        public AddressAddress Owner { get; set; }
 
         /// <summary>
         /// Gets or Sets PeerId
@@ -66,7 +66,7 @@ namespace estuary-client.Model
         /// Gets or Sets Worker
         /// </summary>
         [DataMember(Name="worker", EmitDefaultValue=false)]
-        public string Worker { get; set; }
+        public AddressAddress Worker { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

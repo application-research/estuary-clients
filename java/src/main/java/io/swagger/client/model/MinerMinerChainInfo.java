@@ -19,6 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import io.swagger.client.model.AddressAddress;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,19 +28,19 @@ import java.util.List;
  * MinerMinerChainInfo
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2023-01-30T18:30:33.258Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2023-02-02T18:38:34.810Z[GMT]")
 public class MinerMinerChainInfo {
   @SerializedName("addresses")
   private List<String> addresses = null;
 
   @SerializedName("owner")
-  private String owner = null;
+  private AddressAddress owner = null;
 
   @SerializedName("peerId")
   private String peerId = null;
 
   @SerializedName("worker")
-  private String worker = null;
+  private AddressAddress worker = null;
 
   public MinerMinerChainInfo addresses(List<String> addresses) {
     this.addresses = addresses;
@@ -67,7 +68,7 @@ public class MinerMinerChainInfo {
     this.addresses = addresses;
   }
 
-  public MinerMinerChainInfo owner(String owner) {
+  public MinerMinerChainInfo owner(AddressAddress owner) {
     this.owner = owner;
     return this;
   }
@@ -77,11 +78,11 @@ public class MinerMinerChainInfo {
    * @return owner
   **/
   @Schema(description = "")
-  public String getOwner() {
+  public AddressAddress getOwner() {
     return owner;
   }
 
-  public void setOwner(String owner) {
+  public void setOwner(AddressAddress owner) {
     this.owner = owner;
   }
 
@@ -103,7 +104,7 @@ public class MinerMinerChainInfo {
     this.peerId = peerId;
   }
 
-  public MinerMinerChainInfo worker(String worker) {
+  public MinerMinerChainInfo worker(AddressAddress worker) {
     this.worker = worker;
     return this;
   }
@@ -113,11 +114,11 @@ public class MinerMinerChainInfo {
    * @return worker
   **/
   @Schema(description = "")
-  public String getWorker() {
+  public AddressAddress getWorker() {
     return worker;
   }
 
-  public void setWorker(String worker) {
+  public void setWorker(AddressAddress worker) {
     this.worker = worker;
   }
 

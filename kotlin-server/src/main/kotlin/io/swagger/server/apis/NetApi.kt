@@ -49,10 +49,8 @@ fun Route.NetApi() {
             val exampleContentString = """{
   "name" : "name",
   "chain_info" : {
-    "owner" : "owner",
     "peerId" : "peerId",
-    "addresses" : [ "addresses", "addresses" ],
-    "worker" : "worker"
+    "addresses" : [ "addresses", "addresses" ]
   },
   "suspendedReason" : "suspendedReason",
   "addr" : { },

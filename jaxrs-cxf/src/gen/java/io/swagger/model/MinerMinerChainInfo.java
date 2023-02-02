@@ -1,5 +1,6 @@
 package io.swagger.model;
 
+import io.swagger.model.AddressAddress;
 import java.util.ArrayList;
 import java.util.List;
 import javax.validation.constraints.*;
@@ -22,13 +23,13 @@ public class MinerMinerChainInfo   {
   private List<String> addresses = null;
   
   @Schema(description = "")
-  private String owner = null;
+  private AddressAddress owner = null;
   
   @Schema(description = "")
   private String peerId = null;
   
   @Schema(description = "")
-  private String worker = null;
+  private AddressAddress worker = null;
  /**
    * Get addresses
    * @return addresses
@@ -57,15 +58,15 @@ public class MinerMinerChainInfo   {
    * @return owner
   **/
   @JsonProperty("owner")
-  public String getOwner() {
+  public AddressAddress getOwner() {
     return owner;
   }
 
-  public void setOwner(String owner) {
+  public void setOwner(AddressAddress owner) {
     this.owner = owner;
   }
 
-  public MinerMinerChainInfo owner(String owner) {
+  public MinerMinerChainInfo owner(AddressAddress owner) {
     this.owner = owner;
     return this;
   }
@@ -93,15 +94,15 @@ public class MinerMinerChainInfo   {
    * @return worker
   **/
   @JsonProperty("worker")
-  public String getWorker() {
+  public AddressAddress getWorker() {
     return worker;
   }
 
-  public void setWorker(String worker) {
+  public void setWorker(AddressAddress worker) {
     this.worker = worker;
   }
 
-  public MinerMinerChainInfo worker(String worker) {
+  public MinerMinerChainInfo worker(AddressAddress worker) {
     this.worker = worker;
     return this;
   }

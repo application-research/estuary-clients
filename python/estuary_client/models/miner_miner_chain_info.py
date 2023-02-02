@@ -29,9 +29,9 @@ class MinerMinerChainInfo(object):
     """
     swagger_types = {
         'addresses': 'list[str]',
-        'owner': 'str',
+        'owner': 'AddressAddress',
         'peer_id': 'str',
-        'worker': 'str'
+        'worker': 'AddressAddress'
     }
 
     attribute_map = {
@@ -84,7 +84,7 @@ class MinerMinerChainInfo(object):
 
 
         :return: The owner of this MinerMinerChainInfo.  # noqa: E501
-        :rtype: str
+        :rtype: AddressAddress
         """
         return self._owner
 
@@ -94,7 +94,7 @@ class MinerMinerChainInfo(object):
 
 
         :param owner: The owner of this MinerMinerChainInfo.  # noqa: E501
-        :type: str
+        :type: AddressAddress
         """
 
         self._owner = owner
@@ -126,7 +126,7 @@ class MinerMinerChainInfo(object):
 
 
         :return: The worker of this MinerMinerChainInfo.  # noqa: E501
-        :rtype: str
+        :rtype: AddressAddress
         """
         return self._worker
 
@@ -136,7 +136,7 @@ class MinerMinerChainInfo(object):
 
 
         :param worker: The worker of this MinerMinerChainInfo.  # noqa: E501
-        :type: str
+        :type: AddressAddress
         """
 
         self._worker = worker

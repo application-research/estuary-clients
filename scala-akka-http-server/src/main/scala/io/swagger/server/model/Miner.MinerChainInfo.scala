@@ -9,8 +9,8 @@ package io.swagger.server.model
  */
 case class Miner.MinerChainInfo (
   addresses: Option[List[String]],
-  owner: Option[String],
+  owner: Option[address.Address],
   peerId: Option[String],
-  worker: Option[String]
+  worker: Option[address.Address]
 )
 

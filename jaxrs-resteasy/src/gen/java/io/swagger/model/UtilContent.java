@@ -10,7 +10,7 @@ import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-01-30T18:30:33.651Z[GMT]")public class UtilContent   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyServerCodegen", date = "2023-02-02T18:38:38.031Z[GMT]")public class UtilContent   {
   private Boolean active = null;  private Boolean aggregate = null;  private Integer aggregatedIn = null;  private UtilDbCID cid = null;  private String createdAt = null;  private Boolean dagSplit = null;  private String dealStatus = null;  private String description = null;  private Boolean failed = null;  private Integer id = null;  private String location = null;  private String name = null;  private Boolean offloaded = null;  private String origins = null;  private String pinMeta = null;  private Boolean pinning = null;  private String pinningStatus = null;  private Boolean replace = null;  private Integer replication = null;  private Integer size = null;  private Integer splitFrom = null;  private UtilContentType type = null;  private String updatedAt = null;  private Integer userId = null;
 
   /**

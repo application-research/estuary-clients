@@ -4,11 +4,11 @@ class MinerMinerChainInfo {
   
   List<String> addresses = [];
 
-  String owner = null;
+  AddressAddress owner = null;
 
   String peerId = null;
 
-  String worker = null;
+  AddressAddress worker = null;
 
   MinerMinerChainInfo();
 
@@ -20,9 +20,9 @@ class MinerMinerChainInfo {
   MinerMinerChainInfo.fromJson(Map<String, dynamic> json) {
     if (json == null) return;
     addresses = (json['addresses'] as List).map((item) => item as String).toList();
-    owner = json['owner'];
+    owner = new AddressAddress.fromJson(json['owner']);
     peerId = json['peerId'];
-    worker = json['worker'];
+    worker = new AddressAddress.fromJson(json['worker']);
   }
 
   Map<String, dynamic> toJson() {

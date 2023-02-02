@@ -12,11 +12,11 @@ import Foundation
 public struct MinerMinerChainInfo: Codable {
 
     public var addresses: [String]?
-    public var owner: String?
+    public var owner: AddressAddress?
     public var peerId: String?
-    public var worker: String?
+    public var worker: AddressAddress?
 
-    public init(addresses: [String]? = nil, owner: String? = nil, peerId: String? = nil, worker: String? = nil) {
+    public init(addresses: [String]? = nil, owner: AddressAddress? = nil, peerId: String? = nil, worker: AddressAddress? = nil) {
         self.addresses = addresses
         self.owner = owner
         self.peerId = peerId

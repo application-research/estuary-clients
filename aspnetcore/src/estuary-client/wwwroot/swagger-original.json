@@ -4268,10 +4268,10 @@
         "example" : {
           "name" : "name",
           "chain_info" : {
-            "owner" : "owner",
+            "owner" : null,
             "peerId" : "peerId",
             "addresses" : [ "addresses", "addresses" ],
-            "worker" : "worker"
+            "worker" : null
           },
           "suspendedReason" : "suspendedReason",
           "addr" : { },
@@ -4394,20 +4394,20 @@
             }
           },
           "owner" : {
-            "type" : "string"
+            "$ref" : "#/components/schemas/address.Address"
           },
           "peerId" : {
             "type" : "string"
           },
           "worker" : {
-            "type" : "string"
+            "$ref" : "#/components/schemas/address.Address"
           }
         },
         "example" : {
-          "owner" : "owner",
+          "owner" : null,
           "peerId" : "peerId",
           "addresses" : [ "addresses", "addresses" ],
-          "worker" : "worker"
+          "worker" : null
         }
       },
       "miner.MinerSetInfoParams" : {

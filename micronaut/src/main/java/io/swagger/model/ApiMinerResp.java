@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
  * ApiMinerResp
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2023-01-30T18:30:35.042Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2023-02-02T18:38:35.656Z[GMT]")
 public class ApiMinerResp   {
   @JsonProperty("addr")
   private AddressAddress addr = null;

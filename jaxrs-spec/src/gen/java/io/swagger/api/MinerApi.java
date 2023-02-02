@@ -27,7 +27,7 @@ import javax.validation.Valid;
 
 @Path("/miner")
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2023-01-30T18:30:37.026Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSSpecServerCodegen", date = "2023-02-02T18:38:39.726Z[GMT]")
 public class MinerApi {
 
     @GET

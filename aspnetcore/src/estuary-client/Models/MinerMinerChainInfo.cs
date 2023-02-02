@@ -38,7 +38,7 @@ namespace estuary-client.Models
         /// </summary>
 
         [DataMember(Name="owner")]
-        public string Owner { get; set; }
+        public AddressAddress Owner { get; set; }
 
         /// <summary>
         /// Gets or Sets PeerId
@@ -52,7 +52,7 @@ namespace estuary-client.Models
         /// </summary>
 
         [DataMember(Name="worker")]
-        public string Worker { get; set; }
+        public AddressAddress Worker { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

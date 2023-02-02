@@ -25,7 +25,7 @@ import java.io.IOException;
  * ApiClaimResponse
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2023-01-30T18:30:33.258Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2023-02-02T18:38:34.810Z[GMT]")
 public class ApiClaimResponse {
   @SerializedName("success")
   private Boolean success = null;

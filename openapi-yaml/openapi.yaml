@@ -2925,11 +2925,11 @@ components:
           items:
             type: string
         owner:
-          type: string
+          $ref: '#/components/schemas/address.Address'
         peerId:
           type: string
         worker:
-          type: string
+          $ref: '#/components/schemas/address.Address'
     miner.MinerSetInfoParams:
       type: object
       properties:

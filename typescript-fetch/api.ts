@@ -495,10 +495,10 @@ export interface MinerMinerChainInfo {
     addresses?: Array<string>;
     /**
      * 
-     * @type {string}
+     * @type {AddressAddress}
      * @memberof MinerMinerChainInfo
      */
-    owner?: string;
+    owner?: AddressAddress;
     /**
      * 
      * @type {string}
@@ -507,10 +507,10 @@ export interface MinerMinerChainInfo {
     peerId?: string;
     /**
      * 
-     * @type {string}
+     * @type {AddressAddress}
      * @memberof MinerMinerChainInfo
      */
-    worker?: string;
+    worker?: AddressAddress;
 }
 /**
  * 

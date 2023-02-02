@@ -10,9 +10,9 @@ import Foundation
 
 open class MinerMinerChainInfo: JSONEncodable {
     public var addresses: [String]?
-    public var owner: String?
+    public var owner: AddressAddress?
     public var peerId: String?
-    public var worker: String?
+    public var worker: AddressAddress?
 
     public init() {}
 
@@ -20,9 +20,9 @@ open class MinerMinerChainInfo: JSONEncodable {
     open func encodeToJSON() -> Any {
         var nillableDictionary = [String:Any?]()
         nillableDictionary["addresses"] = self.addresses?.encodeToJSON()
-        nillableDictionary["owner"] = self.owner
+        nillableDictionary["owner"] = self.owner?.encodeToJSON()
         nillableDictionary["peerId"] = self.peerId
-        nillableDictionary["worker"] = self.worker
+        nillableDictionary["worker"] = self.worker?.encodeToJSON()
 
         let dictionary: [String:Any] = APIHelper.rejectNil(nillableDictionary) ?? [:]
         return dictionary

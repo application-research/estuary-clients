@@ -11,6 +11,7 @@
  */
 package io.swagger.client.models
 
+import io.swagger.client.models.AddressAddress
 
 /**
  * 
@@ -22,8 +23,8 @@ package io.swagger.client.models
 data class MinerMinerChainInfo (
 
     val addresses: kotlin.Array<kotlin.String>? = null,
-    val owner: kotlin.String? = null,
+    val owner: AddressAddress? = null,
     val peerId: kotlin.String? = null,
-    val worker: kotlin.String? = null
+    val worker: AddressAddress? = null
 ) {
 }

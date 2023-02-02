@@ -4,6 +4,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **addresses** | **[String]** |  | [optional] 
-**owner** | **String** |  | [optional] 
+**owner** | [**AddressAddress**](AddressAddress.md) |  | [optional] 
 **peerId** | **String** |  | [optional] 
-**worker** | **String** |  | [optional] 
+**worker** | [**AddressAddress**](AddressAddress.md) |  | [optional] 

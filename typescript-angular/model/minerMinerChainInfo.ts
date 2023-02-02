@@ -9,10 +9,11 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the class manually.
  */
+import { AddressAddress } from './addressAddress';
 
 export interface MinerMinerChainInfo { 
     addresses?: Array<string>;
-    owner?: string;
+    owner?: AddressAddress;
     peerId?: string;
-    worker?: string;
+    worker?: AddressAddress;
 }

@@ -4,16 +4,17 @@ import java.util.Objects;
 import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.model.AddressAddress;
 import java.util.List;
 import javax.validation.constraints.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2023-01-30T18:30:34.034Z[GMT]")public class MinerMinerChainInfo   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaResteasyEapServerCodegen", date = "2023-02-02T18:38:36.268Z[GMT]")public class MinerMinerChainInfo   {
   private List<String> addresses = new ArrayList<String>();
-  private String owner = null;
+  private AddressAddress owner = null;
   private String peerId = null;
-  private String worker = null;
+  private AddressAddress worker = null;
 
   /**
    **/
@@ -32,10 +33,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
   
   @Schema(description = "")
   @JsonProperty("owner")
-  public String getOwner() {
+  public AddressAddress getOwner() {
     return owner;
   }
-  public void setOwner(String owner) {
+  public void setOwner(AddressAddress owner) {
     this.owner = owner;
   }
 
@@ -56,10 +57,10 @@ import io.swagger.v3.oas.annotations.media.Schema;
   
   @Schema(description = "")
   @JsonProperty("worker")
-  public String getWorker() {
+  public AddressAddress getWorker() {
     return worker;
   }
-  public void setWorker(String worker) {
+  public void setWorker(AddressAddress worker) {
     this.worker = worker;
   }
 

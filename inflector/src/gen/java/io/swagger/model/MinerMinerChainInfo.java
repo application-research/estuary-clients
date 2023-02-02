@@ -2,22 +2,23 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.model.AddressAddress;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.ArrayList;
 import java.util.List;
 
 
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2023-01-30T18:30:33.816Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaInflectorServerCodegen", date = "2023-02-02T18:38:34.241Z[GMT]")
 public class MinerMinerChainInfo   {
   @JsonProperty("addresses")
   private List<String> addresses = null;
   @JsonProperty("owner")
-  private String owner = null;
+  private AddressAddress owner = null;
   @JsonProperty("peerId")
   private String peerId = null;
   @JsonProperty("worker")
-  private String worker = null;
+  private AddressAddress worker = null;
   /**
    **/
   public MinerMinerChainInfo addresses(List<String> addresses) {
@@ -37,7 +38,7 @@ public class MinerMinerChainInfo   {
 
   /**
    **/
-  public MinerMinerChainInfo owner(String owner) {
+  public MinerMinerChainInfo owner(AddressAddress owner) {
     this.owner = owner;
     return this;
   }
@@ -45,10 +46,10 @@ public class MinerMinerChainInfo   {
   
   @Schema(description = "")
   @JsonProperty("owner")
-  public String getOwner() {
+  public AddressAddress getOwner() {
     return owner;
   }
-  public void setOwner(String owner) {
+  public void setOwner(AddressAddress owner) {
     this.owner = owner;
   }
 
@@ -71,7 +72,7 @@ public class MinerMinerChainInfo   {
 
   /**
    **/
-  public MinerMinerChainInfo worker(String worker) {
+  public MinerMinerChainInfo worker(AddressAddress worker) {
     this.worker = worker;
     return this;
   }
@@ -79,10 +80,10 @@ public class MinerMinerChainInfo   {
   
   @Schema(description = "")
   @JsonProperty("worker")
-  public String getWorker() {
+  public AddressAddress getWorker() {
     return worker;
   }
-  public void setWorker(String worker) {
+  public void setWorker(AddressAddress worker) {
     this.worker = worker;
   }
 

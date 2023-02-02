@@ -15,7 +15,7 @@ import javax.validation.constraints.*;
  * PinnerIpfsListPinStatusResponse
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2023-01-30T18:30:35.042Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.MicronautCodegen", date = "2023-02-02T18:38:35.656Z[GMT]")
 public class PinnerIpfsListPinStatusResponse   {
   @JsonProperty("count")
   private Integer count = null;

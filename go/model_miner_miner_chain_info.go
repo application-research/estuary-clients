@@ -10,7 +10,7 @@ package estuary_client
 
 type MinerMinerChainInfo struct {
 	Addresses []string `json:"addresses,omitempty"`
-	Owner string `json:"owner,omitempty"`
+	Owner *AddressAddress `json:"owner,omitempty"`
 	PeerId string `json:"peerId,omitempty"`
-	Worker string `json:"worker,omitempty"`
+	Worker *AddressAddress `json:"worker,omitempty"`
 }

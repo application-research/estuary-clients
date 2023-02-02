@@ -21,7 +21,7 @@ import java.io.InputStream;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2023-01-30T18:30:35.818Z[GMT]")public interface MinerApiService {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJAXRSCXFCDIServerCodegen", date = "2023-02-02T18:38:39.054Z[GMT]")public interface MinerApiService {
       public Response minerClaimMinerGet(String miner, SecurityContext securityContext);
       public Response minerClaimPost(MinerClaimMinerBody body, SecurityContext securityContext);
       public Response minerSetInfoMinerPut(MinerMinerSetInfoParams body, String miner, SecurityContext securityContext);

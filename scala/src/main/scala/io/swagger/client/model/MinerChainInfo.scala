@@ -20,8 +20,8 @@ package io.swagger.client.model
  */
 case class MinerChainInfo (
   addresses: Option[List[String]] = None,
-  owner: Option[String] = None,
+  owner: Option[address.Address] = None,
   peerId: Option[String] = None,
-  worker: Option[String] = None
+  worker: Option[address.Address] = None
 )
 

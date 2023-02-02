@@ -24,7 +24,7 @@ namespace IO.Swagger.Model {
     /// </summary>
     [DataMember(Name="owner", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "owner")]
-    public string Owner { get; set; }
+    public AddressAddress Owner { get; set; }
 
     /// <summary>
     /// Gets or Sets PeerId
@@ -38,7 +38,7 @@ namespace IO.Swagger.Model {
     /// </summary>
     [DataMember(Name="worker", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "worker")]
-    public string Worker { get; set; }
+    public AddressAddress Worker { get; set; }
 
 
     /// <summary>

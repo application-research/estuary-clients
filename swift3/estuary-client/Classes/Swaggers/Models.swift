@@ -732,7 +732,7 @@ class Decoders {
                 case let .success(value): _result.addresses = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["owner"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: AddressAddress.self, source: sourceDictionary["owner"] as AnyObject?) {
                 case let .success(value): _result.owner = value
                 case let .failure(error): break
                 }
@@ -740,7 +740,7 @@ class Decoders {
                 case let .success(value): _result.peerId = value
                 case let .failure(error): break
                 }
-                switch Decoders.decodeOptional(clazz: String.self, source: sourceDictionary["worker"] as AnyObject?) {
+                switch Decoders.decodeOptional(clazz: AddressAddress.self, source: sourceDictionary["worker"] as AnyObject?) {
                 case let .success(value): _result.worker = value
                 case let .failure(error): break
                 }

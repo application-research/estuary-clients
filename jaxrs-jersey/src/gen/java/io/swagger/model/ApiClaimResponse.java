@@ -22,7 +22,7 @@ import javax.validation.Valid;
 /**
  * ApiClaimResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2023-01-30T18:30:35.620Z[GMT]")public class ApiClaimResponse   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaJerseyServerCodegen", date = "2023-02-02T18:38:37.222Z[GMT]")public class ApiClaimResponse   {
   @JsonProperty("success")
   private Boolean success = null;
 

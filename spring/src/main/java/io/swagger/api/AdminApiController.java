@@ -34,7 +34,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-01-30T18:30:36.664Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-02-02T18:38:36.904Z[GMT]")
 @RestController
 public class AdminApiController implements AdminApi {
 
@@ -110,7 +110,7 @@ public class AdminApiController implements AdminApi {
         String accept = request.getHeader("Accept");
         if (accept != null && accept.contains("application/json")) {
             try {
-                return new ResponseEntity<ApiMinerResp>(objectMapper.readValue("{\n  \"name\" : \"name\",\n  \"chain_info\" : {\n    \"owner\" : \"owner\",\n    \"peerId\" : \"peerId\",\n    \"addresses\" : [ \"addresses\", \"addresses\" ],\n    \"worker\" : \"worker\"\n  },\n  \"suspendedReason\" : \"suspendedReason\",\n  \"addr\" : { },\n  \"version\" : \"version\",\n  \"suspended\" : true\n}", ApiMinerResp.class), HttpStatus.NOT_IMPLEMENTED);
+                return new ResponseEntity<ApiMinerResp>(objectMapper.readValue("{\n  \"name\" : \"name\",\n  \"chain_info\" : {\n    \"peerId\" : \"peerId\",\n    \"addresses\" : [ \"addresses\", \"addresses\" ]\n  },\n  \"suspendedReason\" : \"suspendedReason\",\n  \"addr\" : { },\n  \"version\" : \"version\",\n  \"suspended\" : true\n}", ApiMinerResp.class), HttpStatus.NOT_IMPLEMENTED);
             } catch (IOException e) {
                 log.error("Couldn't serialize response for content type application/json", e);
                 return new ResponseEntity<ApiMinerResp>(HttpStatus.INTERNAL_SERVER_ERROR);
